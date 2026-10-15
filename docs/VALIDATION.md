@@ -4,6 +4,16 @@ Build: 15 October 2026, Windows. The levels below describe executed checks, not 
 
 ## Source and composition
 
+### 0.2.0 refresh
+
+On 15 October 2026 the refreshed package passed all **23 local Windows tests** in119.225seconds: the existing20 installation/ownership/MCP tests and3 new destination-memory scenarios. The new scenarios exercise current/history ranking with separate INBOX results; missing coverage/navigation setup; a valid synthetic registry/topology; detection of a lost reachable topic or an incorrect direct-root link; and unchanged vault bytes after read-only checks.
+
+The source comparison covered298 files including141 Markdown instruction/reference documents. Seven existing source files changed since0.1.0 and six source files were added. The export adds three original synthetic setup templates, yielding292 payload files and the same23 custom skill entry points. Global base, general workflow, independent-review procedure, pinned capture/sync core and existing voxel validators remain byte-identical to0.1.0 after their established portable bindings. Dataset and license bytes are retained.
+
+The illustrated guide was reviewed locally at900px. Its36-frame robot camera orbit has an infinite loop and a static alternative; independent inspection observed motion after late arrival. This is documentation/media evidence, not a new model-quality benchmark. The original0.1.0 evidence below remains historical evidence at its stated scope.
+
+### Original 0.1.0 record
+
 | Executed check | Observed result |
 |---|---|
 | Original configuration/workflow/custom-skill snapshot | All284 source files unchanged; source hooks unchanged since first inspection |

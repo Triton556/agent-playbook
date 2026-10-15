@@ -32,6 +32,18 @@ These changes do not weaken tests, criteria, command schemas, operation limits o
 
 ## Dependencies and exclusions
 
+### Version 0.2.0 source refresh
+
+The current material-contour and mixed-grid clarifications, memory search entry point, curation/retrieval procedure, and read-only search/navigation/coverage helpers are preserved. Source/export hashes and each portable change remain in the manifest. The single-integration design schema and semantic-contract source-space limits are unchanged.
+
+Additional explicit portability changes:
+
+- A private dated coverage registry is addressed as SYSTEM/coverage/coverage.json in the exported helper. Only the deployment filename changes; its audit algorithm and input schema remain intact.
+- The private twelve-question retrieval fixture becomes a synthetic schema example, with instructions to prepare twelve real cases on the destination vault. Own populated coverage/navigation registries are required; templates or missing setup do not establish audit success.
+- A private Library identifier is omitted and a private source-audit path becomes an optional authorized evidence binding. Historical availability limits, audit SHA and normative requirements remain. No private research document or source owner's authorization is transferred.
+
+The three synthetic setup templates contain no personal records. They do not install an active registry, schedule or new permission. The existing pinned capture/sync core, global base and general workflow have not changed.
+
 The old dispatcher and its configuration/backups are inactive and are not installed. The reverted five-addition experiment is not reinstated. Machine installation receipts are replaced by verified public provenance. Private notes, source chats, credentials and actual VM identities are not published.
 
 The exact configured Impeccable engine is a pinned official runtime asset, not a replacement implementation. Its required version/SHA remains explicit. Native/client services are external capabilities, not bundled proprietary code. Missing capability means an incomplete/unverified route, not an equivalent successful result.

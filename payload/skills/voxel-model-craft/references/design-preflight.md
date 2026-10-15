@@ -54,3 +54,7 @@ Exit0 means the declared geometric/kit constraints and all required current desi
 Voxel construction uses the accepted passport revision, landmarks, palette roles, native pitch and planned sockets. Preserve the accepted 2D design. Render the resulting voxels in matching views and compare their silhouette/scale/features against the design, then run the existing technical/semantic/style/context/readability/use checks. A passing concept does not automatically approve its 3D implementation. Record justified design changes as a new revision and recheck the affected plan.
 
 The [reference triggers](../../product-engineering/references/reference-grounding.md) and [shared perception protocol](../../product-engineering/references/human-perspective-review.md) are common authorities. This branch specifies the six-view representation and kit constraints. Its review completes autonomously inside the agreed scope; human feedback is recorded only when actually received. Retain stylization and successful exceptions rather than increasing realism by default.
+
+## Material contour and mixed-grid scope
+
+Review the major contour of principal material/color regions independently of cross-view agreement and later3D transfer; use [Major material boundaries](material-boundaries.md) for prominent natural markings. Preserve supported stylization and ordinary cell-scale steps. Schema1 remains a single-integration-kit check; [Mixed local grids](mixed-grids.md) explains separate world/model/mechanics contracts without weakening its existing constraints.

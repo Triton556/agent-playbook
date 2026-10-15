@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "template_only": true,
+  "entries": [
+    {
+      "id": "example-source",
+      "source": "INBOX/example.md",
+      "items": [
+        {
+          "item": 1,
+          "disposition": "covered",
+          "summary": "Replace with the actual decision, reason and status.",
+          "topics": [
+            "PROJECTS/Example.md"
+          ]
+        }
+      ]
+    }
+  ]
+}

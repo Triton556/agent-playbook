@@ -22,3 +22,7 @@ Use PNG/JPEG views at least480px on each axis. For a concept sheet, export each 
 - `gates:{coherence,style,context,function,readability,usability}`. Each contains `verdict:"pass"|"fail"|"pending"`, and `observation` describing actual inspected evidence. A noninteractive object uses its intended static use for usability; do not claim a UI interaction that was not performed.
 
 The digest covers passport bytes, images, local bases, kit and comparison. Any changed input invalidates its review. The reviewer identity and inspection are attestations, not authenticated facts. User acceptance is separate; an agent's design review does not invent user approval. A project ledger may additionally bind this design report as its preconstruction criterion and require actual later voxel-to-design visual evidence.
+
+## Scope of schema1
+
+The current integration_pitch_m/shared/independent-master constraints validate a declared single-integration kit. A passing schema1 check does not prove arbitrary mixed runtime-grid integration. Keep shared-kit constraints intact; record a separate explicit metric/proxy mapping for mixed assets as described in [Mixed local grids](mixed-grids.md). This clarification changes no schema or helper.

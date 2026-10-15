@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "name": "agent-workflow-harness",
-  "version": "0.1.0",
-  "exported_at": "2026-10-14T18:18:22.157285+00:00",
-  "baseline": "Active configured workflow after author-owned testing/review clarification; retired dispatcher and reverted five-addition experiment inactive",
+  "version": "0.2.0",
+  "exported_at": "2026-10-15T07:29:21.950827+00:00",
+  "baseline": "Active configured A workflow, plus current material-contour/mixed-grid guidance and read-only memory retrieval/navigation/coverage helpers; no dispatcher or reverted five-addition experiment",
   "instruction_policy": "Full bodies and resources preserved; only explicit environment/owner bindings and two runtime relocations transformed",
   "files": [
     {
@@ -402,9 +402,9 @@
     {
       "source": "skills/kb-find/SKILL.md",
       "path": "payload/skills/kb-find/SKILL.md",
-      "source_sha256": "c1bd6117e67abb7a318c3e22e4d3c420aff9f05e7c5b2e75dbf2b24632c65335",
-      "sha256": "82b31e3903fb29766e235befcb3ff961fe42cf7a7e24ce52fa44017ca3fdc837",
-      "bytes": 1341,
+      "source_sha256": "42bfc50e3bd04bfd08965a20eb3409282dbc5647a468708075d258831c17eb71",
+      "sha256": "65d6c1a319471785778afa9d5e2c7c08eeed3f988f39b5449936b27b4adc0136",
+      "bytes": 1639,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -2459,18 +2459,18 @@
     {
       "source": "skills/voxel-model-craft/references/design-passport.md",
       "path": "payload/skills/voxel-model-craft/references/design-passport.md",
-      "source_sha256": "97421e7aa691384321c68b9628e1d6b1736b792d0a59cf1fef6dc916f7868f99",
-      "sha256": "97421e7aa691384321c68b9628e1d6b1736b792d0a59cf1fef6dc916f7868f99",
-      "bytes": 3923,
+      "source_sha256": "dbc0ef8a5c4c14fb360c53d552e8338a5f142aaed9683d196e2a573f7146fffe",
+      "sha256": "dbc0ef8a5c4c14fb360c53d552e8338a5f142aaed9683d196e2a573f7146fffe",
+      "bytes": 4342,
       "transformations": [],
       "module": "voxel-model-craft"
     },
     {
       "source": "skills/voxel-model-craft/references/design-preflight.md",
       "path": "payload/skills/voxel-model-craft/references/design-preflight.md",
-      "source_sha256": "e415f39b3bcb34aeb4a543fd90ebc36b15d1c42ca0c6011d1eae8fb64c709138",
-      "sha256": "8b1d276fdd8e306d281e89ef93e5c217395e6380336ed157ca403d5ec469ab9f",
-      "bytes": 8036,
+      "source_sha256": "675a7aa0a8b544b441215c9db64e3ef6ef940c57968923865677e8f046d0788c",
+      "sha256": "f6351f071bbddfc937279bf5bf57b0688f411a3dad4bab35811dc0a39cba96f9",
+      "bytes": 8528,
       "transformations": [
         {
           "kind": "owner-label",
@@ -2567,18 +2567,18 @@
     {
       "source": "skills/voxel-model-craft/references/quality-cycle.md",
       "path": "payload/skills/voxel-model-craft/references/quality-cycle.md",
-      "source_sha256": "06fdb7fac96fd899b2b76ffc47906ada8cf26b88ffdc558932b29433da329b20",
-      "sha256": "06fdb7fac96fd899b2b76ffc47906ada8cf26b88ffdc558932b29433da329b20",
-      "bytes": 4911,
+      "source_sha256": "1de1304c8211cb2cf67e1773553981ebfec1bf2892dd38b04fb0dbd0234c61ee",
+      "sha256": "1de1304c8211cb2cf67e1773553981ebfec1bf2892dd38b04fb0dbd0234c61ee",
+      "bytes": 5515,
       "transformations": [],
       "module": "voxel-model-craft"
     },
     {
       "source": "skills/voxel-model-craft/references/resolution-lod.md",
       "path": "payload/skills/voxel-model-craft/references/resolution-lod.md",
-      "source_sha256": "ecbaf8a96fbd69c673e79db0e8a2e8ca2ed7cec9a1c27c667d70aa6836f0a4c1",
-      "sha256": "57f8b3509bfe4b917a7624c1576704abe5477b378b4f2a5bcfee6f10519ddd76",
-      "bytes": 3184,
+      "source_sha256": "bb2c2a17c24b99cc7eb5d3ab416c8981af2ff8e4235543092ebe50080322fbdb",
+      "sha256": "ed81b6d88e8ef8115879b2b9bca8647137d3e255362cbb97c7854f17b5239ba7",
+      "bytes": 3451,
       "transformations": [
         {
           "kind": "owner-label",
@@ -2726,9 +2726,9 @@
     {
       "source": "skills/voxel-model-craft/SKILL.md",
       "path": "payload/skills/voxel-model-craft/SKILL.md",
-      "source_sha256": "9240a6a825122f703bd61834c9f1952bfc08e5770a72a01a54dd213fd0b4e968",
-      "sha256": "58dd6520327fe476a7cb2d9f2ebc1ae73128398a2d42e11cf3d9050b55418b02",
-      "bytes": 9338,
+      "source_sha256": "830fc3677b57348bb3f4938c9173fbab5354fa75a0bfdd96d21655755b9ff0bf",
+      "sha256": "615972ef29c5602e151bc05325e25e61d1fb7d50cf8b595b38691593a7d26360",
+      "bytes": 9743,
       "transformations": [
         {
           "kind": "owner-label",
@@ -2897,9 +2897,9 @@
     {
       "source": "runtime/memory/SYSTEM/workflows/curate.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/curate.md",
-      "source_sha256": "00874ab51a34e28eb84da55363d1b2cc3d9cc7dc304cdac62ae9cb368fe26b38",
-      "sha256": "620dc0a75c7361b62c22ea099978362fdadaef32a9454d263db59d08c1af4778",
-      "bytes": 4092,
+      "source_sha256": "62bcfc40e456d1acf1fb263f7c8e75546d14b7955ca682caae61646290abf420",
+      "sha256": "e21df9a67bdfa421e6834d78dd9a79134a86fe3b43f9f0f5c064a59ed83b9ee2",
+      "bytes": 4804,
       "transformations": [
         {
           "kind": "owner-label",
@@ -2909,7 +2909,7 @@
         {
           "kind": "owner-label",
           "label": "назначенный куратор",
-          "count": 2
+          "count": 3
         }
       ],
       "module": "memory-runtime"
@@ -2988,6 +2988,137 @@
         }
       ],
       "module": "workflow"
+    },
+    {
+      "source": "runtime/memory/SYSTEM/scripts/kb-coverage.mjs",
+      "path": "payload/runtime/memory/SYSTEM/scripts/kb-coverage.mjs",
+      "source_sha256": "61bd706ead7acafc6b17dc31939d2c15814f1cc68dd16f9d0bd99f24637d3496",
+      "sha256": "c8e94f07a3d6b8efaa39a34252f48dfb836d9d9f76fd8b69ca727ba1cd6f243b",
+      "bytes": 2554,
+      "transformations": [
+        {
+          "kind": "registry-path-binding",
+          "detail": "Owner-specific dated registry path becomes SYSTEM/coverage/coverage.json; structural coverage algorithm and schema unchanged. Actual owner records are not bundled."
+        }
+      ],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "runtime/memory/SYSTEM/scripts/kb-navigation.mjs",
+      "path": "payload/runtime/memory/SYSTEM/scripts/kb-navigation.mjs",
+      "source_sha256": "9931430f43dad95f8b15e4df8c46bcf68099685338acf3d4b570f15687d6e379",
+      "sha256": "9931430f43dad95f8b15e4df8c46bcf68099685338acf3d4b570f15687d6e379",
+      "bytes": 8384,
+      "transformations": [],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "runtime/memory/SYSTEM/scripts/kb-search.mjs",
+      "path": "payload/runtime/memory/SYSTEM/scripts/kb-search.mjs",
+      "source_sha256": "fbe5f66506a6ca8ed97b537acded5d3c997f499220abd96b778c1b5df424b1fd",
+      "sha256": "fbe5f66506a6ca8ed97b537acded5d3c997f499220abd96b778c1b5df424b1fd",
+      "bytes": 5958,
+      "transformations": [],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "runtime/memory/SYSTEM/workflows/retrieval-quality.md",
+      "path": "payload/runtime/memory/SYSTEM/workflows/retrieval-quality.md",
+      "source_sha256": "beff39d0f848a4c875765c03c01bade9568be5a25c260d650385dcf1b76aefd5",
+      "sha256": "85011e87a2a13ef60c9a3631680cc0cf17d668da3c1871db3aa6f30bcb69a326",
+      "bytes": 5643,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "назначенный куратор",
+          "count": 1
+        },
+        {
+          "kind": "private-fixture-binding",
+          "detail": "Reference points to a synthetic schema template instead of private owner test cases. Preserve the twelve-case pilot and require own populated coverage/navigation registries; no personal fixtures copied."
+        }
+      ],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/material-boundaries.md",
+      "path": "payload/skills/voxel-model-craft/references/material-boundaries.md",
+      "source_sha256": "dd21a7b6668d2e6c2dd2a25b2b229a4410d5832bedfb7f056a870511fafe05bf",
+      "sha256": "fd11666ed8f61ce8e5f4fd9239ebcd80e3a5b94b84b86f7e83e385b9f02a6a27",
+      "bytes": 2158,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{MEMORY_ROOT}}",
+          "count": 1
+        },
+        {
+          "kind": "optional-evidence-binding",
+          "detail": "Private archive location becomes an optional authorized evidence path. Historical source SHA and all normative criteria retained; no private audit copied."
+        }
+      ],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/mixed-grids.md",
+      "path": "payload/skills/voxel-model-craft/references/mixed-grids.md",
+      "source_sha256": "cae1cfb83e6389de85463e68f8f545a2e9e1720c73a23d523be88a55fd8cd18b",
+      "sha256": "ca959bc7d6422ab1a7942508a1aeb92e54786dd3cd4d64183d226b33e502824c",
+      "bytes": 2583,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        },
+        {
+          "kind": "private-evidence-pointer",
+          "detail": "Remove an opaque private Library identifier and clarify source provenance rather than transferring owner consent. Research availability caveat, primary links and all scale constraints retained."
+        }
+      ],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "portable-memory-template",
+      "path": "payload/runtime/memory/SYSTEM/examples/coverage.template.json",
+      "source_sha256": "99f4e57ef082ddb7178d110a9d2a5a26f9f063743e54abae9cc6b6208fd90803",
+      "sha256": "99f4e57ef082ddb7178d110a9d2a5a26f9f063743e54abae9cc6b6208fd90803",
+      "bytes": 396,
+      "transformations": [
+        {
+          "kind": "synthetic-setup-template",
+          "detail": "Original owner-independent schema illustration; no personal fixtures or registry data."
+        }
+      ],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "portable-memory-template",
+      "path": "payload/runtime/memory/SYSTEM/examples/navigation-parents.template.json",
+      "source_sha256": "488e5117c17fa8af52a6912a92a56e7f909c43cd6e0b422fc4415a61be1dd7d9",
+      "sha256": "488e5117c17fa8af52a6912a92a56e7f909c43cd6e0b422fc4415a61be1dd7d9",
+      "bytes": 335,
+      "transformations": [
+        {
+          "kind": "synthetic-setup-template",
+          "detail": "Original owner-independent schema illustration; no personal fixtures or registry data."
+        }
+      ],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "portable-memory-template",
+      "path": "payload/runtime/memory/SYSTEM/examples/retrieval-cases.template.json",
+      "source_sha256": "619e6c3087d604eff7c312e99bf5cc45bc45e81f7f2985869e63962ba72f95fa",
+      "sha256": "619e6c3087d604eff7c312e99bf5cc45bc45e81f7f2985869e63962ba72f95fa",
+      "bytes": 422,
+      "transformations": [
+        {
+          "kind": "synthetic-setup-template",
+          "detail": "Original owner-independent schema illustration; no personal fixtures or registry data."
+        }
+      ],
+      "module": "memory-runtime"
     }
   ],
   "excluded": [

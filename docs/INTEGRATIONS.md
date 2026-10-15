@@ -77,6 +77,26 @@ Hourly PC Git synchronization and daily curation/cloud exchange are retained as 
 
 Lab control requires your own fixed authorized inventory and a provider meeting the original restricted operation/session/identity contract. Placeholder VM bindings are unconfigured. No source owner's VM, remote memory repository, credentials or scheduler grant is transferred.
 
+## Retrieval and structural memory audits (0.2.0)
+
+After explicit memory initialization, read-only search is available as:
+
+```bash
+node /authorized/private/vault/SYSTEM/scripts/kb-search.mjs "specific project" --mode current --limit 8
+node /authorized/private/vault/SYSTEM/scripts/kb-search.mjs "past decision" --mode history --limit 8
+```
+
+Current/history ranking and separate INBOX results help select sources; they do not establish truth or recency. Read the actual matching records and retain source caveats. The original kb.mjs search stays available.
+
+Before curation/navigation audits, create your own SYSTEM/coverage/coverage.json and SYSTEM/navigation/parents.json. SYSTEM/examples contains synthetic schema templates; replace example sources/paths with real authorized records and topology. Define twelve fixed retrieval cases with expected topic/source, answer and caveat before the pilot in SYSTEM/workflows/retrieval-quality.md. The source owner's actual registries, questions and private notes are not distributed.
+
+```bash
+node /authorized/private/vault/SYSTEM/scripts/kb-coverage.mjs /authorized/private/vault
+node /authorized/private/vault/SYSTEM/scripts/kb-navigation.mjs /authorized/private/vault
+```
+
+Missing registries stop these checks as unconfigured. Structural zero errors only covers the records declared in the supplied registry; a template or empty registry is not evidence that a working vault is fully covered. These helpers read files and links, while semantic reconciliation remains a separate inspection. No hook, scheduler, remote or persistent tool approval is registered.
+
 ## Destination acceptance receipt
 
 Record independently: installed selection/closure; package and installed hashes; startup body/end and effective budget; actual catalog; interpreter/helper scenarios; MCP real receipts; real lifecycle events/trust; viewer/image/format capabilities; fresh-review capability/consent; a representative authorized task and independent observations. Mark missing/unverified layers explicitly. The final owner verdict is its own evidence.

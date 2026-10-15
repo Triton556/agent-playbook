@@ -1,0 +1,10 @@
+[
+  {
+    "id": "example-template-replace-with-twelve-own-cases",
+    "query": "What did we decide about the example project?",
+    "topic": "PROJECTS/Example.md",
+    "expected_answer": "Replace this synthetic example with a source-backed decision, reason and status. This is not pilot evidence.",
+    "required_caveat": "Separate the approved decision from a proposed next step.",
+    "source": "INBOX/example.md"
+  }
+]

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "template_only": true,
+  "top_levels": [
+    "AREAS/Example.md"
+  ],
+  "parents": {
+    "AREAS/Example.md": "INDEX.md",
+    "PROJECTS/Example.md": "AREAS/Example.md"
+  },
+  "preserved_history": [],
+  "root_support": [],
+  "root_support_history": [],
+  "allowed_root_incoming": [
+    "AREAS/Example.md"
+  ]
+}

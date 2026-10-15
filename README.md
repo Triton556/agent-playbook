@@ -8,6 +8,8 @@ The client runs the model and supplies its tools. This package installs instruct
 
 ## Quick start
 
+**See the process before installing:** [illustrated profile guide (Russian)](docs/PROFILES.ru.md) — what the harness does, which profile to choose, and the outputs between stages, including a six-view robot design and rotating voxel model.
+
 Python 3.12+ is required for the installer, including Windows junction checks. Node.js 22+ is needed for task-state and knowledge helpers. Use an explicit target project; the installer leaves your global client configuration alone.
 
 ```bash

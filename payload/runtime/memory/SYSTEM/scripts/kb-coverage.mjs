@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+// Structural coverage only: item semantics are explicit reviewed statements.
+import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
+export function auditCoverage(root){
+  const manifest=JSON.parse(fs.readFileSync(path.join(root,'SYSTEM/coverage/coverage.json'),'utf8'));
+  const visited=new Set(),queue=['INDEX.md'];
+  while(queue.length){const p=queue.shift();if(visited.has(p))continue;visited.add(p);const f=path.join(root,p);if(!fs.existsSync(f)||!p.endsWith('.md'))continue;const body=fs.readFileSync(f,'utf8').replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/,'');for(const m of body.matchAll(/\]\(([^)\n]+)\)/g)){let link=m[1].replace(/^<|>$/g,'').split('#')[0];if(!link||/^[a-z][a-z0-9+.-]*:/i.test(link))continue;try{link=decodeURIComponent(link);}catch{continue;}const target=path.posix.normalize(path.posix.join(path.posix.dirname(p),link));if(!target.startsWith('../')&&target.endsWith('.md')&&!visited.has(target))queue.push(target);}}
+  const findings=[];let items=0;
+  for(const entry of manifest.entries){const f=path.join(root,entry.source);if(!fs.existsSync(f)){findings.push('Missing source '+entry.source);continue;}const raw=fs.readFileSync(f,'utf8');for(const item of entry.items){items++;if(item.disposition==='omitted'){if(!item.reason)findings.push('Missing omission reason '+entry.source+'#'+item.item);continue;}if(!item.summary||!item.topics?.length)findings.push('Missing semantic mapping '+entry.source+'#'+item.item);for(const topic of item.topics||[]){const t=path.join(root,topic);if(!fs.existsSync(t)){findings.push('Missing topic '+topic);continue;}const text=fs.readFileSync(t,'utf8');if(!text.includes(entry.id)&&!text.includes(path.basename(entry.source)))findings.push('Missing source backlink '+topic+' → '+entry.id);if(!visited.has(topic))findings.push('Unreachable topic '+topic);}if(!new RegExp('^## '+item.item+'\\.','m').test(raw))findings.push('No raw item '+entry.source+'#'+item.item);}}
+  return {sourceCount:manifest.entries.length,itemCount:items,reachableFiles:visited.size,errors:findings.length,findings,limitation:'Checks existence, backlinks and navigation only; summaries/caveats need semantic reading.'};
+}
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){const root=process.argv[2]||path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../..');try{const r=auditCoverage(root);console.log(JSON.stringify(r,null,2));process.exitCode=r.errors?1:0;}catch(e){console.error(e.message);process.exitCode=2;}}
