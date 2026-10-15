@@ -1,0 +1,3062 @@
+{
+  "schema_version": 1,
+  "name": "agent-workflow-harness",
+  "version": "0.1.0",
+  "exported_at": "2026-10-14T18:18:22.157285+00:00",
+  "baseline": "Active configured workflow after author-owned testing/review clarification; retired dispatcher and reverted five-addition experiment inactive",
+  "instruction_policy": "Full bodies and resources preserved; only explicit environment/owner bindings and two runtime relocations transformed",
+  "files": [
+    {
+      "source": "AGENTS.md",
+      "path": "payload/AGENTS.md",
+      "source_sha256": "6292c2229d3173ad05181d3920068eb87db217226a71fe1b521845bc1027c499",
+      "sha256": "8eedef30a27ffaa96ea8b60b3e81d5d45b8d1a36a24da725893ddf81ef0200c2",
+      "bytes": 25654,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 6
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{MEMORY_ROOT}}",
+          "count": 1
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{MEMORY_ROOT}}",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 10
+        },
+        {
+          "kind": "owner-label",
+          "label": "назначенный куратор",
+          "count": 1
+        }
+      ],
+      "module": "workflow"
+    },
+    {
+      "source": "workflow/agent-worklog.mjs",
+      "path": "payload/workflow/agent-worklog.mjs",
+      "source_sha256": "41083e807c7db2657aff0bad06fa8164ee393f0934f5c16c068fb0c10893309a",
+      "sha256": "58e2655d7c8a58067b04d6f1871674fdb970d00cb2ed0e56bb5c123134a1b157",
+      "bytes": 18153,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{PYTHON}}",
+          "count": 1
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1
+        },
+        {
+          "kind": "runtime-binding",
+          "detail": "Same Python validator/arguments; resolve installed sibling and interpreter environment instead of source-PC paths."
+        }
+      ],
+      "module": "workflow"
+    },
+    {
+      "source": "workflow/independent-review.md",
+      "path": "payload/workflow/independent-review.md",
+      "source_sha256": "16ec39d4b61a1c76499c842acba8828ecee45b8aa0fbee0f724ef1a3d3384dad",
+      "sha256": "f6ff93018618ca3cd985e65c45196c60d7ac7feacab59169524cbd88860ce75e",
+      "bytes": 8336,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 4
+        }
+      ],
+      "module": "workflow"
+    },
+    {
+      "source": "workflow/kb-writer.mjs",
+      "path": "payload/workflow/kb-writer.mjs",
+      "source_sha256": "35a019d1562626d481dbf31f3f91a48a5f03c803478ba7b8af597fea5bf72641",
+      "sha256": "9e772a804d30169fb93c53cdf85cf5a116d7b29591985bbc5f910e5853bdadde",
+      "bytes": 6319,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{MEMORY_ROOT}}",
+          "count": 2
+        },
+        {
+          "kind": "runtime-binding",
+          "detail": "Same limited capture/checkpoint MCP schema; authorized vault fixed at process startup by environment."
+        },
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 2
+        }
+      ],
+      "module": "workflow"
+    },
+    {
+      "source": "workflow/quality-stop.mjs",
+      "path": "payload/workflow/quality-stop.mjs",
+      "source_sha256": "8ca7fb3392a88ceb9e9aed50fc2a83a2fd9c057ae76058635f0a99cce73cc487",
+      "sha256": "8ca7fb3392a88ceb9e9aed50fc2a83a2fd9c057ae76058635f0a99cce73cc487",
+      "bytes": 2445,
+      "transformations": [],
+      "module": "workflow"
+    },
+    {
+      "source": "workflow/WORKFLOW.md",
+      "path": "payload/workflow/WORKFLOW.md",
+      "source_sha256": "837758fdb24f8d2093abeb5061aa93380060d74ab5f3c5da257002cf54c8462f",
+      "sha256": "eec9790f81b03da7717da6af281c0d8b86fdca6e07256f2e2dbd68659f75dab1",
+      "bytes": 13589,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        }
+      ],
+      "module": "workflow"
+    },
+    {
+      "source": "skills/anthropic-workflow-creator/agents/openai.yaml",
+      "path": "payload/skills/anthropic-workflow-creator/agents/openai.yaml",
+      "source_sha256": "43906e478c08cefb49194138199ad41d3de7e2391cf81597366326f4fc64f137",
+      "sha256": "43906e478c08cefb49194138199ad41d3de7e2391cf81597366326f4fc64f137",
+      "bytes": 122,
+      "transformations": [],
+      "module": "anthropic-workflow-creator"
+    },
+    {
+      "source": "skills/anthropic-workflow-creator/LICENSE.txt",
+      "path": "payload/skills/anthropic-workflow-creator/LICENSE.txt",
+      "source_sha256": "bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362",
+      "sha256": "bc6b3af2f331cbc7fb0da1344efb2cbe5877a31498b4d70dbc7000f3405a1362",
+      "bytes": 11345,
+      "transformations": [],
+      "module": "anthropic-workflow-creator"
+    },
+    {
+      "source": "skills/anthropic-workflow-creator/references/codex-local-mode.md",
+      "path": "payload/skills/anthropic-workflow-creator/references/codex-local-mode.md",
+      "source_sha256": "106ddbc4d4d7573df436db2fce0b6cd3ef3af8f68a8740a2e41e0e0c2f625e85",
+      "sha256": "446092e0096f4ed3161707467525c910bbe8d26818c2e56961b86205d5f24247",
+      "bytes": 3032,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{PYTHON}}",
+          "count": 3
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 3
+        }
+      ],
+      "module": "anthropic-workflow-creator"
+    },
+    {
+      "source": "skills/anthropic-workflow-creator/references/grading-guide.md",
+      "path": "payload/skills/anthropic-workflow-creator/references/grading-guide.md",
+      "source_sha256": "57134da0c1a4eea33fbd74a1c9c44aa814f07d6bc64de303edb586f941e5d21a",
+      "sha256": "57134da0c1a4eea33fbd74a1c9c44aa814f07d6bc64de303edb586f941e5d21a",
+      "bytes": 9049,
+      "transformations": [],
+      "module": "anthropic-workflow-creator"
+    },
+    {
+      "source": "skills/anthropic-workflow-creator/references/schemas.md",
+      "path": "payload/skills/anthropic-workflow-creator/references/schemas.md",
+      "source_sha256": "8e8876180a8989b406a4d3edddf875b04cdfd5805cc8616686d552b11ce4455f",
+      "sha256": "8e8876180a8989b406a4d3edddf875b04cdfd5805cc8616686d552b11ce4455f",
+      "bytes": 12061,
+      "transformations": [],
+      "module": "anthropic-workflow-creator"
+    },
+    {
+      "source": "skills/anthropic-workflow-creator/scripts/__init__.py",
+      "path": "payload/skills/anthropic-workflow-creator/scripts/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "transformations": [],
+      "module": "anthropic-workflow-creator"
+    },
+    {
+      "source": "skills/anthropic-workflow-creator/scripts/check_outputs.py",
+      "path": "payload/skills/anthropic-workflow-creator/scripts/check_outputs.py",
+      "source_sha256": "d1751796cb822eb86c445aa47eeddf721296c954230aaa4bd7f3a03fed5b37f1",
+      "sha256": "d1751796cb822eb86c445aa47eeddf721296c954230aaa4bd7f3a03fed5b37f1",
+      "bytes": 5754,
+      "transformations": [],
+      "module": "anthropic-workflow-creator"
+    },
+    {
+      "source": "skills/anthropic-workflow-creator/scripts/package_skill.py",
+      "path": "payload/skills/anthropic-workflow-creator/scripts/package_skill.py",
+      "source_sha256": "0aaff95b2c98e8a22687a6f4aa96c49db4fceea0483a1cd743c0f8b760a71933",
+      "sha256": "0aaff95b2c98e8a22687a6f4aa96c49db4fceea0483a1cd743c0f8b760a71933",
+      "bytes": 4744,
+      "transformations": [],
+      "module": "anthropic-workflow-creator"
+    },
+    {
+      "source": "skills/anthropic-workflow-creator/scripts/quick_validate.py",
+      "path": "payload/skills/anthropic-workflow-creator/scripts/quick_validate.py",
+      "source_sha256": "1141c59164f60425c0d9f611840928354067656145c5d43f7470f88c0e34ff28",
+      "sha256": "1141c59164f60425c0d9f611840928354067656145c5d43f7470f88c0e34ff28",
+      "bytes": 1558,
+      "transformations": [],
+      "module": "anthropic-workflow-creator"
+    },
+    {
+      "source": "skills/anthropic-workflow-creator/scripts/utils.py",
+      "path": "payload/skills/anthropic-workflow-creator/scripts/utils.py",
+      "source_sha256": "ac4b79e5b3aeb9e9689ed9f066a7d64de4ed9a7bff69e44b4cf5a3b752a62dc2",
+      "sha256": "ac4b79e5b3aeb9e9689ed9f066a7d64de4ed9a7bff69e44b4cf5a3b752a62dc2",
+      "bytes": 1677,
+      "transformations": [],
+      "module": "anthropic-workflow-creator"
+    },
+    {
+      "source": "skills/anthropic-workflow-creator/SKILL.md",
+      "path": "payload/skills/anthropic-workflow-creator/SKILL.md",
+      "source_sha256": "3702146aac295d0015bdc883ebd7eef08932554e195f1e362d56e5c59e6508bd",
+      "sha256": "3702146aac295d0015bdc883ebd7eef08932554e195f1e362d56e5c59e6508bd",
+      "bytes": 4025,
+      "transformations": [],
+      "module": "anthropic-workflow-creator"
+    },
+    {
+      "source": "skills/design-taste-frontend-v1/SKILL.md",
+      "path": "payload/skills/design-taste-frontend-v1/SKILL.md",
+      "source_sha256": "ba28276ce0763fe5e77da7acd509b3f9f480eec578ccb7812c0c4fc61abb2b90",
+      "sha256": "ba28276ce0763fe5e77da7acd509b3f9f480eec578ccb7812c0c4fc61abb2b90",
+      "bytes": 22643,
+      "transformations": [],
+      "module": "design-taste-frontend-v1"
+    },
+    {
+      "source": "skills/domain-modeling/ADR-FORMAT.md",
+      "path": "payload/skills/domain-modeling/ADR-FORMAT.md",
+      "source_sha256": "944c92aa790e8fbdc9199640b170979abb8a34ba8d0fe18c2a01a63bce140ca0",
+      "sha256": "944c92aa790e8fbdc9199640b170979abb8a34ba8d0fe18c2a01a63bce140ca0",
+      "bytes": 2733,
+      "transformations": [],
+      "module": "domain-modeling"
+    },
+    {
+      "source": "skills/domain-modeling/agents/openai.yaml",
+      "path": "payload/skills/domain-modeling/agents/openai.yaml",
+      "source_sha256": "f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b",
+      "sha256": "f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b",
+      "bytes": 101,
+      "transformations": [],
+      "module": "domain-modeling"
+    },
+    {
+      "source": "skills/domain-modeling/GLOSSARY-FORMAT.md",
+      "path": "payload/skills/domain-modeling/GLOSSARY-FORMAT.md",
+      "source_sha256": "21dcc40cdec8e151a829b98ab1517c1867bc444e3665134a98c6983411996801",
+      "sha256": "21dcc40cdec8e151a829b98ab1517c1867bc444e3665134a98c6983411996801",
+      "bytes": 2300,
+      "transformations": [],
+      "module": "domain-modeling"
+    },
+    {
+      "source": "skills/domain-modeling/LICENSE",
+      "path": "payload/skills/domain-modeling/LICENSE",
+      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "bytes": 1068,
+      "transformations": [],
+      "module": "domain-modeling"
+    },
+    {
+      "source": "skills/domain-modeling/SKILL.md",
+      "path": "payload/skills/domain-modeling/SKILL.md",
+      "source_sha256": "f73e1b232986f429199458a81a0451fafeb431145b84d3db87e5614e81849534",
+      "sha256": "f73e1b232986f429199458a81a0451fafeb431145b84d3db87e5614e81849534",
+      "bytes": 3884,
+      "transformations": [],
+      "module": "domain-modeling"
+    },
+    {
+      "source": "skills/grill-with-docs/agents/openai.yaml",
+      "path": "payload/skills/grill-with-docs/agents/openai.yaml",
+      "source_sha256": "94cd0ab161fb468a836349f5ed482ba58ce8e709a05c57ce533d739dbd35cca9",
+      "sha256": "94cd0ab161fb468a836349f5ed482ba58ce8e709a05c57ce533d739dbd35cca9",
+      "bytes": 145,
+      "transformations": [],
+      "module": "grill-with-docs"
+    },
+    {
+      "source": "skills/grill-with-docs/LICENSE",
+      "path": "payload/skills/grill-with-docs/LICENSE",
+      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "bytes": 1068,
+      "transformations": [],
+      "module": "grill-with-docs"
+    },
+    {
+      "source": "skills/grill-with-docs/SKILL.md",
+      "path": "payload/skills/grill-with-docs/SKILL.md",
+      "source_sha256": "e6ff45f55d28a44194aeedebd13af6e0a58434941d559fd0cb32a6863a99df45",
+      "sha256": "7ae5d7ff2c81c874207d62517d6e033054dc469e9ea0c6b66ee5c330bbe0867c",
+      "bytes": 863,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 2
+        }
+      ],
+      "module": "grill-with-docs"
+    },
+    {
+      "source": "skills/grilling/agents/openai.yaml",
+      "path": "payload/skills/grilling/agents/openai.yaml",
+      "source_sha256": "1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b",
+      "sha256": "1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b",
+      "bytes": 113,
+      "transformations": [],
+      "module": "grilling"
+    },
+    {
+      "source": "skills/grilling/LICENSE",
+      "path": "payload/skills/grilling/LICENSE",
+      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "bytes": 1068,
+      "transformations": [],
+      "module": "grilling"
+    },
+    {
+      "source": "skills/grilling/SKILL.md",
+      "path": "payload/skills/grilling/SKILL.md",
+      "source_sha256": "59b2305806c0d669ae8b3e13969e4132519ff659cf211c2b9347172f1ba48658",
+      "sha256": "59b2305806c0d669ae8b3e13969e4132519ff659cf211c2b9347172f1ba48658",
+      "bytes": 2553,
+      "transformations": [],
+      "module": "grilling"
+    },
+    {
+      "source": "skills/handoff/agents/openai.yaml",
+      "path": "payload/skills/handoff/agents/openai.yaml",
+      "source_sha256": "5c479fd562c691851690e8b18c8501045bef0943c10743d636b2fae26add1d28",
+      "sha256": "5c479fd562c691851690e8b18c8501045bef0943c10743d636b2fae26add1d28",
+      "bytes": 141,
+      "transformations": [],
+      "module": "handoff"
+    },
+    {
+      "source": "skills/handoff/LICENSE",
+      "path": "payload/skills/handoff/LICENSE",
+      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "bytes": 1068,
+      "transformations": [],
+      "module": "handoff"
+    },
+    {
+      "source": "skills/handoff/SKILL.md",
+      "path": "payload/skills/handoff/SKILL.md",
+      "source_sha256": "789fe37f744064be41e4a1827e6b0ea4c76f9e064cec336f06a713ce7823a346",
+      "sha256": "789fe37f744064be41e4a1827e6b0ea4c76f9e064cec336f06a713ce7823a346",
+      "bytes": 1328,
+      "transformations": [],
+      "module": "handoff"
+    },
+    {
+      "source": "skills/kb-curate/SKILL.md",
+      "path": "payload/skills/kb-curate/SKILL.md",
+      "source_sha256": "241ec2966003bde9a6d02a3b486b4946668496d3116c6f6d52e7783497505632",
+      "sha256": "aa664cb830fc2dd56583ac7cc065f1a660dc7b4a4aa26a7c196636ebc73b0b31",
+      "bytes": 1887,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 2
+        },
+        {
+          "kind": "owner-label",
+          "label": "назначенный куратор",
+          "count": 2
+        }
+      ],
+      "module": "kb-curate"
+    },
+    {
+      "source": "skills/kb-find/SKILL.md",
+      "path": "payload/skills/kb-find/SKILL.md",
+      "source_sha256": "c1bd6117e67abb7a318c3e22e4d3c420aff9f05e7c5b2e75dbf2b24632c65335",
+      "sha256": "82b31e3903fb29766e235befcb3ff961fe42cf7a7e24ce52fa44017ca3fdc837",
+      "bytes": 1341,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{MEMORY_ROOT}}",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        }
+      ],
+      "module": "kb-find"
+    },
+    {
+      "source": "skills/kb-save/SKILL.md",
+      "path": "payload/skills/kb-save/SKILL.md",
+      "source_sha256": "ed3894952ee943fc86a7f3b26df510ff0489467d7c8b3650c82d79c27e7bd313",
+      "sha256": "a4a7fa858cfb423b616c06a53cb6865108c4f8a64f19ea94f28276ecf9c72367",
+      "bytes": 2841,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{MEMORY_ROOT}}",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 3
+        },
+        {
+          "kind": "owner-label",
+          "label": "назначенный куратор",
+          "count": 2
+        }
+      ],
+      "module": "kb-save"
+    },
+    {
+      "source": "skills/kb-status/SKILL.md",
+      "path": "payload/skills/kb-status/SKILL.md",
+      "source_sha256": "691c56e7b6e080d9c929663e7d52f6fea93e58bc3af1529e024df966c107eb13",
+      "sha256": "a60b051a5a6119cb0d98903c4ceaf361b31dc714881e2f75714b36eef34a0c4a",
+      "bytes": 1223,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{MEMORY_ROOT}}",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "назначенный куратор",
+          "count": 1
+        }
+      ],
+      "module": "kb-status"
+    },
+    {
+      "source": "skills/kb-sync/SKILL.md",
+      "path": "payload/skills/kb-sync/SKILL.md",
+      "source_sha256": "1eb393e2a367320d900db383362407904929016ce9a74dadd539ff782a6a445e",
+      "sha256": "05b584ee67d73578791325ca55e34b0c9b7d10dd34a646744adb5d218632fec9",
+      "bytes": 2201,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{MEMORY_ROOT}}",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "назначенный куратор",
+          "count": 2
+        }
+      ],
+      "module": "kb-sync"
+    },
+    {
+      "source": "skills/lab-vm-control/SKILL.md",
+      "path": "payload/skills/lab-vm-control/SKILL.md",
+      "source_sha256": "0de0ca7de5dea6696c3ab4c4380322805314f132a03717a85687fda6b6de8612",
+      "sha256": "5e1b0b2ba1360bd31a64592d62b40ba80e8b8fa84fe5f3edf279f2e25d90c669",
+      "bytes": 7455,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{NODE}}",
+          "count": 1
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{NODE}}",
+          "count": 6
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{MEMORY_ROOT}}",
+          "count": 1
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{LAB_CLI}}",
+          "count": 1
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{LAB_CLI}}",
+          "count": 1
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{LAB_RUNTIME}}",
+          "count": 1
+        },
+        {
+          "kind": "target-identity-binding",
+          "binding": "{{LAB_VM_NAME}}"
+        },
+        {
+          "kind": "target-identity-binding",
+          "binding": "{{LAB_VM_UUID}}"
+        },
+        {
+          "kind": "target-identity-binding",
+          "binding": "{{LAB_VM_MAC}}"
+        },
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        }
+      ],
+      "module": "lab-vm-control"
+    },
+    {
+      "source": "skills/product-debugging/licenses/mattpocock--skills-LICENSE",
+      "path": "payload/skills/product-debugging/licenses/mattpocock--skills-LICENSE",
+      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "bytes": 1068,
+      "transformations": [],
+      "module": "product-debugging"
+    },
+    {
+      "source": "skills/product-debugging/SKILL.md",
+      "path": "payload/skills/product-debugging/SKILL.md",
+      "source_sha256": "a2cbe5f801eee3319061f93eb00fc5ba474edde4818ac19f6faef55776f562f4",
+      "sha256": "a2cbe5f801eee3319061f93eb00fc5ba474edde4818ac19f6faef55776f562f4",
+      "bytes": 3674,
+      "transformations": [],
+      "module": "product-debugging"
+    },
+    {
+      "source": "skills/product-debugging/sources.json",
+      "path": "payload/skills/product-debugging/sources.json",
+      "source_sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
+      "sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
+      "bytes": 224,
+      "transformations": [],
+      "module": "product-debugging"
+    },
+    {
+      "source": "skills/product-debugging/vendor/matt-pocock/diagnosing-bugs/INSTRUCTIONS.md",
+      "path": "payload/skills/product-debugging/vendor/matt-pocock/diagnosing-bugs/INSTRUCTIONS.md",
+      "source_sha256": "849198df88cdb65fd0d97236604c1fca7ff2f22d2f705f9724a800d0266b118d",
+      "sha256": "849198df88cdb65fd0d97236604c1fca7ff2f22d2f705f9724a800d0266b118d",
+      "bytes": 8664,
+      "transformations": [],
+      "module": "product-debugging"
+    },
+    {
+      "source": "skills/product-debugging/vendor/matt-pocock/diagnosing-bugs/scripts/hitl-loop.template.sh",
+      "path": "payload/skills/product-debugging/vendor/matt-pocock/diagnosing-bugs/scripts/hitl-loop.template.sh",
+      "source_sha256": "35103539fc36873eea36074769ad454f9379d6fc8b2dc0e26ce987fd3bfe5503",
+      "sha256": "35103539fc36873eea36074769ad454f9379d6fc8b2dc0e26ce987fd3bfe5503",
+      "bytes": 1316,
+      "transformations": [],
+      "module": "product-debugging"
+    },
+    {
+      "source": "skills/product-engineering/references/composition.md",
+      "path": "payload/skills/product-engineering/references/composition.md",
+      "source_sha256": "4eae5323ace834ff240f30df596626976ecb7c8ac0ebe1f5b7830ac4aff9240c",
+      "sha256": "c4276a4c2c6b63265d10b45720850883c3a473857b0800f2baae3ab775a91d63",
+      "bytes": 2902,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        }
+      ],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/references/engineering.md",
+      "path": "payload/skills/product-engineering/references/engineering.md",
+      "source_sha256": "c00f6e8315f414369592863cc5d43f26840a18b90a7383bd5c1b4a2e4352a475",
+      "sha256": "c00f6e8315f414369592863cc5d43f26840a18b90a7383bd5c1b4a2e4352a475",
+      "bytes": 103,
+      "transformations": [],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/references/human-perspective-review.md",
+      "path": "payload/skills/product-engineering/references/human-perspective-review.md",
+      "source_sha256": "15222ba2cbdbc4c54a9f0cd5ec3c231660f3f43f8e9695a0ff8a6a821e9579a5",
+      "sha256": "0b9e9e9222a1533bd27ca6d6c6d0072f694d25599c4b8521a8ea780f89c79469",
+      "bytes": 12705,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{EVIDENCE_ROOT}}",
+          "count": 1
+        }
+      ],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/references/interface-design.md",
+      "path": "payload/skills/product-engineering/references/interface-design.md",
+      "source_sha256": "62c19188179fcb76ed5db267bdf16986c3d048a802118ecefc89c06d8b5561d1",
+      "sha256": "62c19188179fcb76ed5db267bdf16986c3d048a802118ecefc89c06d8b5561d1",
+      "bytes": 124,
+      "transformations": [],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/references/landing-design.md",
+      "path": "payload/skills/product-engineering/references/landing-design.md",
+      "source_sha256": "166fbba7d968aa1e29f6c8a986c617fcd01b02847ef0a967fc3f8239de5bf363",
+      "sha256": "166fbba7d968aa1e29f6c8a986c617fcd01b02847ef0a967fc3f8239de5bf363",
+      "bytes": 144,
+      "transformations": [],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/references/local-adaptation.md",
+      "path": "payload/skills/product-engineering/references/local-adaptation.md",
+      "source_sha256": "b160fdd7398530e55b77332cde4fc1b9857c6bf85c20ea2eb96b811489f070e8",
+      "sha256": "b160fdd7398530e55b77332cde4fc1b9857c6bf85c20ea2eb96b811489f070e8",
+      "bytes": 106,
+      "transformations": [],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/references/quality-cycle.md",
+      "path": "payload/skills/product-engineering/references/quality-cycle.md",
+      "source_sha256": "8a8a4642beccdc5297d0190eddb75fbe67c19416565c63623dfd4bb159687699",
+      "sha256": "8a8a4642beccdc5297d0190eddb75fbe67c19416565c63623dfd4bb159687699",
+      "bytes": 7869,
+      "transformations": [],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/references/quality-ledger.md",
+      "path": "payload/skills/product-engineering/references/quality-ledger.md",
+      "source_sha256": "e35a98562a318c21e9da5efdad85b762fb898114ad5756ebaa43754be6fa2a12",
+      "sha256": "e35a98562a318c21e9da5efdad85b762fb898114ad5756ebaa43754be6fa2a12",
+      "bytes": 4448,
+      "transformations": [],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/references/reference-grounding.md",
+      "path": "payload/skills/product-engineering/references/reference-grounding.md",
+      "source_sha256": "f6b4a4bd66694b80343bfa924449e882753c561b338eaa6facd2b8d89f6736c3",
+      "sha256": "11e5cfe52988c1bb8e44358b69b7ec81c35ff54eda9216d015faeeb4d469d1c1",
+      "bytes": 5773,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{EVIDENCE_ROOT}}",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        }
+      ],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/references/reverse-engineering.md",
+      "path": "payload/skills/product-engineering/references/reverse-engineering.md",
+      "source_sha256": "b843acfc4d773bcc1aa2102ceec41b61fcc5e6cc0dc6614ea39d14e7bd5628fe",
+      "sha256": "7a573bd1096a79c25ad836ef5c950a1f7fd9ca6698723505e93fe902bd083cd4",
+      "bytes": 2937,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{MEMORY_ROOT}}",
+          "count": 1
+        }
+      ],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/references/task-state.md",
+      "path": "payload/skills/product-engineering/references/task-state.md",
+      "source_sha256": "a3c54ccf6acc234326bc0edc8b0eda81b6bad580c29479b991de8336959843ab",
+      "sha256": "92997a00e4c48135e926f8aaba0279eefb1245dc1958bd9fe41409cf5b86a7a8",
+      "bytes": 9882,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        }
+      ],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/references/visual-quality.md",
+      "path": "payload/skills/product-engineering/references/visual-quality.md",
+      "source_sha256": "453b4837c7a73f1818ccba9ec6a01fce7670eb5837567c4d6e7f374ea37c17c7",
+      "sha256": "453b4837c7a73f1818ccba9ec6a01fce7670eb5837567c4d6e7f374ea37c17c7",
+      "bytes": 124,
+      "transformations": [],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/references/workflow-pilot.md",
+      "path": "payload/skills/product-engineering/references/workflow-pilot.md",
+      "source_sha256": "4f4ecefa8f8a3a607ffcbf3d5c59c5ad14128aec637fb424326ad82155f7d798",
+      "sha256": "72edfb4d06fbcf0012d168268187041c84c6f5456fcbe0e300937ab58e5651e1",
+      "bytes": 5438,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 2
+        }
+      ],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/scripts/impeccable-context.ps1",
+      "path": "payload/skills/product-engineering/scripts/impeccable-context.ps1",
+      "source_sha256": "79e3202c29ea4adfa5caa12b60818d3114f1c2020dccd3d5ff3513c22a8797a3",
+      "sha256": "79e3202c29ea4adfa5caa12b60818d3114f1c2020dccd3d5ff3513c22a8797a3",
+      "bytes": 277,
+      "transformations": [],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/scripts/quality_ledger.py",
+      "path": "payload/skills/product-engineering/scripts/quality_ledger.py",
+      "source_sha256": "7d96b4527653d57817f839eff011c582221e51ecfeabc9df0d99121a28f13377",
+      "sha256": "7d96b4527653d57817f839eff011c582221e51ecfeabc9df0d99121a28f13377",
+      "bytes": 18230,
+      "transformations": [],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/SKILL.md",
+      "path": "payload/skills/product-engineering/SKILL.md",
+      "source_sha256": "6ad587449cbb7355d290950191ccc2d1f55f445756d5112a87bf30de7eb52ef3",
+      "sha256": "0b8cdb5629a953821840415101b5034c008ee9beea080ca59abcac51ce19ab30",
+      "bytes": 8804,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        }
+      ],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-engineering/vendor/impeccable/scripts/impeccable.cmd",
+      "path": "payload/skills/product-engineering/vendor/impeccable/scripts/impeccable.cmd",
+      "source_sha256": "ff9c9a6b6769428837cee40d716987ccbb62a15fa3be7f8c847f3d74eb16aa99",
+      "sha256": "ff9c9a6b6769428837cee40d716987ccbb62a15fa3be7f8c847f3d74eb16aa99",
+      "bytes": 199,
+      "transformations": [],
+      "module": "product-engineering"
+    },
+    {
+      "source": "skills/product-implementation/licenses/mattpocock--skills-LICENSE",
+      "path": "payload/skills/product-implementation/licenses/mattpocock--skills-LICENSE",
+      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "bytes": 1068,
+      "transformations": [],
+      "module": "product-implementation"
+    },
+    {
+      "source": "skills/product-implementation/SKILL.md",
+      "path": "payload/skills/product-implementation/SKILL.md",
+      "source_sha256": "efcd4230aca1374a07bb07ad19837a3bef21a5fdead6e9775976c4bbcaab2ead",
+      "sha256": "efcd4230aca1374a07bb07ad19837a3bef21a5fdead6e9775976c4bbcaab2ead",
+      "bytes": 5535,
+      "transformations": [],
+      "module": "product-implementation"
+    },
+    {
+      "source": "skills/product-implementation/sources.json",
+      "path": "payload/skills/product-implementation/sources.json",
+      "source_sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
+      "sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
+      "bytes": 224,
+      "transformations": [],
+      "module": "product-implementation"
+    },
+    {
+      "source": "skills/product-implementation/vendor/matt-pocock/codebase-design/DEEPENING.md",
+      "path": "payload/skills/product-implementation/vendor/matt-pocock/codebase-design/DEEPENING.md",
+      "source_sha256": "f3dd099ce99289bd213914d8ee3e2429b78309c3957ca4583f7659551b1d53c1",
+      "sha256": "b22e35c9a5addc708c495888870b18b8fe191fa989e4ead683b4e5b12287b3bb",
+      "bytes": 2560,
+      "transformations": [
+        {
+          "kind": "vendor-entry-reference-relocation",
+          "detail": "Retained upstream entry is named INSTRUCTIONS.md to avoid duplicate native skill discovery; resolve its existing relative links.",
+          "count": 1
+        }
+      ],
+      "module": "product-implementation"
+    },
+    {
+      "source": "skills/product-implementation/vendor/matt-pocock/codebase-design/DESIGN-IT-TWICE.md",
+      "path": "payload/skills/product-implementation/vendor/matt-pocock/codebase-design/DESIGN-IT-TWICE.md",
+      "source_sha256": "52b52e75655a27aea59c6966b410bac82448968ad46ef1ebb9f07c274e3ae010",
+      "sha256": "11163b774f0fa611f9b28b2f954474f6e54350dffe68c6d4ad8eb8c3ccb8e8db",
+      "bytes": 2679,
+      "transformations": [
+        {
+          "kind": "vendor-entry-reference-relocation",
+          "detail": "Retained upstream entry is named INSTRUCTIONS.md to avoid duplicate native skill discovery; resolve its existing relative links.",
+          "count": 2
+        }
+      ],
+      "module": "product-implementation"
+    },
+    {
+      "source": "skills/product-implementation/vendor/matt-pocock/codebase-design/INSTRUCTIONS.md",
+      "path": "payload/skills/product-implementation/vendor/matt-pocock/codebase-design/INSTRUCTIONS.md",
+      "source_sha256": "2c20617f87ec8af6a434859f381b2f061a69b530444e74eb39e78bb016a6d1e2",
+      "sha256": "2c20617f87ec8af6a434859f381b2f061a69b530444e74eb39e78bb016a6d1e2",
+      "bytes": 6446,
+      "transformations": [],
+      "module": "product-implementation"
+    },
+    {
+      "source": "skills/product-implementation/vendor/matt-pocock/implement/INSTRUCTIONS.md",
+      "path": "payload/skills/product-implementation/vendor/matt-pocock/implement/INSTRUCTIONS.md",
+      "source_sha256": "483bdc4ccf4ac31d86ac7beeaa0d0db80313e71e120bb8c59b3196ae5decd53d",
+      "sha256": "483bdc4ccf4ac31d86ac7beeaa0d0db80313e71e120bb8c59b3196ae5decd53d",
+      "bytes": 622,
+      "transformations": [],
+      "module": "product-implementation"
+    },
+    {
+      "source": "skills/product-planning/licenses/mattpocock--skills-LICENSE",
+      "path": "payload/skills/product-planning/licenses/mattpocock--skills-LICENSE",
+      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "bytes": 1068,
+      "transformations": [],
+      "module": "product-planning"
+    },
+    {
+      "source": "skills/product-planning/SKILL.md",
+      "path": "payload/skills/product-planning/SKILL.md",
+      "source_sha256": "dfbbfbffda7cd4bc34cbdb1fa9765173580567c04cf726eb0e840fe690ce27b9",
+      "sha256": "dfbbfbffda7cd4bc34cbdb1fa9765173580567c04cf726eb0e840fe690ce27b9",
+      "bytes": 4810,
+      "transformations": [],
+      "module": "product-planning"
+    },
+    {
+      "source": "skills/product-planning/sources.json",
+      "path": "payload/skills/product-planning/sources.json",
+      "source_sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
+      "sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
+      "bytes": 224,
+      "transformations": [],
+      "module": "product-planning"
+    },
+    {
+      "source": "skills/product-planning/vendor/matt-pocock/to-spec/INSTRUCTIONS.md",
+      "path": "payload/skills/product-planning/vendor/matt-pocock/to-spec/INSTRUCTIONS.md",
+      "source_sha256": "43ad9cf318e5e7d3d1fa360253a37021796dc87a0c2e595ad262661a10f85088",
+      "sha256": "43ad9cf318e5e7d3d1fa360253a37021796dc87a0c2e595ad262661a10f85088",
+      "bytes": 3043,
+      "transformations": [],
+      "module": "product-planning"
+    },
+    {
+      "source": "skills/product-testing/licenses/mattpocock--skills-LICENSE",
+      "path": "payload/skills/product-testing/licenses/mattpocock--skills-LICENSE",
+      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "bytes": 1068,
+      "transformations": [],
+      "module": "product-testing"
+    },
+    {
+      "source": "skills/product-testing/SKILL.md",
+      "path": "payload/skills/product-testing/SKILL.md",
+      "source_sha256": "9619e2f491d687574f6d8b2b246860e7d46395acb876306618c0c9333139a5db",
+      "sha256": "9619e2f491d687574f6d8b2b246860e7d46395acb876306618c0c9333139a5db",
+      "bytes": 7800,
+      "transformations": [],
+      "module": "product-testing"
+    },
+    {
+      "source": "skills/product-testing/sources.json",
+      "path": "payload/skills/product-testing/sources.json",
+      "source_sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
+      "sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
+      "bytes": 224,
+      "transformations": [],
+      "module": "product-testing"
+    },
+    {
+      "source": "skills/product-testing/vendor/matt-pocock/code-review/INSTRUCTIONS.md",
+      "path": "payload/skills/product-testing/vendor/matt-pocock/code-review/INSTRUCTIONS.md",
+      "source_sha256": "09eb147f793e4647949edd32dbad278f0554dfb56e0d46b699cd4c2c55bf0357",
+      "sha256": "09eb147f793e4647949edd32dbad278f0554dfb56e0d46b699cd4c2c55bf0357",
+      "bytes": 6670,
+      "transformations": [],
+      "module": "product-testing"
+    },
+    {
+      "source": "skills/product-testing/vendor/matt-pocock/tdd/INSTRUCTIONS.md",
+      "path": "payload/skills/product-testing/vendor/matt-pocock/tdd/INSTRUCTIONS.md",
+      "source_sha256": "5505d25bbaa8fc14a79e4d20163936958992a2995b7f1dd1d6197edc9ed722e0",
+      "sha256": "5505d25bbaa8fc14a79e4d20163936958992a2995b7f1dd1d6197edc9ed722e0",
+      "bytes": 3629,
+      "transformations": [],
+      "module": "product-testing"
+    },
+    {
+      "source": "skills/product-testing/vendor/matt-pocock/tdd/mocking.md",
+      "path": "payload/skills/product-testing/vendor/matt-pocock/tdd/mocking.md",
+      "source_sha256": "3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef",
+      "sha256": "3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef",
+      "bytes": 1481,
+      "transformations": [],
+      "module": "product-testing"
+    },
+    {
+      "source": "skills/product-testing/vendor/matt-pocock/tdd/tests.md",
+      "path": "payload/skills/product-testing/vendor/matt-pocock/tdd/tests.md",
+      "source_sha256": "859f9e592c188fda4fc7277dd180e4ce9c7a2e13f6efe1f6f29eccc9d28c106a",
+      "sha256": "859f9e592c188fda4fc7277dd180e4ce9c7a2e13f6efe1f6f29eccc9d28c106a",
+      "bytes": 2214,
+      "transformations": [],
+      "module": "product-testing"
+    },
+    {
+      "source": "skills/product-ui-design/licenses/Leonxlnx--taste-skill-LICENSE",
+      "path": "payload/skills/product-ui-design/licenses/Leonxlnx--taste-skill-LICENSE",
+      "source_sha256": "4575a543ab88dad12ccea7d97e563d0bce5b448b06072e65d3264497dad326df",
+      "sha256": "4575a543ab88dad12ccea7d97e563d0bce5b448b06072e65d3264497dad326df",
+      "bytes": 1065,
+      "transformations": [],
+      "module": "product-ui-design"
+    },
+    {
+      "source": "skills/product-ui-design/references/interaction-quality.md",
+      "path": "payload/skills/product-ui-design/references/interaction-quality.md",
+      "source_sha256": "5d92ce6aec95b637766d85dbfcbfa18433f379173ac8c52b70e771de81386f3e",
+      "sha256": "1d234377cafa5b138250aafdf41030d06e159f5a8924adc10c0ebab373749bc3",
+      "bytes": 9468,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        }
+      ],
+      "module": "product-ui-design"
+    },
+    {
+      "source": "skills/product-ui-design/references/interface-design.md",
+      "path": "payload/skills/product-ui-design/references/interface-design.md",
+      "source_sha256": "60ad714f7de8b72a70004b4f00981c7e8f059c4e6c23f19018361d74d06ec10a",
+      "sha256": "67097fc014f2787f85bf5071b536fe874b3e06917250f3c2dd592e72772fa587",
+      "bytes": 4758,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1
+        }
+      ],
+      "module": "product-ui-design"
+    },
+    {
+      "source": "skills/product-ui-design/references/landing-design.md",
+      "path": "payload/skills/product-ui-design/references/landing-design.md",
+      "source_sha256": "dfdbbe9126708f7b9d76480935399a06c7596e78db0442774f154460081ea8d0",
+      "sha256": "dfdbbe9126708f7b9d76480935399a06c7596e78db0442774f154460081ea8d0",
+      "bytes": 4062,
+      "transformations": [],
+      "module": "product-ui-design"
+    },
+    {
+      "source": "skills/product-ui-design/SKILL.md",
+      "path": "payload/skills/product-ui-design/SKILL.md",
+      "source_sha256": "ba375ccfce88fe43aa3dee43acdb20edfa86316e9a5d5a0a1495da7bd2ce780d",
+      "sha256": "ba375ccfce88fe43aa3dee43acdb20edfa86316e9a5d5a0a1495da7bd2ce780d",
+      "bytes": 4492,
+      "transformations": [],
+      "module": "product-ui-design"
+    },
+    {
+      "source": "skills/product-ui-design/sources.json",
+      "path": "payload/skills/product-ui-design/sources.json",
+      "source_sha256": "2f14dd04383d3d6c773bb58d3914e8865a2b2c56de738c47993bd9cd81e91276",
+      "sha256": "2f14dd04383d3d6c773bb58d3914e8865a2b2c56de738c47993bd9cd81e91276",
+      "bytes": 689,
+      "transformations": [],
+      "module": "product-ui-design"
+    },
+    {
+      "source": "skills/product-ui-design/vendor/anthropic-frontend-design/INSTRUCTIONS.md",
+      "path": "payload/skills/product-ui-design/vendor/anthropic-frontend-design/INSTRUCTIONS.md",
+      "source_sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+      "sha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+      "bytes": 9390,
+      "transformations": [],
+      "module": "product-ui-design"
+    },
+    {
+      "source": "skills/product-ui-design/vendor/anthropic-frontend-design/LICENSE.txt",
+      "path": "payload/skills/product-ui-design/vendor/anthropic-frontend-design/LICENSE.txt",
+      "source_sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+      "bytes": 10174,
+      "transformations": [],
+      "module": "product-ui-design"
+    },
+    {
+      "source": "skills/product-ui-design/vendor/codex-frontend-design/INSTRUCTIONS.md",
+      "path": "payload/skills/product-ui-design/vendor/codex-frontend-design/INSTRUCTIONS.md",
+      "source_sha256": "161ecd94b844f0e8cf1e484d9d54317dbe3d13233256ce2566707aebadb54563",
+      "sha256": "161ecd94b844f0e8cf1e484d9d54317dbe3d13233256ce2566707aebadb54563",
+      "bytes": 6874,
+      "transformations": [],
+      "module": "product-ui-design"
+    },
+    {
+      "source": "skills/product-ui-design/vendor/gpt-taste/INSTRUCTIONS.md",
+      "path": "payload/skills/product-ui-design/vendor/gpt-taste/INSTRUCTIONS.md",
+      "source_sha256": "2e64c269953f2656c21bf5a0fa6b4568e82fe0c72b36e8f84758e090349966a5",
+      "sha256": "2e64c269953f2656c21bf5a0fa6b4568e82fe0c72b36e8f84758e090349966a5",
+      "bytes": 7857,
+      "transformations": [],
+      "module": "product-ui-design"
+    },
+    {
+      "source": "skills/product-ui-review/binary.json",
+      "path": "payload/skills/product-ui-review/binary.json",
+      "source_sha256": "55099c7584e940e25711fd54f63eecd49014c07a56771e0aa8e8256a334a7390",
+      "sha256": "55099c7584e940e25711fd54f63eecd49014c07a56771e0aa8e8256a334a7390",
+      "bytes": 357,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/licenses/pbakaus--impeccable-LICENSE",
+      "path": "payload/skills/product-ui-review/licenses/pbakaus--impeccable-LICENSE",
+      "source_sha256": "02bb8c3b4e70190e3986c0404ad2fd8d639b4f534252d82379cc1b502b6d1812",
+      "sha256": "02bb8c3b4e70190e3986c0404ad2fd8d639b4f534252d82379cc1b502b6d1812",
+      "bytes": 10766,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/references/critique-adapted.md",
+      "path": "payload/skills/product-ui-review/references/critique-adapted.md",
+      "source_sha256": "70ed7fe41fb9cfbd820de3edd428d73a6b61e2b7a444cb8b96694b40de54befa",
+      "sha256": "70ed7fe41fb9cfbd820de3edd428d73a6b61e2b7a444cb8b96694b40de54befa",
+      "bytes": 2344,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/references/visual-quality.md",
+      "path": "payload/skills/product-ui-review/references/visual-quality.md",
+      "source_sha256": "b7cdc0eaa5fca1ac761ac1827b35b4f25d362a7c42a589cd4e83cecc675facc3",
+      "sha256": "06e29301fa42f358b1d62f3ddf3b5fdd492289bad7e87de8a1581a1fc4d6b93e",
+      "bytes": 9119,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 2
+        }
+      ],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/scripts/impeccable-context.ps1",
+      "path": "payload/skills/product-ui-review/scripts/impeccable-context.ps1",
+      "source_sha256": "fd9761b734146ea381e0aac8068d233c5aec28f2a001ca3d742a53e7c863bea3",
+      "sha256": "fd9761b734146ea381e0aac8068d233c5aec28f2a001ca3d742a53e7c863bea3",
+      "bytes": 827,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/SKILL.md",
+      "path": "payload/skills/product-ui-review/SKILL.md",
+      "source_sha256": "cc1e0c9da350d3e5badd5a13194932b267715471e4ab5485a57afa4a2900b68c",
+      "sha256": "cc1e0c9da350d3e5badd5a13194932b267715471e4ab5485a57afa4a2900b68c",
+      "bytes": 3684,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/sources.json",
+      "path": "payload/skills/product-ui-review/sources.json",
+      "source_sha256": "19c7ca30be0b7fe49a45e73ac5355c74fb31865ea3ec934c169ec90db7afade4",
+      "sha256": "19c7ca30be0b7fe49a45e73ac5355c74fb31865ea3ec934c169ec90db7afade4",
+      "bytes": 227,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/INSTRUCTIONS.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/INSTRUCTIONS.md",
+      "source_sha256": "58c0252bca04521de87007aeb495f7ec99dc4c7341bc890fe82b6d577573af91",
+      "sha256": "58c0252bca04521de87007aeb495f7ec99dc4c7341bc890fe82b6d577573af91",
+      "bytes": 12263,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/adapt.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/adapt.md",
+      "source_sha256": "871a8e4d749b807c693ebabd83defbd6c76e1bd2a0f53a28a460cb1308ba8634",
+      "sha256": "871a8e4d749b807c693ebabd83defbd6c76e1bd2a0f53a28a460cb1308ba8634",
+      "bytes": 11301,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/adapt.native.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/adapt.native.md",
+      "source_sha256": "6acc0bf221a4ddc6e5c6438348920b2ca2393b29c4314dbde2cdc23f2b1a9639",
+      "sha256": "6acc0bf221a4ddc6e5c6438348920b2ca2393b29c4314dbde2cdc23f2b1a9639",
+      "bytes": 3910,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/android.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/android.md",
+      "source_sha256": "058f81f256134841875fd3183e06b37a023de0c877fd2b9eecd97011640791fe",
+      "sha256": "058f81f256134841875fd3183e06b37a023de0c877fd2b9eecd97011640791fe",
+      "bytes": 4093,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/animate.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/animate.md",
+      "source_sha256": "d658c48ffbe0031e8e3b318996cad6ceafe29e40aa50d5bb25e4bf1d6839dc7c",
+      "sha256": "d658c48ffbe0031e8e3b318996cad6ceafe29e40aa50d5bb25e4bf1d6839dc7c",
+      "bytes": 5236,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/audit.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/audit.md",
+      "source_sha256": "41764be7bf974b95ee469f11c496714b4b3cf2ba594c0b8f838a0742680229a9",
+      "sha256": "41764be7bf974b95ee469f11c496714b4b3cf2ba594c0b8f838a0742680229a9",
+      "bytes": 8528,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/audit.native.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/audit.native.md",
+      "source_sha256": "960cb922bc934adbf9192e9428ff6bec1f382038166f02a785939c93b7391067",
+      "sha256": "960cb922bc934adbf9192e9428ff6bec1f382038166f02a785939c93b7391067",
+      "bytes": 8364,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/bolder.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/bolder.md",
+      "source_sha256": "f964506c0fae87b3c2c1db7016ddc9be9ef970bbcf5548d684b997b5d5991586",
+      "sha256": "f964506c0fae87b3c2c1db7016ddc9be9ef970bbcf5548d684b997b5d5991586",
+      "bytes": 3564,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/clarify.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/clarify.md",
+      "source_sha256": "173dd66abe65633910dcb04a51f40d6ff2a793f87088f022a02fc4cad24dd133",
+      "sha256": "173dd66abe65633910dcb04a51f40d6ff2a793f87088f022a02fc4cad24dd133",
+      "bytes": 4590,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/colorize.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/colorize.md",
+      "source_sha256": "bc5f71f1129d0f2c310d913d07c8dc609a1d25644121bd78c308f42d52a0b9e9",
+      "sha256": "bc5f71f1129d0f2c310d913d07c8dc609a1d25644121bd78c308f42d52a0b9e9",
+      "bytes": 4537,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/component-review.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/component-review.md",
+      "source_sha256": "10489e5265e49a4ef2737cd0e674c149ed41e1f703efe922e53ea3c91e833427",
+      "sha256": "10489e5265e49a4ef2737cd0e674c149ed41e1f703efe922e53ea3c91e833427",
+      "bytes": 8017,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/craft-floor.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/craft-floor.md",
+      "source_sha256": "e802e4f7bdc89050a9c0f2ca506e1d493a2316e6e810c0336c57aa073717ef3e",
+      "sha256": "e802e4f7bdc89050a9c0f2ca506e1d493a2316e6e810c0336c57aa073717ef3e",
+      "bytes": 5500,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/craft.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/craft.md",
+      "source_sha256": "9205e222bc6565b37fb504ceec93233c2d2a456802b69d16e6b1c44723907c4c",
+      "sha256": "9205e222bc6565b37fb504ceec93233c2d2a456802b69d16e6b1c44723907c4c",
+      "bytes": 555,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/critique.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/critique.md",
+      "source_sha256": "cb8caddbb3919e5bf7f252143b519fb16db28a244642d937b186cb89962d9201",
+      "sha256": "cb8caddbb3919e5bf7f252143b519fb16db28a244642d937b186cb89962d9201",
+      "bytes": 45944,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/degraded/asset-producer.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/degraded/asset-producer.md",
+      "source_sha256": "877d274f41500c780bad25b2bca7fa95eff1a32a7b95397dd388c72848e86a6c",
+      "sha256": "877d274f41500c780bad25b2bca7fa95eff1a32a7b95397dd388c72848e86a6c",
+      "bytes": 8581,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/degraded/documenter.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/degraded/documenter.md",
+      "source_sha256": "bcc05ea92faebb5c74037a9d4263a5ce9a56f5ab07c8ab3c59ee704d8cade745",
+      "sha256": "bcc05ea92faebb5c74037a9d4263a5ce9a56f5ab07c8ab3c59ee704d8cade745",
+      "bytes": 3325,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/degraded/finish-reviewer.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/degraded/finish-reviewer.md",
+      "source_sha256": "275dd1b6e63bbd30d2713227c4f79b880a8bc4e01cc48d392068bb86939d3afa",
+      "sha256": "275dd1b6e63bbd30d2713227c4f79b880a8bc4e01cc48d392068bb86939d3afa",
+      "bytes": 15415,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/degraded/manual-edit-applier.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/degraded/manual-edit-applier.md",
+      "source_sha256": "5fae7f8a2fc3ddd49ad0a413446dc44daedef5b6b7de5eb935bd2fbfad646d58",
+      "sha256": "5fae7f8a2fc3ddd49ad0a413446dc44daedef5b6b7de5eb935bd2fbfad646d58",
+      "bytes": 7196,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/delight.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/delight.md",
+      "source_sha256": "098a891028ce59c212b747d3c70468dd750aff7053a703d1336045ed31e0da7c",
+      "sha256": "098a891028ce59c212b747d3c70468dd750aff7053a703d1336045ed31e0da7c",
+      "bytes": 3716,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/distill.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/distill.md",
+      "source_sha256": "ea8432c90c30ecb0426662a681ead5c0941113079704e1a766cda09e85b15b4f",
+      "sha256": "ea8432c90c30ecb0426662a681ead5c0941113079704e1a766cda09e85b15b4f",
+      "bytes": 5717,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/doctor.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/doctor.md",
+      "source_sha256": "3dbef3fe606de4de0f1b5cab5f19902799e05cf566eb8223e9aa1632eeb04698",
+      "sha256": "3dbef3fe606de4de0f1b5cab5f19902799e05cf566eb8223e9aa1632eeb04698",
+      "bytes": 5563,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/document.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/document.md",
+      "source_sha256": "3673248740bcdd1122ccc610093ba2fe52f3943a61ce0b7170b74dc49e5b6098",
+      "sha256": "3673248740bcdd1122ccc610093ba2fe52f3943a61ce0b7170b74dc49e5b6098",
+      "bytes": 27521,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/extract.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/extract.md",
+      "source_sha256": "31b90048c0b540daec46762a10c2b6b6434737a89af005054d8b848d829d003b",
+      "sha256": "31b90048c0b540daec46762a10c2b6b6434737a89af005054d8b848d829d003b",
+      "bytes": 3433,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/generate.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/generate.md",
+      "source_sha256": "53628d05b7eff0d4f48b95e48fad40266452fe1b42f398bd88dd9328353e0dd8",
+      "sha256": "53628d05b7eff0d4f48b95e48fad40266452fe1b42f398bd88dd9328353e0dd8",
+      "bytes": 13219,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/harden.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/harden.md",
+      "source_sha256": "16ba7fca1973c5faf53dd2ca523559129c0fe9e5f8d50b645f527afa78186cd2",
+      "sha256": "16ba7fca1973c5faf53dd2ca523559129c0fe9e5f8d50b645f527afa78186cd2",
+      "bytes": 9450,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/hooks.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/hooks.md",
+      "source_sha256": "3e3209e6b45497c7aee8234f5be880399ed6d99db442dcf3e024f061cd2027ba",
+      "sha256": "3e3209e6b45497c7aee8234f5be880399ed6d99db442dcf3e024f061cd2027ba",
+      "bytes": 13911,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/init.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/init.md",
+      "source_sha256": "da813ff325f84cefa1d01698caa093c78bca804d7e9746af14db925351266110",
+      "sha256": "da813ff325f84cefa1d01698caa093c78bca804d7e9746af14db925351266110",
+      "bytes": 11764,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/ios.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/ios.md",
+      "source_sha256": "40c87038b5f75147a5952a96237acf312a327bf70c1bcd8e0a5f064625ae9668",
+      "sha256": "40c87038b5f75147a5952a96237acf312a327bf70c1bcd8e0a5f064625ae9668",
+      "bytes": 3812,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/layout.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/layout.md",
+      "source_sha256": "0bc7d7971b3edf2acd0580e847458dc6d84129d90715b452799ace3bed815c7c",
+      "sha256": "0bc7d7971b3edf2acd0580e847458dc6d84129d90715b452799ace3bed815c7c",
+      "bytes": 5161,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/live-setup.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/live-setup.md",
+      "source_sha256": "2b5b2fbf5f658f34ea1997fb1aeebe01604d05187f75c6a4f1f55a5bc78520a4",
+      "sha256": "2b5b2fbf5f658f34ea1997fb1aeebe01604d05187f75c6a4f1f55a5bc78520a4",
+      "bytes": 8186,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/live.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/live.md",
+      "source_sha256": "68c5636a7858dd0b5137a9229c15e25fdc2ee40a0f8a4e9d809f78e809256262",
+      "sha256": "68c5636a7858dd0b5137a9229c15e25fdc2ee40a0f8a4e9d809f78e809256262",
+      "bytes": 36490,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/mode-operate.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/mode-operate.md",
+      "source_sha256": "7a52dd7a94ee75f6ae89542c86a1b6e1d306812b16e0d9dbf12d4acad44d148b",
+      "sha256": "7a52dd7a94ee75f6ae89542c86a1b6e1d306812b16e0d9dbf12d4acad44d148b",
+      "bytes": 4716,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/mode-persuade.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/mode-persuade.md",
+      "source_sha256": "21e78c8a77badb3f83290cd4577ed3b24bd4dd3b57136d7da75733d4f3ee9ac0",
+      "sha256": "21e78c8a77badb3f83290cd4577ed3b24bd4dd3b57136d7da75733d4f3ee9ac0",
+      "bytes": 3638,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/mode-read.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/mode-read.md",
+      "source_sha256": "a569989e6a3d6453b4c45e9474e162a15cc54e11732ac6baa7990a6e7cccc0b5",
+      "sha256": "a569989e6a3d6453b4c45e9474e162a15cc54e11732ac6baa7990a6e7cccc0b5",
+      "bytes": 4396,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/new-work.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/new-work.md",
+      "source_sha256": "73f06ccc5ba8d1cd5324ed98f51d24273e5795170dc92332fe2b68c6a10ce50b",
+      "sha256": "73f06ccc5ba8d1cd5324ed98f51d24273e5795170dc92332fe2b68c6a10ce50b",
+      "bytes": 60566,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/onboard.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/onboard.md",
+      "source_sha256": "ef2dde00030580ed2765cbf7be9b2ea4a6f64cb915b804fd6f6abcf38051c7b9",
+      "sha256": "ef2dde00030580ed2765cbf7be9b2ea4a6f64cb915b804fd6f6abcf38051c7b9",
+      "bytes": 7740,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/operate.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/operate.md",
+      "source_sha256": "a9d2203acd45ca33a13d5c68b02b23ed512425ac15f0e8438318ed124b43729d",
+      "sha256": "a9d2203acd45ca33a13d5c68b02b23ed512425ac15f0e8438318ed124b43729d",
+      "bytes": 4145,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/optimize.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/optimize.md",
+      "source_sha256": "f672ef8251a3ed4051a053d30819664951b17540b2899acd27d20e500c234abc",
+      "sha256": "f672ef8251a3ed4051a053d30819664951b17540b2899acd27d20e500c234abc",
+      "bytes": 7614,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/overdrive.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/overdrive.md",
+      "source_sha256": "fce6688138d2ceb1e3d2cde5231f54b1d8dc8748b4c95a7919aa83b6f924cf96",
+      "sha256": "fce6688138d2ceb1e3d2cde5231f54b1d8dc8748b4c95a7919aa83b6f924cf96",
+      "bytes": 9178,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/polish.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/polish.md",
+      "source_sha256": "81666fc7f783b4e3514db6554e713dc0479bd9cdedb06e93d15f8b579aae869a",
+      "sha256": "81666fc7f783b4e3514db6554e713dc0479bd9cdedb06e93d15f8b579aae869a",
+      "bytes": 6646,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/quieter.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/quieter.md",
+      "source_sha256": "190a4e642ca362d7499f3c3ab123e21f18f75457d11f072b545a183f296e6495",
+      "sha256": "190a4e642ca362d7499f3c3ab123e21f18f75457d11f072b545a183f296e6495",
+      "bytes": 4952,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/region-map.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/region-map.md",
+      "source_sha256": "778cedc9199b407d3e23fa1041e38d548b00b1101a33517aa2a2eb299f9d0edc",
+      "sha256": "778cedc9199b407d3e23fa1041e38d548b00b1101a33517aa2a2eb299f9d0edc",
+      "bytes": 3361,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/routing.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/routing.md",
+      "source_sha256": "77ae09542fbc10aa4e8b119d6fd19359908a47c13c30068d6a150bfdb50e3e10",
+      "sha256": "77ae09542fbc10aa4e8b119d6fd19359908a47c13c30068d6a150bfdb50e3e10",
+      "bytes": 3336,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/shape.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/shape.md",
+      "source_sha256": "a55f016c046cb6a27c55bd7f346375aeb506a755c4fbca19a5f92dbd42309c23",
+      "sha256": "a55f016c046cb6a27c55bd7f346375aeb506a755c4fbca19a5f92dbd42309c23",
+      "bytes": 3547,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/typeset.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/typeset.md",
+      "source_sha256": "442749aed338f51c1a3ccfb182c6ade9b74b90590b67984062ac94a5b100e914",
+      "sha256": "442749aed338f51c1a3ccfb182c6ade9b74b90590b67984062ac94a5b100e914",
+      "bytes": 5256,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/reference/visualize.md",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/reference/visualize.md",
+      "source_sha256": "2bcec5b8d22e9f87799529a41b984d27b4379ab1b70e1dd4f63b6d6390275730",
+      "sha256": "2bcec5b8d22e9f87799529a41b984d27b4379ab1b70e1dd4f63b6d6390275730",
+      "bytes": 13912,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/scripts/command-metadata.json",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/scripts/command-metadata.json",
+      "source_sha256": "e8720f3aa41135211cc58cc299a39eeda86c75651f4279cc1ede8db10dcc0584",
+      "sha256": "e8720f3aa41135211cc58cc299a39eeda86c75651f4279cc1ede8db10dcc0584",
+      "bytes": 8392,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/scripts/data/font-index-failures.json",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/scripts/data/font-index-failures.json",
+      "source_sha256": "835f19a0a3812f3652dd6979a2ce5597f654fd01f26e1b420b92d5f42b997ce4",
+      "sha256": "835f19a0a3812f3652dd6979a2ce5597f654fd01f26e1b420b92d5f42b997ce4",
+      "bytes": 2437,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/scripts/data/font-index.json",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/scripts/data/font-index.json",
+      "source_sha256": "47edbdfaf27073c47033d1ac7dfee881be49e2dcbda7671d1157300481dde6da",
+      "sha256": "47edbdfaf27073c47033d1ac7dfee881be49e2dcbda7671d1157300481dde6da",
+      "bytes": 1100013,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/scripts/impeccable",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/scripts/impeccable",
+      "source_sha256": "39d9600489073e227e4f4d55c451ce4252a6632ed7ae37923efbbcbc91f16d07",
+      "sha256": "39d9600489073e227e4f4d55c451ce4252a6632ed7ae37923efbbcbc91f16d07",
+      "bytes": 8514,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/scripts/impeccable.cmd",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/scripts/impeccable.cmd",
+      "source_sha256": "69cad1ae7355825ef320ac9638a1c9675ba9fda01c9a0fa12244cc4a1973e550",
+      "sha256": "69cad1ae7355825ef320ac9638a1c9675ba9fda01c9a0fa12244cc4a1973e550",
+      "bytes": 8498,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/scripts/live-browser-dom.js",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/scripts/live-browser-dom.js",
+      "source_sha256": "24f09f2597b9b55a1e2c4acd2ae5c95db5c8615cfc20aa07d1a3950538ad5c4a",
+      "sha256": "24f09f2597b9b55a1e2c4acd2ae5c95db5c8615cfc20aa07d1a3950538ad5c4a",
+      "bytes": 10623,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/scripts/live-browser-ignores.js",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/scripts/live-browser-ignores.js",
+      "source_sha256": "c1cb6877ca99a0c1b38ba0c7d59f32702d3022f6821d8045f7133f7c40b6362f",
+      "sha256": "c1cb6877ca99a0c1b38ba0c7d59f32702d3022f6821d8045f7133f7c40b6362f",
+      "bytes": 10346,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/scripts/live-browser-session.js",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/scripts/live-browser-session.js",
+      "source_sha256": "42831c3cd874346d8e7f120808d91e6ed3cda5c3eca6eefd76b126659536bc87",
+      "sha256": "42831c3cd874346d8e7f120808d91e6ed3cda5c3eca6eefd76b126659536bc87",
+      "bytes": 4346,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/scripts/live-browser.js",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/scripts/live-browser.js",
+      "source_sha256": "d7f1ee3fdfc423e90268e9c666dce61b2180b62431dbb6ecfc48bca65398a1f8",
+      "sha256": "d7f1ee3fdfc423e90268e9c666dce61b2180b62431dbb6ecfc48bca65398a1f8",
+      "bytes": 548448,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/scripts/modern-screenshot.umd.js",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/scripts/modern-screenshot.umd.js",
+      "source_sha256": "bb36665889124a0b6e15f16045265737449c3bdcf2712cdb08af3cfa01563e2b",
+      "sha256": "bb36665889124a0b6e15f16045265737449c3bdcf2712cdb08af3cfa01563e2b",
+      "bytes": 29290,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/scripts/VERSION",
+      "path": "payload/skills/product-ui-review/vendor/impeccable/scripts/VERSION",
+      "source_sha256": "9940d4b5219de8404015bc18af844c88d7e9e9105682a5d47b1d369d027dbd25",
+      "sha256": "9940d4b5219de8404015bc18af844c88d7e9e9105682a5d47b1d369d027dbd25",
+      "bytes": 7,
+      "transformations": [],
+      "module": "product-ui-review"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/app-interface.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/app-interface.csv",
+      "source_sha256": "331e7cf2c0b222d80c566c5f255c63cb339f65bfd02e471a720f28e4864a9f08",
+      "sha256": "331e7cf2c0b222d80c566c5f255c63cb339f65bfd02e471a720f28e4864a9f08",
+      "bytes": 11046,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/catalog-summary.json",
+      "path": "payload/skills/ui-ux-pro-max/data/catalog-summary.json",
+      "source_sha256": "6638da97231c07fb5cef3cd9d3ce483ca7b2f9748980f8c27490eb03968d8894",
+      "sha256": "6638da97231c07fb5cef3cd9d3ce483ca7b2f9748980f8c27490eb03968d8894",
+      "bytes": 2392,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/charts.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/charts.csv",
+      "source_sha256": "4115cf1120680f2cedef0676cb648f30c7ef4699e2a947535d4113e71ed3b12a",
+      "sha256": "4115cf1120680f2cedef0676cb648f30c7ef4699e2a947535d4113e71ed3b12a",
+      "bytes": 23365,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/colors.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/colors.csv",
+      "source_sha256": "8162429222bce22df62b564085946a30d07cc9722c58d0a3a494bd0d1d00841c",
+      "sha256": "8162429222bce22df62b564085946a30d07cc9722c58d0a3a494bd0d1d00841c",
+      "bytes": 37940,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/data-provenance.json",
+      "path": "payload/skills/ui-ux-pro-max/data/data-provenance.json",
+      "source_sha256": "e82fb33ed49375a300e93d9c11ccd1c1493c999e84ee7ee295e527634786e2e0",
+      "sha256": "e82fb33ed49375a300e93d9c11ccd1c1493c999e84ee7ee295e527634786e2e0",
+      "bytes": 36686,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/google-font-licenses.json",
+      "path": "payload/skills/ui-ux-pro-max/data/google-font-licenses.json",
+      "source_sha256": "35688523f2955795caa1a47c53b83099e60c1708461476f9cc3a050cf3b0148a",
+      "sha256": "35688523f2955795caa1a47c53b83099e60c1708461476f9cc3a050cf3b0148a",
+      "bytes": 433127,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/google-fonts.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/google-fonts.csv",
+      "source_sha256": "1c8c3b2ea1faf6a1012da463756def8b3889db33f2226f0343bb4daa80307d03",
+      "sha256": "1c8c3b2ea1faf6a1012da463756def8b3889db33f2226f0343bb4daa80307d03",
+      "bytes": 747241,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/icons.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/icons.csv",
+      "source_sha256": "50816c6012030178195a16ee481ebf58b47bd985d70e8ec58886cc83f6eddafc",
+      "sha256": "50816c6012030178195a16ee481ebf58b47bd985d70e8ec58886cc83f6eddafc",
+      "bytes": 57945,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/landing.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/landing.csv",
+      "source_sha256": "9a2edd3bb676c2a58f00ade7a062e285222d4297bfd847c8d5b056f0dbbf52d0",
+      "sha256": "9a2edd3bb676c2a58f00ade7a062e285222d4297bfd847c8d5b056f0dbbf52d0",
+      "bytes": 25449,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/motion.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/motion.csv",
+      "source_sha256": "381affe8df8ea1f66fbbda2598827f9f54299107bbe6a1b4e9b68f6b62091ceb",
+      "sha256": "381affe8df8ea1f66fbbda2598827f9f54299107bbe6a1b4e9b68f6b62091ceb",
+      "bytes": 14679,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/phosphor-icons-upstream.json",
+      "path": "payload/skills/ui-ux-pro-max/data/phosphor-icons-upstream.json",
+      "source_sha256": "2399325233b277b5c97a80e6a5e8941154f5d057beee4e7613db87c87d700236",
+      "sha256": "2399325233b277b5c97a80e6a5e8941154f5d057beee4e7613db87c87d700236",
+      "bytes": 823933,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/products.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/products.csv",
+      "source_sha256": "42473f75e8dde5987bdf89ce55d8c168091b80a356cae691dd60247d80720b70",
+      "sha256": "42473f75e8dde5987bdf89ce55d8c168091b80a356cae691dd60247d80720b70",
+      "bytes": 75623,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/react-performance.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/react-performance.csv",
+      "source_sha256": "3d925802539abac5afeb63ae8aa1960b7229ad271b3a47caed40ab2d97ad0734",
+      "sha256": "3d925802539abac5afeb63ae8aa1960b7229ad271b3a47caed40ab2d97ad0734",
+      "bytes": 15080,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/angular.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/angular.csv",
+      "source_sha256": "704be83f2bad30c7e6de01afb113ffa01e0c458762f48b7102f31ba2367b5553",
+      "sha256": "704be83f2bad30c7e6de01afb113ffa01e0c458762f48b7102f31ba2367b5553",
+      "bytes": 19863,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/astro.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/astro.csv",
+      "source_sha256": "2c2f55fadaafc05e04cc321c8194a1a28b656e6757fe2ba316f41b16428299c6",
+      "sha256": "2c2f55fadaafc05e04cc321c8194a1a28b656e6757fe2ba316f41b16428299c6",
+      "bytes": 14591,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/avalonia.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/avalonia.csv",
+      "source_sha256": "442fca14675a020683473e7e49f08abb27b9df0765c80efe54aef61f1a4ac258",
+      "sha256": "442fca14675a020683473e7e49f08abb27b9df0765c80efe54aef61f1a4ac258",
+      "bytes": 27327,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/flutter.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/flutter.csv",
+      "source_sha256": "64dba0ac17349f28bce517a0f5f48c54d9ed2e487ec0c0258303463b382f41a0",
+      "sha256": "64dba0ac17349f28bce517a0f5f48c54d9ed2e487ec0c0258303463b382f41a0",
+      "bytes": 14192,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+      "source_sha256": "d05a581d20af57b8ca0104a6d31d90a07c437d500662a96c3029fc2f9a4678ee",
+      "sha256": "d05a581d20af57b8ca0104a6d31d90a07c437d500662a96c3029fc2f9a4678ee",
+      "bytes": 16551,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/javafx.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/javafx.csv",
+      "source_sha256": "2e819b8d5abdd23ad4dae0991650fdb57af497aabd68b37463aa9c442944c869",
+      "sha256": "2e819b8d5abdd23ad4dae0991650fdb57af497aabd68b37463aa9c442944c869",
+      "bytes": 33577,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv",
+      "source_sha256": "699de218b286948eaec7d15767b6e1350ee299167e49bf476d82e3ff58724e0a",
+      "sha256": "699de218b286948eaec7d15767b6e1350ee299167e49bf476d82e3ff58724e0a",
+      "bytes": 12295,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/laravel.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/laravel.csv",
+      "source_sha256": "854ea4daa5fc61292d22235ad33b49ba3fe22423c3de8d3cb03758ffed3b59f9",
+      "sha256": "854ea4daa5fc61292d22235ad33b49ba3fe22423c3de8d3cb03758ffed3b59f9",
+      "bytes": 20163,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+      "source_sha256": "ecd2c27b2ea0127d203ae726060efcdd7335b5e83f96b99e4f3befbbfeebd5a4",
+      "sha256": "ecd2c27b2ea0127d203ae726060efcdd7335b5e83f96b99e4f3befbbfeebd5a4",
+      "bytes": 18687,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+      "source_sha256": "fce682a338cfcdbf35d318d20e5befbe7b5d81b05abc37f87677a6d9cde84dc6",
+      "sha256": "fce682a338cfcdbf35d318d20e5befbe7b5d81b05abc37f87677a6d9cde84dc6",
+      "bytes": 28700,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+      "source_sha256": "3d9b54ed2d151bd9c86e9e5609b8a6f88a00c4c52fa601a30af96c49b2c4d176",
+      "sha256": "3d9b54ed2d151bd9c86e9e5609b8a6f88a00c4c52fa601a30af96c49b2c4d176",
+      "bytes": 23014,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/react-native.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/react-native.csv",
+      "source_sha256": "ba31dd9c0c04da6bc02a74448bf121f9c0728ae5ba3b4d47b487778b0a1135b5",
+      "sha256": "ba31dd9c0c04da6bc02a74448bf121f9c0728ae5ba3b4d47b487778b0a1135b5",
+      "bytes": 14049,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/react.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/react.csv",
+      "source_sha256": "4dd176a9787e5c6306b5df94158d75955adcdc6edab41ce5286641a5842303c1",
+      "sha256": "4dd176a9787e5c6306b5df94158d75955adcdc6edab41ce5286641a5842303c1",
+      "bytes": 21166,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/shadcn.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/shadcn.csv",
+      "source_sha256": "e56cfde5b74907836ac3582a4779d5b7f3d206a702ab81b8669a1b668c3eeb51",
+      "sha256": "e56cfde5b74907836ac3582a4779d5b7f3d206a702ab81b8669a1b668c3eeb51",
+      "bytes": 23184,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/svelte.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/svelte.csv",
+      "source_sha256": "f6e379ba802941ba26b01d4ffbe3cd39120f2587659a1d93851c707f66bc13db",
+      "sha256": "f6e379ba802941ba26b01d4ffbe3cd39120f2587659a1d93851c707f66bc13db",
+      "bytes": 15078,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/swiftui.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/swiftui.csv",
+      "source_sha256": "bdd9231ff3ad658f4e7c063e1eb49df2fd09ac8d90631a86df899b39833b9623",
+      "sha256": "bdd9231ff3ad658f4e7c063e1eb49df2fd09ac8d90631a86df899b39833b9623",
+      "bytes": 15323,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/threejs.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/threejs.csv",
+      "source_sha256": "155d583b9c64da0df4b6c6cb060c02eab222505e0734d6353da02c9e2b5d982b",
+      "sha256": "155d583b9c64da0df4b6c6cb060c02eab222505e0734d6353da02c9e2b5d982b",
+      "bytes": 46769,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/uno.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/uno.csv",
+      "source_sha256": "a0474363e4225b5367214d5675fd3e075f137026f9500f0d04357882ef4f6d48",
+      "sha256": "a0474363e4225b5367214d5675fd3e075f137026f9500f0d04357882ef4f6d48",
+      "bytes": 30091,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/uwp.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/uwp.csv",
+      "source_sha256": "c409f08c1fbba1f1029f1acaa554e7b4471cc85517a5751c9f2e62465badcd5c",
+      "sha256": "c409f08c1fbba1f1029f1acaa554e7b4471cc85517a5751c9f2e62465badcd5c",
+      "bytes": 24692,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/vue.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/vue.csv",
+      "source_sha256": "b655f1ebb9dff2652d15981f31b1784c8a6d4759efd2815a14f3088257569f95",
+      "sha256": "b655f1ebb9dff2652d15981f31b1784c8a6d4759efd2815a14f3088257569f95",
+      "bytes": 12813,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/winui.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/winui.csv",
+      "source_sha256": "e676dc1c13ee6c205c40b0746f1335150a346c7a49a0616d2545bc3d2c930c85",
+      "sha256": "e676dc1c13ee6c205c40b0746f1335150a346c7a49a0616d2545bc3d2c930c85",
+      "bytes": 27890,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/stacks/wpf.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/stacks/wpf.csv",
+      "source_sha256": "9781a9950b20333637b30a02e498b7efca21b618a3eeb8665836f3ac6e974da7",
+      "sha256": "9781a9950b20333637b30a02e498b7efca21b618a3eeb8665836f3ac6e974da7",
+      "bytes": 24158,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/styles.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/styles.csv",
+      "source_sha256": "a93a4d9d7025856575d7b7583bda020be9043013432c5af7c58af9dbdfb206b7",
+      "sha256": "a93a4d9d7025856575d7b7583bda020be9043013432c5af7c58af9dbdfb206b7",
+      "bytes": 149478,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/typography.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/typography.csv",
+      "source_sha256": "321fc446e89024488ebae96dda93efc4d2307bd8bddb240857ad51364f6782c8",
+      "sha256": "321fc446e89024488ebae96dda93efc4d2307bd8bddb240857ad51364f6782c8",
+      "bytes": 49997,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/ui-reasoning.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/ui-reasoning.csv",
+      "source_sha256": "f0774dd741cecdad5eec842034bd6d5e9ea50e9f220a1910069748daa0bb8e9a",
+      "sha256": "f0774dd741cecdad5eec842034bd6d5e9ea50e9f220a1910069748daa0bb8e9a",
+      "bytes": 77360,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/data/ux-guidelines.csv",
+      "path": "payload/skills/ui-ux-pro-max/data/ux-guidelines.csv",
+      "source_sha256": "ff81ec613f70ba9fc3fcce52dbe4ae35d44b2079dbe6dc066d2d6e38c28facd5",
+      "sha256": "ff81ec613f70ba9fc3fcce52dbe4ae35d44b2079dbe6dc066d2d6e38c28facd5",
+      "bytes": 27516,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/references/pro-rules.md",
+      "path": "payload/skills/ui-ux-pro-max/references/pro-rules.md",
+      "source_sha256": "d28442d61c310b49c054a4ea736f89fb3008beebdbbc38c4b3a540b8f7fadf23",
+      "sha256": "d28442d61c310b49c054a4ea736f89fb3008beebdbbc38c4b3a540b8f7fadf23",
+      "bytes": 10909,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/references/quick-reference.md",
+      "path": "payload/skills/ui-ux-pro-max/references/quick-reference.md",
+      "source_sha256": "0609bc7c89dacb40472465d8fc14257b56b2c43439660fc8d6fa3b8c022e1876",
+      "sha256": "0609bc7c89dacb40472465d8fc14257b56b2c43439660fc8d6fa3b8c022e1876",
+      "bytes": 24526,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/core.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/core.py",
+      "source_sha256": "c3be4b23e7150e6b45095213158cfa3c8ad96502f01dde3f6ffff9de64a4f481",
+      "sha256": "c3be4b23e7150e6b45095213158cfa3c8ad96502f01dde3f6ffff9de64a4f481",
+      "bytes": 41236,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/design_system.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/design_system.py",
+      "source_sha256": "e7d1c94c4b2eada17c5551157668362659ccf9626d34dbd58e68142410f90103",
+      "sha256": "e7d1c94c4b2eada17c5551157668362659ccf9626d34dbd58e68142410f90103",
+      "bytes": 71537,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/reasoning_contract.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/reasoning_contract.py",
+      "source_sha256": "b8bac1af82aa280d3e06f00aabaeac4337e632996b07fed874e2b6ee6e9c5913",
+      "sha256": "b8bac1af82aa280d3e06f00aabaeac4337e632996b07fed874e2b6ee6e9c5913",
+      "bytes": 5824,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/search.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/search.py",
+      "source_sha256": "d54e648fe0ec2932cac66684220cc17be4bd4b4eba1d23d3195d509d398db374",
+      "sha256": "d54e648fe0ec2932cac66684220cc17be4bd4b4eba1d23d3195d509d398db374",
+      "bytes": 9373,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-api.json",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-api.json",
+      "source_sha256": "22d8dc81a7d6827b7e8b64b53e7d184210fb9759e8e294e0d5133c81cc460176",
+      "sha256": "22d8dc81a7d6827b7e8b64b53e7d184210fb9759e8e294e0d5133c81cc460176",
+      "bytes": 1079,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-catalog.json",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-catalog.json",
+      "source_sha256": "c608ad5c4084ebc50a4bbbfb69ea2456c01fd5519c457e18410fffd250ae948f",
+      "sha256": "c608ad5c4084ebc50a4bbbfb69ea2456c01fd5519c457e18410fffd250ae948f",
+      "bytes": 1772,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-existing.csv",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-existing.csv",
+      "source_sha256": "4e0761b839dc6b2187a370e82eddc0aed8a7ff10c09e28dd814bb3656dac595b",
+      "sha256": "4e0761b839dc6b2187a370e82eddc0aed8a7ff10c09e28dd814bb3656dac595b",
+      "bytes": 480,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-metadata.json",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-metadata.json",
+      "source_sha256": "30bffc29ae348416a2de2f9c6c418e768e4578f136b0f4bac5d2f70124f2e9ba",
+      "sha256": "30bffc29ae348416a2de2f9c6c418e768e4578f136b0f4bac5d2f70124f2e9ba",
+      "bytes": 328,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-overrides.json",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/google-overrides.json",
+      "source_sha256": "6243a48a4619986768c4628e2d0c98ff195beba71ba9be5df8f0c52fc6d90c0b",
+      "sha256": "6243a48a4619986768c4628e2d0c98ff195beba71ba9be5df8f0c52fc6d90c0b",
+      "bytes": 97,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/icons-curated.csv",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/icons-curated.csv",
+      "source_sha256": "68362c9a700c13b96f000784a0198c1c7e117a7088a01c85744e44233038fe9d",
+      "sha256": "68362c9a700c13b96f000784a0198c1c7e117a7088a01c85744e44233038fe9d",
+      "bytes": 495,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-core.json",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-core.json",
+      "source_sha256": "ae4d0bb076240824e1b643c2270d1f8cc0952a69502ec1e622b7dedd85b930bb",
+      "sha256": "ae4d0bb076240824e1b643c2270d1f8cc0952a69502ec1e622b7dedd85b930bb",
+      "bytes": 571,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-package.json",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-package.json",
+      "source_sha256": "500588c757d6de03e3d7e69b27a8b8b1f88ccf6bb0333e4c1e9b0d6a4f112475",
+      "sha256": "500588c757d6de03e3d7e69b27a8b8b1f88ccf6bb0333e4c1e9b0d6a4f112475",
+      "bytes": 370,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-exports.json",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-exports.json",
+      "source_sha256": "d79f2ee0afdbc2f87776733e145df3538a16a25d7c2fba0056bb48295dad0ded",
+      "sha256": "d79f2ee0afdbc2f87776733e145df3538a16a25d7c2fba0056bb48295dad0ded",
+      "bytes": 87,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-package.json",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/fixtures/catalogs/phosphor-react-package.json",
+      "source_sha256": "1c57a1d76bcc0cdd3632d4c18b9c0e79576b4591df39831c9607e5d0eb4f2cec",
+      "sha256": "1c57a1d76bcc0cdd3632d4c18b9c0e79576b4591df39831c9607e5d0eb4f2cec",
+      "bytes": 81,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-baseline.json",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-baseline.json",
+      "source_sha256": "0df200fc54c1cb97a52d6775e7f501509163cea8f8b73fd7268429bc1f835afe",
+      "sha256": "0df200fc54c1cb97a52d6775e7f501509163cea8f8b73fd7268429bc1f835afe",
+      "bytes": 89426,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-cases.json",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-cases.json",
+      "source_sha256": "e77d36eebbf6ddc2860946a02cdb659351da6c09f2688f1ed30939a418099646",
+      "sha256": "e77d36eebbf6ddc2860946a02cdb659351da6c09f2688f1ed30939a418099646",
+      "bytes": 36734,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-thresholds.json",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/fixtures/relevance-thresholds.json",
+      "source_sha256": "1fbe8623fe3e49c8d828139bca9df69043746e488e8bf09d93dfb9cbc31f5cef",
+      "sha256": "1fbe8623fe3e49c8d828139bca9df69043746e488e8bf09d93dfb9cbc31f5cef",
+      "bytes": 5079,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/test_catalog_refresh.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/test_catalog_refresh.py",
+      "source_sha256": "3e2ca5d12702318f641ae62d0c14f22a3bcc84d84e79b863c0e947d475604adb",
+      "sha256": "3e2ca5d12702318f641ae62d0c14f22a3bcc84d84e79b863c0e947d475604adb",
+      "bytes": 19466,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/test_catalog_summary_line_endings.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/test_catalog_summary_line_endings.py",
+      "source_sha256": "fa6ff09f0ec2c99013588c77397f5082dddebe8f467e94c5f8378ec9595f4989",
+      "sha256": "fa6ff09f0ec2c99013588c77397f5082dddebe8f467e94c5f8378ec9595f4989",
+      "bytes": 2947,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/test_core.py",
+      "source_sha256": "3527fe2f4b852f69f07c17ddc0d615d9a6e025c924e45a33985579a94a8d2118",
+      "sha256": "3527fe2f4b852f69f07c17ddc0d615d9a6e025c924e45a33985579a94a8d2118",
+      "bytes": 16680,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/test_core_data_quality.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/test_core_data_quality.py",
+      "source_sha256": "3ffc6b4905c9ea26d7ac4527ab154d153584231aee71b2ae4bd017977fa09cc5",
+      "sha256": "3ffc6b4905c9ea26d7ac4527ab154d153584231aee71b2ae4bd017977fa09cc5",
+      "bytes": 8954,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/test_data_contracts.py",
+      "source_sha256": "0360d6e10080c0bca214f2b0bbad582ba50702a542ce21013351aca54938df3a",
+      "sha256": "0360d6e10080c0bca214f2b0bbad582ba50702a542ce21013351aca54938df3a",
+      "bytes": 19513,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/test_design_system_mode.py",
+      "source_sha256": "95ad2c154349f7021f55a558f8dcdd71df1a24fcf531a4364a8e49526a0865ef",
+      "sha256": "95ad2c154349f7021f55a558f8dcdd71df1a24fcf531a4364a8e49526a0865ef",
+      "bytes": 9815,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/test_design_system_stack.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/test_design_system_stack.py",
+      "source_sha256": "83d09ffe8cfbf7b265f362129f061dfe8e5e167ce5db43adaead197cabc9ca38",
+      "sha256": "83d09ffe8cfbf7b265f362129f061dfe8e5e167ce5db43adaead197cabc9ca38",
+      "bytes": 2261,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/test_native_desktop_stack_freshness.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/test_native_desktop_stack_freshness.py",
+      "source_sha256": "3942845712b9a829323cd3568511483135f2a8c7cd79ccf61679da4b0f624dbb",
+      "sha256": "3942845712b9a829323cd3568511483135f2a8c7cd79ccf61679da4b0f624dbb",
+      "bytes": 8375,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/test_relevance_evaluator.py",
+      "source_sha256": "2fe56a4d6fe5fff15ff592274b0eeaba925146cefea6c0fa29d8f1b77c9aca1f",
+      "sha256": "2fe56a4d6fe5fff15ff592274b0eeaba925146cefea6c0fa29d8f1b77c9aca1f",
+      "bytes": 8430,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/test_skill_script_paths.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/test_skill_script_paths.py",
+      "source_sha256": "7cec24b94be771bc60bc84f8993e614bb16d4047930e1dd3d3bed91628311d44",
+      "sha256": "7cec24b94be771bc60bc84f8993e614bb16d4047930e1dd3d3bed91628311d44",
+      "bytes": 4305,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/test_style_taxonomy.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/test_style_taxonomy.py",
+      "source_sha256": "cd14d0092e8a454d213aa104b53e4e70ba698491fa00fde9fdec5ca8a3d70011",
+      "sha256": "cd14d0092e8a454d213aa104b53e4e70ba698491fa00fde9fdec5ca8a3d70011",
+      "bytes": 7425,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/test_text_layout_resilience.py",
+      "source_sha256": "b51d32ee8a15505b87cb81957fb2d1b385e041e8beb4463c311d236bfd29ebd4",
+      "sha256": "b51d32ee8a15505b87cb81957fb2d1b385e041e8beb4463c311d236bfd29ebd4",
+      "bytes": 5874,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/tests/test_web_stack_freshness.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/tests/test_web_stack_freshness.py",
+      "source_sha256": "74897571398585f27e2c35d09d81b0a531c8c774f4a2967e5e1b1d1b05a483d9",
+      "sha256": "74897571398585f27e2c35d09d81b0a531c8c774f4a2967e5e1b1d1b05a483d9",
+      "bytes": 7701,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/scripts/validate_data.py",
+      "path": "payload/skills/ui-ux-pro-max/scripts/validate_data.py",
+      "source_sha256": "a599aa256049cf30954d1f164721b99e453eb7e4cb8241bcab2d5573e6cf58b8",
+      "sha256": "a599aa256049cf30954d1f164721b99e453eb7e4cb8241bcab2d5573e6cf58b8",
+      "bytes": 52230,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/SKILL.md",
+      "path": "payload/skills/ui-ux-pro-max/SKILL.md",
+      "source_sha256": "4957eef5997126b27079b06ba5210102b674e7fd40b9e18a524a497b123931c8",
+      "sha256": "2f85479299a6c86ecff9fb4b6270f7b4c6413ee840207d4aa635562c0bd1fb2d",
+      "bytes": 17284,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{PYTHON}}",
+          "count": 11
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 11
+        }
+      ],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "skills/visual-experiment-craft/agents/openai.yaml",
+      "path": "payload/skills/visual-experiment-craft/agents/openai.yaml",
+      "source_sha256": "6fdcfee214d77dce709e5343fe2f2a0b51c3ec2a83a34a5fe91760af6bc93e1f",
+      "sha256": "6fdcfee214d77dce709e5343fe2f2a0b51c3ec2a83a34a5fe91760af6bc93e1f",
+      "bytes": 332,
+      "transformations": [],
+      "module": "visual-experiment-craft"
+    },
+    {
+      "source": "skills/visual-experiment-craft/references/causal-state-interaction.md",
+      "path": "payload/skills/visual-experiment-craft/references/causal-state-interaction.md",
+      "source_sha256": "deaf9d3fe44266227b742596cd317a6436444b4399090c7d0e3cfa9cc9cdc010",
+      "sha256": "deaf9d3fe44266227b742596cd317a6436444b4399090c7d0e3cfa9cc9cdc010",
+      "bytes": 3986,
+      "transformations": [],
+      "module": "visual-experiment-craft"
+    },
+    {
+      "source": "skills/visual-experiment-craft/references/composition-materials.md",
+      "path": "payload/skills/visual-experiment-craft/references/composition-materials.md",
+      "source_sha256": "d3fda3f69d4d535216ded80928a5331e50cb98345d07931e97ed32f4c8a42b6a",
+      "sha256": "d3fda3f69d4d535216ded80928a5331e50cb98345d07931e97ed32f4c8a42b6a",
+      "bytes": 4829,
+      "transformations": [],
+      "module": "visual-experiment-craft"
+    },
+    {
+      "source": "skills/visual-experiment-craft/references/data-spatial-metaphors.md",
+      "path": "payload/skills/visual-experiment-craft/references/data-spatial-metaphors.md",
+      "source_sha256": "d0a57861eac2cf7539c3cbdfc36765cd79b431fa90bcb83a763b992fb3076477",
+      "sha256": "d0a57861eac2cf7539c3cbdfc36765cd79b431fa90bcb83a763b992fb3076477",
+      "bytes": 3502,
+      "transformations": [],
+      "module": "visual-experiment-craft"
+    },
+    {
+      "source": "skills/visual-experiment-craft/references/evidence.md",
+      "path": "payload/skills/visual-experiment-craft/references/evidence.md",
+      "source_sha256": "c00ba8bbec35aabd4ea683ec854a3917e5489438dbda17d79b3d4e44ae6ca802",
+      "sha256": "a6c88422390914ce1bf3043dc840084e475ad2e7abb5aa245e1df78f5cc8064e",
+      "bytes": 5395,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        }
+      ],
+      "module": "visual-experiment-craft"
+    },
+    {
+      "source": "skills/visual-experiment-craft/references/optics-spectral.md",
+      "path": "payload/skills/visual-experiment-craft/references/optics-spectral.md",
+      "source_sha256": "150da50c0a470955f2515e9eb7db6f3f3c8f06ac18cc4dc41486d67556c3d15d",
+      "sha256": "150da50c0a470955f2515e9eb7db6f3f3c8f06ac18cc4dc41486d67556c3d15d",
+      "bytes": 3209,
+      "transformations": [],
+      "module": "visual-experiment-craft"
+    },
+    {
+      "source": "skills/visual-experiment-craft/references/procedural-graphics.md",
+      "path": "payload/skills/visual-experiment-craft/references/procedural-graphics.md",
+      "source_sha256": "e26653cfdc06f9b9ae776558049e7393fd44ff0bbb5e48e49ff35ecdfa34ec3c",
+      "sha256": "e26653cfdc06f9b9ae776558049e7393fd44ff0bbb5e48e49ff35ecdfa34ec3c",
+      "bytes": 3607,
+      "transformations": [],
+      "module": "visual-experiment-craft"
+    },
+    {
+      "source": "skills/visual-experiment-craft/references/runtime-accessibility.md",
+      "path": "payload/skills/visual-experiment-craft/references/runtime-accessibility.md",
+      "source_sha256": "524484afe4cb88b3d90710a5d8e77d3b7982a6b83aad691d2ad434c65726cbff",
+      "sha256": "524484afe4cb88b3d90710a5d8e77d3b7982a6b83aad691d2ad434c65726cbff",
+      "bytes": 4041,
+      "transformations": [],
+      "module": "visual-experiment-craft"
+    },
+    {
+      "source": "skills/visual-experiment-craft/references/validation.md",
+      "path": "payload/skills/visual-experiment-craft/references/validation.md",
+      "source_sha256": "d4670a8058114ee4ad8fa03af78e4cba7f57f061bcd9fe2fa3701c10621cbbac",
+      "sha256": "d4670a8058114ee4ad8fa03af78e4cba7f57f061bcd9fe2fa3701c10621cbbac",
+      "bytes": 3644,
+      "transformations": [],
+      "module": "visual-experiment-craft"
+    },
+    {
+      "source": "skills/visual-experiment-craft/references/world-scenes.md",
+      "path": "payload/skills/visual-experiment-craft/references/world-scenes.md",
+      "source_sha256": "eb4e7625e1648295f0902ce0a9832bdfc96d2bdf634379ab8783ded2b802f07b",
+      "sha256": "aa74c25ed644541af3939534f4a9b1de03e267759253781cbb9668baae85f665",
+      "bytes": 8396,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{EVIDENCE_ROOT}}",
+          "count": 1
+        }
+      ],
+      "module": "visual-experiment-craft"
+    },
+    {
+      "source": "skills/visual-experiment-craft/SKILL.md",
+      "path": "payload/skills/visual-experiment-craft/SKILL.md",
+      "source_sha256": "e300aa8d4cf840d315589db0a8d203f6119823b8cea91be1b0038e90c837c70e",
+      "sha256": "e300aa8d4cf840d315589db0a8d203f6119823b8cea91be1b0038e90c837c70e",
+      "bytes": 6407,
+      "transformations": [],
+      "module": "visual-experiment-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/anatomy-support.md",
+      "path": "payload/skills/voxel-model-craft/references/anatomy-support.md",
+      "source_sha256": "52bfeac83036591babf2f320a8c0af8e9a370e88557ed479d0755f6094697409",
+      "sha256": "52bfeac83036591babf2f320a8c0af8e9a370e88557ed479d0755f6094697409",
+      "bytes": 2842,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/built-form.md",
+      "path": "payload/skills/voxel-model-craft/references/built-form.md",
+      "source_sha256": "f83fa00d0b425803c0192f6eafae8a56f6243e672081647f0a26e91f232a992b",
+      "sha256": "f83fa00d0b425803c0192f6eafae8a56f6243e672081647f0a26e91f232a992b",
+      "bytes": 2636,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/design-passport.md",
+      "path": "payload/skills/voxel-model-craft/references/design-passport.md",
+      "source_sha256": "97421e7aa691384321c68b9628e1d6b1736b792d0a59cf1fef6dc916f7868f99",
+      "sha256": "97421e7aa691384321c68b9628e1d6b1736b792d0a59cf1fef6dc916f7868f99",
+      "bytes": 3923,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/design-preflight.md",
+      "path": "payload/skills/voxel-model-craft/references/design-preflight.md",
+      "source_sha256": "e415f39b3bcb34aeb4a543fd90ebc36b15d1c42ca0c6011d1eae8fb64c709138",
+      "sha256": "8b1d276fdd8e306d281e89ef93e5c217395e6380336ed157ca403d5ec469ab9f",
+      "bytes": 8036,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        }
+      ],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/environments.md",
+      "path": "payload/skills/voxel-model-craft/references/environments.md",
+      "source_sha256": "7e8db1e0f0bc3e3888054d693dae92eee8be43934d1e046c267cbcf330b32800",
+      "sha256": "7e8db1e0f0bc3e3888054d693dae92eee8be43934d1e046c267cbcf330b32800",
+      "bytes": 5929,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/evidence.md",
+      "path": "payload/skills/voxel-model-craft/references/evidence.md",
+      "source_sha256": "7b448cc70c113d1d64833034ede597270e5be1c3e4130f8b05e3bdffa3dbf235",
+      "sha256": "03588202d91de957632aacfde341d12561ce73f1ce1036c98391ee131d2c8cb5",
+      "bytes": 6604,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{EVIDENCE_ROOT}}",
+          "count": 1
+        }
+      ],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/files-meshes.md",
+      "path": "payload/skills/voxel-model-craft/references/files-meshes.md",
+      "source_sha256": "5fefbc4753e9b4e0eaf47b6b5a7345970d6a771b0ddac67278beeebaf4b9989e",
+      "sha256": "5fefbc4753e9b4e0eaf47b6b5a7345970d6a771b0ddac67278beeebaf4b9989e",
+      "bytes": 2916,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/gen2.md",
+      "path": "payload/skills/voxel-model-craft/references/gen2.md",
+      "source_sha256": "833d23ee6aaad6decd13ee4e5c7c84ac80b04eaed938b94eac2365606bf0865d",
+      "sha256": "833d23ee6aaad6decd13ee4e5c7c84ac80b04eaed938b94eac2365606bf0865d",
+      "bytes": 2967,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/objects.md",
+      "path": "payload/skills/voxel-model-craft/references/objects.md",
+      "source_sha256": "adb2c6897436ee5dcc7aca814e9de0b79542442ec3fca42b2603a6c06c38cc41",
+      "sha256": "adb2c6897436ee5dcc7aca814e9de0b79542442ec3fca42b2603a6c06c38cc41",
+      "bytes": 4099,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/organic-form.md",
+      "path": "payload/skills/voxel-model-craft/references/organic-form.md",
+      "source_sha256": "e3815dd5f54a3de96c011dea70fcc6e600a4b9fd82e4760abb7e5b143ac7ca4c",
+      "sha256": "e3815dd5f54a3de96c011dea70fcc6e600a4b9fd82e4760abb7e5b143ac7ca4c",
+      "bytes": 3257,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/probe-library.md",
+      "path": "payload/skills/voxel-model-craft/references/probe-library.md",
+      "source_sha256": "d2c8dd4e6b76d53d2e6578676725d3a3cedc461c731decd4380147a651a29134",
+      "sha256": "607c72985ab9c3ff21a6f7175bc1ee35590f772d1d598c2c63dac19abc022381",
+      "bytes": 4876,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "the user's",
+          "count": 1
+        }
+      ],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/procedural.md",
+      "path": "payload/skills/voxel-model-craft/references/procedural.md",
+      "source_sha256": "ffe59b9dec0b65c7e3655dac4e31a56577ddf6bfbab384a7a3f0584c64041476",
+      "sha256": "ffe59b9dec0b65c7e3655dac4e31a56577ddf6bfbab384a7a3f0584c64041476",
+      "bytes": 2997,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/quality-cycle.md",
+      "path": "payload/skills/voxel-model-craft/references/quality-cycle.md",
+      "source_sha256": "06fdb7fac96fd899b2b76ffc47906ada8cf26b88ffdc558932b29433da329b20",
+      "sha256": "06fdb7fac96fd899b2b76ffc47906ada8cf26b88ffdc558932b29433da329b20",
+      "bytes": 4911,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/resolution-lod.md",
+      "path": "payload/skills/voxel-model-craft/references/resolution-lod.md",
+      "source_sha256": "ecbaf8a96fbd69c673e79db0e8a2e8ca2ed7cec9a1c27c667d70aa6836f0a4c1",
+      "sha256": "57f8b3509bfe4b917a7624c1576704abe5477b378b4f2a5bcfee6f10519ddd76",
+      "bytes": 3184,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "the user's",
+          "count": 1
+        }
+      ],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/references/shape-palette.md",
+      "path": "payload/skills/voxel-model-craft/references/shape-palette.md",
+      "source_sha256": "061fbc68db05fafe7ce76cb54db79a1291e8c072792569263e410010f5f1b344",
+      "sha256": "061fbc68db05fafe7ce76cb54db79a1291e8c072792569263e410010f5f1b344",
+      "bytes": 4695,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/design_preflight.py",
+      "path": "payload/skills/voxel-model-craft/scripts/design_preflight.py",
+      "source_sha256": "e70746170deb0ef00b93d53059bebcad293ee657fd9a8357ba81264960e08124",
+      "sha256": "e70746170deb0ef00b93d53059bebcad293ee657fd9a8357ba81264960e08124",
+      "bytes": 10481,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/gen21_generate.py",
+      "path": "payload/skills/voxel-model-craft/scripts/gen21_generate.py",
+      "source_sha256": "980ac6b894a9cb663904dd6039e96e7e4b4ce9c3e55fc6bd90bbcae491c6bfab",
+      "sha256": "980ac6b894a9cb663904dd6039e96e7e4b4ce9c3e55fc6bd90bbcae491c6bfab",
+      "bytes": 1524,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/gen21_recipes.py",
+      "path": "payload/skills/voxel-model-craft/scripts/gen21_recipes.py",
+      "source_sha256": "9c614fd27c64a5bd084ee5dd34b80a5984224e1cb2fed5e5ba276f87ac0d3172",
+      "sha256": "9c614fd27c64a5bd084ee5dd34b80a5984224e1cb2fed5e5ba276f87ac0d3172",
+      "bytes": 35464,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/gen2_anatomy.py",
+      "path": "payload/skills/voxel-model-craft/scripts/gen2_anatomy.py",
+      "source_sha256": "4a30c7811a34735d3ef9e146d0b48dcfe3ed2e4912eee152febe89fb9fcc4ad3",
+      "sha256": "4a30c7811a34735d3ef9e146d0b48dcfe3ed2e4912eee152febe89fb9fcc4ad3",
+      "bytes": 20610,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/gen2_built.py",
+      "path": "payload/skills/voxel-model-craft/scripts/gen2_built.py",
+      "source_sha256": "78680fe17c0c3551f4246fab21c8c502515fda537cee865c80576b3d364c7406",
+      "sha256": "78680fe17c0c3551f4246fab21c8c502515fda537cee865c80576b3d364c7406",
+      "bytes": 21089,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/gen2_nature.py",
+      "path": "payload/skills/voxel-model-craft/scripts/gen2_nature.py",
+      "source_sha256": "e8c13da75c19da7f9fb8673a0f794866e6c07f471d75d36e71c41a75b7b7eec5",
+      "sha256": "e8c13da75c19da7f9fb8673a0f794866e6c07f471d75d36e71c41a75b7b7eec5",
+      "bytes": 29161,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/gen2_recipes.py",
+      "path": "payload/skills/voxel-model-craft/scripts/gen2_recipes.py",
+      "source_sha256": "610fda1ce06c0896cdfb7868426aa23689729e6b7dd892c4e4dd34718e49751c",
+      "sha256": "610fda1ce06c0896cdfb7868426aa23689729e6b7dd892c4e4dd34718e49751c",
+      "bytes": 1701,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/gen2_root.py",
+      "path": "payload/skills/voxel-model-craft/scripts/gen2_root.py",
+      "source_sha256": "238e3203cc2dfd945823b4d9a3b9191b99d9775df66c7c0053d9c12fc9c73322",
+      "sha256": "238e3203cc2dfd945823b4d9a3b9191b99d9775df66c7c0053d9c12fc9c73322",
+      "bytes": 10194,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/library_recipes.py",
+      "path": "payload/skills/voxel-model-craft/scripts/library_recipes.py",
+      "source_sha256": "c5876af6b729c462e3976d72e5f6a332784120876ae38aa622c15fac00ff3f1b",
+      "sha256": "c5876af6b729c462e3976d72e5f6a332784120876ae38aa622c15fac00ff3f1b",
+      "bytes": 23257,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/master_recipes.py",
+      "path": "payload/skills/voxel-model-craft/scripts/master_recipes.py",
+      "source_sha256": "636d3ce48bd063ab8020c2c083906b5ad6ef27420c92c8edbedf19bd6a971f36",
+      "sha256": "636d3ce48bd063ab8020c2c083906b5ad6ef27420c92c8edbedf19bd6a971f36",
+      "bytes": 4932,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/semantic_contract.py",
+      "path": "payload/skills/voxel-model-craft/scripts/semantic_contract.py",
+      "source_sha256": "972f7f4b63b4062497a523c2d30231c19b257f683cd7094c53f57760a5e5df65",
+      "sha256": "972f7f4b63b4062497a523c2d30231c19b257f683cd7094c53f57760a5e5df65",
+      "bytes": 5794,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/vox_read.py",
+      "path": "payload/skills/voxel-model-craft/scripts/vox_read.py",
+      "source_sha256": "74c2eb44fb3f498b0f30916d95dfe6673b2329fa0dc0d12c8463de0e55615a48",
+      "sha256": "74c2eb44fb3f498b0f30916d95dfe6673b2329fa0dc0d12c8463de0e55615a48",
+      "bytes": 5394,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/voxel_mesh.py",
+      "path": "payload/skills/voxel-model-craft/scripts/voxel_mesh.py",
+      "source_sha256": "b99b4c71169dacc087ab03957a6d21a4b95d502c2c5bbd667f86285fbd7d78a4",
+      "sha256": "b99b4c71169dacc087ab03957a6d21a4b95d502c2c5bbd667f86285fbd7d78a4",
+      "bytes": 4967,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/scripts/voxel_recipes.py",
+      "path": "payload/skills/voxel-model-craft/scripts/voxel_recipes.py",
+      "source_sha256": "91bf96f0b5d11621f8247ef7747cd1a2f9af59d0daf7dfc0e753fbc48b667b56",
+      "sha256": "91bf96f0b5d11621f8247ef7747cd1a2f9af59d0daf7dfc0e753fbc48b667b56",
+      "bytes": 7790,
+      "transformations": [],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/voxel-model-craft/SKILL.md",
+      "path": "payload/skills/voxel-model-craft/SKILL.md",
+      "source_sha256": "9240a6a825122f703bd61834c9f1952bfc08e5770a72a01a54dd213fd0b4e968",
+      "sha256": "58dd6520327fe476a7cb2d9f2ebc1ae73128398a2d42e11cf3d9050b55418b02",
+      "bytes": 9338,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "the user's",
+          "count": 1
+        }
+      ],
+      "module": "voxel-model-craft"
+    },
+    {
+      "source": "skills/writing-for-agents/agents/openai.yaml",
+      "path": "payload/skills/writing-for-agents/agents/openai.yaml",
+      "source_sha256": "eacb24b2a618cfb81dacb0416f4fdd75ddf3a8060f8ddb99aae1b1e301907e4b",
+      "sha256": "eacb24b2a618cfb81dacb0416f4fdd75ddf3a8060f8ddb99aae1b1e301907e4b",
+      "bytes": 102,
+      "transformations": [],
+      "module": "writing-for-agents"
+    },
+    {
+      "source": "skills/writing-for-agents/LICENSE",
+      "path": "payload/skills/writing-for-agents/LICENSE",
+      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
+      "bytes": 1068,
+      "transformations": [],
+      "module": "writing-for-agents"
+    },
+    {
+      "source": "skills/writing-for-agents/SKILL-MECHANICS.md",
+      "path": "payload/skills/writing-for-agents/SKILL-MECHANICS.md",
+      "source_sha256": "e7884310c3ea2e87ac2ac0aed04561059fb79e138131ca37384f4f0d59641011",
+      "sha256": "e7884310c3ea2e87ac2ac0aed04561059fb79e138131ca37384f4f0d59641011",
+      "bytes": 898,
+      "transformations": [],
+      "module": "writing-for-agents"
+    },
+    {
+      "source": "skills/writing-for-agents/SKILL.md",
+      "path": "payload/skills/writing-for-agents/SKILL.md",
+      "source_sha256": "e3763148b7eae45c0181e0a76d22fe1a5697944615b53f826f790a73090185a1",
+      "sha256": "e3763148b7eae45c0181e0a76d22fe1a5697944615b53f826f790a73090185a1",
+      "bytes": 11111,
+      "transformations": [],
+      "module": "writing-for-agents"
+    },
+    {
+      "source": "runtime/memory/SYSTEM/scripts/github-connect.mjs",
+      "path": "payload/runtime/memory/SYSTEM/scripts/github-connect.mjs",
+      "source_sha256": "ab3a04f179e7c6a7f543cf832afff1ebe9b81694ac4bb56076ccf1b2ca7e36e0",
+      "sha256": "246fff1bf86b02d4f4e20aee1bf976143d394e8772468469137e155c8a0c1108",
+      "bytes": 5112,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        }
+      ],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "runtime/memory/SYSTEM/scripts/install-scheduled-sync.mjs",
+      "path": "payload/runtime/memory/SYSTEM/scripts/install-scheduled-sync.mjs",
+      "source_sha256": "0d77b168f2423d65851f0654656be2170537e5ba2f0e11e3fea3cff0aa5756dc",
+      "sha256": "e0b14d22ce4edd9fe46037e5e2726867a960d6299e1acee9133d2565bef20641",
+      "bytes": 6315,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 2
+        }
+      ],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "runtime/memory/SYSTEM/scripts/kb-lint.mjs",
+      "path": "payload/runtime/memory/SYSTEM/scripts/kb-lint.mjs",
+      "source_sha256": "fba61a40e943ef26d10f4b77e80e92df9cb04ee70af44c66afd979f107ed2f8c",
+      "sha256": "fba61a40e943ef26d10f4b77e80e92df9cb04ee70af44c66afd979f107ed2f8c",
+      "bytes": 13062,
+      "transformations": [],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "runtime/memory/SYSTEM/scripts/kb.mjs",
+      "path": "payload/runtime/memory/SYSTEM/scripts/kb.mjs",
+      "source_sha256": "a49b0c5c4477ae9524144ea1bebc4454e3df07319a9b0208a8292d384bc80168",
+      "sha256": "19e535f7bcbf6150135e020e32f821ff329d97e236cf4a17a2a158642c93fc8b",
+      "bytes": 28481,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "назначенный куратор",
+          "count": 2
+        }
+      ],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "runtime/memory/SYSTEM/scripts/scheduled-sync.mjs",
+      "path": "payload/runtime/memory/SYSTEM/scripts/scheduled-sync.mjs",
+      "source_sha256": "3e53995b76aca3a146c4411ae9ae0a61317164f9d2ee98d3d2d8804a9335572f",
+      "sha256": "3e53995b76aca3a146c4411ae9ae0a61317164f9d2ee98d3d2d8804a9335572f",
+      "bytes": 3008,
+      "transformations": [],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "runtime/memory/SYSTEM/workflows/capture.md",
+      "path": "payload/runtime/memory/SYSTEM/workflows/capture.md",
+      "source_sha256": "a0839f13bbfde1422013697b4cc3898e496791f931d2d57126a443e70f340102",
+      "sha256": "32300ed0586b57add9b3c836f227b531878d9f1c4e80ef233ca33d3d4f30fbd4",
+      "bytes": 10443,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 3
+        },
+        {
+          "kind": "owner-label",
+          "label": "назначенный куратор",
+          "count": 2
+        }
+      ],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "runtime/memory/SYSTEM/workflows/cloud-connector.md",
+      "path": "payload/runtime/memory/SYSTEM/workflows/cloud-connector.md",
+      "source_sha256": "cff74ce9ca863063dc0e3003181d466edab77b93ee46fb06fded4ab4ecc0b9a5",
+      "sha256": "7910ca669905947145f4a4cca618682e87540df66e96df4680a1da15da50ebf9",
+      "bytes": 5752,
+      "transformations": [
+        {
+          "kind": "memory-target-binding",
+          "binding": "{{MEMORY_REPO}}"
+        },
+        {
+          "kind": "memory-target-binding",
+          "binding": "{{CLOUD_MEMORY_ROOT}}"
+        },
+        {
+          "kind": "deployment-state-binding",
+          "detail": "Original machine scheduling receipt is not transferred as another owner authorization or active service."
+        },
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 2
+        },
+        {
+          "kind": "owner-label",
+          "label": "назначенный куратор",
+          "count": 3
+        }
+      ],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "runtime/memory/SYSTEM/workflows/curate.md",
+      "path": "payload/runtime/memory/SYSTEM/workflows/curate.md",
+      "source_sha256": "00874ab51a34e28eb84da55363d1b2cc3d9cc7dc304cdac62ae9cb368fe26b38",
+      "sha256": "620dc0a75c7361b62c22ea099978362fdadaef32a9454d263db59d08c1af4778",
+      "bytes": 4092,
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "назначенный куратор",
+          "count": 2
+        }
+      ],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "pinned-upstream-license",
+      "path": "payload/skills/product-ui-design/licenses/Hitbullets--codex-skills-LICENSE.txt",
+      "source_sha256": "1984e68e053ce76151e504242dcdba63880a359a1c52b081ab924cb9300e897d",
+      "sha256": "1984e68e053ce76151e504242dcdba63880a359a1c52b081ab924cb9300e897d",
+      "bytes": 1071,
+      "transformations": [],
+      "module": "product-ui-design"
+    },
+    {
+      "source": "pinned-upstream-license",
+      "path": "payload/skills/product-ui-design/vendor/codex-frontend-design/LICENSE.txt",
+      "source_sha256": "1984e68e053ce76151e504242dcdba63880a359a1c52b081ab924cb9300e897d",
+      "sha256": "1984e68e053ce76151e504242dcdba63880a359a1c52b081ab924cb9300e897d",
+      "bytes": 1071,
+      "transformations": [],
+      "module": "product-ui-design"
+    },
+    {
+      "source": "pinned-upstream-license",
+      "path": "payload/skills/ui-ux-pro-max/LICENSE",
+      "source_sha256": "738f69dfa83db5c347c678fb9d90e560877059f0de93a327c39001bff92dc014",
+      "sha256": "738f69dfa83db5c347c678fb9d90e560877059f0de93a327c39001bff92dc014",
+      "bytes": 1075,
+      "transformations": [],
+      "module": "ui-ux-pro-max"
+    },
+    {
+      "source": "pinned-upstream-license",
+      "path": "payload/skills/design-taste-frontend-v1/LICENSE",
+      "source_sha256": "4575a543ab88dad12ccea7d97e563d0bce5b448b06072e65d3264497dad326df",
+      "sha256": "4575a543ab88dad12ccea7d97e563d0bce5b448b06072e65d3264497dad326df",
+      "bytes": 1065,
+      "transformations": [],
+      "module": "design-taste-frontend-v1"
+    },
+    {
+      "source": "hooks.json",
+      "path": "payload/runtime/integrations/codex-hooks.template.json",
+      "source_sha256": "6545533a7cae3787e13274d4b325d4becbdd048598c65dc6f8cf7eeb6ae7712e",
+      "sha256": "16fea630e26f5bd1657e8a6bf216b140f027f49a321890fb0ddfd492560ba37c",
+      "bytes": 1599,
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{NODE}}",
+          "count": 3
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 2
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{MEMORY_ROOT}}",
+          "count": 4
+        },
+        {
+          "kind": "owner-label",
+          "label": "пользователь",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "назначенный куратор",
+          "count": 1
+        },
+        {
+          "kind": "hook-command-binding",
+          "detail": "Same three events/operations, limits and timeouts; quote deployment interpreter/script paths on both shells. Template is not registered or trusted by installation."
+        }
+      ],
+      "module": "workflow"
+    }
+  ],
+  "excluded": [
+    {
+      "source": "config.toml",
+      "reason": "Inactive history/configuration, outside transferable active instructions"
+    },
+    {
+      "source": "workflow/backups/kb-writer-20261012T105926Z/config.toml",
+      "reason": "Inactive history/configuration, outside transferable active instructions"
+    },
+    {
+      "source": "workflow/dispatcher/dispatcher.py",
+      "reason": "Inactive history/configuration, outside transferable active instructions"
+    },
+    {
+      "source": "workflow/dispatcher/registry.json",
+      "reason": "Inactive history/configuration, outside transferable active instructions"
+    },
+    {
+      "source": "workflow/dispatcher/RUNBOOK.md",
+      "reason": "Inactive history/configuration, outside transferable active instructions"
+    },
+    {
+      "source": "skills/anthropic-workflow-creator/INSTALLATION.json",
+      "reason": "Machine installation receipt; public provenance is reconstructed from verified snapshot"
+    },
+    {
+      "source": "skills/design-taste-frontend-v1/INSTALLATION.json",
+      "reason": "Machine installation receipt; public provenance is reconstructed from verified snapshot"
+    },
+    {
+      "source": "skills/domain-modeling/INSTALLATION.json",
+      "reason": "Machine installation receipt; public provenance is reconstructed from verified snapshot"
+    },
+    {
+      "source": "skills/grill-with-docs/INSTALLATION.json",
+      "reason": "Machine installation receipt; public provenance is reconstructed from verified snapshot"
+    },
+    {
+      "source": "skills/grilling/INSTALLATION.json",
+      "reason": "Machine installation receipt; public provenance is reconstructed from verified snapshot"
+    },
+    {
+      "source": "skills/handoff/INSTALLATION.json",
+      "reason": "Machine installation receipt; public provenance is reconstructed from verified snapshot"
+    },
+    {
+      "source": "skills/product-ui-review/vendor/impeccable/scripts/bin/windows-x64/impeccable.exe",
+      "reason": "Pinned official runtime asset acquired separately; no behavior replacement"
+    },
+    {
+      "source": "skills/ui-ux-pro-max/INSTALLATION.json",
+      "reason": "Machine installation receipt; public provenance is reconstructed from verified snapshot"
+    },
+    {
+      "source": "skills/writing-for-agents/INSTALLATION.json",
+      "reason": "Machine installation receipt; public provenance is reconstructed from verified snapshot"
+    }
+  ],
+  "runtime_assets": [
+    {
+      "id": "impeccable-windows-x64",
+      "module": "product-ui-review",
+      "path": "skills/product-ui-review/vendor/impeccable/scripts/bin/windows-x64/impeccable.exe",
+      "url": "https://github.com/pbakaus/impeccable/releases/download/engine-v0.1.14/impeccable-windows-x64.exe",
+      "sha256": "38e09451694973ba664a24e67e1502a6913e6d0e533a0a5ae1e04c5963a804b1",
+      "version": "0.1.14",
+      "platform": "win32-x64"
+    }
+  ]
+}

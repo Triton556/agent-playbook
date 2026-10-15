@@ -1,0 +1,41 @@
+# Client and capability compatibility
+
+Layout support and executed client support are different claims. The installer retains bodies/resources and uses documented native locations:
+
+| Client | Native project root | Startup instructions | Current claim |
+|---|---|---|---|
+| Codex | `.agents/skills/<name>/SKILL.md` | Project AGENTS.md full managed block | Layout implemented; actual discovery evidence reported separately |
+| Claude Code | `.claude/skills/<name>/SKILL.md` | Project CLAUDE.md full managed block | Layout implemented; live model execution not established by file tests |
+| DeepSeek Harness | `.dsh/skills/<name>/SKILL.md` | Project AGENTS.md full managed block | Flat native layout implemented; live model execution not established by file tests |
+| Generic | `.agent-harness/skills/<name>/SKILL.md` | Project AGENTS.md | Requires a real native discovery/bootstrap adapter; no automatic compatibility claim |
+
+Primary location references: [Codex skills](https://learn.chatgpt.com/docs/build-skills), [Claude Code skills](https://code.claude.com/docs/en/skills), [DeepSeek local skill discovery](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/skills.md). Checked15October2026. Client versions can change; inspect the installed client before activation.
+
+## Required operations
+
+| Operation | Required capability | If missing |
+|---|---|---|
+| Load actual source/feedback/current project | File/document reading and search | Dependent interpretation remains incomplete |
+| Run local helper/tests | Permitted shell, Python/Node as needed | Record exact missing execution; source presence is not a pass |
+| Inspect image/model/document | Actual image or rendered artifact inspection | Visual acceptance remains unverified |
+| Inspect UI/animation | Browser/computer interaction and actual temporal observation | Static/source checks do not satisfy behavior or motion |
+| Generate an AI bitmap concept | Authorized image generation tool when that method is chosen | Use another permitted design representation where the original branch allows it; otherwise report missing modality |
+| Independent acceptance | New agent/session without author history and actual owner authorization | Do not call self-review independent |
+| Knowledge persistence | Own authorized vault or limited MCP writer | No fictitious saved receipt |
+| Private sync/cloud curation | Verified private remote, authorized transport and scheduler if requested | Keep local data; exchange/schedule remains unconfigured/unverified |
+| Restricted lab operations | Own fixed inventory, current ready session and restricted provider | No automatic VM provision, session launch or arbitrary shell |
+| Document/PDF/presentation/spreadsheet work | Relevant available native format skill/tool and render checks | Install/authorize a suitable provider before claiming that route works |
+
+The package does not redistribute proprietary native plugins or credentials. Native `skill-creator`, document/image tooling and client computer-use interfaces are provider dependencies. The common route preserves their role rather than assuming they are universally installed.
+
+## Fresh reviewer adapters
+
+Codex collaboration uses a new agent with `fork_turns="none"`. Other clients must map this to a genuinely new context/session and the brief from independent-review.md. A reused thread carrying author explanations is not equivalent. Confirm model/effort and tool scope when relevant; no temperature or model setting is silently added.
+
+## Context parity
+
+Full mode places the whole base rules inline in startup instructions, then preserves route/skill/reference loading by the existing triggers. Selected skills retain full bodies and resources. Do not replace the base with an optional unread pointer, summarize a pipeline, load every reference unconditionally or introduce a deterministic dispatcher.
+
+Same model/effort, context, available tools, permissions, task inputs/references and native provider versions provide the closest conditions. They are controls, not a guarantee of identical creativity or successful human perception. Validate actual matched tasks before asserting equivalence.
+
+Codex startup byte budgets, overriding instruction files, shell/interpreter conversion and actual tool/hook registration are covered in [Integrations](INTEGRATIONS.md). All four layouts are installer-tested; only Codex CLI catalog discovery is presently executed. No live Claude/DeepSeek/generic model equivalence is claimed.

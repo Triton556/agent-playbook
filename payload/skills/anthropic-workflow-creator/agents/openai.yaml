@@ -1,0 +1,3 @@
+interface:
+  display_name: "Anthropic Workflow Creator"
+  short_description: "Draft and check repeatable local workflows"

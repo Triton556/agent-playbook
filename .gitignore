@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+tests/.tmp/
+artifacts/
+.harness-state/
+.harness-memory/
+.agent-harness/
+.agents/harness-install.json
+.agents/harness-policy.json
+.claude/harness-install.json
+.claude/harness-policy.json
+.dsh/harness-install.json
+.dsh/harness-policy.json
+*.log
+.env
+.env.*
