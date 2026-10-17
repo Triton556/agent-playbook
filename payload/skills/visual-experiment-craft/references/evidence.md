@@ -4,7 +4,7 @@ Research date: 12 October 2026, Asia/Vladivostok. This package contains original
 
 ## Lineage and coverage
 
-Earlier пользователь KB records describe 58 catalog cards, 56 source readings of different depth, five detailed optics notes and a seven-reference project-local `visual-experiment-craft` v0.2 in Hikari. The v0.2 archive was not found in the accessible local directories or Pages during this update. This edition reconstructs and expands the recorded method; it is not a byte-for-byte patch of that inaccessible archive. The earlier evidence and original archives remain preserved.
+Earlier the user KB records describe 58 catalog cards, 56 source readings of different depth, five detailed optics notes and a seven-reference project-local `visual-experiment-craft` v0.2 in Hikari. The v0.2 archive was not found in the accessible local directories or Pages during this update. This edition reconstructs and expands the recorded method; it is not a byte-for-byte patch of that inaccessible archive. The earlier evidence and original archives remain preserved.
 
 Fresh work opened the online catalog and **11 live projects** in the Codex in-app browser. Selected desktop interactions and screenshots were inspected; two projects were also viewed at 390×844. Six current public HTML files received targeted reading, not a full audit. No upstream scientific model, ranking dataset or performance claim was independently calibrated.
 

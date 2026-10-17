@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+- Translated maintained agent instructions, specialist references and memory-hook context into English.
+- Explicit Russian communication and knowledge-content defaults apply in full and skills-only startup blocks; a specific user request can override output language.
+- Preserved acceptance, authorization, machine schemas, helper computation, existing portability/privacy boundaries and Russian knowledge examples.
+
 ## 0.2.1
 
 - Refreshed the current source-approved instruction roles: document editing, native skill creation and one shared workflow-pilot procedure; the Anthropic entry is a compatibility redirect.

@@ -1,8 +1,8 @@
 ---
 name: kb-status
-description: Проверить сохранение знаний, очередь ответов, Git-синхронизацию и последнее обслуживание личной базы пользователь.
+description: Check knowledge persistence, pending turns, Git synchronization and the latest maintenance of the user's personal knowledge base.
 ---
 
-В проверенной папке базы выполни `node SYSTEM/scripts/kb.mjs status`. На ПК это `{{MEMORY_ROOT}}`; в Cloud определяй фактический путь. Команда обновит STATUS.md текущей копии.
+Run `node SYSTEM/scripts/kb.mjs status` in the verified vault directory. On PC this is `{{MEMORY_ROOT}}`; in Cloud determine the actual path. The command updates STATUS.md in the current copy.
 
-Сообщи последнее сохранение, успешную синхронизацию, число INBOX, pending_turns, неотправленные коммиты и ошибку. Различай локальное сохранение, отправку GitHub и смысловой разбор. Git behind без fetch отражает последнее известное состояние сервера. Очередь выключенного ПК и расписание назначенный куратор нельзя подтверждать по статусу собственной копии: проверяй их отдельным доступным инструментом.
+Report the last capture, successful sync, INBOX count, pending_turns, unpushed commits and error. Distinguish local persistence, GitHub delivery and semantic curation. Without fetch, Git behind reflects only the last known server state. Your own copy's status cannot establish the offline PC's queue or the designated curator's schedule: check those with a separately available tool. Report to the user in Russian.

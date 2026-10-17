@@ -1,24 +1,24 @@
-# Проверка смыслового разбора и восстановления
+# Verify semantic curation and recovery
 
-Используй при curate и изменении карты знаний. Обычный поиск начинает с INDEX и одной ветки; весь архив заранее не загружается.
+Use during curate and knowledge-map changes. Ordinary retrieval starts with INDEX and one branch; do not preload the whole archive.
 
-1. Зафиксируй срез, новые source id/fingerprint и дедуп в INBOX/ARCHIVE/открытых PR. Новые поступления вне выбранного пакета сохрани для отдельного этапа.
-2. Для каждого существенного item оригинала запиши в отдельный coverage JSON: source, item, topic, краткое переносимое решение/причину/статус. Повтор или пропуск имеет явное основание. Не меняй raw ради покрытия.
-3. Проверь original → topic: тема ссылается на исходник и сохраняет существенную оговорку. Наличие URL доказывает связь, но не смысл; прочитай фактический соответствующий абзац.
-4. Проверь topic → index: от корневого INDEX существует понятный путь через тематический индекс/проект. Не создавай отдельный узел на каждый raw. Историю и заменённые решения помечай датами.
-5. Перед продолжением ответь по источникам: какова цель, последнее решение и причина, что отменено, что действительно проверено, что только предложено, какое неизвестное и ближайший шаг? Отсутствующее не достраивай.
-6. Выполни `node SYSTEM/scripts/kb-lint.mjs --json` и `node SYSTEM/scripts/kb-coverage.mjs`. Второй проверяет структурные связи реестра, а смысловые оценки остаются ручными.
-7. На 12 фиксированных [случаях](../examples/retrieval-cases.template.json) сравни исходный `kb.mjs search` с `kb-search.mjs`: ожидаемая тема/source в top-8, правильность ответа и обязательная оговорка. Записывай число открытых файлов/байт выбранного маршрута как объём этого эксперимента, не как реальные model tokens.
-8. После записи отдельно проверь доставку способом, согласованным для текущей среды: на ПК — существующий Windows Git-sync, в облачной копии назначенный куратор — GitHub/API по cloud-connector.md. Подтверди commit и содержимое. Не изменяй закреплённые scheduler-скрипты ради поиска. Успех разбора не означает доставку другому устройству.
+1. Pin the snapshot, new source IDs/fingerprints and deduplication across INBOX/ARCHIVE/open PRs. Preserve new arrivals outside the chosen batch for a separate stage.
+2. For each material original item, record source, item, topic and the concise transferable decision/reason/status in a separate coverage JSON. A duplicate/omission needs explicit grounds. Do not change raw records to satisfy coverage.
+3. Verify original → topic: the topic cites the source and retains the material qualification. A URL establishes a link, not meaning; read the actual corresponding paragraph.
+4. Verify topic → index: root INDEX provides an understandable route through a thematic index/project. Do not create a node for every raw record. Date history and superseded decisions.
+5. Before continuing, answer from sources: goal, latest decision and reason, cancellations, actual verification, proposals only, unknowns and nearest step. Do not invent missing information.
+6. Run `node SYSTEM/scripts/kb-lint.mjs --json` and `node SYSTEM/scripts/kb-coverage.mjs`. The latter checks registry structure; semantic assessment remains manual.
+7. On 12 fixed [cases](../examples/retrieval-cases.template.json), compare original `kb.mjs search` with `kb-search.mjs`: expected topic/source in top-8, answer correctness and required qualification. Record opened file/byte counts as this experiment's volume, not actual model tokens.
+8. After writing, separately verify delivery through the agreed environment route: existing Windows Git-sync on PC; GitHub/API under cloud-connector.md in the designated curator's cloud copy. Confirm commit/content. Do not change pinned scheduler scripts for retrieval. Successful curation does not establish delivery to another device.
 
-Поиск `kb-search.mjs` поддерживает current/history и отдельно показывает подходящие INBOX. Приоритет темы не делает её новее очереди; всегда сверяй даты источников и события. Старая команда поиска сохранена.
+`kb-search.mjs` supports current/history and shows relevant INBOX separately. Topic priority does not make it newer than the queue; always compare source/event dates. The old search command remains available.
 
-Полные исследовательские документы и capture — разные оригиналы. При недоступном документе сохраняй точный указатель и границу доступности, не заявляй полного восстановления. Никаких полных чатов/секретов в Git.
+Full research documents and captures are different originals. For unavailable documents, preserve the exact pointer/access limitation and do not claim full recovery. No full chats/secrets in Git.
 
-## Проверка первичной навигации
+## Primary navigation verification
 
-При изменении структуры выполни `node SYSTEM/scripts/kb-navigation.mjs`. Реестр SYSTEM/navigation/parents.json задаёт одного ближайшего родителя для темы. Проверяются оба перехода родитель ↔ тема, входящие ссылки корня и достижимость без исторических карт. Смысловые перекрёстные связи сохраняются. История и фильтры Obsidian изменяются только в отдельно согласованном объёме.
+After structural changes, run `node SYSTEM/scripts/kb-navigation.mjs`. SYSTEM/navigation/parents.json assigns one nearest parent per topic. Checks cover both parent ↔ topic directions, root incoming links and reachability without historical maps. Preserve semantic crosslinks. Change history and Obsidian filters only within separately agreed scope.
 
-## Настройка на другой базе
+## Setup for another vault
 
-До проверок владелец формирует собственные SYSTEM/coverage/coverage.json, SYSTEM/navigation/parents.json и 12 реальных контрольных случаев. В SYSTEM/examples находятся только синтетические шаблоны структуры: заполните их своими проверенными источниками и темами. Исходные личные реестры и вопросы не поставляются. Отсутствующая настройка не считается успешной проверкой; пустой или демонстрационный реестр не доказывает покрытие рабочей базы. Помощники проверяют связи и файлы, смысл проверяется отдельно по пунктам выше.
+Before verification, the owner supplies their own SYSTEM/coverage/coverage.json, SYSTEM/navigation/parents.json and 12 actual recovery cases. SYSTEM/examples contains only synthetic schema templates: populate them with your verified sources/topics. Private source-owner registries and questions are not supplied. Missing setup is not a successful check; an empty/demo registry does not establish coverage of a working vault. Helpers verify links/files; meaning needs separate assessment under the steps above.

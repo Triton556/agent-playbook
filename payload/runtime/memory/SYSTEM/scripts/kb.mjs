@@ -112,7 +112,7 @@ function captureInner(root, input) {
     if (item.topics.length) body += `\nТемы: ${item.topics.join(', ')}\n`;
     if (item.links.length) body += '\nИсточники:\n' + item.links.map(l => `- <${l}>`).join('\n') + '\n';
   });
-  // The journal keeps identity after Rumi moves an entry out of INBOX.
+  // The journal keeps identity after the designated curator moves an entry out of INBOX.
   const journal = inside(root, `.kb/captures/${id}.json`);
   const receipt = readJson(journal);
   if (receipt && receipt.fingerprint !== fingerprint) throw new Error('Capture identity already exists with different content; use a new batch_key for a new stage');
@@ -211,7 +211,7 @@ export function renderStatus(root) {
   const schedulerFailed = info.scheduler?.status === 'failed';
   const displayedSync = schedulerFailed ? 'pending (ошибка Планировщика)' : info.sync_status || 'не настроена';
   const attention = info.last_error || (schedulerFailed ? info.scheduler.error || 'Планировщик завершился с ошибкой' : null) || (info.pending_turns ? 'Есть ответы без подтверждения сохранения' : !info.connection.url ? 'GitHub remote ещё не подключён' : 'нет');
-  const lines = ['# Состояние базы', '', `Обновлено: ${localTime(now())}`, `Устройство: ${info.device}`, '', '| Показатель | Значение |', '|---|---|', `| Последнее сохранение | ${localTime(info.last_capture_at)} |`, `| Успешная синхронизация | ${localTime(info.last_sync_at)} |`, `| Последний разбор назначенный куратор | ${localTime(info.last_curation_at)} |`, `| PR последнего разбора | ${info.last_curation_pr || 'ещё нет'} |`, `| Записей во входящих | ${info.incoming_count} |`, `| Ответов без отметки сохранения | ${info.pending_turns} |`, `| Изменённых файлов Git | ${info.git.changed_files ?? 'репозиторий не инициализирован'} |`, `| Локальных коммитов к отправке | ${info.git.ahead ?? 'нет связи с upstream'} |`, `| Состояние синхронизации | ${displayedSync} |`, `| Последний запуск Планировщика | ${localTime(info.scheduler?.completed_at)} |`, `| Состояние Планировщика | ${info.scheduler?.status || 'ещё нет'} |`, `| Требует внимания | ${attention.replaceAll('|', '\\|').replaceAll('\n', ' ')} |`, '', 'Это состояние текущей копии. Локальные очереди другого выключенного устройства здесь недоступны.', 'Git не отслеживает эту страницу: она обновляется командой status и синхронизацией. Квитанция сохранения выдаётся независимо от обзорного статуса.', ''];
+  const lines = ['# Состояние базы', '', `Обновлено: ${localTime(now())}`, `Устройство: ${info.device}`, '', '| Показатель | Значение |', '|---|---|', `| Последнее сохранение | ${localTime(info.last_capture_at)} |`, `| Успешная синхронизация | ${localTime(info.last_sync_at)} |`, `| Последний разбор Руми | ${localTime(info.last_curation_at)} |`, `| PR последнего разбора | ${info.last_curation_pr || 'ещё нет'} |`, `| Записей во входящих | ${info.incoming_count} |`, `| Ответов без отметки сохранения | ${info.pending_turns} |`, `| Изменённых файлов Git | ${info.git.changed_files ?? 'репозиторий не инициализирован'} |`, `| Локальных коммитов к отправке | ${info.git.ahead ?? 'нет связи с upstream'} |`, `| Состояние синхронизации | ${displayedSync} |`, `| Последний запуск Планировщика | ${localTime(info.scheduler?.completed_at)} |`, `| Состояние Планировщика | ${info.scheduler?.status || 'ещё нет'} |`, `| Требует внимания | ${attention.replaceAll('|', '\\|').replaceAll('\n', ' ')} |`, '', 'Это состояние текущей копии. Локальные очереди другого выключенного устройства здесь недоступны.', 'Git не отслеживает эту страницу: она обновляется командой status и синхронизацией. Квитанция сохранения выдаётся независимо от обзорного статуса.', ''];
   atomic(inside(root, 'STATUS.md'), lines.join('\n'));
   updateState(root, { status_refresh_pending: false });
   return { ...info, status_refresh_pending: false };
@@ -319,7 +319,7 @@ function handleHook(root, input) {
   const script = path.join(root, 'SYSTEM/scripts/kb.mjs');
   const nodeCommand = process.platform === 'win32' ? `& '${process.execPath.replaceAll("'", "''")}'` : 'node';
   const args = `--session ${JSON.stringify(input.session_id)} --turn ${JSON.stringify(input.turn_id)}`;
-  const instruction = `Личная база: ${root}. Перед завершением этого ответа сохрани новые полезные сведения текущего разговора через навык kb-save или JSON в stdin команды ${nodeCommand} "${script}" capture. source.kind=codex, source.session_id=${input.session_id}, source.turn_id=${input.turn_id}. Если новых сведений нет: ${nodeCommand} "${script}" checkpoint ${args}. Данные остаются локально до Git-sync: на ПК его выполняет Планировщик раз в час и при входе; назначенный куратор обменивает свою облачную копию и разбирает входящие ежедневно. Сохранение памяти можно делегировать одному отдельному агенту по необходимости; порядок и проверка результата — в kb-save. Для остальных агентов следуй действующим правилам согласования с пользователь.`;
+  const instruction = `Personal knowledge base: ${root}. Before finishing this response, save new useful knowledge through kb-save or JSON on stdin to ${nodeCommand} "${script}" capture. Write knowledge content in Russian. source.kind=codex, source.session_id=${input.session_id}, source.turn_id=${input.turn_id}. If nothing is new: ${nodeCommand} "${script}" checkpoint ${args}. Data stays local until Git-sync: Windows Task Scheduler syncs the PC hourly and at sign-in; the designated curator exchanges her cloud copy and curates INBOX daily. A memory agent requires the installation owner's current authorization; kb-save owns handoff and verification. Other agents require current agreement with the user.`;
   if (input.hook_event_name === 'UserPromptSubmit') {
     if (!fs.existsSync(file)) atomic(file, { session_id: input.session_id, turn_id: input.turn_id, started_at: now() });
     return { hookSpecificOutput: { hookEventName: 'UserPromptSubmit', additionalContext: instruction } };
@@ -329,9 +329,9 @@ function handleHook(root, input) {
     if (mark?.completed_at) return {};
     if (input.stop_hook_active) {
       updateState(root, { last_error: 'A turn finished without a memory checkpoint; inspect pending turns', status_refresh_pending: true });
-      return { systemMessage: 'Сохранение памяти не подтверждено; ход отмечен в локальном журнале. Обзорный статус обновляется отдельно.' };
+      return { systemMessage: 'Memory persistence is unconfirmed; the turn was logged locally. Summary status refresh is separate.' };
     }
-    return { decision: 'block', reason: instruction + ' Это однократная проверка сохранения; заверши её без повторения основного ответа.' };
+    return { decision: 'block', reason: instruction + ' This is a one-time persistence check; complete it without repeating the main answer.' };
   }
   return {};
 }
@@ -371,7 +371,7 @@ async function main() {
   } catch (error) {
     if (command === 'hook') {
       if (!error.hookEventRecorded) { try { recordHookEvent(root, hookInput, null, error); } catch {} }
-      process.stdout.write(JSON.stringify({ systemMessage: 'Ошибка хука личной памяти; проверь .kb/hook-events.jsonl.' }) + '\n');
+      process.stdout.write(JSON.stringify({ systemMessage: 'Personal memory hook error; inspect .kb/hook-events.jsonl.' }) + '\n');
     }
     throw error;
   }

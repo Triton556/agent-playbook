@@ -114,3 +114,7 @@ Use these levels: files installed → integrity verified → client discovery ve
 ## Removal
 
 Inspect `remove --dry-run` first. Actual removal deletes only matching owned files and the matching owned instruction block. Modified files stop removal; preexisting identical files, other project content and knowledge data remain. The installer performs no recursive directory delete. Do not use reset, force deletion or overwrite to clear conflicts.
+
+## Instruction and output languages
+
+The maintained agent instructions are English. The startup block for full and selected-skills installations explicitly defaults user communication and knowledge-base content to Russian. Honor a user's explicit language request for a particular output. Preserve exact paths, identifiers, schema keys and source quotations. Russian examples, stored knowledge and human-facing Russian documentation are intentional.

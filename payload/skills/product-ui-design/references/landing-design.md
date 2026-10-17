@@ -1,13 +1,13 @@
-# Лендинги: адаптация gpt-taste
+# Landing pages: gpt-taste adaptation
 
-Используй этот модуль для лендинга, промо, кампании и маркетинговой страницы, включая их доработку и редизайн. Для dashboard/settings/editor он не применяется. Оригинал: [gpt-taste](../vendor/gpt-taste/INSTRUCTIONS.md); ниже действующая локальная адаптация его предписаний.
+Use for landing, promotional, campaign and marketing pages, including refinement/redesign. It does not apply to dashboards/settings/editors. Original: [gpt-taste](../vendor/gpt-taste/INSTRUCTIONS.md); below is the current local adaptation.
 
-1. Выбери композицию hero по продукту, контенту и цели: центрированная, асимметричная, editorial split или иной подходящий вариант. Сравни коротко два варианта, когда первый явно похож на привычный шаблон. Число символов запроса и случайный seed не являются дизайнерским критерием.
-2. Используй AIDA как возможную драматургию внимания, интереса, доверия и действия. Секции, CTA, pricing и навигация появляются только если нужны реальному предложению; фиксированная структура и обязательные «ровно два CTA» сняты.
-3. Настрой ширину и масштаб headline так, чтобы он читался и выглядел собранно на целевых размерах. Проверяй переносы в render; `max-w-*` не гарантирует число строк. Русский текст и mobile могут требовать другой композиции.
-4. Делай сетку содержательной и сбалансированной. Bento не обязателен. `grid-auto-flow: dense` допустим, когда визуальный порядок не расходится с порядком чтения и keyboard navigation. Пустое место может быть намеренным; скрытый overflow не исправляет ошибку layout.
-5. Добавляй одно выразительное движение, если оно усиливает рассказ или действие. GSAP/pinning/scrubbing опциональны; проверь существующие зависимости, reduced motion, целевые устройства, cleanup и стоимость эффекта. Статическая качественная страница допустима.
-6. Выбирай реальные подходящие изображения/иллюстрации либо разрешённую генерацию. `picsum` seed не означает тематического соответствия. Проверь содержание и загрузку каждого значимого asset, сохрани происхождение. Клиентские логотипы, отзывы и показатели не выдумывай.
-7. В существующем лендинге сохрани принятый бренд при доработке. При согласованном редизайне обновляй систему целиком в пределах поверхности. Не делай обязательными новые шрифты, тёмную тему, градиенты или огромные вертикальные интервалы.
+1. Choose hero composition by product, content and goal: centered, asymmetric, editorial split or another suitable option. Briefly compare two options when the first is an obvious familiar template. Prompt length and random seed are not design criteria.
+2. Use AIDA as optional sequencing of attention, interest, trust and action. Sections, CTAs, pricing and navigation appear only when the actual offer needs them; fixed structure and mandatory “exactly two CTAs” were removed.
+3. Set headline width/scale for readable, coherent composition at target sizes. Check wrapping in the render; `max-w-*` does not guarantee line count. Russian text and mobile may need a different composition.
+4. Make the grid meaningful and balanced. Bento is optional. `grid-auto-flow: dense` is acceptable when visual order matches reading and keyboard navigation. Whitespace can be intentional; hidden overflow does not fix a layout error.
+5. Add an expressive motion when it improves the story or action. GSAP/pinning/scrubbing are optional; check existing dependencies, reduced motion, target devices, cleanup and effect cost. A high-quality static page is valid.
+6. Choose actual appropriate images/illustrations or authorized generation. A `picsum` seed does not imply thematic relevance. Check each important asset's content/loading and preserve provenance. Do not invent customer logos, testimonials or metrics.
+7. Preserve an accepted brand when refining an existing landing page. For an agreed redesign, update the system across the scoped surface. Do not mandate new fonts, dark theme, gradients or huge vertical spacing.
 
-Перед сдачей проверь первую видимую область, ясность предложения и CTA, ритм всей страницы, читаемость текста/кнопок, целевые размеры и работу ссылок/форм через [product-ui-review](../../product-ui-review/SKILL.md). Никаких mock-логов Python, выдуманного запуска или математической «гарантии» без фактической проверки.
+Before delivery, check the first visible area, offer/CTA clarity, whole-page rhythm, text/button readability, target sizes and link/form behavior through [product-ui-review](../../product-ui-review/SKILL.md). No mock Python logs, invented execution or mathematical “guarantee” without actual verification.

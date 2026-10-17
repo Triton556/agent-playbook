@@ -1,20 +1,20 @@
-# Ежедневный разбор назначенный куратор
+# the designated curator's daily curation
 
-Работу выполняет назначенный куратор сама, без отдельных агентов. ПК синхронизирует Планировщик Windows; облачная копия обменивается через GitHub/API по cloud-connector.md. Не считать API-обмен shell Git-sync.
+the designated curator performs this herself, without separate agents. Windows Task Scheduler syncs the PC; the cloud copy exchanges through GitHub/API under cloud-connector.md. API exchange is not shell Git-sync. Write curated knowledge in Russian.
 
-По прямому решению пользователь от 5 октября 2026 (UTC+10) PR для этой базы не нужны. Эта процедура заменяет прежнее требование первых разборов через PR.
+the user's direct decision of 5 October 2026 (UTC+10) removed mandatory PRs for this vault. This procedure supersedes the earlier requirement to use PRs for initial curation.
 
-1. Проверить владельца/приватность, зафиксировать main commit и актуальные blob SHA. Прочитать INDEX и необходимые инструкции.
-2. Проверить локальную очередь и id/fingerprint в INBOX, ARCHIVE и существующих открытых PR. Не дублировать ранее обработанное. Новые записи, появившиеся во время разбора, оставить для следующего запуска.
-3. Читать только новые INBOX. Сохранить актуальные факты/решения/задачи, дату и ссылки на оригиналы. Старые решения отметить заменёнными, противоречия сохранить с обеими версиями. Предположения — отдельно в HYPOTHESES с основанием.
-   Для author-style сопоставь source ID с текущими «Профиль стиля», «Примеры», «Редакторские решения». Добавь только новое: подлинные фрагменты с авторством/целью/аудиторией и реальные правки с областью применения. Разделяй переписку, посты и рабочие тексты; наблюдения по малому корпусу помечай гипотезами. При свежем чтении сохрани ручные правки и существующие записи; обновляй конкретный пункт с источником вместо переписывания страниц. Новая коррекция ссылается на заменённое решение; конфликт остаётся видимым. ИИ-черновики и синтетические тесты не пополняют подлинный корпус.
-4. Перенести оригиналы INBOX → ARCHIVE с теми же id, fingerprint и байтами. Обновить INDEX и состояние проекта.
-5. Связанные изменения опубликовать в main одной tree/commit с актуальным родителем и force=false. Если main сдвинулся, перечитать и согласовать изменения, не затирать чужие записи.
-6. Повторно прочитать main и проверить новые файлы, а для архивирования — совпадение blob SHA оригиналов. Не объявлять успех до проверки.
-7. Записать локальную квитанцию API/разбора с commit, временем и обработанными id. Не подставлять фиктивный PR URL в старую команду curation-record --pr. Плановое выполнение отличать от ручного.
+1. Verify owner/privacy, pin the main commit and current blob SHAs. Read INDEX and necessary instructions.
+2. Check the local queue and id/fingerprint across INBOX, ARCHIVE and existing open PRs. Do not duplicate processed material. Leave records arriving during curation for the next run.
+3. Read only new INBOX. Preserve current facts/decisions/tasks, dates and original references. Mark old decisions superseded; preserve both versions of conflicts. Put assumptions separately in HYPOTHESES with grounds.
+   For author-style, compare source IDs against current “Профиль стиля”, “Примеры”, “Редакторские решения” notes. Add only new authentic fragments with authorship/purpose/audience and actual edits with applicability. Distinguish correspondence, posts and working prose; label small-corpus observations as hypotheses. Preserve manual edits and existing records when rereading; update a specific sourced point rather than rewriting pages. A new correction cites the superseded decision; conflicts remain visible. AI drafts and synthetic tests do not enter the authentic corpus.
+4. Move INBOX originals → ARCHIVE with identical IDs, fingerprints and bytes. Update INDEX and project state.
+5. Publish related changes to main in one tree/commit with current parent and force=false. If main advances, reread/reconcile without overwriting others' records.
+6. Read main back and verify new files and original blob-SHA equality for archiving. Do not claim success before verification.
+7. Record a local API/curation receipt with commit, time and processed IDs. Do not supply a fake PR URL to old `curation-record --pr`. Distinguish scheduled execution from manual work.
 
-Если новых входящих нет, только обмен и проверка. Сообщать о существенном результате, ошибке или нужном решении; без изменений молчать. Первый фактический плановый запуск сообщить отдельно.
+If no new INBOX exists, perform only exchange and verification. Report material results, errors or required decisions; stay quiet when unchanged. Report the first actual scheduled run separately.
 
-## Проверка original → topic → index
+## Verify original → topic → index
 
-При смысловом разборе выполняй [retrieval-quality](retrieval-quality.md): item-level покрытие с причинами пропусков, достижимость тем, контрольные вопросы и отдельная проверка доставки. Наличие исходника и ссылки не доказывает переноса решения/причины/статуса. Доставку проверяй по действующему маршруту текущей среды: Windows Git-sync для ПК, GitHub/API для облачной копии назначенный куратор.
+During semantic curation, follow [retrieval-quality](retrieval-quality.md): item-level coverage and omission reasons, topic reachability, recovery questions and separate delivery verification. An original/link does not prove transfer of its decision/reason/status. Verify delivery through the current environment's route: Windows Git-sync for PC, GitHub/API for the designated curator's cloud copy.

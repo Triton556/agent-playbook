@@ -1,48 +1,47 @@
-# Impeccable: проверка и доводка
+# Impeccable: inspection and refinement
 
-Применяй после реализации/изменения UI и для запрошенной визуальной проверки. Для review-only запроса выдавай находки; для разрешённой доработки исправляй их самостоятельно. Проверка ограничена затронутой поверхностью и критериями пользователя. Полный upstream toolkit сохранён в [vendor/impeccable](../vendor/impeccable/INSTRUCTIONS.md), включая детектор и профильные справки; эта адаптация определяет оркестрацию.
+Use after UI implementation/change and for requested visual review. Deliver findings for review-only; repair them yourself for authorized refinement. Checks are scoped to the affected surface and user criteria. The complete upstream toolkit remains in [vendor/impeccable](../vendor/impeccable/INSTRUCTIONS.md), including detector and specialist references; this adaptation owns orchestration.
 
-## Инструменты и контекст
+## Tools and context
 
-Для контекста используй локальную обёртку, возвращающую только факты о проекте:
+For context, use the local wrapper that returns only project facts:
 
 ```powershell
 & '{{HARNESS_ROOT}}/skills/product-ui-review/scripts/impeccable-context.ps1' -TargetPath '<source-file-or-route>'
 ```
 
-Если нужны факты toolkit о проекте, запускай из его корня один раз на поверхность/сессию; уже доступный достаточный контекст повторно не собирай. Обёртка исключает upstream-директивы об обязательном интервью и разрешении субагентов; действуют локальные правила. Не вызывай сырой `context` ради инструкций workflow. Если инструмент недоступен, прочитай существующие документы/компоненты проекта и продолжай через доступный браузер; сообщи о непроведённом автоматическом анализе. Создание отсутствующего PRODUCT.md или внедрение нового формата DESIGN.md не является предварительным условием работы. Существующие конвенции проекта важнее формата toolkit.
+When toolkit project facts are needed, run once per surface/session from the project root; do not recollect sufficient context already available. The wrapper excludes upstream mandatory interview/subagent directives; local rules apply. Do not call raw `context` for workflow instructions. If unavailable, read existing project documents/components and continue through an available browser; report unperformed automated analysis. Creating a missing PRODUCT.md or introducing DESIGN.md is not a prerequisite. Existing project conventions outrank toolkit formats.
 
-Impeccable справки загружай адресно:
+Load Impeccable references selectively:
 
-| Наблюдаемая потребность | Справка в vendor/impeccable/reference/ |
-|---|---|
-| Общая эстетическая критика, иерархия, целостность | [локальная критика](critique-adapted.md), craft-floor.md |
-| Финальная доводка согласованного дизайна | polish.md |
-| Ошибки, формы, длинный текст, i18n, edge cases | harden.md, clarify.md |
-| Responsive / доступность / технический аудит | adapt.md, audit.md; native-вариант для native UI |
-| Типографика / интервалы / движение / скорость | typeset.md / layout.md / animate.md / optimize.md |
-| Сложное создание/переработка визуального мира | new-work.md; процедуры интервью/делегирования заменены локальными правилами |
+| Observable need | Reference in vendor/impeccable/reference/ |
+| --- | --- |
+| General aesthetic critique, hierarchy, coherence | [local critique](critique-adapted.md), craft-floor.md |
+| Final polish of an agreed design | polish.md |
+| Errors, forms, long text, i18n, edge cases | harden.md, clarify.md |
+| Responsive / accessibility / technical audit | adapt.md, audit.md; native variant for native UI |
+| Typography / spacing / motion / speed | typeset.md / layout.md / animate.md / optimize.md |
+| Complex creation/redesign of a visual world | new-work.md; local rules replace interview/delegation procedures |
 
-Исходные справки содержат дополнительные роли, вопросы и hooks. Они не расширяют текущую задачу: работай одним агентом, используй уже принятые решения, без повторного интервью и автоматических hooks. Самопроверка одним агентом не называется независимым ревью.
+Upstream references include extra roles, questions and hooks. They do not expand the task: work as the current single agent, reuse accepted decisions and introduce no repeat interview or automatic hooks. One-agent self-checking is not independent review.
 
-## Проверка render и поведения
+## Render and behavior verification
 
-Для первого считывания, интерпретации и сохранения характера используй [единый протокол](../../product-engineering/references/human-perspective-review.md). Зафиксируй условия зрителя и наблюдение до авторских объяснений; собственное ревью не называй независимым. Проверяй стиль, контекст, понятность и использование конкретными наблюдениями. Состояния/формы/таблицы/фильтры уточняет [interaction-quality](../../product-ui-design/references/interaction-quality.md); доступность результата и восстановление проверяются фактическим действием.
+Use the [shared protocol](../../product-engineering/references/human-perspective-review.md) for first reading, interpretation and preservation of character. Record viewer conditions and observations before author explanations; do not call your own review independent. Check style, context, clarity and use through concrete observations. [Interaction-quality](../../product-ui-design/references/interaction-quality.md) refines states/forms/tables/filters; test result accessibility and recovery through actual actions.
 
-1. Запусти приложение штатным способом и открой именно изменённый маршрут. Учитывай ошибки console/network и загрузку assets/fonts. Для screenshots дождись устойчивого состояния; входная анимация не должна скрывать контент. Предпочитай доступный браузер/CUA; Playwright применяй когда он доступен и уместен. Соблюдай правила выбранного инструмента.
-2. Сними и действительно просмотри изменённую поверхность в целевых размерах из brief, включая реальную область окна пользователя, если она известна. Desktop и mobile проверяй оба, когда оба поддерживаемых режима входят в задачу; для desktop-дашборда сначала проверь desktop, для узкой правки — затронутые состояния. Не оценивай детали по уменьшенной full-page миниатюре: используй кропы/отдельные области. Для пространственных объектов выбирай функциональное лицо и нужные независимые ракурсы; одинаковый угол до/после не считается двумя направлениями. Свяжи просмотренные изображения с фактической ревизией, камерой/масштабом и отмеченными состояниями.
-3. При наличии макета сравни его сохранённую версию с реальным render в сопоставимых состоянии, данных и размере/zoom по [UI design preflight, этап 4](../../product-ui-design/references/design-preflight.md#4-сравнить-работающий-ui-с-основой). В рамках того же прохода пройди главный непрерывный сценарий: действия, переходы, формы и наблюдаемый результат, применимый отказ и восстановление. Проверь уместные loading/empty/error/success состояния, keyboard/focus и reduced motion. Проверь overflow, масштаб текста, контраст, иерархию, интервалы, сохраняемые качества и соответствие референсу/брифу. Укажи отдельно дефекты основы и переноса; отсутствие макета не подменяй его ретроспективным одобрением.
-   Если интерфейс содержит существенные изображения людей, действительно осмотри лица, позы и контакты в размере показа; подозрительное место дополнительно увеличь. Сверь число/положение видимых глаз и черты лица с ракурсом и принятой стилизацией: профиль, закрытые глаза и намеренное упрощение допустимы, непреднамеренное считывание «циклопом» требует исправления или нового визуального решения. После правки снова проверь целый блок в рабочем размере. Формат файла или автоматический pass этот осмотр не заменяют.
-
-4. Когда детектор может разрешить конкретный технический/стилистический вопрос, выполни его на затронутом исходнике либо URL; он не является обязательным вторым аудитом каждой существенной web-правки. Формат аргументов проверь по `detect --help`:
+1. Launch the app normally and open the actual changed route. Account for console/network errors and asset/font loading. Wait for stable screenshot state; entrance animation must not hide content. Prefer an available browser/CUA; use Playwright when available and appropriate. Follow the chosen tool's rules.
+2. Capture and actually inspect the changed surface at brief-defined sizes, including the user's actual window area when known. Check desktop and mobile when both supported modes are in scope; begin with desktop for a desktop dashboard and affected states for a narrow fix. Do not judge details from a reduced full-page thumbnail: use crops/regions. For spatial objects, choose the functional face and necessary independent views; the same angle before/after is not two directions. Bind inspected images to the actual revision, camera/scale and marked states.
+3. When a mockup exists, compare its saved version with the actual render at comparable state, data and size/zoom under [UI design preflight, stage 4](../../product-ui-design/references/design-preflight.md#4-compare-the-working-ui-with-the-basis). In the same pass, perform the main uninterrupted scenario: actions, transitions, forms, observable result and applicable failure/recovery. Check relevant loading/empty/error/success states, keyboard/focus and reduced motion. Check overflow, text scale, contrast, hierarchy, spacing, preservation and reference/brief fit. Distinguish basis defects from transfer defects; do not replace an absent mockup with retrospective approval.
+   If important human illustrations appear, actually inspect faces, poses and contacts at presentation size; enlarge suspicious areas too. Compare visible eye count/placement and facial features with viewpoint and accepted stylization: profile, closed eyes and intentional simplification are valid; unintended “cyclops” recognition requires a fix or new visual decision. After repair, recheck the entire section at working size. File format or automated pass does not replace this inspection.
+4. When a detector can resolve a specific technical/stylistic question, run it on the affected source or URL; it is not a mandatory second audit of every substantial web edit. Check argument format with `detect --help`:
 
 ```powershell
 & '{{HARNESS_ROOT}}/skills/product-ui-review/vendor/impeccable/scripts/impeccable.cmd' detect '<target>' --json
 ```
 
-Детектор — дополнительное свидетельство, не судья бренда. Классифицируй механический дефект, стилистическую рекомендацию и сознательное решение проекта. Предписанный Inter, палитра, логотип или контент не заменяются ради нулевого счётчика. Для native UI HTML/CSS detector пропускается с объяснением; нужен simulator/emulator или доступный native render.
-5. Составь короткий список существенных дефектов и исправь их одним осмысленным пакетом. Повтори затронутые screenshots, сценарии и проверки. Обычный бюджет — первичный осмотр и подтверждение после исправлений. Если существенный дефект остался, либо решай по новой конкретной гипотезе в согласованном бюджете, либо честно укажи блокер; потолок полировки не превращает провал в успех.
+The detector is supporting evidence, not the brand's judge. Distinguish a mechanical defect, stylistic recommendation and deliberate project decision. Do not replace mandated Inter, palette, logo or content to reach a zero count. Skip the HTML/CSS detector for native UI with an explanation; use a simulator/emulator or available native render.
+5. List material defects briefly and repair them as one coherent batch. Repeat affected screenshots, scenarios and checks. The usual budget is initial inspection plus confirmation after repairs. If a material defect remains, pursue a new concrete hypothesis within the agreed budget or state the blocker honestly; a polish limit does not turn failure into success.
 
-## Готовность
+## Readiness
 
-Выполнены критерии пользователя, главный сценарий проверен, существенные найденные дефекты устранены, screenshots просмотрены, применимые проверки после последних изменений прошли. При недоступном render результат помечается «реализовано, визуально не проверено», а не production-ready. Не требуй лишних раундов ради вкусовых вариантов после выполненной приёмки.
+User criteria are met, the main scenario checked, material discovered defects fixed, screenshots inspected and applicable checks passed after the latest changes. Without rendering, label the result “implemented, visually unverified,” not production-ready. Do not require extra rounds for taste alternatives after completed acceptance.

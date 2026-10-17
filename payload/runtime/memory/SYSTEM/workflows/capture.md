@@ -1,18 +1,20 @@
-# Запись новых знаний
+# Capture new knowledge
 
-Из доступного разговора выделяй только новое полезное: факты, предпочтения, решения с причинами, поручения и статус выполнения, обновления проектов, идеи, исследование с источниками, гипотезы с основанием. Не извлекай сведения из недоступных чатов по догадке.
+Extract only useful new information from the available conversation: facts, preferences, decisions with reasons, tasks and execution status, project updates, ideas, sourced research and grounded hypotheses. Do not infer information from inaccessible chats.
 
-Пиши по-русски. Подтверждённость основывай на словах пользователя или наблюдаемом результате, а не на уверенности модели. Для поручений используй `open`, `in-progress`, `done`, `cancelled`; `done` требует подтверждения результата. Для гипотез скрипт устанавливает `unconfirmed`.
+Write knowledge in Russian. Establish confirmation from user statements or observable results, not model confidence. Task statuses: `open`, `in-progress`, `done`, `cancelled`; `done` requires confirmed results. The script assigns hypotheses `unconfirmed`.
 
-В конце содержательного этапа передай JSON через stdin в `node SYSTEM/scripts/kb.mjs capture`. Скрипт сохраняет файлы без модельных вызовов; выполнить его может основной агент или назначенный агент памяти. Для Codex используй реальные session_id и turn_id из хука. Для назначенный куратор/Cloud, если платформа не предоставляет идентификаторы, выбери UUID разговора и этапа, сохрани их в своей текущей рабочей записи и используй те же значения при повторной попытке.
+At the end of a substantive stage, pass JSON through stdin to `node SYSTEM/scripts/kb.mjs capture`. The script saves files without model calls; the main agent or designated memory agent can execute it. For Codex, use real hook-provided session_id and turn_id. For the designated curator/Cloud without platform-provided identifiers, choose conversation/stage UUIDs, retain them in your current work record and reuse them on retry.
 
-На ПК при доступном MCP `danil_kb_writer` используй `kb_capture({payload})` с тем же JSON или `kb_checkpoint({session_id,turn_id})` без заметки. пользователь согласовал постоянный доступ этих двух операций 12.10.2026; инструмент работает только с фиксированной базой. Проверь наличие инструмента в каталоге текущего чата: регистрация в настройках сама по себе не доказывает загрузку активным клиентом. При отсутствии инструмента доступен существующий CLI с действующими правами файлового доступа. Успех подтверждается квитанцией и существующим файлом; повтор использует прежнюю identity.
+On PC, when MCP `danil_kb_writer` is available, use `kb_capture({payload})` with the same JSON or `kb_checkpoint({session_id,turn_id})` without a note. the user approved standing access to these two operations on 12 October 2026; the tool works only with the fixed vault. Verify presence in this chat's tool catalog: registration alone does not establish loading by the active client. If absent, the existing CLI remains available under current filesystem permissions. Success requires a receipt and an existing file; retries retain identity.
+
+This example deliberately keeps saved content in Russian while machine keys remain unchanged:
 
 ```json
 {
   "schema_version": 1,
   "title": "Короткое название новых сведений",
-  "source": {"kind": "codex", "session_id": "реальный-id-чата", "turn_id": "реальный-id-ответа"},
+  "source": {"kind": "codex", "session_id": "actual-session-id", "turn_id": "actual-turn-id"},
   "batch_key": "final",
   "final": true,
   "items": [
@@ -28,26 +30,26 @@
 }
 ```
 
-Возможные type: `fact`, `preference`, `decision`, `task`, `project-update`, `idea`, `research`, `hypothesis`. Источник kind: `codex`, `rumi`, `cloud`, `manual`. На промежуточном этапе используй отдельный `batch_key` и `final: false`; финальная запись отмечает весь текущий ответ как обработанный. Новая запись с тем же источником и batch_key, но другим содержимым отвергается: выбери новый ключ для действительно нового этапа.
+Supported type values: `fact`, `preference`, `decision`, `task`, `project-update`, `idea`, `research`, `hypothesis`. Source kind: `codex`, `rumi`, `cloud`, `manual`. At an intermediate stage, use a separate `batch_key` and `final: false`; a final record marks the whole current response as processed. Different content under the same source/batch_key is rejected: choose a new key for a genuinely new stage.
 
-Если полезного нового нет, команда `node SYSTEM/scripts/kb.mjs checkpoint --session <session_id> --turn <turn_id>` отмечает ответ без создания пустой заметки. Отметку ставь только после анализа текущего ответа. При ошибке записи не отмечай сохранение как выполненное.
+If there is no useful new knowledge, `node SYSTEM/scripts/kb.mjs checkpoint --session <session_id> --turn <turn_id>` marks the response without an empty note. Mark it only after assessing the current response. Never mark persistence complete after a write error.
 
-На ПК сохранение остаётся локальным. На ПК Git-sync выполняет Планировщик Windows раз в час и при входе пользователя; назначенный куратор обменивает свою облачную копию через GitHub connector/API ежедневно или по запросу. Сбой отправки не отменяет сохранённый файл. Успех захвата — существующий файл и возвращённый id; успех синхронизации — успешный Git push и отметка в STATUS.md. Квитанция capture не зависит от обновления обзорного статуса и Git-диагностики. STATUS.md актуализируется командой status или синхронизацией; status_refresh_pending отмечает ожидающее обновление. Длительности и исходы операций записываются без содержимого заметок в .kb/operation-events.jsonl и .kb/hook-events.jsonl.
+On PC, capture stays local. Windows Task Scheduler performs PC Git-sync hourly and at sign-in; the designated curator exchanges her cloud copy through GitHub connector/API daily or on request. Upload failure does not undo the saved file. Capture success means an existing file and returned ID; sync success means successful Git push and STATUS.md evidence. Capture receipts do not depend on summary-status refresh or Git diagnostics. STATUS.md updates through status or sync; status_refresh_pending indicates pending refresh. Record operation durations/outcomes without note content in .kb/operation-events.jsonl and .kb/hook-events.jsonl.
 
-## Делегирование сохранения памяти
+## Delegated memory capture
 
-- По постоянному разрешению пользователь допускается один агент памяти, когда объём итогов оправдывает делегирование. Основной агент отвечает за завершённое сохранение.
-- Передай ему только относящиеся к записи факты, решения, основания и ограничения, а также исходные `source.kind`, `session_id`, `turn_id` и выбранный `batch_key`. Не подменяй источник идентификаторами вспомогательного чата. При доступном выборе контекста передавай краткую задачу без всей истории.
-- Для одного набора сведений назначь одного исполнителя записи. Агент памяти вызывает `capture` с `final: false` и возвращает результат команды, id и путь существующего файла. Если его собственный хук требует отметку, он делает checkpoint своего ответа без повторной записи этих сведений.
-- Основной агент проверяет результат capture и существование файла. Когда новых сведений больше нет, он завершает исходный ответ через checkpoint; дополнительные сведения сохраняет отдельным batch_key. Обещание исполнителя не подтверждает сохранение. При ошибке сначала проверь, появилась ли запись; повторяй тот же набор с прежним batch_key, чтобы не создать дубль.
-- Запрет пользователь на сохранение содержимого сохраняется при делегировании. Разрешение на агента памяти не расширяет доступ к данным, не разрешает агентов основной задачи или отдельную синхронизацию.
+- the user's standing permission allows one memory agent when summary volume justifies delegation. The main agent remains responsible for completed persistence.
+- Give only relevant facts, decisions, evidence and limitations, plus original `source.kind`, `session_id`, `turn_id` and chosen `batch_key`. Do not substitute the helper chat's identity. When context selection is available, provide a concise task without full history.
+- Assign one writer per knowledge set. The memory agent calls `capture` with `final: false` and returns command output, ID and an existing file path. If its own hook requires a mark, it checkpoints its own response without recording these facts again.
+- The main agent checks the capture receipt and file existence. With no further new knowledge, checkpoint the original response; save additional information under a separate batch_key. A helper's promise is not persistence evidence. On failure, first check whether a record appeared; retry the same set with the same batch_key to avoid duplicates.
+- the user's prohibition on saving content survives delegation. Memory-agent permission does not expand data access, authorize main-task agents or separately authorize synchronization.
 
-## Пополнение авторского стиля
+## Author-style additions
 
-Из доступного текущего разговора сохраняй существенные правки пользователя, явные пожелания к тексту и небольшие подходящие авторские фрагменты с темой author-style. Для фрагмента укажи подлинного автора, точную цитату, source ID, цель, аудиторию и жанр. ИИ-черновик помечай как ИИ-черновик; опечатку или случайное раздражение не превращай в правило.
+From the available current conversation, capture material user edits, explicit writing preferences and small suitable authentic fragments under author-style. Record real author, exact quotation, source ID, purpose, audience and genre. Label AI drafts as AI drafts; do not turn a typo or momentary frustration into a rule.
 
-Для редактуры запиши source ID исходника и правки, «было → пользователь исправил → вывод», область применения и уровень уверенности. Реальное исправление добавляет новую запись; исходник остаётся неизменным. Без пары исходник/правка не создавать редакторское решение.
+For edits, record original/correction source IDs, “before → user correction → inference,” applicability and confidence. An actual correction adds a record; preserve the original. Without an original/correction pair, do not create an editorial decision.
 
-Перед capture проверь source ID в ранее сохранённых author-style записях и трёх стилевых заметках. Идентичный повтор пропусти; конфликт сохрани отдельно с основаниями. Используй реальные идентификаторы по правилам capture и стабильный batch_key author-style-v1 для одного источника; ID отдельного оригинала также сохрани в evidence. Изменение содержания не записывай поверх прежней identity. Если подходящего нового нет, выполни обычный checkpoint текущего ответа.
+Before capture, check source IDs in saved author-style records and the three style notes. Skip identical duplicates; preserve conflicts with evidence. Use real capture IDs and stable batch_key author-style-v1 for one source; include each original's ID in evidence too. Do not overwrite an earlier identity with changed content. If nothing suitable is new, use an ordinary checkpoint for this response.
 
-Сохранение фрагментов не подключает авторский голос к обычным ответам. Профиль PERSONAL/Авторский стиль загружается только по задаче написать или отредактировать от лица пользователя. Недоступные чаты не собирать; полные чаты и секреты не сохранять.
+Capturing fragments does not apply the user's voice to ordinary replies. Load PERSONAL/Авторский стиль only for writing/editing on the user's behalf. Do not collect inaccessible chats or save full chats/secrets.

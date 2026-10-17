@@ -1,3 +1,3 @@
-# Перенесено
+# Moved
 
-Действующие инструкции: [перейти](../../product-ui-design/references/landing-design.md).
+Current instructions: [open](../../product-ui-design/references/landing-design.md).

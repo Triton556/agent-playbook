@@ -1,10 +1,10 @@
 ---
 name: kb-curate
-description: Разобрать новые INBOX личной базы пользователь, обновить тематические заметки и индекс по действующему workflow; предназначено для ежедневной работы назначенный куратор.
+description: Curate new INBOX records in the user's personal knowledge base and update topic notes and the index under the current workflow. Intended for the designated curator's daily maintenance.
 ---
 
-Прочитай SYSTEM/workflows/curate.md в проверенной копии базы и выполняй его. Обработай только новые id, проверяя уже разобранное в ARCHIVE и прежних открытых PR. Факты и поручения основывай на оригиналах; гипотезы и противоречия сохраняй с основаниями.
+Read and follow SYSTEM/workflows/curate.md in the verified vault copy. Process only new IDs, checking already curated records in ARCHIVE and earlier open PRs. Ground facts and tasks in originals; retain hypotheses and conflicts with their evidence. Write curated knowledge in Russian.
 
-Смысловой разбор выполняет назначенный куратор сама. Для базы пользователь обязательный PR отменён решением от 5 октября 2026. В облачной копии без Git clone используй проверенный снимок и GitHub/API по SYSTEM/workflows/cloud-connector.md. Связанные изменения публикуй в main с актуальным родителем без force; при сдвиге main перечитай изменения.
+the designated curator performs semantic curation herself. Mandatory PRs for the user's vault were revoked on 5 October 2026. In a cloud copy without a Git clone, use a verified snapshot and GitHub/API under SYSTEM/workflows/cloud-connector.md. Publish related changes to main with the current parent and no force; reread changes if main advances.
 
-Оригиналы INBOX переноси в ARCHIVE с теми же id, fingerprint и байтами. После публикации повторно проверь файлы и blob SHA, запиши квитанцию разбора с commit и обработанными id. Не подставляй фиктивный PR URL в старую команду curation-record. Успех требует проверенной записи; создание PR не является отдельным этапом этого workflow.
+Move INBOX originals to ARCHIVE with identical IDs, fingerprints and bytes. After publication, read back files and blob SHAs, and record a curation receipt with the commit and processed IDs. Do not supply a fake PR URL to the old curation-record command. Success requires a verified write; creating a PR is not a separate step of this workflow.

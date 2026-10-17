@@ -1,21 +1,21 @@
-# Интерфейсы: создание, доработка, переработка
+# Interfaces: creation, refinement and redesign
 
-Для конкретного вопроса о выразительности, типографике или композиции используй [Anthropic frontend-design](../vendor/anthropic-frontend-design/INSTRUCTIONS.md). [Адаптация Hitbullets для Codex](../vendor/codex-frontend-design/INSTRUCTIONS.md) — дополнительная справка при необходимости более конкретного token/layout плана; оба источника не нужно загружать на каждом запросе.
+For a specific question about expression, typography or composition, use [Anthropic frontend-design](../vendor/anthropic-frontend-design/INSTRUCTIONS.md). The [Hitbullets Codex adaptation](../vendor/codex-frontend-design/INSTRUCTIONS.md) is an additional reference when a more concrete token/layout plan is needed; do not load both on every request.
 
-## Определи масштаб
+## Establish scope
 
-- **Доработка / refinement:** сохрани идентичность, компоненты, контент и поведение. Исправляй затронутую иерархию, ритм, типографику или взаимодействие. «Красивее» само по себе не разрешает менять назначение продукта.
-- **Переработка / redesign:** в согласованном объёме пересмотри визуальную систему и композицию, сохрани продуктовые факты, сценарии и ограничения. Существующий экран — свидетельство текущего поведения, а не обязательный визуальный шаблон.
-- **Новая поверхность:** определи аудиторию, основную задачу и связь с существующим продуктом. Если контекст достаточен, выбирай направление самостоятельно; спрашивай только о существенном неизвестном.
+- **Refinement:** preserve identity, components, content and behavior. Correct affected hierarchy, rhythm, typography or interaction. “More beautiful” alone does not authorize changing the product's purpose.
+- **Redesign:** reconsider the visual system/composition within scope while preserving product facts, scenarios and constraints. An existing screen is evidence of current behavior, not a mandatory visual template.
+- **New surface:** establish audience, main task and relationship to the existing product. Choose direction yourself when context is sufficient; ask only about material unknowns.
 
-Для продуктового интерфейса первичны выполнение задачи, сканируемость и предсказуемость. Для маркетинговой поверхности — внимание, понимание предложения и действие. Для документации — чтение; для портфолио — представленная работа. Выбирай режим по поверхности: лендинг приложения и его рабочий экран имеют разные цели.
+For product UI, task completion, scannability and predictability come first. For marketing, attention, understanding the offer and action. For documentation, reading; for a portfolio, the showcased work. Choose the mode by surface: an app's landing page and working screen have different goals.
 
-## Сформируй и реализуй направление
+## Form and implement a direction
 
-Используй одну визуальную систему: роли шрифтов, семантические цвета, масштаб текста, интервалы, сетка, состояния компонентов. В существующем проекте сначала найди эти решения в компонентах/токенах; изменение одного экрана не создаёт конкурирующую систему. Новый token-план делай только при реальной необходимости.
+Use one visual system: font roles, semantic colors, text scale, spacing, grid and component states. In an existing project, first find these decisions in components/tokens; changing one screen does not create a competing system. Produce a new token plan only when actually needed.
 
-Обоснуй характер дизайна предметом, аудиторией и контентом. Выдели один выразительный приём; остальное поддерживает его. Указанные в исходниках запреты шрифтов, цветов и знакомых композиций — предупреждения против случайных шаблонов, а не запрет принятой дизайн-системы. Фактический контент, цифры, отзывы, логотипы и обещания должны иметь основание; демо помечай как демо.
+Ground design character in the subject, audience and content. Select one expressive technique; the rest supports it. Source prohibitions of fonts, colors and familiar compositions warn against arbitrary templates; they do not ban an accepted design system. Actual content, figures, testimonials, logos and promises need evidence; label demos as demos.
 
-Для неизвестного UX/stack вопроса используй существующий `{{HARNESS_ROOT}}/skills/ui-ux-pro-max/SKILL.md` и один релевантный поиск/справку. Результат поиска — рекомендация, не новая дизайн-система. Taste v1 остаётся дополнительным источником только при явной потребности; он не загружается в каждый UI-запрос.
+For an unknown UX/stack question, use existing `{{HARNESS_ROOT}}/skills/ui-ux-pro-max/SKILL.md` and one relevant search/reference. Search output is guidance, not a new design system. Taste v1 remains an additional source only when specifically useful; do not load it on every UI request.
 
-Сохрани доступные focus/keyboard состояния, reduced motion, читаемость и адаптивность. Проверь реальные сообщения, длинные названия, пустые/загружаемые/ошибочные состояния по сценарию. После UI-реализации переходи в [product-ui-review](../../product-ui-review/SKILL.md).
+Preserve accessible focus/keyboard states, reduced motion, readability and responsiveness. Check real messages, long names and empty/loading/error states relevant to the scenario. After UI implementation, move to [product-ui-review](../../product-ui-review/SKILL.md).

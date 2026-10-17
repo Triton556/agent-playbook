@@ -1,47 +1,47 @@
-# Взаимодействие: ожидание, ответ и восстановление
+# Interaction: expectation, response and recovery
 
-Открывай при проектировании/проверке главного действия, состояний, формы, таблицы, фильтров или сложного рабочего UI. Загружай только применимую ветку. Принятый дизайн и целевое устройство выше рекомендаций; desktop-задача не становится мобильной по умолчанию.
+Open while designing/checking a main action, states, form, table, filters or complex working UI. Load only the applicable branch. Accepted design and target device outrank recommendations; desktop work does not become mobile by default.
 
-## Контракт действия и данных
+## Action and data contract
 
-Для существенного действия в существующем плане: **действие → ожидание пользователя → доступный заметный отклик → подтверждённый результат → восстановление → что сохраняется → проверка**. До детализации проверь главный экран и действие на простом представлении; ясная малая правка может использовать принятую основу.
+For a material action, record in the existing plan: **action → user expectation → visible accessible response → confirmed result → recovery → preservation → verification**. Before detail, check the main screen/action with a simple representation; a clear small edit can reuse the accepted basis.
 
-| Состояние | Что должно быть ясно |
+| State | What must be clear |
 | --- | --- |
-| Ожидание | Действие принято, что выполняется, как продолжить/отменить при поддержке; процент и срок имеют основание |
-| Действительный ноль | Что измерялось, период/выборка и смысл нуля |
-| Нет измерения / неизвестно | Почему значение неизвестно; не подставлять ноль. Значение NULL определяется контрактом, не одной глобальной трактовкой |
-| Нет совпадений | Видны применённые условия и способ ослабить/снять фильтр |
-| Ошибка / устаревший результат | Не показывать как успешный пустой ответ; понятная причина/следующий шаг, сохранность работы, метка актуальности |
-| Успех | Результат различим; дополнительное уведомление только если помогает заметить/восстановить контекст |
+| Waiting | Action was accepted, what is happening, how to continue/cancel when supported; percentages/deadlines have grounds |
+| Actual zero | What was measured, period/sample and meaning of zero |
+| No measurement / unknown | Why the value is unknown; never substitute zero. The contract defines NULL, not one universal interpretation |
+| No matches | Applied conditions and a way to relax/remove filters are visible |
+| Error / stale result | Do not present it as a successful empty response; clear cause/next step, preserved work and freshness label |
+| Success | Result is distinguishable; extra notification only when useful for noticing it/recovering context |
 
-Согласуй единицы, знаменатели, округление, выбранный сценарий, подсчёты и вывод. Идентификатор не требует знаменателя; доля — требует. Фильтрация обновляет зависимые графики/подписи/вывод, а запоздалый ответ не заменяет более новый. Сохраняемые настройки имеют понятную область и способ вернуться к исходным.
+Align units, denominators, rounding, selected scenario, counts and conclusions. An identifier needs no denominator; a proportion does. Filtering updates dependent charts/labels/conclusions, and a late response must not replace a newer one. Persisted settings have a clear scope and way to restore defaults.
 
-## Ввод и ошибки
+## Input and errors
 
-- Видимый label, обязательность и правила до ввода; placeholder не единственная инструкция. Убирай необоснованные поля, сохраняя достаточность данных. Число полей и мастер шагов определяет задача.
-- Сохраняй введённое при ошибке. Валидация учитывает взаимодействие и завершённость ввода; обход нетронутой формы клавишей Tab не создаёт очередь красных сообщений. Помощь паролю во время ввода может быть полезна.
-- Ошибка называет проблему и способ исправить, доступна рядом с действием/полем; для длинной формы уместна связанная сводка. Успешные поля не сбрасываются. Формат можно нормализовать только при сохранении смысла; server-контракт остаётся обязательным.
-- Очистка данных, отмена, сброс фильтров и возврат вида к дефолту — разные операции. Цена потери определяет undo/подтверждение; не требуй подтверждения на каждом безвредном действии.
+- Show labels, required status and rules before entry; placeholder is not the only instruction. Remove unjustified fields while preserving sufficient data. The task determines field count and wizard steps.
+- Preserve input on error. Validation respects interaction and input completeness; tabbing through an untouched form should not create a queue of red errors. Password assistance while typing may be useful.
+- An error names the problem and correction, accessible near the action/field; a linked summary suits long forms. Do not clear successful fields. Normalize format only while preserving meaning; server contracts remain mandatory.
+- Clearing data, canceling, resetting filters and restoring a default view are different operations. Loss cost determines undo/confirmation; do not require confirmation for every harmless action.
 
-## Таблицы, фильтры и плотный desktop
+## Tables, filters and dense desktop UI
 
-- Текст/сравниваемые числа выравнивай по смыслу; tabular-цифры имеют одинаковую ширину без обязательного моноширинного шрифта. Короткие статусы/чекбоксы могут быть центрированы.
-- Видны границы выбора, активные фильтры, число результатов и снятие условий. Bulk-действие ясно показывает область, включая выбор за пределами страницы. Отсутствие совпадений не выдаётся за отсутствие всех данных.
-- Freeze, resize, reorder, смена плотности и палитра команд — ускорители, когда нужны задаче/частому пользователю; они не заменяют понятный исходный вид и обычный путь.
-- Действия обнаружимы и доступны без hover; важное управление не прячется только в наведении. Детали показывай способом, подходящим количеству данных и сохранению контекста; универсального порядка tooltip/modal/sidebar нет.
-- Глубокая навигация получает опоры по задаче. Успех, ошибочные действия, возвраты и усилие важнее фиксированного числа кликов.
+- Align text/comparable numbers by meaning; tabular numerals have equal width without requiring a monospace font. Short statuses/checkboxes may be centered.
+- Show selection boundaries, active filters, result count and removal of conditions. Bulk actions make scope clear, including selections beyond the page. No matches is not absence of all data.
+- Freeze, resize, reorder, density changes and command palettes are accelerators when useful for the task/frequent user; they do not replace a clear initial view and ordinary path.
+- Actions are discoverable and usable without hover; important controls cannot exist only on hover. Present detail in a way suited to data amount and context preservation; there is no universal tooltip/modal/sidebar hierarchy.
+- Provide orientation for deep navigation according to the task. Success, errors, returns and effort matter more than a fixed click count.
 
-## Графика, движение и ожидание
+## Graphics, motion and waiting
 
-Длина/позиция удобны для точного сравнения; выбирай график по вопросу. Цвет может передавать дополнительную величину, но содержание доступно и через значения/подписи/другой канал. Исследовательский дашборд допустим: обзор, сравнение и детали имеют понятные переходы.
+Length/position support precise comparison; choose charts by question. Color can encode another quantity, but values/labels/another channel also convey the content. An exploratory dashboard is valid when overview, comparison and detail have clear transitions.
 
-Отклик должен соответствовать операции. 0.1/1/10 секунд — ориентиры, не одинаковый SLA всех действий. Если процент неизвестен, покажи этапы/измеренный объём либо неопределённый индикатор. Skeleton соответствует будущей структуре; он не обязателен после универсального порога. Оптимистичная правка уместна только при контролируемой обратимости/ошибках. Звук/микродвижение дозированы и отключаемы; reduced motion учитывается.
+Response matches the operation. 0.1/1/10 seconds are heuristics, not one SLA for every action. When percentage is unknown, show stages/measured volume or an indeterminate indicator. Skeletons match future structure; they are not mandatory after a universal threshold. Optimistic changes suit only controlled reversibility/errors. Sound/micro-motion should be restrained and disableable; honor reduced motion.
 
-## Как проверить
+## How to verify
 
-В реальном целевом окне выполни главный сценарий и относящийся к риску путь отказа/восстановления. Проверь доступные клавиатурные пути, focus, сохранность ввода/условий и согласованность данных. Для асинхронного UI проверь медленный/неуспешный ответ и смену условий. Осмотр кадра не измеряет задержку и не доказывает эмоцию пользователь.
+In the actual target window, perform the main scenario and risk-relevant failure/recovery. Check available keyboard paths, focus, preserved inputs/conditions and data consistency. For asynchronous UI, check slow/failed responses and changing conditions. A still image does not measure latency or establish the user's emotion.
 
-Приёмка: сценарий завершён, результат заметен и корректен, существенная ошибка восстанавливаема в заявленных границах, актуальные свидетельства относятся к последним изменениям. Непроведённое остаётся непроверенным.
+Acceptance: scenario completes, result is visible/correct, material errors are recoverable within stated bounds, and current evidence covers the latest changes. Unperformed checks remain unverified.
 
-Источники: [NN/g response times](https://www.nngroup.com/articles/response-times-3-important-limits/), [long waits](https://www.nngroup.com/articles/designing-for-waits-and-interruptions/), [forms](https://www.nngroup.com/articles/errors-forms-design-guidelines/), [three-click rule](https://www.nngroup.com/articles/3-click-rule/); W3C [keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html), [status messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html), [use of color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html). Контекст применения и оговорки сохранены в ui-perception-integration.md, а не перенесены в универсальный балл красоты.
+Sources: [NN/g response times](https://www.nngroup.com/articles/response-times-3-important-limits/), [long waits](https://www.nngroup.com/articles/designing-for-waits-and-interruptions/), [forms](https://www.nngroup.com/articles/errors-forms-design-guidelines/), [three-click rule](https://www.nngroup.com/articles/3-click-rule/); W3C [keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html), [status messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html), [use of color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html). Applicability and qualifications remain in ui-perception-integration.md rather than a universal beauty score.

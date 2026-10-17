@@ -1,5 +1,5 @@
 {
-  "description": "Локальное сохранение личной памяти пользователь текущим агентом; ежедневную синхронизацию выполняет назначенный куратор.",
+  "description": "Local knowledge capture by the current agent; the designated curator performs daily synchronization.",
   "hooks": {
     "UserPromptSubmit": [
       {
@@ -10,7 +10,7 @@
             "commandWindows": "\"{{NODE}}\" \"{{MEMORY_ROOT}}/SYSTEM/scripts/kb.mjs\" hook",
             "timeout": 10,
             "additionalContextLimit": 800,
-            "statusMessage": "Подготовка локального сохранения памяти"
+            "statusMessage": "Preparing local memory capture"
           }
         ]
       }
@@ -23,7 +23,7 @@
             "command": "\"{{NODE}}\" \"{{MEMORY_ROOT}}/SYSTEM/scripts/kb.mjs\" hook",
             "commandWindows": "\"{{NODE}}\" \"{{MEMORY_ROOT}}/SYSTEM/scripts/kb.mjs\" hook",
             "timeout": 10,
-            "statusMessage": "Проверка локального сохранения памяти"
+            "statusMessage": "Checking local memory persistence"
           }
         ]
       },
@@ -34,7 +34,7 @@
             "command": "\"{{NODE}}\" \"{{HARNESS_ROOT}}/workflow/quality-stop.mjs\"",
             "commandWindows": "\"{{NODE}}\" \"{{HARNESS_ROOT}}/workflow/quality-stop.mjs\"",
             "timeout": 6,
-            "statusMessage": "Диагностика актуальности и полноты workflow"
+            "statusMessage": "Diagnosing workflow freshness and completeness"
           }
         ]
       }

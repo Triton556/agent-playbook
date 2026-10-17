@@ -1,42 +1,42 @@
-# Проверочная задача и метрики
+# Pilot task and metrics
 
-Это единственный локальный порядок эксперимента над workflow: проверка нового метода, сравнение способов или измерение его эффекта. Обычная правка инструкции использует затронутые структурные/проектные проверки и не запускает модельный benchmark. Наличие кейса не разрешает его исполнение, новых агентов, услуги или расходы; применяются согласованные границы задачи.
+This is the single local procedure for workflow experiments: testing a method, comparing approaches or measuring an effect. Ordinary instruction edits use affected structural/project checks and do not launch a model benchmark. A case's existence does not authorize execution, new agents, services or spending; agreed task boundaries apply.
 
-## Перед прогоном
+## Before the run
 
-Зафиксируй в существующем плане проверяемое изменение, ожидаемый эффект и условие остановки. Выбери самый дешёвый достаточный вид проверки: разбор уже сохранённых результатов, детерминированный тест инструмента или разрешённое выполнение задачи агентом. Эти виды дают разные свидетельства; разбор истории не является новым прогоном.
+Record the change, expected effect and stopping condition in the existing plan. Choose the cheapest sufficient evidence: analysis of saved outputs, a deterministic tool test or an authorized agent task run. These yield different evidence; historical analysis is not a new run.
 
-Для небольшого пилота выбери несколько представительных случаев и полезный пограничный случай; их число определяется гипотезой и бюджетом, не квотой. По возможности включи допустимый необычный результат, который процедура не должна ошибочно забраковать. Для каждого случая заранее назови ожидаемый результат и правдоподобную ошибку, которую проверка должна различать. Знакомый обучающий пример и новый проверочный случай отмечай отдельно.
+For a small pilot, select a few representative cases and a useful edge case; hypothesis and budget determine count, not a quota. Where possible, include an unusual valid result the procedure must not falsely reject. Define the expected result and a plausible error each check must distinguish beforehand. Distinguish a familiar training example from a new evaluation case.
 
-Перед выполнением запиши исходный brief, варианты инструкций, модель/настройки при доступности, разрешённые ресурсы и бюджет. Сравнение использует одинаковый вход и ограничения; свежесть контекста, номер попытки и предыдущее знакомство с результатом учитываются. Если меняется несколько компонентов, измеряется их совместный эффект. пользователь задаёт или согласует тестовую задачу; не подставляй дорогую серию по умолчанию.
+Before execution, record the original brief, instruction variants, model/settings when available, authorized resources and budget. Comparisons use equal inputs and constraints; account for context freshness, attempt number and prior exposure to the result. Changing several components measures their joint effect. the user supplies or agrees to the test task; do not default to an expensive series.
 
-## Выполнение и оценка
+## Execution and assessment
 
-Сохрани реальные артефакты и версии исполненных случаев; неисполненное остаётся неисполненным. Применяй заранее выбранные критерии к выходам, а не только к отчёту автора. Проверяй значимые утверждения по соответствующим файлам, действиям и модальности. Журнал читай адресно для вопроса о процессе; полный transcript всех участников не является обязательным входом.
+Preserve actual artifacts and versions of executed cases; unexecuted cases remain unexecuted. Apply predefined criteria to outputs, not just the author's report. Verify material claims against relevant files, actions and modality. Read logs selectively for a process question; a full transcript of all participants is not a mandatory input.
 
-Для критерия укажи наблюдение/свидетельство и исход: подтверждён, провален или непроверен. Проверь сами ожидания: наличие заголовка/файла не доказывает правильность содержания. Отдельно запиши реальные дефекты, ложные тревоги и ограничения наблюдения. Второй агент участвует только если явно выбран для этой задачи; авторская проверка и фактический отзыв пользователь имеют свои статусы.
+For each criterion, record observation/evidence and outcome: confirmed, failed or unverified. Check the expectations themselves: a heading/file does not prove correct content. Record actual defects, false alarms and observation limits separately. A second agent participates only when explicitly selected for this task; author checks and the user's real feedback have distinct statuses.
 
-## Что считать
+## What to measure
 
-Выбирай показатели, относящиеся к гипотезе; вся таблица не обязательна каждому пилоту.
+Select metrics relevant to the hypothesis; not every pilot needs the whole table.
 
-| Показатель | Источник и знаменатель |
+| Metric | Source and denominator |
 | --- | --- |
-| Выполнение | Проверенные обязательные выходы / объявленные выходы |
-| Повторные вопросы | Повторы после согласия / вопросы о решениях; technical отдельно |
-| Вмешательства | Новое требование, отзыв, разрыв связи, намеренная остановка и необоснованный стоп отдельно |
-| Качество | Технические, смысловые, визуальные критерии; реальные дефекты и ложные тревоги |
-| Восприятие | Узнавание, понимание, сохранение характера; агентская гипотеза отдельно от отзыва человека |
-| UI | Успех действия, ошибки, помощь, восстановление; время/клики при измерении |
-| Применение метода | Правильно выбранная ветка и фактическое использование нужных оснований/проверок |
-| Стоимость | Фактические время/токены с периодом и способом сбора; неизвестное не ноль |
+| Completion | Verified mandatory outputs / declared outputs |
+| Repeated questions | Repeats after agreement / decision questions; technical questions separate |
+| Interventions | Distinguish new requirements, feedback, connection loss, intentional stop and unjustified stop |
+| Quality | Technical, semantic and visual criteria; actual defects and false alarms |
+| Perception | Recognition, comprehension, preservation of character; agent hypothesis separate from human feedback |
+| UI | Action success, errors, assistance, recovery; time/clicks when measured |
+| Method use | Correct branch selection and actual use of necessary evidence/checks |
+| Cost | Actual time/tokens with measurement period and collection method; unknown is not zero |
 
-Показывай исходные числа и знаменатели. Нулевой знаменатель — «не определено». Повторно переданный кэш, уникальный текст и денежная стоимость — разные величины. Саморазметка журнала не является независимым доказательством; пропуск записи не доказывает отсутствие события.
+Show raw counts and denominators. A zero denominator means “undefined.” Repeated cached input, unique text and monetary cost are different quantities. Self-labeled logs are not independent evidence; a missing record does not prove an event did not happen.
 
-Для уже используемых событий подходит agent-worklog `metrics`, для свидетельств — существующие критерии или ledger. Не вводи дополнительную схему только ради пилота. Формат старых Anthropic `evals.json` допустим для совместимости при конкретной необходимости; он не является обязательным стандартом.
+Use agent-worklog `metrics` for already tracked events, and existing criteria or ledger for evidence. Do not introduce a schema solely for a pilot. Legacy Anthropic `evals.json` is allowed for a specific compatibility need; it is not the mandatory standard.
 
-## Вывод и следующая правка
+## Conclusion and next edit
 
-Сопоставь результат с гипотезой, стоимостью и относящимся человеческим фидбеком. Отдели наблюдения от возможной причины. Небольшой пилот не доказывает статистическую устойчивость, общий вкус или вклад каждого изменения.
+Compare the result with the hypothesis, cost and relevant human feedback. Separate observations from possible causes. A small pilot does not establish statistical reliability, general taste or each change's contribution.
 
-Сделай только поддержанную наблюдениями корректировку и повтори затронутые проверки. Новый платный раунд требует оставшейся гипотезы и действующего разрешения/бюджета. Урок сохраняется с областью, исключениями и ссылкой на пример/контрпример; не превращай каждый единичный дефект в универсальную стадию workflow.
+Make only an observation-supported adjustment and repeat affected checks. A new paid round requires a remaining hypothesis and current authorization/budget. Save the lesson with scope, exceptions and an example/counterexample reference; do not turn every single defect into a universal workflow stage.

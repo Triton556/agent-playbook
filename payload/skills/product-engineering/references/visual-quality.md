@@ -1,3 +1,3 @@
-# Перенесено
+# Moved
 
-Действующие инструкции: [перейти](../../product-ui-review/SKILL.md).
+Current instructions: [open](../../product-ui-review/SKILL.md).

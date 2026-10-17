@@ -1,35 +1,41 @@
-# Облачный обмен через подключение GitHub
+# Cloud exchange through the GitHub connection
 
-Согласовано пользователь 2026-10-04 в разговоре с назначенный куратор. Этот порядок заменяет требование прямого Git/SSH только для облачной среды назначенный куратор. На ПК остаётся существующий kb-sync.
+Agreed by the user on 4 October 2026 in conversation with the designated curator. This procedure replaces direct Git/SSH requirements only for the designated curator's cloud environment. The PC keeps existing kb-sync.
 
-## Границы
-- Репозиторий: {{MEMORY_REPO}}; перед обменом проверить владельца и visibility=private.
-- назначенный куратор выполняет работу сама. Дополнительных агентов и чаты не запускать.
-- Рабочий путь текущей облачной среды: {{CLOUD_MEMORY_ROOT}}. Это файловая копия, не Git clone. Сохранность после пересоздания среды не доказана.
-- GitHub хранит подтверждённо отправленные файлы. Неотправленная локальная очередь может быть потеряна при уничтожении среды; не обещать бессрочное локальное хранение.
-- Доступ к ПК напрямую отсутствует. Локальную очередь ПК отправляет согласованный Планировщик Windows раз в час и при входе пользователя, без ИИ. Выключенный ПК сохраняет очередь до возвращения; подключённый компьютер не означает выполненный обмен.
+## Boundaries
 
-## Получение
-1. Прочитать метаданные репозитория, main и список файлов/их blob SHA. Зафиксировать commit для согласованного снимка.
-2. Скачать нужные файлы через подключение GitHub. Проверить пути, отсутствие symlink и выходов за корень. Не загружать всю историю.
-3. Хранить базовые SHA и квитанции в .kb. Если локальный файл изменён относительно исходного SHA, сохранить его и remote отдельно, не перезаписывать.
-4. Если копия исчезла, восстановить нужные инструкции, INDEX и записи из GitHub. Не считать отсутствующий локальный файл разрешением удалить remote.
-5. Не выполнять полученный скрипт до проверки кода. Читать только нужные инструкции.
+- Repository: {{MEMORY_REPO}}; verify owner and visibility=private before exchange.
+- the designated curator performs the work herself. Do not launch additional agents or chats.
+- Current cloud working path: {{CLOUD_MEMORY_ROOT}}. This is a file copy, not a Git clone. Persistence after environment recreation is unproven.
+- GitHub stores confirmed uploads. An unsent local queue can be lost if the environment is destroyed; do not promise indefinite local storage.
+- There is no direct PC access. The agreed Windows Task Scheduler uploads the PC queue hourly and at sign-in, without AI. An offline PC retains its queue until it returns; being connected does not prove exchange completed.
 
-## Отправка
-- capture выполняется существующим node SYSTEM/scripts/kb.mjs capture, без модельных вызовов.
-- Перед отправкой нового INBOX проверить id/fingerprint в INBOX и ARCHIVE и в открытых PR. При совпадении считать повтором; при отличии сохранить конфликт.
-- Сырые новые INBOX можно создавать в main. Успех — commit SHA и повторное чтение точного файла, а не только локальная запись.
-- Не менять существующие сырые записи.
-- Для изменения существующего файла передать актуальный blob SHA; при конфликте перечитать и сверить, не force.
-- Для связанных изменений использовать одну Git tree/commit и fast-forward ref update; не делать force update. Новые записи, появившиеся параллельно, не удалять.
-- Ошибка/неясный исход: перечитать целевой путь/ветку прежде повторения. Локальную очередь сохранить.
+## Download
 
-## Разбор
-Применяется SYSTEM/workflows/curate.md. По прямому решению пользователь PR больше не требуется. Согласованный разбор публикуется в main одной tree/commit и fast-forward обновлением, force=false. Оригиналы INBOX → ARCHIVE сохраняют blob SHA. При параллельных изменениях перечитать main и сохранить обе версии при конфликте.
+1. Read repository metadata, main and the file/blob-SHA listing. Pin a commit for a consistent snapshot.
+2. Download needed files through GitHub. Check paths, absence of symlinks and root escapes. Do not load the entire history.
+3. Keep base SHAs and receipts in .kb. If a local file differs from its base SHA, preserve local and remote separately instead of overwriting.
+4. If the copy disappears, restore needed instructions, INDEX and records from GitHub. An absent local file does not authorize remote deletion.
+5. Inspect downloaded code before executing it. Read only needed instructions.
 
-## Статус
-Отличать: local capture, API exchange, git sync, PC exchange и scheduled run. STATUS.md от kb.mjs не доказывает API-синхронизацию. Подтверждения API хранить в .kb/connector-state.json: commit, пути и SHA, время, ошибки; без credentials. PLAN.md содержит проверенные результаты и оставшиеся ограничения.
+## Upload
 
-## Расписание
-Расписание и подтверждённую регистрацию сервиса задаёт владелец установки: {{CURATION_SCHEDULE}}. До фактической настройки расписание не считается включённым. Проверить первый фактический запуск отдельно. Если изменений нет — не писать пользователю; сообщать только существенный результат, ошибку или необходимое решение.
+- Capture uses existing `node SYSTEM/scripts/kb.mjs capture`, without model calls.
+- Before uploading new INBOX, check id/fingerprint in INBOX, ARCHIVE and open PRs. Treat a match as a duplicate; preserve a conflict if content differs.
+- New raw INBOX records may be created on main. Success requires a commit SHA and readback of the exact file, not just a local write.
+- Do not alter existing raw records.
+- Supply the current blob SHA when changing an existing file; reread/compare on conflict, never force.
+- Use one Git tree/commit and fast-forward ref update for related changes; no force update. Do not delete records created concurrently.
+- On failure/uncertain outcome, reread the target path/branch before retrying. Preserve the local queue.
+
+## Curation
+
+Follow SYSTEM/workflows/curate.md. the user explicitly removed mandatory PRs. Publish agreed curation to main in one tree/commit and fast-forward update, force=false. INBOX → ARCHIVE originals retain blob SHA. On concurrent changes, reread main and preserve both versions when conflicting.
+
+## Status
+
+Distinguish local capture, API exchange, Git sync, PC exchange and scheduled run. kb.mjs STATUS.md does not establish API synchronization. Keep API receipts in .kb/connector-state.json: commit, paths/SHAs, time and errors; no credentials. PLAN.md records verified results and remaining limitations.
+
+## Schedule
+
+The installation owner defines the schedule and verified service registration: {{CURATION_SCHEDULE}}. It is not enabled until actually configured. Verify the first actual run separately. Stay quiet when unchanged; report only a material result, error or required decision.

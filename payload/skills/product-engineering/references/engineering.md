@@ -1,3 +1,3 @@
-# Перенесено
+# Moved
 
-Действующие инструкции: [перейти](../SKILL.md).
+Current instructions: [open](../SKILL.md).

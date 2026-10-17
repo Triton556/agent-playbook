@@ -1,12 +1,12 @@
-# Критика интерфейса в согласованном объёме
+# Interface critique within agreed scope
 
-Используй для проверки иерархии, понятности и целостности уже построенного экрана. Учитывай текущий бриф, принятый референс и реальную ширину окна. Проверку выполняет текущий агент; действующие разрешения определяют делегирование и интервью.
+Use to assess hierarchy, clarity and coherence of an already built screen. Consider the current brief, accepted reference and actual window width. The current agent performs the check; current permissions govern delegation/interviews.
 
-1. Назови главный вопрос экрана, основное действие и видимое следствие. Проверь, можно ли понять их на первом экране.
-2. Посмотри реальный render и пройди действие. Оцени читаемость, визуальные связи, состояния, keyboard/focus и доступность. Числа должны иметь основание; пустые данные не превращаются в ноль.
-3. Отдели наблюдаемый дефект от вкусового предпочтения. Укажи место, влияние и минимальную правку. В разрешённой доработке исправь существенный дефект и повтори затронутую проверку.
-4. Заверши кратким результатом: что проверено, что исправлено, что осталось неизвестным. Самопроверка одним агентом не называется независимым ревью.
+1. Name the screen's main question, primary action and visible consequence. Check whether they are understandable in the first screen.
+2. Inspect the actual render and perform the action. Assess readability, visual relationships, states, keyboard/focus and accessibility. Numbers need grounds; empty data must not become zero.
+3. Separate observable defects from taste preferences. Identify location, impact and the minimum fix. In authorized refinement, fix material defects and repeat affected verification.
+4. Finish briefly: what was checked, fixed and remains unknown. One-agent self-checking is not independent review.
 
-Для неоднозначной подачи извлеки из подходящего референса структуру, плотность и принцип взаимодействия, затем свяжи их с текущим вопросом пользователя. Копирование внешнего вида не доказывает пригодность решения.
+For ambiguous presentation, extract structure, density and interaction principle from a suitable reference, then connect them to the user's current question. Copying appearance does not prove suitability.
 
-Исходная методика сохранена в vendor/impeccable/reference/critique.md как источник. Рабочая оркестрация определяется этой адаптацией и действующими правилами.
+Original methodology remains in vendor/impeccable/reference/critique.md as a source. This adaptation and current rules determine working orchestration.

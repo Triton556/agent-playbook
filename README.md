@@ -91,3 +91,5 @@ python -B -m unittest discover -s tests -v
 Integrity, installation behavior, helper reproduction, actual client discovery, model behavior and human acceptance are separate claims. Preserve original acceptance criteria and compare actual artifacts on matched tasks before asserting quality parity. Model, reasoning effort, tools, context, permissions and input references can change outputs even when instructions are identical.
 
 Detailed test evidence and limitations belong in [Validation](docs/VALIDATION.md). The old dispatcher and the reverted five-instruction experiment are not activated by this package.
+
+Agent-facing instructions are maintained in English. User communication and knowledge-base content default to Russian, unless the user explicitly requests another output language. Exact data, identifiers and Russian human documentation retain their intended language.

@@ -1,12 +1,12 @@
 ---
 name: kb-find
-description: Найти личные сведения, решения, поручения и состояние проектов пользователь в общей базе знаний с выборочной загрузкой нужных заметок.
+description: Find personal information, decisions, tasks and project state in the user's shared knowledge base by selectively loading relevant notes.
 ---
 
-База на ПК: `{{MEMORY_ROOT}}`. В Cloud используй фактически проверенную копию репозитория из README, определив её путь.
+PC vault: `{{MEMORY_ROOT}}`. In Cloud, locate the actually verified repository copy described in README.
 
-Прочитай короткий INDEX.md. Если точной ссылки нет, выполни из папки базы `node SYSTEM/scripts/kb-search.mjs "слова запроса" --mode current --limit 8`. Загрузи только подходящие файлы. При запросе актуального состояния проверь также новые INBOX, которые ещё не разобраны.
+Read the short INDEX.md. If it has no exact pointer, run `node SYSTEM/scripts/kb-search.mjs "search terms" --mode current --limit 8` from the vault. Load only relevant files. For current-state questions, also check new INBOX records that have not yet been curated. Search Russian notes using appropriate Russian terms and answer the user in Russian.
 
-Отделяй HYPOTHESES и статус unconfirmed от фактов. Для решения или поручения проверь дату, источник и текущий статус. Противоречащие версии покажи с основаниями. Если актуальных данных нет, скажи это; отсутствие записи не доказывает отсутствие события.
+Distinguish HYPOTHESES and `unconfirmed` status from facts. Check the date, source and current status of a decision or task. Show conflicting versions with their evidence. Say when current data is missing; an absent record does not prove an event did not occur.
 
-Для истории используй --mode history. Подходящие INBOX показаны отдельно: проверь дату и источник до ответа о текущем состоянии. Прежний kb.mjs search сохранён как fallback.
+Use `--mode history` for history and canceled decisions. Relevant INBOX entries appear separately: check date and source before answering about current state. The old `kb.mjs search` remains a fallback.

@@ -1,38 +1,38 @@
-# Задание и приёмка
+# Task brief and acceptance
 
-Для новой существенной, размытой или многоэтапной задачи. Используй существующий план; маленькая ясная правка обходится короткой записью. Это порядок текущего агента, без автоматического запуска второго.
+For a new substantial, ambiguous or multi-stage task. Use the existing plan; a small clear edit needs only a short record. This is the current agent's procedure and does not automatically launch another agent.
 
-## Уточнение
+## Clarification
 
-Сначала используй уже известное: запрос, последние поправки, относящийся результат и решения. Сам начни опрос, если неизвестный выбор заметно меняет цель, опыт, стиль или объём. Обсуди применимые темы: аудитория/цель; сценарии и содержание; действия/ошибки/восстановление; стиль и примеры; устройство/масштаб/ограничения; сохраняемое и критерии достаточности.
+First use what is already known: the request, latest corrections, relevant result and decisions. Initiate questions yourself when an unknown choice materially changes the goal, experience, style or scope. Cover applicable themes: audience/goal; scenarios and content; actions/errors/recovery; style and examples; device/scale/constraints; preservation and sufficiency criteria.
 
-Веди несколько посильных раундов по связанным темам; ответы определяют следующие вопросы. Пять вопросов — ни лимит, ни квота. Конкретизируй вкус через примеры и наблюдаемые признаки; технические факты выясняй сам. После раунда сохрани существенные ответы/решения/открытое. Критический вопрос ждёт ответа или явной делегации выбора; молчание не является ответом. Пока выполняй независимую работу. Если пользователь ограничил интервью, запиши допустимые допущения.
+Run several manageable rounds of related topics; answers determine subsequent questions. Five questions is neither a limit nor a quota. Make taste concrete through examples and observable features; discover technical facts yourself. After each round, save material answers/decisions/open issues. A critical question waits for an answer or explicit delegation of the choice; silence is not an answer. Continue independent work meanwhile. If the user limits the interview, record permitted assumptions.
 
-## Два решения о способе работы
+## Two decisions about how to work
 
-В заключительном блоке начального опроса отдельно выбери:
+In the closing part of the initial interview, select separately:
 
-1. **Участие пользователь:** каждая существенная итерация / первый связный набросок с коррекцией направления, далее самостоятельная доводка / автономно. У человеческой точки покажи версию, что оценить и ограничения; зависимая дорогая работа ждёт ответа. Мелкие технические исправления внутри этапа выполняй сам. Существенная смена принятого направления требует сверки.
-2. **Отдельный проверяющий:** без него / один финальный проход / согласованные этапы. Объясни пользу и дополнительный расход; зафиксируй область, этапы и предел раундов. Без явного согласия запуска нет, в том числе при автономной разработке. Прежнее постоянное разрешение не действует. Правка не порождает нового раунда автоматически.
+1. **the user's participation:** each meaningful iteration / first coherent sketch to correct direction, then autonomous refinement / fully autonomous. At a human checkpoint, show the version, what to assess and limitations; dependent expensive work waits for the answer. Make minor technical fixes within a stage yourself. A material change of accepted direction requires alignment.
+2. **Separate reviewer:** none / one final pass / agreed stages. Explain the benefit and additional cost; record scope, stages and round limit. No launch without explicit consent, including autonomous development. The old standing grant no longer applies. A repair does not automatically create another round.
 
-При продолжении используй сохранённый выбор. Рекомендуй самопроверку для обычного текста/обсуждения; для инженерной задачи назови конкретный риск второго взгляда. Технические и содержательные проверки автора нужны во всех режимах.
+On continuation, reuse the saved choice. Recommend self-checks for ordinary text/discussion; for engineering, identify the concrete risk that a second view would address. Author technical and substantive checks apply in every mode.
 
-## Одна основа задачи
+## One task basis
 
-В существующем плане сохрани:
+Save in the existing plan:
 
-- **Основания:** запрос/точный источник, ответы и последние решения; отдельно интерпретация, допущения, делегированные выборы. Результат, обязательные выходы, аудитория/контекст, стиль, сохраняемое и границы.
-- **Выполнение:** ближайшие проверяемые шаги и зависимости, результат каждого. Дальние шаги уточняются по данным; неизвестная команда выясняется до исполнения.
-- **Приёмка:** существенный критерий, основание, обязательность, состояние/действие и ожидаемый наблюдаемый результат, достаточный способ проверки; позднее версия, свидетельство и статус. Для критичного свойства назови правдоподобный провал, который проверка должна отвергнуть. Используй формат проекта; отдельная JSON-схема не обязательна.
+- **Grounds:** request/exact source, answers and latest decisions; separate interpretation, assumptions and delegated choices. Deliverable, mandatory outputs, audience/context, style, preservation and boundaries.
+- **Execution:** next verifiable steps and dependencies, with each step's result. Refine distant steps as evidence arrives; discover an unknown command before executing it.
+- **Acceptance:** material criterion, evidence basis, mandatory/optional status, state/action and expected observable result, sufficient verification method; later add version, evidence and outcome. For a critical property, name a plausible failure the check must reject. Use the project's format; a separate JSON schema is not required.
 
-Число критериев и файлов не измеряет полноту. Требования связывают функцию, смысл, стиль/контекст, важные крайние случаи и сохраняемое в объёме задачи. Источник проверяется напрямую: собственный 2D/preflight/тест может быть ошибочным. До дорогого нового решения достаточно дешёвого целого представления; его проверка уточняет ту же основу. Подробности наблюдения принадлежат протоколу восприятия, формат машинного состояния — task-state.
+Criterion/file counts do not measure completeness. Requirements connect function, meaning, style/context, important edge cases and preservation within task scope. Check the source directly: your own 2D/preflight/test may be wrong. Before an expensive new decision, a cheap coherent representation suffices; verifying it refines the same basis. The human-perspective protocol owns observation details and task-state owns machine-state format.
 
-## Исполнение, проверка и завершение
+## Execution, verification and completion
 
-При новом этапе, восстановлении контекста и приёмке прочитай актуальные основу/состояние и относящиеся критерии; не пересобирай спецификацию из всех прежних отчётов. После этапа обнови текущий результат и существенные решения. История ошибок остаётся доступной по ссылке.
+At a new stage, context recovery and acceptance, read the current basis/state and relevant criteria; do not reconstruct the specification from all previous reports. After a stage, update the current result and material decisions. Keep failure history accessible by reference.
 
-Автор проверяет текущую версию и соблюдает выбранные человеческие точки. Согласованное независимое ревью использует отдельный порядок и достаточные доступные инструменты. Ни автоматический pass, ни прогноз реакции не являются человеческой приёмкой.
+The author checks the current version and follows selected human checkpoints. Agreed independent review uses its separate procedure and sufficient available tools. Neither an automated pass nor a predicted reaction is human acceptance.
 
-Дефект добавляет различающую проверку; сохрани первоначальный провал и основание изменения критерия. После правки повтори затронутое и его зависимости; неизменённое переиспользуй при установленной независимости. Общий критерий не удаляется ради pass. Новая продуктовая цель требует согласования, обычная проверка существующего требования выполняется в объёме задачи.
+A defect adds a distinguishing check; preserve the initial failure and the reason for changing a criterion. After repair, repeat affected checks and their dependencies; reuse unchanged evidence when independence is established. Do not remove a general criterion to obtain pass. A new product goal requires agreement; ordinary verification of an existing requirement is within scope.
 
-Готово, когда обязательные выходы получены, существенные критерии подтверждены актуальными свидетельствами, а существенные найденные дефекты закрыты. Критичное непроверенное требование оставляет результат частичным или заблокированным; допустимое ограничение называется явно. Непроведённое остаётся непроверенным. Дополнительный круг требует нового сигнала/изменения/гипотезы; оформленный список не закрывает замеченный провал цели.
+Done means mandatory outputs exist, material criteria have current supporting evidence, and material discovered defects are closed. A critical unverified requirement leaves the result partial or blocked; state any acceptable limitation explicitly. Unperformed checks stay unverified. Another round requires a new signal/change/hypothesis; a completed checklist does not close an observed failure of the goal.

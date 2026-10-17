@@ -1,35 +1,35 @@
-# Состояние длинной задачи и полнота
+# Long-task state and completeness
 
-Используй существующий план проекта. Если нужен проверяемый граф/серия результатов — локальный `.workflow/task-<id>.json` через `{{HARNESS_ROOT}}/workflow/agent-worklog.mjs`. Короткая задача отдельного файла не требует. Инструмент читает stdin JSON, действует в текущем проекте, не запускает модели/сеть и не расширяет доступы. При связанном ledger вызывает только его фиксированный штатный валидатор без shell.
+Use the existing project plan. When a verifiable graph/output series is needed, use local `.workflow/task-<id>.json` through `{{HARNESS_ROOT}}/workflow/agent-worklog.mjs`. A short task needs no separate file. The tool reads stdin JSON, operates in the current project, launches no models/network and expands no access. For a linked ledger, it calls only the fixed supported validator without a shell.
 
-Для новой многоэтапной задачи/переработки задание, ответы и программу приёмки сохраняй по [общей справке](task-brief-and-acceptance.md) в существующем плане; точный путь и актуальную версию укажи в существующих decisions/next, без нового поля схемы. Актуальность основы и критериев проверяется по общей справке; неизменённые инструкции в доступном контексте повторно не загружай. При использовании машинного состояния оно владеет прогрессом/связями, план — требованиями, ledger при наличии — подробными свидетельствами. Используй пути/идентификаторы и необходимые хэши вместо второго пересказа значений; минимальные обязательные поля схем сохраняются.
+For a new multi-stage task/redesign, save the brief, answers and acceptance program in the existing plan under the [shared reference](task-brief-and-acceptance.md); record its exact path and current version in existing decisions/next fields, without a new schema field. That reference governs basis/criteria freshness; do not reload unchanged instructions still in context. When used, machine state owns progress/relationships, the plan owns requirements, and an optional ledger owns detailed evidence. Use paths/IDs and necessary hashes instead of retelling values; preserve required schema fields.
 
-## Совместимый короткий формат v1
+## Compatible short format v1
 
-`command=state`, поле `state`: schema_version=1, task_id и пять полей: result — результат; scope — согласованные действия/границы; decisions — принятые решения; next — шаг с критерием; blocker — конкретная зависимость либо пустая строка. Прежний формат и события поддерживаются. Legacy-state помогает продолжить, но не имеет проверенной полноты серии.
+`command=state`, `state` field: schema_version=1, task_id and five fields: result — result; scope — agreed actions/boundaries; decisions — accepted decisions; next — step with its criterion; blocker — specific dependency or empty string. The old format and events remain supported. Legacy state supports continuation but does not establish verified series completeness.
 
-Перед повторным вопросом сверь настоящий пользовательский запрос, scope и decisions. Файл — отражение согласия, а не новый источник прав и не отмена подтверждения инструмента. Восстановленная история не подтверждает актуальное выполнение.
+Before repeating a question, check the actual user request, scope and decisions. A file reflects consent; it is not a new source of authority or a waiver of tool approval. Recovered history does not establish current execution.
 
-## Граф и результаты v2
+## Graph and outputs v2
 
-Для длинной/серийной работы сохраняются пять полей v1; добавляются:
+Long/serial work retains the five v1 fields and adds:
 
-- `status`: in_progress, blocked, ready, complete, paused, cancelled. Paused/cancelled отражают указание пользователя; диагностика не перезапускает их.
-- `session_id`: фактический идентификатор чата, если известен. Диагностика связана только с этим чатом и проектом; соседние задачи не выбираются по времени файла.
-- `approved_actions`: необязательные записи `{id,action,resource,conditions,source:{kind:"user",reference}}`. Это указатель на действительное согласие, не доказательство прав. Новый ресурс/расход/исполнитель не наследует прежнее согласие.
-- `outputs`: заранее объявленные `{id,status,required?,path?,sha256?,rationale?}`. Status: pending, ready, not_applicable. Ready требует существующий файл и hash; not_applicable — причину. Не удаляй обязательный выход ради зелёного результата; изменение списка требует основания из scope.
-- `stages`: `{id,status,required?,skill?,dependencies,output_ids,inputs,evidence,observation?,rationale?}`. Status: pending, in_progress, pass, partial, failed, blocked, not_applicable. Inputs/evidence — массивы `{path,sha256}`. Pass требует актуальные входы, свидетельство и наблюдение; nonapplicable — причину. Ссылки и граф проверяются, циклы запрещены.
-- `dependency_policy`: conservative по умолчанию — при изменённом связанном файле перепроверяется весь пройденный набор. Declared требует `independence:{observation,files:[{path,sha256}]}` — описанной и действительно испытанной независимости. Устаревшая запись возвращает консервативный режим. Тогда перепроверяются затронутые этапы и потомки.
-- `quality_ledger`: необязательный относительный путь к существующему ledger. Inspector дополнительно вызывает фиксированный валидатор в пределах проекта.
-- `blocker_kind`: timeout, access, validation, external или user. Блокер не разрешает доступ; независимые этапы могут продолжаться.
+- `status`: in_progress, blocked, ready, complete, paused, cancelled. Paused/cancelled reflect user instructions; diagnostics do not restart them.
+- `session_id`: actual chat identifier when known. Diagnostics bind only to this chat/project; do not select neighboring tasks by file time.
+- `approved_actions`: optional `{id,action,resource,conditions,source:{kind:"user",reference}}` records. These point to real consent; they do not prove authority. A new resource/cost/executor does not inherit earlier consent.
+- `outputs`: declared in advance as `{id,status,required?,path?,sha256?,rationale?}`. Status: pending, ready, not_applicable. Ready requires an existing file/hash; not_applicable requires a reason. Do not remove a mandatory output to get green; changing the list requires grounds in scope.
+- `stages`: `{id,status,required?,skill?,dependencies,output_ids,inputs,evidence,observation?,rationale?}`. Status: pending, in_progress, pass, partial, failed, blocked, not_applicable. Inputs/evidence are `{path,sha256}` arrays. Pass requires current inputs, evidence and an observation; nonapplicable requires a reason. References/graph are checked; cycles are prohibited.
+- `dependency_policy`: conservative by default — a changed linked file requires rechecking the entire passed set. Declared requires `independence:{observation,files:[{path,sha256}]}` documenting actually tested independence. A stale record restores conservative mode. Under declared independence, recheck affected stages and descendants.
+- `quality_ledger`: optional relative path to an existing ledger. The inspector additionally calls its fixed validator within the project.
+- `blocker_kind`: timeout, access, validation, external or user. A blocker does not authorize access; independent stages may continue.
 
-Пути относительны корню проекта, без выхода наружу и links/junctions. Для файлов крупнее 128 MiB используй подходящую проектную проверку/ledger и её свидетельство. Объявленный список зависимостей не доказывает свою полноту.
+Paths are relative to the project root, with no escape or links/junctions. For files larger than 128 MiB, use an appropriate project check/ledger and its evidence. Declared dependencies do not prove their own completeness.
 
-Task_id уникален в проекте; при разных чатах используй уникальный суффикс. Задача с session_id не перезаписывается другим чатом и не теряет владельца. При действительном handoff новый чат читает прежнее состояние, переносит разрешённый контекст и создаёт свою идентичность. Изменение обязательного списка требует `manifest_change:{reason,source:{kind:"user",reference}}` с реальным основанием; поле само по себе не выдаёт согласия. Обязательный output связан с этапом, а v2 нельзя заменить v1 ради обхода проверки.
+Task_id is unique within a project; use a unique suffix across chats. Another chat cannot overwrite state with session_id or remove its ownership. For a real handoff, the new chat reads prior state, transfers authorized context and creates its own identity. Changing the mandatory list requires `manifest_change:{reason,source:{kind:"user",reference}}` with real grounds; the field does not grant consent. A mandatory output is linked to a stage; replacing v2 with v1 to bypass validation is prohibited.
 
-## Команды и переходы
+## Commands and transitions
 
-Передай JSON через stdin существующему Node из корня проекта:
+Pass JSON through stdin to the existing Node from the project root:
 
 ```text
 {"command":"snapshot","paths":["source/file","output/file"]}
@@ -38,20 +38,20 @@ Task_id уникален в проекте; при разных чатах ис�
 {"command":"metrics"}
 ```
 
-Snapshot возвращает SHA256. Inspect — актуальность outputs/stages, причины неполноты и runnable next. Частичные, отсутствующие, устаревшие, проваленные и заблокированные результаты различаются. Ready/complete и task-done для v2 отклоняются при неполноте/устаревании. Инструмент проверяет записи и файлы, не подлинность осмотра.
+Snapshot returns SHA256. Inspect returns output/stage freshness, reasons for incompleteness and runnable next steps. Partial, missing, stale, failed and blocked results are distinct. Ready/complete and task-done for v2 are rejected when incomplete/stale. The tool checks records/files, not whether an inspection really happened.
 
-Передача этапа: артефакт/ревизия, свидетельства, статус, открытое и следующий шаг. После сбоя повторяй затронутый этап по новой гипотезе; решение не открывается заново без причины. После user stop нельзя автоматически возобновлять. Граф — локальный контроль переходов, не фоновый исполнитель моделей.
+Stage handoff: artifact/revision, evidence, status, open issues and next step. After failure, retry the affected stage using a new hypothesis; do not reopen a decision without cause. Do not automatically resume after user stop. The graph controls local transitions; it is not a background model executor.
 
-## События и метрики
+## Events and metrics
 
-`command=record`, поле `event`: task_id, стабильный event_id и event: task-start, task-done, question, manual-nudge, blocker, reference, interruption или human-feedback. Повтор identity идемпотентен; другое содержание с прежней identity отклоняется. Сообщения/секреты не записываются.
+`command=record`, `event` field: task_id, stable event_id and event: task-start, task-done, question, manual-nudge, blocker, reference, interruption or human-feedback. Repeating an identity is idempotent; different content with the same identity is rejected. Messages/secrets are not recorded.
 
-Question.kind: repeated, clarification, new_scope, technical. Blocker.type: timeout, access, validation, external. Interruption.kind: connection, user, external. Task-done требует verified=true и готового manifest v2, если он существует. Duration_ms необязателен; отсутствие не ноль. Stage: прежние context/implementation/review/memory/approval/tool и references/preflight/verification.
+Question.kind: repeated, clarification, new_scope, technical. Blocker.type: timeout, access, validation, external. Interruption.kind: connection, user, external. Task-done requires verified=true and a ready v2 manifest if one exists. Duration_ms is optional; absence is not zero. Stage: existing context/implementation/review/memory/approval/tool plus references/preflight/verification.
 
-Metrics возвращает числа и знаменатель повторов: repeated + clarification + new_scope; технические согласования отдельно. При нуле rate=null. Источник — разметка агента; полнота неизвестна до сверки. Остальные показатели — [workflow-pilot](workflow-pilot.md).
+Metrics returns counts and the repeat denominator: repeated + clarification + new_scope; technical questions are separate. A zero denominator yields rate=null. The source is agent labeling; completeness is unknown until checked. Other metrics: [workflow-pilot](workflow-pilot.md).
 
-## Завершение и диагностический hook
+## Completion and diagnostic hook
 
-Перед завершением сверь обязательные выходы, критерии и существенные дефекты. Для ledger выполняй `quality_ledger.py validate <ledger> --root <project> --require-ready`; автоматическая готовность, агентский осмотр и приёмка пользователь отдельно.
+Before finishing, check mandatory outputs, criteria and material defects. For a ledger, run `quality_ledger.py validate <ledger> --root <project> --require-ready`; record automated readiness, agent inspection and the user's acceptance separately.
 
-`quality-stop.mjs` — необязательная Stop-диагностика активного v2-state данного session_id/cwd. Она предупреждает, не блокирует, не продолжает чат и не читает transcript; один неизменённый провал не повторяется. Наличие файла hook не подтверждает его доверие/активацию: Codex требует review/trust точного определения. Проверка перед завершением остаётся в инструкциях и работает без hook. Memory hooks — отдельный процесс без зависимости от порядка.
+`quality-stop.mjs` is an optional Stop diagnostic for this session_id/cwd's active v2 state. It warns without blocking, continuing the chat or reading transcripts; the same unchanged failure is not repeated. A hook file does not establish trust/activation: Codex requires review/trust of its exact definition. Pre-delivery checks remain in the instructions and work without the hook. Memory hooks are a separate process with no ordering dependency.

@@ -1,12 +1,12 @@
 ---
 name: kb-sync
-description: Синхронизировать файловую копию личной базы пользователь с проверенным приватным GitHub-репозиторием по запросу или при ежедневном обслуживании назначенный куратор.
+description: Synchronize a file copy of the user's personal knowledge base with its verified private GitHub repository on request or during the designated curator's daily maintenance.
 ---
 
-Используй проверенную папку базы. На ПК: `{{MEMORY_ROOT}}`; в Cloud путь и авторизация отдельные. SYSTEM/connection.json должен содержать URL, основную ветку и дату фактической проверки приватности. Перед первым исполнением на новой среде проверь код скрипта и владельца remote.
+Use the verified vault directory. On PC: `{{MEMORY_ROOT}}`; Cloud has a separate path and authorization. SYSTEM/connection.json must contain the URL, main branch and date of actual privacy verification. Before first execution in a new environment, inspect the script and remote owner.
 
-На ПК или в проверенном Git clone основной копии выполни `node SYSTEM/scripts/kb.mjs sync`. В облачной файловой копии назначенный куратор без `.git` прочитай SYSTEM/workflows/cloud-connector.md и выполни обмен через разрешённый GitHub connector/API; не запускай там Git-sync и не считай его STATUS.md доказательством API-обмена.
+On PC or in a verified Git clone of the main copy, run `node SYSTEM/scripts/kb.mjs sync`. In the designated curator's cloud file copy without `.git`, read SYSTEM/workflows/cloud-connector.md and exchange through the authorized GitHub connector/API; do not run Git-sync there or treat its STATUS.md as evidence of API exchange.
 
-Git-sync сохраняет локальные изменения, получает remote, объединяет независимые записи и отправляет результат без force push. Смысловой разбор выполняется по SYSTEM/workflows/curate.md; sync переносит файлы между копиями и сам по себе не выполняет разбор.
+Git-sync saves local changes, fetches remote, merges independent records and pushes without force. Semantic curation follows SYSTEM/workflows/curate.md; sync transfers files between copies and does not itself curate them.
 
-При сбое данные и локальные коммиты остаются до следующего запуска. Не обходи конфликт reset, принудительной отправкой, stash или удалением локальных файлов. Сообщи ошибку и проверь STATUS.md. Скрипт делает максимум две попытки отправки; бесконечные повторения не нужны.
+On failure, data and local commits remain for the next run. Do not bypass a conflict with reset, force push, stash or deletion of local files. Report the error and inspect STATUS.md. The script tries to push at most twice; endless retries are unnecessary.

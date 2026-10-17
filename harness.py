@@ -109,7 +109,7 @@ def instruction_diagnostics(target,prospective=None,declared_budget=32768):
     size=sum(x['bytes'] for x in files)
     return {'status':'fail' if override.is_file() or size>declared_budget else 'project-files-within-declared-budget','project_bytes':size,'declared_budget':declared_budget,'override_shadows_installation':override.is_file(),'files':files,'limits':'Declared limit only. Effective client settings, global instructions, fallback files and future nested overrides require actual session verification.'}
 def instructions_block(version,root,values,full):
-    header=f"\nInstalled workflow harness {version}. Read policy `{root.as_posix()}/harness-policy.json` first. Historical permissions in installed skills apply only when backed by this installation owner's actual authorization; policy files do not grant tool access. Native capabilities must be checked before use.\n\n"
+    header=f"\nInstalled workflow harness {version}. Read policy `{root.as_posix()}/harness-policy.json` first. Historical permissions in installed skills apply only when backed by this installation owner's actual authorization; policy files do not grant tool access. Native capabilities must be checked before use. Maintained agent instructions are in English. Communicate with the user and write knowledge-base content in Russian unless the user explicitly requests another language for the output.\n\n"
     if full:
         body=render((REPO/'payload/AGENTS.md').read_bytes(),values,'BASE-RULES.md').decode('utf-8-sig')
         return BEGIN+header+body+'\n'+END

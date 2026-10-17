@@ -1,38 +1,38 @@
-# Основания и адресные референсы
+# Evidence and targeted references
 
-Открывай для критического неизвестного или повторной ошибки, а не для накопления ссылок. Принятое решение и проверенный локальный пример — допустимое начало; чужой отчёт помогает найти оригинал, но не заменяет его.
+Open for a critical unknown or recurring error, not to accumulate links. An accepted decision and verified local example are valid starting points; another report helps locate the original but does not replace it.
 
-## Наблюдаемые триггеры
+## Observable triggers
 
-- Обязательная функция, пропорция, взаимодействие или связь не имеет проверенного основания и не разрешена как свободный выбор.
-- Запрос, сохранённое решение, наблюдаемый результат или источники противоречат.
-- Общий модуль меняет класс/смысл: компактный автомобиль получает колёса трактора, одинаковый UI-компонент обещает разные действия.
-- Доступный вид, тест или данные не позволяют оценить обязательный признак.
-- Та же ошибка повторилась после правки, а причина не воспроизведена.
-- Не загружены существенные ограничения существующего набора: масштаб, стиль, данные или интеграция.
+- A required function, proportion, interaction or relationship lacks verified support and is not an authorized free choice.
+- The request, saved decision, observed result or sources conflict.
+- A shared module changes class/meaning: a compact car gets tractor wheels, or the same UI component promises different actions.
+- Available views, tests or data cannot assess a required property.
+- The same error recurs after a fix without a reproduced cause.
+- Material constraints of the existing set have not been loaded: scale, style, data or integration.
 
-**При срабатывании:** приостанови зависимый дорогой шаг; продолжай доступный анализ, поиск и независимую подготовку. Вопрос пользователь — для неразрешённого существенного выбора, личного материала, новой стоимости/доступа; обычный ресёрч не требует повторного разрешения.
+**When triggered:** pause the dependent expensive step; continue available analysis, research and independent preparation. Ask the user about an unresolved material choice, personal material, new cost/access; ordinary research does not require renewed permission.
 
-## Как исследовать
+## How to investigate
 
-1. Назови конкретный неизвестный признак и проверку, которая различит варианты. Красивый референс не заменяет функциональный.
-2. Найди релевантное основание: исходник/документацию для поведения, нужные стороны для формы, рабочее взаимодействие для UI, данные и шкалу для вывода.
-3. Действительно просмотри материал. Выдели переносимый приём и границы; отметь лицензию при использовании чужих файлов. Невидимая сторона реального объекта остаётся неизвестной; допустимый дизайн обозначается авторским выбором.
-4. При неопределённости проверь ограниченным прототипом или контрпримером. Число примеров выбирай по покрытию неизвестного; квота ссылок не показатель качества.
+1. Name the particular unknown property and a check that distinguishes alternatives. An attractive reference does not replace a functional one.
+2. Find relevant evidence: source/documentation for behavior, required sides for form, a working interaction for UI, data and scale for a conclusion.
+3. Actually inspect the material. Identify transferable techniques and limits; note the license when using others' files. An unseen side of a real object stays unknown; label permitted design as an author choice.
+4. Resolve uncertainty with a bounded prototype or counterexample. Choose example count by unknown coverage; a link quota does not measure quality.
 
-Короткая запись в существующем плане:
+Keep a short record in the existing plan:
 
-| Признак/решение | Источник или допустимый замысел | Наблюдение | Проверка | Статус / зависимый шаг |
+| Property/decision | Source or permitted design intent | Observation | Check | Status / dependent step |
 | --- | --- | --- | --- | --- |
-| Существенный неизвестный | Путь/ссылка и действительно изученная область | Что установлено | Как подтвердить в нашей задаче | Подтверждено, выбор, гипотеза или неизвестно |
+| Material unknown | Path/link and area actually studied | What is established | How to confirm it for our task | Confirmed, choice, hypothesis or unknown |
 
-**Готово:** у критических решений есть достаточное основание и проверка; существенное неизвестное не выдано за факт. Простая задача с достаточной основой проходит без дополнительного исследования.
+**Done:** critical decisions have sufficient evidence and checks; material unknowns are not presented as facts. A simple task with sufficient grounds needs no extra research.
 
-## Примеры и исключения
+## Examples and exceptions
 
-- Porte: боковой/передний вид и отношения кузова/колёс; палитра сама по себе не решает пропорции. Воображаемый транспорт может иметь разрешённые авторские пропорции.
-- Дашборд: пример выбора сценария и видимого результата, включая неудобный случай. Цветовая подборка не доказывает удобство; статичный отчёт не обязан иметь переключатель.
-- Вода: источник, берег, движение и размещение объектов. Зелень зависит от климата/замысла, а не появляется автоматически у каждой воды.
-- Диагноз аудита: «кажется перекошенным» полезно как наблюдение; координаты/измерение нужны для утверждения о геометрии.
+- Porte: side/front view and body/wheel ratios; palette alone does not resolve proportions. Imaginary transport may have authorized original proportions.
+- Dashboard: an example of selecting a scenario and seeing its result, including an awkward case. A palette does not establish usability; a static report need not have a switch.
+- Water: source, shore, movement and object placement. Vegetation depends on climate/design intent, not automatically on every body of water.
+- Audit diagnosis: “looks skewed” is a useful observation; a geometry claim needs coordinates/measurement.
 
-Источники метода и исторические аудиты: {{EVIDENCE_ROOT}}/workflow-review-20261013/pipeline-review.md, разделы 3–4; свежие решения ищи через kb-find. Не загружай полный разбор для обычного применения этой справки.
+Method sources and historical audits: {{EVIDENCE_ROOT}}/workflow-review-20261013/pipeline-review.md, sections 3–4; use kb-find for current decisions. Do not load the entire analysis for routine use of this reference.

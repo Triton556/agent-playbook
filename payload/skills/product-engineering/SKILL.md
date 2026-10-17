@@ -3,20 +3,20 @@ name: product-engineering
 description: Route and carry an end-to-end software task through the relevant planning, implementation, debugging, testing, and UI stages. Use for multi-stage development or requests to finish a product or feature. A narrow planning, bug, test, or design task can use its specialist skill directly. Excludes general research, creative writing, and household advice.
 ---
 
-# Выбор инженерного этапа
+# Select an engineering stage
 
-Координатор выбирает профиль по ближайшему результату; общий порядок задачи принадлежит [WORKFLOW](../../workflow/WORKFLOW.md). Узкий запрос может сразу использовать нужный этап. Смена навыка не создаёт нового агента и не требует нового опроса/плана.
+The coordinator selects a specialist by the nearest deliverable; [WORKFLOW](../../workflow/WORKFLOW.md) owns general task progression. A narrow request may use the relevant stage directly. Changing skills does not create an agent or require another interview/plan.
 
-| Нужный результат | Вход |
+| Required result | Entry |
 | --- | --- |
-| Требования, архитектурные варианты, исполнимый план | [product-planning](../product-planning/SKILL.md) |
-| Работающая фича или интеграция | [product-implementation](../product-implementation/SKILL.md) |
-| Причина сбоя, регрессии или flaky | [product-debugging](../product-debugging/SKILL.md) |
-| Проверка поведения или ревью кода | [product-testing](../product-testing/SKILL.md) |
-| UI-сценарий и визуальное решение | [product-ui-design](../product-ui-design/SKILL.md) |
-| Фактический осмотр реализованного UI | [product-ui-review](../product-ui-review/SKILL.md) |
-| Разрешённый разбор бинарника/протокола | [Обратная разработка](references/reverse-engineering.md) |
+| Requirements, architecture alternatives, executable plan | [product-planning](../product-planning/SKILL.md) |
+| Working feature or integration | [product-implementation](../product-implementation/SKILL.md) |
+| Cause of failure, regression or flakiness | [product-debugging](../product-debugging/SKILL.md) |
+| Behavior verification or code review | [product-testing](../product-testing/SKILL.md) |
+| UI flow and visual decisions | [product-ui-design](../product-ui-design/SKILL.md) |
+| Actual inspection of implemented UI | [product-ui-review](../product-ui-review/SKILL.md) |
+| Authorized binary/protocol analysis | [Reverse engineering](references/reverse-engineering.md) |
 
-Для полной разработки связывай законченные сценарии и переходи по результату: достаточный план → рабочий срез → относящиеся проверки. UI подключает design до нового визуального решения и review после render. Неясный сбой направляется в debugging. Запрос только на план/ревью заканчивается этим результатом.
+For end-to-end development, connect finished scenarios and advance by results: sufficient plan → working slice → relevant checks. UI uses design before new visual decisions and review after rendering. Route unexplained failures to debugging. A plan-only/review-only request ends with that deliverable.
 
-Общие процедуры открывай по их триггеру из WORKFLOW; не загружай весь набор. Навыки владеют предметными методами и источниками: [состав и адаптации](references/composition.md).
+Open shared procedures at their WORKFLOW triggers; do not load the entire set. Skills own subject methods and sources: [composition and adaptations](references/composition.md).

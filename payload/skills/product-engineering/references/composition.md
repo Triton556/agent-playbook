@@ -1,14 +1,14 @@
-# Состав набора и локальные адаптации
+# Composition and local adaptations
 
-product-engineering хранит только маршрутизацию этапов и ветку обратной разработки. Каждый самостоятельный навык владеет своими инструкциями, исходниками, лицензиями и инструментами; ревизии закреплены в его sources.json.
+product-engineering contains only stage routing and the reverse-engineering branch. Each standalone skill owns its instructions, sources, licenses and tools; revisions are pinned in its sources.json.
 
-- product-planning: Matt Pocock to-spec; масштаб плана и вопросы определяются существенными неизвестными.
-- product-implementation: implement и codebase-design; реализация вертикальными срезами с действующими разрешениями.
-- product-testing: tdd и code-review; поведенческие тесты по риску, текущий diff, review-only отдельно от разрешения на исправление.
-- product-debugging: diagnosing-bugs; воспроизводимый сигнал и гипотезы. Если запуск недоступен, статический анализ честно помечается.
-- product-ui-design: Anthropic frontend-design, дополнительная Codex адаптация Hitbullets, gpt-taste для лендингов. Создание, доработка и редизайн поддерживаются одинаково явно. Сняты mock Python, обязательная случайность, GSAP, AIDA и фиксированное число CTA.
-- product-ui-review: Impeccable toolkit 4.5.2, engine 0.1.14 Windows x64, локальная обёртка context. Автоматические hooks и определения дополнительных агентов не установлены. Реальный render и поведение выше абстрактного счётчика detector.
+- product-planning: Matt Pocock to-spec; material unknowns determine plan scale and questions.
+- product-implementation: implement and codebase-design; vertical slices under current permissions.
+- product-testing: tdd and code-review; risk-based behavior tests, current diff, review-only distinct from permission to repair.
+- product-debugging: diagnosing-bugs; reproducible signals and hypotheses. Label static analysis honestly when execution is unavailable.
+- product-ui-design: Anthropic frontend-design, an additional Hitbullets Codex adaptation, and gpt-taste for landing pages. Creation, refinement and redesign are equally explicit. Mock Python, mandatory randomness, GSAP, AIDA and a fixed CTA count were removed.
+- product-ui-review: Impeccable toolkit 4.5.2, engine 0.1.14 Windows x64, local context wrapper. Automatic hooks and extra agent definitions are not installed. Actual rendering and behavior outrank an abstract detector count.
 
-Обязательные интервью, публикации, коммиты и делегирование upstream заменены текущими правилами пользователь. Принятый бренд, доступность, стек и требования продукта выше эстетических запретов источников. UI/UX Pro Max и Taste v1 остались отдельными справочными навыками. REA остаётся кандидатом в ветке reverse-engineering, а не установленным MCP.
+the user's current rules replace mandatory upstream interviews, publication, commits and delegation. An accepted brand, accessibility, stack and product requirements outrank a source's aesthetic prohibitions. UI/UX Pro Max and Taste v1 remain separate reference skills. REA remains a candidate in reverse-engineering, not an installed MCP.
 
-Структурная валидация и обнаружение Codex подтверждают установку, но не доказывают точность модельного выбора или качество будущих продуктов. Это оценивается на реальных задачах.
+Structural validation and Codex discovery establish installation, not the accuracy of model selection or future product quality. Assess those on real tasks.

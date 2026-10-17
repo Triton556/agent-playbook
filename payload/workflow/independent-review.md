@@ -1,26 +1,26 @@
-# Порядок согласованного независимого ревью
+# Agreed independent review
 
-Открывай только для уже выбранного отдельного проверяющего. Разрешения — в AGENTS, выбор области/этапов/предела раундов — в [задании и приёмке](../skills/product-engineering/references/task-brief-and-acceptance.md#два-решения-о-способе-работы). Без явного согласия в текущей задаче выполняется авторская самопроверка. Исправленная версия не создаёт новый согласованный раунд.
+Open only for a separately selected reviewer. AGENTS owns permissions; the [task brief and acceptance](../skills/product-engineering/references/task-brief-and-acceptance.md#two-decisions-about-how-to-work) owns the scope/stages/round-limit choice. Without explicit consent for the current task, perform author self-checks. A corrected version does not create another authorized round.
 
-## Подготовка
+## Preparation
 
-Используй результаты самопроверки текущей версии; не повторяй их только для запуска ревью. Подготовь краткое адресное задание:
+Use self-check results for the current version; do not repeat them merely to start a review. Prepare a short, targeted brief:
 
-- Исходный запрос пользователь и последние существенные уточнения; отдельно интерпретация автора и неизвестное.
-- Нужный результат, сохраняемые качества, аудитория/стиль и относящиеся условия использования.
-- Версия, пути/URL, запуск, доступные инструменты; точные критерии и область независимого прохода.
-- Разрешённые действия, предел раунда, нужная модальность и путь отчёта.
+- the user's original request and latest material clarifications; distinguish the author's interpretation and unknowns.
+- Required result, qualities to preserve, audience/style and relevant use conditions.
+- Version, paths/URLs, launch and available tools; exact criteria and scope of the independent pass.
+- Permitted actions, round limit, required modality and report path.
 
-Существенные требования доступны сразу. Авторские диагнозы, самооценки и результаты тестов раскрываются после первоначального собственного осмотра, если задача не требует их с самого начала. Для сравнения методов применяются также условия единого [workflow-pilot](../skills/product-engineering/references/workflow-pilot.md).
+Provide material requirements immediately. Reveal author diagnoses, self-assessments and test results after the initial direct inspection unless the task needs them from the start. Method comparisons also follow the single [workflow-pilot](../skills/product-engineering/references/workflow-pilot.md).
 
-## Независимый проход
+## Independent pass
 
-Запусти одного свежего проверяющего без истории автора (`fork_turns="none"` для collaboration) в согласованном объёме; при занятом слоте дождись доступного. Он возвращает отчёт и не запускает вложенных проверяющих.
+Launch one fresh reviewer without the author's history (`fork_turns="none"` in collaboration), within the agreed scope; wait for an available slot if necessary. The reviewer returns a report and does not launch nested reviewers.
 
-Проверяющий использует [протокол восприятия](../skills/product-engineering/references/human-perspective-review.md) для относящегося результата: первое считывание, прямое сравнение с основаниями, состав изменений и сохраняемое. UI требует действий, анимация — просмотра движения, числа/геометрия — достаточных измерений. Недоступная модальность остаётся непроверенной. Полный авторский suite не передаётся на обязательное повторное исполнение; точечная дополнительная проверка допустима в согласованной области.
+The reviewer uses the [human-perspective protocol](../skills/product-engineering/references/human-perspective-review.md) where relevant: first reading, direct comparison with evidence, change membership and preservation. UI requires actions, animation requires observing motion, numbers/geometry require sufficient measurements. An unavailable modality remains unverified. Do not require the reviewer's rerun of the author's entire suite; targeted additional checks are allowed within scope.
 
-Отчёт: что работает; существенные находки с версией, условиями и свидетельством; наблюдение отдельно от причины; покрытые критичные свойства и оставшиеся пробелы. Квоты дефектов нет. Pass относится к конкретному проверенному свойству, не ко всем качествам результата.
+Report what works, material findings with version/conditions/evidence, observations separately from causes, covered critical properties and remaining gaps. There is no defect quota. Pass applies to a particular verified property, not every quality of the result.
 
-## После отчёта
+## After the report
 
-Автор подтверждает замечания по задаче, исходникам/действиям/измерениям. Исправление и затронутая регрессия следуют WORKFLOW. Реальный отзыв пользователь не подменяется агентским прогнозом. Другой свежий проверяющий запускается только на следующем явно согласованном раунде, при новом сигнале/изменении/гипотезе; сверх выбранного предела нужно согласие. После достаточной проверки работа завершается.
+The author confirms findings against the task, sources/actions/measurements. Repairs and affected regression follow WORKFLOW. An agent's prediction does not replace the user's actual feedback. Another fresh reviewer runs only for the next explicitly agreed round with a new signal/change/hypothesis; exceeding the selected limit requires consent. Finish once verification is sufficient.

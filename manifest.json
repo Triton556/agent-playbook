@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
   "name": "agent-workflow-harness",
-  "version": "0.2.1",
-  "exported_at": "2026-10-17T11:24:03.289690+00:00",
+  "version": "0.2.2",
+  "exported_at": "2026-10-17T12:13:02.638879+00:00",
   "baseline": "Current configured workflow after task-level participation/reviewer choices, reference-grounded acceptance and approved instruction-role deduplication; no new orchestrator or model pilot",
-  "instruction_policy": "Current source instructions and supporting resources preserved; explicit environment/owner bindings, external native-capability pointers, privacy-safe provenance and existing runtime relocations recorded per file",
+  "instruction_policy": "Full maintained agent instructions in English; Russian communication and knowledge content by default; explicit environment/owner bindings, privacy-safe provenance and unchanged runtime contracts",
   "files": [
     {
       "source": "AGENTS.md",
       "path": "payload/AGENTS.md",
-      "source_sha256": "aeddafe28ba3d11611d19a6189bb79ec1c0e05e637722fb1423f68491a15628f",
-      "sha256": "c0794d20ced878667dad4eb3d67ffae5d73e1adc61758eba411bc3d8fb855b54",
-      "bytes": 9834,
+      "source_sha256": "bf21526bb0ea4444f924b00f1cb97a16b4624192c19e9a543e22b51375873384",
+      "sha256": "f2aac38791d2f23de97516b901289722a52718217f53da1a9fd3d7a288e88139",
+      "bytes": 6187,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -25,17 +25,26 @@
         },
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user's",
           "count": 5
         },
         {
           "kind": "owner-label",
-          "label": "назначенный куратор",
+          "label": "the user",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "the designated curator",
           "count": 1
         },
         {
           "kind": "owner-authorization-boundary",
-          "detail": "Do not transfer the source owner standing memory-agent grant to another installation."
+          "detail": "Do not transfer the source owner standing memory-agent grant."
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "workflow"
@@ -67,14 +76,18 @@
     {
       "source": "workflow/independent-review.md",
       "path": "payload/workflow/independent-review.md",
-      "source_sha256": "dfef8d72e9620f969779afd896ac8c6af6df0cb171e2204bc3acfcc68dfad983",
-      "sha256": "92c52fa70a72e60bff5117f6d112984fcf930d4944e7ab4f6af6c86457bde652",
-      "bytes": 4757,
+      "source_sha256": "8e55f5cf7e5d3881a3160d387556a028107324fb5b9698097e0a444d93068816",
+      "sha256": "65a170832476f052ef4d4ddeb15490e480b0044037cc4fa5e933d648bc18f27e",
+      "bytes": 2653,
       "transformations": [
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user's",
           "count": 2
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "workflow"
@@ -83,8 +96,8 @@
       "source": "workflow/kb-writer.mjs",
       "path": "payload/workflow/kb-writer.mjs",
       "source_sha256": "35a019d1562626d481dbf31f3f91a48a5f03c803478ba7b8af597fea5bf72641",
-      "sha256": "9e772a804d30169fb93c53cdf85cf5a116d7b29591985bbc5f910e5853bdadde",
-      "bytes": 6319,
+      "sha256": "205ce093951aa536b3086f72f3c2c07015ebdc9d65b77886cd8fe2b68eac3ffc",
+      "bytes": 6291,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -99,6 +112,10 @@
           "kind": "owner-label",
           "label": "пользователь",
           "count": 2
+        },
+        {
+          "kind": "description-translation",
+          "detail": "Translate the generic owner label in the MCP tool description; tool names and schema unchanged."
         }
       ],
       "module": "workflow"
@@ -115,9 +132,9 @@
     {
       "source": "workflow/WORKFLOW.md",
       "path": "payload/workflow/WORKFLOW.md",
-      "source_sha256": "7a6f47ae6a3798b0124521e022b7e0e0327540304e9a1b05be81a95b212ef4dd",
-      "sha256": "4a8dc7056ae356197066e884577f822b75e5d1232eac7a6ece1f9a4bb289ee78",
-      "bytes": 9305,
+      "source_sha256": "1c04ff0d4bb856dad6329c8e422df7a242a937f340edcba675423e75653c98ba",
+      "sha256": "448d61cbf2424aa8cf88c96ed47df512d08980ce68c594b7bca24a15713babfc",
+      "bytes": 5447,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -126,8 +143,12 @@
         },
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user's",
           "count": 3
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "workflow"
@@ -173,10 +194,15 @@
     {
       "source": "skills/anthropic-workflow-creator/references/grading-guide.md",
       "path": "payload/skills/anthropic-workflow-creator/references/grading-guide.md",
-      "source_sha256": "4d55126fb71cc37eee9fffd07496a7a550a647e974b3f70ca3dd10a2294abc1e",
-      "sha256": "4d55126fb71cc37eee9fffd07496a7a550a647e974b3f70ca3dd10a2294abc1e",
-      "bytes": 671,
-      "transformations": [],
+      "source_sha256": "c70c57ded109e8583011a795223089d640e0fc46b391d453b7b9eec03bf737d7",
+      "sha256": "c70c57ded109e8583011a795223089d640e0fc46b391d453b7b9eec03bf737d7",
+      "bytes": 659,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "anthropic-workflow-creator"
     },
     {
@@ -392,19 +418,23 @@
     {
       "source": "skills/kb-curate/SKILL.md",
       "path": "payload/skills/kb-curate/SKILL.md",
-      "source_sha256": "241ec2966003bde9a6d02a3b486b4946668496d3116c6f6d52e7783497505632",
-      "sha256": "aa664cb830fc2dd56583ac7cc065f1a660dc7b4a4aa26a7c196636ebc73b0b31",
-      "bytes": 1887,
+      "source_sha256": "f60afc672f331f8dd70c6da8d410d94d185271ce119ceae0563bca7f09794aa2",
+      "sha256": "49c28f41862aca28561a9dea5257f046ace3f96973928be93a94053dd78c9cf0",
+      "bytes": 1203,
       "transformations": [
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user's",
           "count": 2
         },
         {
           "kind": "owner-label",
-          "label": "назначенный куратор",
+          "label": "the designated curator",
           "count": 2
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "kb-curate"
@@ -412,9 +442,9 @@
     {
       "source": "skills/kb-find/SKILL.md",
       "path": "payload/skills/kb-find/SKILL.md",
-      "source_sha256": "42bfc50e3bd04bfd08965a20eb3409282dbc5647a468708075d258831c17eb71",
-      "sha256": "65d6c1a319471785778afa9d5e2c7c08eeed3f988f39b5449936b27b4adc0136",
-      "bytes": 1639,
+      "source_sha256": "6a63012cbd1839350f60ef8cc57fb62407459b3bd4e6493e80f4d045d21a5f96",
+      "sha256": "3520b5461b2448bbbbe01f1a91678639e72e839464127779dc5e7382330ac74f",
+      "bytes": 1096,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -423,8 +453,17 @@
         },
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user's",
           "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "the user",
+          "count": 1
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "kb-find"
@@ -432,9 +471,9 @@
     {
       "source": "skills/kb-save/SKILL.md",
       "path": "payload/skills/kb-save/SKILL.md",
-      "source_sha256": "ed3894952ee943fc86a7f3b26df510ff0489467d7c8b3650c82d79c27e7bd313",
-      "sha256": "a4a7fa858cfb423b616c06a53cb6865108c4f8a64f19ea94f28276ecf9c72367",
-      "bytes": 2841,
+      "source_sha256": "4bc27ffa37f7e6a5fb0d9d8a89093ce72f29a534a281576ac6dfcd47272a318b",
+      "sha256": "bd43ee667af737741211455bc5f49790b83b5333a2bfe506dab205c554a42b96",
+      "bytes": 1709,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -443,13 +482,22 @@
         },
         {
           "kind": "owner-label",
-          "label": "пользователь",
-          "count": 3
+          "label": "the user's",
+          "count": 2
         },
         {
           "kind": "owner-label",
-          "label": "назначенный куратор",
+          "label": "the user",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "the designated curator",
           "count": 2
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "kb-save"
@@ -457,9 +505,9 @@
     {
       "source": "skills/kb-status/SKILL.md",
       "path": "payload/skills/kb-status/SKILL.md",
-      "source_sha256": "691c56e7b6e080d9c929663e7d52f6fea93e58bc3af1529e024df966c107eb13",
-      "sha256": "a60b051a5a6119cb0d98903c4ceaf361b31dc714881e2f75714b36eef34a0c4a",
-      "bytes": 1223,
+      "source_sha256": "20e34614c9d2df9bf16c7eef078481117b0defa2ca35b09584de030ce423aaf0",
+      "sha256": "b1a625a3ad48b08605ba1ea4e945c6ce632cfb41f943f2aa34582a0e2791d8e7",
+      "bytes": 777,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -468,13 +516,22 @@
         },
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user's",
           "count": 1
         },
         {
           "kind": "owner-label",
-          "label": "назначенный куратор",
+          "label": "the user",
           "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "the designated curator",
+          "count": 1
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "kb-status"
@@ -482,9 +539,9 @@
     {
       "source": "skills/kb-sync/SKILL.md",
       "path": "payload/skills/kb-sync/SKILL.md",
-      "source_sha256": "1eb393e2a367320d900db383362407904929016ce9a74dadd539ff782a6a445e",
-      "sha256": "05b584ee67d73578791325ca55e34b0c9b7d10dd34a646744adb5d218632fec9",
-      "bytes": 2201,
+      "source_sha256": "bd9e1c489434ad1470e3c22b3fc583c3601bd43754a50ab27fb505a6c20304d5",
+      "sha256": "559901d855df8cd8c51c29125035797111305cc8c2a8fb11d72ef5264278f23d",
+      "bytes": 1300,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -493,13 +550,17 @@
         },
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user's",
           "count": 1
         },
         {
           "kind": "owner-label",
-          "label": "назначенный куратор",
+          "label": "the designated curator",
           "count": 2
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "kb-sync"
@@ -507,9 +568,9 @@
     {
       "source": "skills/lab-vm-control/SKILL.md",
       "path": "payload/skills/lab-vm-control/SKILL.md",
-      "source_sha256": "0de0ca7de5dea6696c3ab4c4380322805314f132a03717a85687fda6b6de8612",
-      "sha256": "5e1b0b2ba1360bd31a64592d62b40ba80e8b8fa84fe5f3edf279f2e25d90c669",
-      "bytes": 7455,
+      "source_sha256": "1d19c3f7aac0b8220102eab593d8f1423a900870133a75b439c1153d2ee96a55",
+      "sha256": "9bf42decbaa819992aa19f8b13d3e74fc8f64bf5799fb9f445d1b0edec1b1fd5",
+      "bytes": 5105,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -555,8 +616,12 @@
         },
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user's",
           "count": 1
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "lab-vm-control"
@@ -573,10 +638,15 @@
     {
       "source": "skills/product-debugging/SKILL.md",
       "path": "payload/skills/product-debugging/SKILL.md",
-      "source_sha256": "a2cbe5f801eee3319061f93eb00fc5ba474edde4818ac19f6faef55776f562f4",
-      "sha256": "a2cbe5f801eee3319061f93eb00fc5ba474edde4818ac19f6faef55776f562f4",
-      "bytes": 3674,
-      "transformations": [],
+      "source_sha256": "2891a30d393d6ed60088ba120e669f2b2c81850c9242f7db1c27784066d62ee3",
+      "sha256": "2891a30d393d6ed60088ba120e669f2b2c81850c9242f7db1c27784066d62ee3",
+      "bytes": 2196,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-debugging"
     },
     {
@@ -609,14 +679,18 @@
     {
       "source": "skills/product-engineering/references/composition.md",
       "path": "payload/skills/product-engineering/references/composition.md",
-      "source_sha256": "4eae5323ace834ff240f30df596626976ecb7c8ac0ebe1f5b7830ac4aff9240c",
-      "sha256": "c4276a4c2c6b63265d10b45720850883c3a473857b0800f2baae3ab775a91d63",
-      "bytes": 2902,
+      "source_sha256": "5aa88aac4af161f67f33bec94a493224dd0c7e40674271bebe94c8b1e19d68e5",
+      "sha256": "8aaba5f50466b37c9e7cd11f77e693191f4302c0a4719c160b8b3eb4b42e19b7",
+      "bytes": 1686,
       "transformations": [
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user's",
           "count": 1
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "product-engineering"
@@ -624,23 +698,32 @@
     {
       "source": "skills/product-engineering/references/engineering.md",
       "path": "payload/skills/product-engineering/references/engineering.md",
-      "source_sha256": "c00f6e8315f414369592863cc5d43f26840a18b90a7383bd5c1b4a2e4352a475",
-      "sha256": "c00f6e8315f414369592863cc5d43f26840a18b90a7383bd5c1b4a2e4352a475",
-      "bytes": 103,
-      "transformations": [],
+      "source_sha256": "bc214447319282ac558ed0b98b880da1830fe10d5af40ec6b32d1e8c09dd3636",
+      "sha256": "bc214447319282ac558ed0b98b880da1830fe10d5af40ec6b32d1e8c09dd3636",
+      "bytes": 52,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-engineering"
     },
     {
       "source": "skills/product-engineering/references/human-perspective-review.md",
       "path": "payload/skills/product-engineering/references/human-perspective-review.md",
-      "source_sha256": "c1c8249a05cc652b2422cffa59bafb3f79e81a3cd4f732952941068ebf22c92b",
-      "sha256": "9cc01aa7fcb673fa264f37fc90869d58b26d077ba26e11f4ff9bbaae085c12a5",
-      "bytes": 18841,
+      "source_sha256": "a0e412488a33906f5fc2cb074ccd8ba113033f201523e15c2f936e7ac446b2ae",
+      "sha256": "70d7d3d217c25f850899e8b14fa2e21ef621cf59ac188513ccf132a806b8d4ea",
+      "bytes": 10509,
       "transformations": [
         {
           "kind": "environment-binding",
           "binding": "{{EVIDENCE_ROOT}}",
           "count": 1
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "product-engineering"
@@ -648,28 +731,43 @@
     {
       "source": "skills/product-engineering/references/interface-design.md",
       "path": "payload/skills/product-engineering/references/interface-design.md",
-      "source_sha256": "62c19188179fcb76ed5db267bdf16986c3d048a802118ecefc89c06d8b5561d1",
-      "sha256": "62c19188179fcb76ed5db267bdf16986c3d048a802118ecefc89c06d8b5561d1",
-      "bytes": 124,
-      "transformations": [],
+      "source_sha256": "609e4be3a022b6304bffc2709b4a64ddd7277867a14c9087e0e40e2e941ae8d4",
+      "sha256": "609e4be3a022b6304bffc2709b4a64ddd7277867a14c9087e0e40e2e941ae8d4",
+      "bytes": 73,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-engineering"
     },
     {
       "source": "skills/product-engineering/references/landing-design.md",
       "path": "payload/skills/product-engineering/references/landing-design.md",
-      "source_sha256": "166fbba7d968aa1e29f6c8a986c617fcd01b02847ef0a967fc3f8239de5bf363",
-      "sha256": "166fbba7d968aa1e29f6c8a986c617fcd01b02847ef0a967fc3f8239de5bf363",
-      "bytes": 144,
-      "transformations": [],
+      "source_sha256": "0ba386fb1ecd8c81fc5bbd4be0bd2fdf3561795326d7d2c3a66f19ae90dafe9b",
+      "sha256": "0ba386fb1ecd8c81fc5bbd4be0bd2fdf3561795326d7d2c3a66f19ae90dafe9b",
+      "bytes": 93,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-engineering"
     },
     {
       "source": "skills/product-engineering/references/local-adaptation.md",
       "path": "payload/skills/product-engineering/references/local-adaptation.md",
-      "source_sha256": "b160fdd7398530e55b77332cde4fc1b9857c6bf85c20ea2eb96b811489f070e8",
-      "sha256": "b160fdd7398530e55b77332cde4fc1b9857c6bf85c20ea2eb96b811489f070e8",
-      "bytes": 106,
-      "transformations": [],
+      "source_sha256": "5786d22d04f6c51cf5fb6a79e2ea3a74a9c1c3a3af9678db0aed64f0d139500a",
+      "sha256": "5786d22d04f6c51cf5fb6a79e2ea3a74a9c1c3a3af9678db0aed64f0d139500a",
+      "bytes": 55,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-engineering"
     },
     {
@@ -693,9 +791,9 @@
     {
       "source": "skills/product-engineering/references/reference-grounding.md",
       "path": "payload/skills/product-engineering/references/reference-grounding.md",
-      "source_sha256": "f6b4a4bd66694b80343bfa924449e882753c561b338eaa6facd2b8d89f6736c3",
-      "sha256": "11e5cfe52988c1bb8e44358b69b7ec81c35ff54eda9216d015faeeb4d469d1c1",
-      "bytes": 5773,
+      "source_sha256": "17a674fd4bff90ef9fce12a525ef969b61bac4108dcf31507b4593611b8bdea8",
+      "sha256": "f3b8445a4230e751efbe1bc59af0dcbc6e2400c0e1e9c1c70a5b809f48308ffd",
+      "bytes": 3121,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -704,8 +802,12 @@
         },
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user",
           "count": 1
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "product-engineering"
@@ -713,14 +815,18 @@
     {
       "source": "skills/product-engineering/references/reverse-engineering.md",
       "path": "payload/skills/product-engineering/references/reverse-engineering.md",
-      "source_sha256": "b843acfc4d773bcc1aa2102ceec41b61fcc5e6cc0dc6614ea39d14e7bd5628fe",
-      "sha256": "7a573bd1096a79c25ad836ef5c950a1f7fd9ca6698723505e93fe902bd083cd4",
-      "bytes": 2937,
+      "source_sha256": "484e18e9288b9c2f3f92c64ca4f2518c93c760f644e386f47c883a5c414675a5",
+      "sha256": "2e6ba874c7c50b33bb0085eb0bdae70ce960a997227829d8acb3c3003cb54330",
+      "bytes": 1756,
       "transformations": [
         {
           "kind": "environment-binding",
           "binding": "{{MEMORY_ROOT}}",
           "count": 1
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "product-engineering"
@@ -728,9 +834,9 @@
     {
       "source": "skills/product-engineering/references/task-state.md",
       "path": "payload/skills/product-engineering/references/task-state.md",
-      "source_sha256": "808567e6fa421c7fb11e54c944a98ad7f63ae92606db0206bd82c0b0b3415eb9",
-      "sha256": "32316141d916c11cf71a9bc349bb4a6ed4e158de573de64702d0675ec1398217",
-      "bytes": 11027,
+      "source_sha256": "5e80e2b1ff38a5919bdcdc6b00c81f7ebbb48b177b48d4ce60bb792a35598f1a",
+      "sha256": "8d2168913f0193522fcec1d7c237edad3ec7823891de35312ca01faa293f046f",
+      "bytes": 6909,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -739,8 +845,12 @@
         },
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user's",
           "count": 1
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "product-engineering"
@@ -748,23 +858,37 @@
     {
       "source": "skills/product-engineering/references/visual-quality.md",
       "path": "payload/skills/product-engineering/references/visual-quality.md",
-      "source_sha256": "453b4837c7a73f1818ccba9ec6a01fce7670eb5837567c4d6e7f374ea37c17c7",
-      "sha256": "453b4837c7a73f1818ccba9ec6a01fce7670eb5837567c4d6e7f374ea37c17c7",
-      "bytes": 124,
-      "transformations": [],
+      "source_sha256": "d36190cf78e738ef3bf0ad943bc96443c9b59ea286ab33499feac3c658f166af",
+      "sha256": "d36190cf78e738ef3bf0ad943bc96443c9b59ea286ab33499feac3c658f166af",
+      "bytes": 73,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-engineering"
     },
     {
       "source": "skills/product-engineering/references/workflow-pilot.md",
       "path": "payload/skills/product-engineering/references/workflow-pilot.md",
-      "source_sha256": "8c93517487ffd0aba35ece40f8f185b6fd9e1d443a2d0ec6ea77a32a228c9277",
-      "sha256": "ca2ec4f172b0fdb24629d4db895abd1a93237466e7c6c8cebd57ac6d322b5c76",
-      "bytes": 8068,
+      "source_sha256": "f351c89fc250acc6cadc7848d50c42471b244fb36fc3de9332150aab999be7a5",
+      "sha256": "2424d2cd88dbdbcbf2a0d69d41da84037999f558c636fb920b6dada0b024b642",
+      "bytes": 4171,
       "transformations": [
         {
           "kind": "owner-label",
-          "label": "пользователь",
-          "count": 2
+          "label": "the user's",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "the user",
+          "count": 1
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "product-engineering"
@@ -790,10 +914,15 @@
     {
       "source": "skills/product-engineering/SKILL.md",
       "path": "payload/skills/product-engineering/SKILL.md",
-      "source_sha256": "fc8ee0ba8c53a2a0dd56ec6f0f811a518035c5ef6c90ea2d856a35b31a76b3d4",
-      "sha256": "fc8ee0ba8c53a2a0dd56ec6f0f811a518035c5ef6c90ea2d856a35b31a76b3d4",
-      "bytes": 2678,
-      "transformations": [],
+      "source_sha256": "ae42774cef0af9fedb15c32cf96d19b18cad6cce32a4cccd40a1fcad4be75b5c",
+      "sha256": "ae42774cef0af9fedb15c32cf96d19b18cad6cce32a4cccd40a1fcad4be75b5c",
+      "bytes": 1902,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-engineering"
     },
     {
@@ -817,10 +946,15 @@
     {
       "source": "skills/product-implementation/SKILL.md",
       "path": "payload/skills/product-implementation/SKILL.md",
-      "source_sha256": "4b5434ec51e375283a1950338144db92ae7a9f0f8003055f7eccc775d4683db5",
-      "sha256": "4b5434ec51e375283a1950338144db92ae7a9f0f8003055f7eccc775d4683db5",
-      "bytes": 2593,
-      "transformations": [],
+      "source_sha256": "c464746a848c2180b08867badc72348a74808f26c180076d583f82ecdc052b8b",
+      "sha256": "c464746a848c2180b08867badc72348a74808f26c180076d583f82ecdc052b8b",
+      "bytes": 1738,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-implementation"
     },
     {
@@ -892,10 +1026,15 @@
     {
       "source": "skills/product-planning/SKILL.md",
       "path": "payload/skills/product-planning/SKILL.md",
-      "source_sha256": "ce34ffecd6d835c65e831592d3428d9ff5a6a18300694f19a843ef862efb8a38",
-      "sha256": "ce34ffecd6d835c65e831592d3428d9ff5a6a18300694f19a843ef862efb8a38",
-      "bytes": 2927,
-      "transformations": [],
+      "source_sha256": "39f5225266a79d53a775ec9ea2d1843bef9bf8a8917bd0e82c75feeb3c5dddb3",
+      "sha256": "39f5225266a79d53a775ec9ea2d1843bef9bf8a8917bd0e82c75feeb3c5dddb3",
+      "bytes": 1940,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-planning"
     },
     {
@@ -928,10 +1067,15 @@
     {
       "source": "skills/product-testing/SKILL.md",
       "path": "payload/skills/product-testing/SKILL.md",
-      "source_sha256": "5d8fe65dec9875d97a22ac402042a486e6bc6e01e68a6443b5a17cf246a8d45d",
-      "sha256": "5d8fe65dec9875d97a22ac402042a486e6bc6e01e68a6443b5a17cf246a8d45d",
-      "bytes": 4478,
-      "transformations": [],
+      "source_sha256": "85f99f813ff7d05059ccd8c8ee30ea2e660dd2d2e5e62b0446b573a1d17c1198",
+      "sha256": "85f99f813ff7d05059ccd8c8ee30ea2e660dd2d2e5e62b0446b573a1d17c1198",
+      "bytes": 2947,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-testing"
     },
     {
@@ -991,14 +1135,18 @@
     {
       "source": "skills/product-ui-design/references/interaction-quality.md",
       "path": "payload/skills/product-ui-design/references/interaction-quality.md",
-      "source_sha256": "5d92ce6aec95b637766d85dbfcbfa18433f379173ac8c52b70e771de81386f3e",
-      "sha256": "1d234377cafa5b138250aafdf41030d06e159f5a8924adc10c0ebab373749bc3",
-      "bytes": 9468,
+      "source_sha256": "aff1bf3c0dda2358ec405a30240e65d2b243a0d824226b7664ded60a22f332fe",
+      "sha256": "6d0e26cee70c74aa2e39cd47b07563f3600319e11e1021b4e01992265f634dfe",
+      "bytes": 5376,
       "transformations": [
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user's",
           "count": 1
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "product-ui-design"
@@ -1006,14 +1154,18 @@
     {
       "source": "skills/product-ui-design/references/interface-design.md",
       "path": "payload/skills/product-ui-design/references/interface-design.md",
-      "source_sha256": "107e962a01ffe865bd2fea02bb6217e89b87e8de95a89dd7bd8f98bd905f2c5f",
-      "sha256": "8e94a9290ebfef1b3bb0b28a5608c559f1d40d002705eed6d18f9f5d8391f78b",
-      "bytes": 4746,
+      "source_sha256": "37c73a23a2e826e5d98c2fb569ff5b77603282d26913e15a73eb917b08429e95",
+      "sha256": "88bfffb7916acf88a2383d41655e6b150a6ee30d3b7c4fc0e43d31356da4d1a6",
+      "bytes": 2549,
       "transformations": [
         {
           "kind": "environment-binding",
           "binding": "{{HARNESS_ROOT}}",
           "count": 1
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "product-ui-design"
@@ -1021,19 +1173,29 @@
     {
       "source": "skills/product-ui-design/references/landing-design.md",
       "path": "payload/skills/product-ui-design/references/landing-design.md",
-      "source_sha256": "b19cb79883129c8da28b2719dbb533a0650c94820b1d0ea6d36fc976c25be409",
-      "sha256": "b19cb79883129c8da28b2719dbb533a0650c94820b1d0ea6d36fc976c25be409",
-      "bytes": 4101,
-      "transformations": [],
+      "source_sha256": "5a065ffd438858984eeda73d4ccded0cf3a716a7cb6f905d6f3590d6f13f663f",
+      "sha256": "5a065ffd438858984eeda73d4ccded0cf3a716a7cb6f905d6f3590d6f13f663f",
+      "bytes": 2208,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-ui-design"
     },
     {
       "source": "skills/product-ui-design/SKILL.md",
       "path": "payload/skills/product-ui-design/SKILL.md",
-      "source_sha256": "845177204bed5bc4cdbe8db19dea08514e67ed897bded0cd4e0af4a3761ed239",
-      "sha256": "845177204bed5bc4cdbe8db19dea08514e67ed897bded0cd4e0af4a3761ed239",
-      "bytes": 3385,
-      "transformations": [],
+      "source_sha256": "e686fdc6480025e00e924ade9f018bf9a68ae00cafb370a97488b4097287a0c1",
+      "sha256": "e686fdc6480025e00e924ade9f018bf9a68ae00cafb370a97488b4097287a0c1",
+      "bytes": 2237,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-ui-design"
     },
     {
@@ -1102,23 +1264,32 @@
     {
       "source": "skills/product-ui-review/references/critique-adapted.md",
       "path": "payload/skills/product-ui-review/references/critique-adapted.md",
-      "source_sha256": "70ed7fe41fb9cfbd820de3edd428d73a6b61e2b7a444cb8b96694b40de54befa",
-      "sha256": "70ed7fe41fb9cfbd820de3edd428d73a6b61e2b7a444cb8b96694b40de54befa",
-      "bytes": 2344,
-      "transformations": [],
+      "source_sha256": "fd60df4986639826863fa12a4957fbe276b0f7f9d96fdcfbe3a4eb147e080e54",
+      "sha256": "fd60df4986639826863fa12a4957fbe276b0f7f9d96fdcfbe3a4eb147e080e54",
+      "bytes": 1262,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-ui-review"
     },
     {
       "source": "skills/product-ui-review/references/visual-quality.md",
       "path": "payload/skills/product-ui-review/references/visual-quality.md",
-      "source_sha256": "41e49a987d4beff92a2484f2171b4568a7362f2faefb061b156aca55a1fecbc0",
-      "sha256": "a7d45a72d4dc9671c64a918f6dd8283ce3afd7afa389ce0e0f82d2c8e4979c42",
-      "bytes": 11072,
+      "source_sha256": "236026a92957c3a53dbacd2b3d11d38766990e2630f47939fd8205f21c1c2e52",
+      "sha256": "448e8af2e5db96dd58af1cd8b39e1f503367ec1c8d929659a6fabe261055e5f8",
+      "bytes": 6153,
       "transformations": [
         {
           "kind": "environment-binding",
           "binding": "{{HARNESS_ROOT}}",
           "count": 2
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "product-ui-review"
@@ -1135,10 +1306,15 @@
     {
       "source": "skills/product-ui-review/SKILL.md",
       "path": "payload/skills/product-ui-review/SKILL.md",
-      "source_sha256": "07e0d905ff57d6f4121a058febd106c13aa27ccd71455bca53861bce64904724",
-      "sha256": "07e0d905ff57d6f4121a058febd106c13aa27ccd71455bca53861bce64904724",
-      "bytes": 3123,
-      "transformations": [],
+      "source_sha256": "9dbffe8cc99bcf039faa435dcca1cc5570e5e5ffa67bc271b1e5818b09c41bbf",
+      "sha256": "9dbffe8cc99bcf039faa435dcca1cc5570e5e5ffa67bc271b1e5818b09c41bbf",
+      "bytes": 2166,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "product-ui-review"
     },
     {
@@ -2314,10 +2490,15 @@
     {
       "source": "skills/ui-ux-pro-max/SKILL.md",
       "path": "payload/skills/ui-ux-pro-max/SKILL.md",
-      "source_sha256": "183b662e47ed16c3f6642944039f2f34bdf7fabdc61096e118d7271b5426b7c4",
-      "sha256": "183b662e47ed16c3f6642944039f2f34bdf7fabdc61096e118d7271b5426b7c4",
-      "bytes": 3395,
-      "transformations": [],
+      "source_sha256": "5eb00579abf51bfedfe41208137cf1cf27fca40e75c3d33e7093db6a96c67e59",
+      "sha256": "5eb00579abf51bfedfe41208137cf1cf27fca40e75c3d33e7093db6a96c67e59",
+      "bytes": 2188,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "ui-ux-pro-max"
     },
     {
@@ -2360,13 +2541,17 @@
       "source": "skills/visual-experiment-craft/references/evidence.md",
       "path": "payload/skills/visual-experiment-craft/references/evidence.md",
       "source_sha256": "c00ba8bbec35aabd4ea683ec854a3917e5489438dbda17d79b3d4e44ae6ca802",
-      "sha256": "a6c88422390914ce1bf3043dc840084e475ad2e7abb5aa245e1df78f5cc8064e",
-      "bytes": 5395,
+      "sha256": "8adfe688c3bb0e7817ab1b8cdc0ebac3c2d3701b47b3acfdb4c5d14391e5c036",
+      "bytes": 5379,
       "transformations": [
         {
           "kind": "owner-label",
           "label": "пользователь",
           "count": 1
+        },
+        {
+          "kind": "owner-label-language",
+          "detail": "English prose label for the existing generic owner substitution."
         }
       ],
       "module": "visual-experiment-craft"
@@ -2462,13 +2647,17 @@
       "source": "skills/voxel-model-craft/references/design-preflight.md",
       "path": "payload/skills/voxel-model-craft/references/design-preflight.md",
       "source_sha256": "289079d7ddbebb1b3da973d6db7935122d7f03295ddb988a65112f75cb8f1be9",
-      "sha256": "1d702dc4338a93de4edb03107f9d94b8a77788a4ac58e7e369cecd08e7da88aa",
-      "bytes": 8594,
+      "sha256": "e2a6fe6abe19b12bb191a78204366cc55186af9e432de7f35b398878bd23902b",
+      "bytes": 8578,
       "transformations": [
         {
           "kind": "owner-label",
           "label": "пользователь",
           "count": 1
+        },
+        {
+          "kind": "owner-label-language",
+          "detail": "English prose label for the existing generic owner substitution."
         }
       ],
       "module": "voxel-model-craft"
@@ -2753,8 +2942,8 @@
       "source": "skills/writing-for-agents/SKILL-MECHANICS.md",
       "path": "payload/skills/writing-for-agents/SKILL-MECHANICS.md",
       "source_sha256": "2824e77dec7bde62e562af41f090f13074925c392ae0495e5876a8eb0906a484",
-      "sha256": "5a4d6d66d9cfef74130ad9db97926c874303f1bb7972370f70328b8761039e95",
-      "bytes": 509,
+      "sha256": "598ba0a877a857620d6a9cbfe5deaab605a34d7dca257f6a19a610c0b3c8f89c",
+      "bytes": 493,
       "transformations": [
         {
           "kind": "owner-label",
@@ -2765,6 +2954,10 @@
           "kind": "external-native-capability",
           "detail": "Native skill-creator is not bundled; preserve the role without an invalid packaged file link.",
           "count": 1
+        },
+        {
+          "kind": "owner-label-language",
+          "detail": "English prose label for the existing generic owner substitution."
         }
       ],
       "module": "writing-for-agents"
@@ -2826,19 +3019,27 @@
     {
       "source": "runtime/memory/SYSTEM/scripts/kb.mjs",
       "path": "payload/runtime/memory/SYSTEM/scripts/kb.mjs",
-      "source_sha256": "a49b0c5c4477ae9524144ea1bebc4454e3df07319a9b0208a8292d384bc80168",
-      "sha256": "19e535f7bcbf6150135e020e32f821ff329d97e236cf4a17a2a158642c93fc8b",
-      "bytes": 28481,
+      "source_sha256": "bdd7a38e4b1822d0177df9df30a0cb581430cc9c7d15b71c3796d8a982dcaa6b",
+      "sha256": "e1d095127de79117f407b27f6b06d176645f800aa948323299c695743df9a750",
+      "bytes": 27812,
       "transformations": [
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user",
           "count": 1
         },
         {
           "kind": "owner-label",
-          "label": "назначенный куратор",
+          "label": "the designated curator",
           "count": 2
+        },
+        {
+          "kind": "owner-authorization-boundary",
+          "detail": "The source owner memory-agent grant is not transferred through emitted hook context."
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "memory-runtime"
@@ -2855,19 +3056,28 @@
     {
       "source": "runtime/memory/SYSTEM/workflows/capture.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/capture.md",
-      "source_sha256": "a0839f13bbfde1422013697b4cc3898e496791f931d2d57126a443e70f340102",
-      "sha256": "32300ed0586b57add9b3c836f227b531878d9f1c4e80ef233ca33d3d4f30fbd4",
-      "bytes": 10443,
+      "source_sha256": "5acc61634a95c11e7b372160993244d3530442fd0050f2152bc3d1dcebf48e9a",
+      "sha256": "5ecaed7a4a0a42611317f6b7dc994d9a7a677f184fd0a86d690044fb1dde7f60",
+      "bytes": 6029,
       "transformations": [
         {
           "kind": "owner-label",
-          "label": "пользователь",
-          "count": 3
+          "label": "the user's",
+          "count": 2
         },
         {
           "kind": "owner-label",
-          "label": "назначенный куратор",
+          "label": "the user",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "the designated curator",
           "count": 2
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "memory-runtime"
@@ -2875,9 +3085,9 @@
     {
       "source": "runtime/memory/SYSTEM/workflows/cloud-connector.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/cloud-connector.md",
-      "source_sha256": "cff74ce9ca863063dc0e3003181d466edab77b93ee46fb06fded4ab4ecc0b9a5",
-      "sha256": "7910ca669905947145f4a4cca618682e87540df66e96df4680a1da15da50ebf9",
-      "bytes": 5752,
+      "source_sha256": "7140adeacb37666654528dff5d1a7321c3cc2d91f00163525470f60c998dbe96",
+      "sha256": "51edf47302278df168d5ebeef8dfd3bb523961e97b0574cd8ae3033f2b371217",
+      "bytes": 3247,
       "transformations": [
         {
           "kind": "memory-target-binding",
@@ -2893,13 +3103,17 @@
         },
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user",
           "count": 2
         },
         {
           "kind": "owner-label",
-          "label": "назначенный куратор",
+          "label": "the designated curator",
           "count": 3
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "memory-runtime"
@@ -2907,19 +3121,27 @@
     {
       "source": "runtime/memory/SYSTEM/workflows/curate.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/curate.md",
-      "source_sha256": "62bcfc40e456d1acf1fb263f7c8e75546d14b7955ca682caae61646290abf420",
-      "sha256": "e21df9a67bdfa421e6834d78dd9a79134a86fe3b43f9f0f5c064a59ed83b9ee2",
-      "bytes": 4804,
+      "source_sha256": "a8c48dbe23220e3e4a796dba80e905071fd8cf55ba9ca38c9293153d0e01a5f6",
+      "sha256": "e6a0f18cec8f2aeb1a8e4b6711090fa2140a71906ae27b833a2b1467613b688e",
+      "bytes": 2828,
       "transformations": [
         {
           "kind": "owner-label",
-          "label": "пользователь",
-          "count": 1
+          "label": "the user's",
+          "count": 2
         },
         {
           "kind": "owner-label",
-          "label": "назначенный куратор",
+          "label": "the designated curator",
           "count": 3
+        },
+        {
+          "kind": "unbundled-local-integration",
+          "detail": "Retain the prior portable curation scope; source-only Memory World projection instructions are not a bundled capability."
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "memory-runtime"
@@ -2964,8 +3186,8 @@
       "source": "hooks.json",
       "path": "payload/runtime/integrations/codex-hooks.template.json",
       "source_sha256": "6545533a7cae3787e13274d4b325d4becbdd048598c65dc6f8cf7eeb6ae7712e",
-      "sha256": "16fea630e26f5bd1657e8a6bf216b140f027f49a321890fb0ddfd492560ba37c",
-      "bytes": 1599,
+      "sha256": "2b00850d40a3a0e1d378e1fb0514ed7013615fc3da649261dde4cd8fa4e111fb",
+      "bytes": 1361,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -2995,6 +3217,10 @@
         {
           "kind": "hook-command-binding",
           "detail": "Same three events/operations, limits and timeouts; quote deployment interpreter/script paths on both shells. Template is not registered or trusted by installation."
+        },
+        {
+          "kind": "metadata-translation",
+          "detail": "English description/status labels; commands, events, timeouts and context limit unchanged."
         }
       ],
       "module": "workflow"
@@ -3025,27 +3251,36 @@
     {
       "source": "runtime/memory/SYSTEM/scripts/kb-search.mjs",
       "path": "payload/runtime/memory/SYSTEM/scripts/kb-search.mjs",
-      "source_sha256": "fbe5f66506a6ca8ed97b537acded5d3c997f499220abd96b778c1b5df424b1fd",
-      "sha256": "fbe5f66506a6ca8ed97b537acded5d3c997f499220abd96b778c1b5df424b1fd",
-      "bytes": 5958,
-      "transformations": [],
+      "source_sha256": "0a04614bd5ebe7a64a2aeb6762e3189e593810924b8394a696fcb2d4e2f19107",
+      "sha256": "0a04614bd5ebe7a64a2aeb6762e3189e593810924b8394a696fcb2d4e2f19107",
+      "bytes": 5883,
+      "transformations": [
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        }
+      ],
       "module": "memory-runtime"
     },
     {
       "source": "runtime/memory/SYSTEM/workflows/retrieval-quality.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/retrieval-quality.md",
-      "source_sha256": "beff39d0f848a4c875765c03c01bade9568be5a25c260d650385dcf1b76aefd5",
-      "sha256": "85011e87a2a13ef60c9a3631680cc0cf17d668da3c1871db3aa6f30bcb69a326",
-      "bytes": 5643,
+      "source_sha256": "71f3bc44e31fe0cba5406572a0c33dda7d2921b3e2a90fd0062de196166e62b6",
+      "sha256": "cd5ed3fb9e6722e7fceb3ea2c8c0f4ed33b3cb74c9459b999b444bdf57a33835",
+      "bytes": 3255,
       "transformations": [
         {
           "kind": "owner-label",
-          "label": "назначенный куратор",
+          "label": "the designated curator",
           "count": 1
         },
         {
           "kind": "private-fixture-binding",
-          "detail": "Reference points to a synthetic schema template instead of private owner test cases. Preserve the twelve-case pilot and require own populated coverage/navigation registries; no personal fixtures copied."
+          "detail": "Preserve synthetic setup templates and require actual owner-provided coverage/navigation registries and twelve cases."
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "memory-runtime"
@@ -3142,14 +3377,23 @@
     {
       "source": "skills/product-engineering/references/task-brief-and-acceptance.md",
       "path": "payload/skills/product-engineering/references/task-brief-and-acceptance.md",
-      "source_sha256": "10debf7f0179a769d7cf538a13e3715ac6919bb88829de468bd03913953f4fb1",
-      "sha256": "c804af37ab4cd29a914110360709857af731cca06c1ece27d8130492bf5944bb",
-      "bytes": 8548,
+      "source_sha256": "0be505c01d253663d6c33639080afa230dc80009f8fea9a725a75f967d5400de",
+      "sha256": "c1124b298a028399f9fdfa030305d188fdf506f293c2d2d48be57f070e720211",
+      "bytes": 4734,
       "transformations": [
         {
           "kind": "owner-label",
-          "label": "пользователь",
-          "count": 2
+          "label": "the user's",
+          "count": 1
+        },
+        {
+          "kind": "owner-label",
+          "label": "the user",
+          "count": 1
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "product-engineering"
@@ -3157,9 +3401,9 @@
     {
       "source": "skills/product-ui-design/references/accepted-ui-lessons.md",
       "path": "payload/skills/product-ui-design/references/accepted-ui-lessons.md",
-      "source_sha256": "c67ed5bded1ab4d2f5facdd3210e5627aa7392d4904d8ec8e29bf0a70ad8438d",
-      "sha256": "ef05a9a501b3083c280cf79c2b24fc9e759c78884fa5aab4590602bc47efca29",
-      "bytes": 4286,
+      "source_sha256": "e1e49ce9254f78143c067dc05f9a88ebe6831b03c7d483b8ff323e3f06fd79b6",
+      "sha256": "aef71f7c4d620927d3dede478067f23d2b1eaec5c1e760c6fb40231db22dca5a",
+      "bytes": 2318,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -3168,12 +3412,16 @@
         },
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user",
           "count": 2
         },
         {
           "kind": "private-evidence-summary",
-          "detail": "Retain the adopted UI method and evidence limits without private feedback/family details or private research locations."
+          "detail": "Retain the adopted method and evidence limits without private feedback/family details or locations."
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "product-ui-design"
@@ -3181,14 +3429,18 @@
     {
       "source": "skills/product-ui-design/references/design-preflight.md",
       "path": "payload/skills/product-ui-design/references/design-preflight.md",
-      "source_sha256": "97c749b4eec392a7dd1961c32c1e01f247b57a9958dabfe2ce7830f50e69327a",
-      "sha256": "a72b9367b696d3fa2997e75d86ac1f9051539c68be8726061396fea014820b6f",
-      "bytes": 16019,
+      "source_sha256": "1d28f85c965c76fc0322f7e38af2bf749e1d5ee6fa8b4dec20287f0111334710",
+      "sha256": "44b1d8213d7c9b3fdbe34940f3efc756b53a5b5448eabe954b00524b850617e4",
+      "bytes": 8648,
       "transformations": [
         {
           "kind": "owner-label",
-          "label": "пользователь",
+          "label": "the user's",
           "count": 2
+        },
+        {
+          "kind": "instruction-language",
+          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
         }
       ],
       "module": "product-ui-design"

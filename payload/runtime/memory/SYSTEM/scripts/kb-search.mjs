@@ -56,7 +56,7 @@ export function searchVault(root,query,{mode='current',limit=8}={}){
   };
   const ranked=docs.map(rank).filter(Boolean).sort((a,b)=>b.score-a.score||a.path.localeCompare(b.path));
   const n=Math.min(20,Math.max(1,Number(limit)||8));
-  return {mode,query,results:ranked.filter(x=>x.kind!=='inbox').slice(0,n),inbox:ranked.filter(x=>x.kind==='inbox').slice(0,n),notice:'Рейтинг — поиск кандидатов. Проверь дату события, источник, заменённые решения и свежие INBOX.'};
+  return {mode,query,results:ranked.filter(x=>x.kind!=='inbox').slice(0,n),inbox:ranked.filter(x=>x.kind==='inbox').slice(0,n),notice:'Ranking finds candidates. Check the event date, source, superseded decisions and fresh INBOX.'};
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
   try{

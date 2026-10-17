@@ -1,3 +1,3 @@
-# Перенесено
+# Moved
 
-Действующие инструкции: [перейти](composition.md).
+Current instructions: [open](composition.md).
