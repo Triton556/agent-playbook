@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.3
+
+- Refined the source-approved clarification rule before choosing an approach: establish the user outcome, context, constraints, preservation/redesign boundaries and observable acceptance criteria.
+- Resolve identified material product, architecture, scope and acceptance choices through concise question rounds or explicit delegation. Reuse known answers, discover technical facts and decide routine details autonomously.
+- Do not silently inherit the existing implementation as a requirement. No numerical confidence gate, repeated confirmations, mandatory interview for clear small tasks, new runtime behavior or access grant is introduced.
+
 ## 0.2.2
 
 - Translated maintained agent instructions, specialist references and memory-hook context into English.

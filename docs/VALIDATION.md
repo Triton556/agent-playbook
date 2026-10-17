@@ -4,6 +4,12 @@ Build: 15 October 2026, Windows. The levels below describe executed checks, not 
 
 ## Source and composition
 
+### 0.2.3 clarification update
+
+On 18 October 2026 (Asia/Vladivostok), the approved clarification paragraph was verified identical in the active source base and exported base. Package integrity passed for all 296 payload files. The complete existing local Windows suite passed: 23 tests in 141.988 seconds, including full startup preservation, instruction-budget refusal, all four client layouts, installation/removal ownership and memory helpers.
+
+Only the global base instruction and its release/provenance documentation changed; specialist instructions, runtime helpers and installer code are unchanged. These checks establish text fidelity and package behavior. No model pilot, independent review or product-quality improvement is claimed.
+
 ### 0.2.1 refresh
 
 On 17 October 2026, the refresh includes 296 payload files and 23 custom skill entries. Package integrity passed. The public Markdown check covered 364 local links/anchors with no newly broken references; the bounded scan of changed files found none of the source-machine/private-memory/credential identifiers it checks.

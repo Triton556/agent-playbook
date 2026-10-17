@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
   "name": "agent-workflow-harness",
-  "version": "0.2.2",
-  "exported_at": "2026-10-17T12:13:02.638879+00:00",
+  "version": "0.2.3",
+  "exported_at": "2026-10-17T15:42:00.221916+00:00",
   "baseline": "Current configured workflow after task-level participation/reviewer choices, reference-grounded acceptance and approved instruction-role deduplication; no new orchestrator or model pilot",
   "instruction_policy": "Full maintained agent instructions in English; Russian communication and knowledge content by default; explicit environment/owner bindings, privacy-safe provenance and unchanged runtime contracts",
   "files": [
     {
       "source": "AGENTS.md",
       "path": "payload/AGENTS.md",
-      "source_sha256": "bf21526bb0ea4444f924b00f1cb97a16b4624192c19e9a543e22b51375873384",
-      "sha256": "f2aac38791d2f23de97516b901289722a52718217f53da1a9fd3d7a288e88139",
-      "bytes": 6187,
+      "source_sha256": "f256db3bda22d5dde6629a3973d47b7044bbe9e08778db33eb0861942c2a066c",
+      "sha256": "28833cba044fa48147a4d24ae51c84674efaea7ae0073d329f8c60d590054ee4",
+      "bytes": 6769,
       "transformations": [
         {
           "kind": "environment-binding",

@@ -74,3 +74,9 @@ Static integrity and real installer tests establish package behavior, not model 
 The source owner requested English agent-facing instructions with Russian user communication and knowledge content. Complete operative prose, references and memory-hook reminders were translated without changing acceptance criteria, permissions, command schemas, event wiring or computational logic. The installer startup text applies the same language policy in full and skills-only modes. Exact note paths, data and illustrative Russian knowledge entries remain intact. Existing portable privacy/binding transformations remain explicit. The source-only Memory World integration is not installed by the portable memory module.
 
 Translation and integrity checks do not establish a model-quality or token-cost improvement. No model pilot is required by this update.
+
+## Version 0.2.3 clarification rule
+
+The source owner approved a replacement of the existing global clarification paragraph. The exported base preserves that complete paragraph: understand the intended outcome and relevant context before choosing an approach, resolve identified material choices through questions or explicit delegation, and retain autonomous routine work. The current implementation is not silently treated as a requirement. Readiness is expressed through resolved choices rather than a self-reported confidence percentage.
+
+Only the base instruction changes. Existing workflow references, skills, runtime helpers, installer logic, acceptance permissions and portability transformations are retained. No model-quality improvement is established by this prose update.
