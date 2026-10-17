@@ -1,6 +1,6 @@
 # Validation protocol
 
-## A bounded useful experiment
+## Compare artifact revisions
 
 Record the baseline, one question, the proposed change and a concrete comparison state. Match model inputs, revision, seed, camera, time, viewport and relevant rendering settings. When the hypothesis concerns one of those fields, make that the explicit independent variable.
 
@@ -35,6 +35,6 @@ Unverified limits:
 
 Use precise coverage language: catalog card, rendered page, interaction, targeted source reading, complete source audit and independently reproduced mechanism are different claims. Record what was actually done. A screenshot of one desktop state cannot establish all mobile interactions; source presence cannot establish successful execution.
 
-For skill validation, run the skill frontmatter/link validator and inspect routing. Then exercise a realistic artifact where useful. Structural validation confirms packaging; it does not establish that a future agent will consistently make good aesthetic judgments. Call a self-review a self-review.
+This document checks the visual instrument, not the skill-authoring process. Creating/editing a skill follows the built-in skill-creator; an explicitly requested workflow experiment follows the single [workflow-pilot](../../product-engineering/references/workflow-pilot.md). An artifact check does not automatically launch that pilot. Structural validation does not establish future aesthetic judgment; call a self-review a self-review.
 
-For repeated defects or a batch of authored artifacts, use [the quality cycle](../../product-engineering/references/quality-cycle.md) and the installed product-engineering `scripts/quality_ledger.py`. Keep function/style/context acceptance separate from file validity. Declare whether framing is shape-normalized or common world scale; keep useful independent views/crops with the actual revision. General model commentary, measured/source findings, agent visual observations and human feedback retain their different evidence grades.
+For repeated defects or a batch of authored artifacts, use [the quality cycle](../../product-engineering/references/quality-cycle.md) and its evidence guidance; use the existing ledger when its machine validation is needed. Keep function/style/context acceptance separate from file validity. Declare whether framing is shape-normalized or common world scale; keep useful independent views/crops with the actual revision. General model commentary, measured/source findings, agent visual observations and human feedback retain their different evidence grades.

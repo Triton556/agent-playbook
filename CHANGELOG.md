@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1
+
+- Refreshed the current source-approved instruction roles: document editing, native skill creation and one shared workflow-pilot procedure; the Anthropic entry is a compatibility redirect.
+- Added explicit task-level human participation and separate reviewer choice/round limits, the saved acceptance basis, UI preflight and current source-grounded perception checks.
+- Removed duplicated general procedures from specialist entries; UX Pro Max/Taste supply targeted guidance, and current evidence can serve several criteria.
+- Preserved runtime code/schemas, helper behavior, datasets, licenses and private installation boundaries. No new orchestrator, standing reviewer grant or model benchmark is introduced.
+- Made the startup-budget regression fixture independent of the former long bootstrap; the installer guard itself is unchanged.
+
 ## 0.2.0
 
 - Added the illustrated Russian profile guide with visible intermediate outputs, real six-view BUOY—02 design, camera-orbit GIF and static alternative.

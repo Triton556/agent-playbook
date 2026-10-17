@@ -99,4 +99,4 @@ Missing registries stop these checks as unconfigured. Structural zero errors onl
 
 ## Destination acceptance receipt
 
-Record independently: installed selection/closure; package and installed hashes; startup body/end and effective budget; actual catalog; interpreter/helper scenarios; MCP real receipts; real lifecycle events/trust; viewer/image/format capabilities; fresh-review capability/consent; a representative authorized task and independent observations. Mark missing/unverified layers explicitly. The final owner verdict is its own evidence.
+Record independently: installed selection/closure; package and installed hashes; startup body/end and effective budget; actual catalog; interpreter/helper scenarios; MCP real receipts; real lifecycle events/trust; viewer/image/format capabilities; fresh-review capability/consent only when selected; a representative authorized task and the actual observations, identifying self-review separately. Mark missing/unverified layers explicitly. The final owner verdict is its own evidence.

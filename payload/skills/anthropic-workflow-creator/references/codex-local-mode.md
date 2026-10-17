@@ -10,6 +10,12 @@ Omitted: upstream `run_eval.py`, `run_loop.py`, `improve_description.py`, benchm
 
 This local cycle is not an executed LLM benchmark or model-quality test. It does not evaluate skill triggering, compare models, supply an isolated evaluator or prove semantic correctness. Human/agent review and actual project checks remain necessary. Required-field validation is not complete YAML validation. Codex's fresh native skills/list scan is the installation discovery check.
 
+## Legacy helpers and validation scope
+
+Use the built-in skill-creator's validator for current skill-creation work. The local quick_validate below is retained for existing callers and only checks a limited contract; it is not interchangeable with the built-in YAML/scaffold check. Do not run both by default. check_outputs checks existing files only when those deterministic assertions answer the current question. Packaging is optional and does not prove installation or behavior.
+
+The shared [workflow-pilot](../../product-engineering/references/workflow-pilot.md) now owns the method. No local helper starts a case, agent or paid model call.
+
 ## Windows PowerShell examples
 
 Use the existing bundled Python interpreter and quote paths. Replace the example project paths with the user's authorized paths.

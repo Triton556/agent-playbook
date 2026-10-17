@@ -21,7 +21,7 @@
 
 **Как читать схемы:** слева — действие агента, справа — то, что появляется после него. Стрелка ведёт к следующему этапу. Существенная проблема возвращает работу к проверке причины и исправлению.
 
-На схемах показан развёрнутый путь. Для маленькой ясной правки используются относящиеся к ней этапы. Робот и сайт ниже — реальные результаты наших задач; карточки краткого задания, плана и записи памяти иллюстрируют форму выхода.
+На схемах показан развёрнутый путь. Участие пользователя и отдельного проверяющего выбираются по задаче; пилот не является обязательным этапом правки инструкций. Установка зависимостей сохраняет доступность справок, а не требует загружать все навыки в контекст. Для маленькой ясной правки используются относящиеся к ней этапы. Робот и сайт ниже — реальные результаты наших задач; карточки краткого задания, плана и записи памяти иллюстрируют форму выхода.
 
 ## 1. Весь workflow
 
@@ -70,11 +70,11 @@ python harness.py plan --client codex --target /path/to/project --profile full
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `engineering`: 10 выбрано → 13 навыков с зависимостями.
+Профиль `engineering`: 10 выбрано → 12 навыков с зависимостями.
 
 **Основной выбор:** `domain-modeling`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`, `writing-for-agents`.
 
-**Связанные навыки:** `design-taste-frontend-v1`, `kb-find`, `kb-save`.
+**Связанные навыки:** `design-taste-frontend-v1`, `kb-find`.
 
 Из папки скачанного репозитория можно сначала посмотреть план, заменив путь и клиент на свои:
 
@@ -104,11 +104,11 @@ python harness.py plan --client codex --target /path/to/project --profile engine
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `visual`: 4 выбрано → 14 навыков с зависимостями.
+Профиль `visual`: 4 выбрано → 13 навыков с зависимостями.
 
 **Основной выбор:** `product-ui-design`, `product-ui-review`, `visual-experiment-craft`, `voxel-model-craft`.
 
-**Связанные навыки:** `design-taste-frontend-v1`, `domain-modeling`, `kb-find`, `kb-save`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `ui-ux-pro-max`.
+**Связанные навыки:** `design-taste-frontend-v1`, `domain-modeling`, `kb-find`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `ui-ux-pro-max`.
 
 Из папки скачанного репозитория можно сначала посмотреть план, заменив путь и клиент на свои:
 
@@ -150,11 +150,11 @@ python harness.py plan --client codex --target /path/to/project --profile visual
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `voxel`: 1 выбрано → 13 навыков с зависимостями.
+Профиль `voxel`: 1 выбрано → 12 навыков с зависимостями.
 
 **Основной выбор:** `voxel-model-craft`.
 
-**Связанные навыки:** `design-taste-frontend-v1`, `domain-modeling`, `kb-find`, `kb-save`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`.
+**Связанные навыки:** `design-taste-frontend-v1`, `domain-modeling`, `kb-find`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`.
 
 Из папки скачанного репозитория можно сначала посмотреть план, заменив путь и клиент на свои:
 
@@ -205,20 +205,20 @@ python harness.py plan --client codex --target /path/to/project --profile memory
 
 **Например:** «Сохрани наш подход к проектированию модели, чтобы другой агент мог его повторить».
 
-Инструкция указывает, когда применять процедуру, какие входные данные нужны, что сделать и по чему проверить завершение. Примеры помогают понять принцип, а пилот показывает, как он работает на задаче.
+Инструкция указывает, когда применять процедуру, какие входные данные нужны, что сделать и по чему проверить завершение. Примеры поясняют принцип; отдельно согласованный пилот проверяет гипотезу об улучшении процесса. Редактура документов следует writing-for-agents, создание навыка — доступному native skill-creator; Anthropic-вход ведёт к единому порядку пилота.
 
 ![От момента применения и шагов к критериям, примерам, пилоту и сохранённому уроку](assets/profiles-v2/instructions.png)
 
-**Зачем это нужно:** удачный приём становится воспроизводимой процедурой с областью применения и исключениями. Проверка на новой задаче остаётся необходимой.
+**Зачем это нужно:** удачный приём становится воспроизводимой процедурой с областью применения и исключениями. Новая задача проверяется, когда это нужно для гипотезы и отдельно разрешено; обычная правка проходит затронутые локальные проверки.
 
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `instructions`: 2 выбрано → 2 навыков с зависимостями.
+Профиль `instructions`: 2 выбрано → 13 навыков с зависимостями.
 
 **Основной выбор:** `anthropic-workflow-creator`, `writing-for-agents`.
 
-**Связанные навыки:** дополнительных нет.
+**Связанные навыки:** `design-taste-frontend-v1`, `domain-modeling`, `kb-find`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`.
 
 Из папки скачанного репозитория можно сначала посмотреть план, заменив путь и клиент на свои:
 

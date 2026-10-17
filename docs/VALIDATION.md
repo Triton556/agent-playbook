@@ -4,6 +4,14 @@ Build: 15 October 2026, Windows. The levels below describe executed checks, not 
 
 ## Source and composition
 
+### 0.2.1 refresh
+
+On 17 October 2026, the refresh includes 296 payload files and 23 custom skill entries. Package integrity passed. The public Markdown check covered 364 local links/anchors with no newly broken references; the bounded scan of changed files found none of the source-machine/private-memory/credential identifiers it checks.
+
+The first local Windows run executed all 23 tests in 114.213 seconds: 22 passed, and the startup-budget fixture failed because the shorter source instructions now fit where the old fixture expected overflow. The fixture was corrected to put the existing project instructions exactly at the declared default limit, so any added full bootstrap must be refused before writes. Its targeted rerun passed in 13.044 seconds, including preservation and the explicit higher-budget installation. Installer/runtime logic was unchanged; this is not a claim of a second complete local suite run.
+
+The native skill-creator validator could not run in the source environment because PyYAML was absent. The edited simple metadata was checked separately; no dependency was installed and no complete YAML validation is claimed. No model pilots, additional agents, measured token savings or fresh client-capability acceptance are claimed by this refresh. Earlier independent-review/media results below remain historical.
+
 ### 0.2.0 refresh
 
 On 15 October 2026 the refreshed package passed all **23 local Windows tests** in119.225seconds: the existing20 installation/ownership/MCP tests and3 new destination-memory scenarios. The new scenarios exercise current/history ranking with separate INBOX results; missing coverage/navigation setup; a valid synthetic registry/topology; detection of a lost reachable topic or an incorrect direct-root link; and unchanged vault bytes after read-only checks.

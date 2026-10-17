@@ -1,6 +1,6 @@
 # Agent Workflow Harness
 
-An installable, modular workflow for coding agents, human-centered UI review, visual experiments, voxel creation and durable knowledge. The package preserves the configured instructions, references, datasets and helpers instead of rewriting them into shorter prompts.
+An installable, modular workflow for coding agents, human-centered UI review, visual experiments, voxel creation and durable knowledge. The package preserves the current configured instructions, references, datasets and helpers, including the source-approved separation of instruction-authoring roles and the single workflow-pilot procedure.
 
 **[Русское описание](README.ru.md) · [Agent installation guide](INSTALL_FOR_AGENTS.md) · [Workflow guide](docs/WORKFLOW_GUIDE.md) · [Integrations and startup limits](docs/INTEGRATIONS.md) · [Compatibility](docs/COMPATIBILITY.md) · [Fidelity contract](docs/FIDELITY.md) · [Licenses](THIRD_PARTY_NOTICES.md)**
 
@@ -46,7 +46,7 @@ python harness.py install --client claude --target ../visual-project --profile v
 | `visual` | UI design/review, interactive experiments and voxel craft |
 | `voxel` | Voxel construction plus linked methods and checks |
 | `memory` | Find, save, status, sync and curation with the existing memory runtime |
-| `instructions` | Agent instruction writing and repeatable workflow creation |
+| `instructions` | Agent-document editing and compatibility entry to the shared workflow-pilot procedure |
 
 Dependencies can include several siblings. The plan shows requested and actually installed skills before writing. `--workflow` installs all 23 modules because the complete startup rules can route to any of them. Selecting a single skill without this flag does not activate the whole workflow. Bodies and resources are retained; references are loaded only when their original triggers apply.
 
@@ -57,10 +57,10 @@ Dependencies can include several siblings. The plan shows requested and actually
 3. Test an inexpensive coherent representation before expensive construction.
 4. Create the requested outputs and preserve current state/evidence.
 5. Inspect technical behavior, meaning and actual human-scale presentation separately.
-6. The author tests and briefs a **new independent reviewer**. The reviewer checks the real request and concrete expectations; the author verifies causes and fixes confirmed defects.
+6. The author checks the result and follows the selected human checkpoints. A separate reviewer runs only when explicitly chosen for this task, with agreed scope, stages and round limit.
 7. Complete the declared scope and save transferable lessons with their limits.
 
-The author keeps technical tests. A reviewer is not automatically assigned the author's complete test suite. Initial impressions precede author self-assessments; a new acceptance round gets another fresh reviewer. Actual user authorization and client capabilities govern delegation.
+The initial interview selects human participation (each meaningful iteration / first coherent sketch / autonomous) and separately whether a reviewer is needed. Autonomous work does not authorize delegation. An agreed reviewer uses a fresh context; a repair does not automatically create another round. One current observation may support several acceptance criteria. See [instruction ownership and pilots](docs/INSTRUCTION_MAINTENANCE.md).
 
 ## Knowledge and integrations
 

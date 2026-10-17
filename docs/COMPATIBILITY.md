@@ -30,7 +30,7 @@ The package does not redistribute proprietary native plugins or credentials. Nat
 
 ## Fresh reviewer adapters
 
-Codex collaboration uses a new agent with `fork_turns="none"`. Other clients must map this to a genuinely new context/session and the brief from independent-review.md. A reused thread carrying author explanations is not equivalent. Confirm model/effort and tool scope when relevant; no temperature or model setting is silently added.
+Only when explicitly selected for the current task: Codex collaboration uses a new agent with `fork_turns="none"`. Other clients must map this to a genuinely new context/session and the brief from independent-review.md. A reused thread carrying author explanations is not equivalent. Confirm model/effort and tool scope when relevant; no temperature or model setting is silently added.
 
 ## Context parity
 
@@ -39,3 +39,5 @@ Full mode places the whole base rules inline in startup instructions, then prese
 Same model/effort, context, available tools, permissions, task inputs/references and native provider versions provide the closest conditions. They are controls, not a guarantee of identical creativity or successful human perception. Validate actual matched tasks before asserting equivalence.
 
 Codex startup byte budgets, overriding instruction files, shell/interpreter conversion and actual tool/hook registration are covered in [Integrations](INTEGRATIONS.md). All four layouts are installer-tested; only Codex CLI catalog discovery is presently executed. No live Claude/DeepSeek/generic model equivalence is claimed.
+
+Native skill-creator, template-creator and skill-installer are external client capabilities, not bundled modules. Verify availability before selecting one; an unavailable native creator is not an installed success. The bundled writing guidance and shared pilot do not emulate a provider-native packaging or template API.

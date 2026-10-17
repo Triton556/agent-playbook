@@ -16,7 +16,7 @@ Read [integration setup](docs/INTEGRATIONS.md) for interpreter bindings, startup
 - Node.js 22+ for task-state, limited memory MCP and knowledge helpers.
 - A client that discovers local `SKILL.md` bundles and project instructions, or a verified explicit discovery integration for generic mode.
 - Actual browser/image inspection for visual work. Appropriate format/image generation tools where the selected task needs them.
-- A genuine fresh context review tool and owner authorization for independent acceptance.
+- A genuine fresh-context review tool only when separate review is explicitly selected for the current task.
 
 ## 2. Inspect the complete plan
 
@@ -43,14 +43,7 @@ python harness.py install --client codex --target /path/to/project --profile ful
 
 Other supported bindings: `--memory-repo`, `--cloud-memory-root`, `--curation-schedule`, `--lab-cli`, `--lab-runtime`, `--lab-vm-name`, `--lab-vm-uuid`, `--lab-vm-mac`. A lab provider must implement the original restricted contract, target identity checks, session ownership and operation limits. The installer provisions neither a VM nor a guest session.
 
-The originating user's standing permissions and schedule receipts are not permission or active services for a different owner. When the owner actually authorizes one fresh reviewer per acceptance round:
-
-```bash
-python harness.py install --client codex --target /path/to/project --profile full \
-  --reviewer-consent one-per-round --consent-source "actual user message/reference"
-```
-
-Without actual standing consent, `ask` is the policy. A policy field is a record, not authority; do not invent `consent-source`. Other implementers/new accesses still follow the owner's normal agreement. This preserves authorization semantics rather than copying someone else's grant.
+The originating user's permissions and schedule receipts are not authorization for another owner. In each actual task, select human participation and separately whether a reviewer is needed, with scope, stages and round limit. Default reviewer policy is `ask`; autonomous execution does not imply consent. The legacy `--reviewer-consent one-per-round --consent-source ...` fields remain for compatibility with explicitly supplied deployment records; they do not create a standing grant for future tasks or override the current task's decision.
 
 ## 4. Install and verify files
 
@@ -110,7 +103,7 @@ Run an authorized representative task for the selected route. Use the real user 
 - Memory: capture/read-back/idempotent repeat/checkpoint; sync remains disabled until private remote approval/verification.
 - Instructions: another agent can construct a concrete review brief and identify the next permitted step without reading a summary in place of the actual source.
 
-The author runs its technical checks and briefs one new independent reviewer for acceptance. Give the original request, latest material corrections, concrete expected behavior, conditions, version/launch and scope. Initial impressions precede author test results. Verify causes before repair; the next corrected acceptance version gets a different fresh reviewer.
+The author runs its relevant checks. If a separate reviewer was explicitly selected, provide the original request, corrections, expected behavior, conditions, version/launch and agreed scope. Initial impressions precede author diagnoses. A repair does not automatically authorize another round; only an agreed next round uses a new fresh reviewer. A workflow experiment follows the single workflow-pilot procedure and is not an installation prerequisite.
 
 ## 7. Report the actual installation state
 

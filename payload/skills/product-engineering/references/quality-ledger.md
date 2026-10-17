@@ -1,6 +1,6 @@
 # Local quality ledger
 
-`scripts/quality_ledger.py` uses Python's standard library. It reads only declared files inside `--root`, performs no shell/network/model calls, and writes only the explicitly requested report. Keep a ledger for multi-output or recurring-defect work; small unrelated edits do not need it.
+`scripts/quality_ledger.py` uses Python's standard library. It reads only declared files inside `--root`, performs no shell/network/model calls, and writes only the explicitly requested report. Use a ledger when a series or recurring-defect task needs machine validation of evidence/dependencies, or the project already requires it; otherwise the existing acceptance record is enough.
 
 ```text
 python <skill-root>/scripts/quality_ledger.py snapshot --root <project> --path tools/generator.py --path output/model.vox
@@ -27,4 +27,4 @@ The validator verifies the record, hashes, references and image dimensions. It d
 
 Declare the expected outputs before generation, in the existing plan or task-state v2. The ledger validates declared subjects; it cannot detect an object that was never declared. `agent-worklog.mjs inspect` checks the output/stage manifest beside it, then invokes this validator when a ledger is linked.
 
-Keep the existing schema compatible. Style, context, comprehension and use from [human-perspective-review](human-perspective-review.md) become applicable technical/semantic/visual/human requirements with concrete evidence, not a new compulsory kind. Bind source, render, labels and rules that influence the criterion. Unknown independence retains conservative rechecking; independently described and tested closures can be separated. A current hash is a binding, not proof that a person inspected the file.
+The plan owns requirements, task-state owns progress when used, and this ledger owns detailed evidence. Required schema summaries refer to that basis; they do not create another specification. One compatible fresh evidence record can serve multiple requirements. Keep the existing schema compatible. Style, context, comprehension and use from [human-perspective-review](human-perspective-review.md) become applicable technical/semantic/visual/human requirements with concrete evidence, not a new compulsory kind. Bind source, render, labels and rules that influence the criterion. Unknown independence retains conservative rechecking; independently described and tested closures can be separated. A current hash is a binding, not proof that a person inspected the file.

@@ -60,3 +60,11 @@ The exact configured Impeccable engine is a pinned official runtime asset, not a
 | Actual user's response | Human acceptance at that scope |
 
 Hash tests do not establish that a model reads every condition or creates good graphics. A model can still make mistakes with identical instructions. This repository must not claim quality parity, cost reduction or identical creative output without the relevant observed evidence.
+
+## Version 0.2.1 source refresh
+
+The approved source instructions now separate document editing, native skill creation and the single workflow-pilot procedure. This refresh carries that source change rather than independently shortening a packaged method. The current interview/participation/reviewer choices, source-grounded acceptance and human-perception protocol are included. Runtime code, schemas, helpers, datasets and licenses are unchanged.
+
+Native creator links become explicit external capabilities because provider system skills are not bundled. The source owner's standing memory-agent grant is not transferred. Accepted UI lessons retain their operative method, with private feedback/family details and private evidence locations omitted. These transformations are recorded with source/export hashes.
+
+Static integrity and real installer tests establish package behavior, not model quality or token savings. No model pilot is a required step of this source refresh.

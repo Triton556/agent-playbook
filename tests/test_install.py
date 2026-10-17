@@ -111,7 +111,8 @@ class InstallBehavior(unittest.TestCase):
             self.assertNotIn('# Общие правила работы',text)
     def test_codex_instruction_truncation_is_rejected_before_writes(self):
         with target_directory() as td:
-            p=Path(td);original=b'# Project\n'+b'x'*12000;(p/'AGENTS.md').write_bytes(original)
+            # Existing instructions fit exactly; any full bootstrap exceeds the default budget.
+            p=Path(td);prefix=b'# Project\n';original=prefix+b'x'*(32768-len(prefix));(p/'AGENTS.md').write_bytes(original)
             call('install','--profile','full','--target',p,ok=2)
             self.assertEqual((p/'AGENTS.md').read_bytes(),original);self.assertFalse((p/'.agents').exists())
             call('install','--profile','full','--target',p,'--project-doc-max-bytes','65536')

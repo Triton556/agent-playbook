@@ -10,7 +10,7 @@ This is a navigation guide. The complete installed base, WORKFLOW.md, relevant S
 | Multi-stage/new/ambiguous/repeated-failure/resumed task | workflow/WORKFLOW.md + relevant current project decisions | Goal, evidence, research, representation, completeness, recovery |
 | Actual stage of work | Relevant SKILL.md entrypoint | Stage-specific actions and criteria |
 | Trigger in that entrypoint | Required reference, helper or targeted dataset query | Concrete method; not an unconditional context dump |
-| Acceptance | Actual artifact/behavior + independent-review.md | Author testing, clear reviewer brief, fresh observations and verified causes |
+| Acceptance | Actual artifact/behavior + saved acceptance program | Author checks and selected human checkpoints; independent-review.md only for explicitly agreed review |
 | Completion/handoff | Current state, real receipts and bounded transferable lessons | Recovery and continuity without fabricated completion |
 
 Installed modules are not all loaded into the model at once. Installation closure preserves reachability; original triggers govern reading. The package adds no model dispatcher and no automatic role/cost routing.
@@ -23,14 +23,16 @@ flowchart LR
   B --> C[Coherent preliminary representation]
   C --> D[Create declared outputs]
   D --> E[Author technical and perceptual checks]
-  E --> F[New independent reviewer]
-  F --> G{Confirmed consequential defect?}
+  E --> Q{Separate reviewer agreed for this round?}
+  Q -->|Yes| F[Fresh scoped reviewer]
+  Q -->|No| G{Confirmed consequential defect?}
+  F --> G
   G -->|Yes| H[Verify cause and repair]
   H --> E
   G -->|No| I[Complete scope and record limits/lessons]
 ```
 
-The new acceptance round after a repair gets a new reviewer. Ordinary small edits use the relevant stage and proportionate checks. A review-only request does not authorize implementation; permission files and source history do not create tool rights.
+The initial interview selects human participation and separately review consent/scope/rounds. A repair does not create a review round. Only an explicitly agreed next round uses a new reviewer. Ordinary small edits use the relevant stage and proportionate checks. A review-only request does not authorize implementation; permission files and source history do not create tool rights.
 
 Research is triggered by concrete unresolved function, structure, style/context, references, discrepancy or a failed bounded experiment. Record what is unknown and what evidence resolves it. Do not treat a vague feeling of understanding as a sufficient factual basis. Reference quality and inferred causes remain distinguishable.
 
@@ -49,7 +51,9 @@ Before expensive construction, validate a cheap coherent representation at the r
 | Rendered interface/interaction review | product-ui-review |
 | Interactive explanation, spatial world, material/light experiment | visual-experiment-craft |
 | Voxel grid/model/modular kit/creature/diorama | voxel-model-craft |
-| Agent instructions and reusable workflows | writing-for-agents; anthropic-workflow-creator; native skill-creator for skill structure |
+| Agent documents | writing-for-agents; no second authoring cycle |
+| Codex skill creation | Native skill-creator when actually supplied by the client |
+| Workflow experiments | One workflow-pilot reference; Anthropic entry is a compatibility redirect |
 | Deliberate decision stress-test/document interview | grilling; grill-with-docs only when selected |
 | Explicit handoff | handoff |
 | Personal project context and saving | kb-find; kb-save |
@@ -66,7 +70,7 @@ Observe before diagnosing. A perspective image can show an ambiguous alignment; 
 
 For UI verify the actual primary action and visible consequence, relevant failure/recovery, consistent state/labels/charts, readable hierarchy, input and keyboard behavior, and motion over time. For a world verify meaning/zoning, navigable relationships, grounded layout, life/animation and personal anchors from the authorized brief. For voxel assets inspect matched views, head/grip/collision/scale/readability and category contact sheets as applicable. Concrete criteria live in the original method references.
 
-## Reviewer brief
+## Reviewer brief, only when selected
 
 Give a newly created context the original task, material corrections, actual expected output/behavior, intended audience/style/conditions, constraints, version/path/launch and review scope. Do not preload author self-assessment or earlier conclusions before first impression. The author owns technical tests; the reviewer independently observes and checks the specified expectations. Findings need evidence and impact, not an invented quota. Verify cause before repair and retain failed-version evidence.
 
@@ -75,3 +79,5 @@ Give a newly created context the original task, material corrections, actual exp
 State declares outputs/stages and relevant dependencies; the quality ledger binds evidence to exact files. Modified sources/renders invalidate old related observations; unchanged unrelated evidence can remain only when independence is actually established. State/ledger helpers validate records and freshness, not beauty or authenticity of a human claim. The quality Stop hook diagnoses and does not revive paused/cancelled tasks or run an unbounded repair loop.
 
 Save factual results, decisions, preferences and bounded lessons to the authorized INBOX with source and status. Keep hypothesis separate; use checkpoint when nothing new should be saved. Record receipt/read-back. Private sync and curator/scheduler actions are distinct, configured operations. Transfer a lesson's applicability and exceptions, not a claim that a model has acquired new weights.
+
+[Instruction ownership and the single pilot](INSTRUCTION_MAINTENANCE.md) explains the shared procedures and validation limits.

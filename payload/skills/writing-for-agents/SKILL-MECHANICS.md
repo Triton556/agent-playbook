@@ -1,7 +1,5 @@
-# Skill mechanics in local Codex
+# Skill mechanics — compatibility pointer
 
-Keep a precise description that identifies the task and the branches that should load the skill. Keep detailed references out of the always-loaded pointer. Pick implicit invocation only when the skill should be reached automatically for that task.
+For creating/editing a Codex skill, use the built-in skill-creator supplied by the selected client (verify availability). It owns frontmatter, directory structure, UI metadata, invocation settings and structural validation. Existing invocation policies are preserved unless пользователь asks to change them.
 
-Codex expresses explicit-only invocation in `agents/openai.yaml` with `policy.allow_implicit_invocation: false`. This local adaptation removes upstream Claude `disable-model-invocation`/`argument-hint` fields from installed frontmatter. Do not assume Codex removes descriptions from context or that a Claude Skill tool exists. An explicitly selected router may direct the agent to read the relevant installed dependency files.
-
-Avoid building a new router or loading all skills unless the user actually needs it. Split distinct stages when useful and preserve the shared writing principles in [SKILL.md](SKILL.md).
+[Writing for agents](SKILL.md) supplies optional editorial guidance for a specific prose problem; it is not a second skill-creation procedure.

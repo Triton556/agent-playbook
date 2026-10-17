@@ -1,6 +1,6 @@
 # Интерфейсы: создание, доработка, переработка
 
-Прочитай [Anthropic frontend-design](../vendor/anthropic-frontend-design/INSTRUCTIONS.md) для выразительности, типографики, композиции, текста и самокритики. [Адаптация Hitbullets для Codex](../vendor/codex-frontend-design/INSTRUCTIONS.md) — дополнительная справка при необходимости более конкретного token/layout плана; оба источника не нужно загружать на каждом запросе.
+Для конкретного вопроса о выразительности, типографике или композиции используй [Anthropic frontend-design](../vendor/anthropic-frontend-design/INSTRUCTIONS.md). [Адаптация Hitbullets для Codex](../vendor/codex-frontend-design/INSTRUCTIONS.md) — дополнительная справка при необходимости более конкретного token/layout плана; оба источника не нужно загружать на каждом запросе.
 
 ## Определи масштаб
 

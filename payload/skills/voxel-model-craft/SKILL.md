@@ -32,7 +32,7 @@ Load the branch needed for the object and deliverable; the entire catalog is not
 
 Establish the object's role, intended view/distance, style, approximate world size and required output. Respect an agreed target: an editable grid, game mesh, static diorama and riggable character have different structure. Use reference images across enough views to understand the volume; mark hidden sides unknown rather than reconstructing them as facts.
 
-For new construction or a changed design, first complete the [2D design preflight](references/design-preflight.md): traceable object/kit passport, six coherent orthographic views and a same-scale kit comparison when applicable. Inspect style, context, function, readability and intended use; resolve cross-view/scale contradictions before detailed occupied voxels. Bind the current design review with `scripts/design_preflight.py`; do not substitute later finished-model renders for this preconstruction step. Unchanged export/reproduction may reuse an accepted inspected design. This is an autonomous quality stage, not another permission request.
+For new construction or a changed silhouette/action/scale contract, first complete the [2D design preflight](references/design-preflight.md): traceable object/kit passport, six coherent orthographic views and a same-scale kit comparison when applicable. Inspect style, context, function, readability and intended use; resolve cross-view/scale contradictions before detailed occupied voxels. Bind the current design review with `scripts/design_preflight.py`; do not substitute later finished-model renders for this preconstruction step. Unchanged export/reproduction may reuse an accepted inspected design. Follow the chosen participation mode at its existing checkpoints; this stage adds no new approval request. A local repair that preserves the accepted design uses that basis and affected model checks. If schema1-bound inputs change, its digest/review must be refreshed; no scoped schema or bypass is implied.
 
 Declare a common metric scale and an explicit density policy, then block the main masses. A coherent scene may use deliberate per-asset pitches; retain a shared pitch where the declared kit/seam requires it. Read [Mixed local grids](references/mixed-grids.md) when combining assets or mechanics at different resolutions. Put recognition into silhouette and negative space before small detail. A roof ridge, horn, wheel spacing, cavity or large hat often carries more identity than surface texture. Check a neutral light view and the intended camera before spending cells on detail.
 
@@ -50,26 +50,9 @@ Deliver the requested files and a concise provenance/validation note. Validate c
 
 For repeated defects or a multi-model batch, use the general artifact quality cycle through the quality adapter above. Bind checks and inspected views to the current source/artifact revision; preserve accepted style exemplars. Semantic contact/visibility tests require declared part masks and do not establish natural action or beauty.
 
-## Original helpers
+## Helpers on demand
 
-`scripts/gen21_generate.py` provides forty versioned Gen2.1 repairs with explicit world-size/view contracts, external eye masks, class-specific wheel sockets, coherent wear and scene layers; the CLI exports geometry and construction metadata, not visual approval. See the quality adapters for limits.
-
-`scripts/gen2_recipes.py` retains the detailed Gen2 example set after Gen1 feedback; it preserves forty original construction presets across eight categories and adds explicit joint, cavity, wear and terrain/flow structure. See [Gen2](references/gen2.md) for the CLI and review contract. These recipes are original procedures, not author-asset reconstructions.
-
-`scripts/library_recipes.py` retains Gen1 and provides forty detailed original probes, five different constructions in each of eight categories. These are authored starting points; most recipes are fixed presets, while fir, oak and bookshelf have bounded seed variations. They do not reconstruct referenced assets. `master_recipes.py` retains the three initial detailed constructions. `voxel_recipes.py` preserves eight compact seeded teaching examples and a MagicaVoxel150 writer; their coarse design is not the default quality target. Run the relevant helper into the project's chosen output directory:
-
-```text
-python scripts/master_recipes.py --family cottage --output <artifact-directory>
-python scripts/library_recipes.py --category nature --output <artifact-directory>
-python scripts/library_recipes.py --model knight --output <artifact-directory>
-python scripts/voxel_recipes.py --family cottage --seed 13 --output <draft-artifact-directory>
-python scripts/voxel_mesh.py --family cottage --seed 13 --output <artifact-directory>
-python scripts/vox_read.py <model.vox> --output <inspection.json>
-```
-
-`voxel_mesh.py` exports opaque-color OBJ/MTL using palette-preserving greedy rectangles and checks exact surface coverage. These are inspectable starting points, not a universal asset generator. Adapt the family to the brief; keep file format and mesh invariants while changing the construction recipe.
-
-`vox_read.py` inventories MagicaVoxel or legacy Slab6 grid parts and metrics. `--grid-json` includes raw cells and an explicit palette if present. It reports scene/PBR/default-palette limits instead of pretending to reconstruct them.
+Choose a helper by the actual operation: [files and meshes](references/files-meshes.md) for VOX inspection/mesh export; [quality adapter](references/quality-cycle.md) for Gen2.1 repairs; [Gen2](references/gen2.md) or [probe library](references/probe-library.md) only when adapting those examples. Scripts export geometry/metadata, not visual approval. Recipes are original starting points, not a universal generator or the default quality target. Preserve format, palette, origin and mesh invariants while adapting a recipe.
 
 Public viewing, free pricing and reuse rights are different. Record a source asset's own license before copying or adapting its data; preserve required credits. Unknown, paid or NoAI-marked assets remain view-only references in this study and are not bundled in the skill. Creating original geometry from general form principles does not require importing the reference asset.
 

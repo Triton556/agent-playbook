@@ -1,6 +1,6 @@
 # Orthographic design before voxel construction
 
-For a new asset, changed silhouette/action, new family, or integration into an existing world, complete this stage before detailed voxel construction. Start from an object-and-kit passport, make consistent 2D design views, inspect them, repair discrepancies, then build voxels. Later voxel renders remain required. Unchanged export/reproduction of an accepted model may reuse its inspected design; do not rerun a design exercise merely to copy files.
+For a new asset, changed silhouette/action, new family, or integration that changes the design/scale contract, complete this stage before detailed voxel construction. Start from an object-and-kit passport, make consistent 2D design views, inspect them, repair discrepancies, then build voxels. Later voxel renders remain required. Unchanged export/reproduction of an accepted model may reuse its inspected design; do not rerun a design exercise merely to copy files.
 
 For a procedural family/batch, preflight representative parameter extremes and record the accepted range and invariants. Variants inside that checked design range can reuse the family plan while retaining their later voxel checks; a new action, identity, world requirement or out-of-range shape triggers a new design iteration. Do not require a fresh paid image call for every unchanged seed/export.
 
@@ -39,7 +39,7 @@ Inspect the actual sheet and relevant closeups at intended review size. Write se
 | Readability | Identify the object/action and key feature in the intended view without relying on the title; zoom when the overview cannot decide |
 | Usability | Confirm the intended use and, for a viewer, the inspection scenario and legible controls. State the relevant static use when the artifact has no UI |
 
-Record defect -> cause hypothesis -> changed passport/sheet -> recheck. If a view, pose, dimension or style choice changes, update the other affected views and invalidate the previous design review. Finish when these criteria pass for the current plan. An unchanged failed loop needs a new cause/reference, not another blind image call. Routine repairs within agreed scope are autonomous; this is not a mandatory human approval step before each object.
+Record defect -> cause hypothesis -> changed passport/sheet -> recheck. If a view, pose, dimension or style choice changes, update the other affected views and invalidate the previous design review. Finish when these criteria pass for the current plan. An unchanged failed loop needs a new cause/reference, not another blind image call. Routine repairs follow the chosen participation mode: show the design at an agreed human checkpoint and wait before dependent construction; autonomous mode uses author self-review. This stage adds no new approval point.
 
 ## 4. Bind readiness, then voxelize
 
@@ -53,7 +53,7 @@ Exit0 means the declared geometric/kit constraints and all required current desi
 
 Voxel construction uses the accepted passport revision, landmarks, palette roles, native pitch and planned sockets. Preserve the accepted 2D design. Render the resulting voxels in matching views and compare their silhouette/scale/features against the design, then run the existing technical/semantic/style/context/readability/use checks. A passing concept does not automatically approve its 3D implementation. Record justified design changes as a new revision and recheck the affected plan.
 
-The [reference triggers](../../product-engineering/references/reference-grounding.md) and [shared perception protocol](../../product-engineering/references/human-perspective-review.md) are common authorities. This branch specifies the six-view representation and kit constraints. Its review completes autonomously inside the agreed scope; human feedback is recorded only when actually received. Retain stylization and successful exceptions rather than increasing realism by default.
+The [reference triggers](../../product-engineering/references/reference-grounding.md) and [shared perception protocol](../../product-engineering/references/human-perspective-review.md) are common authorities. This branch specifies the six-view representation and kit constraints. Its review follows the participation mode in the task brief; human feedback is recorded only when actually received. Retain stylization and successful exceptions rather than increasing realism by default.
 
 ## Material contour and mixed-grid scope
 
