@@ -1,6 +1,6 @@
 ---
 name: lab-vm-control
-description: Control the user's fixed lab Linux VM through the existing bounded CLI or MCP, read host inventory and diagnose access. Use for these VMs and their sessions, not arbitrary shells, desktop GUI control or VPN Guard deployment.
+description: Control the user's fixed lab Linux VM through the existing bounded CLI or MCP, read host inventory and diagnose access. Use for these VMs and their sessions, not arbitrary shells, desktop GUI control or network-security deployment.
 ---
 
 # Lab VMs: CLI / MCP
@@ -9,13 +9,13 @@ Context and dated checks: [VM control MCP](<{{MEMORY_ROOT}}/PROJECTS/MCP упр�
 
 ## Channel selection
 
-- Inspect the actual tool catalog. When `rumi_health_probe` tools are available, use their supported schemas: `health({})`, `lab_inventory({})`, `lab_vm_status({vm:'linux'|'windows'})`; five guest tools are listed below. Host inventory may require ordinary UAC.
+- Inspect the actual tool catalog for the installation owner's authorized lab provider. When its tools are available, use their supported schemas: `health({})`, `lab_inventory({})`, `lab_vm_status({vm:'linux'|'windows'})`; five guest tools are listed below. Host inventory may require ordinary UAC.
 - Authorized guest actions can use the existing CLI `{{LAB_CLI}}`, Node `{{NODE}}`. Call `help` and `status` first. The CLI imports the same `guest-session.mjs` from `{{LAB_RUNTIME}}` without MCP transport. An absent MCP tool does not itself prohibit an already authorized CLI; label the result `local-cli`, not direct MCP.
 - The CLI does not provide host inventory, Windows control, GUI or arbitrary deployment. State the specific boundary for an unavailable operation; do not invent a command, server or channel.
 
 ## Target and session
 
-Linux: `{{LAB_VM_NAME}}`, VM UUID `{{LAB_VM_UUID}}`, MAC `{{LAB_VM_MAC}}`. Historical guest identity: hostname `debian`, UID 1000, Debian 13.7. Before a guest action, match fresh status, the exact VM/session and guest identity; require `state=ready`, an unexpired session and authorization for that operation. `guestAuthenticated=true` in a closed session is a historical field, not access. An identity mismatch requires stopping for diagnosis.
+Linux: `{{LAB_VM_NAME}}`, VM UUID `{{LAB_VM_UUID}}`, MAC `{{LAB_VM_MAC}}`. Establish the installation owner's expected guest hostname, UID and OS before use. Before a guest action, match fresh status, the exact VM/session and expected guest identity; require `state=ready`, an unexpired session and authorization for that operation. `guestAuthenticated=true` in a closed session is a historical field, not access. An identity mismatch requires stopping for diagnosis.
 
 Use the explicit session ID from current status; never copy old IDs from reports. CLI `start` opens a temporary visible serial helper through ordinary UAC; it requires explicit agreement for this session and personal non-root login/F12, for at most 20 minutes. Do not read/save the password or console input. Do not automatically start when closed/not-ready. Perform already authorized ordinary read-only actions in a ready session without asking again.
 

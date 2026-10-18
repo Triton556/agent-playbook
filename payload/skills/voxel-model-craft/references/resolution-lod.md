@@ -1,6 +1,6 @@
 # Resolution, world scale and LOD
 
-the user's explicit preference from13October2026: new exploratory probes should start with more detailed grids, as the initial trees did; reducing density should follow the task's requirements, camera distance or performance settings. Coarse art is a legitimate stylistic/technical choice, but should not silently become the baseline for these probes.
+Choose initial grid density from the task's style, camera distance and performance requirements. Start detailed exploratory probes when detail is part of the brief; reduce density deliberately. Coarse art is a legitimate stylistic/technical choice, but should not silently become the baseline for detailed probes.
 
 ## Keep four quantities separate
 

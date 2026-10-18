@@ -19,4 +19,4 @@ The coordinator selects a specialist by the nearest deliverable; [WORKFLOW](../.
 
 For end-to-end development, connect finished scenarios and advance by results: sufficient plan → working slice → relevant checks. UI uses design before new visual decisions and review after rendering. Route unexplained failures to debugging. A plan-only/review-only request ends with that deliverable.
 
-Open shared procedures at their WORKFLOW triggers; do not load the entire set. Skills own subject methods and sources: [composition and adaptations](references/composition.md).
+Open shared procedures at their WORKFLOW triggers, and open the specialist skill for every deliverable type in the task. Skills own subject methods and sources: [composition and adaptations](references/composition.md).

@@ -42,7 +42,7 @@ async function main() {
   let repository = await request(endpoint);
   let created = false;
   if (!repository) {
-    repository = await request('/user/repos', 'POST', { name: repoName, private: true, auto_init: false, description: 'Personal Markdown knowledge base for Codex and Rumi', has_wiki: false, has_projects: false });
+    repository = await request('/user/repos', 'POST', { name: repoName, private: true, auto_init: false, description: 'Private Markdown knowledge base for coding agents', has_wiki: false, has_projects: false });
     created = true;
   }
   const connectionPath = path.join(DEFAULT_ROOT, 'SYSTEM/connection.json');

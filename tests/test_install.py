@@ -59,7 +59,8 @@ class InstallBehavior(unittest.TestCase):
             with self.subTest(client=client),target_directory() as td:
                 p=Path(td);result=call('install','--skills','domain-modeling','--workflow','--client',client,'--target',p)
                 self.assertTrue(result['workflow_activated']);self.assertTrue((p/entry).is_file())
-                self.assertEqual(len(result['installed_skills']),23)
+                self.assertEqual(len(result['installed_skills']),24)
+                self.assertIn('creative-direction',result['installed_skills'])
                 self.assertEqual((ROOT/'payload/skills/domain-modeling/SKILL.md').read_bytes(),(p/folder/'skills/domain-modeling/SKILL.md').read_bytes())
                 self.assertFalse((p/folder/'AGENTS.md').exists())
                 self.assertEqual(call('verify','--client',client,'--target',p)['status'],'pass')
@@ -67,6 +68,18 @@ class InstallBehavior(unittest.TestCase):
         with target_directory() as td:
             call('install','--skills','domain-modeling','--reviewer-consent','one-per-round','--target',td,ok=2)
             self.assertEqual(list(Path(td).iterdir()),[])
+    def test_creative_direction_profiles_and_complete_resources(self):
+        with target_directory() as td:
+            for profile in ['full','engineering','visual','voxel']:
+                with self.subTest(profile=profile):
+                    planned=call('plan','--profile',profile,'--target',td)
+                    self.assertIn('creative-direction',planned['requested_skills'])
+            call('install','--skills','creative-direction','--target',td)
+            skill=Path(td)/'.agents/skills/creative-direction'
+            self.assertTrue((skill/'SKILL.md').is_file())
+            for name in ['content','gamedev','ui-ux','visual']:
+                self.assertEqual((skill/f'references/{name}.md').read_bytes(),(ROOT/f'payload/skills/creative-direction/references/{name}.md').read_bytes())
+            self.assertEqual(call('verify','--target',td)['status'],'pass')
     def test_plan_creates_nothing_and_doctor_does_not_claim_quality(self):
         with target_directory() as td:
             call('plan','--profile','full','--target',td);self.assertEqual(list(Path(td).iterdir()),[])
@@ -176,10 +189,14 @@ class InstallBehavior(unittest.TestCase):
             self.assertFalse(first['duplicate']);self.assertTrue(again['duplicate']);self.assertTrue((vault/first['path']).is_file())
             env=os.environ.copy();env['HARNESS_KB_ROOT']=str(vault)
             def request(i,name,args):return {'jsonrpc':'2.0','id':i,'method':'tools/call','params':{'name':name,'arguments':args}}
-            messages=[{'jsonrpc':'2.0','id':1,'method':'tools/list'},request(2,'kb_checkpoint',{'session_id':'fixture-session','turn_id':'empty'}),request(3,'kb_capture',{'payload':{**payload,'batch_key':'mcp'}}),request(4,'kb_capture',{'payload':payload,'path':'../forbidden'}),request(5,'sync',{})]
+            curator={**payload,'source':{**payload['source'],'kind':'curator'},'batch_key':'mcp'}
+            messages=[{'jsonrpc':'2.0','id':1,'method':'tools/list'},request(2,'kb_checkpoint',{'session_id':'fixture-session','turn_id':'empty'}),request(3,'kb_capture',{'payload':curator}),request(4,'kb_capture',{'payload':payload,'path':'../forbidden'}),request(5,'sync',{})]
             out=execute(p/'.agents/workflow/kb-writer.mjs',data=''.join(json.dumps(x)+'\n' for x in messages),env=env);rows=[json.loads(x) for x in out.splitlines()]
             self.assertEqual({x['name'] for x in rows[0]['result']['tools']},{'kb_capture','kb_checkpoint'})
             self.assertFalse(rows[1]['result']['isError']);self.assertFalse(rows[2]['result']['isError']);self.assertTrue(rows[3]['result']['isError']);self.assertIn('error',rows[4])
+            saved=json.loads(rows[2]['result']['content'][0]['text'])
+            self.assertTrue((vault/saved['path']).is_file())
+            self.assertIn('curator',(vault/saved['path']).read_text(encoding='utf8'))
     def test_memory_initialization_is_explicit_idempotent_and_preserves_data(self):
         with target_directory() as td:
             p=Path(td);vault=p/'private-vault';call('install','--profile','memory','--target',p,'--memory-root',vault)

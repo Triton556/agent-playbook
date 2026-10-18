@@ -4,6 +4,18 @@ Build: 15 October 2026, Windows. The levels below describe executed checks, not 
 
 ## Source and composition
 
+### 0.3.0 creative-direction refresh
+
+On 19 October 2026 (Asia/Vladivostok), 13 source blobs were read directly from the approved `creative` commit `679362d2fb0d1662527d767c6297d1cbc1cb17ca` and checked against their manifest source hashes. The current package has 301 payload files and 24 custom skills. The manifest inventory matches every payload file; export hashes and explicit portability transformations are current. Third-party datasets, font attribution and licenses remain unchanged.
+
+`check-package` passed. The full requested Python unittest suite passed all 24 tests on the final payload in 152.902 seconds. The added scenario checks creative-direction selection in full/engineering/visual/voxel profiles and complete reference installation. The memory scenario exercises `source.kind=curator` through the real limited MCP writer, the CLI capture implementation and saved-file read-back. Existing conflict, ownership, preservation, startup-budget, four-client and memory tests remain active. Python 3.12.14 and Node.js 22.13.0 were used; no client configuration was changed.
+
+A separate final-payload full installation with explicit `--client codex` into a new empty temporary project passed; `verify` checked 302 installed files with no failures. This includes all 24 skills and generated policy. Actual profile selections/dependency closures were recalculated and the illustrated guide's lists/table updated. The changed Markdown files' 96 local link targets resolve; the knowledge-vault link remains an external deployment binding. `git diff --check` passed after preserving source LF line endings.
+
+Case-insensitive whole-identifier/path scans found no source-owner name, personal curator/model/project label, personal MCP alias, absolute source home path or inherited scheduler claim in the payload. A broader substring scan has only the unchanged third-party credits `Anya Danilova` (font dataset/license) and `Astral_Journeyer` (voxel source), which must retain attribution. Sentence/list starts using lowercase generic owner labels and `unless he` were also absent. Private feedback identity, family details and dated permissions are omitted; the complete operative methods and evidence caveats remain.
+
+The native skill validator could not run because PyYAML is missing in the requested interpreter. Edited skill metadata passed basic frontmatter field/name/description-length/scaffold checks; no complete YAML-validator pass is claimed and no dependency was installed. Model behavior/quality, fresh native client discovery, new live hooks, schedulers, external services and human acceptance were not exercised. No additional agents or push were used. Local Git staging was refused when creating `.git/index.lock` (`Permission denied`), so the release remains as reviewed changes in the `main` working tree rather than local commits.
+
 ### 0.2.3 clarification update
 
 On 18 October 2026 (Asia/Vladivostok), the approved clarification paragraph was verified identical in the active source base and exported base. Package integrity passed for all 296 payload files. The complete existing local Windows suite passed: 23 tests in 141.988 seconds, including full startup preservation, instruction-budget refusal, all four client layouts, installation/removal ownership and memory helpers.

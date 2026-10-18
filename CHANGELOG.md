@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0
+
+- Refreshed the complete base/workflow, engineering acceptance and human-perspective checks, and UI guidance from the approved `creative` source snapshot. Preserve the user's intent, own material and accepted qualities; read the relevant criteria and examples before planning.
+- Added `creative-direction` with UI/UX, content, game-design and visual/motion/3D references. All 24 skills are available in full mode; creative direction is selected by the engineering, visual and voxel profiles and included through linked dependencies where needed.
+- Removed personal model/project rules, dated approval history, inherited scheduler claims, private feedback identity and historical lab identity. Memory delegation and persistent MCP access require the current installation owner's consent.
+- Generalized memory integration names to `harness_kb_writer` / `harness-kb-writer`, curator capture source to `source.kind=curator`, and the opt-in scheduled-sync task to `Harness-Knowledge-Sync`. New producers/configuration must use these names; existing saved records are not rewritten. Capture/checkpoint operations, identity/idempotency checks, fixed-vault boundaries and sync safeguards remain intact.
+- Corrected owner-neutral grammar, documented Windows cloning with `git clone -c core.longpaths=true`, and refreshed profile counts and source/export provenance. Datasets, attribution and licenses are preserved.
+
 ## 0.2.3
 
 - Refined the source-approved clarification rule before choosing an approach: establish the user outcome, context, constraints, preservation/redesign boundaries and observable acceptance criteria.

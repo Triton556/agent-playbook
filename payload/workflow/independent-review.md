@@ -6,7 +6,7 @@ Open only for a separately selected reviewer. AGENTS owns permissions; the [task
 
 Use self-check results for the current version; do not repeat them merely to start a review. Prepare a short, targeted brief:
 
-- the user's original request and latest material clarifications; distinguish the author's interpretation and unknowns.
+- The user's original request and latest material clarifications; distinguish the author's interpretation and unknowns.
 - Required result, qualities to preserve, audience/style and relevant use conditions.
 - Version, paths/URLs, launch and available tools; exact criteria and scope of the independent pass.
 - Permitted actions, round limit, required modality and report path.

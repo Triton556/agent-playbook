@@ -8,7 +8,7 @@ Record the change, expected effect and stopping condition in the existing plan. 
 
 For a small pilot, select a few representative cases and a useful edge case; hypothesis and budget determine count, not a quota. Where possible, include an unusual valid result the procedure must not falsely reject. Define the expected result and a plausible error each check must distinguish beforehand. Distinguish a familiar training example from a new evaluation case.
 
-Before execution, record the original brief, instruction variants, model/settings when available, authorized resources and budget. Comparisons use equal inputs and constraints; account for context freshness, attempt number and prior exposure to the result. Changing several components measures their joint effect. the user supplies or agrees to the test task; do not default to an expensive series.
+Before execution, record the original brief, instruction variants, model/settings when available, authorized resources and budget. Comparisons use equal inputs and constraints; account for context freshness, attempt number and prior exposure to the result. Changing several components measures their joint effect. The user supplies or agrees to the test task; do not default to an expensive series.
 
 ## Execution and assessment
 

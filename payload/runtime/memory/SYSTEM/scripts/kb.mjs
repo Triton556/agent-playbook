@@ -82,7 +82,7 @@ function captureInner(root, input) {
   root = assertRoot(root);
   if (!input || typeof input !== 'object' || input.schema_version !== 1) throw new Error('schema_version must be 1');
   const source = input.source;
-  if (!source || !['codex', 'rumi', 'cloud', 'manual'].includes(source.kind)) throw new Error('Invalid source.kind');
+  if (!source || !['codex', 'curator', 'cloud', 'manual'].includes(source.kind)) throw new Error('Invalid source.kind');
   const session_id = cleanText(source.session_id, 'source.session_id', 256);
   const turn_id = cleanText(source.turn_id, 'source.turn_id', 256);
   const batch_key = cleanText(input.batch_key || 'final', 'batch_key', 128);
@@ -319,7 +319,7 @@ function handleHook(root, input) {
   const script = path.join(root, 'SYSTEM/scripts/kb.mjs');
   const nodeCommand = process.platform === 'win32' ? `& '${process.execPath.replaceAll("'", "''")}'` : 'node';
   const args = `--session ${JSON.stringify(input.session_id)} --turn ${JSON.stringify(input.turn_id)}`;
-  const instruction = `Personal knowledge base: ${root}. Before finishing this response, save new useful knowledge through kb-save or JSON on stdin to ${nodeCommand} "${script}" capture. Write knowledge content in Russian. source.kind=codex, source.session_id=${input.session_id}, source.turn_id=${input.turn_id}. If nothing is new: ${nodeCommand} "${script}" checkpoint ${args}. Data stays local until Git-sync: Windows Task Scheduler syncs the PC hourly and at sign-in; the designated curator exchanges her cloud copy and curates INBOX daily. A memory agent requires the installation owner's current authorization; kb-save owns handoff and verification. Other agents require current agreement with the user.`;
+  const instruction = `Personal knowledge base: ${root}. Before finishing this response, save new useful knowledge through kb-save or JSON on stdin to ${nodeCommand} "${script}" capture. Write knowledge content in Russian. source.kind=codex, source.session_id=${input.session_id}, source.turn_id=${input.turn_id}. If nothing is new: ${nodeCommand} "${script}" checkpoint ${args}. Data stays local until separately configured and authorized synchronization. Cloud exchange and curation require their own verified setup. A memory agent requires the installation owner's current authorization; kb-save owns handoff and verification. Other agents require current agreement with the user.`;
   if (input.hook_event_name === 'UserPromptSubmit') {
     if (!fs.existsSync(file)) atomic(file, { session_id: input.session_id, turn_id: input.turn_id, started_at: now() });
     return { hookSpecificOutput: { hookEventName: 'UserPromptSubmit', additionalContext: instruction } };

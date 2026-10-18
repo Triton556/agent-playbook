@@ -1,14 +1,14 @@
 # Cloud exchange through the GitHub connection
 
-Agreed by the user on 4 October 2026 in conversation with the designated curator. This procedure replaces direct Git/SSH requirements only for the designated curator's cloud environment. The PC keeps existing kb-sync.
+Use this procedure only for an installation owner's authorized cloud copy without direct Git/SSH. The PC uses kb-sync when configured and authorized; installing this procedure does not authorize exchange.
 
 ## Boundaries
 
 - Repository: {{MEMORY_REPO}}; verify owner and visibility=private before exchange.
-- the designated curator performs the work herself. Do not launch additional agents or chats.
+- The designated curator performs the work directly. Do not launch additional agents or chats.
 - Current cloud working path: {{CLOUD_MEMORY_ROOT}}. This is a file copy, not a Git clone. Persistence after environment recreation is unproven.
 - GitHub stores confirmed uploads. An unsent local queue can be lost if the environment is destroyed; do not promise indefinite local storage.
-- There is no direct PC access. The agreed Windows Task Scheduler uploads the PC queue hourly and at sign-in, without AI. An offline PC retains its queue until it returns; being connected does not prove exchange completed.
+- There is no direct PC access. PC queue upload requires its own authorized synchronization setup and verified execution. An offline PC retains its queue until it returns; being connected does not prove exchange completed.
 
 ## Download
 
@@ -30,7 +30,7 @@ Agreed by the user on 4 October 2026 in conversation with the designated curator
 
 ## Curation
 
-Follow SYSTEM/workflows/curate.md. the user explicitly removed mandatory PRs. Publish agreed curation to main in one tree/commit and fast-forward update, force=false. INBOX → ARCHIVE originals retain blob SHA. On concurrent changes, reread main and preserve both versions when conflicting.
+Follow SYSTEM/workflows/curate.md and the current owner's publication policy. This procedure does not require PRs. Publish authorized curation to main in one tree/commit and fast-forward update, force=false. INBOX → ARCHIVE originals retain blob SHA. On concurrent changes, reread main and preserve both versions when conflicting.
 
 ## Status
 

@@ -5,7 +5,7 @@ This export preserves the active configured workflow, not retired experiments or
 ## Preserved
 
 - Full global base, WORKFLOW, author self-testing/independent review procedure.
-- 23 custom skill entrypoints, their complete references, source/provenance licenses, searchable UI datasets and original helpers.
+- 24 custom skill entrypoints, their complete references, source/provenance licenses, searchable UI datasets and original helpers.
 - Research triggers, cheap coherent representation, style/function/context/readability/use criteria.
 - Six-view voxel preflight and kit/world proportions before detailed construction; later actual voxel inspection.
 - Technical, semantic, actual visual and human verdicts as separate claims.
@@ -80,3 +80,13 @@ Translation and integrity checks do not establish a model-quality or token-cost 
 The source owner approved a replacement of the existing global clarification paragraph. The exported base preserves that complete paragraph: understand the intended outcome and relevant context before choosing an approach, resolve identified material choices through questions or explicit delegation, and retain autonomous routine work. The current implementation is not silently treated as a requirement. Readiness is expressed through resolved choices rather than a self-reported confidence percentage.
 
 Only the base instruction changes. Existing workflow references, skills, runtime helpers, installer logic, acceptance permissions and portability transformations are retained. No model-quality improvement is established by this prose update.
+
+## Version 0.3.0 creative-direction refresh and privacy repair
+
+Thirteen complete instruction/reference files come from the approved `creative` snapshot, commit `679362d2fb0d1662527d767c6297d1cbc1cb17ca`; each manifest entry records that ref/commit and the exact source hash. The new creative-direction entry and four domain references raise the current catalog to 24 skills and the payload to 301 files. Intent, preservation, relevant-reference loading, the human-perspective quick start and the accepted dashboard reading sequence are retained. Private conversation identity, personal/family details and feedback quotations are omitted; optional historical evidence remains an explicit binding rather than a bundled private artifact.
+
+The requested portability repair removes personal model/project restrictions, dated grants/revocations, inherited scheduler claims, personal integration names and historical guest identity. Memory delegation and persistent writer access require current-owner consent. Generic owner labels use grammatical capitalization and neutral pronouns. Lab operations, ownership/session checks and bounded command schemas remain intact; expected guest identity must come from the destination.
+
+One owner-specific source enum label is replaced with `curator` in the memory CLI and MCP schema. The writer reports `harness-kb-writer` version 1.2.0, the config example uses `harness_kb_writer`, and the separately invoked Windows scheduler helper uses `Harness-Knowledge-Sync`. This is an explicit 0.3.0 integration-name change: new producers/configuration must use these portable names. Existing saved records are not rewritten. Capture/checkpoint command shapes, identity, idempotency, vault boundaries, actual receipt requirements and sync conflict safeguards are preserved. No scheduler or global client configuration is installed by this refresh.
+
+Every changed export hash/byte count and portability transformation is recorded in the manifest. Third-party datasets, author attribution and component licenses stay unchanged. Installer/helper checks establish the behavior exercised, not model quality, creative success or human acceptance.

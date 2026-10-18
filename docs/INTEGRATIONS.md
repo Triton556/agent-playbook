@@ -39,7 +39,7 @@ Initialize the authorized vault first with `init-memory`. The writer needs a fix
 Codex config example, **merge only after actual owner approval** in the appropriate local/project config; do not replace existing config:
 
 ```toml
-[mcp_servers.danil_kb_writer]
+[mcp_servers.harness_kb_writer]
 command = "/absolute/node"
 args = ["/project/.agents/workflow/kb-writer.mjs"]
 env = { HARNESS_KB_ROOT = "/authorized/private/vault" }
@@ -47,7 +47,7 @@ env = { HARNESS_KB_ROOT = "/authorized/private/vault" }
 
 For another client use its stdio MCP configuration with the same command, argument and fixed environment. The host decides tool approval. Persistent approval is a distinct owner choice; no configuration file grants it. Verify initialize/list, capture/read-back, identical repeat, conflicting identity rejection, checkpoint and unknown-field rejection. Do not test on genuine personal records.
 
-The original guides name the server alias `danil_kb_writer`; retaining that component alias keeps native tool discovery consistent. It identifies the writer, not the vault's owner or an inherited access grant. If choosing another alias, explicitly map the two discovered tool names for the agent.
+The portable guides use the server alias `harness_kb_writer`; the server reports `harness-kb-writer`. If choosing another alias, explicitly map the two discovered tool names for the agent. Version 0.3.0 uses the generic `source.kind=curator` for curator captures in both CLI and MCP; configure new producers accordingly. Existing saved records are not rewritten.
 
 ## Lifecycle hooks
 

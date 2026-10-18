@@ -1,6 +1,6 @@
 # Agent Workflow Harness
 
-An installable, modular workflow for coding agents, human-centered UI review, visual experiments, voxel creation and durable knowledge. The package preserves the current configured instructions, references, datasets and helpers, including the source-approved separation of instruction-authoring roles and the single workflow-pilot procedure.
+An installable, modular workflow for coding agents, creative direction, human-centered UI review, visual experiments, voxel creation and durable knowledge. Version 0.3.0 preserves the current configured instructions, references, datasets and helpers, including intent and preservation checks before building.
 
 **[Русское описание](README.ru.md) · [Agent installation guide](INSTALL_FOR_AGENTS.md) · [Workflow guide](docs/WORKFLOW_GUIDE.md) · [Integrations and startup limits](docs/INTEGRATIONS.md) · [Compatibility](docs/COMPATIBILITY.md) · [Fidelity contract](docs/FIDELITY.md) · [Licenses](THIRD_PARTY_NOTICES.md)**
 
@@ -22,6 +22,8 @@ python harness.py verify --client codex --target ../my-project
 python harness.py doctor --client codex --target ../my-project
 ```
 
+On Windows, clone with `git clone -c core.longpaths=true https://github.com/Triton556/agent-workflow-harness.git` to enable long paths for this checkout's nested resources.
+
 Start a new client session in `my-project`. Inspect the native skill catalog and run the relevant live acceptance scenario. `verify` proves installed file integrity. `doctor` reports missing/unverified capabilities; neither command proves future model quality.
 
 For Claude Code use `--client claude`; for DeepSeek Harness use `--client deepseek`. Generic clients use `--client generic` and need an explicit discovery/bootstrap integration. See the compatibility matrix before claiming support.
@@ -35,20 +37,20 @@ python harness.py install --client codex --target ../my-project --skills domain-
 # Voxel pipeline and its dependency closure.
 python harness.py install --client deepseek --target ../voxel-project --profile voxel
 
-# Whole workflow: expands the selection to all 23 modules.
+# Whole workflow: expands the selection to all 24 modules.
 python harness.py install --client claude --target ../visual-project --profile visual --workflow
 ```
 
 | Profile | Entry points |
 |---|---|
-| `full` | All 23 custom skills and the complete workflow bootstrap |
-| `engineering` | Planning, implementation, debugging, testing, UI and supporting methods |
-| `visual` | UI design/review, interactive experiments and voxel craft |
-| `voxel` | Voxel construction plus linked methods and checks |
+| `full` | All 24 custom skills and the complete workflow bootstrap |
+| `engineering` | Creative direction, planning, implementation, debugging, testing, UI and supporting methods |
+| `visual` | Creative direction, UI design/review, interactive experiments and voxel craft |
+| `voxel` | Creative direction, voxel construction and linked methods/checks |
 | `memory` | Find, save, status, sync and curation with the existing memory runtime |
 | `instructions` | Agent-document editing and compatibility entry to the shared workflow-pilot procedure |
 
-Dependencies can include several siblings. The plan shows requested and actually installed skills before writing. `--workflow` installs all 23 modules because the complete startup rules can route to any of them. Selecting a single skill without this flag does not activate the whole workflow. Bodies and resources are retained; references are loaded only when their original triggers apply.
+Dependencies can include several siblings. The plan shows requested and actually installed skills before writing. `--workflow` installs all 24 modules because the complete startup rules can route to any of them. Selecting a single skill without this flag does not activate the whole workflow. Bodies and resources are retained; references are loaded only when their original triggers apply.
 
 ## How the workflow works
 

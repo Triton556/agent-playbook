@@ -36,9 +36,9 @@
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `full`: 23 выбрано → 23 навыков с зависимостями.
+Профиль `full`: 24 выбрано → 24 навыков с зависимостями.
 
-**Основной выбор:** `anthropic-workflow-creator`, `design-taste-frontend-v1`, `domain-modeling`, `grill-with-docs`, `grilling`, `handoff`, `kb-curate`, `kb-find`, `kb-save`, `kb-status`, `kb-sync`, `lab-vm-control`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`, `visual-experiment-craft`, `voxel-model-craft`, `writing-for-agents`.
+**Основной выбор:** `anthropic-workflow-creator`, `creative-direction`, `design-taste-frontend-v1`, `domain-modeling`, `grill-with-docs`, `grilling`, `handoff`, `kb-curate`, `kb-find`, `kb-save`, `kb-status`, `kb-sync`, `lab-vm-control`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`, `visual-experiment-craft`, `voxel-model-craft`, `writing-for-agents`.
 
 **Связанные навыки:** дополнительных нет.
 
@@ -70,11 +70,11 @@ python harness.py plan --client codex --target /path/to/project --profile full
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `engineering`: 10 выбрано → 12 навыков с зависимостями.
+Профиль `engineering`: 11 выбрано → 15 навыков с зависимостями.
 
-**Основной выбор:** `domain-modeling`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`, `writing-for-agents`.
+**Основной выбор:** `creative-direction`, `domain-modeling`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`, `writing-for-agents`.
 
-**Связанные навыки:** `design-taste-frontend-v1`, `kb-find`.
+**Связанные навыки:** `design-taste-frontend-v1`, `kb-find`, `visual-experiment-craft`, `voxel-model-craft`.
 
 Из папки скачанного репозитория можно сначала посмотреть план, заменив путь и клиент на свои:
 
@@ -104,9 +104,9 @@ python harness.py plan --client codex --target /path/to/project --profile engine
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `visual`: 4 выбрано → 13 навыков с зависимостями.
+Профиль `visual`: 5 выбрано → 14 навыков с зависимостями.
 
-**Основной выбор:** `product-ui-design`, `product-ui-review`, `visual-experiment-craft`, `voxel-model-craft`.
+**Основной выбор:** `creative-direction`, `product-ui-design`, `product-ui-review`, `visual-experiment-craft`, `voxel-model-craft`.
 
 **Связанные навыки:** `design-taste-frontend-v1`, `domain-modeling`, `kb-find`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `ui-ux-pro-max`.
 
@@ -150,11 +150,11 @@ python harness.py plan --client codex --target /path/to/project --profile visual
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `voxel`: 1 выбрано → 12 навыков с зависимостями.
+Профиль `voxel`: 2 выбрано → 14 навыков с зависимостями.
 
-**Основной выбор:** `voxel-model-craft`.
+**Основной выбор:** `creative-direction`, `voxel-model-craft`.
 
-**Связанные навыки:** `design-taste-frontend-v1`, `domain-modeling`, `kb-find`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`.
+**Связанные навыки:** `design-taste-frontend-v1`, `domain-modeling`, `kb-find`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`, `visual-experiment-craft`.
 
 Из папки скачанного репозитория можно сначала посмотреть план, заменив путь и клиент на свои:
 
@@ -214,11 +214,11 @@ python harness.py plan --client codex --target /path/to/project --profile memory
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `instructions`: 2 выбрано → 13 навыков с зависимостями.
+Профиль `instructions`: 2 выбрано → 16 навыков с зависимостями.
 
 **Основной выбор:** `anthropic-workflow-creator`, `writing-for-agents`.
 
-**Связанные навыки:** `design-taste-frontend-v1`, `domain-modeling`, `kb-find`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`.
+**Связанные навыки:** `creative-direction`, `design-taste-frontend-v1`, `domain-modeling`, `kb-find`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`, `visual-experiment-craft`, `voxel-model-craft`.
 
 Из папки скачанного репозитория можно сначала посмотреть план, заменив путь и клиент на свои:
 
@@ -236,7 +236,7 @@ python harness.py plan --client codex --target /path/to/project --profile instru
 Сначала выберите клиент и нужный состав, затем передайте агенту [руководство установки](../INSTALL_FOR_AGENTS.md). Там описаны предварительный план, установка, проверка и настройка интеграций.
 
 - **`full`** подключает общий workflow и весь набор навыков.
-- **Остальные профили** устанавливают выбранные навыки и их зависимости. Полный общий маршрут включается отдельно флагом `--workflow`; при этом устанавливаются все 23 модуля.
+- **Остальные профили** устанавливают выбранные навыки и их зависимости. Полный общий маршрут включается отдельно флагом `--workflow`; при этом устанавливаются все 24 модуля.
 - **`--skills <имя>`** выбирает отдельный навык с его зависимостями.
 
 Установленные файлы доступны агенту; в контекст он читает относящиеся к текущему этапу материалы. Возможности модели, инструменты и разрешения определяются вашим клиентом и настройкой.
@@ -246,11 +246,11 @@ python harness.py plan --client codex --target /path/to/project --profile instru
 <details>
 <summary>Происхождение примеров, точный состав и границы доказательств</summary>
 
-**Состав профилей** вычислен из установщика версии `0.2.0`. Числа — выбранные навыки → полный состав с зависимостями:
+**Состав профилей** вычислен из установщика версии `0.3.0`. Числа — выбранные навыки → полный состав с зависимостями:
 
 | full | engineering | visual | voxel | memory | instructions |
 |---:|---:|---:|---:|---:|---:|
-| 23 → 23 | 10 → 13 | 4 → 14 | 1 → 13 | 5 → 5 | 2 → 2 |
+| 24 → 24 | 11 → 15 | 5 → 14 | 2 → 14 | 5 → 5 | 2 → 16 |
 
 **Робот:** BUOY—02 из собственного бенчмарка Ultra A, сохранённые 2D-виды и исходная grid. 30 068 занятых ячеек; шаг 0,025 м; габариты занятого объёма 1,40 × 0,675 × 2,00 м. Для GIF сняты 36 ракурсов нативного WebGL-просмотра с шагом камеры 10°. Геометрия исходника сохранена. Это поворот камеры, анимация суставов здесь не показана; проверка рига, FPS и импорта в сторонний редактор этим документом не подтверждается.
 
@@ -258,7 +258,7 @@ python harness.py plan --client codex --target /path/to/project --profile instru
 
 **Схемы:** оригинальная инфографика для объяснения метода. Карточки задания, плана, заметок и проверки — иллюстрации типов выхода, а не журнал фактического исполнения именно этих задач. Референсы пользователя послужили ориентиром композиции и рисованного стиля; сами изображения референсов в пакет не включены. Личная база, рабочие документы и сторонние модели не использованы.
 
-**Состояние пакета:** версия `0.2.0` включает текущие уточнения о крупных границах материалов и разных воксельных сетках, а также поиск current/history, проверку навигации и структурного покрытия памяти. Для реестров используются собственные данные владельца и синтетические шаблоны структуры. Общий workflow сохранён; изменения описаны в [истории выпусков](../CHANGELOG.md).
+**Состояние пакета:** версия `0.3.0` добавляет creative-direction, проверку замысла и сохранения принятого результата, устраняет личные привязки. Сохранены текущие уточнения о крупных границах материалов и разных воксельных сетках, а также поиск current/history, проверку навигации и структурного покрытия памяти. Для реестров используются собственные данные владельца и синтетические шаблоны структуры. Общий workflow сохранён; изменения описаны в [истории выпусков](../CHANGELOG.md).
 
 **Границы:** инструкция не гарантирует одинаковый творческий результат на разных моделях. Хеши и проверки файлов подтверждают целостность пакета; фактические действия, визуальный осмотр и обратная связь пользователя дают разные виды свидетельств. Браузер, просмотр изображений, генерация графики и новый контекст ревьюера должны реально предоставляться клиентом. Память, синхронизация и постоянные доступы требуют настройки владельцем.
 

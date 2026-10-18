@@ -70,4 +70,4 @@ Use the shared protocol's property-specific verdicts. Pair a bounded geometry ch
 
 Memory world V2 preserved a blue car model but removed its ride, animated scenery around static residents, and opened a selected garden behind dominant crowns. The useful transfer is to protect actions/relationships and inspect a whole scene in time, not to mandate cars, villagers, sparse trees or voxel art elsewhere. Dense forest, deliberate stillness and unusual architecture remain valid when they serve the accepted intent.
 
-Local evidence: `{{EVIDENCE_ROOT}}/memory-biomes-voxel-2.1-20261014/audit/ASTRA-COMPARISON.md`. Read that audit for this regression; ordinary use needs only the relevant lesson. Installing this reference proves availability, not improved outcomes on a future artifact.
+Local evidence directory: `{{EVIDENCE_ROOT}}/memory-biomes-voxel-2.1-20261014/audit/`. Read the comparison audit in that authorized evidence copy for this regression; ordinary use needs only the relevant lesson. Installing this reference proves availability, not improved outcomes on a future artifact.

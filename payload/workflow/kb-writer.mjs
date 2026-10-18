@@ -1,7 +1,7 @@
 import {capture,checkpoint} from '../runtime/memory/SYSTEM/scripts/kb.mjs';import path from 'node:path';import {fileURLToPath} from 'node:url';
 const VAULT=process.env.HARNESS_KB_ROOT;if(!VAULT)throw new Error('Set HARNESS_KB_ROOT to the authorized fixed vault before starting this writer');
 const obj=(properties,required=Object.keys(properties))=>({type:'object',properties,required,additionalProperties:false});
-const str={type:'string',minLength:1,maxLength:12000},short=maxLength=>({...str,maxLength}),identity={...short(256),pattern:'^[a-zA-Z0-9:._-]+$'},source=obj({kind:{enum:['codex','rumi','cloud','manual']},session_id:identity,turn_id:identity,label:short(256)},['kind','session_id','turn_id']);
+const str={type:'string',minLength:1,maxLength:12000},short=maxLength=>({...str,maxLength}),identity={...short(256),pattern:'^[a-zA-Z0-9:._-]+$'},source=obj({kind:{enum:['codex','curator','cloud','manual']},session_id:identity,turn_id:identity,label:short(256)},['kind','session_id','turn_id']);
 const item=obj({type:{enum:['fact','preference','decision','task','project-update','idea','research','hypothesis']},text:str,evidence:short(2000),status:short(64),topics:{type:'array',maxItems:10,items:short(100)},links:{type:'array',items:{...short(2000),pattern:'^https?://',description:'Web source URLs only. Put local file paths in text or evidence.'}}},['type','text','evidence']);
 const payload=obj({schema_version:{const:1},title:short(160),source,batch_key:short(128),final:{type:'boolean'},items:{type:'array',minItems:1,maxItems:40,items:item}},['schema_version','title','source','items']);
 const tools=[{name:'kb_capture',description:'Save structured non-secret knowledge in the fixed authorized INBOX. Uses original session/turn IDs and idempotent batch identity. No arbitrary path, shell, deletion, sync or publication.',inputSchema:obj({payload}),annotations:{readOnlyHint:false,destructiveHint:false,idempotentHint:true,openWorldHint:false}},{name:'kb_checkpoint',description:'Mark a turn in the fixed authorized vault when there is no new memory. Does not edit knowledge notes or arbitrary files.',inputSchema:obj({session_id:identity,turn_id:identity}),annotations:{readOnlyHint:false,destructiveHint:false,idempotentHint:true,openWorldHint:false}}];
@@ -16,7 +16,7 @@ export function makeHandler(adapter){
  return request=>{if(!request||request.jsonrpc!=='2.0'||Array.isArray(request))return {jsonrpc:'2.0',id:null,error:{code:-32600,message:'Invalid request'}};
  if(request.id===undefined)return null;
  const reply=result=>({jsonrpc:'2.0',id:request.id,result});
- if(request.method==='initialize')return reply({protocolVersion:['2025-11-25','2025-06-18','2025-03-26','2024-11-05'].includes(request.params?.protocolVersion)?request.params.protocolVersion:'2025-11-25',capabilities:{tools:{listChanged:false}},serverInfo:{name:'danil-kb-writer',version:'1.1.0'}});
+ if(request.method==='initialize')return reply({protocolVersion:['2025-11-25','2025-06-18','2025-03-26','2024-11-05'].includes(request.params?.protocolVersion)?request.params.protocolVersion:'2025-11-25',capabilities:{tools:{listChanged:false}},serverInfo:{name:'harness-kb-writer',version:'1.2.0'}});
  if(request.method==='ping')return reply({});if(request.method==='tools/list')return reply({tools});
  if(request.method==='tools/call'){
  const tool=tools.find(t=>t.name===request.params?.name);if(!tool)return {jsonrpc:'2.0',id:request.id,error:{code:-32602,message:'Unknown tool'}};

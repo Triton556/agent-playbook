@@ -1,8 +1,8 @@
-# the designated curator's daily curation
+# The designated curator's daily curation
 
-the designated curator performs this herself, without separate agents. Windows Task Scheduler syncs the PC; the cloud copy exchanges through GitHub/API under cloud-connector.md. API exchange is not shell Git-sync. Write curated knowledge in Russian.
+The designated curator performs this directly, without separate agents. PC synchronization requires a separately authorized setup; the cloud copy exchanges through GitHub/API under cloud-connector.md. API exchange is not shell Git-sync. Write curated knowledge in Russian.
 
-the user's direct decision of 5 October 2026 (UTC+10) removed mandatory PRs for this vault. This procedure supersedes the earlier requirement to use PRs for initial curation.
+Follow the current owner's publication policy. This procedure does not introduce mandatory PRs for initial or recurring curation.
 
 1. Verify owner/privacy, pin the main commit and current blob SHAs. Read INDEX and necessary instructions.
 2. Check the local queue and id/fingerprint across INBOX, ARCHIVE and existing open PRs. Do not duplicate processed material. Leave records arriving during curation for the next run.

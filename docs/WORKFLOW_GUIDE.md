@@ -47,6 +47,7 @@ Before expensive construction, validate a cheap coherent representation at the r
 | Implement agreed behavior | product-implementation |
 | Diagnose observed failure | product-debugging |
 | Behavior/code verification | product-testing |
+| Open creative concept: interface, game, content, motion or 3D | creative-direction; keep an accepted direction as the basis |
 | Interface decisions and build | product-ui-design; targeted ui-ux-pro-max search; optional design-taste-frontend-v1 |
 | Rendered interface/interaction review | product-ui-review |
 | Interactive explanation, spatial world, material/light experiment | visual-experiment-craft |

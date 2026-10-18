@@ -5,7 +5,7 @@ description: Design, build, refine, or redesign interfaces and user flows for ap
 
 # UI/UX design
 
-This stage owns the user flow and visual decisions; shared requirements and participation checkpoints come from [WORKFLOW](../../workflow/WORKFLOW.md) and the saved brief. Establish the deliverable: UX plan, concept or implementation. [Interface-design](references/interface-design.md) distinguishes a new surface, refinement and redesign.
+This stage owns the user flow and visual decisions; shared requirements and participation checkpoints come from [WORKFLOW](../../workflow/WORKFLOW.md) and the saved brief. Establish the deliverable: UX plan, concept or implementation. When a new surface or redesign direction is open, run [creative-direction](../creative-direction/SKILL.md) first; a small refinement goes straight to the fix. [Interface-design](references/interface-design.md) distinguishes a new surface, refinement and redesign.
 
 Before composition, establish the action, expected result and recovery. A new flow, substantial redesign or screen series uses [UI preflight](references/design-preflight.md): related states, a sufficient mockup/prototype and saved basis. A small edit uses the accepted basis and affected states. [Interaction-quality](references/interaction-quality.md) provides targeted criteria for actions, forms, tables, filters or complex desktop UI.
 

@@ -1,17 +1,17 @@
 {
   "schema_version": 1,
   "name": "agent-workflow-harness",
-  "version": "0.2.3",
-  "exported_at": "2026-10-17T15:42:00.221916+00:00",
-  "baseline": "Current configured workflow after task-level participation/reviewer choices, reference-grounded acceptance and approved instruction-role deduplication; no new orchestrator or model pilot",
-  "instruction_policy": "Full maintained agent instructions in English; Russian communication and knowledge content by default; explicit environment/owner bindings, privacy-safe provenance and unchanged runtime contracts",
+  "version": "0.3.0",
+  "exported_at": "2026-10-18T17:32:37.610558+00:00",
+  "baseline": "Creative-direction source refresh with intent, preservation and human-perspective checks; portable owner authorization and environment bindings; no new orchestrator or model pilot",
+  "instruction_policy": "Full maintained agent instructions in English; Russian communication and knowledge content by default; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
   "files": [
     {
       "source": "AGENTS.md",
       "path": "payload/AGENTS.md",
-      "source_sha256": "f256db3bda22d5dde6629a3973d47b7044bbe9e08778db33eb0861942c2a066c",
-      "sha256": "28833cba044fa48147a4d24ae51c84674efaea7ae0073d329f8c60d590054ee4",
-      "bytes": 6769,
+      "source_ref": "creative",
+      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
+      "source_sha256": "ab5b2c8246dbe963993858291ba02be351ea4ca3f5ad423a0570f84e612482e3",
       "transformations": [
         {
           "kind": "environment-binding",
@@ -26,7 +26,7 @@
         {
           "kind": "owner-label",
           "label": "the user's",
-          "count": 5
+          "count": 6
         },
         {
           "kind": "owner-label",
@@ -39,15 +39,21 @@
           "count": 1
         },
         {
-          "kind": "owner-authorization-boundary",
-          "detail": "Do not transfer the source owner standing memory-agent grant."
+          "kind": "owner-neutral-grammar",
+          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
         },
         {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+          "kind": "portable-owner-policy",
+          "detail": "Remove personal model/project restrictions and dated grants; require current-owner consent for memory delegation and separately authorized synchronization; generalize tool-discovery wording."
+        },
+        {
+          "kind": "owner-neutral-grammar",
+          "detail": "Capitalize generic owner labels at sentence/list starts."
         }
       ],
-      "module": "workflow"
+      "module": "workflow",
+      "sha256": "9f2138c437b15c23fbcd7445e78011a91e4b03046d9167fa5ad89f9cd43eb6de",
+      "bytes": 6835
     },
     {
       "source": "workflow/agent-worklog.mjs",
@@ -77,7 +83,7 @@
       "source": "workflow/independent-review.md",
       "path": "payload/workflow/independent-review.md",
       "source_sha256": "8e55f5cf7e5d3881a3160d387556a028107324fb5b9698097e0a444d93068816",
-      "sha256": "65a170832476f052ef4d4ddeb15490e480b0044037cc4fa5e933d648bc18f27e",
+      "sha256": "1e404721f96b41519cd76d1fd1937abe37fddc2c8d024597d90a0a7fcf5f4eca",
       "bytes": 2653,
       "transformations": [
         {
@@ -88,6 +94,10 @@
         {
           "kind": "instruction-language",
           "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        },
+        {
+          "kind": "owner-neutral-grammar",
+          "detail": "Capitalize generic owner labels at sentence/list starts."
         }
       ],
       "module": "workflow"
@@ -96,8 +106,8 @@
       "source": "workflow/kb-writer.mjs",
       "path": "payload/workflow/kb-writer.mjs",
       "source_sha256": "35a019d1562626d481dbf31f3f91a48a5f03c803478ba7b8af597fea5bf72641",
-      "sha256": "205ce093951aa536b3086f72f3c2c07015ebdc9d65b77886cd8fe2b68eac3ffc",
-      "bytes": 6291,
+      "sha256": "072ac30ff51a595d49dbdc66ec932bdafe6ea0700aa9af24fe0b9f458b48a99a",
+      "bytes": 6296,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -116,6 +126,10 @@
         {
           "kind": "description-translation",
           "detail": "Translate the generic owner label in the MCP tool description; tool names and schema unchanged."
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Use the generic MCP identity harness-kb-writer (1.2.0) and source.kind curator, matching the CLI; fixed-vault access and validation boundaries are preserved."
         }
       ],
       "module": "workflow"
@@ -132,26 +146,33 @@
     {
       "source": "workflow/WORKFLOW.md",
       "path": "payload/workflow/WORKFLOW.md",
-      "source_sha256": "1c04ff0d4bb856dad6329c8e422df7a242a937f340edcba675423e75653c98ba",
-      "sha256": "448d61cbf2424aa8cf88c96ed47df512d08980ce68c594b7bca24a15713babfc",
-      "bytes": 5447,
+      "source_ref": "creative",
+      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
+      "source_sha256": "92bce91d2c631b6b3c106e1ede3e9e031fcd2afb4dd9cb88628e3319557b5d7b",
       "transformations": [
         {
           "kind": "environment-binding",
           "binding": "{{HARNESS_ROOT}}",
-          "count": 4
+          "count": 6
         },
         {
           "kind": "owner-label",
           "label": "the user's",
-          "count": 3
+          "count": 6
         },
         {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+          "kind": "owner-label",
+          "label": "the user",
+          "count": 1
+        },
+        {
+          "kind": "owner-neutral-grammar",
+          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
         }
       ],
-      "module": "workflow"
+      "module": "workflow",
+      "sha256": "ad6656f056c45d4df79f14b218fba99620d663bec9835f701767c88fa6e03f5f",
+      "bytes": 7261
     },
     {
       "source": "skills/anthropic-workflow-creator/agents/openai.yaml",
@@ -419,8 +440,8 @@
       "source": "skills/kb-curate/SKILL.md",
       "path": "payload/skills/kb-curate/SKILL.md",
       "source_sha256": "f60afc672f331f8dd70c6da8d410d94d185271ce119ceae0563bca7f09794aa2",
-      "sha256": "49c28f41862aca28561a9dea5257f046ace3f96973928be93a94053dd78c9cf0",
-      "bytes": 1203,
+      "sha256": "a52716911ffd85d43ebaf5abf64242b614aa59fc29392d4ec342b9e71d1d9049",
+      "bytes": 1244,
       "transformations": [
         {
           "kind": "owner-label",
@@ -435,6 +456,10 @@
         {
           "kind": "instruction-language",
           "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Remove dated owner decisions; preserve curation checks and current-owner publication policy."
         }
       ],
       "module": "kb-curate"
@@ -472,8 +497,8 @@
       "source": "skills/kb-save/SKILL.md",
       "path": "payload/skills/kb-save/SKILL.md",
       "source_sha256": "4bc27ffa37f7e6a5fb0d9d8a89093ce72f29a534a281576ac6dfcd47272a318b",
-      "sha256": "bd43ee667af737741211455bc5f49790b83b5333a2bfe506dab205c554a42b96",
-      "bytes": 1709,
+      "sha256": "eee4582ca763634f20a6f081b4ebc15d2430b1dc3c93f3c4478583af1bdf04d4",
+      "bytes": 1712,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -498,6 +523,10 @@
         {
           "kind": "instruction-language",
           "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Require current-owner memory-agent and persistent-tool consent; use a generic MCP alias; synchronization requires a separately verified authorized setup."
         }
       ],
       "module": "kb-save"
@@ -569,8 +598,8 @@
       "source": "skills/lab-vm-control/SKILL.md",
       "path": "payload/skills/lab-vm-control/SKILL.md",
       "source_sha256": "1d19c3f7aac0b8220102eab593d8f1423a900870133a75b439c1153d2ee96a55",
-      "sha256": "9bf42decbaa819992aa19f8b13d3e74fc8f64bf5799fb9f445d1b0edec1b1fd5",
-      "bytes": 5105,
+      "sha256": "bc69a52d075700057fd2cd89a414b3ce202afa915ceec9091e56b9488a649d51",
+      "bytes": 5172,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -622,6 +651,10 @@
         {
           "kind": "instruction-language",
           "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Remove source-specific provider alias, project exclusion and historical guest identity; use actual destination tool discovery and expected guest identity while preserving restricted operations/session bounds."
         }
       ],
       "module": "lab-vm-control"
@@ -680,7 +713,7 @@
       "source": "skills/product-engineering/references/composition.md",
       "path": "payload/skills/product-engineering/references/composition.md",
       "source_sha256": "5aa88aac4af161f67f33bec94a493224dd0c7e40674271bebe94c8b1e19d68e5",
-      "sha256": "8aaba5f50466b37c9e7cd11f77e693191f4302c0a4719c160b8b3eb4b42e19b7",
+      "sha256": "f42f3db28c7fe8e3ccf768e0f6505aad986f85f134e4531d58169aa6f2840c9b",
       "bytes": 1686,
       "transformations": [
         {
@@ -691,6 +724,10 @@
         {
           "kind": "instruction-language",
           "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        },
+        {
+          "kind": "owner-neutral-grammar",
+          "detail": "Capitalize generic owner labels at sentence/list starts."
         }
       ],
       "module": "product-engineering"
@@ -712,9 +749,9 @@
     {
       "source": "skills/product-engineering/references/human-perspective-review.md",
       "path": "payload/skills/product-engineering/references/human-perspective-review.md",
-      "source_sha256": "a0e412488a33906f5fc2cb074ccd8ba113033f201523e15c2f936e7ac446b2ae",
-      "sha256": "70d7d3d217c25f850899e8b14fa2e21ef621cf59ac188513ccf132a806b8d4ea",
-      "bytes": 10509,
+      "source_ref": "creative",
+      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
+      "source_sha256": "e2758da84624cb0cdddec7b9d3ed6454681421be96932729cb31abfbb4ae223d",
       "transformations": [
         {
           "kind": "environment-binding",
@@ -722,11 +759,23 @@
           "count": 1
         },
         {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+          "kind": "owner-label",
+          "label": "the user's",
+          "count": 2
+        },
+        {
+          "kind": "owner-label",
+          "label": "the user",
+          "count": 3
+        },
+        {
+          "kind": "owner-neutral-grammar",
+          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
         }
       ],
-      "module": "product-engineering"
+      "module": "product-engineering",
+      "sha256": "31802e69f4d221dc46ed6c8d7e8a43ca3b9e1d9ef0f6f04b6d618f8e6765cde3",
+      "bytes": 12742
     },
     {
       "source": "skills/product-engineering/references/interface-design.md",
@@ -873,7 +922,7 @@
       "source": "skills/product-engineering/references/workflow-pilot.md",
       "path": "payload/skills/product-engineering/references/workflow-pilot.md",
       "source_sha256": "f351c89fc250acc6cadc7848d50c42471b244fb36fc3de9332150aab999be7a5",
-      "sha256": "2424d2cd88dbdbcbf2a0d69d41da84037999f558c636fb920b6dada0b024b642",
+      "sha256": "fb453fb91b2e8baf38dbb2c8d9683a8c8f50f93b6416dc50f76dae4bf2b2ef60",
       "bytes": 4171,
       "transformations": [
         {
@@ -889,6 +938,10 @@
         {
           "kind": "instruction-language",
           "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        },
+        {
+          "kind": "owner-neutral-grammar",
+          "detail": "Capitalize generic owner labels at sentence/list starts."
         }
       ],
       "module": "product-engineering"
@@ -914,16 +967,18 @@
     {
       "source": "skills/product-engineering/SKILL.md",
       "path": "payload/skills/product-engineering/SKILL.md",
-      "source_sha256": "ae42774cef0af9fedb15c32cf96d19b18cad6cce32a4cccd40a1fcad4be75b5c",
-      "sha256": "ae42774cef0af9fedb15c32cf96d19b18cad6cce32a4cccd40a1fcad4be75b5c",
-      "bytes": 1902,
+      "source_ref": "creative",
+      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
+      "source_sha256": "c0af01809fc641087e1a1b21f9cbf22096ba8df1603e632c94323085011d76ab",
       "transformations": [
         {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+          "kind": "owner-neutral-grammar",
+          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
         }
       ],
-      "module": "product-engineering"
+      "module": "product-engineering",
+      "sha256": "c0af01809fc641087e1a1b21f9cbf22096ba8df1603e632c94323085011d76ab",
+      "bytes": 1944
     },
     {
       "source": "skills/product-engineering/vendor/impeccable/scripts/impeccable.cmd",
@@ -1154,9 +1209,9 @@
     {
       "source": "skills/product-ui-design/references/interface-design.md",
       "path": "payload/skills/product-ui-design/references/interface-design.md",
-      "source_sha256": "37c73a23a2e826e5d98c2fb569ff5b77603282d26913e15a73eb917b08429e95",
-      "sha256": "88bfffb7916acf88a2383d41655e6b150a6ee30d3b7c4fc0e43d31356da4d1a6",
-      "bytes": 2549,
+      "source_ref": "creative",
+      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
+      "source_sha256": "719fade4847dd131498e9c5e12178109822eef633cef266eed50359835f3622a",
       "transformations": [
         {
           "kind": "environment-binding",
@@ -1164,11 +1219,13 @@
           "count": 1
         },
         {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+          "kind": "owner-neutral-grammar",
+          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
         }
       ],
-      "module": "product-ui-design"
+      "module": "product-ui-design",
+      "sha256": "a8a58e2a2970179df6d28163fe555b85a30e6fccd7295a424fc6d555f4ba1e50",
+      "bytes": 2769
     },
     {
       "source": "skills/product-ui-design/references/landing-design.md",
@@ -1187,16 +1244,18 @@
     {
       "source": "skills/product-ui-design/SKILL.md",
       "path": "payload/skills/product-ui-design/SKILL.md",
-      "source_sha256": "e686fdc6480025e00e924ade9f018bf9a68ae00cafb370a97488b4097287a0c1",
-      "sha256": "e686fdc6480025e00e924ade9f018bf9a68ae00cafb370a97488b4097287a0c1",
-      "bytes": 2237,
+      "source_ref": "creative",
+      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
+      "source_sha256": "f46f391ffd2edb94ff3b9e0144873260c0a16bada79042ef2904c4d07a696725",
       "transformations": [
         {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+          "kind": "owner-neutral-grammar",
+          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
         }
       ],
-      "module": "product-ui-design"
+      "module": "product-ui-design",
+      "sha256": "f46f391ffd2edb94ff3b9e0144873260c0a16bada79042ef2904c4d07a696725",
+      "bytes": 2396
     },
     {
       "source": "skills/product-ui-design/sources.json",
@@ -2596,13 +2655,17 @@
       "source": "skills/visual-experiment-craft/references/world-scenes.md",
       "path": "payload/skills/visual-experiment-craft/references/world-scenes.md",
       "source_sha256": "eb4e7625e1648295f0902ce0a9832bdfc96d2bdf634379ab8783ded2b802f07b",
-      "sha256": "aa74c25ed644541af3939534f4a9b1de03e267759253781cbb9668baae85f665",
-      "bytes": 8396,
+      "sha256": "cdcead3bc060cc2fca0a417e65a37b409f9cbfe645e1bd1ab768e09f30c810c2",
+      "bytes": 8430,
       "transformations": [
         {
           "kind": "environment-binding",
           "binding": "{{EVIDENCE_ROOT}}",
           "count": 1
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Point to the authorized evidence audit directory without a personal model label in its private filename; retain the comparison-audit trigger and regression lesson."
         }
       ],
       "module": "visual-experiment-craft"
@@ -2759,13 +2822,17 @@
       "source": "skills/voxel-model-craft/references/resolution-lod.md",
       "path": "payload/skills/voxel-model-craft/references/resolution-lod.md",
       "source_sha256": "bb2c2a17c24b99cc7eb5d3ab416c8981af2ff8e4235543092ebe50080322fbdb",
-      "sha256": "ed81b6d88e8ef8115879b2b9bca8647137d3e255362cbb97c7854f17b5239ba7",
-      "bytes": 3451,
+      "sha256": "ed08dd3470c4b2730f3d748d4aa60e559a5bdf8204a72a0b2050f8c22b57c56c",
+      "bytes": 3413,
       "transformations": [
         {
           "kind": "owner-label",
           "label": "the user's",
           "count": 1
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Replace dated personal density preference with brief/style/camera/performance criteria; retain detailed-probe, resampling and LOD checks."
         }
       ],
       "module": "voxel-model-craft"
@@ -2981,13 +3048,17 @@
       "source": "runtime/memory/SYSTEM/scripts/github-connect.mjs",
       "path": "payload/runtime/memory/SYSTEM/scripts/github-connect.mjs",
       "source_sha256": "ab3a04f179e7c6a7f543cf832afff1ebe9b81694ac4bb56076ccf1b2ca7e36e0",
-      "sha256": "246fff1bf86b02d4f4e20aee1bf976143d394e8772468469137e155c8a0c1108",
-      "bytes": 5112,
+      "sha256": "003ef8d06e73382894ecc5f321bbd733ba54b6ac00a178957a605f215cb774ca",
+      "bytes": 5110,
       "transformations": [
         {
           "kind": "owner-label",
           "label": "пользователь",
           "count": 1
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Use a generic private repository description without source-owner or curator names."
         }
       ],
       "module": "memory-runtime"
@@ -2996,13 +3067,17 @@
       "source": "runtime/memory/SYSTEM/scripts/install-scheduled-sync.mjs",
       "path": "payload/runtime/memory/SYSTEM/scripts/install-scheduled-sync.mjs",
       "source_sha256": "0d77b168f2423d65851f0654656be2170537e5ba2f0e11e3fea3cff0aa5756dc",
-      "sha256": "e0b14d22ce4edd9fe46037e5e2726867a960d6299e1acee9133d2565bef20641",
-      "bytes": 6315,
+      "sha256": "b270a53cb263f325e1671e51239c141478703d199c2b58d84e0cd6e20c7a4990",
+      "bytes": 6278,
       "transformations": [
         {
           "kind": "owner-label",
           "label": "пользователь",
           "count": 2
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Use the portable task name Harness-Knowledge-Sync and a generic description; registration, ownership checks and hourly/sign-in helper behavior remain explicit opt-in operations."
         }
       ],
       "module": "memory-runtime"
@@ -3020,8 +3095,8 @@
       "source": "runtime/memory/SYSTEM/scripts/kb.mjs",
       "path": "payload/runtime/memory/SYSTEM/scripts/kb.mjs",
       "source_sha256": "bdd7a38e4b1822d0177df9df30a0cb581430cc9c7d15b71c3796d8a982dcaa6b",
-      "sha256": "e1d095127de79117f407b27f6b06d176645f800aa948323299c695743df9a750",
-      "bytes": 27812,
+      "sha256": "d5eba27f1a6671d1498cfb7485316ccb956d032b011ee2794f0df564195a6cbb",
+      "bytes": 27789,
       "transformations": [
         {
           "kind": "owner-label",
@@ -3040,6 +3115,10 @@
         {
           "kind": "instruction-language",
           "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Use the generic source.kind curator; emitted hook context describes separately authorized synchronization instead of the source installation schedule. Capture/checkpoint identity, idempotency, receipts and bounds are preserved."
         }
       ],
       "module": "memory-runtime"
@@ -3057,8 +3136,8 @@
       "source": "runtime/memory/SYSTEM/workflows/capture.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/capture.md",
       "source_sha256": "5acc61634a95c11e7b372160993244d3530442fd0050f2152bc3d1dcebf48e9a",
-      "sha256": "5ecaed7a4a0a42611317f6b7dc994d9a7a677f184fd0a86d690044fb1dde7f60",
-      "bytes": 6029,
+      "sha256": "9fcd3044babd9945a7a8d7413810d420ddf85635a578448df7aa260c83788a61",
+      "bytes": 6133,
       "transformations": [
         {
           "kind": "owner-label",
@@ -3078,6 +3157,10 @@
         {
           "kind": "instruction-language",
           "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Require current-owner memory-agent and persistent-tool consent; use generic MCP/source labels; remove inherited schedule claims and dated approvals."
         }
       ],
       "module": "memory-runtime"
@@ -3086,8 +3169,8 @@
       "source": "runtime/memory/SYSTEM/workflows/cloud-connector.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/cloud-connector.md",
       "source_sha256": "7140adeacb37666654528dff5d1a7321c3cc2d91f00163525470f60c998dbe96",
-      "sha256": "51edf47302278df168d5ebeef8dfd3bb523961e97b0574cd8ae3033f2b371217",
-      "bytes": 3247,
+      "sha256": "783b52091e79f4f96cf8596697edba27e3592b21b72eac7e37887adf5effd65a",
+      "bytes": 3276,
       "transformations": [
         {
           "kind": "memory-target-binding",
@@ -3114,6 +3197,10 @@
         {
           "kind": "instruction-language",
           "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Remove dated owner approval and inherited scheduler claims; preserve authorized exchange, conflict handling, receipts and current-owner publication policy."
         }
       ],
       "module": "memory-runtime"
@@ -3122,8 +3209,8 @@
       "source": "runtime/memory/SYSTEM/workflows/curate.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/curate.md",
       "source_sha256": "a8c48dbe23220e3e4a796dba80e905071fd8cf55ba9ca38c9293153d0e01a5f6",
-      "sha256": "e6a0f18cec8f2aeb1a8e4b6711090fa2140a71906ae27b833a2b1467613b688e",
-      "bytes": 2828,
+      "sha256": "f231683bcd330166de2404035c252c7bec1f09ab7409c125ae32bd01cf4e7e21",
+      "bytes": 2806,
       "transformations": [
         {
           "kind": "owner-label",
@@ -3142,6 +3229,10 @@
         {
           "kind": "instruction-language",
           "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Remove dated owner decisions and inherited scheduler claims; preserve curation checks and current-owner publication policy."
         }
       ],
       "module": "memory-runtime"
@@ -3377,10 +3468,45 @@
     {
       "source": "skills/product-engineering/references/task-brief-and-acceptance.md",
       "path": "payload/skills/product-engineering/references/task-brief-and-acceptance.md",
-      "source_sha256": "0be505c01d253663d6c33639080afa230dc80009f8fea9a725a75f967d5400de",
-      "sha256": "c1124b298a028399f9fdfa030305d188fdf506f293c2d2d48be57f070e720211",
-      "bytes": 4734,
+      "source_ref": "creative",
+      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
+      "source_sha256": "21ee8785045167cb7f05c47177afaac567188ea75a78a9f76e7e381db92fd555",
       "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "the user's",
+          "count": 4
+        },
+        {
+          "kind": "owner-label",
+          "label": "the user",
+          "count": 9
+        },
+        {
+          "kind": "owner-neutral-grammar",
+          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Remove the source owner grant-revocation history; retain actual task-level reviewer consent and all acceptance criteria."
+        }
+      ],
+      "module": "product-engineering",
+      "sha256": "b1a009673ef87c34396a619e1c8c980095f17728f06f15143a0a59e9a4e50eb8",
+      "bytes": 8418
+    },
+    {
+      "source": "skills/product-ui-design/references/accepted-ui-lessons.md",
+      "path": "payload/skills/product-ui-design/references/accepted-ui-lessons.md",
+      "source_ref": "creative",
+      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
+      "source_sha256": "c17d65419d669b78a15919dd2d786cc5a50f58379e6fbb717ca5420901a1f7cb",
+      "transformations": [
+        {
+          "kind": "environment-binding",
+          "binding": "{{EVIDENCE_ROOT}}",
+          "count": 3
+        },
         {
           "kind": "owner-label",
           "label": "the user's",
@@ -3389,42 +3515,20 @@
         {
           "kind": "owner-label",
           "label": "the user",
-          "count": 1
+          "count": 4
         },
         {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+          "kind": "owner-neutral-grammar",
+          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
+        },
+        {
+          "kind": "portable-owner-policy",
+          "detail": "Retain the complete accepted dashboard sequence, source comparison observations and limitations; omit personal/family details, private quotations and conversation identity; private artifacts remain optional evidence bindings."
         }
       ],
-      "module": "product-engineering"
-    },
-    {
-      "source": "skills/product-ui-design/references/accepted-ui-lessons.md",
-      "path": "payload/skills/product-ui-design/references/accepted-ui-lessons.md",
-      "source_sha256": "e1e49ce9254f78143c067dc05f9a88ebe6831b03c7d483b8ff323e3f06fd79b6",
-      "sha256": "aef71f7c4d620927d3dede478067f23d2b1eaec5c1e760c6fb40231db22dca5a",
-      "bytes": 2318,
-      "transformations": [
-        {
-          "kind": "environment-binding",
-          "binding": "{{EVIDENCE_ROOT}}",
-          "count": 2
-        },
-        {
-          "kind": "owner-label",
-          "label": "the user",
-          "count": 2
-        },
-        {
-          "kind": "private-evidence-summary",
-          "detail": "Retain the adopted method and evidence limits without private feedback/family details or locations."
-        },
-        {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
-        }
-      ],
-      "module": "product-ui-design"
+      "module": "product-ui-design",
+      "sha256": "57859d73c8ab90045d8fe57099321c6dec7e72c53ae86f23459d4b6f2145107c",
+      "bytes": 5354
     },
     {
       "source": "skills/product-ui-design/references/design-preflight.md",
@@ -3444,6 +3548,111 @@
         }
       ],
       "module": "product-ui-design"
+    },
+    {
+      "source": "skills/creative-direction/SKILL.md",
+      "path": "payload/skills/creative-direction/SKILL.md",
+      "source_ref": "creative",
+      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
+      "source_sha256": "5fe1a3d0c1780b47ed282dc9fcfb1f0587cf618448097d77366e195ed3ca36ac",
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "the user's",
+          "count": 4
+        },
+        {
+          "kind": "owner-label",
+          "label": "the user",
+          "count": 7
+        },
+        {
+          "kind": "owner-neutral-grammar",
+          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
+        }
+      ],
+      "module": "creative-direction",
+      "sha256": "58a9d750d2de5fa74ec4fb2bbbee71bbebadd7f24bb334ce980337dd68a09b67",
+      "bytes": 5500
+    },
+    {
+      "source": "skills/creative-direction/references/content.md",
+      "path": "payload/skills/creative-direction/references/content.md",
+      "source_ref": "creative",
+      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
+      "source_sha256": "b43fda82a1d9165d68c32e372ed9298c7bdcfa94ca332f0202c9cef4401a2ea8",
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "the user's",
+          "count": 3
+        },
+        {
+          "kind": "owner-neutral-grammar",
+          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
+        }
+      ],
+      "module": "creative-direction",
+      "sha256": "0ee4b119cfe787b70772bfdedeb1e47c2b6506e0014b6a3dacd484b0c128bc91",
+      "bytes": 1502
+    },
+    {
+      "source": "skills/creative-direction/references/gamedev.md",
+      "path": "payload/skills/creative-direction/references/gamedev.md",
+      "source_ref": "creative",
+      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
+      "source_sha256": "724d5c9b54016f6a78e16efa45afc47d1368f06345270e4d0e2cdd9bf3f4577d",
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "the user",
+          "count": 1
+        },
+        {
+          "kind": "owner-neutral-grammar",
+          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
+        }
+      ],
+      "module": "creative-direction",
+      "sha256": "54deff0bc27143d0781956e88eabb6067a1105e077e8dfccfd2559ce92c73fda",
+      "bytes": 1618
+    },
+    {
+      "source": "skills/creative-direction/references/ui-ux.md",
+      "path": "payload/skills/creative-direction/references/ui-ux.md",
+      "source_ref": "creative",
+      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
+      "source_sha256": "ebb913c372e97c9fc9fce1a9cc4bec101d763ea60c34b7deae11c50e543133d1",
+      "transformations": [
+        {
+          "kind": "owner-label",
+          "label": "the user",
+          "count": 1
+        },
+        {
+          "kind": "owner-neutral-grammar",
+          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
+        }
+      ],
+      "module": "creative-direction",
+      "sha256": "c8400fc305d96ba422ed5c6c157c1bb1cf025cc1f08b06528c6a0fa185971ae6",
+      "bytes": 2220
+    },
+    {
+      "source": "skills/creative-direction/references/visual.md",
+      "path": "payload/skills/creative-direction/references/visual.md",
+      "source_ref": "creative",
+      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
+      "source_sha256": "ce0281ecfd531834630379c647f4444b46908b1475169a16dbd92e7a7e538447",
+      "transformations": [
+        {
+          "kind": "owner-neutral-grammar",
+          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
+        }
+      ],
+      "module": "creative-direction",
+      "sha256": "ce0281ecfd531834630379c647f4444b46908b1475169a16dbd92e7a7e538447",
+      "bytes": 1470
     }
   ],
   "excluded": [

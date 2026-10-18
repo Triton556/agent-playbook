@@ -57,7 +57,7 @@ def catalog(m):
     # Local workflow creators actually depend on the native structure creator, disclosed separately.
     return c
 def selection(args,m,c):
-    profiles={'full':set(c),'engineering':{x for x in c if x.startswith('product-')}|{'ui-ux-pro-max','writing-for-agents','domain-modeling'},'visual':{'product-ui-design','product-ui-review','visual-experiment-craft','voxel-model-craft'},'voxel':{'voxel-model-craft'},'memory':{x for x in c if x.startswith('kb-')},'instructions':{'writing-for-agents','anthropic-workflow-creator'}}
+    profiles={'full':set(c),'engineering':{x for x in c if x.startswith('product-')}|{'creative-direction','ui-ux-pro-max','writing-for-agents','domain-modeling'},'visual':{'creative-direction','product-ui-design','product-ui-review','visual-experiment-craft','voxel-model-craft'},'voxel':{'creative-direction','voxel-model-craft'},'memory':{x for x in c if x.startswith('kb-')},'instructions':{'writing-for-agents','anthropic-workflow-creator'}}
     chosen=set()
     if args.profile:chosen|=profiles[args.profile]
     for v in args.skills or []:chosen|={x for x in v.split(',') if x}

@@ -6,7 +6,7 @@ Write knowledge in Russian. Establish confirmation from user statements or obser
 
 At the end of a substantive stage, pass JSON through stdin to `node SYSTEM/scripts/kb.mjs capture`. The script saves files without model calls; the main agent or designated memory agent can execute it. For Codex, use real hook-provided session_id and turn_id. For the designated curator/Cloud without platform-provided identifiers, choose conversation/stage UUIDs, retain them in your current work record and reuse them on retry.
 
-On PC, when MCP `danil_kb_writer` is available, use `kb_capture({payload})` with the same JSON or `kb_checkpoint({session_id,turn_id})` without a note. the user approved standing access to these two operations on 12 October 2026; the tool works only with the fixed vault. Verify presence in this chat's tool catalog: registration alone does not establish loading by the active client. If absent, the existing CLI remains available under current filesystem permissions. Success requires a receipt and an existing file; retries retain identity.
+On PC, when MCP `harness_kb_writer` is available and authorized by the current installation owner, use `kb_capture({payload})` with the same JSON or `kb_checkpoint({session_id,turn_id})` without a note. The tool works only with the fixed authorized vault; persistent access requires the current owner's actual approval. Verify presence in this chat's tool catalog: registration alone does not establish loading by the active client. If absent, the existing CLI remains available under current filesystem permissions. Success requires a receipt and an existing file; retries retain identity.
 
 This example deliberately keeps saved content in Russian while machine keys remain unchanged:
 
@@ -30,19 +30,19 @@ This example deliberately keeps saved content in Russian while machine keys rema
 }
 ```
 
-Supported type values: `fact`, `preference`, `decision`, `task`, `project-update`, `idea`, `research`, `hypothesis`. Source kind: `codex`, `rumi`, `cloud`, `manual`. At an intermediate stage, use a separate `batch_key` and `final: false`; a final record marks the whole current response as processed. Different content under the same source/batch_key is rejected: choose a new key for a genuinely new stage.
+Supported type values: `fact`, `preference`, `decision`, `task`, `project-update`, `idea`, `research`, `hypothesis`. Source kind: `codex`, `curator`, `cloud`, `manual`. At an intermediate stage, use a separate `batch_key` and `final: false`; a final record marks the whole current response as processed. Different content under the same source/batch_key is rejected: choose a new key for a genuinely new stage.
 
 If there is no useful new knowledge, `node SYSTEM/scripts/kb.mjs checkpoint --session <session_id> --turn <turn_id>` marks the response without an empty note. Mark it only after assessing the current response. Never mark persistence complete after a write error.
 
-On PC, capture stays local. Windows Task Scheduler performs PC Git-sync hourly and at sign-in; the designated curator exchanges her cloud copy through GitHub connector/API daily or on request. Upload failure does not undo the saved file. Capture success means an existing file and returned ID; sync success means successful Git push and STATUS.md evidence. Capture receipts do not depend on summary-status refresh or Git diagnostics. STATUS.md updates through status or sync; status_refresh_pending indicates pending refresh. Record operation durations/outcomes without note content in .kb/operation-events.jsonl and .kb/hook-events.jsonl.
+On PC, capture stays local. Git-sync, cloud exchange and curation run only through separately configured and authorized services or direct requests; no schedule is active merely because these procedures are installed. Upload failure does not undo the saved file. Capture success means an existing file and returned ID; sync success means successful Git push and STATUS.md evidence. Capture receipts do not depend on summary-status refresh or Git diagnostics. STATUS.md updates through status or sync; status_refresh_pending indicates pending refresh. Record operation durations/outcomes without note content in .kb/operation-events.jsonl and .kb/hook-events.jsonl.
 
 ## Delegated memory capture
 
-- the user's standing permission allows one memory agent when summary volume justifies delegation. The main agent remains responsible for completed persistence.
+- A substantial summary may use one memory agent only with the current installation owner's consent, as required by AGENTS.md. The main agent remains responsible for completed persistence.
 - Give only relevant facts, decisions, evidence and limitations, plus original `source.kind`, `session_id`, `turn_id` and chosen `batch_key`. Do not substitute the helper chat's identity. When context selection is available, provide a concise task without full history.
 - Assign one writer per knowledge set. The memory agent calls `capture` with `final: false` and returns command output, ID and an existing file path. If its own hook requires a mark, it checkpoints its own response without recording these facts again.
 - The main agent checks the capture receipt and file existence. With no further new knowledge, checkpoint the original response; save additional information under a separate batch_key. A helper's promise is not persistence evidence. On failure, first check whether a record appeared; retry the same set with the same batch_key to avoid duplicates.
-- the user's prohibition on saving content survives delegation. Memory-agent permission does not expand data access, authorize main-task agents or separately authorize synchronization.
+- The user's prohibition on saving content survives delegation. Memory-agent permission does not expand data access, authorize main-task agents or separately authorize synchronization.
 
 ## Author-style additions
 

@@ -9,6 +9,6 @@ product-engineering contains only stage routing and the reverse-engineering bran
 - product-ui-design: Anthropic frontend-design, an additional Hitbullets Codex adaptation, and gpt-taste for landing pages. Creation, refinement and redesign are equally explicit. Mock Python, mandatory randomness, GSAP, AIDA and a fixed CTA count were removed.
 - product-ui-review: Impeccable toolkit 4.5.2, engine 0.1.14 Windows x64, local context wrapper. Automatic hooks and extra agent definitions are not installed. Actual rendering and behavior outrank an abstract detector count.
 
-the user's current rules replace mandatory upstream interviews, publication, commits and delegation. An accepted brand, accessibility, stack and product requirements outrank a source's aesthetic prohibitions. UI/UX Pro Max and Taste v1 remain separate reference skills. REA remains a candidate in reverse-engineering, not an installed MCP.
+The user's current rules replace mandatory upstream interviews, publication, commits and delegation. An accepted brand, accessibility, stack and product requirements outrank a source's aesthetic prohibitions. UI/UX Pro Max and Taste v1 remain separate reference skills. REA remains a candidate in reverse-engineering, not an installed MCP.
 
 Structural validation and Codex discovery establish installation, not the accuracy of model selection or future product quality. Assess those on real tasks.

@@ -27,7 +27,7 @@ python harness.py plan --client codex --target /path/to/project --profile full
 
 Available clients: `codex`, `claude`, `deepseek`, `generic`. Profiles: `full`, `engineering`, `visual`, `voxel`, `memory`, `instructions`. `--skills name1,name2` selects named skills; dependency closure includes every linked sibling. References and helper files stay complete.
 
-`full` activates the complete workflow. `--workflow` also expands the selection to all 23 modules: the global rules route to all of them, so partial activation would leave broken routes. Skills-only installation preserves individual entry points without claiming all global behavior is active.
+`full` activates the complete workflow. `--workflow` also expands the selection to all 24 modules: the global rules route to all of them, so partial activation would leave broken routes. Skills-only installation preserves individual entry points without claiming all global behavior is active.
 
 Inspect the target's existing AGENTS.md/CLAUDE.md and native skill directories. A different existing file stops installation before writes. Resolve a real conflict by a scoped human decision or a different target; do not delete or overwrite existing settings to make installation pass.
 

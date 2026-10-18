@@ -1,5 +1,19 @@
 # Shared human-perspective protocol
 
+## Quick start: look at it as the user will
+
+Do this before reporting any result a person will see, read or use. It takes minutes and catches what technical checks miss.
+
+1. **Open it the way the user will.** The user's device and window size, normal speed, real content. For motion, watch it move; for text, read it from the top.
+2. **First impression.** In the first 10–20 seconds, before reading your own notes, write down what you recognize, what feels alive or dead, what is confusing and what works.
+3. **Side by side.** Compare with the accepted version, the user's own material or the reference in the same view. Check every item on the intent card's "what already works" list: is it still there and still discoverable?
+4. **The user's three likely objections.** Take the rejection reasons from the intent card and check each one directly. Add any new one your first impression revealed.
+5. **Report honestly.** Separate what you saw yourself, what tests confirmed and what only the user can judge. A count of passed checks is not a quality claim.
+
+The rest of this document is the detailed method behind these steps.
+
+## Detailed method
+
 Apply to a created/changed result a person must recognize, understand or use. For a small edit, check the affected part; for a series, inspect a representative, edge cases and discovered error classes. This method supplements specialist checks; it does not prescribe identical views, pixels, realism or interfaces for every artifact.
 
 ## Inputs and four criteria
@@ -29,7 +43,13 @@ Check not only absence of interference but also presence, membership and preserv
 
 ## Preservation during revision
 
-When an accepted basis exists, identify qualities, actions and relationships that must survive in the new version. For each material one, provide an observable example and repeatable scenario: what is recognized/understood, what the person does and what result they receive. Ground this in user feedback and actual evidence; latest explicit changes take precedence. A saved copy protects rollback; verify transfer of quality on the new version.
+When an accepted basis exists, identify qualities, actions and relationships that must survive in the new version. Start from the intent card's "what already works" list and inspect the accepted version yourself to complete it. Include personal and playful elements as first-class items: lore, references to the user's life, easter eggs, recognizable places, living motion, mood and the meaning of the whole. These are the qualities most often lost when a revision improves assets, structure or polish.
+
+For each material quality, provide an observable example and a repeatable scenario: what is recognized or understood, what the person does and what result they receive. Ground this in user feedback and actual evidence; latest explicit changes take precedence. A saved copy protects rollback; verify the transfer of quality on the new version.
+
+A new rule or constraint must not silently remove an accepted quality. Example: "decorative motion must not pose as a live project event" limits how motion is labeled; it does not justify deleting people, animals or water that made the accepted world feel alive. When a rule and an accepted quality conflict, keep the quality, adjust its presentation, and state the conflict.
+
+When the basis is the user's own material (a draft, an order, a text, a design), preservation also covers its structure, order, voice and content. Compare the new version with the user's material section by section and list every removed, moved or rewritten part.
 
 Check preservation across a coherent segment of experience: a clear interface transition, a video sequence's rhythm, a document's argument, a system request's result or an action in a spatial scene. For a small edit, the affected property and its dependencies suffice; rechecking the entire system is unnecessary.
 
@@ -71,6 +91,6 @@ Justify no findings through coverage of critical features/states, not a generall
 
 Record technical pass, agent inspection and human assessment separately. Test/source counts and file presence describe scope; a quality conclusion needs evidence of the named property. Human acceptance comes only from an actual response; it is not a mandatory new approval for every ordinary step. An unavailable modality stays unverified; a material semantic failure stays unready. For a ledger, use existing kind/criterion/evidence fields; no new universal format is required.
 
-A lesson contains a trigger, confirmed observation, cause status, repair/preservation result, scope, exception and example/counterexample. Save an observation even if its cause is unknown; a technical rule needs a confirmed mechanism. Keep the active selection compact; do not delete or load the full corpus wholesale. This document owns the general method; specialist branches own subject rules.
+A lesson contains a trigger, confirmed observation, cause status, repair/preservation result, scope, exception and example/counterexample. Save an observation even if its cause is unknown; a technical rule needs a confirmed mechanism. Keep the active lesson selection focused and do not delete lessons; read every lesson that matches the current deliverable. This document owns the general method; specialist branches own subject rules.
 
 Grounds: workflow-review-20261013 and workflow-human-review-20261013 documents in {{EVIDENCE_ROOT}}; Gen2.1 comparisons. Author self-descriptions and predicted reactions are not independent research. Test transfer through [workflow-pilot](workflow-pilot.md).
