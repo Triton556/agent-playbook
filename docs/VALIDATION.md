@@ -4,9 +4,28 @@ Build: 15 October 2026, Windows. The levels below describe executed checks, not 
 
 ## Source and composition
 
+### 1.0.0 public names and receipt migration
+
+On 19 October 2026 (Asia/Vladivostok), Agent Playbook contains 24 skills and 296 payload files. The 17 approved skill renames are applied without exceptions. The compatibility creator and personal VM controller, including 12 files and their active routes, are excluded. All retained original source hashes and 57 dataset/attribution/license files match the 0.5.0 baseline. Export hashes, bytes and naming/privacy transformations are current. One remaining personal curator label in the memory status display is generalized; command behavior and schemas are unchanged.
+
+Using Python 3.12.14 at the user-selected runtime and Node.js 22.13.0:
+
+- `python harness.py check-package`: pass, 296 files.
+- `python -B -m unittest discover -s tests`: all 33 tests passed in 325.243 seconds. New tests exercise all 17 CLI aliases and warnings, explicit removed-module errors, inventory/frontmatter/profile membership, real 0.5.0 installations from local commit `7534298`, full Codex/Claude migration, selected-skill migration, repeat install/remove, BOM/CRLF and user-content preservation, and refusal before writes for edits, missing files, changed blocks/policies/options, new-path conflicts, forged receipts, missing trusted records and unowned files requiring replacement.
+- Separate empty-project `--profile full` installations for `--client codex` and `--client claude`: 24 skills and 297 installed files each (payload plus generated policy), both passed `verify`.
+- Profile requested/closure counts: full 24/24, engineering 13/17, visual 5/14, voxel 2/14, memory 5/5, instructions 3/17. Dependency detection distinguishes ordinary stress-test prose and protocol client identities from actual skill references.
+- Legacy skill-reference scan: none outside the changelog, installer migration aliases and migration tests. Upstream source identities/URLs are retained. Privacy scan: no owner name, personal alias or private home path in payload. Two unchanged third-party dataset examples use generic home paths; they are examples, not owner bindings. Original font author attribution remains intact.
+- Pre-1.0.0 CHANGELOG history is byte-identical. Local Markdown paths and 77 documentation links/anchors were checked; the three glossary example links are intentional project-template placeholders.
+
+The optional client-native `quick_validate.py` could not run because PyYAML is absent from the selected Python; no environment dependency was installed. Package catalog/frontmatter checks passed. Actual client discovery/startup loading, live worker sessions, the separately acquired Impeccable engine, model-quality pilots, independent review and human acceptance were not run. GitHub repository renaming and its redirect are a separate owner action and were not verified by this local release check. No push was performed.
+
+The local commit could not be created: staging was refused with `Permission denied` on `.git/index.lock` in this sandbox. The release changes remain in the working tree on `main`.
+
+Historical entries below describe checks performed on their original releases. Skill references use the current public names; the original release naming is retained in CHANGELOG.md. These records do not establish validation of the 1.0.0 changes.
+
 ### 0.5.0 agent sessions addition
 
-On 19 October 2026 (Asia/Vladivostok), the package contains 308 payload files and 26 custom skills. The five new `agent-sessions` entries are byte-identical to the supplied Claude skill and need no transformation; all other payload files are unchanged, including `codex-sessions`.
+On 19 October 2026 (Asia/Vladivostok), the package contains 308 payload files and 26 custom skills. The five new `agent-sessions` entries are byte-identical to the supplied Claude skill and need no transformation; all other payload files are unchanged, including `agent-sessions-codex`.
 
 `python harness.py check-package` passed. `python -B -m unittest discover -s tests` passed all 27 tests in 192 seconds using Python 3.12 and Node.js 22.13.0. New coverage: selection in full/engineering/instructions and exclusion elsewhere, standalone Codex/Claude installation with byte comparison of all five files, `--describe` output of both adapters (agent, contract 1, `verified` true for codex and false for claude-code, three access modes) and exit code 4 for an unknown access mode. Full installations with `--client codex` and `--client claude` into empty temporary projects installed 26 skills and passed `verify`. Profile closures: full 26/26, engineering 13/17, visual 5/14, voxel 2/14, memory 5/5, instructions 4/18. The payload scan found no owner name, private alias or absolute home path.
 

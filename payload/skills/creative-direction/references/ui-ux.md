@@ -21,7 +21,7 @@ Three directions that share the same flow and differ only in layout or style are
 
 ## References
 
-Use real products for the same task (competitors, platform patterns, well-known apps) and the project's own screens. ui-ux-pro-max can supply patterns for a specific question. Show screenshots or links of 4–6 examples and record what the user likes or rejects in each.
+Use real products for the same task (competitors, platform patterns, well-known apps) and the project's own screens. ui-reference can supply patterns for a specific question. Show screenshots or links of 4–6 examples and record what the user likes or rejects in each.
 
 ## Sketch
 
@@ -29,4 +29,4 @@ Draw each direction as low-fidelity frames of the main scenario using the existi
 
 ## Hand-over
 
-The chosen direction continues in product-ui-design (preflight, states, mockup) and product-ui-review after implementation. The creative brief names the flow shape, the information priority and what must not change in the existing product.
+The chosen direction continues in ui-design (preflight, states, mockup) and ui-review after implementation. The creative brief names the flow shape, the information priority and what must not change in the existing product.

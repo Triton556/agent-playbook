@@ -24,12 +24,12 @@ Primary location references: [Codex skills](https://learn.chatgpt.com/docs/build
 | Independent acceptance | New agent/session without author history and actual owner authorization | Do not call self-review independent |
 | Knowledge persistence | Own authorized vault or limited MCP writer | No fictitious saved receipt |
 | Private sync/cloud curation | Verified private remote, authorized transport and scheduler if requested | Keep local data; exchange/schedule remains unconfigured/unverified |
-| Restricted lab operations | Own fixed inventory, current ready session and restricted provider | No automatic VM provision, session launch or arbitrary shell |
+| External laboratory integration | A separately supplied, authorized provider | Personal VM control is excluded from the public package |
 | Document/PDF/presentation/spreadsheet work | Relevant available native format skill/tool and render checks | Install/authorize a suitable provider before claiming that route works |
 
 The package does not redistribute proprietary native plugins or credentials. Native `skill-creator`, document/image tooling and client computer-use interfaces are provider dependencies. The common route preserves their role rather than assuming they are universally installed.
 
-`codex-sessions` installs into the selected host's native skill root, including `.claude/skills/codex-sessions` for Claude and `.agents/skills/codex-sessions` for Codex. Its execution backend is the separate local Codex CLI. Any other host must actually discover the skill and supply the required tools; see [session integration](INTEGRATIONS.md#codex-sessions-for-orchestrators).
+`agent-sessions-codex` installs into the selected host's native skill root, including `.claude/skills/agent-sessions-codex` for Claude and `.agents/skills/agent-sessions-codex` for Codex. Its execution backend is the separate local Codex CLI. Any other host must actually discover the skill and supply the required tools; see [session integration](INTEGRATIONS.md#agent-sessions-codex-for-orchestrators).
 
 ## Fresh reviewer adapters
 

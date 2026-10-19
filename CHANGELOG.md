@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.0.0
+
+- Renamed the public package from `agent-workflow-harness` to `agent-playbook`; clone URL: https://github.com/Triton556/agent-playbook. The GitHub repository rename is handled separately before publication; the old address redirects to the new address after that rename.
+- Applied the approved names below across the retained payload, profiles, installer, manifest and documentation. Third-party source identities and licenses are unchanged.
+
+| Previous skill | Public skill |
+|---|---|
+| `product-engineering` | `dev-flow` |
+| `product-planning` | `dev-plan` |
+| `product-implementation` | `dev-implement` |
+| `product-debugging` | `dev-debug` |
+| `product-testing` | `dev-verify` |
+| `domain-modeling` | `dev-domain-model` |
+| `product-ui-design` | `ui-design` |
+| `product-ui-review` | `ui-review` |
+| `ui-ux-pro-max` | `ui-reference` |
+| `design-taste-frontend-v1` | `ui-taste-reference` |
+| `codex-sessions` | `agent-sessions-codex` |
+| `handoff` | `agent-handoff` |
+| `writing-for-agents` | `agent-instructions` |
+| `grilling` | `stress-test` |
+| `grill-with-docs` | `stress-test-with-docs` |
+| `visual-experiment-craft` | `visual-scenes` |
+| `voxel-model-craft` | `voxel-models` |
+
+- Unchanged: `agent-sessions`, `creative-direction` and all `kb-*` skills. Removed `anthropic-workflow-creator` (compatibility stub) and `lab-vm-control` (personal VM control), including their 12 files and active routes. The package contains 24 skills and 296 payload files.
+- Old `--skills` names resolve to new names with a warning; removed names fail with an explanation. Trusted 0.x receipts migrate in place: verify all old content, install new paths and retire only unchanged owned files. User files and startup text outside the managed block survive. Missing/edited content, untrusted records and conflicts refuse migration before writes. Keep the original private receipt store and repeat the original options.
+- Added regression coverage for aliases, removals and actual 0.5.0-to-1.0.0 installations, including conflict and ownership preservation. No live agent sessions, model pilot or independent review are claimed.
+- Preserved profile dependency sets under the new names: ordinary stress-test prose and protocol client identities no longer create accidental skill dependencies. No exception to the approved rename scheme was needed.
+
 ## 0.5.0
 
 - Added `agent-sessions`: the same orchestration procedure as `codex-sessions` (propose sessions with access modes, start after the user agrees, brief, check), with workers in any client through adapters that follow one contract (options, final JSON line, exit codes 0–4, `--describe` with real access-mode guarantees and a `verified` flag).

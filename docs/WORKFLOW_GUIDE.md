@@ -42,25 +42,24 @@ Before expensive construction, validate a cheap coherent representation at the r
 
 | Goal/stage | Entry points |
 |---|---|
-| Route a development task | product-engineering |
-| Scope and architecture | product-planning; domain-modeling when meaningful terminology/decision is involved |
-| Implement agreed behavior | product-implementation |
-| Diagnose observed failure | product-debugging |
-| Behavior/code verification | product-testing |
+| Route a development task | dev-flow |
+| Scope and architecture | dev-plan; dev-domain-model when meaningful terminology/decision is involved |
+| Implement agreed behavior | dev-implement |
+| Diagnose observed failure | dev-debug |
+| Behavior/code verification | dev-verify |
 | Open creative concept: interface, game, content, motion or 3D | creative-direction; keep an accepted direction as the basis |
-| Interface decisions and build | product-ui-design; targeted ui-ux-pro-max search; optional design-taste-frontend-v1 |
-| Rendered interface/interaction review | product-ui-review |
-| Interactive explanation, spatial world, material/light experiment | visual-experiment-craft |
-| Voxel grid/model/modular kit/creature/diorama | voxel-model-craft |
-| Agent documents | writing-for-agents; no second authoring cycle |
+| Interface decisions and build | ui-design; targeted ui-reference search; optional ui-taste-reference |
+| Rendered interface/interaction review | ui-review |
+| Interactive explanation, spatial world, material/light experiment | visual-scenes |
+| Voxel grid/model/modular kit/creature/diorama | voxel-models |
+| Agent documents | agent-instructions; no second authoring cycle |
 | Codex skill creation | Native skill-creator when actually supplied by the client |
 | Workflow experiments | One workflow-pilot reference; Anthropic entry is a compatibility redirect |
-| Deliberate decision stress-test/document interview | grilling; grill-with-docs only when selected |
-| Explicit handoff | handoff |
-| User-requested work in a Codex thread visible in the app | codex-sessions; write the brief, start/resume the thread and verify its result |
+| Deliberate decision stress-test/document interview | stress-test; stress-test-with-docs only when selected |
+| Explicit handoff | agent-handoff |
+| User-requested work in a Codex thread visible in the app | agent-sessions-codex; write the brief, start/resume the thread and verify its result |
 | Personal project context and saving | kb-find; kb-save |
 | Maintenance/status/private sync | kb-curate; kb-status; kb-sync in their authorized scope |
-| Existing restricted laboratory provider | lab-vm-control |
 
 An interface attached to research uses the UI route because the result contains an interface. Mentioning a technology in a creative or household task does not force the engineering route. A backend-only task does not acquire UI obligations. Full native format/provider dependencies are documented in COMPATIBILITY.md and INTEGRATIONS.md.
 

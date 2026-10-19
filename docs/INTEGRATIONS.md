@@ -32,16 +32,16 @@ The original method references include Windows PowerShell examples. Adapt only s
 
 The preserved Impeccable context wrapper is PowerShell. A destination's signing/execution policy can reject it. Do not disable that protection to claim compatibility: follow the skill's existing unavailable-wrapper branch, read actual project context directly, and record the wrapper as unavailable. The verified standalone engine can supply permitted mechanical analysis; its upstream orchestration messages are source material and do not grant extra agents/access.
 
-## Codex sessions for orchestrators
+## agent-sessions-codex for orchestrators
 
-`codex-sessions` equips the host agent (Claude, another Codex or another client) to write a brief, start or continue work in Codex, and check the actual result. It is selected by `full`, `engineering` and `instructions`, or separately:
+`agent-sessions-codex` equips the host agent (Claude, another Codex or another client) to write a brief, start or continue work in Codex, and check the actual result. It is selected by `full`, `engineering` and `instructions`, or separately:
 
 ```bash
-python harness.py install --client claude --target /path/to/project --skills codex-sessions
+python harness.py install --client claude --target /path/to/project --skills agent-sessions-codex
 python harness.py verify --client claude --target /path/to/project
 ```
 
-Use `--client codex` for a Codex host. Read the installed `skills/codex-sessions/SKILL.md` before launching. The host needs permitted shell/file access, Node.js 22+ and a configured Codex CLI with the user's account/settings. The driver finds `codex` on PATH or in supported desktop locations; `CODEX_BIN` can name the actual executable. No Codex binary, account, authentication or host configuration is installed by the harness.
+Use `--client codex` for a Codex host. Read the installed `skills/agent-sessions-codex/SKILL.md` before launching. The host needs permitted shell/file access, Node.js 22+ and a configured Codex CLI with the user's account/settings. The driver finds `codex` on PATH or in supported desktop locations; `CODEX_BIN` can name the actual executable. No Codex binary, account, authentication or host configuration is installed by the harness.
 
 The unchanged `scripts/codex-chat.mjs` uses `codex app-server` over stdio on the user's own Codex home, so the user can watch the named thread in the app. Continue related work with `--thread <threadId>` from the previous run's final JSON line. Preserve the user's settings and hooks, including any configured memory hooks. An isolated home or ignored user configuration belongs only to an explicitly requested isolated experiment. The optional `--proxy` requires a separately running app-server daemon.
 
@@ -88,11 +88,11 @@ Acquire the pinned Impeccable engine from the exact official URL in `manifest.js
 
 Use native image generation, rendered document/PDF/slide/spreadsheet tools and a genuine fresh-context review provider when a selected route requires them. The package does not copy provider internals, accounts or tool permissions. For a six-view concept an authorized native code representation is allowed when the original pipeline permits it; an uninspected placeholder is not an equivalent accepted concept.
 
-## Knowledge maintenance and laboratory access
+## Knowledge maintenance
 
 Hourly PC Git synchronization and daily curation/cloud exchange are retained as procedures and helper code, with the original privacy/conflict/receipt checks. Configure your own verified private repository, timezone and actual scheduler. The runtime's daily INBOX filename convention currently retains Asia/Vladivostok; this is a naming convention, not evidence that a scheduler exists. Windows scheduled-sync installation is Windows-specific and is not executed by `init-memory`.
 
-Lab control requires your own fixed authorized inventory and a provider meeting the original restricted operation/session/identity contract. Placeholder VM bindings are unconfigured. No source owner's VM, remote memory repository, credentials or scheduler grant is transferred.
+Personal VM control is excluded from this public package. No source owner's VM, remote memory repository, credentials or scheduler grant is transferred.
 
 ## Retrieval and structural memory audits (0.2.0)
 
@@ -120,9 +120,9 @@ Record independently: installed selection/closure; package and installed hashes;
 
 ## Agent sessions for any worker
 
-`agent-sessions` keeps the orchestration procedure of `codex-sessions` (propose with access modes, wait for agreement, brief, run, check) but runs workers through adapters, so the worker can be any client. Every adapter follows the [contract](../payload/skills/agent-sessions/references/contract.md): the same options, a final JSON line and exit codes 0–4. `--describe` reports where the session is visible, whether it can be continued, what each access mode actually enforces in that client and whether the adapter passed its live checks (`verified`).
+`agent-sessions` keeps the orchestration procedure of `agent-sessions-codex` (propose with access modes, wait for agreement, brief, run, check) but runs workers through adapters, so the worker can be any client. Every adapter follows the [contract](../payload/skills/agent-sessions/references/contract.md): the same options, a final JSON line and exit codes 0–4. `--describe` reports where the session is visible, whether it can be continued, what each access mode actually enforces in that client and whether the adapter passed its live checks (`verified`).
 
 - `codex`: Codex app-server, threads visible in the Codex app. Live-checked: new thread, continue, `read-only` refused a write, `workspace-write` refused a write outside the folder.
 - `claude-code`: headless `claude -p` with permission modes (`plan`, `acceptEdits`, `bypassPermissions`) rather than an OS sandbox. Unverified. It needs a Claude Code CLI logged in on its own; the CLI bundled with the desktop app reports "Not logged in" when started separately.
 
-For another client (OpenCode, a DeepSeek harness, a client running GLM or Kimi), follow [writing an adapter](../payload/skills/agent-sessions/references/writing-an-adapter.md): find the headless mode, map access modes honestly, implement the contract and run five live checks with the user's agreement. As with `codex-sessions`, installing the skill grants no permission to start sessions.
+For another client (OpenCode, a DeepSeek harness, a client running GLM or Kimi), follow [writing an adapter](../payload/skills/agent-sessions/references/writing-an-adapter.md): find the headless mode, map access modes honestly, implement the contract and run five live checks with the user's agreement. As with `agent-sessions-codex`, installing the skill grants no permission to start sessions.

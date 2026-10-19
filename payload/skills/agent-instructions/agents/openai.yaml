@@ -1,0 +1,3 @@
+interface:
+  display_name: "Agent Instructions"
+  short_description: "Edit agent documents with one owner per procedure"

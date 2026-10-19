@@ -20,4 +20,4 @@ Make a style frame or a short animatic per direction: a few frames with timing n
 
 ## Hand-over
 
-Execution continues in visual-experiment-craft or voxel-model-craft. The creative brief records the core idea, the visual language, the rhythm source, the role of each technique and what must survive into the final piece.
+Execution continues in visual-scenes or voxel-models. The creative brief records the core idea, the visual language, the rhythm source, the role of each technique and what must survive into the final piece.

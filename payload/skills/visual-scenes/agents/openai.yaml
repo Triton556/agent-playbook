@@ -1,0 +1,6 @@
+interface:
+  display_name: "Visual Experiment Craft"
+  short_description: "Build clear, coherent interactive visual experiments"
+  default_prompt: "Use $visual-scenes to turn this subject into an original, readable visual experiment with meaningful controls and verified states."
+policy:
+  allow_implicit_invocation: true

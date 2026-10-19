@@ -6,8 +6,34 @@ from pathlib import Path
 
 REPO=Path(__file__).resolve().parent
 CLIENT_ROOT={'codex':'.agents','claude':'.claude','deepseek':'.dsh','generic':'.agent-harness'}
-BEGIN='\n<!-- agent-workflow-harness:begin -->\n'
-END='\n<!-- agent-workflow-harness:end -->\n'
+BEGIN='\n<!-- agent-playbook:begin -->\n'
+END='\n<!-- agent-playbook:end -->\n'
+# Legacy names and block markers are migration inputs, never installed skill names.
+LEGACY_BEGIN='\n<!-- agent-workflow-harness:begin -->\n'
+LEGACY_END='\n<!-- agent-workflow-harness:end -->\n'
+SKILL_ALIASES={
+    'product-engineering':'dev-flow',
+    'product-planning':'dev-plan',
+    'product-implementation':'dev-implement',
+    'product-debugging':'dev-debug',
+    'product-testing':'dev-verify',
+    'domain-modeling':'dev-domain-model',
+    'product-ui-design':'ui-design',
+    'product-ui-review':'ui-review',
+    'ui-ux-pro-max':'ui-reference',
+    'design-taste-frontend-v1':'ui-taste-reference',
+    'codex-sessions':'agent-sessions-codex',
+    'handoff':'agent-handoff',
+    'writing-for-agents':'agent-instructions',
+    'grilling':'stress-test',
+    'grill-with-docs':'stress-test-with-docs',
+    'visual-experiment-craft':'visual-scenes',
+    'voxel-model-craft':'voxel-models',
+}
+REMOVED_SKILLS={
+    'anthropic-workflow-creator':'Compatibility stub removed; use the client native skill-creator or the dev-flow workflow-pilot reference.',
+    'lab-vm-control':'Personal VM control is excluded from the public package; use your own separately authorized lab integration.',
+}
 class HarnessError(Exception):pass
 def sha(data:bytes)->str:return hashlib.sha256(data).hexdigest()
 def read_json(p:Path):return json.loads(p.read_text(encoding='utf-8-sig'))
@@ -50,17 +76,25 @@ def catalog(m):
         owner=f['module']
         if owner not in c or Path(f['path']).suffix.lower() not in ['.md','.py','.mjs','.ps1']:continue
         text=(REPO/f['path']).read_text(encoding='utf-8-sig')
+        # Protocol client identities are runtime metadata, not skill dependencies.
+        text=re.sub(r'''(clientInfo:\s*\{\s*name:\s*)['"][^'"]*['"]''',r'\1""',text)
         for other in c:
-            named=re.search(r'(?<![\w-])'+re.escape(other)+r'(?![\w-])',text) if '-' in other else re.search(r'[`\"\[]'+re.escape(other)+r'[`\"\]]',text)
+            # These names also occur as ordinary prose. Preserve explicit skill references
+            # rather than introducing dependencies from phrases such as "stress-test them".
+            named=re.search(r'(?<![\w-])'+re.escape(other)+r'(?![\w-])',text) if '-' in other and other not in {'stress-test','agent-handoff'} else re.search(r'[`\"\[]'+re.escape(other)+r'[`\"\]]',text)
             if other!=owner and (named or f'/skills/{other}/' in text or re.search(r'\.\./(?:\.\./)?'+re.escape(other)+r'/',text)):
                 c[owner]['dependencies'].add(other)
     # Local workflow creators actually depend on the native structure creator, disclosed separately.
     return c
 def selection(args,m,c):
-    profiles={'full':set(c),'engineering':{x for x in c if x.startswith('product-')}|{'agent-sessions','codex-sessions','creative-direction','ui-ux-pro-max','writing-for-agents','domain-modeling'},'visual':{'creative-direction','product-ui-design','product-ui-review','visual-experiment-craft','voxel-model-craft'},'voxel':{'creative-direction','voxel-model-craft'},'memory':{x for x in c if x.startswith('kb-')},'instructions':{'agent-sessions','codex-sessions','writing-for-agents','anthropic-workflow-creator'}}
+    profiles={'full':set(c),'engineering':{x for x in c if x.startswith('dev-')}|{'ui-design','ui-review','agent-sessions','agent-sessions-codex','creative-direction','ui-reference','agent-instructions'},'visual':{'creative-direction','ui-design','ui-review','visual-scenes','voxel-models'},'voxel':{'creative-direction','voxel-models'},'memory':{x for x in c if x.startswith('kb-')},'instructions':{'agent-sessions','agent-sessions-codex','agent-instructions'}}
     chosen=set()
     if args.profile:chosen|=profiles[args.profile]
-    for v in args.skills or []:chosen|={x for x in v.split(',') if x}
+    for v in args.skills or []:
+        for name in filter(None,(x.strip() for x in v.split(','))):
+            if name in REMOVED_SKILLS:raise HarnessError('Removed skill: '+name+'. '+REMOVED_SKILLS[name])
+            if name in SKILL_ALIASES:print('Warning: skill '+name+' was renamed to '+SKILL_ALIASES[name]+'; using the new name.',file=sys.stderr)
+            chosen.add(SKILL_ALIASES.get(name,name))
     if not chosen:raise HarnessError('Select --profile or --skills; nothing is installed implicitly')
     missing=chosen-set(c)
     if missing:raise HarnessError('Unknown skill: '+','.join(sorted(missing)))
@@ -73,7 +107,7 @@ def selection(args,m,c):
     return requested,chosen
 def settings(args,root,target):
     memory=str(Path(args.memory_root).absolute().as_posix()) if args.memory_root else str((target/'.harness-memory').as_posix())
-    return {'HARNESS_ROOT':root.as_posix(),'MEMORY_ROOT':memory,'MEMORY_REPO':args.memory_repo or '[configure own verified private memory repository]','CLOUD_MEMORY_ROOT':args.cloud_memory_root or '[configure authorized cloud copy path]','CURATION_SCHEDULE':args.curation_schedule or '[configure daily time, timezone and actual scheduler receipt]','EVIDENCE_ROOT':str(Path(args.evidence_root).absolute().as_posix()) if args.evidence_root else str((target/'optional-evidence').as_posix()),'PYTHON':Path(sys.executable).as_posix(),'NODE':Path(shutil.which('node') or 'node').as_posix(),'LAB_CLI':args.lab_cli or '[configure authorized lab CLI]','LAB_RUNTIME':args.lab_runtime or '[configure authorized lab runtime]','LAB_VM_NAME':args.lab_vm_name or '[configure exact VM name]','LAB_VM_UUID':args.lab_vm_uuid or '[configure exact VM UUID]','LAB_VM_MAC':args.lab_vm_mac or '[configure exact VM MAC]','HISTORICAL_SOURCE_ROOT':str((target/'optional-evidence/historical-source').as_posix())}
+    return {'HARNESS_ROOT':root.as_posix(),'MEMORY_ROOT':memory,'MEMORY_REPO':args.memory_repo or '[configure own verified private memory repository]','CLOUD_MEMORY_ROOT':args.cloud_memory_root or '[configure authorized cloud copy path]','CURATION_SCHEDULE':args.curation_schedule or '[configure daily time, timezone and actual scheduler receipt]','EVIDENCE_ROOT':str(Path(args.evidence_root).absolute().as_posix()) if args.evidence_root else str((target/'optional-evidence').as_posix()),'PYTHON':Path(sys.executable).as_posix(),'NODE':Path(shutil.which('node') or 'node').as_posix(),'HISTORICAL_SOURCE_ROOT':str((target/'optional-evidence/historical-source').as_posix())}
 def render(data,values,path):
     try:text=data.decode('utf-8-sig')
     except UnicodeDecodeError:return data
@@ -87,9 +121,12 @@ def render(data,values,path):
     if re.search(r'\{\{[A-Z_]+\}\}',text):raise HarnessError('Unresolved binding: '+path)
     return text.encode('utf8') if text!=data.decode('utf-8-sig') else data
 def strip_block(text):
-    if BEGIN not in text and END not in text:return text,None
-    if text.count(BEGIN)!=1 or text.count(END)!=1:raise HarnessError('Malformed existing managed instructions block')
-    first=text.index(BEGIN);last=text.index(END)+len(END)
+    pairs=[(b,e) for b,e in [(BEGIN,END),(LEGACY_BEGIN,LEGACY_END)] if b in text or e in text]
+    if not pairs:return text,None
+    if len(pairs)!=1:raise HarnessError('Mixed managed instructions blocks')
+    begin,end=pairs[0]
+    if text.count(begin)!=1 or text.count(end)!=1:raise HarnessError('Malformed existing managed instructions block')
+    first=text.index(begin);last=text.index(end)+len(end)
     if last<first:raise HarnessError('Malformed managed block order')
     return text[:first]+text[last:],text[first:last]
 def instruction_diagnostics(target,prospective=None,declared_budget=32768):
@@ -109,7 +146,7 @@ def instruction_diagnostics(target,prospective=None,declared_budget=32768):
     size=sum(x['bytes'] for x in files)
     return {'status':'fail' if override.is_file() or size>declared_budget else 'project-files-within-declared-budget','project_bytes':size,'declared_budget':declared_budget,'override_shadows_installation':override.is_file(),'files':files,'limits':'Declared limit only. Effective client settings, global instructions, fallback files and future nested overrides require actual session verification.'}
 def instructions_block(version,root,values,full):
-    header=f"\nInstalled workflow harness {version}. Read policy `{root.as_posix()}/harness-policy.json` first. Historical permissions in installed skills apply only when backed by this installation owner's actual authorization; policy files do not grant tool access. Native capabilities must be checked before use. Maintained agent instructions are in English. Communicate with the user and write knowledge-base content in Russian unless the user explicitly requests another language for the output.\n\n"
+    header=f"\nInstalled Agent Playbook {version}. Read policy `{root.as_posix()}/harness-policy.json` first. Historical permissions in installed skills apply only when backed by this installation owner's actual authorization; policy files do not grant tool access. Native capabilities must be checked before use. Maintained agent instructions are in English. Communicate with the user and write knowledge-base content in Russian unless the user explicitly requests another language for the output.\n\n"
     if full:
         body=render((REPO/'payload/AGENTS.md').read_bytes(),values,'BASE-RULES.md').decode('utf-8-sig')
         return BEGIN+header+body+'\n'+END
@@ -134,6 +171,35 @@ def plan(args):
     instruction_file='CLAUDE.md' if args.client=='claude' else 'AGENTS.md'
     block=instructions_block(m['version'],root,values,activate)
     return m,target,root,entries,block,instruction_file,policy
+def validate_legacy_upgrade(args,target,root,old,policy):
+    """Validate the trusted 0.x snapshot before replacing any destination bytes."""
+    if old.get('schema_version')!=1 or old.get('client')!=args.client:raise HarnessError('Invalid legacy installation receipt')
+    snapshot=old.get('policy_snapshot')
+    if not isinstance(snapshot,dict) or read_json(safe(root,'harness-policy.json'))!=snapshot:raise HarnessError('Legacy deployment policy differs from its trusted snapshot; preserve files for inspection')
+    normalize=lambda names:sorted({SKILL_ALIASES.get(x,x) for x in names if x not in REMOVED_SKILLS})
+    if normalize(old['installed_skills'])!=policy['installed_skills'] or normalize(old['requested_skills'])!=policy['requested_skills'] or old.get('workflow_activated')!=policy['full_workflow']:
+        raise HarnessError('Legacy installation has another selection; repeat its original profile/skills and workflow options for migration')
+    previous=dict(snapshot)
+    previous.update(source_version=policy['source_version'],requested_skills=normalize(snapshot['requested_skills']),installed_skills=normalize(snapshot['installed_skills']))
+    previous['bindings']={k:v for k,v in snapshot['bindings'].items() if not k.startswith('LAB_')}
+    previous.setdefault('project_doc_max_bytes_declared',32768)
+    if previous!=policy:raise HarnessError('Legacy installation has different bindings or policy; repeat its original installation options for migration')
+    expected_entry='CLAUDE.md' if args.client=='claude' else 'AGENTS.md'
+    if old.get('instruction_file')!=expected_entry:raise HarnessError('Invalid legacy instruction path')
+    seen=set()
+    for row in old['files']:
+        source=row['source']
+        if source=='generated-policy':rel='harness-policy.json'
+        elif source=='payload/AGENTS.md':rel='BASE-RULES.md'
+        elif source.startswith(('payload/skills/','payload/workflow/','payload/runtime/')):rel=source.removeprefix('payload/')
+        else:raise HarnessError('Invalid legacy source path')
+        relative=CLIENT_ROOT[args.client]+'/'+rel
+        if row['relative']!=relative or relative in seen or not isinstance(row.get('owned'),bool):raise HarnessError('Invalid legacy ownership record')
+        seen.add(relative)
+        p=safe(target,relative)
+        if not p.is_file() or sha(p.read_bytes())!=row['sha256']:raise HarnessError('Modified or missing legacy file; migration refused: '+relative)
+    if CLIENT_ROOT[args.client]+'/harness-policy.json' not in seen:raise HarnessError('Legacy receipt omits deployment policy')
+
 def install(args):
     m,target,root,entries,block,instruction_file,policy=plan(args)
     receipt_path=safe(root,'harness-install.json')
@@ -141,36 +207,52 @@ def install(args):
     trusted=trust_record(target,args.client)
     if old and (not trusted.is_file() or trusted.read_bytes()!=receipt_path.read_bytes()):raise HarnessError('Project receipt differs from the installer private record; preserve files for inspection')
     if trusted.exists() and old is None:raise HarnessError('Original installation record exists but project receipt is missing; preserve files for inspection')
+    upgrading=bool(old and re.fullmatch(r'0\.\d+\.\d+',old.get('version','')) and m['version']=='1.0.0')
+    if upgrading:validate_legacy_upgrade(args,target,root,old,policy)
     oldfiles={x['relative']:x for x in (old or {}).get('files',[])}
     # All conflicts detected before any destination write, including existing user-managed files.
     for e in entries:
         p=safe(target,e['relative'])
         e['owned']=oldfiles.get(e['relative'],{}).get('owned',False) if p.exists() else True
         if p.exists() and (not p.is_file() or sha(p.read_bytes())!=e['sha256']):
-            raise HarnessError('Existing file differs; preserved, install refused: '+e['relative'])
+            previous=oldfiles.get(e['relative'])
+            if not (upgrading and previous and previous['owned']):raise HarnessError('Existing file differs; preserved, install refused: '+e['relative'])
     ip=safe(target,instruction_file);original=ip.read_bytes().decode('utf8') if ip.is_file() else ''
     if ip.exists() and not ip.is_file():raise HarnessError('Instructions target is not a file')
     base,existing=strip_block(original)
     if args.client=='codex':
-        diagnostic=instruction_diagnostics(target,original if existing else original+block,args.project_doc_max_bytes)
+        prospective=original.replace(existing,block,1) if existing else original+block
+        diagnostic=instruction_diagnostics(target,prospective,args.project_doc_max_bytes)
         if diagnostic['override_shadows_installation']:raise HarnessError('AGENTS.override.md shadows the startup block; preserve it and resolve the instruction-source choice before installation')
         if diagnostic['status']=='fail':raise HarnessError('Project startup instructions exceed declared Codex byte budget ('+str(diagnostic['project_bytes'])+' > '+str(args.project_doc_max_bytes)+'). Use an explicit larger --project-doc-max-bytes and matching session launch configuration; instructions were not shortened or written.')
-    if block and existing is not None and existing!=block:raise HarnessError('Existing managed instructions differ; preserved')
-    if old and (old['client']!=args.client or old['installed_skills']!=policy['installed_skills']):raise HarnessError('Existing installation has another selection; remove safely or use a different target')
-    if args.dry_run:return {'status':'planned','target':str(target),'client':args.client,'requested_skills':policy['requested_skills'],'installed_skills':policy['installed_skills'],'files':len(entries),'workflow_activated':policy['full_workflow'],'writes':0}
+    if upgrading:
+        if existing is None or sha(existing.encode('utf8'))!=old['managed_block_sha256'] or not old.get('managed_block_owned'):raise HarnessError('Modified or unowned legacy instructions; migration refused')
+    elif block and existing is not None and existing!=block:raise HarnessError('Existing managed instructions differ; preserved')
+    if old and not upgrading and (old['client']!=args.client or old['installed_skills']!=policy['installed_skills']):raise HarnessError('Existing installation has another selection; remove safely or use a different target')
+    newpaths={e['relative'] for e in entries}
+    obsolete=[row for row in oldfiles.values() if row['relative'] not in newpaths and row['owned']] if upgrading else []
+    if args.dry_run:return {'status':'planned','target':str(target),'client':args.client,'requested_skills':policy['requested_skills'],'installed_skills':policy['installed_skills'],'files':len(entries),'workflow_activated':policy['full_workflow'],'migration_from':old['version'] if upgrading else None,'obsolete_owned_files':len(obsolete),'writes':0}
     trusted.parent.mkdir(parents=True,exist_ok=True)
     for e in entries:
         p=safe(target,e['relative']);p.parent.mkdir(parents=True,exist_ok=True)
-        if not p.exists():p.write_bytes(e['data'])
+        if not p.exists() or (upgrading and e['owned']):p.write_bytes(e['data'])
     written_instructions=False
     if block and existing is None:
         ip.parent.mkdir(parents=True,exist_ok=True)
         ip.write_bytes((original+block).encode('utf8'));written_instructions=True
+    elif upgrading:
+        ip.write_bytes(original.replace(existing,block,1).encode('utf8'));written_instructions=True
+    # Delete exact owned files only. User neighbors and preexisting identical files survive.
+    for row in obsolete:safe(target,row['relative']).unlink()
+    # Remove folders left empty by those deletions, up to the client root; folders with user files stay.
+    for row in sorted(obsolete,key=lambda r:-r['relative'].count('/')):
+        d=safe(target,row['relative']).parent
+        while d!=root and root in d.parents and d.is_dir() and not any(d.iterdir()):d.rmdir();d=d.parent
     receipt={'schema_version':1,'version':m['version'],'client':args.client,'requested_skills':policy['requested_skills'],'installed_skills':policy['installed_skills'],'workflow_activated':policy['full_workflow'],'instruction_file':instruction_file,'managed_block_sha256':sha(block.encode('utf8')),'managed_block_owned':old.get('managed_block_owned',False) if old else written_instructions,'instruction_preexisting':old.get('instruction_preexisting') if old else ip.is_file() and bool(original),'files':[{k:e[k] for k in ['relative','sha256','source','owned']} for e in entries]}
     receipt['policy_snapshot']=policy
     write_json(receipt_path,receipt)
     write_json(trusted,receipt)
-    return {'status':'installed','target':str(target),'files':len(entries),'installed_skills':policy['installed_skills'],'workflow_activated':policy['full_workflow'],'instructions_changed':written_instructions,'note':'File installation is not a claim of tool readiness or model-output equivalence; run doctor and live acceptance.'}
+    return {'status':'installed','target':str(target),'files':len(entries),'installed_skills':policy['installed_skills'],'workflow_activated':policy['full_workflow'],'instructions_changed':written_instructions,'migration_from':old['version'] if upgrading else None,'removed_owned_files':len(obsolete),'note':'File installation is not a claim of tool readiness or model-output equivalence; run doctor and live acceptance.'}
 def installed(args):
     target=linksafe(Path(args.target).absolute());root=safe(target,CLIENT_ROOT[args.client]);p=safe(root,'harness-install.json')
     if not p.is_file():raise HarnessError('No harness installation receipt for selected target/client')
@@ -230,14 +312,13 @@ def doctor(args):
     checks=[{'capability':'integrity','status':v['status']},{'capability':'python','status':'pass','version':sys.version.split()[0]},{'capability':'node','status':'pass' if shutil.which('node') else 'missing'}, {'capability':'file-reading-and-shell','status':'unverified','check':'Agent must read installed instructions and execute a permitted helper.'},{'capability':'fresh-independent-reviewer','status':'unverified','consent':policy['reviewer_consent'],'check':'Verify actual fresh context support and owner authorization; installation files do not grant it.'}]
     selected=set(r['installed_skills'])
     if args.client=='codex':checks.append({'capability':'startup-instructions','client_load':'unverified',**instruction_diagnostics(target,declared_budget=policy.get('project_doc_max_bytes_declared',32768))})
-    if selected&{'product-ui-design','product-ui-review','visual-experiment-craft','voxel-model-craft'}:
+    if selected&{'ui-design','ui-review','visual-scenes','voxel-models'}:
         checks.append({'capability':'actual-image-and-browser-inspection','status':'unverified','check':'Inspect the actual output and interaction in the client, not just a file list.'})
-    if 'product-ui-review' in selected:
-        binary=root/'skills/product-ui-review/vendor/impeccable/scripts/bin/windows-x64/impeccable.exe'
+    if 'ui-review' in selected:
+        binary=root/'skills/ui-review/vendor/impeccable/scripts/bin/windows-x64/impeccable.exe'
         checks.append({'capability':'impeccable-engine-0.1.14','status':'pass' if binary.is_file() and sha(binary.read_bytes())=='38e09451694973ba664a24e67e1502a6913e6d0e533a0a5ae1e04c5963a804b1' else 'missing','check':'Pinned runtime asset; acquire separately or disclose missing automatic detector.'})
     if any(x.startswith('kb-') for x in selected):
         vault=Path(policy['bindings']['MEMORY_ROOT']);checks.append({'capability':'authorized-knowledge-vault','status':'configured' if (vault/'SYSTEM/connection.json').is_file() else 'missing','check':'Initialize an empty personal vault or configure your existing authorized one; do not copy another owner data.'})
-    if 'lab-vm-control' in selected:checks.append({'capability':'authorized-fixed-lab-provider','status':'unverified','check':'Supply own exact target inventory and restricted CLI/MCP; no VM/session is provisioned by this installer.'})
     return {'status':'integrity-verified-runtime-unverified' if v['status']=='pass' else 'fail','checks':checks,'quality_parity':'not-established','instruction_integrity':v['status'],'limits':'Capability declarations and file presence are not executed client validation.'}
 def remove(args):
     target,root,r=installed(args);conflicts=[]
@@ -288,7 +369,6 @@ def main(argv=None):
             p.add_argument('--profile',choices=['full','engineering','visual','voxel','memory','instructions']);p.add_argument('--skills',action='append');p.add_argument('--workflow',action='store_true');p.add_argument('--memory-root');p.add_argument('--reviewer-consent',choices=['ask','one-per-round'],default='ask');p.add_argument('--consent-source')
             p.add_argument('--project-doc-max-bytes',type=int,default=32768,help='Declared Codex project instruction budget; does not change client config. Match actual session settings.')
             for name in ['evidence-root','memory-repo','cloud-memory-root','curation-schedule']:p.add_argument('--'+name)
-            for name in ['lab-cli','lab-runtime','lab-vm-name','lab-vm-uuid','lab-vm-mac']:p.add_argument('--'+name)
         if command in ['plan','install','remove']:p.add_argument('--dry-run',action='store_true')
     args=ap.parse_args(argv)
     try:

@@ -27,9 +27,9 @@ python harness.py plan --client codex --target /path/to/project --profile full
 
 Available clients: `codex`, `claude`, `deepseek`, `generic`. Profiles: `full`, `engineering`, `visual`, `voxel`, `memory`, `instructions`. `--skills name1,name2` selects named skills; dependency closure includes every linked sibling. References and helper files stay complete.
 
-`full` activates the complete workflow. `--workflow` also expands the selection to all 26 modules: the global rules route to all of them, so partial activation would leave broken routes. Skills-only installation preserves individual entry points without claiming all global behavior is active.
+`full` activates the complete workflow. `--workflow` also expands the selection to all 24 modules: the global rules route to all of them, so partial activation would leave broken routes. Skills-only installation preserves individual entry points without claiming all global behavior is active.
 
-`codex-sessions` is selected by `full`, `engineering` and `instructions`, or explicitly with `--skills codex-sessions`, for any client including Claude. Read its [integration requirements](docs/INTEGRATIONS.md#codex-sessions-for-orchestrators) before an authorized session launch; installation alone does not start Codex or configure it.
+`agent-sessions-codex` is selected by `full`, `engineering` and `instructions`, or explicitly with `--skills agent-sessions-codex`, for any client including Claude. Read its [integration requirements](docs/INTEGRATIONS.md#agent-sessions-codex-for-orchestrators) before an authorized session launch; installation alone does not start Codex or configure it.
 
 Inspect the target's existing AGENTS.md/CLAUDE.md and native skill directories. A different existing file stops installation before writes. Resolve a real conflict by a scoped human decision or a different target; do not delete or overwrite existing settings to make installation pass.
 
@@ -43,7 +43,7 @@ python harness.py install --client codex --target /path/to/project --profile ful
   --evidence-root /authorized/reference-projects
 ```
 
-Other supported bindings: `--memory-repo`, `--cloud-memory-root`, `--curation-schedule`, `--lab-cli`, `--lab-runtime`, `--lab-vm-name`, `--lab-vm-uuid`, `--lab-vm-mac`. A lab provider must implement the original restricted contract, target identity checks, session ownership and operation limits. The installer provisions neither a VM nor a guest session.
+Other supported bindings: `--memory-repo`, `--cloud-memory-root`, `--curation-schedule`. Personal VM control and lab-specific bindings are outside the public package.
 
 The originating user's permissions and schedule receipts are not authorization for another owner. In each actual task, select human participation and separately whether a reviewer is needed, with scope, stages and round limit. Default reviewer policy is `ask`; autonomous execution does not imply consent. The legacy `--reviewer-consent one-per-round --consent-source ...` fields remain for compatibility with explicitly supplied deployment records; they do not create a standing grant for future tasks or override the current task's decision.
 
@@ -120,3 +120,9 @@ Inspect `remove --dry-run` first. Actual removal deletes only matching owned fil
 ## Instruction and output languages
 
 The maintained agent instructions are English. The startup block for full and selected-skills installations explicitly defaults user communication and knowledge-base content to Russian. Honor a user's explicit language request for a particular output. Preserve exact paths, identifiers, schema keys and source quotations. Russian examples, stored knowledge and human-facing Russian documentation are intentional.
+
+## Upgrade from 0.x to 1.0.0
+
+Update this same checkout and keep its gitignored `.harness-state/receipts/` private store. Repeat the original `plan` and `install` commands with the same target, client, profile/skills, workflow flag and retained deployment bindings, then run `verify`. Omit retired lab flags; their old values are ignored during migration. `plan` reports `migration_from` and `obsolete_owned_files` without writing. Original skill names in `--skills` are aliases that warn on stderr; the plan and installed catalog use the new names. See the complete [rename table](CHANGELOG.md#100). Removed modules return an explicit error when requested directly.
+
+The installer checks the destination receipt against its original private record, validates every old file and the managed startup block, replaces unchanged owned files, and removes only obsolete owned files. Renamed skills appear at their new paths; removed modules are retired. User neighbors, preexisting identical files and text outside the managed block remain intact, including BOM/CRLF. Edited or missing old files, a changed block, different options, missing private records or new-path conflicts stop the upgrade before writes. Resolve the reported conflict without deleting user content, then retry. A separate checkout needs an authorized transfer of the original private record; a destination receipt alone is insufficient. Empty old directories may remain. Back up the project and private receipts before upgrading; retain the 0.x checkout for recovery. No global client settings are changed.

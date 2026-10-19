@@ -65,7 +65,7 @@ function normalizedV2(root,input){
 }
 function ledgerStatus(root,relative){
  const python=process.env.HARNESS_PYTHON||'python';
- const script=fileURLToPath(new URL('../skills/product-engineering/scripts/quality_ledger.py',import.meta.url));
+ const script=fileURLToPath(new URL('../skills/dev-flow/scripts/quality_ledger.py',import.meta.url));
  const args=['-B','-X','utf8',script,'validate',relativeFile(root,relative),'--root',fs.realpathSync(root),'--require-ready'];
  let output;try{output=execFileSync(python,args,{encoding:'utf8',timeout:4000,maxBuffer:2*1024*1024,windowsHide:true})}catch(e){if(e.stdout)output=e.stdout.toString();else return {ready:false,reason:'Ledger check unavailable or timed out'}}
  try{const r=JSON.parse(output.replace(/^\uFEFF/,''));return {ready:r.schema_valid===true&&r.ready_to_complete===true,reason:r.ready_to_complete?'':(r.errors||r.blocking||['Ledger incomplete']).slice(0,4).join('; ')||'Ledger incomplete'}}catch{return {ready:false,reason:'Invalid ledger diagnostic'}}

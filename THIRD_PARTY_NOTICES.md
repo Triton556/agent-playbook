@@ -5,11 +5,11 @@ Preserve each component's actual license. A public page, free price or installed
 | Component | Recorded source | License location |
 |---|---|---|
 | Planning, implementation, testing, debugging, agent writing/domain/interview methods | Matt Pocock skills and local adaptations | Individual skill LICENSE or licenses/mattpocock--skills-LICENSE |
-| Anthropic workflow creator and frontend method | anthropics/skills, pinned revisions retained in source metadata | anthropic-workflow-creator/LICENSE.txt; product-ui-design/vendor/anthropic-frontend-design/LICENSE.txt |
-| Additional Codex frontend guide | Hitbullets/codex-skills @56b113571f1e67c25f9867bded2408f30ba1c07a | product-ui-design/licenses/Hitbullets--codex-skills-LICENSE.txt |
-| Taste v1 and landing guide | Leonxlnx/taste-skill, source commits retained | design-taste-frontend-v1/LICENSE; product-ui-design/licenses/Leonxlnx--taste-skill-LICENSE |
-| Impeccable toolkit and pinned engine | pbakaus/impeccable, toolkit source c63b8dd7dd5a5f3c32eaabe1af76d0694f863ed2; engine0.1.14 | product-ui-review/licenses/pbakaus--impeccable-LICENSE; binary.json |
-| UI/UX Pro Max | nextlevelbuilder/ui-ux-pro-max-skill @477bcb28c9812b385cb51a4605ddf30d7b2266e2 | ui-ux-pro-max/LICENSE; dataset/font/icon provenance retained |
+| Anthropic frontend method | anthropics/skills, pinned revisions retained in source metadata | ui-design/vendor/anthropic-frontend-design/LICENSE.txt |
+| Additional Codex frontend guide | Hitbullets/codex-skills @56b113571f1e67c25f9867bded2408f30ba1c07a | ui-design/licenses/Hitbullets--codex-skills-LICENSE.txt |
+| Taste v1 and landing guide | Leonxlnx/taste-skill, source commits retained | ui-taste-reference/LICENSE; ui-design/licenses/Leonxlnx--taste-skill-LICENSE |
+| Impeccable toolkit and pinned engine | pbakaus/impeccable, toolkit source c63b8dd7dd5a5f3c32eaabe1af76d0694f863ed2; engine0.1.14 | ui-review/licenses/pbakaus--impeccable-LICENSE; binary.json |
+| UI/UX Pro Max | nextlevelbuilder/ui-ux-pro-max-skill @477bcb28c9812b385cb51a4605ddf30d7b2266e2 | ui-reference/LICENSE; dataset/font/icon provenance retained |
 
 Paths above are under payload/skills before installation and the native skills root after installation. Copyright and notices in upstream files remain intact. Environment bindings and original method adaptations are identified by manifest transformations and source references.
 

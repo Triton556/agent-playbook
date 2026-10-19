@@ -1,0 +1,22 @@
+---
+name: dev-flow
+description: Route and carry an end-to-end software task through the relevant planning, implementation, debugging, testing, and UI stages. Use for multi-stage development or requests to finish a product or feature. A narrow planning, bug, test, or design task can use its specialist skill directly. Excludes general research, creative writing, and household advice.
+---
+
+# Select an engineering stage
+
+The coordinator selects a specialist by the nearest deliverable; [WORKFLOW](../../workflow/WORKFLOW.md) owns general task progression. A narrow request may use the relevant stage directly. Changing skills does not create an agent or require another interview/plan.
+
+| Required result | Entry |
+| --- | --- |
+| Requirements, architecture alternatives, executable plan | [dev-plan](../dev-plan/SKILL.md) |
+| Working feature or integration | [dev-implement](../dev-implement/SKILL.md) |
+| Cause of failure, regression or flakiness | [dev-debug](../dev-debug/SKILL.md) |
+| Behavior verification or code review | [dev-verify](../dev-verify/SKILL.md) |
+| UI flow and visual decisions | [ui-design](../ui-design/SKILL.md) |
+| Actual inspection of implemented UI | [ui-review](../ui-review/SKILL.md) |
+| Authorized binary/protocol analysis | [Reverse engineering](references/reverse-engineering.md) |
+
+For end-to-end development, connect finished scenarios and advance by results: sufficient plan → working slice → relevant checks. UI uses design before new visual decisions and review after rendering. Route unexplained failures to debugging. A plan-only/review-only request ends with that deliverable.
+
+Open shared procedures at their WORKFLOW triggers, and open the specialist skill for every deliverable type in the task. Skills own subject methods and sources: [composition and adaptations](references/composition.md).
