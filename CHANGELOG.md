@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0
+
+- `agent-sessions` and `agent-sessions-codex` now follow one six-step workflow: find out the requirements, propose the plan, write the briefs, run, check, report.
+- Fixed rules: briefs to workers are in English; workers report to the orchestrator in English, while everything the user reads is in the user's language; the user chooses each worker's model; the orchestrator chooses effort per session and states why.
+- Added `references/requirements-interview.md`: restate the goal, collect facts yourself, then ask in rounds (adapted from the "grilling" approach in Matt Pocock's skills): each round asks every decision that can be settled now, each with a recommended answer, until no open decision would change the plan. The size of a round is limited, not the number of rounds.
+- Added `references/brief-writing.md`: a structured template (per-change Now / Required / Where / Follow / Keep, numbered tests with expected values and a baseline, boundaries, a report with PASS/FAIL per test and deviations, an exact final-message format), form rules (lists instead of paragraphs, numbers instead of adjectives, exact strings), three complete examples, a follow-up brief and a weak versus strong brief. Both skills carry identical copies, kept equal by a test.
+
 ## 1.0.1
 
 - Renamed the remaining app display names to match the 1.0.0 skill names: Agent Handoff, Dev Domain Model, Visual Scenes.

@@ -127,6 +127,18 @@ class InstallBehavior(unittest.TestCase):
                 self.assertEqual(set(info['access_modes']),{'read-only','workspace-write','danger-full-access'})
                 refused=subprocess.run([node,script,'--sandbox','unknown-mode','--cwd',str(ROOT)],capture_output=True,cwd=ROOT,input=b'')
                 self.assertEqual(refused.returncode,4)
+    def test_orchestration_references_are_shared(self):
+        # Both orchestration skills ship the same interview and brief guides.
+        for name in ['requirements-interview.md','brief-writing.md']:
+            with self.subTest(reference=name):
+                a=(ROOT/'payload/skills/agent-sessions/references'/name).read_bytes()
+                b=(ROOT/'payload/skills/agent-sessions-codex/references'/name).read_bytes()
+                self.assertEqual(a,b)
+        self.assertIn(b'Write the brief in English',(ROOT/'payload/skills/agent-sessions/references/brief-writing.md').read_bytes())
+        for skill in ['agent-sessions','agent-sessions-codex']:
+            text=(ROOT/'payload/skills'/skill/'SKILL.md').read_text(encoding='utf8')
+            for phrase in ['Briefs are in English','The user chooses the model','You choose the effort','references/requirements-interview.md','references/brief-writing.md']:
+                self.assertIn(phrase,text,skill)
     def test_agent_sessions_codex_driver_syntax(self):
         node=shutil.which('node')
         if not node:self.skipTest('Node is required to check the Codex sessions driver')

@@ -120,6 +120,8 @@ Record independently: installed selection/closure; package and installed hashes;
 
 ## Agent sessions for any worker
 
+Both orchestration skills share one workflow and two guides: [finding out the requirements](../payload/skills/agent-sessions/references/requirements-interview.md) and [writing the brief](../payload/skills/agent-sessions/references/brief-writing.md). Briefs to workers are in English, the user chooses each worker's model, and the orchestrator chooses effort per session.
+
 `agent-sessions` keeps the orchestration procedure of `agent-sessions-codex` (propose with access modes, wait for agreement, brief, run, check) but runs workers through adapters, so the worker can be any client. Every adapter follows the [contract](../payload/skills/agent-sessions/references/contract.md): the same options, a final JSON line and exit codes 0–4. `--describe` reports where the session is visible, whether it can be continued, what each access mode actually enforces in that client and whether the adapter passed its live checks (`verified`).
 
 - `codex`: Codex app-server, threads visible in the Codex app. Live-checked: new thread, continue, `read-only` refused a write, `workspace-write` refused a write outside the folder.

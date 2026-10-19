@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "name": "agent-playbook",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "exported_at": "2026-10-19T05:31:00.511394+00:00",
   "baseline": "Version 0.5.0 workflow retained with the approved public package/skill names; compatibility creator and personal lab module removed; receipt-based 0.x migration",
   "instruction_policy": "Full maintained agent instructions in English; Russian communication and knowledge content by default; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
@@ -195,12 +195,32 @@
       "bytes": 7136
     },
     {
+      "source": "skills/agent-sessions/references/brief-writing.md",
+      "path": "payload/skills/agent-sessions/references/brief-writing.md",
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "9eb80a2086e5dd2b73b806c38672c580837d3aaec932cd49b62d4b6714fccd07",
+      "sha256": "9eb80a2086e5dd2b73b806c38672c580837d3aaec932cd49b62d4b6714fccd07",
+      "bytes": 11711,
+      "transformations": [],
+      "module": "agent-sessions"
+    },
+    {
+      "source": "skills/agent-sessions/references/requirements-interview.md",
+      "path": "payload/skills/agent-sessions/references/requirements-interview.md",
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "dddb4b40b43076e1bc52581cbd9577a20b6613a07288112a3fb7972b16372102",
+      "sha256": "dddb4b40b43076e1bc52581cbd9577a20b6613a07288112a3fb7972b16372102",
+      "bytes": 4880,
+      "transformations": [],
+      "module": "agent-sessions"
+    },
+    {
       "source": "skills/agent-sessions/SKILL.md",
       "path": "payload/skills/agent-sessions/SKILL.md",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "0aab69e918d968f16f32f05c43aa2df946c2671031c51cce4c4831eaa8fb8e6d",
-      "sha256": "0aab69e918d968f16f32f05c43aa2df946c2671031c51cce4c4831eaa8fb8e6d",
-      "bytes": 7327,
+      "source_sha256": "80e02d99773413d1ce6710b8a470c144b0ce04d06b235a92aafadc73aafc2ef6",
+      "sha256": "80e02d99773413d1ce6710b8a470c144b0ce04d06b235a92aafadc73aafc2ef6",
+      "bytes": 7899,
       "transformations": [],
       "module": "agent-sessions"
     },
@@ -4807,12 +4827,32 @@
       "bytes": 1455
     },
     {
+      "source": "skills/agent-sessions-codex/references/brief-writing.md",
+      "path": "payload/skills/agent-sessions-codex/references/brief-writing.md",
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "9eb80a2086e5dd2b73b806c38672c580837d3aaec932cd49b62d4b6714fccd07",
+      "sha256": "9eb80a2086e5dd2b73b806c38672c580837d3aaec932cd49b62d4b6714fccd07",
+      "bytes": 11711,
+      "transformations": [],
+      "module": "agent-sessions-codex"
+    },
+    {
+      "source": "skills/agent-sessions-codex/references/requirements-interview.md",
+      "path": "payload/skills/agent-sessions-codex/references/requirements-interview.md",
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "dddb4b40b43076e1bc52581cbd9577a20b6613a07288112a3fb7972b16372102",
+      "sha256": "dddb4b40b43076e1bc52581cbd9577a20b6613a07288112a3fb7972b16372102",
+      "bytes": 4880,
+      "transformations": [],
+      "module": "agent-sessions-codex"
+    },
+    {
       "source": "skills/agent-sessions-codex/SKILL.md",
       "path": "payload/skills/agent-sessions-codex/SKILL.md",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "1e40b4305adb1798115e3b4c7dcdd353d72b22261a9a779c6cccf0440ec36f8f",
-      "sha256": "92e9130f798b059e71d80daaf14775b000d872fd788c976cf8587bbbef6592bc",
-      "bytes": 7659,
+      "source_sha256": "fd49074a9900dedc067e777437db52f06d928fea1662eaca22c23a3d7c09f3df",
+      "sha256": "89176d625e6dfe56346d10f948240d500930e51996d249d079204dbe5e0eb807",
+      "bytes": 8036,
       "transformations": [
         {
           "kind": "portable-hook-reference",
