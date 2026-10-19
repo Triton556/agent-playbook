@@ -57,6 +57,7 @@ Before expensive construction, validate a cheap coherent representation at the r
 | Workflow experiments | One workflow-pilot reference; Anthropic entry is a compatibility redirect |
 | Deliberate decision stress-test/document interview | grilling; grill-with-docs only when selected |
 | Explicit handoff | handoff |
+| User-requested work in a Codex thread visible in the app | codex-sessions; write the brief, start/resume the thread and verify its result |
 | Personal project context and saving | kb-find; kb-save |
 | Maintenance/status/private sync | kb-curate; kb-status; kb-sync in their authorized scope |
 | Existing restricted laboratory provider | lab-vm-control |

@@ -17,6 +17,7 @@ Primary location references: [Codex skills](https://learn.chatgpt.com/docs/build
 |---|---|---|
 | Load actual source/feedback/current project | File/document reading and search | Dependent interpretation remains incomplete |
 | Run local helper/tests | Permitted shell, Python/Node as needed | Record exact missing execution; source presence is not a pass |
+| Orchestrate a user-requested Codex session visible in the app | Host shell/file access, Node.js and a configured local Codex CLI using the user's own home/settings | Skill files alone do not establish CLI availability, app visibility or live execution |
 | Inspect image/model/document | Actual image or rendered artifact inspection | Visual acceptance remains unverified |
 | Inspect UI/animation | Browser/computer interaction and actual temporal observation | Static/source checks do not satisfy behavior or motion |
 | Generate an AI bitmap concept | Authorized image generation tool when that method is chosen | Use another permitted design representation where the original branch allows it; otherwise report missing modality |
@@ -27,6 +28,8 @@ Primary location references: [Codex skills](https://learn.chatgpt.com/docs/build
 | Document/PDF/presentation/spreadsheet work | Relevant available native format skill/tool and render checks | Install/authorize a suitable provider before claiming that route works |
 
 The package does not redistribute proprietary native plugins or credentials. Native `skill-creator`, document/image tooling and client computer-use interfaces are provider dependencies. The common route preserves their role rather than assuming they are universally installed.
+
+`codex-sessions` installs into the selected host's native skill root, including `.claude/skills/codex-sessions` for Claude and `.agents/skills/codex-sessions` for Codex. Its execution backend is the separate local Codex CLI. Any other host must actually discover the skill and supply the required tools; see [session integration](INTEGRATIONS.md#codex-sessions-for-orchestrators).
 
 ## Fresh reviewer adapters
 

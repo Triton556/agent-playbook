@@ -59,8 +59,11 @@ class InstallBehavior(unittest.TestCase):
             with self.subTest(client=client),target_directory() as td:
                 p=Path(td);result=call('install','--skills','domain-modeling','--workflow','--client',client,'--target',p)
                 self.assertTrue(result['workflow_activated']);self.assertTrue((p/entry).is_file())
-                self.assertEqual(len(result['installed_skills']),24)
+                self.assertEqual(len(result['installed_skills']),25)
                 self.assertIn('creative-direction',result['installed_skills'])
+                self.assertIn('codex-sessions',result['installed_skills'])
+                for relative in ['SKILL.md','scripts/codex-chat.mjs']:
+                    self.assertEqual((ROOT/'payload/skills/codex-sessions'/relative).read_bytes(),(p/folder/'skills/codex-sessions'/relative).read_bytes())
                 self.assertEqual((ROOT/'payload/skills/domain-modeling/SKILL.md').read_bytes(),(p/folder/'skills/domain-modeling/SKILL.md').read_bytes())
                 self.assertFalse((p/folder/'AGENTS.md').exists())
                 self.assertEqual(call('verify','--client',client,'--target',p)['status'],'pass')
@@ -80,6 +83,28 @@ class InstallBehavior(unittest.TestCase):
             for name in ['content','gamedev','ui-ux','visual']:
                 self.assertEqual((skill/f'references/{name}.md').read_bytes(),(ROOT/f'payload/skills/creative-direction/references/{name}.md').read_bytes())
             self.assertEqual(call('verify','--target',td)['status'],'pass')
+    def test_codex_sessions_profiles_and_standalone_client_installs(self):
+        with target_directory() as td:
+            for profile in ['full','engineering','instructions','visual','voxel','memory']:
+                with self.subTest(profile=profile):
+                    planned=call('plan','--profile',profile,'--target',td)
+                    expected=profile in ['full','engineering','instructions']
+                    self.assertEqual('codex-sessions' in planned['requested_skills'],expected)
+                    self.assertEqual('codex-sessions' in planned['installed_skills'],expected)
+            self.assertEqual(list(Path(td).iterdir()),[])
+        for client,folder in [('codex','.agents'),('claude','.claude')]:
+            with self.subTest(client=client),target_directory() as td:
+                result=call('install','--skills','codex-sessions','--client',client,'--target',td)
+                self.assertEqual(result['installed_skills'],['codex-sessions'])
+                self.assertFalse(result['workflow_activated'])
+                for relative in ['SKILL.md','scripts/codex-chat.mjs']:
+                    self.assertEqual((ROOT/'payload/skills/codex-sessions'/relative).read_bytes(),(Path(td)/folder/'skills/codex-sessions'/relative).read_bytes())
+                self.assertEqual(call('verify','--client',client,'--target',td)['status'],'pass')
+    def test_codex_sessions_driver_syntax(self):
+        node=shutil.which('node')
+        if not node:self.skipTest('Node is required to check the Codex sessions driver')
+        result=subprocess.run([node,'--check',str(ROOT/'payload/skills/codex-sessions/scripts/codex-chat.mjs')],capture_output=True,cwd=ROOT)
+        self.assertEqual(result.returncode,0,result.stderr.decode('utf8',errors='replace'))
     def test_plan_creates_nothing_and_doctor_does_not_claim_quality(self):
         with target_directory() as td:
             call('plan','--profile','full','--target',td);self.assertEqual(list(Path(td).iterdir()),[])

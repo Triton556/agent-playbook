@@ -4,6 +4,20 @@ Build: 15 October 2026, Windows. The levels below describe executed checks, not 
 
 ## Source and composition
 
+### 0.4.0 Codex sessions addition
+
+On 19 October 2026 (Asia/Vladivostok), the package contains 303 payload files and 25 custom skills. The manifest inventory matches the actual payload. All 301 previous payload files and their manifest entries remain unchanged. The two new entries record the supplied Claude skill's source/export hashes and transformations. `codex-chat.mjs` is byte-identical to the source (SHA256 `c315fadadc52b00d01bb1687f001a67f8f8e2e8c6850a7c38c86c60edf818111`); the skill's only prose change generalizes the user's configured hooks, including memory hooks.
+
+`python harness.py check-package` passed. `python -B -m unittest discover -s tests` passed all 26 tests in 159.173 seconds using Python 3.12.14 and Node.js 22.13.0. Added coverage checks full/engineering/instructions selection, exclusion from the other three profiles, standalone Codex/Claude installation and `node --check` for the driver. The existing full-workflow roundtrip now checks both new files in all four client layouts. Existing ownership, conflict, startup-budget, attribution and synthetic memory scenarios remain active.
+
+Separate full installations into two new empty temporary projects with explicit `--client codex` and `--client claude` each installed 25 skills. Both `verify` runs checked 304 installed files without failures. The temporary projects were removed within the bounded test workspace. Profile selections/dependency closures were recalculated: full 25/25, engineering 12/16, visual 5/14, voxel 2/14, memory 5/5, instructions 3/17. Author reading checked the changed instructions and documentation against the supplied skill; 62 local Markdown link targets resolve and `git diff --check` passed.
+
+Case-insensitive identifier/path scans found no source-owner name, personal memory-writer alias, curator name or absolute source home path in the payload. The broader substring search finds only the two unchanged `Anya Danilova` font-credit entries, which retain their required attribution. Grammar in the generalized hook sentence was checked directly against the original.
+
+The native skill validator could not run because PyYAML is absent; basic frontmatter name/description/scaffold checks passed without installing dependencies. No additional agents, Codex sessions or push were used. Fresh client discovery, app visibility, new-thread/resume execution, real hooks/MCP in a Codex session, model quality and human acceptance were not independently exercised. The user's reported live source trials are prior evidence, separate from these packaging checks.
+
+Local staging of the reviewed 15-file set on `main` was refused when Git attempted to create `.git/index.lock` (`Permission denied`). No commit was created; the changes remain in the working tree for the user's external review and commit. No alternate index, permission change or access-denial bypass was attempted.
+
 ### 0.3.0 creative-direction refresh
 
 On 19 October 2026 (Asia/Vladivostok), 13 source blobs were read directly from the approved `creative` commit `679362d2fb0d1662527d767c6297d1cbc1cb17ca` and checked against their manifest source hashes. The current package has 301 payload files and 24 custom skills. The manifest inventory matches every payload file; export hashes and explicit portability transformations are current. Third-party datasets, font attribution and licenses remain unchanged.

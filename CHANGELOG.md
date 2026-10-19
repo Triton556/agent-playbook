@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0
+
+- Added `codex-sessions` for orchestrators such as Claude, another Codex or any agent with local shell/file access: write a brief, start or resume a Codex thread visible in the Codex app, and verify its result. Launch only when requested by the user.
+- Preserved the supplied `codex-chat.mjs` driver byte for byte. The complete skill procedure is retained with a generic reference to the user's hooks from Codex settings, including memory hooks. Both files have source/export hashes and explicit transformations in the manifest.
+- Selected the skill in `full`, `engineering` and `instructions`; standalone installation and all client layouts, including Claude, remain supported. The package now contains 25 custom skills and 303 payload files.
+- Updated profile counts, integration requirements and documentation; added profile/client installation coverage and a `node --check` syntax test. This is a minor release because it adds a capability while retaining existing installer and helper contracts.
+
 ## 0.3.0
 
 - Refreshed the complete base/workflow, engineering acceptance and human-perspective checks, and UI guidance from the approved `creative` source snapshot. Preserve the user's intent, own material and accepted qualities; read the relevant criteria and examples before planning.

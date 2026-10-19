@@ -1,6 +1,6 @@
 # Agent Workflow Harness
 
-An installable, modular workflow for coding agents, creative direction, human-centered UI review, visual experiments, voxel creation and durable knowledge. Version 0.3.0 preserves the current configured instructions, references, datasets and helpers, including intent and preservation checks before building.
+An installable, modular workflow for coding agents, creative direction, human-centered UI review, visual experiments, voxel creation and durable knowledge. Version 0.4.0 includes 25 custom skills, adding orchestration of user-requested Codex sessions visible in the Codex app. Current configured instructions, references, datasets and helpers, including intent and preservation checks before building, are retained.
 
 **[Русское описание](README.ru.md) · [Agent installation guide](INSTALL_FOR_AGENTS.md) · [Workflow guide](docs/WORKFLOW_GUIDE.md) · [Integrations and startup limits](docs/INTEGRATIONS.md) · [Compatibility](docs/COMPATIBILITY.md) · [Fidelity contract](docs/FIDELITY.md) · [Licenses](THIRD_PARTY_NOTICES.md)**
 
@@ -10,7 +10,7 @@ The client runs the model and supplies its tools. This package installs instruct
 
 **See the process before installing:** [illustrated profile guide (Russian)](docs/PROFILES.ru.md) — what the harness does, which profile to choose, and the outputs between stages, including a six-view robot design and rotating voxel model.
 
-Python 3.12+ is required for the installer, including Windows junction checks. Node.js 22+ is needed for task-state and knowledge helpers. Use an explicit target project; the installer leaves your global client configuration alone.
+Python 3.12+ is required for the installer, including Windows junction checks. Node.js 22+ is needed for task-state, knowledge and Codex session helpers. Use an explicit target project; the installer leaves your global client configuration alone.
 
 ```bash
 git clone https://github.com/Triton556/agent-workflow-harness.git
@@ -37,20 +37,22 @@ python harness.py install --client codex --target ../my-project --skills domain-
 # Voxel pipeline and its dependency closure.
 python harness.py install --client deepseek --target ../voxel-project --profile voxel
 
-# Whole workflow: expands the selection to all 24 modules.
+# Whole workflow: expands the selection to all 25 modules.
 python harness.py install --client claude --target ../visual-project --profile visual --workflow
 ```
 
 | Profile | Entry points |
 |---|---|
-| `full` | All 24 custom skills and the complete workflow bootstrap |
-| `engineering` | Creative direction, planning, implementation, debugging, testing, UI and supporting methods |
+| `full` | All 25 custom skills and the complete workflow bootstrap |
+| `engineering` | Creative direction, planning, implementation, debugging, testing, UI, Codex session orchestration and supporting methods |
 | `visual` | Creative direction, UI design/review, interactive experiments and voxel craft |
 | `voxel` | Creative direction, voxel construction and linked methods/checks |
 | `memory` | Find, save, status, sync and curation with the existing memory runtime |
-| `instructions` | Agent-document editing and compatibility entry to the shared workflow-pilot procedure |
+| `instructions` | Agent-document editing, Codex session orchestration and compatibility entry to the shared workflow-pilot procedure |
 
-Dependencies can include several siblings. The plan shows requested and actually installed skills before writing. `--workflow` installs all 24 modules because the complete startup rules can route to any of them. Selecting a single skill without this flag does not activate the whole workflow. Bodies and resources are retained; references are loaded only when their original triggers apply.
+Dependencies can include several siblings. The plan shows requested and actually installed skills before writing. `--workflow` installs all 25 modules because the complete startup rules can route to any of them. Selecting a single skill without this flag does not activate the whole workflow. Bodies and resources are retained; references are loaded only when their original triggers apply.
+
+`codex-sessions` lets Claude, another Codex or any agent with the required local tools write a brief, start or continue a Codex thread visible in the Codex app, and check the result. It is selected by `full`, `engineering` and `instructions`, or separately with `--skills codex-sessions`, including `--client claude`. Sessions require the user's request, Node.js and an available Codex CLI using the user's own settings/history. See [session integration](docs/INTEGRATIONS.md#codex-sessions-for-orchestrators).
 
 ## How the workflow works
 

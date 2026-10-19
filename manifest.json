@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "name": "agent-workflow-harness",
-  "version": "0.3.0",
-  "exported_at": "2026-10-18T17:32:37.610558+00:00",
-  "baseline": "Creative-direction source refresh with intent, preservation and human-perspective checks; portable owner authorization and environment bindings; no new orchestrator or model pilot",
+  "version": "0.4.0",
+  "exported_at": "2026-10-19T04:06:34.156800+00:00",
+  "baseline": "Version 0.3.0 workflow retained; add the user-supplied Codex sessions skill and unchanged app-server driver for explicitly requested orchestration; no live session or model pilot launched by packaging",
   "instruction_policy": "Full maintained agent instructions in English; Russian communication and knowledge content by default; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
   "files": [
     {
@@ -3653,6 +3653,31 @@
       "module": "creative-direction",
       "sha256": "ce0281ecfd531834630379c647f4444b46908b1475169a16dbd92e7a7e538447",
       "bytes": 1470
+    },
+    {
+      "source": "skills/codex-sessions/SKILL.md",
+      "path": "payload/skills/codex-sessions/SKILL.md",
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "7155de1e1871f2dcba2cb4784489d29c425bac94416ac5d501ebbb16ffa1b914",
+      "sha256": "83c64e1d7670bab15c81fa65694d83562a685e8696b29f6e42e10c3d7b78cfc6",
+      "bytes": 5106,
+      "transformations": [
+        {
+          "kind": "portable-hook-reference",
+          "detail": "Refer generically to the user's hooks from Codex settings, including any memory hooks; no private integration alias or configuration is exported."
+        }
+      ],
+      "module": "codex-sessions"
+    },
+    {
+      "source": "skills/codex-sessions/scripts/codex-chat.mjs",
+      "path": "payload/skills/codex-sessions/scripts/codex-chat.mjs",
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "c315fadadc52b00d01bb1687f001a67f8f8e2e8c6850a7c38c86c60edf818111",
+      "sha256": "c315fadadc52b00d01bb1687f001a67f8f8e2e8c6850a7c38c86c60edf818111",
+      "bytes": 7053,
+      "transformations": [],
+      "module": "codex-sessions"
     }
   ],
   "excluded": [

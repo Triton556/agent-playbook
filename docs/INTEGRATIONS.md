@@ -32,6 +32,23 @@ The original method references include Windows PowerShell examples. Adapt only s
 
 The preserved Impeccable context wrapper is PowerShell. A destination's signing/execution policy can reject it. Do not disable that protection to claim compatibility: follow the skill's existing unavailable-wrapper branch, read actual project context directly, and record the wrapper as unavailable. The verified standalone engine can supply permitted mechanical analysis; its upstream orchestration messages are source material and do not grant extra agents/access.
 
+## Codex sessions for orchestrators
+
+`codex-sessions` equips the host agent (Claude, another Codex or another client) to write a brief, start or continue work in Codex, and check the actual result. It is selected by `full`, `engineering` and `instructions`, or separately:
+
+```bash
+python harness.py install --client claude --target /path/to/project --skills codex-sessions
+python harness.py verify --client claude --target /path/to/project
+```
+
+Use `--client codex` for a Codex host. Read the installed `skills/codex-sessions/SKILL.md` before launching. The host needs permitted shell/file access, Node.js 22+ and a configured Codex CLI with the user's account/settings. The driver finds `codex` on PATH or in supported desktop locations; `CODEX_BIN` can name the actual executable. No Codex binary, account, authentication or host configuration is installed by the harness.
+
+The unchanged `scripts/codex-chat.mjs` uses `codex app-server` over stdio on the user's own Codex home, so the user can watch the named thread in the app. Continue related work with `--thread <threadId>` from the previous run's final JSON line. Preserve the user's settings and hooks, including any configured memory hooks. An isolated home or ignored user configuration belongs only to an explicitly requested isolated experiment. The optional `--proxy` requires a separately running app-server daemon.
+
+Installing the skill grants no session-launch permission. Start only when the user asks to delegate this work to Codex. The default sandbox is `workspace-write`; approval requests and questions are declined automatically for unattended runs, so resolve required permissions beforehand. The orchestrator reads the diff/files and checks the brief's acceptance after completion. A completed turn or a syntax/hash check does not prove task success or app visibility.
+
+For runtime acceptance, obtain authorization for a small real task, confirm the named thread is visible in the app, then continue the same thread and inspect its actual result. Exercise memory only against the user's authorized setup if selected. Release 0.4.0 packaging checks do not launch sessions or independently reproduce the source owner's reported live trials.
+
 ## Limited memory MCP
 
 Initialize the authorized vault first with `init-memory`. The writer needs a fixed `HARNESS_KB_ROOT`; it exposes only `kb_capture` and `kb_checkpoint`. It accepts structured source/session/turn identity, rejects unknown fields and suspected credentials, and returns a real local receipt. Its schemas are obtained through MCP `tools/list`.

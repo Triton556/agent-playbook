@@ -5,7 +5,7 @@ This export preserves the active configured workflow, not retired experiments or
 ## Preserved
 
 - Full global base, WORKFLOW, author self-testing/independent review procedure.
-- 24 custom skill entrypoints, their complete references, source/provenance licenses, searchable UI datasets and original helpers.
+- 25 custom skill entrypoints, their complete references, source/provenance licenses, searchable UI datasets and original helpers.
 - Research triggers, cheap coherent representation, style/function/context/readability/use criteria.
 - Six-view voxel preflight and kit/world proportions before detailed construction; later actual voxel inspection.
 - Technical, semantic, actual visual and human verdicts as separate claims.
@@ -90,3 +90,9 @@ The requested portability repair removes personal model/project restrictions, da
 One owner-specific source enum label is replaced with `curator` in the memory CLI and MCP schema. The writer reports `harness-kb-writer` version 1.2.0, the config example uses `harness_kb_writer`, and the separately invoked Windows scheduler helper uses `Harness-Knowledge-Sync`. This is an explicit 0.3.0 integration-name change: new producers/configuration must use these portable names. Existing saved records are not rewritten. Capture/checkpoint command shapes, identity, idempotency, vault boundaries, actual receipt requirements and sync conflict safeguards are preserved. No scheduler or global client configuration is installed by this refresh.
 
 Every changed export hash/byte count and portability transformation is recorded in the manifest. Third-party datasets, author attribution and component licenses stay unchanged. Installer/helper checks establish the behavior exercised, not model quality, creative success or human acceptance.
+
+## Version 0.4.0 Codex sessions addition
+
+The user-supplied Claude skill contributes the complete `codex-sessions/SKILL.md` and `scripts/codex-chat.mjs`, raising the catalog to 25 skills and the payload to 303 files. Manifest source paths are relative and identify the supplied skill without exporting a private home. Exact source/export hashes and transformations are recorded for both files. The driver remains byte-identical to the supplied source; CLI discovery already uses PATH, user-home locations and the optional `CODEX_BIN` override. No executable relocation or logic change is needed.
+
+The only source prose change refers generically to the user's hooks from Codex settings, including any memory hooks. No personal integration alias, user configuration or standing grant is transferred. Existing payload files, workflow criteria, helpers, datasets and licenses remain unchanged. Profiles `full`, `engineering` and `instructions` select the new skill; installing it never starts a session. File, syntax and installation checks are separate from the source owner's reported live trials and do not establish a new live-session result.
