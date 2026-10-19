@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1
+
+- Renamed the remaining app display names to match the 1.0.0 skill names: Agent Handoff, Dev Domain Model, Visual Scenes.
+- `agent-sessions` and `agent-sessions-codex` now ask the orchestrator to choose worker effort per task (low, medium, high, xhigh, maximum) and state it with a reason in the session plan, instead of using the client's default.
+- The installer now upgrades any trusted older release in place (previously only 0.x to exactly 1.0.0), so 1.0.0 installations update to 1.0.1 without removal. Added a test for the 1.0.0 upgrade.
+
 ## 1.0.0
 
 - Renamed the public package from `agent-workflow-harness` to `agent-playbook`; clone URL: https://github.com/Triton556/agent-playbook. The GitHub repository rename is handled separately before publication; the old address redirects to the new address after that rename.

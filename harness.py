@@ -172,7 +172,7 @@ def plan(args):
     block=instructions_block(m['version'],root,values,activate)
     return m,target,root,entries,block,instruction_file,policy
 def validate_legacy_upgrade(args,target,root,old,policy):
-    """Validate the trusted 0.x snapshot before replacing any destination bytes."""
+    """Validate the trusted older-release snapshot before replacing any destination bytes."""
     if old.get('schema_version')!=1 or old.get('client')!=args.client:raise HarnessError('Invalid legacy installation receipt')
     snapshot=old.get('policy_snapshot')
     if not isinstance(snapshot,dict) or read_json(safe(root,'harness-policy.json'))!=snapshot:raise HarnessError('Legacy deployment policy differs from its trusted snapshot; preserve files for inspection')
@@ -207,7 +207,9 @@ def install(args):
     trusted=trust_record(target,args.client)
     if old and (not trusted.is_file() or trusted.read_bytes()!=receipt_path.read_bytes()):raise HarnessError('Project receipt differs from the installer private record; preserve files for inspection')
     if trusted.exists() and old is None:raise HarnessError('Original installation record exists but project receipt is missing; preserve files for inspection')
-    upgrading=bool(old and re.fullmatch(r'0\.\d+\.\d+',old.get('version','')) and m['version']=='1.0.0')
+    # Any trusted older release upgrades in place: 0.x renames and later 1.x updates share one checked path.
+    semver=lambda v:tuple(int(x) for x in v.split('.')) if isinstance(v,str) and re.fullmatch(r'\d+\.\d+\.\d+',v) else None
+    upgrading=bool(old and semver(old.get('version')) and semver(m['version']) and semver(old.get('version'))<semver(m['version']))
     if upgrading:validate_legacy_upgrade(args,target,root,old,policy)
     oldfiles={x['relative']:x for x in (old or {}).get('files',[])}
     # All conflicts detected before any destination write, including existing user-managed files.

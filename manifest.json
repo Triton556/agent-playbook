@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "name": "agent-playbook",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "exported_at": "2026-10-19T05:31:00.511394+00:00",
   "baseline": "Version 0.5.0 workflow retained with the approved public package/skill names; compatibility creator and personal lab module removed; receipt-based 0.x migration",
   "instruction_policy": "Full maintained agent instructions in English; Russian communication and knowledge content by default; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
@@ -198,9 +198,9 @@
       "source": "skills/agent-sessions/SKILL.md",
       "path": "payload/skills/agent-sessions/SKILL.md",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "262f12e990270968b7fe6108ce5208e9f3cc4f82486005013a3bb5f1b4d935e2",
-      "sha256": "262f12e990270968b7fe6108ce5208e9f3cc4f82486005013a3bb5f1b4d935e2",
-      "bytes": 6517,
+      "source_sha256": "0aab69e918d968f16f32f05c43aa2df946c2671031c51cce4c4831eaa8fb8e6d",
+      "sha256": "0aab69e918d968f16f32f05c43aa2df946c2671031c51cce4c4831eaa8fb8e6d",
+      "bytes": 7327,
       "transformations": [],
       "module": "agent-sessions"
     },
@@ -275,9 +275,9 @@
     {
       "source": "skills/dev-domain-model/agents/openai.yaml",
       "path": "payload/skills/dev-domain-model/agents/openai.yaml",
-      "source_sha256": "f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b",
-      "sha256": "f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b",
-      "bytes": 101,
+      "source_sha256": "a85f0f20477b8eef55ddd2fb34be80de35e13e13194cd7392e97523b2b6e9a9c",
+      "sha256": "a85f0f20477b8eef55ddd2fb34be80de35e13e13194cd7392e97523b2b6e9a9c",
+      "bytes": 102,
       "transformations": [
         {
           "kind": "public-skill-naming",
@@ -428,9 +428,9 @@
     {
       "source": "skills/agent-handoff/agents/openai.yaml",
       "path": "payload/skills/agent-handoff/agents/openai.yaml",
-      "source_sha256": "5c479fd562c691851690e8b18c8501045bef0943c10743d636b2fae26add1d28",
-      "sha256": "5c479fd562c691851690e8b18c8501045bef0943c10743d636b2fae26add1d28",
-      "bytes": 141,
+      "source_sha256": "d1b7e719036c865a1feb613a6cf65ee59c94438a528eafaf2e94616df2601ec7",
+      "sha256": "d1b7e719036c865a1feb613a6cf65ee59c94438a528eafaf2e94616df2601ec7",
+      "bytes": 147,
       "transformations": [
         {
           "kind": "public-skill-naming",
@@ -3438,9 +3438,9 @@
     {
       "source": "skills/visual-scenes/agents/openai.yaml",
       "path": "payload/skills/visual-scenes/agents/openai.yaml",
-      "source_sha256": "6fdcfee214d77dce709e5343fe2f2a0b51c3ec2a83a34a5fe91760af6bc93e1f",
-      "sha256": "430e60a826500c2cf7212e2e7170218881704d9935031d15fa2eb3427b11c941",
-      "bytes": 322,
+      "source_sha256": "e0034367a84199ccc28f0e4d59b28b0a711fd1c249efe1da124bbbca45928b18",
+      "sha256": "e0034367a84199ccc28f0e4d59b28b0a711fd1c249efe1da124bbbca45928b18",
+      "bytes": 312,
       "transformations": [
         {
           "kind": "public-skill-naming",
@@ -4810,9 +4810,9 @@
       "source": "skills/agent-sessions-codex/SKILL.md",
       "path": "payload/skills/agent-sessions-codex/SKILL.md",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "bb72d01f612fe6030c6485003e08efdd91c904200bc7969ca55d555f13d9e840",
-      "sha256": "6c016d35c019152dd27961d8d950f6b46277a38adb509857c5a41cf599a917cb",
-      "bytes": 6875,
+      "source_sha256": "1e40b4305adb1798115e3b4c7dcdd353d72b22261a9a779c6cccf0440ec36f8f",
+      "sha256": "92e9130f798b059e71d80daaf14775b000d872fd788c976cf8587bbbef6592bc",
+      "bytes": 7659,
       "transformations": [
         {
           "kind": "portable-hook-reference",

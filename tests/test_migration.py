@@ -63,7 +63,7 @@ class PublicNames(unittest.TestCase):
 
     def test_catalog_inventory_frontmatter_and_profile_membership(self):
         m=json.loads((ROOT/'manifest.json').read_text(encoding='utf8'))
-        self.assertEqual((m['name'],m['version']),('agent-playbook','1.0.0'))
+        self.assertEqual(m['name'],'agent-playbook');self.assertTrue(m['version'].startswith('1.'))
         self.assertEqual(len(m['files']),296)
         self.assertEqual({f['path'] for f in m['files']},{p.relative_to(ROOT).as_posix() for p in (ROOT/'payload').rglob('*') if p.is_file()})
         skills={s['name'] for s in call('catalog')['skills']}
@@ -131,7 +131,7 @@ class LegacyMigration(unittest.TestCase):
                 self.assertEqual(result['migration_from'],'0.5.0')
                 self.assertEqual(len(result['installed_skills']),24)
                 receipt=json.loads((p/folder/'harness-install.json').read_text(encoding='utf8'))
-                self.assertEqual(receipt['version'],'1.0.0')
+                self.assertEqual(receipt['version'],json.loads((ROOT/'manifest.json').read_text(encoding='utf8'))['version'])
                 current={row['relative'] for row in receipt['files']}
                 for row in old['files']:
                     if row['owned'] and row['relative'] not in current:self.assertFalse((p/row['relative']).exists(),row['relative'])
@@ -192,3 +192,27 @@ class LegacyMigration(unittest.TestCase):
 
 
 if __name__=='__main__':unittest.main()
+
+
+class PatchUpgrade(unittest.TestCase):
+    """A trusted 1.0.0 installation updates in place to the current release."""
+    def test_actual_100_full_upgrade_codex(self):
+        with target_directory() as release_dir,target_directory() as td:
+            release=Path(release_dir);p=Path(td)
+            archive=subprocess.run(['git','archive','--format=tar','390a28b'],cwd=ROOT,capture_output=True,check=True).stdout
+            with tarfile.open(fileobj=io.BytesIO(archive)) as bundle:bundle.extractall(release,filter='data')
+            self.assertEqual(json.loads((release/'manifest.json').read_text(encoding='utf8'))['version'],'1.0.0')
+            result=subprocess.run([sys.executable,'-B','-X','utf8',str(release/'harness.py'),'install','--target',str(p),'--client','codex','--profile','full'],cwd=release,capture_output=True)
+            self.assertEqual(result.returncode,0,result.stderr.decode('utf8'))
+            identity=hashlib.sha256((str(p.resolve())+'\ncodex').encode('utf8')).hexdigest()+'.json'
+            trust=ROOT/'.harness-state/receipts'/identity
+            trust.parent.mkdir(parents=True,exist_ok=True)
+            shutil.copyfile(release/'.harness-state/receipts'/identity,trust)
+            self.addCleanup(lambda:trust.unlink(missing_ok=True))
+            current=json.loads((ROOT/'manifest.json').read_text(encoding='utf8'))['version']
+            upgraded=call('install','--client','codex','--target',p,'--profile','full')
+            self.assertEqual(upgraded['migration_from'],'1.0.0')
+            receipt=json.loads((p/'.agents/harness-install.json').read_text(encoding='utf8'))
+            self.assertEqual(receipt['version'],current)
+            self.assertEqual((p/'.agents/skills/agent-handoff/agents/openai.yaml').read_bytes(),(ROOT/'payload/skills/agent-handoff/agents/openai.yaml').read_bytes())
+            self.assertEqual(call('verify','--client','codex','--target',p)['status'],'pass')

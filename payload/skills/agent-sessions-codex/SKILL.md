@@ -14,6 +14,13 @@ Run Codex through `scripts/codex-chat.mjs`. It starts `codex app-server` on the 
 Never start a session without the user's yes for it.
 
 - When the user asks to delegate, or you see a piece worth delegating, first show a short plan: for each session, its name, a one-line goal, the folder, the model and effort, the access mode, and what you will keep doing yourself. Then wait for the answer.
+- Choose effort for the task, not the client's default, and state it with a one-line reason in the plan. A starting point, not a measured rule:
+  - `low`: a small, clear change in one place.
+  - `medium`: mechanical work across many files against a clear spec: renames, moves, migrations, routine fixes.
+  - `high`: ordinary engineering that needs judgment: a feature across layers, debugging with an unknown cause, code review.
+  - `xhigh`: costly mistakes or many interacting parts: architecture choices, large refactors, concurrency or data-loss risks.
+  - The maximum (`ultra` in Codex, `max` in Claude Code): open design or creative exploration, research where depth clearly pays, or a task a lower level already failed.
+  Codex levels: minimal, low, medium, high, xhigh, ultra.
 - Propose delegation only when it pays: independent pieces that can run in parallel, long work, an independent review or a second variant. Do small or tightly coupled work yourself; each session starts cold and costs a brief and a review.
 - A yes covers the sessions in that plan with the settings shown, including follow-up turns needed to reach the agreed result. A new session, a different access mode or a different goal needs a new yes.
 - If the user changes the settings in their reply ("the second one read-only"), use theirs.
