@@ -117,3 +117,12 @@ Missing registries stop these checks as unconfigured. Structural zero errors onl
 ## Destination acceptance receipt
 
 Record independently: installed selection/closure; package and installed hashes; startup body/end and effective budget; actual catalog; interpreter/helper scenarios; MCP real receipts; real lifecycle events/trust; viewer/image/format capabilities; fresh-review capability/consent only when selected; a representative authorized task and the actual observations, identifying self-review separately. Mark missing/unverified layers explicitly. The final owner verdict is its own evidence.
+
+## Agent sessions for any worker
+
+`agent-sessions` keeps the orchestration procedure of `codex-sessions` (propose with access modes, wait for agreement, brief, run, check) but runs workers through adapters, so the worker can be any client. Every adapter follows the [contract](../payload/skills/agent-sessions/references/contract.md): the same options, a final JSON line and exit codes 0–4. `--describe` reports where the session is visible, whether it can be continued, what each access mode actually enforces in that client and whether the adapter passed its live checks (`verified`).
+
+- `codex`: Codex app-server, threads visible in the Codex app. Live-checked: new thread, continue, `read-only` refused a write, `workspace-write` refused a write outside the folder.
+- `claude-code`: headless `claude -p` with permission modes (`plan`, `acceptEdits`, `bypassPermissions`) rather than an OS sandbox. Unverified. It needs a Claude Code CLI logged in on its own; the CLI bundled with the desktop app reports "Not logged in" when started separately.
+
+For another client (OpenCode, a DeepSeek harness, a client running GLM or Kimi), follow [writing an adapter](../payload/skills/agent-sessions/references/writing-an-adapter.md): find the headless mode, map access modes honestly, implement the contract and run five live checks with the user's agreement. As with `codex-sessions`, installing the skill grants no permission to start sessions.

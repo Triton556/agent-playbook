@@ -37,22 +37,24 @@ python harness.py install --client codex --target ../my-project --skills domain-
 # Voxel pipeline and its dependency closure.
 python harness.py install --client deepseek --target ../voxel-project --profile voxel
 
-# Whole workflow: expands the selection to all 25 modules.
+# Whole workflow: expands the selection to all 26 modules.
 python harness.py install --client claude --target ../visual-project --profile visual --workflow
 ```
 
 | Profile | Entry points |
 |---|---|
-| `full` | All 25 custom skills and the complete workflow bootstrap |
+| `full` | All 26 custom skills and the complete workflow bootstrap |
 | `engineering` | Creative direction, planning, implementation, debugging, testing, UI, Codex session orchestration and supporting methods |
 | `visual` | Creative direction, UI design/review, interactive experiments and voxel craft |
 | `voxel` | Creative direction, voxel construction and linked methods/checks |
 | `memory` | Find, save, status, sync and curation with the existing memory runtime |
 | `instructions` | Agent-document editing, Codex session orchestration and compatibility entry to the shared workflow-pilot procedure |
 
-Dependencies can include several siblings. The plan shows requested and actually installed skills before writing. `--workflow` installs all 25 modules because the complete startup rules can route to any of them. Selecting a single skill without this flag does not activate the whole workflow. Bodies and resources are retained; references are loaded only when their original triggers apply.
+Dependencies can include several siblings. The plan shows requested and actually installed skills before writing. `--workflow` installs all 26 modules because the complete startup rules can route to any of them. Selecting a single skill without this flag does not activate the whole workflow. Bodies and resources are retained; references are loaded only when their original triggers apply.
 
 `codex-sessions` lets Claude, another Codex or any agent with the required local tools write a brief, start or continue a Codex thread visible in the Codex app, and check the result. It is selected by `full`, `engineering` and `instructions`, or separately with `--skills codex-sessions`, including `--client claude`. The orchestrator proposes each session with its access mode and starts it only after the user agrees. Sessions require Node.js and an available Codex CLI using the user's own settings/history. See [session integration](docs/INTEGRATIONS.md#codex-sessions-for-orchestrators).
+
+`agent-sessions` generalizes this to any worker client through adapters with one [contract](payload/skills/agent-sessions/references/contract.md). It ships a live-checked `codex` adapter, an unverified `claude-code` adapter, and a guide for writing an adapter for another client such as OpenCode or a DeepSeek harness. Each adapter states what its access modes actually enforce and refuses a mode it cannot provide. It is selected by `engineering`, `instructions` and `full`, or with `--skills agent-sessions`.
 
 ## How the workflow works
 

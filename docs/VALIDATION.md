@@ -4,6 +4,16 @@ Build: 15 October 2026, Windows. The levels below describe executed checks, not 
 
 ## Source and composition
 
+### 0.5.0 agent sessions addition
+
+On 19 October 2026 (Asia/Vladivostok), the package contains 308 payload files and 26 custom skills. The five new `agent-sessions` entries are byte-identical to the supplied Claude skill and need no transformation; all other payload files are unchanged, including `codex-sessions`.
+
+`python harness.py check-package` passed. `python -B -m unittest discover -s tests` passed all 27 tests in 192 seconds using Python 3.12 and Node.js 22.13.0. New coverage: selection in full/engineering/instructions and exclusion elsewhere, standalone Codex/Claude installation with byte comparison of all five files, `--describe` output of both adapters (agent, contract 1, `verified` true for codex and false for claude-code, three access modes) and exit code 4 for an unknown access mode. Full installations with `--client codex` and `--client claude` into empty temporary projects installed 26 skills and passed `verify`. Profile closures: full 26/26, engineering 13/17, visual 5/14, voxel 2/14, memory 5/5, instructions 4/18. The payload scan found no owner name, private alias or absolute home path.
+
+Live checks were run on the source skill before packaging, with the user's agreement: the Codex adapter started a thread, continued it, refused a write in `read-only` and refused a write outside the folder in `workspace-write`; the results were confirmed from the files. The Claude Code adapter was checked only for `--describe`, exit code 4 and reporting a missing login as a failure; its live task checks were not run because the standalone CLI is not logged in.
+
+The 0.4.0 working-tree changes described below were later reviewed and committed by the orchestrator, and published together with the access-mode update.
+
 ### 0.4.0 Codex sessions addition
 
 On 19 October 2026 (Asia/Vladivostok), the package contains 303 payload files and 25 custom skills. The manifest inventory matches the actual payload. All 301 previous payload files and their manifest entries remain unchanged. The two new entries record the supplied Claude skill's source/export hashes and transformations. `codex-chat.mjs` is byte-identical to the source (SHA256 `c315fadadc52b00d01bb1687f001a67f8f8e2e8c6850a7c38c86c60edf818111`); the skill's only prose change generalizes the user's configured hooks, including memory hooks.

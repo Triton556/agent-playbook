@@ -10,7 +10,9 @@
 
 Профиль — готовый набор навыков для определённого круга задач.
 
-`codex-sessions` входит в `full`, `engineering` и `instructions`: эти профили охватывают ведение разработки и работу над агентскими процедурами, включая отдельно согласованные пилоты. Оркестратор пишет бриф, запускает или продолжает видимый тред Codex и проверяет результат. Поддерживается установка для Claude и Codex. В `visual`, `voxel` и `memory` навык не выбирается: ведение сессий не является их основной задачей. Его можно добавить явно через `--skills codex-sessions`. Сам запуск требует запроса пользователя и [настроенного Codex CLI](INTEGRATIONS.md#codex-sessions-for-orchestrators).
+`codex-sessions` входит в `full`, `engineering` и `instructions`: эти профили охватывают ведение разработки и работу над агентскими процедурами, включая отдельно согласованные пилоты. Оркестратор пишет бриф, запускает или продолжает видимый тред Codex и проверяет результат. Поддерживается установка для Claude и Codex. В `visual`, `voxel` и `memory` навык не выбирается: ведение сессий не является их основной задачей. Его можно добавить явно через `--skills codex-sessions`. Сам запуск требует согласия пользователя и [настроенного Codex CLI](INTEGRATIONS.md#codex-sessions-for-orchestrators).
+
+`agent-sessions` входит в те же профили. Это общий вариант оркестратора: исполнителем может быть любой клиент, для которого есть адаптер (проверенный `codex`, непроверенный `claude-code`), а для других клиентов есть справка по написанию адаптера. Отдельно — `--skills agent-sessions`; подробнее — [интеграция](INTEGRATIONS.md#agent-sessions-for-any-worker).
 
 | Мне нужно… | Что подключить | Что получу на выходе |
 |---|---|---|
@@ -38,9 +40,9 @@
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `full`: 25 выбрано → 25 навыков с зависимостями.
+Профиль `full`: 26 выбрано → 26 навыков с зависимостями.
 
-**Основной выбор:** `anthropic-workflow-creator`, `codex-sessions`, `creative-direction`, `design-taste-frontend-v1`, `domain-modeling`, `grill-with-docs`, `grilling`, `handoff`, `kb-curate`, `kb-find`, `kb-save`, `kb-status`, `kb-sync`, `lab-vm-control`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`, `visual-experiment-craft`, `voxel-model-craft`, `writing-for-agents`.
+**Основной выбор:** `agent-sessions`, `anthropic-workflow-creator`, `codex-sessions`, `creative-direction`, `design-taste-frontend-v1`, `domain-modeling`, `grill-with-docs`, `grilling`, `handoff`, `kb-curate`, `kb-find`, `kb-save`, `kb-status`, `kb-sync`, `lab-vm-control`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`, `visual-experiment-craft`, `voxel-model-craft`, `writing-for-agents`.
 
 **Связанные навыки:** дополнительных нет.
 
@@ -74,7 +76,7 @@ python harness.py plan --client codex --target /path/to/project --profile full
 
 Профиль `engineering`: 12 выбрано → 16 навыков с зависимостями.
 
-**Основной выбор:** `codex-sessions`, `creative-direction`, `domain-modeling`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`, `writing-for-agents`.
+**Основной выбор:** `agent-sessions`, `codex-sessions`, `creative-direction`, `domain-modeling`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`, `writing-for-agents`.
 
 **Связанные навыки:** `design-taste-frontend-v1`, `kb-find`, `visual-experiment-craft`, `voxel-model-craft`.
 
@@ -218,7 +220,7 @@ python harness.py plan --client codex --target /path/to/project --profile memory
 
 Профиль `instructions`: 3 выбрано → 17 навыков с зависимостями.
 
-**Основной выбор:** `anthropic-workflow-creator`, `codex-sessions`, `writing-for-agents`.
+**Основной выбор:** `agent-sessions`, `anthropic-workflow-creator`, `codex-sessions`, `writing-for-agents`.
 
 **Связанные навыки:** `creative-direction`, `design-taste-frontend-v1`, `domain-modeling`, `kb-find`, `product-debugging`, `product-engineering`, `product-implementation`, `product-planning`, `product-testing`, `product-ui-design`, `product-ui-review`, `ui-ux-pro-max`, `visual-experiment-craft`, `voxel-model-craft`.
 
@@ -248,11 +250,11 @@ python harness.py plan --client codex --target /path/to/project --profile instru
 <details>
 <summary>Происхождение примеров, точный состав и границы доказательств</summary>
 
-**Состав профилей** вычислен из установщика версии `0.4.0`. Числа — выбранные навыки → полный состав с зависимостями:
+**Состав профилей** вычислен из установщика версии `0.5.0`. Числа — выбранные навыки → полный состав с зависимостями:
 
 | full | engineering | visual | voxel | memory | instructions |
 |---:|---:|---:|---:|---:|---:|
-| 25 → 25 | 12 → 16 | 5 → 14 | 2 → 14 | 5 → 5 | 3 → 17 |
+| 26 → 26 | 13 → 17 | 5 → 14 | 2 → 14 | 5 → 5 | 4 → 18 |
 
 **Робот:** BUOY—02 из собственного бенчмарка Ultra A, сохранённые 2D-виды и исходная grid. 30 068 занятых ячеек; шаг 0,025 м; габариты занятого объёма 1,40 × 0,675 × 2,00 м. Для GIF сняты 36 ракурсов нативного WebGL-просмотра с шагом камеры 10°. Геометрия исходника сохранена. Это поворот камеры, анимация суставов здесь не показана; проверка рига, FPS и импорта в сторонний редактор этим документом не подтверждается.
 
@@ -260,7 +262,7 @@ python harness.py plan --client codex --target /path/to/project --profile instru
 
 **Схемы:** оригинальная инфографика для объяснения метода. Карточки задания, плана, заметок и проверки — иллюстрации типов выхода, а не журнал фактического исполнения именно этих задач. Референсы пользователя послужили ориентиром композиции и рисованного стиля; сами изображения референсов в пакет не включены. Личная база, рабочие документы и сторонние модели не использованы.
 
-**Состояние пакета:** версия `0.4.0` добавляет codex-sessions для брифа, запуска/продолжения видимого треда Codex и проверки результата. Сохраняется обновление `0.3.0`: creative-direction, проверка замысла и сохранения принятого результата, устранение личных привязок. Сохранены текущие уточнения о крупных границах материалов и разных воксельных сетках, а также поиск current/history, проверка навигации и структурного покрытия памяти. Для реестров используются собственные данные владельца и синтетические шаблоны структуры. Общий workflow сохранён; изменения описаны в [истории выпусков](../CHANGELOG.md).
+**Состояние пакета:** версия `0.5.0` добавляет agent-sessions — оркестрацию исполнителей в любых клиентах через адаптеры. Версия `0.4.0` добавила codex-sessions для брифа, запуска/продолжения видимого треда Codex и проверки результата. Сохраняется обновление `0.3.0`: creative-direction, проверка замысла и сохранения принятого результата, устранение личных привязок. Сохранены текущие уточнения о крупных границах материалов и разных воксельных сетках, а также поиск current/history, проверка навигации и структурного покрытия памяти. Для реестров используются собственные данные владельца и синтетические шаблоны структуры. Общий workflow сохранён; изменения описаны в [истории выпусков](../CHANGELOG.md).
 
 **Границы:** инструкция не гарантирует одинаковый творческий результат на разных моделях. Хеши и проверки файлов подтверждают целостность пакета; фактические действия, визуальный осмотр и обратная связь пользователя дают разные виды свидетельств. Браузер, просмотр изображений, генерация графики и новый контекст ревьюера должны реально предоставляться клиентом. Память, синхронизация и постоянные доступы требуют настройки владельцем.
 

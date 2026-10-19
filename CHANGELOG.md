@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0
+
+- Added `agent-sessions`: the same orchestration procedure as `codex-sessions` (propose sessions with access modes, start after the user agrees, brief, check), with workers in any client through adapters that follow one contract (options, final JSON line, exit codes 0–4, `--describe` with real access-mode guarantees and a `verified` flag).
+- Included a live-checked `codex` adapter, an unverified `claude-code` adapter (headless `claude -p`, permission modes instead of an OS sandbox) and a guide for writing and live-checking adapters for other clients.
+- Selected the skill in `full`, `engineering` and `instructions`. The package now contains 26 custom skills and 308 payload files. `codex-sessions` is unchanged.
+
 ## 0.4.0
 
 - Added `codex-sessions` for orchestrators such as Claude, another Codex or any agent with local shell/file access: write a brief, start or resume a Codex thread visible in the Codex app, and verify its result. The orchestrator proposes sessions with a name, goal, model/effort and access mode (`read-only`, `workspace-write` or `danger-full-access`) and starts them only after the user agrees; full access only when the user chooses it for that session.

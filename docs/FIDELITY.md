@@ -5,7 +5,7 @@ This export preserves the active configured workflow, not retired experiments or
 ## Preserved
 
 - Full global base, WORKFLOW, author self-testing/independent review procedure.
-- 25 custom skill entrypoints, their complete references, source/provenance licenses, searchable UI datasets and original helpers.
+- 26 custom skill entrypoints, their complete references, source/provenance licenses, searchable UI datasets and original helpers.
 - Research triggers, cheap coherent representation, style/function/context/readability/use criteria.
 - Six-view voxel preflight and kit/world proportions before detailed construction; later actual voxel inspection.
 - Technical, semantic, actual visual and human verdicts as separate claims.
@@ -96,3 +96,7 @@ Every changed export hash/byte count and portability transformation is recorded 
 The user-supplied Claude skill contributes the complete `codex-sessions/SKILL.md` and `scripts/codex-chat.mjs`, raising the catalog to 25 skills and the payload to 303 files. Manifest source paths are relative and identify the supplied skill without exporting a private home. Exact source/export hashes and transformations are recorded for both files. The driver remains byte-identical to the supplied source; CLI discovery already uses PATH, user-home locations and the optional `CODEX_BIN` override. No executable relocation or logic change is needed.
 
 The only source prose change refers generically to the user's hooks from Codex settings, including any memory hooks. No personal integration alias, user configuration or standing grant is transferred. Existing payload files, workflow criteria, helpers, datasets and licenses remain unchanged. Profiles `full`, `engineering` and `instructions` select the new skill; installing it never starts a session. File, syntax and installation checks are separate from the source owner's reported live trials and do not establish a new live-session result.
+
+## Version 0.5.0 agent sessions addition
+
+The user-supplied Claude skill contributes `agent-sessions`: `SKILL.md`, `references/contract.md`, `references/writing-an-adapter.md`, `adapters/codex.mjs` and `adapters/claude-code.mjs`, raising the catalog to 26 skills and the payload to 308 files. All five files are byte-identical to the source; they contain no private paths, aliases or grants, so no transformation was needed. The Codex adapter is derived from the `codex-sessions` driver and adds the contract's `--describe`, `verified` flag and exit code 4. The Claude Code adapter is marked unverified in its own description and in the skill.

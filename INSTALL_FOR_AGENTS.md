@@ -27,7 +27,7 @@ python harness.py plan --client codex --target /path/to/project --profile full
 
 Available clients: `codex`, `claude`, `deepseek`, `generic`. Profiles: `full`, `engineering`, `visual`, `voxel`, `memory`, `instructions`. `--skills name1,name2` selects named skills; dependency closure includes every linked sibling. References and helper files stay complete.
 
-`full` activates the complete workflow. `--workflow` also expands the selection to all 25 modules: the global rules route to all of them, so partial activation would leave broken routes. Skills-only installation preserves individual entry points without claiming all global behavior is active.
+`full` activates the complete workflow. `--workflow` also expands the selection to all 26 modules: the global rules route to all of them, so partial activation would leave broken routes. Skills-only installation preserves individual entry points without claiming all global behavior is active.
 
 `codex-sessions` is selected by `full`, `engineering` and `instructions`, or explicitly with `--skills codex-sessions`, for any client including Claude. Read its [integration requirements](docs/INTEGRATIONS.md#codex-sessions-for-orchestrators) before an authorized session launch; installation alone does not start Codex or configure it.
 

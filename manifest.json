@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "name": "agent-workflow-harness",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "exported_at": "2026-10-19T04:06:34.156800+00:00",
   "baseline": "Version 0.3.0 workflow retained; add the user-supplied Codex sessions skill and unchanged app-server driver for explicitly requested orchestration; no live session or model pilot launched by packaging",
   "instruction_policy": "Full maintained agent instructions in English; Russian communication and knowledge content by default; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
@@ -173,6 +173,56 @@
       "module": "workflow",
       "sha256": "ad6656f056c45d4df79f14b218fba99620d663bec9835f701767c88fa6e03f5f",
       "bytes": 7261
+    },
+    {
+      "source": "skills/agent-sessions/SKILL.md",
+      "path": "payload/skills/agent-sessions/SKILL.md",
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "262f12e990270968b7fe6108ce5208e9f3cc4f82486005013a3bb5f1b4d935e2",
+      "sha256": "262f12e990270968b7fe6108ce5208e9f3cc4f82486005013a3bb5f1b4d935e2",
+      "bytes": 6517,
+      "transformations": [],
+      "module": "agent-sessions"
+    },
+    {
+      "source": "skills/agent-sessions/references/contract.md",
+      "path": "payload/skills/agent-sessions/references/contract.md",
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "b8352459ce2e100f2225bd140f8bffc69b5d236befd7e94ea6dbe7d4983afbbb",
+      "sha256": "b8352459ce2e100f2225bd140f8bffc69b5d236befd7e94ea6dbe7d4983afbbb",
+      "bytes": 3503,
+      "transformations": [],
+      "module": "agent-sessions"
+    },
+    {
+      "source": "skills/agent-sessions/references/writing-an-adapter.md",
+      "path": "payload/skills/agent-sessions/references/writing-an-adapter.md",
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "fa8ca6cc422ac1c34e7c587979663cc8391ca758ad8590149df2d45673da7899",
+      "sha256": "fa8ca6cc422ac1c34e7c587979663cc8391ca758ad8590149df2d45673da7899",
+      "bytes": 3652,
+      "transformations": [],
+      "module": "agent-sessions"
+    },
+    {
+      "source": "skills/agent-sessions/adapters/codex.mjs",
+      "path": "payload/skills/agent-sessions/adapters/codex.mjs",
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "7eea40ea4361d65cdb25c1a571fe8172f0e389907ccab4232c1f5535807bed12",
+      "sha256": "7eea40ea4361d65cdb25c1a571fe8172f0e389907ccab4232c1f5535807bed12",
+      "bytes": 8698,
+      "transformations": [],
+      "module": "agent-sessions"
+    },
+    {
+      "source": "skills/agent-sessions/adapters/claude-code.mjs",
+      "path": "payload/skills/agent-sessions/adapters/claude-code.mjs",
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "cf5f26df59d414370a8964f707f547a9e51e9441c0fe841c268d5d07f56febff",
+      "sha256": "cf5f26df59d414370a8964f707f547a9e51e9441c0fe841c268d5d07f56febff",
+      "bytes": 7470,
+      "transformations": [],
+      "module": "agent-sessions"
     },
     {
       "source": "skills/anthropic-workflow-creator/agents/openai.yaml",

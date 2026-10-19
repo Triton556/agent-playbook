@@ -59,9 +59,10 @@ class InstallBehavior(unittest.TestCase):
             with self.subTest(client=client),target_directory() as td:
                 p=Path(td);result=call('install','--skills','domain-modeling','--workflow','--client',client,'--target',p)
                 self.assertTrue(result['workflow_activated']);self.assertTrue((p/entry).is_file())
-                self.assertEqual(len(result['installed_skills']),25)
+                self.assertEqual(len(result['installed_skills']),26)
                 self.assertIn('creative-direction',result['installed_skills'])
                 self.assertIn('codex-sessions',result['installed_skills'])
+                self.assertIn('agent-sessions',result['installed_skills'])
                 for relative in ['SKILL.md','scripts/codex-chat.mjs']:
                     self.assertEqual((ROOT/'payload/skills/codex-sessions'/relative).read_bytes(),(p/folder/'skills/codex-sessions'/relative).read_bytes())
                 self.assertEqual((ROOT/'payload/skills/domain-modeling/SKILL.md').read_bytes(),(p/folder/'skills/domain-modeling/SKILL.md').read_bytes())
@@ -100,6 +101,32 @@ class InstallBehavior(unittest.TestCase):
                 for relative in ['SKILL.md','scripts/codex-chat.mjs']:
                     self.assertEqual((ROOT/'payload/skills/codex-sessions'/relative).read_bytes(),(Path(td)/folder/'skills/codex-sessions'/relative).read_bytes())
                 self.assertEqual(call('verify','--client',client,'--target',td)['status'],'pass')
+    def test_agent_sessions_profiles_install_and_adapters(self):
+        with target_directory() as td:
+            for profile in ['full','engineering','instructions','visual','voxel','memory']:
+                with self.subTest(profile=profile):
+                    planned=call('plan','--profile',profile,'--target',td)
+                    self.assertEqual('agent-sessions' in planned['installed_skills'],profile in ['full','engineering','instructions'])
+        files=['SKILL.md','references/contract.md','references/writing-an-adapter.md','adapters/codex.mjs','adapters/claude-code.mjs']
+        for client,folder in [('codex','.agents'),('claude','.claude')]:
+            with self.subTest(client=client),target_directory() as td:
+                result=call('install','--skills','agent-sessions','--client',client,'--target',td)
+                self.assertEqual(result['installed_skills'],['agent-sessions'])
+                for relative in files:
+                    self.assertEqual((ROOT/'payload/skills/agent-sessions'/relative).read_bytes(),(Path(td)/folder/'skills/agent-sessions'/relative).read_bytes())
+                self.assertEqual(call('verify','--client',client,'--target',td)['status'],'pass')
+        node=shutil.which('node')
+        if not node:self.skipTest('Node is required to check the agent-sessions adapters')
+        for adapter,verified in [('codex',True),('claude-code',False)]:
+            with self.subTest(adapter=adapter):
+                script=str(ROOT/f'payload/skills/agent-sessions/adapters/{adapter}.mjs')
+                described=subprocess.run([node,script,'--describe'],capture_output=True,cwd=ROOT)
+                self.assertEqual(described.returncode,0,described.stderr.decode('utf8',errors='replace'))
+                info=json.loads(described.stdout)
+                self.assertEqual((info['agent'],info['contract'],info['verified']),(adapter,1,verified))
+                self.assertEqual(set(info['access_modes']),{'read-only','workspace-write','danger-full-access'})
+                refused=subprocess.run([node,script,'--sandbox','unknown-mode','--cwd',str(ROOT)],capture_output=True,cwd=ROOT,input=b'')
+                self.assertEqual(refused.returncode,4)
     def test_codex_sessions_driver_syntax(self):
         node=shutil.which('node')
         if not node:self.skipTest('Node is required to check the Codex sessions driver')
