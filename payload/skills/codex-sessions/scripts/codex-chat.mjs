@@ -115,6 +115,12 @@ readline.createInterface({ input: child.stdout }).on('line', line => {
   if (msg.method === 'turn/completed' && (!turnId || p.turn?.id === turnId)) settle(p.turn);
 });
 child.on('exit', code => settle({ status: `app-server-exited-${code}` }));
+child.on('error', error => {
+  // Inside a Codex sandbox the child process is usually refused (spawn EPERM).
+  process.stderr.write(`[driver] cannot start codex app-server: ${error.code || error.message}. No thread was created. If this runs inside a Codex sandbox, run the command outside it (approval) or ask the user.
+`);
+  process.exit(3);
+});
 
 try {
   await request('initialize', {
@@ -126,6 +132,8 @@ try {
   // Resume does not keep the sandbox of the earlier run, so pass it every time.
   const params = { cwd, sandbox: args.sandbox || 'workspace-write', approvalPolicy: 'never' };
   if (args.model) params.model = args.model;
+  // Effort is set per turn; also store it as the thread default so the app shows the real value.
+  if (args.effort) params.config = { model_reasoning_effort: args.effort };
   let threadId = args.thread;
   if (threadId) {
     await request('thread/resume', { ...params, threadId, excludeTurns: true });

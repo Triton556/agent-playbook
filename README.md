@@ -52,7 +52,7 @@ python harness.py install --client claude --target ../visual-project --profile v
 
 Dependencies can include several siblings. The plan shows requested and actually installed skills before writing. `--workflow` installs all 25 modules because the complete startup rules can route to any of them. Selecting a single skill without this flag does not activate the whole workflow. Bodies and resources are retained; references are loaded only when their original triggers apply.
 
-`codex-sessions` lets Claude, another Codex or any agent with the required local tools write a brief, start or continue a Codex thread visible in the Codex app, and check the result. It is selected by `full`, `engineering` and `instructions`, or separately with `--skills codex-sessions`, including `--client claude`. Sessions require the user's request, Node.js and an available Codex CLI using the user's own settings/history. See [session integration](docs/INTEGRATIONS.md#codex-sessions-for-orchestrators).
+`codex-sessions` lets Claude, another Codex or any agent with the required local tools write a brief, start or continue a Codex thread visible in the Codex app, and check the result. It is selected by `full`, `engineering` and `instructions`, or separately with `--skills codex-sessions`, including `--client claude`. The orchestrator proposes each session with its access mode and starts it only after the user agrees. Sessions require Node.js and an available Codex CLI using the user's own settings/history. See [session integration](docs/INTEGRATIONS.md#codex-sessions-for-orchestrators).
 
 ## How the workflow works
 

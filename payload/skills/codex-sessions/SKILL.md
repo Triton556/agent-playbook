@@ -1,6 +1,6 @@
 ---
 name: codex-sessions
-description: Run work in OpenAI Codex sessions that the user can watch in the Codex app, acting as the orchestrator that writes the brief, starts or continues the session, and checks the result. Use when the user asks to give a task to Codex, run something "in Codex", have Codex do it, or continue a Codex chat. Do not use for work you should do yourself, and do not start sessions on your own initiative.
+description: Run work in OpenAI Codex sessions that the user can watch in the Codex app, acting as the orchestrator that proposes the sessions, writes the briefs, starts or continues them after the user agrees, and checks the results. Use when the user asks to give a task to Codex, run something "in Codex" or continue a Codex chat, and when part of the current work would clearly gain from a separate Codex session (independent parallel pieces, long work, an independent review); then propose it and wait for the user's yes. Do not use for small work you can do yourself.
 ---
 
 # Codex sessions
@@ -9,11 +9,26 @@ You are the orchestrator: you understand what the user wants, hand a piece of wo
 
 Run Codex through `scripts/codex-chat.mjs`. It starts `codex app-server` on the user's own Codex home, so the thread shows up in the app with the name you give it. Do not use `codex exec`: those threads are hidden from the app's list. Do not use a temporary `CODEX_HOME`, which keeps the thread out of the user's history entirely. Do not pass `--ignore-user-config`, which drops the user's instructions, skills and hooks. The only exception is an isolated experiment that the user asked to be isolated.
 
-## Before starting
+## Propose, then start
 
-- Start a session only when the user asked for this work to go to Codex. One request covers that request's sessions, not later ones.
+Never start a session without the user's yes for it.
+
+- When the user asks to delegate, or you see a piece worth delegating, first show a short plan: for each session, its name, a one-line goal, the folder, the model and effort, the access mode, and what you will keep doing yourself. Then wait for the answer.
+- Propose delegation only when it pays: independent pieces that can run in parallel, long work, an independent review or a second variant. Do small or tightly coupled work yourself; each session starts cold and costs a brief and a review.
+- A yes covers the sessions in that plan with the settings shown, including follow-up turns needed to reach the agreed result. A new session, a different access mode or a different goal needs a new yes.
+- If the user changes the settings in their reply ("the second one read-only"), use theirs.
 - Decide whether this is a new task or the next step of an existing thread. For a correction, a follow-up or a review comment on work a thread already did, continue that thread (`--thread <id>`). The thread already holds the context, and the user sees the conversation in one place.
 - Give one thread one task. For parallel work, give each writer its own folder or git worktree; two sessions never edit the same files.
+
+## Access modes
+
+Show an access mode for every proposed session, with your recommendation, and let the user choose. Pass the choice with `--sandbox`:
+
+- `read-only`: review, investigation, audit. Reads files, changes nothing.
+- `workspace-write` (default): writes only inside `--cwd`. On Windows it cannot write inside `.git`.
+- `danger-full-access`: no sandbox. Use it only when the user chose it for that session; say why it is needed, for example the session must itself start Codex sessions or write outside its folder.
+
+A mode applies only to the session it was chosen for. Your own access is set by the user in your client. If your sandbox blocks the driver, tell the user and ask them to approve the command or choose an access mode for you. Do not work around it.
 
 ## Write the brief
 
@@ -37,7 +52,7 @@ node <skill-dir>/scripts/codex-chat.mjs --cwd <work folder> --name "<short title
 ```
 
 - Continue a thread: add `--thread <threadId>`, using the ID from the JSON line printed last by the previous run.
-- `--sandbox` defaults to `workspace-write`: Codex writes only inside `--cwd`. Use `read-only` for review or investigation. Use `danger-full-access` only when the user explicitly allows it for this task.
+- Pass the access mode the user chose with `--sandbox`; without it the session gets `workspace-write`.
 - Approval requests and questions are declined automatically: the run is unattended. If a task needs a permission, decide that before starting, or let the user run it in the app.
 - Large tasks take tens of minutes. Run the command in the background and wait to be notified; do not poll in a loop. Tell the user the session's name so they can open it.
 - Exit code 0 means the turn completed. The last stdout line is `{threadId, turnId, status, out}`.
@@ -53,6 +68,7 @@ The final message is a report, not proof. Before telling the user the work is do
 
 ## Known limits
 
+- When the orchestrator itself runs inside a Codex sandbox, starting `codex app-server` fails with `spawn EPERM` (exit code 3) and no thread is created. See Access modes: the user decides how you may run it.
 - On Windows the workspace-write sandbox blocks writes inside `.git`, so Codex cannot commit. Review its changes and commit them yourself only if the user asked for a commit. Pushing and publishing need the user's explicit permission each time.
 - The sandbox may block launching a browser (EPERM). For visual checks, inspect the result yourself or ask the user to look.
 - The user's hooks from Codex settings, including any memory hooks, also run in these sessions. If the final message is about a hook or memory error instead of the task, read the task's result from the files and `events.jsonl`.

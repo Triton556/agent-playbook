@@ -3658,9 +3658,9 @@
       "source": "skills/codex-sessions/SKILL.md",
       "path": "payload/skills/codex-sessions/SKILL.md",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "7155de1e1871f2dcba2cb4784489d29c425bac94416ac5d501ebbb16ffa1b914",
-      "sha256": "83c64e1d7670bab15c81fa65694d83562a685e8696b29f6e42e10c3d7b78cfc6",
-      "bytes": 5106,
+      "source_sha256": "bb72d01f612fe6030c6485003e08efdd91c904200bc7969ca55d555f13d9e840",
+      "sha256": "8c7de7d198b1d223c7f493abac26a606ed81fcf235d7f29caf5973073f5c8a98",
+      "bytes": 6869,
       "transformations": [
         {
           "kind": "portable-hook-reference",
@@ -3673,9 +3673,9 @@
       "source": "skills/codex-sessions/scripts/codex-chat.mjs",
       "path": "payload/skills/codex-sessions/scripts/codex-chat.mjs",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "c315fadadc52b00d01bb1687f001a67f8f8e2e8c6850a7c38c86c60edf818111",
-      "sha256": "c315fadadc52b00d01bb1687f001a67f8f8e2e8c6850a7c38c86c60edf818111",
-      "bytes": 7053,
+      "source_sha256": "f0b2404162eace0303c080d3248b0b0723cd42d4b3d1d598111f02fec3494e84",
+      "sha256": "f0b2404162eace0303c080d3248b0b0723cd42d4b3d1d598111f02fec3494e84",
+      "bytes": 7574,
       "transformations": [],
       "module": "codex-sessions"
     }
