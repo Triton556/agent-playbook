@@ -37,6 +37,13 @@ def snapshot(folder):
     return {p.relative_to(folder).as_posix():p.read_bytes() for p in folder.rglob('*') if p.is_file()}
 
 
+
+def release_archive(sha):
+    """Earlier release from git history; shallow clones skip instead of failing."""
+    if subprocess.run(['git','cat-file','-e',sha+'^{commit}'],cwd=ROOT,capture_output=True).returncode!=0:
+        raise unittest.SkipTest('Release '+sha+' is not in this clone; fetch full history (git fetch --unshallow) to run migration tests')
+    return subprocess.run(['git','archive','--format=tar',sha],cwd=ROOT,capture_output=True,check=True).stdout
+
 class PublicNames(unittest.TestCase):
     def test_every_old_cli_name_warns_and_selects_the_new_skill(self):
         with target_directory() as td:
@@ -86,7 +93,7 @@ class LegacyMigration(unittest.TestCase):
         # Immutable local 0.5.0 release; no remote fetch or global configuration.
         cls.legacy_context=target_directory()
         cls.legacy=Path(cls.legacy_context.__enter__())
-        archive=subprocess.run(['git','archive','--format=tar','7534298'],cwd=ROOT,capture_output=True,check=True).stdout
+        archive=release_archive('7534298')
         with tarfile.open(fileobj=io.BytesIO(archive)) as bundle:
             bundle.extractall(cls.legacy,filter='data')
         if json.loads((cls.legacy/'manifest.json').read_text(encoding='utf8'))['version']!='0.5.0':
@@ -199,7 +206,7 @@ class PatchUpgrade(unittest.TestCase):
     def test_actual_100_full_upgrade_codex(self):
         with target_directory() as release_dir,target_directory() as td:
             release=Path(release_dir);p=Path(td)
-            archive=subprocess.run(['git','archive','--format=tar','390a28b'],cwd=ROOT,capture_output=True,check=True).stdout
+            archive=release_archive('390a28b')
             with tarfile.open(fileobj=io.BytesIO(archive)) as bundle:bundle.extractall(release,filter='data')
             self.assertEqual(json.loads((release/'manifest.json').read_text(encoding='utf8'))['version'],'1.0.0')
             result=subprocess.run([sys.executable,'-B','-X','utf8',str(release/'harness.py'),'install','--target',str(p),'--client','codex','--profile','full'],cwd=release,capture_output=True)
