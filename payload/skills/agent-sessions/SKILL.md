@@ -87,7 +87,7 @@ A yes covers the sessions in that table with the settings and briefs shown, incl
 
 ### 6. Run and check
 
-Use [running-and-checking](references/running-and-checking.md), including Status updates. Generic execution command: [adapter contract, Run](references/contract.md#run).
+Use [running-and-checking](references/running-and-checking.md), including Waiting for workers (choose by orchestrator client) and Status updates. Generic execution command: [adapter contract, Run](references/contract.md#run).
 
 ### 7. Report to the user
 

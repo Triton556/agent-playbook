@@ -7,7 +7,7 @@ description: Run work in OpenAI Codex sessions that the user can watch in the Co
 
 You are the orchestrator: you understand what the user wants, hand pieces of work to Codex sessions, and check what comes back. The user watches each session in the Codex app and may step in there.
 
-Run Codex through `scripts/codex-chat.mjs`. It starts `codex app-server` on the user's own Codex home, so the thread shows up in the app with the name you give it. Do not use `codex exec`: those threads are hidden from the app's list. Do not use a temporary `CODEX_HOME`, which keeps the thread out of the user's history entirely. Do not pass `--ignore-user-config`, which drops the user's instructions, skills and hooks. The only exception is an isolated experiment that the user asked to be isolated.
+For detached runs use `../agent-sessions/adapters/codex.mjs` and its shared `adapters/wait.mjs` under [contract v2](../agent-sessions/references/contract.md#detached-runs-and-waiting). `scripts/codex-chat.mjs` is the legacy single-turn foreground variant: it has no detach/wait interface and preserves its original result shape. For foreground runs, run Codex through `scripts/codex-chat.mjs`. It starts `codex app-server` on the user's own Codex home, so the thread shows up in the app with the name you give it. Do not use `codex exec`: those threads are hidden from the app's list. Do not use a temporary `CODEX_HOME`, which keeps the thread out of the user's history entirely. Do not pass `--ignore-user-config`, which drops the user's instructions, skills and hooks. The only exception is an isolated experiment that the user asked to be isolated.
 
 ## Shared orchestration
 
@@ -21,7 +21,7 @@ Codex maps these to its OS sandbox; workspace-write is bounded by the configured
 
 ### 6. Run and check
 
-Follow [running and checking sessions](references/running-and-checking.md), including its status updates to the user. The command for a session:
+Follow [running and checking sessions](../agent-sessions/references/running-and-checking.md), including its status updates to the user. The command for a session:
 
 ```bash
 node <skill-dir>/scripts/codex-chat.mjs --cwd <work folder> --name "<session name from the table>" \
@@ -30,12 +30,12 @@ node <skill-dir>/scripts/codex-chat.mjs --cwd <work folder> --name "<session nam
 ```
 
 - Continue a thread with `--thread <threadId>` from the JSON line printed last by the previous run, and a short follow-up brief. Pass `--sandbox`, `--model` and `--effort` again: they are not remembered between runs.
-- Native unattended prompts and asynchronous board questions: see [running-and-checking, Questions and blocked workers](references/running-and-checking.md#questions-and-blocked-workers).
+- Native unattended prompts and asynchronous board questions: see [running-and-checking, Questions and blocked workers](../agent-sessions/references/running-and-checking.md#questions-and-blocked-workers).
 - Exit code 0 means the turn completed. The last stdout line is `{threadId, turnId, status, out}`.
 
 ### 7. Report to the user
 
-Report format: see [running-and-checking, Reporting](references/running-and-checking.md#reporting).
+Report format: see [running-and-checking, Reporting](../agent-sessions/references/running-and-checking.md#reporting).
 
 ## Known limits
 

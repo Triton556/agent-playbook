@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// agent-sessions adapter for Claude Code (contract 1, see references/contract.md).
+// agent-sessions adapter for Claude Code (contract 2, see references/contract.md).
 // Runs one turn of a headless Claude Code session (`claude -p`).
 // Checked 2026-10-19 on Windows, Claude Code 2.1.299: describe/exit 4, and a missing login is reported
 // as a failure. Live task checks (new, continue, access modes, visibility) not yet run.
@@ -17,8 +17,9 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import readline from 'node:readline';
+import { detach, recordThread, runDirectory } from './run-runtime.mjs';
 
-const FLAGS = new Set(['describe']);
+const FLAGS = new Set(['describe', 'detach']);
 const args = {};
 for (let i = 2; i < process.argv.length; i++) {
   const key = process.argv[i].replace(/^--/, '');
@@ -34,7 +35,8 @@ const MODES = {
 };
 const DESCRIPTION = {
   agent: 'claude-code',
-  contract: 1,
+  contract: 2,
+  detach: true,
   verified: false,
   visible_in: 'Claude Code session history for --cwd: `claude --resume` in a terminal opened in that folder lists it by name. Not guaranteed to appear in the desktop app.',
   resume: true,
@@ -90,6 +92,13 @@ if (!prompt.trim()) {
   process.stderr.write('[driver] empty prompt\n');
   process.exit(4);
 }
+if (args.detach) {
+  // Reject a metadata directory inside the worker before creating anything.
+  try { runDirectory(args, cwd); }
+  catch (error) { console.error(`[driver] ${error.message}`); process.exit(4); }
+  try { await detach('claude-code', args, prompt, import.meta.url); process.exit(0); }
+  catch (error) { console.error(`[driver] ${error.message}`); process.exit(3); }
+}
 const bin = findClaude();
 if (!bin) {
   process.stderr.write('[driver] Claude Code CLI not found. Set CLAUDE_BIN to the claude executable. No session was created.\n');
@@ -98,6 +107,7 @@ if (!bin) {
 
 // A new session gets its id up front, so it is known even if the run fails midway.
 const threadId = args.thread || crypto.randomUUID();
+recordThread(threadId);
 const cli = ['-p', '--output-format', 'stream-json', '--verbose', '--permission-prompts', 'none', ...MODES[sandbox]];
 if (args.thread) cli.push('--resume', args.thread);
 else {

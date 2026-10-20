@@ -10,28 +10,37 @@ Launch gate: see [agent-sessions, step 5](../../agent-sessions/SKILL.md#5-get-ap
 4. **A session log.** Keep one table for the whole task and update it whenever a session changes stage:
 
    ```
-   | # | Session | Worker | Stage | Since | Next | Thread ID | Brief |
-   |---|---------|--------|-------|-------|------|-----------|-------|
-   | 1 | <name>  | <client, model, effort> | <stage> | <time> | <what happens next> | <id> | <file> |
+   | # | Session | Worker | Stage | Since | Next | threadId | runId | statusFile | Brief |
+   |---|---------|--------|-------|-------|------|----------|-------|------------|-------|
+   | 1 | <name>  | <client, model, effort> | <stage> | <time> | <what happens next> | <thread id> | <run id> | <status path> | <brief file> |
    ```
 
-   Stages, in order: `waiting for #N` (depends on another session), `running`, `checking` (you are verifying the result), `fix requested` (a follow-up turn is running), `accepted`, `failed` (cannot continue; say why). The thread ID comes from the JSON line the run prints last; you need it to continue the same session instead of starting a new one.
+   Stages, in order: `waiting for #N` (depends on another session), `running`, `checking` (you are verifying the result), `fix requested` (a follow-up turn is running), `accepted`, `failed` (cannot continue; say why). For foreground runs, threadId comes from the final JSON line. For detached runs, record runId and statusFile immediately, then threadId from the status file or wait result once known; threadId continues the session, while runId identifies just this turn.
 
 The log owns execution metadata only; requirements/acceptance follow [task-state, Long-task state and completeness](../../dev-flow/references/task-state.md). When Jam Board owns task state, keep session metadata in its labeled operational notes and link task IDs; board task status/verdict stays authoritative. Else keep the log in the existing plan. Do not copy requirements or acceptance into it.
 
 ## Starting
 
-- Run each session in the background and wait to be notified when it ends. Do not poll in a loop, and do not sleep-wait.
 - Start independent sessions together. A session that waits for another starts only after you have checked and accepted the one it depends on.
 - Start each session with exactly the name shown in the approval table, in the user's language, so the user finds it in the session list. Tell the user the names and where to watch them.
 - If a run exits with 3 (client could not start) or 4 (unsupported option), nothing was created. Tell the user; do not retry with different settings on your own.
+
+## Waiting for workers
+
+Use [contract, Detached runs and waiting](contract.md#detached-runs-and-waiting) for commands, paths and result shapes. This is the single owner of orchestration waiting rules; a board is optional.
+
+- **The orchestrator has background notifications.** Claude Code background Bash tasks notify the orchestrator when they finish. Either put the foreground adapter command in such a background task and use its notification, or use `--detach` plus `wait`. Never sleep-poll. Codex app automations or other notification mechanisms are unverified here; use this case only when the current client actually provides completion notifications.
+- **The orchestrator has no notifications.** In Codex and most CLIs, start each independent worker with `--detach`, record runId/statusFile in the session log, and do independent work. Then call `node adapters/wait.mjs --runs <pending ids> --run-dir <recorded directory> --mode any --timeout 60`, with a timeout below the current tool-call limit. After each return, check each finished worker using Checking a finished session below, recover threadId, and remove its runId from the pending set before waiting again. Use `--mode all` only when nothing else can proceed. Repeat bounded blocking waits until done or the user's time budget is reached. At that limit report exactly what is still running, runIds, known threadIds and how to resume.
+- **The turn must end before workers finish.** For client limits or a user-requested stop of orchestration, leave detached workers running unless the user also asked to cancel them. Report their runIds, known threadIds, status files and run directory. On the next turn begin with `node adapters/wait.mjs --status --runs <ids> --run-dir <recorded directory>` and check completed results before continuing. Explicit cancellation uses the contract's `--cancel` command.
+
+Client evidence: the Codex adapter waits for the turn before its foreground command exits; its notes describe the separate app-server, not an orchestrator wakeup facility. The installed Codex execution tool can yield a process session ID that requires an explicit read; this does not notify the brain of completion. Use blocking `wait` as the completion tool, and resume that same tool process if the host yields it. Notification behavior in other Codex versions/clients is unverified. Claude Code background command behavior is documented in [Interactive mode](https://code.claude.com/docs/en/interactive-mode#background-bash-commands); live Claude orchestration was not exercised here. Detach survives the launching command; forced client/OS process cleanup can still stop it.
 
 ## Status updates
 
 Keep the user informed of work, stage and worker. Language: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
 - **When:** after you start sessions; when a session finishes; when you accept a result or request a fix; when something blocks; whenever the user asks; and in your final message of every turn while any session of the task is not yet accepted. Do not send updates when nothing changed.
-- **Format:** one line on the whole task, then the session log without the thread ID and brief columns:
+- **Format:** one line on the whole task, then the session log without the threadId, runId, statusFile and brief columns (include IDs and resume commands when handing off unfinished runs):
 
   ```
   Task: <name> - 1 of 3 accepted, 1 running, 1 waiting.

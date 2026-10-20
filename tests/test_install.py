@@ -132,13 +132,13 @@ class InstallBehavior(unittest.TestCase):
                 described=subprocess.run([node,script,'--describe'],capture_output=True,cwd=ROOT)
                 self.assertEqual(described.returncode,0,described.stderr.decode('utf8',errors='replace'))
                 info=json.loads(described.stdout)
-                self.assertEqual((info['agent'],info['contract'],info['verified']),(adapter,1,verified))
+                self.assertEqual((info['agent'],info['contract'],info['verified']),(adapter,2,verified))
                 self.assertEqual(set(info['access_modes']),{'read-only','workspace-write','danger-full-access'})
                 refused=subprocess.run([node,script,'--sandbox','unknown-mode','--cwd',str(ROOT)],capture_output=True,cwd=ROOT,input=b'')
                 self.assertEqual(refused.returncode,4)
     def test_orchestration_references_are_shared(self):
-        # All three approved mirrors must stay byte-identical, including status/blocked additions.
-        for name in ['requirements-interview.md','brief-writing.md','running-and-checking.md']:
+        # Interview and brief references stay mirrored; running policy has one owner.
+        for name in ['requirements-interview.md','brief-writing.md']:
             with self.subTest(reference=name):
                 a=(ROOT/'payload/skills/agent-sessions/references'/name).read_bytes()
                 b=(ROOT/'payload/skills/agent-sessions-codex/references'/name).read_bytes()

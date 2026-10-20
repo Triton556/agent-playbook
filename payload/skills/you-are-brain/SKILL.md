@@ -38,6 +38,7 @@ Work by [agent-sessions](../agent-sessions/SKILL.md), with these profile-specifi
 - Model routing: follow [brain profile, Routing modes](references/brain-profile.md#routing-modes); the general model rule is in [agent-sessions, Fixed rules](../agent-sessions/SKILL.md#fixed-rules).
 - Client readiness: see agent-sessions, step 2 and its adapter guide.
 - Own work and delegation: see agent-sessions, step 2, using the profile assignment.
+- Worker waiting: see [running-and-checking, Waiting for workers](../agent-sessions/references/running-and-checking.md#waiting-for-workers), with or without a board.
 - Session progress: see [running-and-checking, Status updates](../agent-sessions/references/running-and-checking.md#status-updates).
 - **Skills.** Load the playbook skills that fit your own steps, for example `ui-review` when you check an interface yourself. In a brief, name a skill for the worker only if that skill is installed in the worker's client.
 

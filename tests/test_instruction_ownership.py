@@ -9,7 +9,7 @@ from test_install import ROOT, call, target_directory, payload_bytes
 MIRRORS = {
     'payload/skills/agent-sessions-codex/references/' + name:
     'payload/skills/agent-sessions/references/' + name
-    for name in ('requirements-interview.md', 'brief-writing.md', 'running-and-checking.md')
+    for name in ('requirements-interview.md', 'brief-writing.md')
 }
 
 
@@ -61,11 +61,14 @@ class InstructionOwnership(unittest.TestCase):
                 found = {path: text.count(phrase) for path, text in instructions.items() if phrase in text}
                 self.assertEqual(found, {owner: 1})
 
-    def test_all_three_shared_references_are_identical(self):
+    def test_shared_references_and_running_owner_pointer(self):
         for mirror, owner in MIRRORS.items():
             with self.subTest(reference=owner):
                 self.assertEqual((ROOT / mirror).read_bytes(), (ROOT / owner).read_bytes())
-        running = (ROOT / MIRRORS['payload/skills/agent-sessions-codex/references/running-and-checking.md']).read_text(encoding='utf8')
+        pointer = (ROOT / 'payload/skills/agent-sessions-codex/references/running-and-checking.md').read_text(encoding='utf8')
+        self.assertIn('../../agent-sessions/references/running-and-checking.md', pointer)
+        self.assertNotIn('## Waiting for workers', pointer)
+        running = (ROOT / 'payload/skills/agent-sessions/references/running-and-checking.md').read_text(encoding='utf8')
         self.assertIn('## Status updates', running)
         self.assertIn('## Questions and blocked workers', running)
 

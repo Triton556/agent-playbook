@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// agent-sessions adapter for OpenAI Codex (contract 1, see references/contract.md).
+// agent-sessions adapter for OpenAI Codex (contract 2, see references/contract.md).
 // Runs one turn in a Codex thread that is visible in the Codex app.
 // Live checks passed 2026-10-19 on Windows, Codex app-server: describe/exit 4, new session, continue
 // with --thread, read-only refused a write, workspace-write refused a write outside --cwd, thread
@@ -19,8 +19,9 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import readline from 'node:readline';
+import { detach, recordThread, runDirectory } from './run-runtime.mjs';
 
-const FLAGS = new Set(['proxy', 'describe']);
+const FLAGS = new Set(['proxy', 'describe', 'detach']);
 const args = {};
 for (let i = 2; i < process.argv.length; i++) {
   const key = process.argv[i].replace(/^--/, '');
@@ -55,7 +56,8 @@ function findCodex() {
 
 const DESCRIPTION = {
   agent: 'codex',
-  contract: 1,
+  contract: 2,
+  detach: true,
   verified: true,
   visible_in: 'Codex app: the thread list, under the given name; the user can open the thread and write in it',
   resume: true,
@@ -83,7 +85,18 @@ const prompt = args.prompt ? fs.readFileSync(args.prompt, 'utf8') : fs.readFileS
 if (!prompt.trim()) throw new Error('Empty prompt');
 if (!fs.existsSync(cwd)) throw new Error(`cwd does not exist: ${cwd}`);
 
-const child = spawn(findCodex(), args.proxy ? ['app-server', 'proxy'] : ['app-server'], { stdio: ['pipe', 'pipe', 'pipe'] });
+if (args.detach) {
+  // Reject a metadata directory inside the worker before creating anything.
+  try { runDirectory(args, cwd); }
+  catch (error) { console.error(`[driver] ${error.message}`); process.exit(4); }
+  try { await detach('codex', args, prompt, import.meta.url); process.exit(0); }
+  catch (error) { console.error(`[driver] ${error.message}`); process.exit(3); }
+}
+// Explicit JS CLI paths also allow protocol fixtures without a real Codex process.
+const bin = findCodex();
+const cli = args.proxy ? ['app-server', 'proxy'] : ['app-server'];
+const child = spawn(/\.[cm]?js$/i.test(bin) ? process.execPath : bin,
+  /\.[cm]?js$/i.test(bin) ? [bin, ...cli] : cli, { windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'] });
 child.stderr.on('data', chunk => { if (args.verbose) process.stderr.write(chunk); });
 const log = args.log ? fs.createWriteStream(args.log, { flags: 'a' }) : null;
 const pending = new Map();
@@ -162,10 +175,12 @@ try {
   if (args.effort) params.config = { model_reasoning_effort: args.effort };
   let threadId = args.thread;
   if (threadId) {
+    recordThread(threadId);
     await request('thread/resume', { ...params, threadId, excludeTurns: true });
   } else {
     const started = await request('thread/start', { ...params, threadSource: 'user' });
     threadId = started.thread.id;
+    recordThread(threadId);
     if (args.name) await request('thread/name/set', { threadId, name: args.name });
   }
   process.stderr.write(`[driver] thread ${threadId}\n`);

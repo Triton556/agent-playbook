@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// Legacy single-turn foreground variant; no --detach or wait interface.
+// Detached runs use ../../agent-sessions/adapters/codex.mjs and wait.mjs (contract v2).
 // Run one turn in a Codex thread that is visible in the Codex app.
 //
 //   node codex-chat.mjs --cwd <dir> --name "<title>" [--prompt brief.md] [--out final.md]
