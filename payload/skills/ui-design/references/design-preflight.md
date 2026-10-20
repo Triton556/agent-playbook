@@ -2,7 +2,7 @@
 
 For a new flow, substantial redesign or screen series, verify the design basis before full implementation. The transfer from voxel work is a brief, consistent representations, intent verification and comparison with the result. UI representations are linked by actions, data and window adaptation; the scenario determines their number.
 
-Use the existing project plan/design document and mockup links. A separate brief file, JSON schema, Figma or image generation is not mandatory. For a clear local edit, a record of the affected property, states and check suffices. Reuse an unchanged accepted basis; a new flow, changed action meaning, visual system or unverified window size requires a targeted addition.
+Use existing project design documents and mockup links. Record relationships: see [task-state, Long-task state and completeness](../../dev-flow/references/task-state.md#long-task-state-and-completeness). A separate JSON schema, Figma or image generation is not mandatory. For a small edit record its property/states/check; use the reuse conditions in task brief and acceptance, section 7. A new flow, action meaning, visual system or unverified size needs a targeted addition.
 
 ## 1. Record the scenario brief
 
@@ -28,7 +28,7 @@ For a new landing page or research dashboard, apply [accepted UI lessons](accept
 
 Identify a verification point as **screen/route + state + data + window size**. Keep a compact transition map/table in the existing plan: where the user came from, what they did, what changed, how to return and what remained. Cover the main uninterrupted path and risk-relevant failure/return. Add loading, empty, error, success, focus and other states according to the actual scenario.
 
-Check consistency of the same object, selection, units, filters and result across representations. Related states share components and semantic roles. For each needed size, state what wraps, collapses or remains available. Representative combinations and risky boundaries suffice; exhaustive state-by-size coverage is needed only for corresponding risk. A desktop scenario does not automatically get a mobile version.
+Related states share components and semantic roles. Input/filter retention: see ui-reference, state-preservation; coupled results: see causal-state-interaction, One model, several views. Scope supported devices, themes and states explicitly in the brief. For each supported size define wrapping/collapse/availability. Representative combinations and risky boundaries suffice; exhaustive combinations require corresponding risk. A desktop scenario does not automatically get a mobile version.
 
 **Done:** the map supports a path from entry to result/recovery; important states/sizes remain in verification and data/behavior contradictions are resolved.
 
@@ -38,7 +38,7 @@ Choose the cheapest medium that can test the disputed property: sketch/wireframe
 
 Verify the styled fragment with representative content: actual label lengths, units/dates, required chart geometry and important illustration at target size. Replacing these with neutral placeholders leaves their readability/recognition unverified.
 
-First record first reading under the [human-perspective protocol](../../dev-flow/references/human-perspective-review.md), then assess the basis:
+Observation order: see [human-perspective-review, Inspection sequence](../../dev-flow/references/human-perspective-review.md#inspection-sequence). Then assess the basis:
 
 | Criterion | Observable evidence |
 | --- | --- |
@@ -47,7 +47,7 @@ First record first reading under the [human-perspective protocol](../../dev-flow
 | Style and context | Accepted features, content and density suit the product and target window; reference techniques help the task |
 | Clarity and accessibility | Hierarchy/labels explain the action without author commentary; material keyboard/focus and responsive decisions are planned |
 
-Defect → cause hypothesis → basis change → repeat the affected scenario. When a shared decision changes, update related states/sizes. Record the current basis version, inspected representations, observations and limitations. Presentation and waiting follow the brief's selected participation mode. In autonomous mode, ordinary self-checks require no new approval; a material unagreed choice needs the user's decision.
+Repairs follow WORKFLOW, step 6. In addition, a shared design decision updates related states/sizes. Record current basis version and inspected representations; participation: see task brief and acceptance, section 5.
 
 **Advance to full implementation:** critical mockup contradictions are resolved, the main path and needed edge cases are considered, and the design basis is saved. List properties verifiable only in working UI for later checks. A design-only request ends here; do not claim readiness of a working interface.
 
@@ -55,13 +55,13 @@ Defect → cause hypothesis → basis change → repeat the affected scenario. W
 
 Pass the brief/plan, accepted mockup version, state map and preserved decisions to [ui-review](../../ui-review/SKILL.md). Compare the actual render with the basis at comparable points: identical route, state, data and size/zoom. Check hierarchy, components/tokens, density, content and main-action accessibility; assess responsive changes under the accepted adaptation rule. Automated overlays/diffs can help, but pixel equality is not a universal criterion.
 
-Record **original design quality**, **implementation fidelity to the basis** and **actual scenario behavior** separately. Faithfully copying a poor mockup does not make UI ready. Reuse the main uninterrupted scenario, applicable failure/recovery and preservation check from the same ui-review pass; no separate rerun is needed just for mockup comparison. [visual-quality](../../ui-review/references/visual-quality.md) owns actual render/action sequence.
+Record **original design quality**, **implementation fidelity to the basis** and **actual scenario behavior** separately. Faithfully copying a poor mockup does not make UI ready. Reuse: see [task-brief-and-acceptance, 7. Execution, verification and completion](../../dev-flow/references/task-brief-and-acceptance.md#7-execution-verification-and-completion). [visual-quality](../../ui-review/references/visual-quality.md) owns the actual render/action sequence.
 
-Classify a discrepancy as a transfer defect, justified adaptation or basis problem. Preserve the original version/reason for change; update the basis for a new decision and recheck affected parts. Relevant evidence gets a new version after changes; reuse unchanged evidence only under established independence. For a series/recurring defect, use existing quality-cycle/ledger, not a new status system.
+Classify discrepancies as transfer defects, justified adaptations or basis problems. Basis decisions update the existing plan. Evidence versions: see [quality-ledger, Schema version 1](../../dev-flow/references/quality-ledger.md#schema-version-1). Repairs: see [WORKFLOW, Work route](../../../workflow/WORKFLOW.md#work-route). Series: see quality-cycle.
 
 When auditing existing UI without a mockup, compare current requirements, components and source screens; explicitly note the missing verified design basis. A retrospective description does not prove pre-implementation preflight. Verify current UI while leaving comparison with an absent mockup unverified.
 
-**Done:** material discrepancies are explained or fixed; the current version's scenario and preservation are checked. Distinguish technical results, agent inspection and human acceptance; unavailable checks remain unverified.
+**Done:** discrepancies are explained/fixed and current scenario/preservation checks are complete. Assessment grades: see [human-perspective-review, Readiness and transfer](../../dev-flow/references/human-perspective-review.md#readiness-and-transfer).
 
 ## Proportional application example
 

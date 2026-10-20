@@ -19,7 +19,7 @@ Variation order: primary proportion → secondary module selection → connected
 | Prop | shell, characteristic opening, braces/accent | cavity remains open where intended; thin detail survives required view |
 | Road/terrain | connector masks, elevation, edge profile | adjoining edges match; paths connect; decorations leave passage clear |
 
-Choose a connected-component expectation per asset. A single creature often needs one main connected body, but separate wheels, companions, floating effects or scene modules can be intentional. Treat component counts as inspection evidence, not a universal deletion command.
+Connected-component expectations: see [built-form, Function, cavities and localized wear](built-form.md#function-cavities-and-localized-wear). In addition, the generator exposes expected intentional parts per asset family.
 
 ## Demonstrated transfer
 

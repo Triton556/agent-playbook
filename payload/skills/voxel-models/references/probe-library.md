@@ -15,18 +15,18 @@ Use the relevant recipe as editable example code, not as a mandatory art style. 
 
 ## Adaptation decisions
 
-- Set physical size and voxel pitch first when producing a coherent kit. The research previews auto-fit each object and are not a common-scale comparison. Native SIZE and occupied cells describe the design grid, not meters.
+Scale choices: see [resolution-lod, Keep four quantities separate](resolution-lod.md#keep-four-quantities-separate). These research previews auto-fit each object.
 - Do not enlarge a coarse array by nearest-neighbor replication and call it new detail. Reconstruct wheel profile, facial parts, frames, branch structure and thickness at the intended pitch. Three initial detailed probes were rebuilt this way after the user's resolution feedback.
-- Keep a common part anchor while changing dimensions. Check the order of additive and subtractive operations: hollowing a bucket after drawing its rope accidentally removed the support; putting the rope back after the cavity operation fixed the actual geometry.
-- Thin oblique roofs and membranes need enough cell overlap to preserve intended six-neighbor connectivity. A continuous-looking render can hide disconnected diagonal strips. The probes were corrected after component inspection; a one-component result still does not prove physical soundness or animation readiness.
+Part anchors: see [mixed-grids, Mixed local grids in a metric world](mixed-grids.md#mixed-local-grids-in-a-metric-world). In addition, operation order matters: hollowing a bucket after adding the rope removed its support; adding the rope after subtraction repaired it.
+Connectivity expectations: see [built-form, Function, cavities and localized wear](built-form.md#function-cavities-and-localized-wear). In addition, these thin oblique roofs/membranes need overlap for intended six-neighbor connectivity; component inspection revealed disconnected diagonal strips.
 - Derive attached detail from the underlying surface. Dragon spines originally used a fixed height and floated above the tapering tail; sampling the local column's top before attaching each spine corrected it.
 - Keep the meaning of the seed honest. A deterministic fixed preset is reproducible without exposing variation. Fir, oak and bookshelf use seed variation; other presets require explicit recipe changes or new semantic parameters. Compact examples generated with different seeds can collide in geometry.
 
 ## Actual verification and limits
 
-The research builder generated forty unique hashes, five per category; checked deterministic generation, coordinate bounds and VOX read/write cell equality; produced two opposing diagnostic views and inspected the eight category sheets. Exports use the separately checked opaque palette mesher. These checks establish inspectable prototypes. External editor import, UV/texturing, rigging, collisions, LOD transitions and GPU performance were not validated.
+The research builder generated forty unique hashes, five per category; checked determinism, bounds and cell roundtrip; inspected eight category sheets with two opposing views. Exports use the checked opaque palette mesher. External editor import, UV/texturing, rigging, collisions and LOD transitions were not validated. Performance claims: see [runtime-accessibility, Budget the complete result](../../visual-scenes/references/runtime-accessibility.md#budget-the-complete-result).
 
-For game production, split moving parts and preserve pivots, choose the coherent physical scale, author collision proxies, then measure the actual rendering target. A single connected static sculpture is not automatically a correct riggable character or vehicle.
+Game articulation: see [objects, People and creatures](objects.md#people-and-creatures). Physical scale: see [resolution-lod, Keep four quantities separate](resolution-lod.md#keep-four-quantities-separate). Author collision proxies as required. Target runtime evidence: see [runtime-accessibility, Budget the complete result](../../visual-scenes/references/runtime-accessibility.md#budget-the-complete-result).
 
 
 Gen1 passed file checks but received later feedback about anatomy, overly regular forms and unsupported water. For new work needing those improvements, use [Gen2](gen2.md) and the relevant anatomy/organic/built method. Keeping these examples supports honest version comparison, not a claim that Gen1 is the current quality target.

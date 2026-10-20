@@ -15,14 +15,14 @@ Three fresh master probes were constructed after feedback: house54×46×51, van3
 
 ## Derive lower-resolution output deliberately
 
-Keep the master as authoritative data; cache derived grids/meshes separately with source hash, scale, voxel pitch, bounds/origin, palette strategy and reason. A2×coarser grid means2×cell pitch at the same world size, not a half-sized object. Preserve module anchors and moving-part pivots through the transform.
+Keep the master as authoritative data; cache derived grids/meshes separately with source hash, scale, voxel pitch, bounds/origin, palette strategy and reason. A2×coarser grid means2×cell pitch at the same world size, not a half-sized object. Assembly transforms: see [mixed-grids, Mixed local grids in a metric world](mixed-grids.md#mixed-local-grids-in-a-metric-world). Pivots: see [objects, People and creatures](objects.md#people-and-creatures).
 
 Block aggregation is only a baseline. “Any occupied child” expands contours and closes gaps; majority occupancy erases thin structures. Majority colors can erase eyes, lamps or stripes. For important features use semantic protection, a dedicated LOD shape or retain the finer level. Inspect silhouette, openings, material regions and the actual required camera.
 
 For perspective projection, a small feature's pixel extent is approximately `worldExtent × viewportHeight / (2 × distance × tan(verticalFov/2))`; for orthographic projection it is `worldExtent × viewportHeight / visibleWorldHeight`. Use stated camera units and the model's projected error, not an unexplained distance constant. Select a coarser level only when its error is acceptable for the required view. Use hysteresis if runtime switching would otherwise flicker.
 
-Reducing voxel count or quad count does not prove an FPS gain. Compare actual frame/load cost and visual acceptance in the target renderer when performance is the reason. This research did not implement or benchmark runtime LOD switching.
+Runtime measurement: see [runtime-accessibility, Budget the complete result](../../visual-scenes/references/runtime-accessibility.md#budget-the-complete-result). This research did not implement or benchmark runtime LOD switching.
 
 ## Mixed local grids
 
-For per-asset densities, distinguish the metric frame, local grid, instance transform and mechanics/proxy resolution; use [Mixed local grids](mixed-grids.md). p/2p/4p is only a proposed experiment. Existing models need no automatic resampling.
+Per-asset density/mechanics details: see [Mixed local grids](mixed-grids.md).

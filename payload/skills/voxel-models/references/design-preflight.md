@@ -10,7 +10,7 @@ Use the user's brief, relevant KB decisions, inspected references and accepted l
 
 Record objective, intended stylization and rejected tendencies, functional front, action/pose, materials/palette roles, world width/depth/height, origin/ground, native master voxel pitch, target camera/display and intended use. For an existing set, load its current kit specification and accepted style/scale exemplars. Record final integration pitch separately from the detailed master: independent masters can be finer; resampling later must recheck eyes, contacts and clearances. Do not stretch an asset merely to match equal-height thumbnails.
 
-**Reference trigger:** a critical feature has no inspected basis or explicit permissible design choice; sources contradict; a shared module conflicts with the target class; the required feature is not assessable in available views; or a repeated defect has no reproduced cause. Resolve the affected uncertainty through source inspection, targeted references or a bounded prototype. Questions to the user concern unresolved material choices/private references, not ordinary continuation. A critical unknown blocks its dependent detailed construction, while independent preparation continues.
+Critical form, mechanics and kit uncertainties: see [reference-grounding, Observable triggers](../../dev-flow/references/reference-grounding.md#observable-triggers).
 
 **Done:** critical features have a basis and observable check; dimensions/style/pose/context are explicit; existing-kit constraints are loaded or the work is explicitly standalone. Missing important constraints remain unknown, not guessed facts.
 
@@ -20,7 +20,7 @@ Produce front, back, left, right, top and bottom from the **same object, pose an
 
 Views can be original vector sketches, generated concept imagery or projections of a lightweight analytic/block layout. A block layout is a design aid, before detailed occupied voxel geometry. Use imagegen for AI bitmap concepts when appropriate. A request for six image panels does not itself guarantee consistent geometry; inspect and reconcile the outputs. Do not use six recoloured copies of one angle. Deliberate symmetry is declared, not used to skip an uninspected side.
 
-For image generation, provide the same passport and accepted visual exemplars in every revision. Ask for one fixed identity/pose, true orthographic views, preserved component counts and positions, and the selected style. Check whether the returned views satisfy this; a written prompt is not a pass. Retain failing sheets with their revision.
+For image generation, provide the same passport/exemplars in every revision: one identity/pose, orthographic views, component counts/positions and selected style. Inspect whether returned views satisfy them. Failed sheet history: see [quality-ledger, Schema version 1](../../dev-flow/references/quality-ledger.md#schema-version-1).
 
 Multi-view consistency is a technical concern in [MVDream](https://arxiv.org/abs/2308.16512); that research is supporting context, not a statement that our ordinary image tool implements its method. Even consistent silhouettes do not uniquely determine hidden volume or prove valid 3D topology.
 
@@ -39,7 +39,7 @@ Inspect the actual sheet and relevant closeups at intended review size. Write se
 | Readability | Identify the object/action and key feature in the intended view without relying on the title; zoom when the overview cannot decide |
 | Usability | Confirm the intended use and, for a viewer, the inspection scenario and legible controls. State the relevant static use when the artifact has no UI |
 
-Record defect -> cause hypothesis -> changed passport/sheet -> recheck. If a view, pose, dimension or style choice changes, update the other affected views and invalidate the previous design review. Finish when these criteria pass for the current plan. An unchanged failed loop needs a new cause/reference, not another blind image call. Routine repairs follow the chosen participation mode: show the design at an agreed human checkpoint and wait before dependent construction; autonomous mode uses author self-review. This stage adds no new approval point.
+Repairs follow WORKFLOW, step 6. In addition, a view/pose/dimension/style change updates other affected design views under [design-passport, Review schema1](design-passport.md#review-schema1). Record current observations before advancing. Participation: see task brief and acceptance, section 5; this stage adds no approval gate.
 
 ## 4. Bind readiness, then voxelize
 
@@ -53,7 +53,7 @@ Exit0 means the declared geometric/kit constraints and all required current desi
 
 Voxel construction uses the accepted passport revision, landmarks, palette roles, native pitch and planned sockets. Preserve the accepted 2D design. Render the resulting voxels in matching views and compare their silhouette/scale/features against the design, then run the existing technical/semantic/style/context/readability/use checks. A passing concept does not automatically approve its 3D implementation. Record justified design changes as a new revision and recheck the affected plan.
 
-The [reference triggers](../../dev-flow/references/reference-grounding.md) and [shared perception protocol](../../dev-flow/references/human-perspective-review.md) are common authorities. This branch specifies the six-view representation and kit constraints. Its review follows the participation mode in the task brief; human feedback is recorded only when actually received. Retain stylization and successful exceptions rather than increasing realism by default.
+Grounding: see [reference-grounding, Observable triggers](../../dev-flow/references/reference-grounding.md#observable-triggers). Perception: see [human-perspective-review, Inspection sequence](../../dev-flow/references/human-perspective-review.md#inspection-sequence). This branch owns six-view representation and kit constraints; participation follows task brief and acceptance, section 5.
 
 ## Material contour and mixed-grid scope
 

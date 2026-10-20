@@ -2,10 +2,10 @@
 
 Clarification recorded in the source workflow on 15 October 2026. Choose the relevant scale contract before construction; this note does not require resampling existing models.
 
-- Declare the metric world frame and physical dimensions first. A model's integer grid, native voxel pitch, instance transform, and gameplay/mechanics grid are separate quantities.
-- A coherent scene can use deliberate per-asset pitches. Use a common pitch where a specific modular seam, voxel-to-voxel operation or editable volume requires it. Keep the existing shared-kit constraints within their declared scope.
+Four scale quantities: see [resolution-lod, Keep four quantities separate](resolution-lod.md#keep-four-quantities-separate). In addition to that scale contract, mixed assets declare an instance transform and separate mechanics/proxy grid.
+- In addition to resolution-lod, Keep four quantities separate, a specific modular seam or cross-object voxel operation declares its required common pitch.
 - p/2p/4p is a proposed comparison, not a mandatory ratio or chosen physical pitch. Independent props need not have mathematically commensurate cells.
-- Preserve world dimensions, origin, orientation, normalization offset, support plane, sockets and pivots. Equal-height thumbnails and equal cell counts cannot prove common scale.
+- Preserve world dimensions, origin, orientation, normalization offset, support plane and sockets. Articulated pivots: see [objects, People and creatures](objects.md#people-and-creatures).
 - Convert mixed-model contacts, overlap and clearance into a declared metric frame or explicit shared proxy before comparison. The current semantic_contract.py expects integer cells in one declared source space; direct comparison of different local indices is invalid.
 - Collision/navigation/destruction can use their own representations and precision. Express cross-object operations in world units with explicit local conversion, rounding and minimum fragments. Cell mass at fixed material density scales with pitch cubed.
 - Design passport schema1 / design_preflight.py checks the declared single-integration kit. Its successful shared/independent-master check does not validate arbitrary mixed runtime integration. Keep its current constraints intact until a separate mixed contract is implemented.

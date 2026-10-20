@@ -1,26 +1,32 @@
-# Instruction roles and one workflow pilot
+# Instruction maintenance and ownership
 
-Each procedure has one owner. A specialist adds subject-specific criteria instead of another interview, plan, acceptance loop or permission policy.
+Instruction placement and creator routing: see [agent-instructions, Pointers and authority](../payload/skills/agent-instructions/SKILL.md#pointers-and-authority).
+Workflow experiments: see [workflow-pilot](../payload/skills/dev-flow/references/workflow-pilot.md).
+The client-native creator and its validator are external capabilities; the former compatibility creator is excluded.
+UI comparison: see [UI preflight, section 4](../payload/skills/ui-design/references/design-preflight.md#4-compare-the-working-ui-with-the-basis).
+Voxel design: see [voxel preflight](../payload/skills/voxel-models/references/design-preflight.md).
 
-| Operation | Owner |
-| --- | --- |
-| Scope and action permissions | Actual owner instructions and task authorization |
-| Task progression | WORKFLOW.md |
-| Interview, participation, saved brief and criteria | task-brief-and-acceptance.md |
-| Direct observation, reference comparison and preservation | human-perspective-review.md |
-| Series/recurring-defect specifics | quality-cycle.md adapter |
-| Progress / detailed evidence when needed | task-state.md / quality-ledger.md, with existing schemas |
-| Agent-document prose | agent-instructions |
-| Creating/updating a skill | Client-native skill-creator, when actually available |
-| Comparing a workflow change | Single workflow-pilot.md procedure |
-| Reusable artifact template / installing a ready skill | Client-native specialist, when available |
+## Ownership map
 
-The initial interview separately chooses human participation (each meaningful iteration / first coherent sketch / autonomous) and reviewer participation (none / one final pass / agreed stages and round limit). Reuse an existing choice. Autonomous execution does not grant delegation; a repair does not create another reviewer round.
+The rows below name policy locations, not additional procedures. The three shared orchestration references are intentional byte-identical mirrors; their agent-sessions path is the logical owner.
 
-Use the existing brief and acceptance program. One current observation can support several criteria when its version, conditions and modality are sufficient. Refresh affected checks after changes; the existing machine validators retain their actual stale-hash and dependency rules.
+| Topic | Owning file and section | Characteristic phrase |
+| --- | --- | --- |
+| Model choice | [payload/skills/agent-sessions/SKILL.md#fixed-rules](../payload/skills/agent-sessions/SKILL.md#fixed-rules) | `The user chooses the model.` |
+| Effort selection and changes | [payload/skills/agent-sessions/SKILL.md#3-choose-effort-and-access](../payload/skills/agent-sessions/SKILL.md#3-choose-effort-and-access) | `mechanical work across many files against a clear spec` |
+| Session execution mechanism | [payload/skills/agent-sessions/SKILL.md#fixed-rules](../payload/skills/agent-sessions/SKILL.md#fixed-rules) | `Separate sessions, never built-in subagents.` |
+| Worker-channel language | [payload/skills/agent-sessions/references/brief-writing.md#language](../payload/skills/agent-sessions/references/brief-writing.md#language) | `Write the brief in English` |
+| Default output language | [payload/AGENTS.md#goal-communication-and-boundaries](../payload/AGENTS.md#goal-communication-and-boundaries) | `Communicate with the user in Russian` |
+| Launch approval | [payload/skills/agent-sessions/SKILL.md#5-get-approval-with-a-summary](../payload/skills/agent-sessions/SKILL.md#5-get-approval-with-a-summary) | `This is the only session-launch approval gate` |
+| Git action authorization | [payload/AGENTS.md#goal-communication-and-boundaries](../payload/AGENTS.md#goal-communication-and-boundaries) | `Commit, push and publication require` |
+| Worker artifact publication | [payload/skills/agent-sessions/SKILL.md#worker-artifacts](../payload/skills/agent-sessions/SKILL.md#worker-artifacts) | `Briefs and worker reports are never committed or published` |
+| Capture identity and persistence | [payload/skills/kb-save/SKILL.md#knowledge-capture](../payload/skills/kb-save/SKILL.md#knowledge-capture) | `give a new stage a new batch_key` |
+| Worker memory assignment | [payload/skills/kb-save/SKILL.md#delegated-work](../payload/skills/kb-save/SKILL.md#delegated-work) | `Assign one writer per knowledge set` |
+| Memory transport | [payload/skills/kb-sync/SKILL.md#knowledge-transport](../payload/skills/kb-sync/SKILL.md#knowledge-transport) | `Do not bypass a conflict with reset` |
+| Semantic curation | [payload/skills/kb-curate/SKILL.md#knowledge-curation](../payload/skills/kb-curate/SKILL.md#knowledge-curation) | `Move INBOX originals to ARCHIVE with identical IDs` |
+| Participation and reviewer selection | [payload/skills/dev-flow/references/task-brief-and-acceptance.md#5-two-decisions-about-how-to-work](../payload/skills/dev-flow/references/task-brief-and-acceptance.md#5-two-decisions-about-how-to-work) | `**Separate reviewer:** none / one final pass` |
+| Reviewer rounds and independence | [payload/workflow/independent-review.md#after-the-report](../payload/workflow/independent-review.md#after-the-report) | `An independent reviewer is not continued as a normal worker session` |
+| Board acceptance | [payload/skills/jam-board/SKILL.md#brain-procedure](../payload/skills/jam-board/SKILL.md#brain-procedure) | `Board acceptance is by a human or an appointed brain` |
+| Decision consent | [payload/skills/dev-flow/references/task-brief-and-acceptance.md#3-ask-only-what-changes-the-work](../payload/skills/dev-flow/references/task-brief-and-acceptance.md#3-ask-only-what-changes-the-work) | `silence is not an answer` |
 
-UX Pro Max is a targeted search source, and Taste supplies optional recipes rather than a competing design system. New voxel design still requires its preflight; a local repair can reuse an unchanged accepted basis, while changed schema1 inputs require a refreshed digest/review.
-
-A pilot starts only when requested and authorized. Choose a bounded hypothesis, representative cases and meaningful expected failures; distinguish saved-output analysis, deterministic helper checks and actual agent runs. Inspect actual artifacts, count false alarms and cost where measured, and make only supported changes. A small pilot does not prove general reliability or taste.
-
-Use the native creator's validator when available. The former compatibility creator and its validator are excluded from the public package. Hash/link/metadata checks do not prove semantic behavior, actual human acceptance or token savings. No model benchmark was run for this package refresh.
+Brain setup adds configuration only: [you-are-brain](../payload/skills/you-are-brain/SKILL.md) defers policy to agent-sessions.

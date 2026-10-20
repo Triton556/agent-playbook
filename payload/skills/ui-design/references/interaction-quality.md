@@ -1,6 +1,6 @@
 # Interaction: expectation, response and recovery
 
-Open while designing/checking a main action, states, form, table, filters or complex working UI. Load only the applicable branch. Accepted design and target device outrank recommendations; desktop work does not become mobile by default.
+Open while designing/checking a main action, states, form, table, filters or complex working UI. Coverage: see UI design preflight, section 2; loading policy: see WORKFLOW, step 2.
 
 ## Action and data contract
 
@@ -8,20 +8,20 @@ For a material action, record in the existing plan: **action → user expectatio
 
 | State | What must be clear |
 | --- | --- |
-| Waiting | Action was accepted, what is happening, how to continue/cancel when supported; percentages/deadlines have grounds |
-| Actual zero | What was measured, period/sample and meaning of zero |
-| No measurement / unknown | Why the value is unknown; never substitute zero. The contract defines NULL, not one universal interpretation |
+| Waiting | Contextual response: see [interaction-quality, Graphics, motion and waiting](interaction-quality.md#graphics-motion-and-waiting). |
+| Actual zero | Data encoding: see [data-spatial-metaphors, Live, snapshot, approximate, absent](../../visual-scenes/references/data-spatial-metaphors.md#live-snapshot-approximate-absent). |
+| No measurement / unknown | See data-spatial-metaphors, Live, snapshot, approximate, absent |
 | No matches | Applied conditions and a way to relax/remove filters are visible |
-| Error / stale result | Do not present it as a successful empty response; clear cause/next step, preserved work and freshness label |
-| Success | Result is distinguishable; extra notification only when useful for noticing it/recovering context |
+| Error / stale result | See causal-state-interaction, One model, several views; recovery follows ui-reference rule IDs error-recovery and state-preservation |
+| Success | See ui-reference, Quick Reference, press-feedback |
 
-Align units, denominators, rounding, selected scenario, counts and conclusions. An identifier needs no denominator; a proportion does. Filtering updates dependent charts/labels/conclusions, and a late response must not replace a newer one. Persisted settings have a clear scope and way to restore defaults.
+Align units, denominators and rounding; an identifier needs no denominator, a proportion does. Result propagation: see [causal-state-interaction, One model, several views](../../visual-scenes/references/causal-state-interaction.md#one-model-several-views). Persisted settings have a clear scope and reset path.
 
 ## Input and errors
 
-- Show labels, required status and rules before entry; placeholder is not the only instruction. Remove unjustified fields while preserving sufficient data. The task determines field count and wizard steps.
-- Preserve input on error. Validation respects interaction and input completeness; tabbing through an untouched form should not create a queue of red errors. Password assistance while typing may be useful.
-- An error names the problem and correction, accessible near the action/field; a linked summary suits long forms. Do not clear successful fields. Normalize format only while preserving meaning; server contracts remain mandatory.
+- Labels and icon semantics: see [ui-reference, Quick Reference](../../ui-reference/references/quick-reference.md#quick-reference), input-labels, required-indicators and icon-context. Remove unjustified fields while preserving sufficient data; task context determines field count and wizard steps.
+- Input retention: see ui-reference, state-preservation. In addition to that rule, validation respects input completeness: tabbing untouched fields should not create a queue of errors; password assistance while typing may help.
+- Error presentation: see ui-reference, error-placement, error-recovery, error-summary and focus-management. Normalize formatting only while preserving meaning; server contracts remain mandatory.
 - Clearing data, canceling, resetting filters and restoring a default view are different operations. Loss cost determines undo/confirmation; do not require confirmation for every harmless action.
 
 ## Tables, filters and dense desktop UI
@@ -36,12 +36,12 @@ Align units, denominators, rounding, selected scenario, counts and conclusions. 
 
 Length/position support precise comparison; choose charts by question. Color can encode another quantity, but values/labels/another channel also convey the content. An exploratory dashboard is valid when overview, comparison and detail have clear transitions.
 
-Response matches the operation. 0.1/1/10 seconds are heuristics, not one SLA for every action. When percentage is unknown, show stages/measured volume or an indeterminate indicator. Skeletons match future structure; they are not mandatory after a universal threshold. Optimistic changes suit only controlled reversibility/errors. Sound/micro-motion should be restrained and disableable; honor reduced motion.
+Response matches the operation. 0.1/1/10 seconds are heuristics, not one SLA for every action. When percentage is unknown, show stages/measured volume or an indeterminate indicator. Skeletons match future structure; they are not mandatory after a universal threshold. In addition to ui-reference, Quick Reference, press-feedback: expose supported continuation/cancellation and ground any displayed deadline. Optimistic changes suit only controlled reversibility/errors. Sound/micro-motion should be restrained and disableable; reduced motion: see ui-reference, reduced-motion.
 
 ## How to verify
 
-In the actual target window, perform the main scenario and risk-relevant failure/recovery. Check available keyboard paths, focus, preserved inputs/conditions and data consistency. For asynchronous UI, check slow/failed responses and changing conditions. A still image does not measure latency or establish the user's emotion.
+Perform the main scenario and risk-relevant failure/recovery at the target window. Shared keyboard/focus/input rules: see ui-reference, Quick Reference. Async revision checks: see causal-state-interaction, One model, several views. A still image does not measure latency or establish user emotion.
 
-Acceptance: scenario completes, result is visible/correct, material errors are recoverable within stated bounds, and current evidence covers the latest changes. Unperformed checks remain unverified.
+Acceptance and evidence grades: see task brief and acceptance, section 7, and human-perspective-review, Readiness and transfer.
 
-Sources: [NN/g response times](https://www.nngroup.com/articles/response-times-3-important-limits/), [long waits](https://www.nngroup.com/articles/designing-for-waits-and-interruptions/), [forms](https://www.nngroup.com/articles/errors-forms-design-guidelines/), [three-click rule](https://www.nngroup.com/articles/3-click-rule/); W3C [keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html), [status messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html), [use of color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html). Applicability and qualifications remain in ui-perception-integration.md rather than a universal beauty score.
+Sources: [NN/g response times](https://www.nngroup.com/articles/response-times-3-important-limits/), [long waits](https://www.nngroup.com/articles/designing-for-waits-and-interruptions/), [forms](https://www.nngroup.com/articles/errors-forms-design-guidelines/), [three-click rule](https://www.nngroup.com/articles/3-click-rule/); W3C [keyboard](https://www.w3.org/WAI/WCAG22/Understanding/keyboard.html), [status messages](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html), [use of color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html). Applicability: see [UI design preflight, sections 1–2](design-preflight.md#1-record-the-scenario-brief).

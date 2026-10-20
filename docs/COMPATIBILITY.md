@@ -11,6 +11,8 @@ Layout support and executed client support are different claims. The installer r
 
 Primary location references: [Codex skills](https://learn.chatgpt.com/docs/build-skills), [Claude Code skills](https://code.claude.com/docs/en/skills), [DeepSeek local skill discovery](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/skills.md). Checked15October2026. Client versions can change; inspect the installed client before activation.
 
+Claim grades and unavailable modalities: see [human-perspective-review, Readiness and transfer](../payload/skills/dev-flow/references/human-perspective-review.md#readiness-and-transfer).
+
 ## Required operations
 
 | Operation | Required capability | If missing |
@@ -21,7 +23,7 @@ Primary location references: [Codex skills](https://learn.chatgpt.com/docs/build
 | Inspect image/model/document | Actual image or rendered artifact inspection | Visual acceptance remains unverified |
 | Inspect UI/animation | Browser/computer interaction and actual temporal observation | Static/source checks do not satisfy behavior or motion |
 | Generate an AI bitmap concept | Authorized image generation tool when that method is chosen | Use another permitted design representation where the original branch allows it; otherwise report missing modality |
-| Independent acceptance | New agent/session without author history and actual owner authorization | Do not call self-review independent |
+| Independent review | Session provider under agent-sessions; context under independent-review | See human-perspective-review, Readiness and transfer |
 | Knowledge persistence | Own authorized vault or limited MCP writer | No fictitious saved receipt |
 | Private sync/cloud curation | Verified private remote, authorized transport and scheduler if requested | Keep local data; exchange/schedule remains unconfigured/unverified |
 | External laboratory integration | A separately supplied, authorized provider | Personal VM control is excluded from the public package |
@@ -33,7 +35,7 @@ The package does not redistribute proprietary native plugins or credentials. Nat
 
 ## Fresh reviewer adapters
 
-Only when explicitly selected for the current task: Codex collaboration uses a new agent with `fork_turns="none"`. Other clients must map this to a genuinely new context/session and the brief from independent-review.md. A reused thread carrying author explanations is not equivalent. Confirm model/effort and tool scope when relevant; no temperature or model setting is silently added.
+Reviewer execution: see [agent-sessions, Fixed rules](../payload/skills/agent-sessions/SKILL.md#fixed-rules); scope, staging and rounds: see [independent-review](../payload/workflow/independent-review.md). Selection: see task brief and acceptance, section 5.
 
 ## Context parity
 

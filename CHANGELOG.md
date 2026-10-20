@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.4.0
+
+- Resolved all 61 audit findings through single policy owners and caller pointers, including reviewer execution/rounds, explicit decision consent, one launch gate, effort precedence, output language, artifact publication, UI and voxel references. Added an ownership map and regression checks; the three shared orchestration references remain byte-identical.
+- Added user-supplied you-are-brain with private brain profiles and setup interview; orchestration uses agent-sessions. Refreshed the two session skills from the supplied sources while retaining public Codex hooks wording/runtime identity.
+- Added the new skill to full, engineering, instructions and jam-board profiles. The package contains 26 skills and 310 payload files. Linked policy owners remain installation dependencies.
+- Updated inventory, provenance and export hashes; added standalone Codex/Claude installation, policy uniqueness and payload-link coverage. No live workers, model-quality pilot or publication were run.
+- Restored the full interview method in its owner, `dev-flow/references/task-brief-and-acceptance.md`, section 3 "How to run the rounds": restate, collect facts, list open decisions, order them as a tree, the Q/recommended-answer format, round size, and a worked example. The session interview reference points to it.
+- Sessions start with exactly the name from the approval table, in the user's language; status updates also appear in the orchestrator's final message of every turn while any session is not yet accepted. Both came from a live you-are-brain run (Codex sol as brain, Astra and Sol as workers), which otherwise passed end to end.
+- Restored what each brain routing mode means (Rules, Auto, Ask) in `you-are-brain/references/brain-profile.md`, its owner, after deduplication had left it undefined.
+
 ## 1.3.0
 
 - Added `jam-board`: Epic → Story → Task planning and execution through the Jam Board MCP contract, with brain/worker roles, scoped interview rounds, user-selected worker models, complete briefs, readiness, references/assets, reports and review. Existing playbook procedures are linked rather than copied; no other skill content changes.

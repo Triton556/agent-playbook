@@ -8,9 +8,9 @@ Mountain: use offset ridges/peaks, at least one saddle and unequal slopes. Carve
 
 Plateau: preserve a broad top while making its rim nonelliptical, terraces unequal and collapse localized. Use one continuous tilted/warped stratum field across cliff faces. A level top is legitimate; an identical repeated ellipse at three elevations carries artificial regularity.
 
-Island: define headlands, an inlet and a smaller cove with a continuous coast curve. Fill land below that geometry, then derive beach width from boundary distance and slope. Keep water level stable and the inlet/outflow connected. A painted water mask on a complete rectangular tile establishes neither coastline geometry nor depth.
+Island: define headlands, an inlet and a smaller cove with a continuous coast curve. Fill land below that geometry, then derive beach width from boundary distance and slope. Keep water level stable and the inlet/outflow connected. Geometry versus paint: see [built-form, Function, cavities and localized wear](built-form.md#function-cavities-and-localized-wear).
 
-Arch: start with unequal supports and a thick spanning crown; subtract an offset opening, then a limited damage scar. Preserve both support contacts and a bridge-thickness budget. Ground fallen fragments below the relevant scar and label them intentional; do not treat every disconnected fragment as a failure or every connection as physical strength.
+Arch: start with unequal supports and a thick spanning crown; subtract an offset opening, then a limited damage scar. Preserve both support contacts and a bridge-thickness budget. Ground fallen fragments below the relevant scar and label them intentional; connectivity expectations follow [built-form, Function, cavities and localized wear](built-form.md#function-cavities-and-localized-wear).
 
 Waterfall: terrain and upper source channel come first. Track source → lip → fall → basin → outflow as explicit semantic regions. Require upper flow to meet lip flow, the lip to contact its supporting rock, and the fall to meet receiving water. A free fall can have an air gap below an anchored lip. Spray/droplets may be separate decorative regions; primary flow must remain coherent. This is static illustrative construction unless an actual fluid simulation is implemented and tested.
 

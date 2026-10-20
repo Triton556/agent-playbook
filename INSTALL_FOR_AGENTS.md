@@ -27,7 +27,7 @@ python harness.py plan --client codex --target /path/to/project --profile full
 
 Available clients: `codex`, `claude`, `deepseek`, `generic`. Profiles: `full`, `engineering`, `visual`, `voxel`, `memory`, `instructions`. `--skills name1,name2` selects named skills; dependency closure includes every linked sibling. References and helper files stay complete.
 
-`full` activates the complete workflow. `--workflow` also expands the selection to all 24 modules: the global rules route to all of them, so partial activation would leave broken routes. Skills-only installation preserves individual entry points without claiming all global behavior is active.
+`full` activates the complete workflow. `--workflow` also expands the selection to all 26 modules: the global rules route to all of them, so partial activation would leave broken routes. Skills-only installation preserves individual entry points without claiming all global behavior is active.
 
 `agent-sessions-codex` is selected by `full`, `engineering` and `instructions`, or explicitly with `--skills agent-sessions-codex`, for any client including Claude. Read its [integration requirements](docs/INTEGRATIONS.md#agent-sessions-codex-for-orchestrators) before an authorized session launch; installation alone does not start Codex or configure it.
 
@@ -45,7 +45,7 @@ python harness.py install --client codex --target /path/to/project --profile ful
 
 Other supported bindings: `--memory-repo`, `--cloud-memory-root`, `--curation-schedule`. Personal VM control and lab-specific bindings are outside the public package.
 
-The originating user's permissions and schedule receipts are not authorization for another owner. In each actual task, select human participation and separately whether a reviewer is needed, with scope, stages and round limit. Default reviewer policy is `ask`; autonomous execution does not imply consent. The legacy `--reviewer-consent one-per-round --consent-source ...` fields remain for compatibility with explicitly supplied deployment records; they do not create a standing grant for future tasks or override the current task's decision.
+Task participation/reviewer selection: see [task brief and acceptance, section 5](payload/skills/dev-flow/references/task-brief-and-acceptance.md#5-two-decisions-about-how-to-work). Legacy --reviewer-consent one-per-round --consent-source fields retain deployment-record compatibility; current authority remains with AGENTS.
 
 ## 4. Install and verify files
 
@@ -80,11 +80,11 @@ node /authorized/private/vault/SYSTEM/scripts/kb.mjs status
 node /authorized/private/vault/SYSTEM/scripts/kb.mjs search "specific project" --limit 8
 ```
 
-`capture` receives structured JSON on stdin; real source/session/turn identity and idempotent batch identity are required. No new knowledge uses `checkpoint`. Confirm returned receipt and an existing file. Respect a user's “do not save” request.
+Capture/checkpoint procedure: see [kb-save, Knowledge capture](payload/skills/kb-save/SKILL.md#knowledge-capture).
 
 The limited writer lives at `<native-root>/workflow/kb-writer.mjs`. Configure `HARNESS_KB_ROOT` as the authorized fixed vault for that process. It exposes only capture/checkpoint; it does not grant shell, arbitrary paths, deletion or sync. Registering its persistent access in a client requires the owner's actual approval. Use the client's official MCP instructions; no config is silently edited by this installer.
 
-Read the copied capture/curate/cloud-exchange procedures before enabling sync. A private remote must be independently verified. Keep local capture, Git sync, API exchange, PC exchange and scheduled curation separate. Hourly PC sync and daily curation are preserved procedures, but activation and timezone belong to the new deployment. Preserve originals and conflicts; no force push or obligatory fictitious PR.
+Memory transport: see [kb-sync, Knowledge transport](payload/skills/kb-sync/SKILL.md#knowledge-transport). Semantic curation: see [kb-curate, Knowledge curation](payload/skills/kb-curate/SKILL.md#knowledge-curation).
 
 ### UI detector
 
@@ -92,26 +92,26 @@ The configured engine is Impeccable0.1.14, Windows x64. Its official URL and exp
 
 ### Native/client capabilities
 
-Use [Compatibility](docs/COMPATIBILITY.md) to map operations to the client. Native generation, format skills, shell, file access and reviewer context separation must actually exist. Do not replace unavailable visual review with a hash pass or unavailable fresh review with author self-review. Keep useful independent work moving and report the precise dependent blocker.
+Required capabilities: see [Compatibility](docs/COMPATIBILITY.md). Unavailable operations: see [human-perspective-review, Readiness and transfer](payload/skills/dev-flow/references/human-perspective-review.md#readiness-and-transfer).
 
 ## 6. Start a new session and exercise the selected route
 
-Inspect the client's native skill catalog. Confirm paths point into this target, names/descriptions are complete and no unrelated same-name skill is silently substituted. Confirm the whole base block and selected workflow are loaded when full mode is active. Do not concatenate every reference into startup context: preserve original progressive disclosure.
+Inspect the native skill catalog for this target and confirm complete selected names/body loading; client-specific activation: see [Integrations, Codex startup budget and discovery](docs/INTEGRATIONS.md#codex-startup-budget-and-discovery). Instruction loading: see WORKFLOW, step 2.
 
 Run an authorized representative task for the selected route. Use the real user brief and the original acceptance criteria. Examples:
 
 - UI: primary action, visible correct result, invalid input recovery, preserved state, actual intended viewport.
-- Voxel: inspected references/kit, coherent six-view preflight before detailed geometry, native exports and later matching-view inspection.
+- Voxel: use [voxel design preflight](payload/skills/voxel-models/references/design-preflight.md) and its later model comparison.
 - Memory: capture/read-back/idempotent repeat/checkpoint; sync remains disabled until private remote approval/verification.
-- Instructions: another agent can construct a concrete review brief and identify the next permitted step without reading a summary in place of the actual source.
+- Instructions: follow [agent-instructions](payload/skills/agent-instructions/SKILL.md) and verify affected references.
 
-The author runs its relevant checks. If a separate reviewer was explicitly selected, provide the original request, corrections, expected behavior, conditions, version/launch and agreed scope. Initial impressions precede author diagnoses. A repair does not automatically authorize another round; only an agreed next round uses a new fresh reviewer. A workflow experiment follows the single workflow-pilot procedure and is not an installation prerequisite.
+Review selection: see task brief and acceptance, section 5; selected execution: see [independent-review](payload/workflow/independent-review.md). Workflow experiments: see [workflow-pilot](payload/skills/dev-flow/references/workflow-pilot.md).
 
 ## 7. Report the actual installation state
 
-Report selected/requested modules, dependency closure, target/client, file integrity, actual discovery, executed helper/client scenarios, missing capabilities and limitations. Keep these separate from model quality and human acceptance.
+Report selected/requested modules, dependency closure, target/client, integrity, actual discovery, executed helper/client scenarios and missing capabilities. Claim grades: see [human-perspective-review, Readiness and transfer](payload/skills/dev-flow/references/human-perspective-review.md#readiness-and-transfer).
 
-Use these levels: files installed → integrity verified → client discovery verified → route executed → independent acceptance → human feedback. An early level cannot be relabeled as a later one. Same source bytes do not guarantee identical nondeterministic model output.
+Installation evidence levels are interpreted under human-perspective-review, Readiness and transfer; source bytes alone establish no model-output equivalence.
 
 ## Removal
 
@@ -119,7 +119,7 @@ Inspect `remove --dry-run` first. Actual removal deletes only matching owned fil
 
 ## Instruction and output languages
 
-The maintained agent instructions are English. The startup block for full and selected-skills installations explicitly defaults user communication and knowledge-base content to Russian. Honor a user's explicit language request for a particular output. Preserve exact paths, identifiers, schema keys and source quotations. Russian examples, stored knowledge and human-facing Russian documentation are intentional.
+Language policy: see [AGENTS, Goal, communication and boundaries](payload/AGENTS.md#goal-communication-and-boundaries); worker exception: see [brief-writing, Language](payload/skills/agent-sessions/references/brief-writing.md#language).
 
 ## Upgrade from 0.x to 1.0.0
 

@@ -19,15 +19,15 @@ Read the client's own help and documentation. Do not guess flags. You need answe
 
 ## 2. Map the access modes honestly
 
-For each of `read-only`, `workspace-write`, `danger-full-access`, decide which client setting gives it, and write in `--describe` what that setting really enforces. If the client cannot stop file writes, it has no `read-only`. Leave the mode out, and the adapter refuses it with exit code 4. A weaker mode under the stronger name is worse than no mode: the user chooses based on it.
+Apply [contract, Access modes](contract.md#access-modes); document only the client-specific setting mappings in the adapter description.
 
 ## 3. Implement
 
-- Parse the contract's options; reject unknown access modes and missing folders with exit code 4 before starting anything.
+- Parse options and refusal codes under [contract, Run and Exit codes](contract.md#run).
 - Find the executable: an environment variable (`<AGENT>_BIN`), then PATH, then the client's usual install locations.
 - Start the client in `--cwd` with the brief on stdin or in a file. Do not put the brief on the command line, where length limits and quoting break it.
 - Stream events to `--log`, show commands and tool calls as short stderr lines, collect the final answer.
-- Decline every approval request and question. Never auto-approve.
+- Native prompt handling: see [contract, Unattended runs](contract.md#unattended-runs).
 - Print the result JSON as the last stdout line and use the contract's exit codes. A failed start that created no session is exit code 3.
 - If the orchestrator itself may be a session of the same client, check for environment variables that make the child think it is nested, and clear them.
 

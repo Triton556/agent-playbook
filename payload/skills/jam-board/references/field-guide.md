@@ -1,6 +1,6 @@
 # Board field guide
 
-Use this while writing the board, together with [brief-writing](../../agent-sessions/references/brief-writing.md#a-weak-brief-and-a-strong-one) and the [intent/acceptance procedure](../../dev-flow/references/task-brief-and-acceptance.md). The guide maps fields; it does not replace either procedure. Examples below use a fictional title/menu feature. Worker briefs are English, exact human quotations retain their language. Interview summaries and user-facing board labels use the user's language.
+Use this while writing the board, together with [brief-writing](../../agent-sessions/references/brief-writing.md#a-weak-brief-and-a-strong-one) and the [intent/acceptance procedure](../../dev-flow/references/task-brief-and-acceptance.md). The guide maps fields; it does not replace either procedure. Examples below use a fictional title/menu feature. Worker-channel language: see [brief-writing, Language](../../agent-sessions/references/brief-writing.md#language). Output defaults: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
 ## Epic
 
@@ -15,13 +15,13 @@ The database uses snake_case; tool inputs are camelCase and returned entity fiel
 | not_included_md / notIncludedMd | Explicit exclusions and authorization limits | `Без сохранений, нового арта и настоящих настроек; пока только план.` | `Ничего лишнего` |
 | decided_md / decidedMd | Actual answers with sources; distinguish operational notes | `q-scope: 3 кнопки; q-model: явно выбрана model-a. Operational notes: Change cursor: 124.` | `Наверное, model-a; всё обсудили` |
 | open_questions_md / openQuestionsMd | Unresolved decision, dependency, question ID | `q-focus: восстанавливать фокус после Esc? Блокирует JB-13.` | `Уточнить детали` |
-| participation / participation | User's exact selected enum | `first_sketch` with first-sketch checkpoint recorded | Pick `autonomous` to avoid waiting |
-| reviewer / reviewer | User's separate none/final/stages choice; consent limits in decidedMd | `final`; decidedMd records one final read-only pass, scope/model/access approved separately | `final` interpreted as permission to launch |
-| worker_model / workerModel | Explicit user-selected supported model ID; null if not chosen | Exact ID from answered q-model | Your default model or an invented alias |
+| participation / participation | Map task brief and acceptance, section 5 to the enum | first_sketch with its checkpoint | Invent an enum |
+| reviewer / reviewer | Map task brief and acceptance, section 5; persist limits in decidedMd | final with scoped selection record | Treat enum as a launch receipt |
+| worker_model / workerModel | Model setting from agent-sessions, Fixed rules | Exact supported ID from that decision | Invent a model alias |
 | brain_member_id / brain assignment | Verified appointed member; use become_brain/set_brain, not update_epic | `set_brain` with `epicKey` and confirmed `memberHandle` | Set yourself on every epic |
-| status / set_epic_status | draft → active after goal/done-when; Done after included children/checkpoints | `active` after confirmed playback | `done` while a story remains incomplete |
+| status / set_epic_status | draft/active/done under jam-board, Brain procedure | active after resolved choices | done with incomplete stories |
 
-There is no standalone epic notes field. Keep a clearly labeled operational-notes block in `decidedMd`, separate from human decisions. Save a processed event sequence there; do not replace the field with only a cursor. A project-wide cursor includes human project edits and pre-epic answers. Store reviewer stage/round limits here too because the reviewer enum does not encode them.
+There is no epic notes field. Keep operational notes in decidedMd under running-and-checking, Before starting; preserve decisions and store processed sequence/reviewer metadata without treating enums as approval.
 
 ## Story
 
@@ -30,11 +30,11 @@ There is no standalone epic notes field. Keep a clearly labeled operational-note
 | epic_id / epicKey on creation | Existing intended parent | `JB-E1`, verified via get_epic | Create an unrelated parent to bypass a gate |
 | title / title | One visible outcome | `Вход в игру через титульное меню` | `Frontend work` |
 | outcome_md / outcomeMd | User action/result | `Игрок читает название и запускает игру мышью или клавиатурой.` | `Экран готов` |
-| basis_md / basisMd | Named user material/decision/reference | `sketch.png, q-playback, themes/menu.tres` | `Как обсуждали` |
+| basis_md / basisMd | Named user material/decision/reference | `sketch.png, round-1 answers, themes/menu.tres` | `Как обсуждали` |
 | preserve_md / preserveMd | Specific accepted qualities and their check | `Название «Северный свет», порядок 3 кнопок, палитра menu.tres; сравнить с эскизом.` | `Сохранить атмосферу` |
 | scale_md / scaleMd | How much may change | `Одна титульная сцена и её действия; игровой процесс не меняем.` | `Можно улучшить всё` |
 | rejection_risks_md / rejectionRisksMd | Plausible user objections that checks reject | `Обрезка Quit на 720p; потеря фокуса после Esc; замена авторского эскиза.` | `Могут быть баги` |
-| open_decisions_md / openDecisionsMd | Material open choices or explicit none with basis | `Нет: настройки — «Скоро», подтверждено q-playback.` | Blank treated as settled |
+| open_decisions_md / openDecisionsMd | Material open choices or explicit none with basis | `Нет: настройки — «Скоро», подтверждено round-1 answers.` | Blank treated as settled |
 | acceptance_json / acceptance | Array of criteria tied to user result | See row details below | A list of file names |
 | status / set_story_status | draft/active/done/archived with actual gates | `active` after outcome plus mandatory acceptance; `done` after all tasks and criteria | Activate without acceptance |
 
@@ -56,7 +56,7 @@ Use exact paths, strings and numbers. Each requirement needs a distinguishing ch
 | story_id / storyKey on creation | Parent story with acceptance/context | `JB-S1`, read before creating | Task without a story |
 | title / title | One worker session's bounded job | `Титульная сцена и компоновка` | `Build the game` |
 | goal_md / goalMd | For whom and why | `Let the player see the title and choose from 3 menu actions.` | `Implement UI` |
-| context_md / contextMd | Existing behavior, decisions, first reads, dependency, baseline instructions | `Read scenes/game.tscn and menu.tres; q-playback fixes 2 sizes; JB-13 waits for accepted JB-12 and sketch approval.` | `See chat` |
+| context_md / contextMd | Existing behavior, decisions, first reads, dependency, baseline instructions | `Read scenes/game.tscn and menu.tres; round-1 answers fixes 2 sizes; JB-13 waits for accepted JB-12 and sketch approval.` | `See chat` |
 | where_md / whereMd | Repository, folder, branch, exact relevant files | `C:/work/title-game; feature/title-menu; scenes/title.tscn, tests/title_layout.gd.` | `Somewhere in frontend` |
 | changes_json / changes | One object per concrete change | `Title layout` object with exact labels and bounds | `Make it nicer` |
 | tests_json / tests | Array of setup → expected, with baseline and permitted scratch location | `Run layout script at 1280x720 → exit 0, Quit bottom <=720.` | `Test everything` |

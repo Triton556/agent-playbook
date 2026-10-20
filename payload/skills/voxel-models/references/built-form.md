@@ -6,9 +6,9 @@ Choose an intact structural core, functional openings and material rhythm. A doo
 
 Keep bay, plank, masonry or rib cadence legible. Vary selected shutter positions, board ends, roof edges or courses; retain corner bonds, sill/lintel thickness and module joints. Wear should have a local cause: exposed eave, threshold contact, hand grip, rim or wheel region. Preserve a core beneath shallow chips; larger missing material forms a connected scar and a plausible broken edge.
 
-Separate shape wear from painted wear. A surface patch can be intentionally flat; a cavity or missing chunk requires occupancy change. Keep wood grain along the board/log direction and material masks spatially coherent. Large quiet regions are useful. Color-patch or neighbor statistics detect speckling but are not aesthetic thresholds.
+Separate shape wear from painted wear. Surface-patch styling is independent of the cavity rule above. Keep wood grain along the board/log direction and material masks spatially coherent. Large quiet regions are useful. Color-patch or neighbor statistics detect speckling but are not aesthetic thresholds.
 
-Give asymmetry function: an opening, held object, repaired end or damaged corner. People need clothing layers over readable body landmarks; boots need soles and toes. Machines need clear wheel spacing, openings, seats and attachment sockets. Keep moving parts/pivots separate when motion is the deliverable; a connected static sculpture is not a tested rig.
+Give asymmetry function: an opening, held object, repaired end or damaged corner. People need clothing layers over readable body landmarks; boots need soles and toes. Machines need clear wheel spacing, openings, seats and attachment sockets. Motion deliverables: see [objects, People and creatures](objects.md#people-and-creatures).
 
 Evaluate support at assembly level. A dock needs shore/piles, a wagon its separate wheel modules, a shelf its ends, a hanging sign its connectors. Diagonal contact may look joined while failing six-neighbor connectivity. Conversely, imported modules can intentionally be separate. Inspect the actual joint instead of declaring all source grids robust or forcing every asset into one component.
 

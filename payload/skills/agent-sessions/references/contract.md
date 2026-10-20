@@ -27,6 +27,10 @@ An adapter is one executable script, `adapters/<agent>.mjs`, that runs one turn 
 - `verified` is true only when the live checks from [writing an adapter](writing-an-adapter.md) passed. An unverified adapter may work, but the orchestrator must say so in its plan.
 - `visible_in` says where the user can watch and step into the session, or `null` if they cannot.
 
+## Access modes
+
+The modes are read-only for investigation, workspace-write (default) for the working folder, and danger-full-access for unrestricted execution. Describe actual enforcement per client: an OS sandbox, permission mode or tool list are different guarantees. Refuse unsupported enforcement or a missing working folder with exit 4 before starting, instead of silently changing modes or folders. Session access selection belongs to [agent-sessions, step 3](../SKILL.md#3-choose-effort-and-access).
+
 ## Run
 
 ```
@@ -41,7 +45,7 @@ node adapters/<agent>.mjs --cwd <dir> --prompt <brief file> [--name <title>] [--
 | `--name` | Display name for a new session. Ignored when continuing. |
 | `--thread` | Continue this session with the brief as the next turn. Without it a new session starts. |
 | `--sandbox` | `read-only`, `workspace-write` (default) or `danger-full-access`. Pass the mode on every turn, including continuations. |
-| `--model`, `--effort` | Optional. Effort uses the client's own level names; see `effort` in describe. |
+| `--model`, `--effort` | API-optional only. Orchestration must select and pass both under [agent-sessions, Fixed rules and step 3](../SKILL.md#3-choose-effort-and-access); use client aliases from describe. |
 | `--out` | Write the worker's final answer here. Without it the answer goes to stderr. |
 | `--log` | Append the client's raw event stream here, for debugging and checking. |
 
@@ -67,8 +71,8 @@ Progress (commands run, tools called) goes to stderr as short lines, for example
 | 3 | The client could not be started (not installed, or blocked by the orchestrator's own sandbox). No session was created. |
 | 4 | An option is not supported, for example an access mode this client cannot enforce. Nothing was started. |
 
-Refuse with 4 rather than silently running in a weaker or stronger mode than the user chose.
+Access refusal: see Access modes above.
 
 ## Unattended runs
 
-Adapters run without a person at the worker. Approval requests and questions from the worker are declined, never auto-approved. Anything the task needs must be allowed by the chosen access mode before the run.
+Adapters run without a person at the worker. Approval requests and questions from the worker are declined, never auto-approved. Authorized asynchronous board questions and blocked-return behavior: see [running-and-checking, Questions and blocked workers](running-and-checking.md#questions-and-blocked-workers).

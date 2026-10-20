@@ -13,4 +13,4 @@ Use one design system, starting with project components/tokens. For a new dashbo
 
 Landing/promotional pages use [landing-design](references/landing-design.md). Working screens follow their product task. User conditions, existing brand, accessibility and stack outrank recipes.
 
-After implementation, pass the basis and current UI to [ui-review](../ui-review/SKILL.md). Design-only ends with decisions/mockup and properties verifiable only in implementation; behavior integration belongs to [dev-implement](../dev-implement/SKILL.md) when requested. Sources and local adaptation: [sources.json](sources.json).
+After implementation, pass the basis and current UI to [ui-review](../ui-review/SKILL.md). Deliverable scope: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries). Behavior integration belongs to [dev-implement](../dev-implement/SKILL.md) when requested. Sources and local adaptation: [sources.json](sources.json).

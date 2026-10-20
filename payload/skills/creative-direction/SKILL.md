@@ -9,7 +9,7 @@ The most likely idea is the most ordinary one. Left alone, an agent proposes the
 
 The user may bring a direction from Claude or from their own work. If a creative brief or an accepted direction already exists, it is the basis: execute and refine it, do not regenerate alternatives unless asked.
 
-Separate two kinds of input. **Things the user likes from others** (a game, a film, a product) are references: extract the principle and do not copy their surface. **The user's own ideas and decisions** (a mechanic the user proposed, an ending the user wants, a structure the user wrote) are the material: develop them and show how to make them work. Raise a real risk once, with a way to solve it inside the user's idea; offer a replacement only as a separate option, never instead of the user's idea. Domain guidance: [UI/UX](references/ui-ux.md), [content](references/content.md), [game design](references/gamedev.md), [visual, motion and 3D](references/visual.md). Open the one that matches the deliverable; a mixed task opens each.
+Separate two kinds of input. **Things the user likes from others** (a game, a film, a product) are references: extract the principle and do not copy their surface. User material: see [task brief and acceptance, section 2](../dev-flow/references/task-brief-and-acceptance.md#2-understand-the-intent). In addition to that preservation rule, raise a creative risk once with a solution inside the user’s idea. Domain guidance: [UI/UX](references/ui-ux.md), [content](references/content.md), [game design](references/gamedev.md), [visual, motion and 3D](references/visual.md). Open the one that matches the deliverable; a mixed task opens each.
 
 ## 1. Find the principle, not the surface
 
@@ -61,4 +61,4 @@ The brief is the same whether Codex, Claude or the user wrote it. Later stages c
 - Do the three directions differ in structure, not just in theme, color or wording?
 - Is each one described as a concrete moment someone experiences?
 - Did taste come from the user's reactions to examples, not from your defaults?
-- Did the user's own ideas survive as the basis, developed rather than argued away?
+- Preservation: see task brief and acceptance, section 2.

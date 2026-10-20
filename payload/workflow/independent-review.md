@@ -1,26 +1,27 @@
 # Agreed independent review
 
-Open only for a separately selected reviewer. AGENTS owns permissions; the [task brief and acceptance](../skills/dev-flow/references/task-brief-and-acceptance.md#two-decisions-about-how-to-work) owns the scope/stages/round-limit choice. Without explicit consent for the current task, perform author self-checks. A corrected version does not create another authorized round.
+Open for a selected reviewer. Selection: see [task brief and acceptance, section 5](../skills/dev-flow/references/task-brief-and-acceptance.md#5-two-decisions-about-how-to-work); authorization: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
 ## Preparation
 
-Use self-check results for the current version; do not repeat them merely to start a review. Prepare a short, targeted brief:
-
-- The user's original request and latest material clarifications; distinguish the author's interpretation and unknowns.
-- Required result, qualities to preserve, audience/style and relevant use conditions.
-- Version, paths/URLs, launch and available tools; exact criteria and scope of the independent pass.
+Evidence reuse: see [task brief and acceptance, section 7](../skills/dev-flow/references/task-brief-and-acceptance.md#7-execution-verification-and-completion).
+Prepare a targeted brief:
+- Original request and latest material clarifications; distinguish interpretation and unknowns.
+- Required result, preservation criteria, audience/style and use conditions.
+- Version, paths/URLs, launch, tools, criteria and independent-pass scope.
 - Permitted actions, round limit, required modality and report path.
 
-Provide material requirements immediately. Reveal author diagnoses, self-assessments and test results after the initial direct inspection unless the task needs them from the start. Method comparisons also follow the single [workflow-pilot](../skills/dev-flow/references/workflow-pilot.md).
+Information staging supplements the [human-perspective inspection sequence](../skills/dev-flow/references/human-perspective-review.md#inspection-sequence): give material requirements immediately, but withhold author diagnoses, self-assessments and test results until initial direct inspection unless the task requires those inputs from the start. This overrides generic brief cause/baseline fields. Method comparisons: see workflow-pilot.
 
 ## Independent pass
 
-Launch one fresh reviewer without the author's history (`fork_turns="none"` in collaboration), within the agreed scope; wait for an available slot if necessary. The reviewer returns a report and does not launch nested reviewers.
+Launch the approved fresh reviewer through [agent-sessions, Fixed rules and step 5](../skills/agent-sessions/SKILL.md#fixed-rules); this file owns review scope and context. Give it a new session without the author's history; the reviewer returns a report and launches no nested reviewers.
 
-The reviewer uses the [human-perspective protocol](../skills/dev-flow/references/human-perspective-review.md) where relevant: first reading, direct comparison with evidence, change membership and preservation. UI requires actions, animation requires observing motion, numbers/geometry require sufficient measurements. An unavailable modality remains unverified. Do not require the reviewer's rerun of the author's entire suite; targeted additional checks are allowed within scope.
+Use [human-perspective-review, Inspection sequence and Readiness and transfer](../skills/dev-flow/references/human-perspective-review.md#inspection-sequence) for observation, interpretation, modality and evidence grades. Targeted extra checks are allowed; a rerun of the author's entire suite is not required.
 
-Report what works, material findings with version/conditions/evidence, observations separately from causes, covered critical properties and remaining gaps. There is no defect quota. Pass applies to a particular verified property, not every quality of the result.
+Report what works, material findings with version/conditions/evidence, covered critical properties and gaps under that protocol.
 
 ## After the report
 
-The author confirms findings against the task, sources/actions/measurements. Repairs and affected regression follow WORKFLOW. An agent's prediction does not replace the user's actual feedback. Another fresh reviewer runs only for the next explicitly agreed round with a new signal/change/hypothesis; exceeding the selected limit requires consent. Finish once verification is sufficient.
+The author confirms findings against the task and evidence. Repairs: see [WORKFLOW, step 6](WORKFLOW.md#work-route).
+An independent reviewer is not continued as a normal worker session. Another round uses another fresh reviewer only within an explicitly agreed next round (the transition follows WORKFLOW, step 6); exceeding the selected scope, stages or round limit requires consent. Session execution and launch approval stay with agent-sessions, step 5.

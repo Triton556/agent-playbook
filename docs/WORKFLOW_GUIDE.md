@@ -4,6 +4,8 @@ This is a navigation guide. The complete installed base, WORKFLOW.md, relevant S
 
 ## Context loads in layers
 
+Loading/recovery: see [WORKFLOW, step 2](../payload/workflow/WORKFLOW.md#work-route). The table below describes installed layers.
+
 | When | Load | Purpose |
 |---|---|---|
 | Session startup in full mode | Complete base rules + local deployment policy | Communication, scope, permissions, memory and task routing |
@@ -13,7 +15,7 @@ This is a navigation guide. The complete installed base, WORKFLOW.md, relevant S
 | Acceptance | Actual artifact/behavior + saved acceptance program | Author checks and selected human checkpoints; independent-review.md only for explicitly agreed review |
 | Completion/handoff | Current state, real receipts and bounded transferable lessons | Recovery and continuity without fabricated completion |
 
-Installed modules are not all loaded into the model at once. Installation closure preserves reachability; original triggers govern reading. The package adds no model dispatcher and no automatic role/cost routing.
+Installation preserves reference reachability; loading follows that owner.
 
 ## Main cycle
 
@@ -32,11 +34,11 @@ flowchart LR
   G -->|No| I[Complete scope and record limits/lessons]
 ```
 
-The initial interview selects human participation and separately review consent/scope/rounds. A repair does not create a review round. Only an explicitly agreed next round uses a new reviewer. Ordinary small edits use the relevant stage and proportionate checks. A review-only request does not authorize implementation; permission files and source history do not create tool rights.
+Participation/reviewer selection: see [task-brief-and-acceptance, 5. Two decisions about how to work](../payload/skills/dev-flow/references/task-brief-and-acceptance.md#5-two-decisions-about-how-to-work). Reviewer rounds: see [independent-review, After the report](../payload/workflow/independent-review.md#after-the-report). Action scope: see [AGENTS, Goal, communication and boundaries](../payload/AGENTS.md#goal-communication-and-boundaries).
 
-Research is triggered by concrete unresolved function, structure, style/context, references, discrepancy or a failed bounded experiment. Record what is unknown and what evidence resolves it. Do not treat a vague feeling of understanding as a sufficient factual basis. Reference quality and inferred causes remain distinguishable.
+Research triggers: see [reference-grounding, Observable triggers](../payload/skills/dev-flow/references/reference-grounding.md#observable-triggers).
 
-Before expensive construction, validate a cheap coherent representation at the required scale/style/context. For voxel creation this includes six 2D sides, proportions against the existing kit/world, an actual view review and preflight validation before detailed 3D geometry. Existing accepted recipes may be reproduced as regressions; a new design still needs its own preflight.
+Cheap representation: see task brief and acceptance, section 6. Voxel representation/reuse: see [voxel preflight](../payload/skills/voxel-models/references/design-preflight.md).
 
 ## Module map
 
@@ -52,9 +54,9 @@ Before expensive construction, validate a cheap coherent representation at the r
 | Rendered interface/interaction review | ui-review |
 | Interactive explanation, spatial world, material/light experiment | visual-scenes |
 | Voxel grid/model/modular kit/creature/diorama | voxel-models |
-| Agent documents | agent-instructions; no second authoring cycle |
+| Agent documents | [agent-instructions](../payload/skills/agent-instructions/SKILL.md) |
 | Codex skill creation | Native skill-creator when actually supplied by the client |
-| Workflow experiments | One workflow-pilot reference; Anthropic entry is a compatibility redirect |
+| Workflow experiments | [workflow-pilot](../payload/skills/dev-flow/references/workflow-pilot.md) |
 | Deliberate decision stress-test/document interview | stress-test; stress-test-with-docs only when selected |
 | Explicit handoff | agent-handoff |
 | User-requested work in a Codex thread visible in the app | agent-sessions-codex; write the brief, start/resume the thread and verify its result |
@@ -65,20 +67,20 @@ An interface attached to research uses the UI route because the result contains 
 
 ## Technical pass is not human comprehension
 
-Separate technical behavior, meaning/context, actual rendered perception and a real human verdict. A viewer sees silhouette/recognition/relationships before tiny details; inspect under the declared audience, distance, viewport and attention conditions. Ask what the artifact resembles without its label. Examine intended strangeness before calling it a defect.
+Claim grades: see [human-perspective-review, Readiness and transfer](../payload/skills/dev-flow/references/human-perspective-review.md#readiness-and-transfer).
 
-Observe before diagnosing. A perspective image can show an ambiguous alignment; coordinate/grid evidence determines geometry. A present eye or button can remain unreadable. Repeated symptoms become a system class, not a quota of findings. Preserve successful identity, style and relationships when fixing confirmed problems. Do not universalize one model's wear/smoke/color solution into all tasks.
+Observation and interpretation: see [human-perspective-review, Inspection sequence](../payload/skills/dev-flow/references/human-perspective-review.md#inspection-sequence).
 
-For UI verify the actual primary action and visible consequence, relevant failure/recovery, consistent state/labels/charts, readable hierarchy, input and keyboard behavior, and motion over time. For a world verify meaning/zoning, navigable relationships, grounded layout, life/animation and personal anchors from the authorized brief. For voxel assets inspect matched views, head/grip/collision/scale/readability and category contact sheets as applicable. Concrete criteria live in the original method references.
+UI: see [ui-review](../payload/skills/ui-review/SKILL.md) and [UI design preflight, section 4](../payload/skills/ui-design/references/design-preflight.md#4-compare-the-working-ui-with-the-basis). Worlds: see visual-scenes, World scenes. Voxels: see voxel-models, Choose the relevant branch.
 
 ## Reviewer brief, only when selected
 
-Give a newly created context the original task, material corrections, actual expected output/behavior, intended audience/style/conditions, constraints, version/path/launch and review scope. Do not preload author self-assessment or earlier conclusions before first impression. The author owns technical tests; the reviewer independently observes and checks the specified expectations. Findings need evidence and impact, not an invented quota. Verify cause before repair and retain failed-version evidence.
+Preparation and information staging: see [independent-review, Preparation](../payload/workflow/independent-review.md#preparation); observation: see human-perspective-review, Inspection sequence.
 
 ## Completion and learning
 
-State declares outputs/stages and relevant dependencies; the quality ledger binds evidence to exact files. Modified sources/renders invalidate old related observations; unchanged unrelated evidence can remain only when independence is actually established. State/ledger helpers validate records and freshness, not beauty or authenticity of a human claim. The quality Stop hook diagnoses and does not revive paused/cancelled tasks or run an unbounded repair loop.
+Task records: see [task-state, Long-task state and completeness](../payload/skills/dev-flow/references/task-state.md#long-task-state-and-completeness). Evidence versions: see [quality-ledger, Schema version 1](../payload/skills/dev-flow/references/quality-ledger.md#schema-version-1). The optional quality Stop hook diagnoses state; it does not resume tasks.
 
-Save factual results, decisions, preferences and bounded lessons to the authorized INBOX with source and status. Keep hypothesis separate; use checkpoint when nothing new should be saved. Record receipt/read-back. Private sync and curator/scheduler actions are distinct, configured operations. Transfer a lesson's applicability and exceptions, not a claim that a model has acquired new weights.
+Persistence: see [kb-save, Knowledge capture](../payload/skills/kb-save/SKILL.md#knowledge-capture). Transport: see [kb-sync, Knowledge transport](../payload/skills/kb-sync/SKILL.md#knowledge-transport). Curation: see [kb-curate, Knowledge curation](../payload/skills/kb-curate/SKILL.md#knowledge-curation).
 
 [Instruction ownership and the single pilot](INSTRUCTION_MAINTENANCE.md) explains the shared procedures and validation limits.

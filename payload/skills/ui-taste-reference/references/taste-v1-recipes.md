@@ -52,20 +52,20 @@ LLMs have statistical biases toward specific UI cliché patterns. Proactively co
 
 **Rule 5: Interactive UI States**
 * **Mandatory Generation:** LLMs naturally generate "static" successful states. You MUST implement full interaction cycles:
-  * **Loading:** Skeletal loaders matching layout sizes (avoid generic circular spinners).
+  * **Loading:** see [interaction-quality, Graphics, motion and waiting](../../ui-design/references/interaction-quality.md#graphics-motion-and-waiting).
   * **Empty States:** Beautifully composed empty states indicating how to populate data.
   * **Error States:** Clear, inline error reporting (e.g., forms).
   * **Tactile Feedback:** On `:active`, use `-translate-y-[1px]` or `scale-[0.98]` to simulate a physical push indicating success/action.
 
 **Rule 6: Data & Form Patterns**
-* **Forms:** Label MUST sit above input. Helper text is optional but should exist in markup. Error text below input. Use a standard `gap-2` for input blocks.
+* **Forms:** see [ui-reference, Quick Reference](../../ui-reference/references/quick-reference.md#quick-reference), input-labels, input-helper-text and error-placement. In addition to those rules, this selected recipe places labels above inputs and uses gap-2 for input blocks.
 
 ## 4. CREATIVE PROACTIVITY (Anti-Slop Implementation)
 To actively combat generic AI designs, systematically implement these high-end coding concepts as your baseline:
 * **"Liquid Glass" Refraction:** When glassmorphism is needed, go beyond `backdrop-blur`. Add a 1px inner border (`border-white/10`) and a subtle inner shadow (`shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]`) to simulate physical edge refraction.
 * **Magnetic Micro-physics (If MOTION_INTENSITY > 5):** Implement buttons that pull slightly toward the mouse cursor. **CRITICAL:** NEVER use React `useState` for magnetic hover or continuous animations. Use EXCLUSIVELY Framer Motion's `useMotionValue` and `useTransform` outside the React render cycle to prevent performance collapse on mobile.
 * **Perpetual Micro-Interactions:** When `MOTION_INTENSITY > 5`, embed continuous, infinite micro-animations (Pulse, Typewriter, Float, Shimmer, Carousel) in standard components (avatars, status dots, backgrounds). Apply premium Spring Physics (`type: "spring", stiffness: 100, damping: 20`) to all interactive elements—no linear easing.
-* **Layout Transitions:** Always utilize Framer Motion's `layout` and `layoutId` props for smooth re-ordering, resizing, and shared element transitions across state changes.
+* **Layout Transitions:** If using this technique, consult ui-reference rule transform-performance before choosing Framer Motion layout/layoutId transitions.
 * **Staggered Orchestration:** Do not mount lists or grids instantly. Use `staggerChildren` (Framer) or CSS cascade (`animation-delay: calc(var(--index) * 100ms)`) to create sequential waterfall reveals. **CRITICAL:** For `staggerChildren`, the Parent (`variants`) and Children MUST reside in the identical Client Component tree. If data is fetched asynchronously, pass the data as props into a centralized Parent Motion wrapper.
 
 ## 5. PERFORMANCE GUARDRAILS
@@ -212,12 +212,6 @@ Implement these specific micro-animations when constructing Bento grids (e.g., R
 4. **The Wide Data Stream:** A horizontal "Infinite Carousel" of data cards or metrics. Ensure the loop is seamless (using `x: ["0%", "-100%"]`) with a speed that feels effortless.
 5. **The Contextual UI (Focus Mode):** A document view that animates a staggered highlight of a text block, followed by a "Float-in" of a floating action toolbar with micro-icons.
 
-## 10. FINAL PRE-FLIGHT CHECK
-Evaluate your code against this matrix before outputting. This is the **last** filter you apply to your logic.
-- [ ] Is global state used appropriately to avoid deep prop-drilling rather than arbitrarily?
-- [ ] Is mobile layout collapse (`w-full`, `px-4`, `max-w-7xl mx-auto`) guaranteed for high-variance designs?
-- [ ] Do full-height sections safely use `min-h-[100dvh]` instead of the bugged `h-screen`?
-- [ ] Do `useEffect` animations contain strict cleanup functions?
-- [ ] Are empty, loading, and error states provided?
-- [ ] Are cards omitted in favor of spacing where possible?
-- [ ] Did you strictly isolate CPU-heavy perpetual animations in their own Client Components?
+## 10. Integration
+
+Acceptance belongs to [ui-design, UI/UX design](../../ui-design/SKILL.md#uiux-design) and its preflight/review route. Apply only the selected technique’s existing checks above.

@@ -7,7 +7,7 @@ description: "Targeted UI/UX reference for web, mobile, and desktop for ui-desig
 
 Provides guidance for a selected UI question. [Product-ui-design](../ui-design/SKILL.md) owns decisions and [ui-review](../ui-review/SKILL.md) owns actual inspection. A search does not create a separate interview, implementation or acceptance cycle.
 
-First state the question: accessibility, user flow, typography, palette, chart, motion or stack-specific behavior. Run one relevant search; expand only for an uncovered question. CLI and available domains/stacks: `scripts/search.py --help`.
+First state the question: accessibility, user flow, typography, palette, chart, motion or stack-specific behavior. Loading/recovery: see WORKFLOW, step 2. Search by the selected question. CLI and available domains/stacks: `scripts/search.py --help`.
 
 ```text
 python <skill>/scripts/search.py "keyboard focus in a dense desktop table" --domain ux --max-results 3

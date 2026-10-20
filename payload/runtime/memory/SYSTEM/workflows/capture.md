@@ -2,7 +2,7 @@
 
 Extract only useful new information from the available conversation: facts, preferences, decisions with reasons, tasks and execution status, project updates, ideas, sourced research and grounded hypotheses. Do not infer information from inaccessible chats.
 
-Write knowledge in Russian. Establish confirmation from user statements or observable results, not model confidence. Task statuses: `open`, `in-progress`, `done`, `cancelled`; `done` requires confirmed results. The script assigns hypotheses `unconfirmed`.
+Language defaults: see [AGENTS policy]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries). Establish confirmation from user statements or observable results, not model confidence. Task statuses: `open`, `in-progress`, `done`, `cancelled`; `done` requires confirmed results. The script assigns hypotheses `unconfirmed`.
 
 At the end of a substantive stage, pass JSON through stdin to `node SYSTEM/scripts/kb.mjs capture`. The script saves files without model calls; the main agent or designated memory agent can execute it. For Codex, use real hook-provided session_id and turn_id. For the designated curator/Cloud without platform-provided identifiers, choose conversation/stage UUIDs, retain them in your current work record and reuse them on retry.
 
@@ -38,11 +38,7 @@ On PC, capture stays local. Git-sync, cloud exchange and curation run only throu
 
 ## Delegated memory capture
 
-- A substantial summary may use one memory agent only with the current installation owner's consent, as required by AGENTS.md. The main agent remains responsible for completed persistence.
-- Give only relevant facts, decisions, evidence and limitations, plus original `source.kind`, `session_id`, `turn_id` and chosen `batch_key`. Do not substitute the helper chat's identity. When context selection is available, provide a concise task without full history.
-- Assign one writer per knowledge set. The memory agent calls `capture` with `final: false` and returns command output, ID and an existing file path. If its own hook requires a mark, it checkpoints its own response without recording these facts again.
-- The main agent checks the capture receipt and file existence. With no further new knowledge, checkpoint the original response; save additional information under a separate batch_key. A helper's promise is not persistence evidence. On failure, first check whether a record appeared; retry the same set with the same batch_key to avoid duplicates.
-- The user's prohibition on saving content survives delegation. Memory-agent permission does not expand data access, authorize main-task agents or separately authorize synchronization.
+Writer assignment and handoff: see [kb-save, Delegated work]({{HARNESS_ROOT}}/skills/kb-save/SKILL.md#delegated-work).
 
 ## Author-style additions
 

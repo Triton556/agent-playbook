@@ -17,7 +17,7 @@ Particle count should not imply literal people or transactions unless that is wh
 
 ## Live, snapshot, approximate, absent
 
-Track data source, retrieval time, effective date, coverage and transform. A fallback snapshot is a different status from live data. A fetch may succeed while individual fields remain missing; track provenance at the appropriate field or dataset level. Keep missing distinct from zero, untested distinct from low-scoring, and interpolation distinct from observation.
+Track data source, retrieval time, effective date, coverage and transform. A fallback snapshot is a different status from live data. A fetch may succeed while individual fields remain missing; track provenance at the appropriate field or dataset level. Keep missing distinct from zero, untested distinct from low-scoring, and interpolation distinct from observation. A failed or stale result must not appear as a successful empty response; label freshness.
 
 A composite ranking requires named component metrics, normalization, weights, coverage and tie handling. Averaging available components can favor an incompletely measured entity. Explain the comparison's limits and provide underlying values rather than treating scenery as a universal score.
 
@@ -25,7 +25,7 @@ When animating between observations, show the observation dates. Smooth motion d
 
 ## Preserve identity while changing layout
 
-Key marks by domain ID, not their sorted index. Keep color/symbol and selection stable during rank changes; a reordered layout can move the object smoothly without pretending its identity changed. Link selection between spatial marks, exact chart and detail card. Support a non-spatial route through the same records.
+Stable identity: see [causal-state-interaction, Guided presets and direct control](causal-state-interaction.md#guided-presets-and-direct-control). Provide a non-spatial route through the same records.
 
 Reduce background salience around the active record. Highlight the measured attribute and its path, not every decorative feature. Crowds and environment are an attention device; their detail should not swamp the data or the interaction budget.
 

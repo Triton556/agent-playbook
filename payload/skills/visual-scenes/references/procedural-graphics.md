@@ -22,9 +22,9 @@ Terrain, isosurfaces and heightmaps benefit from a scale legend. If vertical sca
 
 ## Deformation and changing topology
 
-Keep authoritative mesh/field state distinct from smoothed display geometry. Compute related area, volume, force or other measurements from the intended model revision with an explicit scale. State convergence or residual criteria for iterative solvers; an iteration count alone is not physical time or proof of convergence.
+Model revision: see [causal-state-interaction, One model, several views](causal-state-interaction.md#one-model-several-views). In addition, keep smoothed display geometry distinct and state solver convergence/residual criteria; iteration count is not physical time or convergence proof.
 
-Bound solver work per frame and continue only the newest unresolved state. During a topology change, conceal/rebuild/reveal can improve continuity, but the transition must not fabricate intermediate physical states. When the phenomenon is absent—ruptured film, disconnected path, vanished region—clear dependent readings and expose that state.
+Bound solver work per frame under causal-state-interaction, One model, several views. In addition, topology changes may conceal/rebuild/reveal for continuity but must not fabricate intermediate physical states; absent phenomena clear their dependent readings.
 
 ## Use in other domains
 

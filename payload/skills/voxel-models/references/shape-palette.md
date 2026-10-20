@@ -2,7 +2,7 @@
 
 ## Cell size follows recognition
 
-Pick the smallest silhouette feature the object needs at its intended viewing distance. A one-cell eye, thin rim or axle can survive close inspection and disappear in a distant top-down scene. Choose pitch with that distance in mind; a higher matrix resolution is not automatically more readable. Keep world scale and voxel pitch distinct when mixing a building and a handheld item.
+Pick the smallest silhouette feature the object needs at its intended viewing distance. A one-cell eye, thin rim or axle can survive close inspection and disappear in a distant top-down scene. Choose pitch with that distance in mind; a higher matrix resolution is not automatically more readable. Scale: see [resolution-lod, Keep four quantities separate](resolution-lod.md#keep-four-quantities-separate).
 
 Block primary masses, then structural secondary features, then small identifying accents. For organic subjects use overlapping ellipsoids/capsules, stepped profiles and connected limb paths; for built objects use shells, repeated bays and explicit openings. These primitives are construction options, not proof of how a source model was authored.
 
@@ -14,7 +14,7 @@ Use roles such as body, structure, dark recess, light trim, foliage and identity
 
 Place large patches where the object explains them: beagle's coat, ranger's clothing, vehicle glass, roof material. Random per-cell color fragments surfaces and weakens material reading. If variation is useful, correlate it in space or tie it to geometry/exposure. Let the renderer supply ordinary lighting; preserved palette bands may already contain baked shading.
 
-Use recesses, thickness and negative space for features that should remain visible in a clay view. Painted markings are appropriate when they are actually surface information. The road samples illustrate the distinction: a full square grid can contain a path that is entirely a color mask.
+Shape versus paint: see [built-form, Function, cavities and localized wear](built-form.md#function-cavities-and-localized-wear). The road samples illustrate the distinction: a full square grid can contain a path that is entirely a color mask.
 
 ## Transfer observations into choices
 

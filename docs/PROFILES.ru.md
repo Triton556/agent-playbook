@@ -10,7 +10,7 @@
 
 Профиль — готовый набор навыков для определённого круга задач.
 
-`agent-sessions-codex` входит в `full`, `engineering` и `instructions`: эти профили охватывают ведение разработки и работу над агентскими процедурами, включая отдельно согласованные пилоты. Оркестратор пишет бриф, запускает или продолжает видимый тред Codex и проверяет результат. Поддерживается установка для Claude и Codex. В `visual`, `voxel` и `memory` навык не выбирается: ведение сессий не является их основной задачей. Его можно добавить явно через `--skills agent-sessions-codex`. Сам запуск требует согласия пользователя и [настроенного Codex CLI](INTEGRATIONS.md#agent-sessions-codex-for-orchestrators).
+Участие и отдельное ревью: [task brief and acceptance, раздел 5](../payload/skills/dev-flow/references/task-brief-and-acceptance.md#5-two-decisions-about-how-to-work). Пилоты: [workflow-pilot](../payload/skills/dev-flow/references/workflow-pilot.md); загрузка: WORKFLOW, шаг 2.
 
 `agent-sessions` входит в те же профили. Это общий вариант оркестратора: исполнителем может быть любой клиент, для которого есть адаптер (проверенный `codex`, непроверенный `claude-code`), а для других клиентов есть справка по написанию адаптера. Отдельно — `--skills agent-sessions`; подробнее — [интеграция](INTEGRATIONS.md#agent-sessions-for-any-worker).
 
@@ -40,9 +40,9 @@
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `full`: 24 выбрано → 24 навыков с зависимостями.
+Профиль `full`: 26 выбрано → 26 навыков с зависимостями.
 
-**Основной выбор:** `agent-handoff`, `agent-instructions`, `agent-sessions`, `agent-sessions-codex`, `creative-direction`, `dev-debug`, `dev-domain-model`, `dev-flow`, `dev-implement`, `dev-plan`, `dev-verify`, `kb-curate`, `kb-find`, `kb-save`, `kb-status`, `kb-sync`, `stress-test`, `stress-test-with-docs`, `ui-design`, `ui-reference`, `ui-review`, `ui-taste-reference`, `visual-scenes`, `voxel-models`.
+**Основной выбор:** `agent-handoff`, `agent-instructions`, `agent-sessions`, `agent-sessions-codex`, `creative-direction`, `dev-debug`, `dev-domain-model`, `dev-flow`, `dev-implement`, `dev-plan`, `dev-verify`, `jam-board`, `kb-curate`, `kb-find`, `kb-save`, `kb-status`, `kb-sync`, `stress-test`, `stress-test-with-docs`, `ui-design`, `ui-reference`, `ui-review`, `ui-taste-reference`, `visual-scenes`, `voxel-models`, `you-are-brain`.
 
 **Связанные навыки:** дополнительных нет.
 
@@ -74,11 +74,11 @@ python harness.py plan --client codex --target /path/to/project --profile full
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `engineering`: 13 выбрано → 17 навыков с зависимостями.
+Профиль `engineering`: 15 выбрано → 22 навыков с зависимостями.
 
-**Основной выбор:** `agent-instructions`, `agent-sessions`, `agent-sessions-codex`, `creative-direction`, `dev-debug`, `dev-domain-model`, `dev-flow`, `dev-implement`, `dev-plan`, `dev-verify`, `ui-design`, `ui-reference`, `ui-review`.
+**Основной выбор:** `agent-instructions`, `agent-sessions`, `agent-sessions-codex`, `creative-direction`, `dev-debug`, `dev-domain-model`, `dev-flow`, `dev-implement`, `dev-plan`, `dev-verify`, `jam-board`, `ui-design`, `ui-reference`, `ui-review`, `you-are-brain`.
 
-**Связанные навыки:** `kb-find`, `ui-taste-reference`, `visual-scenes`, `voxel-models`.
+**Связанные навыки:** `kb-curate`, `kb-find`, `kb-save`, `kb-sync`, `ui-taste-reference`, `visual-scenes`, `voxel-models`.
 
 Из папки скачанного репозитория можно сначала посмотреть план, заменив путь и клиент на свои:
 
@@ -108,11 +108,11 @@ python harness.py plan --client codex --target /path/to/project --profile engine
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `visual`: 5 выбрано → 14 навыков с зависимостями.
+Профиль `visual`: 5 выбрано → 21 навыков с зависимостями.
 
 **Основной выбор:** `creative-direction`, `ui-design`, `ui-review`, `visual-scenes`, `voxel-models`.
 
-**Связанные навыки:** `dev-debug`, `dev-domain-model`, `dev-flow`, `dev-implement`, `dev-plan`, `dev-verify`, `kb-find`, `ui-reference`, `ui-taste-reference`.
+**Связанные навыки:** `agent-instructions`, `agent-sessions`, `agent-sessions-codex`, `dev-debug`, `dev-domain-model`, `dev-flow`, `dev-implement`, `dev-plan`, `dev-verify`, `kb-curate`, `kb-find`, `kb-save`, `kb-sync`, `ui-reference`, `ui-taste-reference`, `you-are-brain`.
 
 Из папки скачанного репозитория можно сначала посмотреть план, заменив путь и клиент на свои:
 
@@ -129,11 +129,11 @@ python harness.py plan --client codex --target /path/to/project --profile visual
 
 **Например:** «Создай стилизованного робота в масштабе нашего набора».
 
-Воксельная модель собирается из объёмных ячеек. До подробного построения агент фиксирует характер и масштаб, затем готовит согласованные виды со всех сторон.
+До подробного построения используется [voxel preflight](../payload/skills/voxel-models/references/design-preflight.md); иллюстрации ниже показывают выходы его этапов.
 
 ![Паспорт робота и шесть видов как первые два результата проектирования](assets/profiles-v2/voxel-start.png)
 
-**Результат этапа 2 — шесть 2D-видов BUOY—02:** перед, спина, левый и правый бок, верх и низ. По ним можно проверить пропорции и материал до создания объёма.
+**Результат этапа 2 — лист BUOY—02.** Требования к нему: voxel preflight, раздел 2.
 
 ![Настоящий лист шести проекций робота BUOY02 из Ultra A](assets/profiles-v2/robot-six-views.png)
 
@@ -147,18 +147,18 @@ python harness.py plan --client codex --target /path/to/project --profile visual
 
 ![Экспорт модели, сравнение с проектом, осмотр и передача файлов](assets/profiles-v2/voxel-finish.png)
 
-**Результат этапа 5 — сравнение 2D и 3D.** [Открыть полный лист сравнения](assets/profiles-v2/robot-comparison.png). Совпадение с чертежом и хорошее считывание человеком проверяются отдельно.
+**Результат этапа 5 — лист сравнения.** [Открыть его](assets/profiles-v2/robot-comparison.png); порядок сравнения: voxel preflight, раздел 4.
 
 **На выходе:** редактируемая модель, нужный экспорт, масштаб и ограничения проверки. В примере используются VOX для воксельного редактора и OBJ + MTL для геометрии и материалов.
 
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `voxel`: 2 выбрано → 14 навыков с зависимостями.
+Профиль `voxel`: 2 выбрано → 21 навыков с зависимостями.
 
 **Основной выбор:** `creative-direction`, `voxel-models`.
 
-**Связанные навыки:** `dev-debug`, `dev-domain-model`, `dev-flow`, `dev-implement`, `dev-plan`, `dev-verify`, `kb-find`, `ui-design`, `ui-reference`, `ui-review`, `ui-taste-reference`, `visual-scenes`.
+**Связанные навыки:** `agent-instructions`, `agent-sessions`, `agent-sessions-codex`, `dev-debug`, `dev-domain-model`, `dev-flow`, `dev-implement`, `dev-plan`, `dev-verify`, `kb-curate`, `kb-find`, `kb-save`, `kb-sync`, `ui-design`, `ui-reference`, `ui-review`, `ui-taste-reference`, `visual-scenes`, `you-are-brain`.
 
 Из папки скачанного репозитория можно сначала посмотреть план, заменив путь и клиент на свои:
 
@@ -175,15 +175,15 @@ python harness.py plan --client codex --target /path/to/project --profile voxel
 
 **Например:** «Продолжи проект: вспомни, что мы решили, и сохрани сегодняшнее изменение».
 
-Агент находит относящиеся к задаче заметки, сверяет их с текущим состоянием, записывает новое с источником и проверяет сохранение. Так следующий чат получает решения и ссылки на материалы.
+Сохранение: [kb-save, Knowledge capture](../payload/skills/kb-save/SKILL.md#knowledge-capture); иллюстрация ниже показывает форму выхода.
 
 ![Поиск нужного контекста, проверка источников, запись и подтверждение файла](assets/profiles-v2/memory.png)
 
-**Отдельно настраивается обслуживание базы:** разбор входящих заметок и обмен приватными копиями. Это самостоятельные процессы.
+Обслуживание: [kb-sync](../payload/skills/kb-sync/SKILL.md#knowledge-transport) и [kb-curate](../payload/skills/kb-curate/SKILL.md#knowledge-curation).
 
 ![Разбор тем и приватная синхронизация как два отдельных процесса обслуживания](assets/profiles-v2/memory-maintenance.png)
 
-Пример полностью условный. При установке используется собственная разрешённая база; подключение навыка само по себе не создаёт облачное хранилище или расписание.
+Пример условный; настройка своей базы описана в INSTALL_FOR_AGENTS.
 
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
@@ -209,20 +209,20 @@ python harness.py plan --client codex --target /path/to/project --profile memory
 
 **Например:** «Сохрани наш подход к проектированию модели, чтобы другой агент мог его повторить».
 
-Инструкция указывает, когда применять процедуру, какие входные данные нужны, что сделать и по чему проверить завершение. Примеры поясняют принцип; отдельно согласованный пилот проверяет гипотезу об улучшении процесса. Редактура документов следует agent-instructions, создание навыка — доступному native skill-creator; отдельно согласованные эксперименты — единому порядку пилота.
+Редактура: [agent-instructions](../payload/skills/agent-instructions/SKILL.md); создание навыка: доступный native skill-creator; эксперимент: [workflow-pilot](../payload/skills/dev-flow/references/workflow-pilot.md).
 
 ![От момента применения и шагов к критериям, примерам, пилоту и сохранённому уроку](assets/profiles-v2/instructions.png)
 
-**Зачем это нужно:** удачный приём становится воспроизводимой процедурой с областью применения и исключениями. Новая задача проверяется, когда это нужно для гипотезы и отдельно разрешено; обычная правка проходит затронутые локальные проверки.
+Область применения, критерии и примеры хранятся у владельца процедуры; проведение пилота определяется workflow-pilot.
 
 <details>
 <summary>Что входит в профиль и как посмотреть план установки</summary>
 
-Профиль `instructions`: 3 выбрано → 17 навыков с зависимостями.
+Профиль `instructions`: 4 выбрано → 21 навыков с зависимостями.
 
-**Основной выбор:** `agent-instructions`, `agent-sessions`, `agent-sessions-codex`.
+**Основной выбор:** `agent-instructions`, `agent-sessions`, `agent-sessions-codex`, `you-are-brain`.
 
-**Связанные навыки:** `creative-direction`, `dev-debug`, `dev-domain-model`, `dev-flow`, `dev-implement`, `dev-plan`, `dev-verify`, `kb-find`, `ui-design`, `ui-reference`, `ui-review`, `ui-taste-reference`, `visual-scenes`, `voxel-models`.
+**Связанные навыки:** `creative-direction`, `dev-debug`, `dev-domain-model`, `dev-flow`, `dev-implement`, `dev-plan`, `dev-verify`, `kb-curate`, `kb-find`, `kb-save`, `kb-sync`, `ui-design`, `ui-reference`, `ui-review`, `ui-taste-reference`, `visual-scenes`, `voxel-models`.
 
 Из папки скачанного репозитория можно сначала посмотреть план, заменив путь и клиент на свои:
 
@@ -240,7 +240,7 @@ python harness.py plan --client codex --target /path/to/project --profile instru
 Сначала выберите клиент и нужный состав, затем передайте агенту [руководство установки](../INSTALL_FOR_AGENTS.md). Там описаны предварительный план, установка, проверка и настройка интеграций.
 
 - **`full`** подключает общий workflow и весь набор навыков.
-- **Остальные профили** устанавливают выбранные навыки и их зависимости. Полный общий маршрут включается отдельно флагом `--workflow`; при этом устанавливаются все 24 модуля.
+- **Остальные профили** устанавливают выбранные навыки и их зависимости. Полный общий маршрут включается отдельно флагом `--workflow`; при этом устанавливаются все 26 модулей.
 - **`--skills <имя>`** выбирает отдельный навык с его зависимостями.
 
 Установленные файлы доступны агенту; в контекст он читает относящиеся к текущему этапу материалы. Возможности модели, инструменты и разрешения определяются вашим клиентом и настройкой.
@@ -250,11 +250,11 @@ python harness.py plan --client codex --target /path/to/project --profile instru
 <details>
 <summary>Происхождение примеров, точный состав и границы доказательств</summary>
 
-**Состав профилей** вычислен из установщика версии `1.0.0`. Числа — выбранные навыки → полный состав с зависимостями:
+**Состав профилей** вычислен из установщика версии `1.4.0`. Числа — выбранные навыки → полный состав с зависимостями:
 
 | full | engineering | visual | voxel | memory | instructions |
 |---:|---:|---:|---:|---:|---:|
-| 24 → 24 | 13 → 17 | 5 → 14 | 2 → 14 | 5 → 5 | 3 → 17 |
+| 26 → 26 | 15 → 22 | 5 → 21 | 2 → 21 | 5 → 5 | 4 → 21 |
 
 **Робот:** BUOY—02 из собственного бенчмарка Ultra A, сохранённые 2D-виды и исходная grid. 30 068 занятых ячеек; шаг 0,025 м; габариты занятого объёма 1,40 × 0,675 × 2,00 м. Для GIF сняты 36 ракурсов нативного WebGL-просмотра с шагом камеры 10°. Геометрия исходника сохранена. Это поворот камеры, анимация суставов здесь не показана; проверка рига, FPS и импорта в сторонний редактор этим документом не подтверждается.
 

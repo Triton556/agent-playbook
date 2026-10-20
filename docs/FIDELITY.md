@@ -5,7 +5,7 @@ This export preserves the active configured workflow, not retired experiments or
 ## Preserved
 
 - Full global base, WORKFLOW, author self-testing/independent review procedure.
-- 24 custom skill entrypoints, their complete references, source/provenance licenses, searchable UI datasets and original helpers.
+- 26 custom skill entrypoints, their complete references, source/provenance licenses, searchable UI datasets and original helpers.
 - Research triggers, cheap coherent representation, style/function/context/readability/use criteria.
 - Six-view voxel preflight and kit/world proportions before detailed construction; later actual voxel inspection.
 - Technical, semantic, actual visual and human verdicts as separate claims.
@@ -50,16 +50,7 @@ The exact configured Impeccable engine is a pinned official runtime asset, not a
 
 ## What tests can establish
 
-| Evidence | Valid claim |
-|---|---|
-| Source/export/installed hashes and documented bindings | File/composition fidelity |
-| Real install/reinstall/conflict/removal scenarios | Installer behavior and preservation |
-| Same helper inputs and output hashes/invariants | Helper reproduction for those cases |
-| Actual native catalog response | Discovery in that client/version/environment |
-| Matched end-to-end tasks and independent observations | Observed process/result comparison at that scope |
-| Actual user's response | Human acceptance at that scope |
-
-Hash tests do not establish that a model reads every condition or creates good graphics. A model can still make mistakes with identical instructions. This repository must not claim quality parity, cost reduction or identical creative output without the relevant observed evidence.
+Claim taxonomy: see [human-perspective-review, Readiness and transfer](../payload/skills/dev-flow/references/human-perspective-review.md#readiness-and-transfer). Package checks establish file/composition fidelity and exercised installer/helper behavior only; live client/model/human claims need their respective observations.
 
 ## Version 0.2.1 source refresh
 
@@ -106,3 +97,11 @@ The user-supplied Claude skill contributes `agent-sessions`: `SKILL.md`, `refere
 The approved public-name scheme changes retained skill folders, frontmatter, references, source paths and module IDs without condensing their methods. Original source hashes, upstream source names, URLs, datasets and component licenses remain preserved. Manifest transformations identify renamed paths and changed export bodies. The compatibility creator and personal VM module (12 files total) are intentionally excluded, leaving 24 skills and 296 payload files. Their routing and lab-specific installer bindings are removed; general authorization safeguards remain. Historical counts and byte-identical claims above describe their original releases, before this naming transformation.
 
 The installer accepts legacy CLI aliases with a warning and supports trusted 0.x receipt migration, validating old content before replacement/deletion. Conflicts stop before writes; user-owned content is preserved. This establishes package behavior only, without a new model pilot or human acceptance.
+
+## Version 1.4.0 consistency ownership and brain setup
+
+The owner authorized a consistency pass over all 61 audit findings. Policy bodies now live in their owning files, with named section pointers and explicitly marked domain additions. This is an intentional instruction revision, not an unchanged-source packaging claim. Sources, domain criteria, schema invalidation contracts, datasets, licenses and helper algorithms remain preserved.
+
+The supplied you-are-brain skill adds three files; both session skills start from the supplied current sources. Manifest source hashes identify those inputs and export hashes bind the resulting 310 payload files. The public Codex hooks line and runtime client identity are retained as recorded transformations. The only selection change adds the new skill to profiles containing agent-sessions; existing reference closure retains linked policy owners. Helper claim text points to its policy owners without changing validation logic.
+
+Executed 1.4.0 checks and limits are recorded in [the release report](RELEASE_1.4.0.md).

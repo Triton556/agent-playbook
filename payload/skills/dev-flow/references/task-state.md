@@ -2,13 +2,13 @@
 
 Use the existing project plan. When a verifiable graph/output series is needed, use local `.workflow/task-<id>.json` through `{{HARNESS_ROOT}}/workflow/agent-worklog.mjs`. A short task needs no separate file. The tool reads stdin JSON, operates in the current project, launches no models/network and expands no access. For a linked ledger, it calls only the fixed supported validator without a shell.
 
-For a new multi-stage task/redesign, save the brief, answers and acceptance program in the existing plan under the [shared reference](task-brief-and-acceptance.md); record its exact path and current version in existing decisions/next fields, without a new schema field. That reference governs basis/criteria freshness; do not reload unchanged instructions still in context. When used, machine state owns progress/relationships, the plan owns requirements, and an optional ledger owns detailed evidence. Use paths/IDs and necessary hashes instead of retelling values; preserve required schema fields.
+Record the brief path/version under existing decisions/next fields, without a new schema field. When used, machine state owns progress/relationships, the plan owns requirements, and an optional ledger owns detailed evidence. Use paths/IDs and necessary hashes rather than copied values. Session execution metadata: see [running-and-checking, Before starting](../../agent-sessions/references/running-and-checking.md#before-starting). Loading/recovery: see WORKFLOW, step 2.
 
 ## Compatible short format v1
 
 `command=state`, `state` field: schema_version=1, task_id and five fields: result — result; scope — agreed actions/boundaries; decisions — accepted decisions; next — step with its criterion; blocker — specific dependency or empty string. The old format and events remain supported. Legacy state supports continuation but does not establish verified series completeness.
 
-Before repeating a question, check the actual user request, scope and decisions. A file reflects consent; it is not a new source of authority or a waiver of tool approval. Recovered history does not establish current execution.
+Recovered records and consent: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
 ## Graph and outputs v2
 
@@ -16,7 +16,7 @@ Long/serial work retains the five v1 fields and adds:
 
 - `status`: in_progress, blocked, ready, complete, paused, cancelled. Paused/cancelled reflect user instructions; diagnostics do not restart them.
 - `session_id`: actual chat identifier when known. Diagnostics bind only to this chat/project; do not select neighboring tasks by file time.
-- `approved_actions`: optional `{id,action,resource,conditions,source:{kind:"user",reference}}` records. These point to real consent; they do not prove authority. A new resource/cost/executor does not inherit earlier consent.
+- `approved_actions`: optional `{id,action,resource,conditions,source:{kind:"user",reference}}` records of real consent. Authority: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 - `outputs`: declared in advance as `{id,status,required?,path?,sha256?,rationale?}`. Status: pending, ready, not_applicable. Ready requires an existing file/hash; not_applicable requires a reason. Do not remove a mandatory output to get green; changing the list requires grounds in scope.
 - `stages`: `{id,status,required?,skill?,dependencies,output_ids,inputs,evidence,observation?,rationale?}`. Status: pending, in_progress, pass, partial, failed, blocked, not_applicable. Inputs/evidence are `{path,sha256}` arrays. Pass requires current inputs, evidence and an observation; nonapplicable requires a reason. References/graph are checked; cycles are prohibited.
 - `dependency_policy`: conservative by default — a changed linked file requires rechecking the entire passed set. Declared requires `independence:{observation,files:[{path,sha256}]}` documenting actually tested independence. A stale record restores conservative mode. Under declared independence, recheck affected stages and descendants.
@@ -40,7 +40,7 @@ Pass JSON through stdin to the existing Node from the project root:
 
 Snapshot returns SHA256. Inspect returns output/stage freshness, reasons for incompleteness and runnable next steps. Partial, missing, stale, failed and blocked results are distinct. Ready/complete and task-done for v2 are rejected when incomplete/stale. The tool checks records/files, not whether an inspection really happened.
 
-Stage handoff: artifact/revision, evidence, status, open issues and next step. After failure, retry the affected stage using a new hypothesis; do not reopen a decision without cause. Do not automatically resume after user stop. The graph controls local transitions; it is not a background model executor.
+Stage handoff: artifact/revision, evidence, status, open issues and next step. Repair/recheck: see WORKFLOW, step 6; authorization and user stop: see AGENTS, Goal, communication and boundaries. The graph controls local transitions; it is not a background model executor.
 
 ## Events and metrics
 
@@ -52,6 +52,6 @@ Metrics returns counts and the repeat denominator: repeated + clarification + ne
 
 ## Completion and diagnostic hook
 
-Before finishing, check mandatory outputs, criteria and material defects. For a ledger, run `quality_ledger.py validate <ledger> --root <project> --require-ready`; record automated readiness, agent inspection and the user's acceptance separately.
+Before finishing, check mandatory outputs, criteria and material defects. For a ledger, run `quality_ledger.py validate <ledger> --root <project> --require-ready`. Result grades: see [human-perspective-review, Readiness and transfer](human-perspective-review.md#readiness-and-transfer).
 
 `quality-stop.mjs` is an optional Stop diagnostic for this session_id/cwd's active v2 state. It warns without blocking, continuing the chat or reading transcripts; the same unchanged failure is not repeated. A hook file does not establish trust/activation: Codex requires review/trust of its exact definition. Pre-delivery checks remain in the instructions and work without the hook. Memory hooks are a separate process with no ordering dependency.

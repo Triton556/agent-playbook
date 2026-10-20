@@ -4,9 +4,9 @@ In product work the design system, brand, components and regulations are fixed. 
 
 ## When to diverge
 
-- **New screen or flow:** always produce directions before choosing.
-- **Redesign:** produce directions after the intent card lists what already works and must survive.
-- **Refinement of an accepted screen:** skip divergence; fix the specific problem.
+- **New screen or flow:** divergence trigger: see [creative-direction, Creative direction](../SKILL.md#creative-direction).
+- **Redesign:** use the same divergence trigger; preservation criteria: see [task brief and acceptance, section 2](../../dev-flow/references/task-brief-and-acceptance.md#2-understand-the-intent).
+- **Refinement:** follow that trigger; this branch adds structural axes only.
 
 ## Axes that make directions structurally different
 

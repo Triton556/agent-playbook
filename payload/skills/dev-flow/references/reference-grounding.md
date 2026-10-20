@@ -17,7 +17,7 @@ Open for a critical unknown or recurring error, not to accumulate links. An acce
 
 1. Name the particular unknown property and a check that distinguishes alternatives. An attractive reference does not replace a functional one.
 2. Find relevant evidence: source/documentation for behavior, required sides for form, a working interaction for UI, data and scale for a conclusion.
-3. Actually inspect the material. Identify transferable techniques and limits; note the license when using others' files. An unseen side of a real object stays unknown; label permitted design as an author choice.
+3. Actually inspect the material. Identify transferable techniques and limits. Before copying/adapting another asset, inspect its own license and provenance and preserve required credits; public visibility or free pricing grants no reuse permission. An unseen side of a real object stays unknown; label permitted design as an author choice.
 4. Resolve uncertainty with a bounded prototype or counterexample. Choose example count by unknown coverage; a link quota does not measure quality.
 
 Keep a short record in the existing plan:
@@ -33,6 +33,6 @@ Keep a short record in the existing plan:
 - Porte: side/front view and body/wheel ratios; palette alone does not resolve proportions. Imaginary transport may have authorized original proportions.
 - Dashboard: an example of selecting a scenario and seeing its result, including an awkward case. A palette does not establish usability; a static report need not have a switch.
 - Water: source, shore, movement and object placement. Vegetation depends on climate/design intent, not automatically on every body of water.
-- Audit diagnosis: “looks skewed” is a useful observation; a geometry claim needs coordinates/measurement.
+- Audit diagnosis: Observation versus cause: see [human-perspective-review, Inspection sequence](human-perspective-review.md#inspection-sequence).
 
 Method sources and historical audits: {{EVIDENCE_ROOT}}/workflow-review-20261013/pipeline-review.md, sections 3–4; use kb-find for current decisions. Do not load the entire analysis for routine use of this reference.

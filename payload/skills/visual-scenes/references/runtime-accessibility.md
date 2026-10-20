@@ -2,7 +2,7 @@
 
 ## Budget the complete result
 
-Choose a target viewport/device and an acceptable response/frame budget. Measure simulation, main render, reflection/shadow passes, post-processing and DOM work separately and together where instrumentation permits. RAF callback frequency is not proof of full-frame throughput. GPU timing requires appropriate tools and interpretation; CPU submission time is not GPU completion time.
+Choose a target viewport/device and an acceptable response/frame budget. Measure simulation, main render, reflection/shadow passes, post-processing and DOM work separately and together where instrumentation permits. RAF callback frequency, file/build success and voxel/quad counts do not prove full-frame throughput. GPU timing requires appropriate tools and interpretation; CPU submission time is not GPU completion time.
 
 Capture dimensions, device/browser, pixel ratio, scene count, effects and model state with a performance result. Avoid comparing a warm steady state to compilation/loading. Include input responsiveness and a costly interaction, not just idle.
 
@@ -12,7 +12,7 @@ Separate model-dirty and view-dirty work. Recompute a model only on relevant inp
 
 ## Responsive composition
 
-Set the target devices from the brief. Desktop work can require resizing and browser zoom without requiring a separate mobile design. The rules below apply to the sizes the product actually supports; do not turn a desktop task into a mobile redesign.
+Target device/theme scope: see [design-preflight, 2. Link screens, states and sizes](../../ui-design/references/design-preflight.md#2-link-screens-states-and-sizes).
 
 Measure the free drawing rectangle after controls and safe areas. Fit essential geometry to it, then inspect. Move secondary details into a disclosure or stack them below the scene. A smaller screen often needs a different camera or layout, not a scaled desktop HUD. Verify short viewports as well as narrow ones.
 
@@ -20,12 +20,12 @@ Labels and overlays have a joint budget. Give measurements and interaction targe
 
 ## Input and accessibility
 
-Use native labeled buttons, range inputs, selects and text readouts when possible. Keep units in accessible value text. Custom sliders need arrows, Home/End, visible focus and exposed min/max/current values; follow the [WAI slider pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider/). A role alone does not implement keyboard behavior.
+Shared controls: see [ui-reference, Quick Reference](../../ui-reference/references/quick-reference.md#quick-reference), input-labels, keyboard-nav, focus-states and icon-context. In addition to those rules, custom sliders expose units and min/max/current values with arrows and Home/End under the [WAI slider pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider/); a role alone does not implement behavior.
 
-Canvas picking needs an equivalent semantic control path for important objects. Give interactive objects stable names and descriptions. Keyboard events should respect text fields and normal browser shortcuts. Direct manipulation needs a visible selected state and a discoverable instruction.
+In addition to ui-reference, keyboard-nav and dragging-alternative, canvas picking needs a semantic control path for important objects, stable names/descriptions, visible selection and discoverable instructions.
 
-Honor `prefers-reduced-motion` by starting with a stable readable state, replacing camera tours with cuts and offering manual playback. Pause should stop all intended animation sources, not just the camera. Preserve the scientific/data consequence when removing motion. Announce committed result changes as useful summaries, not a stream every animation frame.
+Reduced motion/rotation: see ui-reference, reduced-motion and auto-rotation-controls. In addition, start with a stable readable state and make scene pause stop all intended animation sources; cuts/manual playback preserve the scientific/data consequence. Announce committed summaries rather than every frame.
 
-Use shape, labels or line style alongside color. Small thin colored rays require sufficient contrast at the actual resolution. Validate with keyboard and real assistive technology when such support is part of acceptance; a DOM check alone is not full accessibility certification.
+Contrast and redundant channels: see ui-reference, color-not-only, color-contrast and contrast-data. In addition, inspect thin colored rays at actual resolution and use real assistive technology when required by acceptance.
 
 Official implementation references: [Three.js color management](https://threejs.org/manual/pages/color-management.html), [Three.js responsive design](https://threejs.org/manual/pages/responsive.html), [WAI keyboard interface](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/). Check the project's installed library version before adopting APIs.

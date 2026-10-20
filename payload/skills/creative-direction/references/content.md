@@ -1,6 +1,6 @@
 # Content: angles and structure for the user's material
 
-The user's own material - the user's draft, the user's thoughts, the user's order - is the basis. The creative work is finding angles, openings and structures that serve it, offered as options beside the user's version, never as a silent rewrite.
+User material: see [task-brief-and-acceptance, 2. Understand the intent](../../dev-flow/references/task-brief-and-acceptance.md#2-understand-the-intent).
 
 ## Axes that make directions different
 
@@ -12,7 +12,7 @@ The user's own material - the user's draft, the user's thoughts, the user's orde
 
 ## Direction as a moment
 
-Write each direction as its opening: the first 15–30 seconds or the first paragraph, in the user's voice, plus one sentence on where it ends. Show what changes relative to the user's draft and what stays.
+Write each direction as its opening: the first 15–30 seconds or first paragraph, with one sentence on its ending. Preservation: see [task-brief-and-acceptance, 2. Understand the intent](../../dev-flow/references/task-brief-and-acceptance.md#2-understand-the-intent).
 
 ## References
 
@@ -20,4 +20,4 @@ Find a few real pieces in the same format and audience (videos, essays, channels
 
 ## Hand-over
 
-The creative brief records the angle, the promise, the structure, what of the user's material must stay as written, and the parts that are only suggestions.
+The creative brief records angle, promise and structure. User material and proposed changes: see [task-brief-and-acceptance, 2. Understand the intent](../../dev-flow/references/task-brief-and-acceptance.md#2-understand-the-intent).

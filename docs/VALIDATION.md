@@ -1,5 +1,7 @@
 # Validation record
 
+Current 1.4.0 results, the baseline and per-finding disposition are in [the release report](RELEASE_1.4.0.md). Entries below retain their original release scope.
+
 Build: 15 October 2026, Windows. The levels below describe executed checks, not a guarantee of future model quality. Python standard-library installer/helpers and Node22.13.0 were used.
 
 ## Source and composition

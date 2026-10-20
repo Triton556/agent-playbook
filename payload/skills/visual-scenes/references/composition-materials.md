@@ -35,7 +35,7 @@ Use a small lighting hierarchy: key for shape, fill for the mechanism's dark sid
 
 ## Labels are a second renderer
 
-Each label needs a stable entity ID, world anchor, screen projection, priority and visibility rule. Position after the camera/model update. Hide anchors behind the camera; handle offscreen and occluded labels deliberately. Resolve important collisions, or move selected details into a fixed card with a leader. Numeric units and small text belong in DOM when possible.
+Entity identity: see [causal-state-interaction, Guided presets and direct control](causal-state-interaction.md#guided-presets-and-direct-control). In addition to that identity rule, each label needs a world anchor, screen projection, priority and visibility rule. Position after the camera/model update. Hide anchors behind the camera; handle offscreen and occluded labels deliberately. Resolve important collisions, or move selected details into a fixed card with a leader. Numeric units and small text belong in DOM when possible.
 
 Reserve foreground contrast for the selected subject; quiet surrounding geometry with lower saturation, detail or light. Keep text out of the depth-of-field pass. Background blur should organize attention, never blur the only evidence of the mechanism.
 

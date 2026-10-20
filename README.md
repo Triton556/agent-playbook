@@ -1,6 +1,6 @@
 # Agent Playbook
 
-An installable, modular workflow for coding agents, creative direction, human-centered UI review, visual experiments, voxel creation and durable knowledge. Version 1.3.0 includes 25 custom skills with the public dev-, ui- and agent- names, including orchestration through agent-sessions and agent-sessions-codex. Current configured instructions, references, datasets and helpers, including intent and preservation checks before building, are retained.
+An installable, modular workflow for coding agents, creative direction, human-centered UI review, visual experiments, voxel creation and durable knowledge. Version 1.4.0 includes 26 custom skills with the public dev-, ui- and agent- names, including orchestration through agent-sessions and agent-sessions-codex. Current configured instructions, references, datasets and helpers, including intent and preservation checks before building, are retained.
 
 **[Русское описание](README.ru.md) · [Agent installation guide](INSTALL_FOR_AGENTS.md) · [Workflow guide](docs/WORKFLOW_GUIDE.md) · [Integrations and startup limits](docs/INTEGRATIONS.md) · [Compatibility](docs/COMPATIBILITY.md) · [Fidelity contract](docs/FIDELITY.md) · [Licenses](THIRD_PARTY_NOTICES.md)**
 
@@ -24,7 +24,7 @@ python harness.py doctor --client codex --target ../my-project
 
 On Windows, clone with `git clone -c core.longpaths=true https://github.com/Triton556/agent-playbook.git` to enable long paths for this checkout's nested resources.
 
-Start a new client session in `my-project`. Inspect the native skill catalog and run the relevant live acceptance scenario. `verify` proves installed file integrity. `doctor` reports missing/unverified capabilities; neither command proves future model quality.
+Activation and installation verification: see [INSTALL_FOR_AGENTS, section 6](INSTALL_FOR_AGENTS.md#6-start-a-new-session-and-exercise-the-selected-route) and [client integration](docs/INTEGRATIONS.md#codex-startup-budget-and-discovery).
 
 For Claude Code use `--client claude`; for DeepSeek Harness use `--client deepseek`. Generic clients use `--client generic` and need an explicit discovery/bootstrap integration. See the compatibility matrix before claiming support.
 
@@ -37,13 +37,13 @@ python harness.py install --client codex --target ../my-project --skills dev-dom
 # Voxel pipeline and its dependency closure.
 python harness.py install --client deepseek --target ../voxel-project --profile voxel
 
-# Whole workflow: expands the selection to all 25 modules.
+# Whole workflow: expands the selection to all 26 modules.
 python harness.py install --client claude --target ../visual-project --profile visual --workflow
 ```
 
 | Profile | Entry points |
 |---|---|
-| `full` | All 25 custom skills and the complete workflow bootstrap |
+| `full` | All 26 custom skills and the complete workflow bootstrap |
 | `jam-board` | Jam Board planning, worker briefs, reports and review with the linked playbook procedures |
 | `engineering` | Creative direction, planning, implementation, debugging, testing, UI, Codex session orchestration and supporting methods |
 | `visual` | Creative direction, UI design/review, interactive experiments and voxel craft |
@@ -51,11 +51,13 @@ python harness.py install --client claude --target ../visual-project --profile v
 | `memory` | Find, save, status, sync and curation with the existing memory runtime |
 | `instructions` | Agent-document editing, worker-session orchestration and references to the shared workflow-pilot procedure |
 
-Dependencies can include several siblings. The plan shows requested and actually installed skills before writing. `--workflow` installs all 25 modules because the complete startup rules can route to any of them. Selecting a single skill without this flag does not activate the whole workflow. Bodies and resources are retained; references are loaded only when their original triggers apply.
+Dependencies can include several siblings. The plan shows requested and actually installed skills before writing. `--workflow` installs all 26 modules because the complete startup rules can route to any of them. Selecting a single skill without this flag does not activate the whole workflow. Bodies and resources are retained; references are loaded only when their original triggers apply.
 
-`agent-sessions-codex` lets Claude, another Codex or any agent with the required local tools write a brief, start or continue a Codex thread visible in the Codex app, and check the result. It is selected by `full`, `engineering` and `instructions`, or separately with `--skills agent-sessions-codex`, including `--client claude`. The orchestrator proposes each session with its access mode and starts it only after the user agrees. Sessions require Node.js and an available Codex CLI using the user's own settings/history. See [session integration](docs/INTEGRATIONS.md#agent-sessions-codex-for-orchestrators).
+Codex client prerequisites/driver: see [session integration](docs/INTEGRATIONS.md#agent-sessions-codex-for-orchestrators); orchestration policy: see [agent-sessions](payload/skills/agent-sessions/SKILL.md).
 
 `agent-sessions` generalizes this to any worker client through adapters with one [contract](payload/skills/agent-sessions/references/contract.md). It ships a live-checked `codex` adapter, an unverified `claude-code` adapter, and a guide for writing an adapter for another client such as OpenCode or a DeepSeek harness. Each adapter states what its access modes actually enforce and refuses a mode it cannot provide. It is selected by `engineering`, `instructions` and `full`, or with `--skills agent-sessions`.
+
+`you-are-brain` sets up a private brain profile, then follows [agent-sessions](payload/skills/agent-sessions/SKILL.md). Included wherever that skill is selected by a profile: full, engineering, instructions and jam-board.
 
 ## Jam Board
 
@@ -72,7 +74,7 @@ python harness.py verify --client codex --target ../my-project
 python harness.py doctor --client codex --target ../my-project
 ```
 
-The profile requests `jam-board`, `dev-flow`, `dev-plan`, `agent-sessions` and `agent-sessions-codex`; linked dependencies are also retained. `full` and `engineering` include the skill. Selecting `--skills jam-board` also installs its dependency closure. MCP connection is separate: see [connection examples](payload/skills/jam-board/references/connect.md). Installation does not connect a server or authorize launching sessions. The user chooses worker models and approves any separate sessions.
+The jam-board profile selects the board and linked playbook procedures; see catalog/plan for closure. Connection: [examples](payload/skills/jam-board/references/connect.md). Model and launch policy: see agent-sessions, Fixed rules and step 5.
 
 ## How the workflow works
 
@@ -81,16 +83,16 @@ The profile requests `jam-board`, `dev-flow`, `dev-plan`, `agent-sessions` and `
 3. Test an inexpensive coherent representation before expensive construction.
 4. Create the requested outputs and preserve current state/evidence.
 5. Inspect technical behavior, meaning and actual human-scale presentation separately.
-6. The author checks the result and follows the selected human checkpoints. A separate reviewer runs only when explicitly chosen for this task, with agreed scope, stages and round limit.
+6. Participation and reviewer selection: see [task brief and acceptance, section 5](payload/skills/dev-flow/references/task-brief-and-acceptance.md#5-two-decisions-about-how-to-work).
 7. Complete the declared scope and save transferable lessons with their limits.
 
-The initial interview selects human participation (each meaningful iteration / first coherent sketch / autonomous) and separately whether a reviewer is needed. Autonomous work does not authorize delegation. An agreed reviewer uses a fresh context; a repair does not automatically create another round. One current observation may support several acceptance criteria. See [instruction ownership and pilots](docs/INSTRUCTION_MAINTENANCE.md).
+Workflow procedure locations: see [ownership map](docs/INSTRUCTION_MAINTENANCE.md#ownership-map).
 
 ## Knowledge and integrations
 
-The memory profile includes the original capture/checkpoint/search/status/sync runtime and curation/cloud-exchange procedures. Initialize an empty authorized local vault with `init-memory`; existing files that differ are preserved. Private GitHub remote verification, hourly PC sync and daily curation require the new owner's real setup and consent. No previous owner's records, repository settings, credentials, schedule receipts or VM identities are bundled.
+The memory profile packages the runtime and curation references. Initialization: see [INSTALL_FOR_AGENTS, Knowledge](INSTALL_FOR_AGENTS.md#knowledge); transport and curation policy: see kb-sync and kb-curate.
 
-Browser/image inspection, image generation, document-format tools, a fresh context reviewer and separately authorized lab tools are **client capabilities**, not capabilities granted by a Markdown file. Missing checks remain unverified. See [Compatibility](docs/COMPATIBILITY.md).
+Client capability requirements: see [Compatibility](docs/COMPATIBILITY.md). Claim grades: see [human-perspective-review, Readiness and transfer](payload/skills/dev-flow/references/human-perspective-review.md#readiness-and-transfer).
 
 ## Preservation and removal
 
@@ -112,14 +114,12 @@ python harness.py check-package
 python -B -m unittest discover -s tests -v
 ```
 
-Integrity, installation behavior, helper reproduction, actual client discovery, model behavior and human acceptance are separate claims. Preserve original acceptance criteria and compare actual artifacts on matched tasks before asserting quality parity. Model, reasoning effort, tools, context, permissions and input references can change outputs even when instructions are identical.
+Validation claim grades: see [human-perspective-review, Readiness and transfer](payload/skills/dev-flow/references/human-perspective-review.md#readiness-and-transfer). [Fidelity](docs/FIDELITY.md#what-tests-can-establish) maps executed package checks to their limited claims.
 
 Detailed test evidence and limitations belong in [Validation](docs/VALIDATION.md). The old dispatcher and the reverted five-instruction experiment are not activated by this package.
 
-Agent-facing instructions are maintained in English. User communication and knowledge-base content default to Russian, unless the user explicitly requests another output language. Exact data, identifiers and Russian human documentation retain their intended language.
+Language defaults: see [AGENTS](payload/AGENTS.md#goal-communication-and-boundaries); worker exception: see [brief-writing, Language](payload/skills/agent-sessions/references/brief-writing.md#language).
 
 ## Upgrade from 0.x to 1.0.0
 
-Update this same checkout and keep its gitignored `.harness-state/receipts/` private store. Repeat the original `plan` and `install` commands with the same target, client, profile/skills, workflow flag and retained deployment bindings, then run `verify`. Omit retired lab flags; their old values are ignored during migration. `plan` reports `migration_from` and `obsolete_owned_files` without writing. Original skill names in `--skills` are aliases that warn on stderr; the plan and installed catalog use the new names. See the complete [rename table](CHANGELOG.md#100). Removed modules return an explicit error when requested directly.
-
-The installer checks the destination receipt against its original private record, validates every old file and the managed startup block, replaces unchanged owned files, and removes only obsolete owned files. Renamed skills appear at their new paths; removed modules are retired. User neighbors, preexisting identical files and text outside the managed block remain intact, including BOM/CRLF. Edited or missing old files, a changed block, different options, missing private records or new-path conflicts stop the upgrade before writes. Resolve the reported conflict without deleting user content, then retry. A separate checkout needs an authorized transfer of the original private record; a destination receipt alone is insufficient. Empty old directories may remain. Back up the project and private receipts before upgrading; retain the 0.x checkout for recovery. No global client settings are changed.
+See [INSTALL_FOR_AGENTS, Upgrade](INSTALL_FOR_AGENTS.md#upgrade-from-0x-to-100).

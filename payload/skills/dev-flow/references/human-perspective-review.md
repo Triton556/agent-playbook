@@ -43,13 +43,13 @@ Check not only absence of interference but also presence, membership and preserv
 
 ## Preservation during revision
 
-When an accepted basis exists, identify qualities, actions and relationships that must survive in the new version. Start from the intent card's "what already works" list and inspect the accepted version yourself to complete it. Include personal and playful elements as first-class items: lore, references to the user's life, easter eggs, recognizable places, living motion, mood and the meaning of the whole. These are the qualities most often lost when a revision improves assets, structure or polish.
+Preservation criteria: see [task brief and acceptance, section 2](task-brief-and-acceptance.md#2-understand-the-intent). Inspect the accepted version to construct observable comparison scenarios for those criteria.
 
-For each material quality, provide an observable example and a repeatable scenario: what is recognized or understood, what the person does and what result they receive. Ground this in user feedback and actual evidence; latest explicit changes take precedence. A saved copy protects rollback; verify the transfer of quality on the new version.
+For each criterion, record what is recognized/understood, the action and received result. Compare its transfer in the new version against actual evidence; a saved baseline supports rollback.
 
-A new rule or constraint must not silently remove an accepted quality. Example: "decorative motion must not pose as a live project event" limits how motion is labeled; it does not justify deleting people, animals or water that made the accepted world feel alive. When a rule and an accepted quality conflict, keep the quality, adjust its presentation, and state the conflict.
+Preservation authority: see task brief and acceptance, section 2. Example: "decorative motion must not pose as a live project event" limits how motion is labeled; it does not justify deleting people, animals or water that made the accepted world feel alive. When a rule and an accepted quality conflict, keep the quality, adjust its presentation, and state the conflict.
 
-When the basis is the user's own material (a draft, an order, a text, a design), preservation also covers its structure, order, voice and content. Compare the new version with the user's material section by section and list every removed, moved or rewritten part.
+For user-authored material, compare section by section and list removed, moved or rewritten parts under the preservation criteria.
 
 Check preservation across a coherent segment of experience: a clear interface transition, a video sequence's rhythm, a document's argument, a system request's result or an action in a spatial scene. For a small edit, the affected property and its dependencies suffice; rechecking the entire system is unnecessary.
 
@@ -60,9 +60,9 @@ Check preservation across a coherent segment of experience: a clear interface tr
 3. **Change boundaries.** For a material action, establish from evidence exactly what is affected and what around it must remain. Compare before, during and after: membership of the changed set, its complete meaningful boundaries, neighboring context and required relationships. Supplement the correct class of action with a check of the correct extent/composition of its consequences. Observe motion at normal speed and across transitions. Diagnose with a close-up, data or measurements; assess impact at the target presentation.
 4. **Interpretation.** Separate what is visible, the predicted human reaction and the cause. “Looks like a carpet” is an observation/association, not a proven geometric cause. Perspective and multiple views do not replace sufficient measurements. When the result reads incorrectly, investigate form, material, light, viewpoint, occlusion, behavior and information presentation.
 5. **Assessment against intent.** Prioritize harm to the goal, function, recognition and style under the user's conditions. Silhouette → recognition → relationships → color → details is a useful object heuristic, not a law for every modality. Deliberate asymmetry/emptiness/simplification is allowed. There is no defect quota; preserving a successful result is a valid outcome.
-6. **Repair and regression.** Confirm the cause, make a sufficient authorized edit, and repeat the same scenario and affected checks on the new version. Recheck affected preserved qualities, actions and relationships; assess character and protected examples in their new integration.
+6. **Repair and regression.** Transition: see [WORKFLOW, Work route](../../../workflow/WORKFLOW.md#work-route). Recheck affected character, preserved qualities, actions, relationships and protected examples in their new integration.
 
-A check must distinguish subject-specific errors. For example, absence of intersections in a moving part does not prove correct membership; compare the change boundary with the source. In UI, similarly check which data/elements must remain after an action; in text, which meaning/conditions survive rewriting. After missing the same error class again, change the source or observation method instead of multiplying similar images and general passes. If the available method cannot distinguish the property, record the gap and use the selected human checkpoint. Direct user feedback corrects a criterion's current status without rewriting the earlier independent report.
+A check must distinguish subject-specific errors. Absence of intersections in a moving part does not prove correct membership; compare action boundaries with the source. In UI check retained elements/data; in text check surviving meaning/conditions. If the method cannot distinguish a property, record the gap and use the selected human checkpoint. Actual feedback corrects current status without rewriting the earlier report. Further rounds: see WORKFLOW, step 6.
 
 Group repetitions into a class with affected instances and a representative check. A shared cause stays hypothetical until confirmed; many small repetitions are not automatically a critical defect.
 
@@ -79,7 +79,7 @@ One short observation suffices for a small edit. Connected human-readable feedba
 | UI | Main action → visible accessible response → confirmed result → recovery; required context is preserved and related states agree. Use [UI interaction quality](../../ui-design/references/interaction-quality.md) for the applicable branch |
 | 3D / voxel | Distinguishable views and characteristic contours/material regions; action membership/boundaries, support/contact, scale and target distance; geometric diagnosis uses separate data |
 | Animation | Normal speed, intention/weight/rhythm, transitions and problematic frames; a still frame does not verify movement |
-| Chart / dashboard | Data, units, scales, denominators and coupled updates of graphics/labels/conclusion; measurement distinguished from hypothesis |
+| Chart / dashboard | Data, units, scales and denominators; shared result handling: see causal-state-interaction, One model, several views; encoding: see data-spatial-metaphors, Live, snapshot, approximate, absent |
 | Document / text | Reading order, conclusion and its grounds, preservation of material qualifications when shortening, voice/audience; actual rendering where layout matters |
 | Audio | Listening with an available tool; a spectrum description does not establish a listener's experience |
 
@@ -87,7 +87,7 @@ One short observation suffices for a small edit. Connected human-readable feedba
 
 Each pass claim names the property, version, conditions, verification method and concrete observation; its scope cannot exceed the evidence. If one criterion combines properties with different outcomes/modalities, separate their statuses in the existing record. Opening a card, for example, proves navigation; readability of its spatial object requires inspecting the object, and the activity's meaning requires observing action in context. Likewise, a valid video file does not verify sequence pacing, and a successful component test does not establish an end-to-end system result.
 
-Justify no findings through coverage of critical features/states, not a generally pleasant impression. Bind current evidence to the artifact version/ID, state/input and observation; use SHA when verifiable immutability is needed. An old version's frame/test does not close a changed property in the new version. Numerical/geometric tests need an independent expected basis: repeating the generator's formula does not check its subject correctness.
+Justify no findings through coverage of critical features/states. Evidence versions: see [quality-ledger, Schema version 1](quality-ledger.md#schema-version-1). Numerical/geometric expected results: see [dev-verify, Behavior verification](../../dev-verify/SKILL.md#behavior-verification).
 
 Record technical pass, agent inspection and human assessment separately. Test/source counts and file presence describe scope; a quality conclusion needs evidence of the named property. Human acceptance comes only from an actual response; it is not a mandatory new approval for every ordinary step. An unavailable modality stays unverified; a material semantic failure stays unready. For a ledger, use existing kind/criterion/evidence fields; no new universal format is required.
 

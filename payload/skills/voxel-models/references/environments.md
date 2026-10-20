@@ -8,11 +8,11 @@ Tie seasonal surfaces to geometry: snow belongs on exposed upward regions, folia
 
 ## Buildings and interiors
 
-Use footprint, floor/wall thickness, facade bay spacing, floor count and roof profile as explicit variables. Construct a shell, subtract openings and add repeated structural modules. A facade may be richer than a back wall by design, but a reusable freestanding asset needs a conscious decision about all views. A neutral/clay pass distinguishes painted windows from actual recesses.
+Use footprint, floor/wall thickness, facade bay spacing, floor count and roof profile as explicit variables. Functional openings: see [built-form, Function, cavities and localized wear](built-form.md#function-cavities-and-localized-wear). In addition, construct the building shell and repeated modules from its footprint variables. A facade may be richer than a back wall by design, but a reusable freestanding asset needs a conscious decision about all views. Cavity inspection follows built-form.
 
-The inspected [Voxel Buildings](https://opengameart.org/content/voxel-buildings) grids repeat stories, roof lines and window recesses with small palettes. Their occupied cell counts vary widely; a large SIZE container can remain mostly empty. The [Modular Bathroom](https://opengameart.org/content/modular-bathroom-voxel-art) has common wall containers20×40×80 and a corner20×20×80. Preserve anchors and pitch when reusing a kit; a common container is evidence of a module relationship, not proof of its assembly algorithm.
+The inspected [Voxel Buildings](https://opengameart.org/content/voxel-buildings) grids repeat stories, roof lines and window recesses with small palettes. Their occupied cell counts vary widely; a large SIZE container can remain mostly empty. The [Modular Bathroom](https://opengameart.org/content/modular-bathroom-voxel-art) has common wall containers20×40×80 and a corner20×20×80. Kit assembly: see [mixed-grids](mixed-grids.md#mixed-local-grids-in-a-metric-world); a common container is evidence of a module relationship, not proof of its assembly algorithm.
 
-Interior props need readable functional cavities: basin, bath rim, basket opening, chair/bed spaces, appliance grille. Keep environment geometry separate from the asset if the requested output is a library part. In a staged room, removed walls can be an intentional camera cutaway rather than an incomplete model.
+In addition to built-form’s cavity rule, inspect basin/bath rims, basket openings, chair/bed spaces and appliance grilles as applicable. Keep environment geometry separate from the asset if the requested output is a library part. In a staged room, removed walls can be an intentional camera cutaway rather than an incomplete model.
 
 ## Terrain and tile contracts
 

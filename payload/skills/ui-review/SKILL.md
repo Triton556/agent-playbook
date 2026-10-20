@@ -7,10 +7,10 @@ description: Inspect and improve an existing rendered interface with Impeccable 
 
 This stage owns actual rendering and actions. Use the current [acceptance program](../dev-flow/references/task-brief-and-acceptance.md); [visual-quality](references/visual-quality.md) defines one pass over the affected surface. Open-ended inspection supplements the criteria.
 
-When a mockup exists, compare the same route, state, data, size/zoom. Under [UI preflight, stage 4](../ui-design/references/design-preflight.md#4-compare-the-working-ui-with-the-basis), distinguish quality of the basis, fidelity of transfer and scenario behavior. Without a mockup, check available requirements/current system and note the gap; a retrospective description does not establish preflight.
+UI-to-basis comparison: see [design-preflight, 4. Compare the working UI with the basis](../ui-design/references/design-preflight.md#4-compare-the-working-ui-with-the-basis).
 
-For behavior, use the relevant [interaction-quality](../ui-design/references/interaction-quality.md) branch. One actual scenario and its current evidence may cover UI, behavioral and semantic criteria; do not rerun it just because another check has a different name. Assess perception/preservation through the [shared protocol](../dev-flow/references/human-perspective-review.md), without another general inspection.
+For behavior use the applicable [interaction-quality](../ui-design/references/interaction-quality.md) branch. Reuse: see [task-brief-and-acceptance, 7. Execution, verification and completion](../dev-flow/references/task-brief-and-acceptance.md#7-execution-verification-and-completion). Perception/preservation: see human-perspective-review, Inspection sequence.
 
-In review-only mode, deliver observable findings and locations. Authorized fixes follow WORKFLOW; a new visual language returns to [design](../ui-design/SKILL.md), and an unexplained functional cause goes to [debugging](../dev-debug/SKILL.md).
+Review scope: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries). Repairs: see WORKFLOW, step 6. New visual language: see ui-design; unexplained functional cause: see dev-debug.
 
 Impeccable is a specialist reference/detector, not a second mandatory audit. Scripts contains the local context wrapper without upstream interviews or subagents. Actual inspection outranks an abstract count; evaluate stylistic warnings against the brand. Sources: [sources.json](sources.json), [binary.json](binary.json), [LICENSE](licenses/pbakaus--impeccable-LICENSE).

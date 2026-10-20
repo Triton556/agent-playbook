@@ -4,9 +4,9 @@ For a specific question about expression, typography or composition, use [Anthro
 
 ## Establish scope
 
-- **Refinement:** preserve identity, components, content and behavior. Correct affected hierarchy, rhythm, typography or interaction. “More beautiful” alone does not authorize changing the product's purpose.
-- **Redesign:** reconsider the visual system/composition within scope while preserving product facts, scenarios and constraints. An existing screen is evidence of current behavior, not a mandatory visual template. After listing what already works and must survive, explore directions with [creative-direction](../../creative-direction/SKILL.md).
-- **New surface:** establish audience, main task and relationship to the existing product. Produce distinct directions with [creative-direction](../../creative-direction/SKILL.md) before choosing; decide routine details yourself and ask only about material unknowns.
+- **Refinement:** correct affected hierarchy, rhythm, typography or interaction. Preservation: see [task-brief-and-acceptance, 2. Understand the intent](../../dev-flow/references/task-brief-and-acceptance.md#2-understand-the-intent). Scope: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
+- **Redesign:** reconsider visual system/composition within scope; current behavior is evidence rather than a required visual template. Preservation: see [task-brief-and-acceptance, 2. Understand the intent](../../dev-flow/references/task-brief-and-acceptance.md#2-understand-the-intent). Direction exploration: see [creative-direction, Creative direction](../../creative-direction/SKILL.md#creative-direction).
+- **New surface:** establish audience, main task and relationship to the product. Direction exploration: see [creative-direction, Creative direction](../../creative-direction/SKILL.md#creative-direction).
 
 For product UI, task completion, scannability and predictability come first. For marketing, attention, understanding the offer and action. For documentation, reading; for a portfolio, the showcased work. Choose the mode by surface: an app's landing page and working screen have different goals.
 
@@ -18,4 +18,4 @@ Ground design character in the subject, audience and content. Select one express
 
 For an unknown UX/stack question, use existing `{{HARNESS_ROOT}}/skills/ui-reference/SKILL.md` and one relevant search/reference. Search output is guidance, not a new design system. Taste v1 remains an additional source only when specifically useful; do not load it on every UI request.
 
-Preserve accessible focus/keyboard states, reduced motion, readability and responsiveness. Check real messages, long names and empty/loading/error states relevant to the scenario. After UI implementation, move to [ui-review](../../ui-review/SKILL.md).
+Accessibility: see [ui-reference, Quick Reference](../../ui-reference/references/quick-reference.md#quick-reference). Check real messages, long names and empty/loading/error states relevant to the scenario. After UI implementation, move to [ui-review](../../ui-review/SKILL.md).

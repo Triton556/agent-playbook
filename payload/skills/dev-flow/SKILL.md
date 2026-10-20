@@ -17,6 +17,6 @@ The coordinator selects a specialist by the nearest deliverable; [WORKFLOW](../.
 | Actual inspection of implemented UI | [ui-review](../ui-review/SKILL.md) |
 | Authorized binary/protocol analysis | [Reverse engineering](references/reverse-engineering.md) |
 
-For end-to-end development, connect finished scenarios and advance by results: sufficient plan → working slice → relevant checks. UI uses design before new visual decisions and review after rendering. Route unexplained failures to debugging. A plan-only/review-only request ends with that deliverable.
+For end-to-end development, connect finished scenarios and advance by results: sufficient plan → working slice → relevant checks. UI uses design before new visual decisions and review after rendering. Route unexplained failures to debugging. Deliverable scope: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
-Open shared procedures at their WORKFLOW triggers, and open the specialist skill for every deliverable type in the task. Skills own subject methods and sources: [composition and adaptations](references/composition.md).
+Loading: see WORKFLOW, step 2. Skills own subject methods and sources: [composition and adaptations](references/composition.md).

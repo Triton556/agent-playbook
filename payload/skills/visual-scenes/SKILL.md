@@ -18,7 +18,7 @@ Use the brief and existing project decisions to write a compact contract:
 - **Deliverable and platform:** respect the requested dashboard, explanation, artwork, or document and its intended devices. A desktop dashboard should foreground graphs, concise information blocks and linked exploration; move supporting prose into disclosures. Do not expand it into a reference wiki, unrelated calculator or unrequested mobile redesign.
 - **Acceptance:** the significant state change, the matching quantitative check, and what the rendered result must make legible.
 
-For an existing product, preserve its terminology and design system. Add the experiment where it helps a user task. For a reference-driven brief, extract composition and interaction principles; create original geometry, code, text, and assets. Publicly viewable source does not imply a reuse license.
+For an existing product, preserve its terminology and design system. Add the experiment where it helps a user task. For a reference-driven brief, extract composition and interaction principles; create original geometry, code, text, and assets. Reuse rights: see [reference-grounding, How to investigate](../dev-flow/references/reference-grounding.md#how-to-investigate).
 
 ## Choose only the useful recipes
 
@@ -34,18 +34,18 @@ For an existing product, preserve its terminology and design system. Add the exp
 | Compare iterations, verify a result, or audit a claimed improvement | [Validation protocol](references/validation.md) |
 | Need provenance, concrete Sael references, or the bounds of the research | [Evidence and references](references/evidence.md) |
 
-Read the relevant branch; the complete library is not a required context load.
+Loading and recovery: see [WORKFLOW, Work route](../../workflow/WORKFLOW.md#work-route).
 
 ## Build the smallest convincing instrument
 
 1. Establish a deterministic baseline and a meaningful preset. Compose the cause, mechanism and result together before adding scenery. Completion: a viewer can identify what to change and where the consequence appears.
-2. Keep domain state, derived model results, and presentation state distinct. Commit one model revision to every dependent visual and number; stale worker results cannot replace newer input. Completion: the same scenario gives matching geometry, chart and text, including when playback is paused.
+2. Shared result state: see [causal-state-interaction, One model, several views](references/causal-state-interaction.md#one-model-several-views). Completion: the instrument passes that contract in its paused and running scenarios.
 3. Make the subject read through silhouette, proportion, surfaces, contact and lighting. Add motion or post-processing for a named purpose. Completion: the mechanism remains understandable with bloom, depth of field and decorative particles disabled.
 4. Provide a short route from guided discovery to exploration: authored valid presets, direct or semantic controls, reset, and inspection. Ordinary DOM controls are a first-class path alongside canvas picking. Completion: the main scenario is operable and reversible by the intended input methods.
 5. Fit camera and labels to the actual free rectangle after UI is laid out. Test the intended viewport sizes; when narrow-screen support is in scope, recompose while keeping the causal relation visible. Completion: essential objects, values and controls remain readable in the required sizes.
-6. Run the proportional checks in [Validation](references/validation.md). Deliver the artifact and a brief record of observed states, checks, limitations and useful next work. A passing build or a large test count does not establish aesthetics, scientific validity, or measured performance.
+6. Run [Validation](references/validation.md). Deliver the artifact with observed states and limitations. Claim grades: see [human-perspective-review, Readiness and transfer](../dev-flow/references/human-perspective-review.md#readiness-and-transfer). Performance evidence: see [runtime-accessibility, Budget the complete result](references/runtime-accessibility.md#budget-the-complete-result).
 
-For UI implementation or visual review, use the applicable installed `ui-design` / `ui-review` workflow when available. This skill supplies experiment-specific craft; it does not authorize publishing, new services, additional agents or scope expansion.
+For UI implementation/review use the applicable ui-design/ui-review route. Action scope: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
 ## Avoid the common failed transfer
 

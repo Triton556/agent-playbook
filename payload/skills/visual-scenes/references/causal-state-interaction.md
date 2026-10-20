@@ -18,7 +18,7 @@ For asynchronous solvers, attach an increasing revision to requests and accept o
 
 A useful preset is a question with a visible answer: “What changes near resonance?”, “What happens when this route fails?”, “Why does the spectrum reunite?” Ensure presets are valid and reset all inputs they depend on. Include at least one revealing contrast and one way back.
 
-Direct manipulation, DOM sliders, buttons and keyboard shortcuts call the same commands. A draggable ring can be discovered through its label and an equivalent slider. Input feedback needs three parts: selected object, changing value, visible consequence. Preserve object identity across data sorting and topology changes.
+Direct manipulation, DOM sliders, buttons and keyboard shortcuts call the same commands. A draggable ring can be discovered through its label and an equivalent slider. Input feedback needs three parts: selected object, changing value, visible consequence. Preserve object identity across data sorting and topology changes: key by domain ID rather than sorted index; retain color/symbol and selection, including links between spatial marks, chart and detail card.
 
 Treat drag as a transaction when edits persist:
 

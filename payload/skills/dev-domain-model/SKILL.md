@@ -5,9 +5,9 @@ description: Build and sharpen a project's domain model. Use when discussing cod
 
 ## Local Codex scope
 
-User requirements, existing project formats and action permissions take precedence. Load this skill only for its stated task; it does not authorize agents, messaging, new services or security changes.
+Action scope: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
-Use only when actively refining project terminology or documenting a meaningful decision. Preserve established documentation destinations and formats. Record accepted terms; label unresolved decisions as proposed. Existing personal-knowledge INBOX/sync rules take precedence and no PR requirement is introduced.
+Use only when actively refining project terminology or documenting a meaningful decision. Preserve established documentation destinations and formats. Record accepted terms; label unresolved decisions as proposed. Knowledge transport: see [kb-sync, Knowledge transport](../kb-sync/SKILL.md#knowledge-transport). Curation: see [kb-curate, Knowledge curation](../kb-curate/SKILL.md#knowledge-curation).
 
 
 # Domain Modeling

@@ -1,6 +1,6 @@
 # The designated curator's daily curation
 
-The designated curator performs this directly, without separate agents. PC synchronization requires a separately authorized setup; the cloud copy exchanges through GitHub/API under cloud-connector.md. API exchange is not shell Git-sync. Write curated knowledge in Russian.
+The designated curator performs this directly, without separate agents. PC synchronization requires a separately authorized setup; the cloud copy exchanges through GitHub/API under cloud-connector.md. API exchange is not shell Git-sync. Language defaults: see [AGENTS policy]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
 Follow the current owner's publication policy. This procedure does not introduce mandatory PRs for initial or recurring curation.
 

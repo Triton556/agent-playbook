@@ -5,12 +5,12 @@ description: Compact the current conversation into a handoff document for anothe
 
 ## Local Codex scope
 
-User requirements, existing project formats and action permissions take precedence. Load this skill only for its stated task; it does not authorize agents, messaging, new services or security changes.
+Action scope: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
-Use only on explicit user selection. On Windows, save a uniquely named handoff in `$env:TEMP`. Include goal, completed work, current state, source paths/URLs, next steps, blockers and success criteria. Creating a handoff does not itself send it or start another agent.
+Use only on explicit user selection. Save a uniquely named handoff in the OS temporary directory (Windows: `$env:TEMP`), outside the workspace. Include goal, completed work, current state, source paths/URLs, next steps, blockers and success criteria. Creating a handoff does not itself send it or start another agent.
 
 
-Write a handoff document summarising the current conversation so a fresh agent can continue the work. Save to the temporary directory of the user's OS - not the current workspace.
+Write a handoff document summarising the current conversation so a fresh agent can continue the work.
 
 Include a "suggested skills" section in the document, naming relevant installed skills and their SKILL.md paths to read when that stage is reached.
 

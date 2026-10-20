@@ -6,7 +6,7 @@ The brief is the worker's whole view of the task. The worker does not see your c
 
 - Write the brief in English, whatever language the user speaks.
 - Quote the user verbatim, in their language, where exact wording matters: interface text, messages, names. Mark quotes as quotes.
-- The worker's report to you is in English. Say in the brief which language user-facing output uses (interface text, documents, messages); by default it is the user's language.
+- The worker's report to you is in English. Say in the brief which language user-facing output uses (interface text, documents, messages); defaults come from [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
 ## Form
 
@@ -16,6 +16,8 @@ The brief is the worker's whole view of the task. The worker does not see your c
 - Each requirement has at least one test that shows it is met.
 
 Detail goes into what must be true and how it will be checked. It does not go into step-by-step instructions for writing the code: the worker has its own workflow, and prescribing every step lowers the quality. Name a specific approach only when the user decided it, or when the project already has a pattern the change must follow.
+
+Independent reviewer briefs: [independent-review, Preparation](../../../workflow/independent-review.md#preparation) owns information staging and overrides the generic cause/baseline fields below.
 
 ## Template
 
@@ -75,7 +77,7 @@ Leave out a section only when it truly has nothing to say. A short task gets a s
 - **Boundaries that cannot be misread.** Name each tool and action the task may need and say whether it is allowed: image generation, network access, package installs, browser, running servers, deleting files. Avoid umbrella words such as "local only" or "no external services": a worker may read them as forbidding a tool the task needs, or as allowing one it must not use.
 - **One task per brief.** Independent pieces go to separate sessions.
 - **Nothing private that is not needed.** No secrets, tokens, personal data or unrelated history. Tell the worker never to print keys it uses.
-- **Memory.** If the user's setup has memory hooks, say who saves knowledge: usually the orchestrator, while the worker only marks the turn when a hook requires it.
+- **Memory.** Specify the writer assignment required by [kb-save, Delegated work](../../kb-save/SKILL.md#delegated-work).
 - **Run settings are not in the brief.** Model, effort and access mode are passed to the adapter.
 
 ## Example 1: mechanical work
@@ -168,7 +170,7 @@ Repository `expenses-dashboard`, new branch `feature/csv-export` from `main`.
 ## Boundaries
 - Do not change the filters, charts or data loading.
 - Not permitted: new dependencies, pushing, changes to `main`.
-- Interface text is in Russian, the user's language; code and comments are in English.
+- For this fictional brief the user explicitly requested Russian interface text and English code/comments.
 
 ## Result
 - Report: `tmp/csv-export/REPORT.md` with changed files, what was done for each change, tests 1-6 with

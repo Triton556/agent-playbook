@@ -15,12 +15,12 @@ A new test observes results across a public boundary. Derive expectations from t
 
 For significant regressions, add a failing test before the fix when applicable. A reversible visual edit needs the relevant render/scenario and necessary existing checks. TDD: one observable behavior → red → minimal implementation → green → appropriate refactoring. Flakiness requires evidence about conditions and repeatability, not one green result. Targeted references: [tdd](vendor/matt-pocock/tdd/INSTRUCTIONS.md), [tests](vendor/matt-pocock/tdd/tests.md), [mocking](vendor/matt-pocock/tdd/mocking.md).
 
-A detail's presence in code does not establish its function/meaning. [ui-review](../ui-review/SKILL.md) owns UI scenarios and rendered evidence; one current pass may cover both sets of criteria. Send unexplained failures to [debugging](../dev-debug/SKILL.md) with actual output.
+A detail’s presence in code does not establish its meaning. UI render/scenario: see [ui-review](../ui-review/SKILL.md). Evidence reuse: see [task-brief-and-acceptance, 7. Execution, verification and completion](../dev-flow/references/task-brief-and-acceptance.md#7-execution-verification-and-completion). Send unexplained failures to dev-debug with actual output.
 
 ## Code review
 
 Review the current diff against requirements, contracts and project patterns; open [code-review](vendor/matt-pocock/code-review/INSTRUCTIONS.md) when needed. A finding includes a concrete trigger, incorrect behavior, impact and location. Distinguish taste recommendations from defects. This is self-review if you authored the change; the skill does not launch another agent.
 
-In review-only mode, deliver findings and gaps. Repairs, affected rechecks and completion follow [WORKFLOW](../../workflow/WORKFLOW.md). Relate commands/scenarios, observations and limitations to the current revision; unperformed work cannot receive pass.
+Review scope: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries). Repairs: see [WORKFLOW, step 6](../../workflow/WORKFLOW.md#work-route). Reporting grades: see [human-perspective-review, Readiness and transfer](../dev-flow/references/human-perspective-review.md#readiness-and-transfer).
 
-Verify the workflow itself using the single [pilot](../dev-flow/references/workflow-pilot.md) only when requested. Sources: [sources.json](sources.json), [LICENSE](licenses/mattpocock--skills-LICENSE).
+Workflow comparison: see [workflow-pilot](../dev-flow/references/workflow-pilot.md). Sources: [sources.json](sources.json), [LICENSE](licenses/mattpocock--skills-LICENSE).

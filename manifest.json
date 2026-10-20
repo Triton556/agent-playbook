@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "name": "agent-playbook",
-  "version": "1.3.0",
-  "exported_at": "2026-10-20T05:18:58.919572+00:00",
+  "version": "1.4.0",
+  "exported_at": "2026-10-20T09:08:42.175295+00:00",
   "baseline": "Version 0.5.0 workflow retained with the approved public package/skill names; compatibility creator and personal lab module removed; receipt-based 0.x migration",
   "instruction_policy": "Full maintained agent instructions in English; Russian communication and knowledge content by default; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
   "files": [
@@ -57,18 +57,28 @@
         {
           "kind": "public-module-exclusion",
           "detail": "Remove compatibility creator routing and personal VM controller; keep general authorization boundaries."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 8,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "workflow",
-      "sha256": "4219a75ffa1f6c3e89d3c5d7fcf5560997a48b2c1699b42c7d3d888539b58190",
-      "bytes": 6695
+      "sha256": "fa40de6b53893244d986aa4ca40f037cc193e6dc28ffc2407a91c7a3fcc96513",
+      "bytes": 5240
     },
     {
       "source": "workflow/agent-worklog.mjs",
       "path": "payload/workflow/agent-worklog.mjs",
       "source_sha256": "41083e807c7db2657aff0bad06fa8164ee393f0934f5c16c068fb0c10893309a",
-      "sha256": "2c945a3609b5a0ab6b232ae11c08cc3103ea7a22d5017c7733763799ec558d00",
-      "bytes": 18142,
+      "sha256": "c38d333c3be292eb9b7d6cdc35d68262746f7a5649dc1b0fb6b963a8d1eaeabf",
+      "bytes": 18210,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -87,6 +97,10 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply audit owners and exact section pointers; retain runtime/domain contracts and original source metadata."
         }
       ],
       "module": "workflow"
@@ -95,8 +109,8 @@
       "source": "workflow/independent-review.md",
       "path": "payload/workflow/independent-review.md",
       "source_sha256": "8e55f5cf7e5d3881a3160d387556a028107324fb5b9698097e0a444d93068816",
-      "sha256": "b9a17ff5bfdf3725bc718bdd0a57102c859ab1e81267b178d716a9ab6b5379d6",
-      "bytes": 2620,
+      "sha256": "ee3e3be39567df80714db3669615a3569e27f98e03e7a4c372411be644a911c7",
+      "bytes": 2530,
       "transformations": [
         {
           "kind": "owner-label",
@@ -114,6 +128,16 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "workflow"
@@ -188,20 +212,41 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 5,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "workflow",
-      "sha256": "ef8df838014c18b35bb2e24c1f6dc9538f4259022c120224b57f0b2e6fb7e6ae",
-      "bytes": 7136
+      "sha256": "c8ef38f8b8c80a9a9e85da04e06d92b60198d7e765d5794dd7b2b656f3074b16",
+      "bytes": 5140
     },
     {
       "source": "skills/agent-sessions/references/running-and-checking.md",
       "path": "payload/skills/agent-sessions/references/running-and-checking.md",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "1cc652c4d206bb3cf9f7b7aa717800df6db2f506643117adaa0e863b9731dd22",
-      "sha256": "1cc652c4d206bb3cf9f7b7aa717800df6db2f506643117adaa0e863b9731dd22",
-      "bytes": 4411,
-      "transformations": [],
+      "source_sha256": "0b3b333f2c2e9dc5079a64d3015298361baa03deeaa91341145956932a08e7e2",
+      "sha256": "facb430a5db0334dbb5e37131e123235461e82583abcab886e7a6ffb5ac9a370",
+      "bytes": 7618,
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 2,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        }
+      ],
       "module": "agent-sessions"
     },
     {
@@ -209,9 +254,20 @@
       "path": "payload/skills/agent-sessions/references/brief-writing.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
-      "sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
-      "bytes": 12086,
-      "transformations": [],
+      "sha256": "15b31a86c4d3e206ed8d92ba6d990f9a4754144ee4000607861478b898f9f304",
+      "bytes": 12353,
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        }
+      ],
       "module": "agent-sessions"
     },
     {
@@ -219,19 +275,41 @@
       "path": "payload/skills/agent-sessions/references/requirements-interview.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "dddb4b40b43076e1bc52581cbd9577a20b6613a07288112a3fb7972b16372102",
-      "sha256": "dddb4b40b43076e1bc52581cbd9577a20b6613a07288112a3fb7972b16372102",
-      "bytes": 4880,
-      "transformations": [],
+      "sha256": "c711fbf8da939a2143ad616de474e36196b743da8fe076e6f4b84ac5c403722e",
+      "bytes": 1394,
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        }
+      ],
       "module": "agent-sessions"
     },
     {
       "source": "skills/agent-sessions/SKILL.md",
       "path": "payload/skills/agent-sessions/SKILL.md",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "36d399ad251b452ebfc474e218af43c36a84fc1fb612029a1fdd141d66adadfa",
-      "sha256": "36d399ad251b452ebfc474e218af43c36a84fc1fb612029a1fdd141d66adadfa",
-      "bytes": 8573,
-      "transformations": [],
+      "source_sha256": "81fc95ee7017edd4127cab5c0148adfd5cec3bae288b7c450014faa87686c52b",
+      "sha256": "360f01c466720464d9abf3b5d27b97b6e2d76d0aa925277c84022cfbac41a247",
+      "bytes": 8586,
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 3,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        }
+      ],
       "module": "agent-sessions"
     },
     {
@@ -239,9 +317,14 @@
       "path": "payload/skills/agent-sessions/references/contract.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "b8352459ce2e100f2225bd140f8bffc69b5d236befd7e94ea6dbe7d4983afbbb",
-      "sha256": "b8352459ce2e100f2225bd140f8bffc69b5d236befd7e94ea6dbe7d4983afbbb",
-      "bytes": 3503,
-      "transformations": [],
+      "sha256": "db85e3ffb592ac6a54953e4dfc2aed50deb1005064b4f95fa68a669c3f4d775f",
+      "bytes": 4163,
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        }
+      ],
       "module": "agent-sessions"
     },
     {
@@ -249,9 +332,14 @@
       "path": "payload/skills/agent-sessions/references/writing-an-adapter.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "fa8ca6cc422ac1c34e7c587979663cc8391ca758ad8590149df2d45673da7899",
-      "sha256": "fa8ca6cc422ac1c34e7c587979663cc8391ca758ad8590149df2d45673da7899",
-      "bytes": 3652,
-      "transformations": [],
+      "sha256": "dd18980f1d0a69f9712790832cdac1fc72d4ebbb53f409db9934d7ec4771da54",
+      "bytes": 3393,
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        }
+      ],
       "module": "agent-sessions"
     },
     {
@@ -278,12 +366,16 @@
       "source": "skills/ui-taste-reference/SKILL.md",
       "path": "payload/skills/ui-taste-reference/SKILL.md",
       "source_sha256": "688601f646b0db04424f80b2ed12e4d8dbd0e6b81154d3ef784e6b452ec1a7c0",
-      "sha256": "17113c38230c60ffcea1dd3945c953c1f85921056ed716aaeb7a8620f8c5d6d1",
-      "bytes": 1315,
+      "sha256": "a805a93da726436c8cdca61d7c4e6b62cce68bebc05b60117e490b0402265531",
+      "bytes": 1300,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "ui-taste-reference"
@@ -320,12 +412,16 @@
       "source": "skills/dev-domain-model/GLOSSARY-FORMAT.md",
       "path": "payload/skills/dev-domain-model/GLOSSARY-FORMAT.md",
       "source_sha256": "21dcc40cdec8e151a829b98ab1517c1867bc444e3665134a98c6983411996801",
-      "sha256": "21dcc40cdec8e151a829b98ab1517c1867bc444e3665134a98c6983411996801",
-      "bytes": 2300,
+      "sha256": "9771db0f23aaeab49e284687f21dad7fe8b70c93cf86a88b625464bd6fe3b69c",
+      "bytes": 2309,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "dev-domain-model"
@@ -348,12 +444,22 @@
       "source": "skills/dev-domain-model/SKILL.md",
       "path": "payload/skills/dev-domain-model/SKILL.md",
       "source_sha256": "f73e1b232986f429199458a81a0451fafeb431145b84d3db87e5614e81849534",
-      "sha256": "9bf49997ebd5f6677ecfcf5c0f77ba9c1a468ffd399ad7770e2f5408b994b57f",
-      "bytes": 3885,
+      "sha256": "433c2e1d68db1f18950d8f30fb2a6bb70a1a5b85eae41c978f5d9db015e4bfc5",
+      "bytes": 3903,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "dev-domain-model"
@@ -394,8 +500,8 @@
       "source": "skills/stress-test-with-docs/SKILL.md",
       "path": "payload/skills/stress-test-with-docs/SKILL.md",
       "source_sha256": "e6ff45f55d28a44194aeedebd13af6e0a58434941d559fd0cb32a6863a99df45",
-      "sha256": "ac3174148058e5989006e6cd3d4a85ce19c1f612191b277bc7403f0c683ff1c3",
-      "bytes": 873,
+      "sha256": "91126d2835709e11401508e1ca7492eee1061e386f79728a231ccb39717bc2c3",
+      "bytes": 802,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -405,6 +511,16 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 3,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "stress-test-with-docs"
@@ -445,12 +561,22 @@
       "source": "skills/stress-test/SKILL.md",
       "path": "payload/skills/stress-test/SKILL.md",
       "source_sha256": "59b2305806c0d669ae8b3e13969e4132519ff659cf211c2b9347172f1ba48658",
-      "sha256": "9d81bfd6cf75a425483f556493d8e639bcd82b3363f0667deb46d792ca91b6c2",
-      "bytes": 2562,
+      "sha256": "bb39740f80e471c097d94b54f5f8e8bf87cd372aafc51fd33dd3ad88972edd67",
+      "bytes": 2459,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 2,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "stress-test"
@@ -487,12 +613,22 @@
       "source": "skills/agent-handoff/SKILL.md",
       "path": "payload/skills/agent-handoff/SKILL.md",
       "source_sha256": "789fe37f744064be41e4a1827e6b0ea4c76f9e064cec336f06a713ce7823a346",
-      "sha256": "650bc4c2d94d9d5ee24207442c31eb5c2bb4c7189180ac6c18b848f10f673033",
-      "bytes": 1334,
+      "sha256": "de60823638e6b2befc2497269f1d099d45c5fac91bd1d487fd18e80a6f08feb5",
+      "bytes": 1234,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "agent-handoff"
@@ -501,8 +637,8 @@
       "source": "skills/kb-curate/SKILL.md",
       "path": "payload/skills/kb-curate/SKILL.md",
       "source_sha256": "f60afc672f331f8dd70c6da8d410d94d185271ce119ceae0563bca7f09794aa2",
-      "sha256": "a52716911ffd85d43ebaf5abf64242b614aa59fc29392d4ec342b9e71d1d9049",
-      "bytes": 1244,
+      "sha256": "73858f4cb84bbeaa222b20009e4c40e8f0c7231f96ac4bba7024ec451fb85130",
+      "bytes": 1434,
       "transformations": [
         {
           "kind": "owner-label",
@@ -521,6 +657,16 @@
         {
           "kind": "portable-owner-policy",
           "detail": "Remove dated owner decisions; preserve curation checks and current-owner publication policy."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "kb-curate"
@@ -529,8 +675,8 @@
       "source": "skills/kb-find/SKILL.md",
       "path": "payload/skills/kb-find/SKILL.md",
       "source_sha256": "6a63012cbd1839350f60ef8cc57fb62407459b3bd4e6493e80f4d045d21a5f96",
-      "sha256": "3520b5461b2448bbbbe01f1a91678639e72e839464127779dc5e7382330ac74f",
-      "bytes": 1096,
+      "sha256": "d2c134c3d133a4b2559aeb0ee3d16babd94a19eb7d9f9539f78461fe29879283",
+      "bytes": 1164,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -550,6 +696,16 @@
         {
           "kind": "instruction-language",
           "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "kb-find"
@@ -558,8 +714,8 @@
       "source": "skills/kb-save/SKILL.md",
       "path": "payload/skills/kb-save/SKILL.md",
       "source_sha256": "4bc27ffa37f7e6a5fb0d9d8a89093ce72f29a534a281576ac6dfcd47272a318b",
-      "sha256": "eee4582ca763634f20a6f081b4ebc15d2430b1dc3c93f3c4478583af1bdf04d4",
-      "bytes": 1712,
+      "sha256": "aa6f954b9a6f7a0be273c5a2fdeb4ffaa3d3461974e27690e9121eb394bc5f2f",
+      "bytes": 2750,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -588,6 +744,16 @@
         {
           "kind": "portable-owner-policy",
           "detail": "Require current-owner memory-agent and persistent-tool consent; use a generic MCP alias; synchronization requires a separately verified authorized setup."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "kb-save"
@@ -596,8 +762,8 @@
       "source": "skills/kb-status/SKILL.md",
       "path": "payload/skills/kb-status/SKILL.md",
       "source_sha256": "20e34614c9d2df9bf16c7eef078481117b0defa2ca35b09584de030ce423aaf0",
-      "sha256": "b1a625a3ad48b08605ba1ea4e945c6ce632cfb41f943f2aa34582a0e2791d8e7",
-      "bytes": 777,
+      "sha256": "5f6473388cd853379a5629354392dc05fb273f73719ce3223c9e1ec9e2c50beb",
+      "bytes": 1001,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -622,6 +788,16 @@
         {
           "kind": "instruction-language",
           "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "kb-status"
@@ -630,8 +806,8 @@
       "source": "skills/kb-sync/SKILL.md",
       "path": "payload/skills/kb-sync/SKILL.md",
       "source_sha256": "bd9e1c489434ad1470e3c22b3fc583c3601bd43754a50ab27fb505a6c20304d5",
-      "sha256": "559901d855df8cd8c51c29125035797111305cc8c2a8fb11d72ef5264278f23d",
-      "bytes": 1300,
+      "sha256": "a78f2f0b56613922d4e2df3677d717dbe7332cba7d099f8b78dd3afdd745b36e",
+      "bytes": 1481,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -651,6 +827,10 @@
         {
           "kind": "instruction-language",
           "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "kb-sync"
@@ -673,8 +853,8 @@
       "source": "skills/dev-debug/SKILL.md",
       "path": "payload/skills/dev-debug/SKILL.md",
       "source_sha256": "2891a30d393d6ed60088ba120e669f2b2c81850c9242f7db1c27784066d62ee3",
-      "sha256": "860da496a6878aefbbfbb7faf0471ff158b7ae7d66e6b141b824758acf515198",
-      "bytes": 2154,
+      "sha256": "5795e77b015235dcee2d4b3317b5358369866f22f390d621d072f3ee437c7226",
+      "bytes": 2006,
       "transformations": [
         {
           "kind": "instruction-language",
@@ -683,6 +863,16 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "dev-debug"
@@ -803,11 +993,15 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "dev-flow",
-      "sha256": "80899cb505a8facee884542b60e16d367bf7a0cf825ba1ebee477b0e506c4eb3",
-      "bytes": 12734
+      "sha256": "1bdfa700e440a3ce2e5bf542a440f91ea7d056a2a2628f4a3996edd078fbc5b5",
+      "bytes": 11806
     },
     {
       "source": "skills/dev-flow/references/interface-design.md",
@@ -867,12 +1061,16 @@
       "source": "skills/dev-flow/references/quality-cycle.md",
       "path": "payload/skills/dev-flow/references/quality-cycle.md",
       "source_sha256": "69290ba3fa2eeb36a9d90d3a54c42680e3c07bc998e3df264962dba1b8d2ecc7",
-      "sha256": "69290ba3fa2eeb36a9d90d3a54c42680e3c07bc998e3df264962dba1b8d2ecc7",
-      "bytes": 2816,
+      "sha256": "ed7ccf0fa890459a313e007d415814a742c0a2ba5040cfe1bfbaf60220b278a0",
+      "bytes": 2548,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "dev-flow"
@@ -881,12 +1079,16 @@
       "source": "skills/dev-flow/references/quality-ledger.md",
       "path": "payload/skills/dev-flow/references/quality-ledger.md",
       "source_sha256": "8bcc11b7e6f34abd2554c725fd7b4905034b293883e23614d8ef3c189662696d",
-      "sha256": "8bcc11b7e6f34abd2554c725fd7b4905034b293883e23614d8ef3c189662696d",
-      "bytes": 4777,
+      "sha256": "3fa0db5cda388a5deb406d5e6f2f8ed119720c619725f079307622eb86aaad50",
+      "bytes": 4635,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "dev-flow"
@@ -895,8 +1097,8 @@
       "source": "skills/dev-flow/references/reference-grounding.md",
       "path": "payload/skills/dev-flow/references/reference-grounding.md",
       "source_sha256": "17a674fd4bff90ef9fce12a525ef969b61bac4108dcf31507b4593611b8bdea8",
-      "sha256": "f3b8445a4230e751efbe1bc59af0dcbc6e2400c0e1e9c1c70a5b809f48308ffd",
-      "bytes": 3121,
+      "sha256": "e41c098141d39a1d28857d948d508de44f9796be264140eaf34db3776ca4b6d1",
+      "bytes": 3285,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -915,6 +1117,10 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "dev-flow"
@@ -946,8 +1152,8 @@
       "source": "skills/dev-flow/references/task-state.md",
       "path": "payload/skills/dev-flow/references/task-state.md",
       "source_sha256": "5e80e2b1ff38a5919bdcdc6b00c81f7ebbb48b177b48d4ce60bb792a35598f1a",
-      "sha256": "8d2168913f0193522fcec1d7c237edad3ec7823891de35312ca01faa293f046f",
-      "bytes": 6909,
+      "sha256": "31bc4f57f1bccb035e707b0017c7ea17dfa062e9985a1643595f97637614e3e4",
+      "bytes": 6729,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -966,6 +1172,16 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 3,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "dev-flow"
@@ -1062,11 +1278,21 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "dev-flow",
-      "sha256": "41f0cd61b5bbb146ec09b60d5008f3809b17ba31f9d04929f3bd01265c117cd9",
-      "bytes": 1841
+      "sha256": "bce11fa1dc1e0dbbefa71964bb1877aada96bba73a892f539b6dd60b9f17e31d",
+      "bytes": 1826
     },
     {
       "source": "skills/dev-flow/vendor/impeccable/scripts/impeccable.cmd",
@@ -1100,8 +1326,8 @@
       "source": "skills/dev-implement/SKILL.md",
       "path": "payload/skills/dev-implement/SKILL.md",
       "source_sha256": "c464746a848c2180b08867badc72348a74808f26c180076d583f82ecdc052b8b",
-      "sha256": "2b37e7bf2e3b3b5781c30c19363b1294b233fd622655a5e6d44822821106b25f",
-      "bytes": 1684,
+      "sha256": "a475716e079d99822f979cc166c10f2e471a5a9e0029e5a2ee5a60c24c133735",
+      "bytes": 1749,
       "transformations": [
         {
           "kind": "instruction-language",
@@ -1110,6 +1336,10 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "dev-implement"
@@ -1212,8 +1442,8 @@
       "source": "skills/dev-plan/SKILL.md",
       "path": "payload/skills/dev-plan/SKILL.md",
       "source_sha256": "39f5225266a79d53a775ec9ea2d1843bef9bf8a8917bd0e82c75feeb3c5dddb3",
-      "sha256": "fa7742c8968077b3faf93f05652018c5fe92d0db3c5cd13b9cc5cbea6046b98d",
-      "bytes": 1897,
+      "sha256": "431d8a29e6f7b816b7067007aec35b9867cf6a98dca83d8fb4bfd55deffab11b",
+      "bytes": 1975,
       "transformations": [
         {
           "kind": "instruction-language",
@@ -1222,6 +1452,16 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "dev-plan"
@@ -1272,8 +1512,8 @@
       "source": "skills/dev-verify/SKILL.md",
       "path": "payload/skills/dev-verify/SKILL.md",
       "source_sha256": "85f99f813ff7d05059ccd8c8ee30ea2e660dd2d2e5e62b0446b573a1d17c1198",
-      "sha256": "84e391a353a7bf4ada90a528c3945efbe994d92c12954976ea27ff17e0fb0865",
-      "bytes": 2880,
+      "sha256": "29a29799e36a5870d6ff9a9d17487467b7189410622e78ec1f5d1550f053d838",
+      "bytes": 3032,
       "transformations": [
         {
           "kind": "instruction-language",
@@ -1282,6 +1522,16 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "dev-verify"
@@ -1374,8 +1624,8 @@
       "source": "skills/ui-design/references/interaction-quality.md",
       "path": "payload/skills/ui-design/references/interaction-quality.md",
       "source_sha256": "aff1bf3c0dda2358ec405a30240e65d2b243a0d824226b7664ded60a22f332fe",
-      "sha256": "6d0e26cee70c74aa2e39cd47b07563f3600319e11e1021b4e01992265f634dfe",
-      "bytes": 5376,
+      "sha256": "2341a2969e3870edfcf0c85a295970a9e1ca9e2297018c5c1c8d4bccb192c223",
+      "bytes": 5539,
       "transformations": [
         {
           "kind": "owner-label",
@@ -1389,6 +1639,10 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "ui-design"
@@ -1412,18 +1666,28 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 2,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "ui-design",
-      "sha256": "d396034639e6481ee23a5ac53690ed41d01113658e13030a9d5d3d995f5b405f",
-      "bytes": 2752
+      "sha256": "fae78b645a00ac91f99af4d16e6f6a23dc733f2edfab0f5388e94e268075f058",
+      "bytes": 2928
     },
     {
       "source": "skills/ui-design/references/landing-design.md",
       "path": "payload/skills/ui-design/references/landing-design.md",
       "source_sha256": "5a065ffd438858984eeda73d4ccded0cf3a716a7cb6f905d6f3590d6f13f663f",
-      "sha256": "4f364708a67b7b502e1a00ffc71634cc1179a815355ae5add464a850c4bfbe3c",
-      "bytes": 2192,
+      "sha256": "30e818a68285e339e22df8bcfd898ae7c46311246bd7cb563def78c8e336dc95",
+      "bytes": 2300,
       "transformations": [
         {
           "kind": "instruction-language",
@@ -1432,6 +1696,10 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "ui-design"
@@ -1450,11 +1718,21 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "ui-design",
-      "sha256": "a2ae988148cbbb8ff2569bc78207bf77b980ba06cc222189b0050ead72063021",
-      "bytes": 2339
+      "sha256": "fed18360724c9d50bee233dba37a52664e2288120cdbe34e5469a00b8eb4b776",
+      "bytes": 2385
     },
     {
       "source": "skills/ui-design/sources.json",
@@ -1558,8 +1836,8 @@
       "source": "skills/ui-review/references/critique-adapted.md",
       "path": "payload/skills/ui-review/references/critique-adapted.md",
       "source_sha256": "fd60df4986639826863fa12a4957fbe276b0f7f9d96fdcfbe3a4eb147e080e54",
-      "sha256": "fd60df4986639826863fa12a4957fbe276b0f7f9d96fdcfbe3a4eb147e080e54",
-      "bytes": 1262,
+      "sha256": "87b96ee876499558fa983083f9c0840083d442ab866b2242e178f7454917d4b6",
+      "bytes": 1407,
       "transformations": [
         {
           "kind": "instruction-language",
@@ -1568,6 +1846,10 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "ui-review"
@@ -1576,8 +1858,8 @@
       "source": "skills/ui-review/references/visual-quality.md",
       "path": "payload/skills/ui-review/references/visual-quality.md",
       "source_sha256": "236026a92957c3a53dbacd2b3d11d38766990e2630f47939fd8205f21c1c2e52",
-      "sha256": "f2c1b7b9462e88c7cfcb88658457bbbb94409e0f0fb0d5ce5c4460e7119fa0d6",
-      "bytes": 6110,
+      "sha256": "088a2965d359af79f494f8cdcdfbcdb4c4643e299d2d20577c011d664e6fbd98",
+      "bytes": 5408,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -1591,6 +1873,16 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 2,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "ui-review"
@@ -1613,8 +1905,8 @@
       "source": "skills/ui-review/SKILL.md",
       "path": "payload/skills/ui-review/SKILL.md",
       "source_sha256": "9dbffe8cc99bcf039faa435dcca1cc5570e5e5ffa67bc271b1e5818b09c41bbf",
-      "sha256": "3bb617768fb8c6d375b01a123a5ed4ab54b673df53729f950936a17b3674a29a",
-      "bytes": 2096,
+      "sha256": "429a3bda6154e457e3cc5f180ae1b05378f78248b2eab771178181b787875fce",
+      "bytes": 1812,
       "transformations": [
         {
           "kind": "instruction-language",
@@ -1623,6 +1915,16 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "ui-review"
@@ -2989,12 +3291,16 @@
       "source": "skills/ui-reference/references/pro-rules.md",
       "path": "payload/skills/ui-reference/references/pro-rules.md",
       "source_sha256": "d28442d61c310b49c054a4ea736f89fb3008beebdbbc38c4b3a540b8f7fadf23",
-      "sha256": "d28442d61c310b49c054a4ea736f89fb3008beebdbbc38c4b3a540b8f7fadf23",
-      "bytes": 10909,
+      "sha256": "4c46b00db3f7cee71586258130ee71eec1e44ec4a09a322c7eed8b1717bb2602",
+      "bytes": 10695,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "ui-reference"
@@ -3003,12 +3309,16 @@
       "source": "skills/ui-reference/references/quick-reference.md",
       "path": "payload/skills/ui-reference/references/quick-reference.md",
       "source_sha256": "0609bc7c89dacb40472465d8fc14257b56b2c43439660fc8d6fa3b8c022e1876",
-      "sha256": "0609bc7c89dacb40472465d8fc14257b56b2c43439660fc8d6fa3b8c022e1876",
-      "bytes": 24526,
+      "sha256": "9785a42b9bcfcb18aeade8b8ee197c7227585ff4971d2625a19c4222c9e3c8b5",
+      "bytes": 24409,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "ui-reference"
@@ -3451,8 +3761,8 @@
       "source": "skills/ui-reference/SKILL.md",
       "path": "payload/skills/ui-reference/SKILL.md",
       "source_sha256": "5eb00579abf51bfedfe41208137cf1cf27fca40e75c3d33e7093db6a96c67e59",
-      "sha256": "0264b17915ab0df759bf736c02ecbba14125fd3fc8f770abd574cb9eb234f63a",
-      "bytes": 2147,
+      "sha256": "f0d1d6b3f488d6e64ea25a30eaca25778974ef5ec0ff25f85f826e54f4ec94f7",
+      "bytes": 2156,
       "transformations": [
         {
           "kind": "instruction-language",
@@ -3461,6 +3771,10 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "ui-reference"
@@ -3483,12 +3797,16 @@
       "source": "skills/visual-scenes/references/causal-state-interaction.md",
       "path": "payload/skills/visual-scenes/references/causal-state-interaction.md",
       "source_sha256": "deaf9d3fe44266227b742596cd317a6436444b4399090c7d0e3cfa9cc9cdc010",
-      "sha256": "deaf9d3fe44266227b742596cd317a6436444b4399090c7d0e3cfa9cc9cdc010",
-      "bytes": 3986,
+      "sha256": "b1c375c366abc02f705a9a4b68730cd07f386528aa2fdba9b263031ccc7abc7e",
+      "bytes": 4126,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "visual-scenes"
@@ -3497,12 +3815,16 @@
       "source": "skills/visual-scenes/references/composition-materials.md",
       "path": "payload/skills/visual-scenes/references/composition-materials.md",
       "source_sha256": "d3fda3f69d4d535216ded80928a5331e50cb98345d07931e97ed32f4c8a42b6a",
-      "sha256": "d3fda3f69d4d535216ded80928a5331e50cb98345d07931e97ed32f4c8a42b6a",
-      "bytes": 4829,
+      "sha256": "ebb2b8c556d35dc11fca97ce3427338193bf9d00164e3830d666260a3a308f50",
+      "bytes": 4993,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "visual-scenes"
@@ -3511,12 +3833,16 @@
       "source": "skills/visual-scenes/references/data-spatial-metaphors.md",
       "path": "payload/skills/visual-scenes/references/data-spatial-metaphors.md",
       "source_sha256": "d0a57861eac2cf7539c3cbdfc36765cd79b431fa90bcb83a763b992fb3076477",
-      "sha256": "d0a57861eac2cf7539c3cbdfc36765cd79b431fa90bcb83a763b992fb3076477",
-      "bytes": 3502,
+      "sha256": "d96c5c7a060e7cbc71929edef26536c38b77911255cd4f8bbc1ca915d72d5236",
+      "bytes": 3475,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "visual-scenes"
@@ -3562,12 +3888,16 @@
       "source": "skills/visual-scenes/references/procedural-graphics.md",
       "path": "payload/skills/visual-scenes/references/procedural-graphics.md",
       "source_sha256": "e26653cfdc06f9b9ae776558049e7393fd44ff0bbb5e48e49ff35ecdfa34ec3c",
-      "sha256": "e26653cfdc06f9b9ae776558049e7393fd44ff0bbb5e48e49ff35ecdfa34ec3c",
-      "bytes": 3607,
+      "sha256": "e75677aecc877b90a8e7cd1aef9f9f9a1f8dc54b6f0673e0c6cea4a262667715",
+      "bytes": 3481,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "visual-scenes"
@@ -3576,12 +3906,16 @@
       "source": "skills/visual-scenes/references/runtime-accessibility.md",
       "path": "payload/skills/visual-scenes/references/runtime-accessibility.md",
       "source_sha256": "524484afe4cb88b3d90710a5d8e77d3b7982a6b83aad691d2ad434c65726cbff",
-      "sha256": "524484afe4cb88b3d90710a5d8e77d3b7982a6b83aad691d2ad434c65726cbff",
-      "bytes": 4041,
+      "sha256": "cd0d41bf167a79e1ab077769d14def73f735d433c74c3f31dec2a1e9840f3cea",
+      "bytes": 3876,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "visual-scenes"
@@ -3590,12 +3924,16 @@
       "source": "skills/visual-scenes/references/validation.md",
       "path": "payload/skills/visual-scenes/references/validation.md",
       "source_sha256": "d348276c827110032085c7d8b50366b3908d44611740166f909a12c00fa10e3b",
-      "sha256": "98f989b15c1021ce4c6a037e0471acf1a309a5e740987d71f659d68e5fc00b59",
-      "bytes": 3781,
+      "sha256": "bdcdf4df4159c0090fba86bb675ab6fc747fde3364d46d85de1f22408ca807d9",
+      "bytes": 3252,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "visual-scenes"
@@ -3627,12 +3965,22 @@
       "source": "skills/visual-scenes/SKILL.md",
       "path": "payload/skills/visual-scenes/SKILL.md",
       "source_sha256": "db11e4fea64b11851fe421fad5d5c7a0641368fe6209c184318876ff77f147a2",
-      "sha256": "64b4b38132afcec80d839734998794a7aa97aa16f9ba00754f85312500bbacf1",
-      "bytes": 6001,
+      "sha256": "15ab0f207f8852700e730339f03484040e7e56e185b7e0a793ed18eb50955860",
+      "bytes": 6070,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "visual-scenes"
@@ -3641,12 +3989,16 @@
       "source": "skills/voxel-models/references/anatomy-support.md",
       "path": "payload/skills/voxel-models/references/anatomy-support.md",
       "source_sha256": "52bfeac83036591babf2f320a8c0af8e9a370e88557ed479d0755f6094697409",
-      "sha256": "52bfeac83036591babf2f320a8c0af8e9a370e88557ed479d0755f6094697409",
-      "bytes": 2842,
+      "sha256": "0c781cd102b95c3458782946fb01f62e2cb6a3c650770bdc46000ea87e819957",
+      "bytes": 2945,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -3655,12 +4007,16 @@
       "source": "skills/voxel-models/references/built-form.md",
       "path": "payload/skills/voxel-models/references/built-form.md",
       "source_sha256": "f83fa00d0b425803c0192f6eafae8a56f6243e672081647f0a26e91f232a992b",
-      "sha256": "f83fa00d0b425803c0192f6eafae8a56f6243e672081647f0a26e91f232a992b",
-      "bytes": 2636,
+      "sha256": "8027d1c9e3716f6cafb4ecdbb80a5bacf5f8348250d995499b97f8e86fd10c38",
+      "bytes": 2578,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -3669,12 +4025,16 @@
       "source": "skills/voxel-models/references/design-passport.md",
       "path": "payload/skills/voxel-models/references/design-passport.md",
       "source_sha256": "dbc0ef8a5c4c14fb360c53d552e8338a5f142aaed9683d196e2a573f7146fffe",
-      "sha256": "dbc0ef8a5c4c14fb360c53d552e8338a5f142aaed9683d196e2a573f7146fffe",
-      "bytes": 4342,
+      "sha256": "f03c956ec1295fbe8437883d4519f999cfa94a5ca6fc4ef9a8ddcb7a3e5e962d",
+      "bytes": 4467,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -3683,8 +4043,8 @@
       "source": "skills/voxel-models/references/design-preflight.md",
       "path": "payload/skills/voxel-models/references/design-preflight.md",
       "source_sha256": "289079d7ddbebb1b3da973d6db7935122d7f03295ddb988a65112f75cb8f1be9",
-      "sha256": "91617149b8af9b42bf6f783082c2f85d8977b2f7cc52002d2d2ee9628ade89df",
-      "bytes": 8556,
+      "sha256": "7f78fdf31dd8c8a6cddcab0cec97aaf59e6eec5aaef2bb657c32ec026001f0d1",
+      "bytes": 7821,
       "transformations": [
         {
           "kind": "owner-label",
@@ -3698,6 +4058,10 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -3706,12 +4070,16 @@
       "source": "skills/voxel-models/references/environments.md",
       "path": "payload/skills/voxel-models/references/environments.md",
       "source_sha256": "7e8db1e0f0bc3e3888054d693dae92eee8be43934d1e046c267cbcf330b32800",
-      "sha256": "7e8db1e0f0bc3e3888054d693dae92eee8be43934d1e046c267cbcf330b32800",
-      "bytes": 5929,
+      "sha256": "a7a890b4d312fa4bf423f2d8e6f3c0f09a347d65b104bf4288f070b342e0cea3",
+      "bytes": 6102,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -3739,12 +4107,16 @@
       "source": "skills/voxel-models/references/files-meshes.md",
       "path": "payload/skills/voxel-models/references/files-meshes.md",
       "source_sha256": "5fefbc4753e9b4e0eaf47b6b5a7345970d6a771b0ddac67278beeebaf4b9989e",
-      "sha256": "5fefbc4753e9b4e0eaf47b6b5a7345970d6a771b0ddac67278beeebaf4b9989e",
-      "bytes": 2916,
+      "sha256": "e5f797be576d33e7c2fd11b766554f5e22d69a43717099de9b8e96fb3e1980a7",
+      "bytes": 2950,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -3753,12 +4125,16 @@
       "source": "skills/voxel-models/references/gen2.md",
       "path": "payload/skills/voxel-models/references/gen2.md",
       "source_sha256": "833d23ee6aaad6decd13ee4e5c7c84ac80b04eaed938b94eac2365606bf0865d",
-      "sha256": "833d23ee6aaad6decd13ee4e5c7c84ac80b04eaed938b94eac2365606bf0865d",
-      "bytes": 2967,
+      "sha256": "10bf586a57e67d1e7552d93be2cd69e15766b040193f51e0c46305a1a51cc9d2",
+      "bytes": 2924,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -3767,12 +4143,16 @@
       "source": "skills/voxel-models/references/objects.md",
       "path": "payload/skills/voxel-models/references/objects.md",
       "source_sha256": "adb2c6897436ee5dcc7aca814e9de0b79542442ec3fca42b2603a6c06c38cc41",
-      "sha256": "adb2c6897436ee5dcc7aca814e9de0b79542442ec3fca42b2603a6c06c38cc41",
-      "bytes": 4099,
+      "sha256": "7c7f3f8f254740e6fafe4b627e0fe6fbb4eeecba9fbd166f9f0d6466bc7b3ec9",
+      "bytes": 4236,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -3781,12 +4161,16 @@
       "source": "skills/voxel-models/references/organic-form.md",
       "path": "payload/skills/voxel-models/references/organic-form.md",
       "source_sha256": "e3815dd5f54a3de96c011dea70fcc6e600a4b9fd82e4760abb7e5b143ac7ca4c",
-      "sha256": "e3815dd5f54a3de96c011dea70fcc6e600a4b9fd82e4760abb7e5b143ac7ca4c",
-      "bytes": 3257,
+      "sha256": "2a337fe3c6ce7eda2b0eb76230211beb97988825f7469b83254daea456ff1ad2",
+      "bytes": 3329,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -3795,8 +4179,8 @@
       "source": "skills/voxel-models/references/probe-library.md",
       "path": "payload/skills/voxel-models/references/probe-library.md",
       "source_sha256": "d2c8dd4e6b76d53d2e6578676725d3a3cedc461c731decd4380147a651a29134",
-      "sha256": "607c72985ab9c3ff21a6f7175bc1ee35590f772d1d598c2c63dac19abc022381",
-      "bytes": 4876,
+      "sha256": "3f55d7b4dab49ce02c8c77ebb258d29454e26266408ce75cabe368159e00bc69",
+      "bytes": 4975,
       "transformations": [
         {
           "kind": "owner-label",
@@ -3806,6 +4190,10 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -3814,12 +4202,16 @@
       "source": "skills/voxel-models/references/procedural.md",
       "path": "payload/skills/voxel-models/references/procedural.md",
       "source_sha256": "ffe59b9dec0b65c7e3655dac4e31a56577ddf6bfbab384a7a3f0584c64041476",
-      "sha256": "ffe59b9dec0b65c7e3655dac4e31a56577ddf6bfbab384a7a3f0584c64041476",
-      "bytes": 2997,
+      "sha256": "c3d884628c8774a68d768405181b1cc1715fafd071d8ed74a473a823a5dfcf23",
+      "bytes": 2945,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -3828,12 +4220,16 @@
       "source": "skills/voxel-models/references/quality-cycle.md",
       "path": "payload/skills/voxel-models/references/quality-cycle.md",
       "source_sha256": "815f544ddd757160d71e6885872a74e90db0e34a60b18f56de7de893dd13266e",
-      "sha256": "758bf2bb77ea81e0500444217cfec09d05f65e2c000b92329e881115ae2b018a",
-      "bytes": 5438,
+      "sha256": "b61bc674b201b7927c8035c42026968792ef70516e0a2faf5136852333a213fa",
+      "bytes": 4833,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -3842,8 +4238,8 @@
       "source": "skills/voxel-models/references/resolution-lod.md",
       "path": "payload/skills/voxel-models/references/resolution-lod.md",
       "source_sha256": "bb2c2a17c24b99cc7eb5d3ab416c8981af2ff8e4235543092ebe50080322fbdb",
-      "sha256": "ed08dd3470c4b2730f3d748d4aa60e559a5bdf8204a72a0b2050f8c22b57c56c",
-      "bytes": 3413,
+      "sha256": "70540cf6b1f8cb3337d389d1d26a3d9dce78b87820c65462e408f2ae2c320091",
+      "bytes": 3375,
       "transformations": [
         {
           "kind": "owner-label",
@@ -3857,6 +4253,10 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -3865,12 +4265,16 @@
       "source": "skills/voxel-models/references/shape-palette.md",
       "path": "payload/skills/voxel-models/references/shape-palette.md",
       "source_sha256": "061fbc68db05fafe7ce76cb54db79a1291e8c072792569263e410010f5f1b344",
-      "sha256": "061fbc68db05fafe7ce76cb54db79a1291e8c072792569263e410010f5f1b344",
-      "bytes": 4695,
+      "sha256": "a28a8fe678ce3f42b7bf5d96d889039996cc58801afce75fbe12bccf8bdbc814",
+      "bytes": 4671,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -4075,8 +4479,8 @@
       "source": "skills/voxel-models/SKILL.md",
       "path": "payload/skills/voxel-models/SKILL.md",
       "source_sha256": "eec0be0c3e2818c2e98ec7f15b1e44b3efcd67146097b46b72bf50d8b570d6aa",
-      "sha256": "7a6c3fb1f819b06e04ee4934d4cba059ee5c67567b084d4070cd542d9bf7c25f",
-      "bytes": 8122,
+      "sha256": "87af67f9c8e3804a22b547ebf8f2f92d80454c57c9fc1e551dddbaef42e2a9e1",
+      "bytes": 6956,
       "transformations": [
         {
           "kind": "owner-label",
@@ -4086,6 +4490,10 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -4154,8 +4562,8 @@
       "source": "skills/agent-instructions/SKILL.md",
       "path": "payload/skills/agent-instructions/SKILL.md",
       "source_sha256": "4a1ba6ee7711cad9a659d30301762c6d12041bb7cd8bd5f4c280c2311af043fa",
-      "sha256": "cbe05f6979f55476df1b7a28c3240fa374140f02dcf3e2913dde90a8db605bf4",
-      "bytes": 2820,
+      "sha256": "862e381bc7f7af426b04090c4a8f88222bf4bb1e656b7d8ede5c394b839807fb",
+      "bytes": 2720,
       "transformations": [
         {
           "kind": "external-native-capability",
@@ -4165,6 +4573,16 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "agent-instructions"
@@ -4265,8 +4683,8 @@
       "source": "runtime/memory/SYSTEM/workflows/capture.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/capture.md",
       "source_sha256": "5acc61634a95c11e7b372160993244d3530442fd0050f2152bc3d1dcebf48e9a",
-      "sha256": "9fcd3044babd9945a7a8d7413810d420ddf85635a578448df7aa260c83788a61",
-      "bytes": 6133,
+      "sha256": "e8d06995b96bb95d4d8dda78a9d5e32fcd768313d98ef3d333658e7d3111a83c",
+      "bytes": 5086,
       "transformations": [
         {
           "kind": "owner-label",
@@ -4290,6 +4708,16 @@
         {
           "kind": "portable-owner-policy",
           "detail": "Require current-owner memory-agent and persistent-tool consent; use generic MCP/source labels; remove inherited schedule claims and dated approvals."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply audit owners and exact section pointers; retain runtime/domain contracts and original source metadata."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 2,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "memory-runtime"
@@ -4338,8 +4766,8 @@
       "source": "runtime/memory/SYSTEM/workflows/curate.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/curate.md",
       "source_sha256": "a8c48dbe23220e3e4a796dba80e905071fd8cf55ba9ca38c9293153d0e01a5f6",
-      "sha256": "f231683bcd330166de2404035c252c7bec1f09ab7409c125ae32bd01cf4e7e21",
-      "bytes": 2806,
+      "sha256": "27fc56cffa7ba869c05a8e7a4f20849e51c62999493bdb5eadb592cc61630d4a",
+      "bytes": 2876,
       "transformations": [
         {
           "kind": "owner-label",
@@ -4362,6 +4790,16 @@
         {
           "kind": "portable-owner-policy",
           "detail": "Remove dated owner decisions and inherited scheduler claims; preserve curation checks and current-owner publication policy."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply audit owners and exact section pointers; retain runtime/domain contracts and original source metadata."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "memory-runtime"
@@ -4552,8 +4990,8 @@
       "source": "skills/voxel-models/references/mixed-grids.md",
       "path": "payload/skills/voxel-models/references/mixed-grids.md",
       "source_sha256": "cae1cfb83e6389de85463e68f8f545a2e9e1720c73a23d523be88a55fd8cd18b",
-      "sha256": "ca959bc7d6422ab1a7942508a1aeb92e54786dd3cd4d64183d226b33e502824c",
-      "bytes": 2583,
+      "sha256": "4d7e75b9123f9b4116ce398bcdb2e7a4c8799e1ffe5c3d2312e196deaa2c0e12",
+      "bytes": 2572,
       "transformations": [
         {
           "kind": "owner-label",
@@ -4567,6 +5005,10 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "voxel-models"
@@ -4617,12 +5059,16 @@
       "source": "skills/ui-taste-reference/references/taste-v1-recipes.md",
       "path": "payload/skills/ui-taste-reference/references/taste-v1-recipes.md",
       "source_sha256": "ae452fefda695c591b2c33e3398a0941968eff7930bbbde4ef0c3c270d5f24db",
-      "sha256": "ae452fefda695c591b2c33e3398a0941968eff7930bbbde4ef0c3c270d5f24db",
-      "bytes": 21068,
+      "sha256": "308b3d3d775ff0bada59301eacabf8c8dc8d895dcc5f5b3f323b2093de2a6234",
+      "bytes": 20723,
       "transformations": [
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "ui-taste-reference"
@@ -4655,11 +5101,21 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "dev-flow",
-      "sha256": "b1a009673ef87c34396a619e1c8c980095f17728f06f15143a0a59e9a4e50eb8",
-      "bytes": 8418
+      "sha256": "9ea38152f9bd0b7fb2307255d74e1a83ce2fa5fe84db9d5f8101c90d3b9d3f15",
+      "bytes": 12045
     },
     {
       "source": "skills/ui-design/references/accepted-ui-lessons.md",
@@ -4704,8 +5160,8 @@
       "source": "skills/ui-design/references/design-preflight.md",
       "path": "payload/skills/ui-design/references/design-preflight.md",
       "source_sha256": "1d28f85c965c76fc0322f7e38af2bf749e1d5ee6fa8b4dec20287f0111334710",
-      "sha256": "3588ea74635b9247b0d18aeb279b18fa7cffb034d98c173b766196db417d86d8",
-      "bytes": 8583,
+      "sha256": "587b72dad4e35e549fdc12f682abcd0027e177b3c7ec63d63b00c344f34914e6",
+      "bytes": 8567,
       "transformations": [
         {
           "kind": "owner-label",
@@ -4719,6 +5175,10 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "ui-design"
@@ -4743,11 +5203,15 @@
         {
           "kind": "owner-neutral-grammar",
           "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "creative-direction",
-      "sha256": "58a9d750d2de5fa74ec4fb2bbbee71bbebadd7f24bb334ce980337dd68a09b67",
-      "bytes": 5500
+      "sha256": "376c741e87ad136b0e8d34221abc69aa9d5149c0819c197ef2d9f4f9d79eb231",
+      "bytes": 5379
     },
     {
       "source": "skills/creative-direction/references/content.md",
@@ -4764,11 +5228,15 @@
         {
           "kind": "owner-neutral-grammar",
           "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "creative-direction",
-      "sha256": "0ee4b119cfe787b70772bfdedeb1e47c2b6506e0014b6a3dacd484b0c128bc91",
-      "bytes": 1502
+      "sha256": "66c1677956b644eb2ea88277d95bceae24e1ca66faa0c6e07463ba889c8cadf2",
+      "bytes": 1546
     },
     {
       "source": "skills/creative-direction/references/gamedev.md",
@@ -4810,11 +5278,15 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
         }
       ],
       "module": "creative-direction",
-      "sha256": "6314cb7fc3cf465e794019bae09a777c8042cdb919a2b56586e3b20118e5266d",
-      "bytes": 2203
+      "sha256": "cc11035cbf6a4e8621753ff41d5b426c8abe5441c1a3fef17a868830e2379eed",
+      "bytes": 2349
     },
     {
       "source": "skills/creative-direction/references/visual.md",
@@ -4840,10 +5312,21 @@
       "source": "skills/agent-sessions-codex/references/running-and-checking.md",
       "path": "payload/skills/agent-sessions-codex/references/running-and-checking.md",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "1cc652c4d206bb3cf9f7b7aa717800df6db2f506643117adaa0e863b9731dd22",
-      "sha256": "1cc652c4d206bb3cf9f7b7aa717800df6db2f506643117adaa0e863b9731dd22",
-      "bytes": 4411,
-      "transformations": [],
+      "source_sha256": "0b3b333f2c2e9dc5079a64d3015298361baa03deeaa91341145956932a08e7e2",
+      "sha256": "facb430a5db0334dbb5e37131e123235461e82583abcab886e7a6ffb5ac9a370",
+      "bytes": 7618,
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 2,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        }
+      ],
       "module": "agent-sessions-codex"
     },
     {
@@ -4851,9 +5334,20 @@
       "path": "payload/skills/agent-sessions-codex/references/brief-writing.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
-      "sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
-      "bytes": 12086,
-      "transformations": [],
+      "sha256": "15b31a86c4d3e206ed8d92ba6d990f9a4754144ee4000607861478b898f9f304",
+      "bytes": 12353,
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        }
+      ],
       "module": "agent-sessions-codex"
     },
     {
@@ -4861,18 +5355,29 @@
       "path": "payload/skills/agent-sessions-codex/references/requirements-interview.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "dddb4b40b43076e1bc52581cbd9577a20b6613a07288112a3fb7972b16372102",
-      "sha256": "dddb4b40b43076e1bc52581cbd9577a20b6613a07288112a3fb7972b16372102",
-      "bytes": 4880,
-      "transformations": [],
+      "sha256": "c711fbf8da939a2143ad616de474e36196b743da8fe076e6f4b84ac5c403722e",
+      "bytes": 1394,
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        }
+      ],
       "module": "agent-sessions-codex"
     },
     {
       "source": "skills/agent-sessions-codex/SKILL.md",
       "path": "payload/skills/agent-sessions-codex/SKILL.md",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "8b84c2d7311c8fc2fa20190c01f0d630016f9bfa7502b2fd9c1184e25ea6cde2",
-      "sha256": "8b44a740fb8ebe620a39aa4ed7840c3910046b06335da6f0b62732df1f974277",
-      "bytes": 9056,
+      "source_sha256": "150f5b74c2ceed277495f310b7c7ae0006d6d0087a146b8a0ceb7e494b909516",
+      "sha256": "bfde8a60f4988d897d99599742c0da667aacd2043b41be1673cbf3efee523eda",
+      "bytes": 4572,
       "transformations": [
         {
           "kind": "portable-hook-reference",
@@ -4881,6 +5386,16 @@
         {
           "kind": "public-skill-naming",
           "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
+        },
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 2,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
         }
       ],
       "module": "agent-sessions-codex"
@@ -4905,9 +5420,14 @@
       "path": "payload/skills/jam-board/references/brain-loop.md",
       "source_ref": "repository-authored-jam-board-skill",
       "source_sha256": "1ab71f81996f8a7f18d6ca9f06031ab77d093e3dba58b0894c97c814e5bf4df1",
-      "sha256": "1ab71f81996f8a7f18d6ca9f06031ab77d093e3dba58b0894c97c814e5bf4df1",
-      "bytes": 28356,
-      "transformations": [],
+      "sha256": "d3115eca38ad49d56e812a36366a5b465391a2f318555bee83bbc3544489f27d",
+      "bytes": 26599,
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        }
+      ],
       "module": "jam-board"
     },
     {
@@ -4925,9 +5445,20 @@
       "path": "payload/skills/jam-board/references/field-guide.md",
       "source_ref": "repository-authored-jam-board-skill",
       "source_sha256": "d763820f83c5fee919f59370337439eaaeb7f2e09d3cddae20b868061b0dea7a",
-      "sha256": "d763820f83c5fee919f59370337439eaaeb7f2e09d3cddae20b868061b0dea7a",
-      "bytes": 12867,
-      "transformations": [],
+      "sha256": "dc211b67bc35e6835fc78efab35b476713e48677e5a5a07272f3e0086bb22643",
+      "bytes": 12658,
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        }
+      ],
       "module": "jam-board"
     },
     {
@@ -4935,9 +5466,14 @@
       "path": "payload/skills/jam-board/references/worker-loop.md",
       "source_ref": "repository-authored-jam-board-skill",
       "source_sha256": "a23152b67b8feb15d7e3df67c0bdef006e2b0e168959d8ff12d84403005a2f91",
-      "sha256": "a23152b67b8feb15d7e3df67c0bdef006e2b0e168959d8ff12d84403005a2f91",
-      "bytes": 4949,
-      "transformations": [],
+      "sha256": "6d0f35f816cc5fffcf01892646a166ccb5f843904389772c97bd3dd83377248f",
+      "bytes": 5192,
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        }
+      ],
       "module": "jam-board"
     },
     {
@@ -4945,10 +5481,78 @@
       "path": "payload/skills/jam-board/SKILL.md",
       "source_ref": "repository-authored-jam-board-skill",
       "source_sha256": "292c89389dbf1f7a263792258a5b71ce66f60c79d0ac8c15fdcedbfc9b9bbda3",
-      "sha256": "292c89389dbf1f7a263792258a5b71ce66f60c79d0ac8c15fdcedbfc9b9bbda3",
-      "bytes": 10300,
-      "transformations": [],
+      "sha256": "b46bae64ad246135656d9f664235a720b596ed1648dd366c7ab9187b9a8d92a3",
+      "bytes": 9197,
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 2,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        }
+      ],
       "module": "jam-board"
+    },
+    {
+      "source": "skills/you-are-brain/SKILL.md",
+      "path": "payload/skills/you-are-brain/SKILL.md",
+      "module": "you-are-brain",
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        }
+      ],
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "788081ddcec7b259100017286daf90d3db0f2e6ef372110ba59d3f630af3f64f",
+      "sha256": "edbcb335632d7c3650cccbb0e442af04a1b3031af83b8a770a6652af1df25f5b",
+      "bytes": 3163
+    },
+    {
+      "source": "skills/you-are-brain/references/brain-profile.md",
+      "path": "payload/skills/you-are-brain/references/brain-profile.md",
+      "module": "you-are-brain",
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        }
+      ],
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "c00e4a2bb08fe13a71fcb1c566652b01379161425eae1685e5b4eb6984fa7bfa",
+      "sha256": "d2b80d34693bf2418b4f26b44f002bb8de8399276ad15f0b07fdb74b0ac97c3f",
+      "bytes": 2875
+    },
+    {
+      "source": "skills/you-are-brain/references/setup-interview.md",
+      "path": "payload/skills/you-are-brain/references/setup-interview.md",
+      "module": "you-are-brain",
+      "transformations": [
+        {
+          "kind": "instruction-ownership-1.4.0",
+          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "environment-binding",
+          "binding": "{{HARNESS_ROOT}}",
+          "count": 1,
+          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        }
+      ],
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "df0a9db30d6058bb5e332a9573982c496974d5be38e55f1a2f879495a5ccbd9a",
+      "sha256": "08db76214f16c0a84cd82498b18dd68e127545dfac79bd7f5ef0674e04799324",
+      "bytes": 3748
     }
   ],
   "excluded": [

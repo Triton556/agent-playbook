@@ -10,14 +10,14 @@ Name objective, style, function and context in the same brief, including what mu
 
 ## Inspect and record
 
-Check technical validity, semantic relationships and the actual perceived/used result separately. Profile skills supply views, interactions and format checks. A current observation can serve several criteria; it does not need duplicate receipts merely because two skills refer to it.
+Check series members using specialist views/interactions and format checks. Evidence grades: see [human-perspective-review, Readiness and transfer](human-perspective-review.md#readiness-and-transfer). Reuse: see [task-brief-and-acceptance, 7. Execution, verification and completion](task-brief-and-acceptance.md#7-execution-verification-and-completion).
 
-For a repeated failure record the original failing revision, observation, cause hypothesis and a check that distinguishes it. Change the source or observation method after another miss of the same class; adding similar frames or another generic pass is insufficient. Preserve deliberate style choices and legitimate exceptions.
+For repeated failure, add a distinguishing member/extreme check and protect deliberate style exceptions. Failure records: see [quality-ledger, Schema version 1](quality-ledger.md#schema-version-1). Transition: see [WORKFLOW, Work route](../../../workflow/WORKFLOW.md#work-route).
 
-Use [quality-ledger](quality-ledger.md) when the series/dependency evidence benefits from machine validation or the project already requires it; otherwise the existing acceptance record is sufficient. Keep required outputs in the plan or [task-state](task-state.md); do not maintain a second manifest by hand. The ledger checks declared evidence, not undeclared dependencies or aesthetics.
+Use [quality-ledger](quality-ledger.md) when series/dependency evidence benefits from machine validation or the project requires it. Output records: see [task-state, Long-task state and completeness](task-state.md#long-task-state-and-completeness).
 
 ## Repair and transfer
 
-Follow the ordinary repair/recheck procedure from WORKFLOW. Group defects by cause, recheck the affected member plus relevant family extremes/protected examples, and retain current evidence. Machine validators retain their documented invalidation policies; an assertion of independence does not bypass a stale digest.
+Repairs follow WORKFLOW, step 6. Add checks of the affected member, relevant family extremes and protected examples. Invalidation: see quality-ledger, Schema version 1.
 
 Reusable lessons keep trigger, observation, mechanism/hypothesis, check, scope/exceptions and example links. General task rules stay in WORKFLOW, subject-specific rules in the profile, and project values in the project. This adapter adds no new interview, reviewer or model experiment.

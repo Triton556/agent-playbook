@@ -5,7 +5,7 @@ import re
 import tempfile
 import unittest
 
-from test_install import ROOT, call
+from test_install import ROOT, call, target_directory
 
 SKILL = ROOT / 'payload/skills/jam-board'
 APP_DOC = Path('C:/Users/Danil/Documents/ChatGPT/experments/jam-board-20261019/docs/mcp.md')
@@ -35,7 +35,12 @@ def relative_links(path):
 def check_relative_links(case, path):
     for target in relative_links(path):
         relative, _, fragment = target.partition('#')
-        dest = (path.parent / relative).resolve() if relative else path
+        if relative.startswith('{{HARNESS_ROOT}}/'):
+            # Source instructions bind AGENTS' deployed BASE-RULES filename.
+            suffix = relative.removeprefix('{{HARNESS_ROOT}}/')
+            dest = ROOT / 'payload' / ('AGENTS.md' if suffix == 'BASE-RULES.md' else suffix)
+        else:
+            dest = (path.parent / relative).resolve() if relative else path
         case.assertTrue(dest.is_file(), (path, target))
         if fragment:
             # GitHub-style heading anchors, including duplicate-heading suffixes.
@@ -58,8 +63,8 @@ class JamBoardSkill(unittest.TestCase):
         skill = next(s for s in catalog['skills'] if s['name'] == 'jam-board')
         self.assertTrue(skill['description'])
         self.assertIn('Jam Board', skill['description'])
-        required = {'jam-board', 'dev-flow', 'dev-plan', 'agent-sessions', 'agent-sessions-codex'}
-        with tempfile.TemporaryDirectory(prefix='jam-board-plan-') as td:
+        required = {'jam-board', 'dev-flow', 'dev-plan', 'agent-sessions', 'agent-sessions-codex', 'you-are-brain'}
+        with target_directory() as td:
             for profile in ['full', 'engineering', 'jam-board']:
                 with self.subTest(profile=profile):
                     plan = call('plan', '--client', 'codex', '--profile', profile, '--target', td)
@@ -107,10 +112,10 @@ class JamBoardSkill(unittest.TestCase):
         self.assertIn(expected, (SKILL / 'references/connect.md').read_text(encoding='utf8'))
 
     def test_codex_jam_board_profile_plan_install_verify_doctor(self):
-        # The destination is outside this repository; do not touch global configs.
-        with tempfile.TemporaryDirectory(prefix='jam-board-install-') as td:
+        # Use an isolated project under the permitted repository test workspace.
+        with target_directory() as td:
             target = Path(td).resolve()
-            self.assertNotIn(ROOT.resolve(), target.parents)
+            self.assertIn(ROOT.resolve(), target.parents)
             user_rules = b'# Existing project\r\nKeep this rule.\r\n'
             (target / 'AGENTS.md').write_bytes(user_rules)
             (target / 'user-file.txt').write_bytes(b'keep')

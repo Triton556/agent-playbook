@@ -5,7 +5,7 @@ description: Implement an agreed software feature, integration, application, or 
 
 # Implementation
 
-Input: a clear task or saved plan. Output: a working scenario across the required layers. [WORKFLOW](../../workflow/WORKFLOW.md) owns shared requirements, state and acceptance; do not create a second specification.
+Input: a clear task or saved plan. Output: a working scenario across the required layers. Task records: see [task-state, Long-task state and completeness](../dev-flow/references/task-state.md#long-task-state-and-completeness).
 
 Read relevant code and uncommitted changes; find existing components, contracts and project commands. Work in vertical slices: user action → required layers → observable result → verification. Complete a useful slice before widening the surface; integrate declared behavior with real data/logic and identify demonstration stubs.
 
@@ -15,4 +15,4 @@ Reuse existing modules. For a complex boundary, consult [codebase-design](vendor
 - Unexplained failure: [debugging](../dev-debug/SKILL.md) with the actual symptom.
 - Behavior/code verification: [testing](../dev-verify/SKILL.md) proportional to risk.
 
-A specialist may reuse the same current verification evidence; selecting it does not require repeating an already covered scenario. Sources: [sources.json](sources.json), [LICENSE](licenses/mattpocock--skills-LICENSE).
+Evidence reuse: see [task-brief-and-acceptance, 7. Execution, verification and completion](../dev-flow/references/task-brief-and-acceptance.md#7-execution-verification-and-completion). Sources: [sources.json](sources.json), [LICENSE](licenses/mattpocock--skills-LICENSE).
