@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "name": "agent-playbook",
-  "version": "1.4.0",
-  "exported_at": "2026-10-20T15:01:57.238105+00:00",
+  "version": "1.5.0",
+  "exported_at": "2026-10-20T14:58:22.468268+00:00",
   "baseline": "Version 0.5.0 workflow retained with the approved public package/skill names; compatibility creator and personal lab module removed; receipt-based 0.x migration",
   "instruction_policy": "Full maintained agent instructions in English; Russian communication and knowledge content by default; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
   "files": [
@@ -5458,12 +5458,16 @@
       "path": "payload/skills/jam-board/references/brain-loop.md",
       "source_ref": "repository-authored-jam-board-skill",
       "source_sha256": "1ab71f81996f8a7f18d6ca9f06031ab77d093e3dba58b0894c97c814e5bf4df1",
-      "sha256": "d3115eca38ad49d56e812a36366a5b465391a2f318555bee83bbc3544489f27d",
-      "bytes": 26599,
+      "sha256": "32042f5ffc216abef22852b048b5601edc377314daf5a2f0daec7f02acbb0d35",
+      "bytes": 29751,
       "transformations": [
         {
           "kind": "instruction-ownership-1.4.0",
           "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "detach-wait-v2",
+          "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
         }
       ],
       "module": "jam-board"
@@ -5473,9 +5477,14 @@
       "path": "payload/skills/jam-board/references/connect.md",
       "source_ref": "repository-authored-jam-board-skill",
       "source_sha256": "964496690cd5274c9245a431d1f6e6376de02047b164bbacd6bd3aea3f1e3762",
-      "sha256": "964496690cd5274c9245a431d1f6e6376de02047b164bbacd6bd3aea3f1e3762",
-      "bytes": 3493,
-      "transformations": [],
+      "sha256": "05dd4fa3f5d7db2832cb0e89530847839e14a4a9ba832fed202039f5d46d7632",
+      "bytes": 3503,
+      "transformations": [
+        {
+          "kind": "detach-wait-v2",
+          "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
+        }
+      ],
       "module": "jam-board"
     },
     {
@@ -5519,8 +5528,8 @@
       "path": "payload/skills/jam-board/SKILL.md",
       "source_ref": "repository-authored-jam-board-skill",
       "source_sha256": "292c89389dbf1f7a263792258a5b71ce66f60c79d0ac8c15fdcedbfc9b9bbda3",
-      "sha256": "b46bae64ad246135656d9f664235a720b596ed1648dd366c7ab9187b9a8d92a3",
-      "bytes": 9197,
+      "sha256": "94997520198a6ebe8a8dd9b1113c4de94b691ba3f6e79560fbb1969795adcc44",
+      "bytes": 9560,
       "transformations": [
         {
           "kind": "instruction-ownership-1.4.0",
@@ -5531,6 +5540,10 @@
           "binding": "{{HARNESS_ROOT}}",
           "count": 2,
           "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        },
+        {
+          "kind": "detach-wait-v2",
+          "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
         }
       ],
       "module": "jam-board"

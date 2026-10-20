@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.0
+
+- Added adapter contract v2 with detached Codex/Claude Code turns, atomic external run metadata and one shared wait/status/cancel tool. Foreground commands, result shapes and exit codes 0–4 remain compatible; wait timeout uses exit 5. The Codex legacy driver remains explicitly foreground-only.
+- Split orchestration waiting by client notification support, added runId/statusFile to the session log, and replaced the Codex running-reference mirror with a pointer to its single policy owner.
+- Added board-aware waiting for detached workers and the confirmed Jam Board wait_for_changes contract; list_changes_since remains recovery. Tool availability/schema must be checked against the connected app before use.
+- Added synthetic wait/cancellation and Codex protocol integration coverage plus full-profile installation checks. Live smoke results and client verification limits are recorded in the local DETACH_WAIT_REPORT.md; no live Claude task or model-quality comparison is claimed.
+
 ## 1.4.0
 
 - Resolved all 61 audit findings through single policy owners and caller pointers, including reviewer execution/rounds, explicit decision consent, one launch gate, effort precedence, output language, artifact publication, UI and voxel references. Added an ownership map and regression checks; the three shared orchestration references remain byte-identical.

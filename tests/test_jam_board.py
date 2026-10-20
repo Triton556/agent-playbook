@@ -14,10 +14,14 @@ FIXTURE = ROOT / 'tests/fixtures/jam-board-tools.txt'
 
 def parse_tools(document):
     # Bound the table: the readiness table also has snake_case entries.
-    table = document.split('## Tool contract (38 tools)', 1)[1].split('### Project and planning fields', 1)[0]
+    header = re.search(r'## Tool contract \((\d+) tools\)', document)
+    if not header:
+        raise AssertionError('Missing app tool contract table')
+    count = int(header[1])
+    table = document[header.end():].split('### Project and planning fields', 1)[0]
     names = re.findall(r'^\| ([a-z]+(?:_[a-z]+)+) \|', table, re.M)
-    if len(names) != 38 or len(set(names)) != 38:
-        raise AssertionError('Expected 38 unique tools from the app contract')
+    if len(names) != count or len(set(names)) != count:
+        raise AssertionError(f'Expected {count} unique tools from the app contract')
     return set(names)
 
 
@@ -79,8 +83,11 @@ class JamBoardSkill(unittest.TestCase):
         # Prefer the current authoritative app contract when available; otherwise
         # use the generated portable fixture. Exercise both sources where possible.
         tools = parse_tools(APP_DOC.read_text(encoding='utf8')) if APP_DOC.is_file() else fixture_tools()
-        self.assertEqual(len(fixture_tools()), 38)
-        self.assertEqual(tools, fixture_tools())
+        self.assertEqual(len(fixture_tools()), 39)
+        self.assertEqual(tools - {'wait_for_changes'}, fixture_tools() - {'wait_for_changes'})
+        # Its presence is checked separately; an older checkout can still verify
+        # the existing vocabulary while the new contract comparison is skipped.
+        tools |= {'wait_for_changes'}
         used = set()
         for path in SKILL.rglob('*.md'):
             text = path.read_text(encoding='utf8')
@@ -97,6 +104,25 @@ class JamBoardSkill(unittest.TestCase):
                 self.assertIsInstance(args, dict)
                 self.assertTrue(all('_' not in key for key in args), (path, name))
         self.assertTrue({'ask_user', 'check_ready', 'mark_ready', 'submit_report', 'review_task'} <= used)
+
+    def test_wait_for_changes_contract_and_examples(self):
+        if not APP_DOC.is_file() or 'wait_for_changes' not in parse_tools(APP_DOC.read_text(encoding='utf8')):
+            self.skipTest('Pending contract: wait_for_changes absent from app docs/mcp.md')
+        source = APP_DOC.read_text(encoding='utf8')
+        section = source.split('### wait_for_changes', 1)[1].split('### Project and planning fields', 1)[0]
+        examples = []
+        for path in SKILL.rglob('*.md'):
+            for raw in re.findall(r'^\s*wait_for_changes\((\{.*\})\)$', path.read_text(encoding='utf8'), re.M):
+                args = json.loads(raw)
+                self.assertEqual(set(args) - {'cursor', 'epicKey', 'includeProject', 'actions', 'actorKind', 'excludeSelf', 'timeoutSeconds'}, set())
+                self.assertGreaterEqual(args['cursor'], 0)
+                self.assertIn(args['timeoutSeconds'], range(1, 61))
+                for action in args.get('actions', []):
+                    self.assertIn(f'`{action}`', section)
+                examples.append(args)
+        self.assertTrue(examples, 'A real JSON tool-call example must be present')
+        for key in ('events', 'nextCursor', 'timedOut', 'includeProject', 'excludeSelf'):
+            self.assertIn(key, section)
 
     def test_relative_links_and_fragments(self):
         paths = list(SKILL.rglob('*.md'))

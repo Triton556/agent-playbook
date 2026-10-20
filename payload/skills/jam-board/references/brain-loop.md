@@ -14,6 +14,28 @@ Use [requirements-interview](../../agent-sessions/references/requirements-interv
 
 There is no dedicated epic notes property. Keep a labeled block such as `<!-- jam-board operational notes -->\nChange cursor: 124` in `decidedMd`, preserving the actual decisions. Read/merge the current field before writing to reduce lost updates, then re-read when concurrent changes are possible. Use the last processed `seq`, not a timestamp or guessed next value. The `list_changes_since` result is an array, not `{nextCursor}`. Its project-wide form covers human project edits and pre-epic answers; `epicKey` is an optional filter when deliberately reading only that tail. Cursor writes generate another event; process these normally without writing a new checkpoint just to acknowledge your own checkpoint. Keep the cursor out of personal memory and session settings.
 
+## Waiting for workers and board changes
+
+Worker scheduling and verification belong to [running-and-checking, Waiting for workers](../../agent-sessions/references/running-and-checking.md#waiting-for-workers). Keep detached runIds, statusFile and known threadIds in the operational notes alongside task IDs. Worker completion and board activity are different signals: `wait` observes the former; `wait_for_changes` observes `report.submitted`, `question.answered`, brief/human edits. Use whichever applies; with both, alternate bounded blocking calls:
+
+1. Set the concrete status, then long-poll the board using the current processed cursor:
+
+   ```text
+   set_status({"text":"waiting: report on JB-12 from Worker","scope":{"type":"epic","id":"JB-E1"}})
+   wait_for_changes({"cursor":124,"epicKey":"JB-E1","includeProject":true,"actions":["report.submitted","question.answered","task.brief_updated"],"timeoutSeconds":60})
+   ```
+
+2. Handle returned `events` and re-read affected tasks and references; then persist `nextCursor`, including after `timedOut: true`. Unlike the recovery feed, this cursor advances past all inspected events, including filtered-out ones. Omit `actions` in the general loop to include all human edits, or extend the minimal example with `task.updated`, `epic.updated`, `story.updated`, `project.updated`, `reference.added`, `reference.linked` and `reference.updated`. Omit `actorKind` to receive both worker and human events; `excludeSelf` defaults to true. `includeProject: true` adds project-wide human events to epic scope; omit epicKey to receive all scopes, including project-wide agent answers. Changing filters requires a recovery read from the earlier cursor before skipped events, not just the advanced nextCursor. Do not repeatedly write an unchanged waiting status or checkpoint solely to acknowledge your own event.
+3. If no relevant event arrived, block on pending detached sessions:
+
+   ```text
+   node adapters/wait.mjs --runs <pending-runId,pending-runId> --run-dir <recorded-directory> --mode any --timeout 60
+   ```
+
+   Check each finished worker using the owning procedure before waiting again; remove checked runIds from the pending set. A report can arrive before its session exits, or a session can fail without a report: reconcile both signals. If only worker runs apply, call wait directly; if only board changes apply, long-poll the board. Lower both timeouts below the client tool limit; honor the approved time budget and report unfinished IDs at turn end.
+
+Contract confirmed against Jam Board `docs/mcp.md` (39 tools): `wait_for_changes({cursor, epicKey?, includeProject?, actions?, actorKind?, excludeSelf?, timeoutSeconds?})` returns `{events, nextCursor, timedOut}`; timeoutSeconds is an integer from 1 to 60 (default 30). An empty actions array matches nothing. If a connected deployment lacks the tool, do not call it or replace it with sleep-polling: use worker wait and recover the board with `list_changes_since` on resumption. The latter remains the start-of-turn recovery path; its cursor follows the last processed seq, whereas long-poll uses nextCursor after handling returned events.
+
 ## Worked example: title screen and menu
 
 The user says in chat: **«спланируй на доске эпик про меню и титульный экран»** and appoints this session as brain. This is a **fictional example**: IDs, repository facts, assets, answers, commands and outcomes below are teaching data. Discover the real project facts first. No calls below have been executed against the user's board. Tool invocations use `name(JSON arguments)`; capture returned keys/IDs rather than assuming sequence numbers.

@@ -19,7 +19,7 @@ bearer_token_env_var = "JAM_BOARD_TOKEN"
 http_headers = { "X-Jam-Agent" = "Codex" }
 ```
 
-Set `JAM_BOARD_TOKEN` in the environment inherited by the client to the token copied explicitly from Settings ? MCP. Do not commit the token. `bearer_token_env_var` and `http_headers` are supported by the [official Codex MCP configuration documentation](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
+Set `JAM_BOARD_TOKEN` in the environment inherited by the client to the token copied explicitly from Settings → Agents. Do not commit the token. `bearer_token_env_var` and `http_headers` are supported by the [official Codex MCP configuration documentation](https://learn.chatgpt.com/docs/extend/mcp?surface=cli).
 
 ### Claude Code: stdio
 
@@ -35,7 +35,7 @@ claude mcp add --transport http jam-board http://127.0.0.1:47321/mcp --header "A
 
 The name-before-`--env` stdio form and HTTP header form follow the [official Claude Code MCP guide](https://code.claude.com/docs/en/mcp). Replace `<token>` locally; if the default port is occupied, use the actual port stored in `settings.mcp_http_port`. These are instructions for the user, not commands that this implementation runs against real agent configuration.
 
-Replace the executable path with the absolute path shown in Settings ? MCP. TOML does not expand %LOCALAPPDATA%; the example is a placeholder, not a literal path to paste unchanged. Installed stdio needs no data override. For development, add JAM_BOARD_DATA_DIR pointing at <checkout>/.dev-data. The default data folder is %APPDATA%\dev.triton556.jamboard.
+Replace the executable path with the absolute path shown in Settings → Agents. TOML does not expand %LOCALAPPDATA%; the example is a placeholder, not a literal path to paste unchanged. Installed stdio needs no data override. For development, add JAM_BOARD_DATA_DIR pointing at <checkout>/.dev-data. The default data folder is %APPDATA%\dev.triton556.jamboard.
 
 ## Confirm the connection
 
