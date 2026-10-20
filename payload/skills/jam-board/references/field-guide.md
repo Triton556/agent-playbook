@@ -62,7 +62,7 @@ Use exact paths, strings and numbers. Each requirement needs a distinguishing ch
 | tests_json / tests | Array of setup → expected, with baseline and permitted scratch location | `Run layout script at 1280x720 → exit 0, Quit bottom <=720.` | `Test everything` |
 | boundaries_md / boundariesMd | Allowed files/tools/actions, forbidden actions and user decisions | `Godot GUI/shell/screenshots allowed; no network, dependencies, image generation, extra sessions, deletes, commits or push; gameplay unchanged.` | `Local only` |
 | result_md / resultMd | Report destination, exact evidence schema and final-message format | `submit_report: files, tests 1–3 with command/expected/actual/result, deviations, not verified. Final: JB-12 report submitted; PASS x/3.` | `Tell me when done` |
-| user_quotes_md / userQuotesMd | Exact user words with attribution | `Danil: «спланируй на доске эпик про меню и титульный экран»` | Rephrased quote with requirements the user never said |
+| user_quotes_md / userQuotesMd | Exact user words with attribution | `The user: «спланируй на доске эпик про меню и титульный экран»` | Rephrased quote with requirements the user never said |
 
 Change object fields:
 

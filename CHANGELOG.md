@@ -3,7 +3,7 @@
 ## 1.3.0
 
 - Added `jam-board`: Epic → Story → Task planning and execution through the Jam Board MCP contract, with brain/worker roles, scoped interview rounds, user-selected worker models, complete briefs, readiness, references/assets, reports and review. Existing playbook procedures are linked rather than copied; no other skill content changes.
-- Added a worked brain loop with two full task briefs and a failed/repaired review, a worker report example, a field guide and verbatim app connection examples for Codex/Claude Code. The board is the task source of truth; worker reports remain local, self-review is forbidden and session launch still needs explicit consent.
+- Added a worked brain loop with two full task briefs and a failed/repaired review, a worker report example, a field guide and verbatim app connection examples for Codex/Claude Code. The board is the task source of truth. Follow the project's policy on publishing worker briefs and reports; if none is stated, keep them local and ask before committing or publishing them. Self-review is forbidden and session launch still needs explicit consent.
 - Added profile `jam-board` (the skill plus `dev-flow`, `dev-plan`, `agent-sessions`, `agent-sessions-codex`); `full` and `engineering` include it. The package now contains 25 skills and 307 payload files. Trusted complete-workflow upgrades add the new module while retaining existing conflict/ownership validation.
 - Added catalog/profile, MCP vocabulary/JSON example, relative-link/anchor, source-connection fidelity and isolated Codex install/verify/doctor checks. File integrity and author dry reading do not establish live MCP execution, independent model review or human acceptance.
 
