@@ -72,6 +72,7 @@ Leave out a section only when it truly has nothing to say. A short task gets a s
 - **Concrete paths and names.** Exact folders, files, functions, commands, branches.
 - **Similar cases named.** If a change could be confused with a neighbouring case (another error with the same code, another screen with the same component), say which one must stay as it is.
 - **Baseline first.** For anything that compares before and after, the worker records the baseline before editing.
+- **Boundaries that cannot be misread.** Name each tool and action the task may need and say whether it is allowed: image generation, network access, package installs, browser, running servers, deleting files. Avoid umbrella words such as "local only" or "no external services": a worker may read them as forbidding a tool the task needs, or as allowing one it must not use.
 - **One task per brief.** Independent pieces go to separate sessions.
 - **Nothing private that is not needed.** No secrets, tokens, personal data or unrelated history. Tell the worker never to print keys it uses.
 - **Memory.** If the user's setup has memory hooks, say who saves knowledge: usually the orchestrator, while the worker only marks the turn when a hook requires it.

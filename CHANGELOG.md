@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0
+
+- Orchestration skills (`agent-sessions`, `agent-sessions-codex`) now require separate visible sessions for delegated work and forbid the client's built-in subagents for it.
+- Approval is one summary in the user's language: the task, done-when checks, a table of sessions (what each does, model, effort with reason, access, folder, dependencies, brief file) and how each will be checked. Briefs are written before approval, so the user approves the actual tasks.
+- Effort is chosen from the lowest fitting level using a table of task types with examples; the maximum is allowed only for open creative or design exploration, after a lower level failed, or on the user's request.
+- Added `references/running-and-checking.md` to both skills: preparing folders and a starting point, a session log, background runs and dependencies, an eight-step check (report, real diff, rerun checks, evidence per requirement, boundaries, behaviour beyond tests, verdict, log) and the report to the user.
+- Briefs must name each tool and action as allowed or forbidden instead of umbrella words such as "local only"; briefs and worker reports stay local and are never committed or published.
+
 ## 1.1.0
 
 - `agent-sessions` and `agent-sessions-codex` now follow one six-step workflow: find out the requirements, propose the plan, write the briefs, run, check, report.

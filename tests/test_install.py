@@ -129,7 +129,7 @@ class InstallBehavior(unittest.TestCase):
                 self.assertEqual(refused.returncode,4)
     def test_orchestration_references_are_shared(self):
         # Both orchestration skills ship the same interview and brief guides.
-        for name in ['requirements-interview.md','brief-writing.md']:
+        for name in ['requirements-interview.md','brief-writing.md','running-and-checking.md']:
             with self.subTest(reference=name):
                 a=(ROOT/'payload/skills/agent-sessions/references'/name).read_bytes()
                 b=(ROOT/'payload/skills/agent-sessions-codex/references'/name).read_bytes()
@@ -137,7 +137,7 @@ class InstallBehavior(unittest.TestCase):
         self.assertIn(b'Write the brief in English',(ROOT/'payload/skills/agent-sessions/references/brief-writing.md').read_bytes())
         for skill in ['agent-sessions','agent-sessions-codex']:
             text=(ROOT/'payload/skills'/skill/'SKILL.md').read_text(encoding='utf8')
-            for phrase in ['Briefs are in English','The user chooses the model','You choose the effort','references/requirements-interview.md','references/brief-writing.md']:
+            for phrase in ['never built-in subagents','Briefs are in English','The user chooses the model','You choose the effort','Get approval with a summary','Approve?','references/running-and-checking.md','references/requirements-interview.md','references/brief-writing.md']:
                 self.assertIn(phrase,text,skill)
     def test_agent_sessions_codex_driver_syntax(self):
         node=shutil.which('node')

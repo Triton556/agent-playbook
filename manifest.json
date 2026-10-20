@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "name": "agent-playbook",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "exported_at": "2026-10-19T05:31:00.511394+00:00",
   "baseline": "Version 0.5.0 workflow retained with the approved public package/skill names; compatibility creator and personal lab module removed; receipt-based 0.x migration",
   "instruction_policy": "Full maintained agent instructions in English; Russian communication and knowledge content by default; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
@@ -195,12 +195,22 @@
       "bytes": 7136
     },
     {
+      "source": "skills/agent-sessions/references/running-and-checking.md",
+      "path": "payload/skills/agent-sessions/references/running-and-checking.md",
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "1cc652c4d206bb3cf9f7b7aa717800df6db2f506643117adaa0e863b9731dd22",
+      "sha256": "1cc652c4d206bb3cf9f7b7aa717800df6db2f506643117adaa0e863b9731dd22",
+      "bytes": 4411,
+      "transformations": [],
+      "module": "agent-sessions"
+    },
+    {
       "source": "skills/agent-sessions/references/brief-writing.md",
       "path": "payload/skills/agent-sessions/references/brief-writing.md",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "9eb80a2086e5dd2b73b806c38672c580837d3aaec932cd49b62d4b6714fccd07",
-      "sha256": "9eb80a2086e5dd2b73b806c38672c580837d3aaec932cd49b62d4b6714fccd07",
-      "bytes": 11711,
+      "source_sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
+      "sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
+      "bytes": 12086,
       "transformations": [],
       "module": "agent-sessions"
     },
@@ -218,9 +228,9 @@
       "source": "skills/agent-sessions/SKILL.md",
       "path": "payload/skills/agent-sessions/SKILL.md",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "80e02d99773413d1ce6710b8a470c144b0ce04d06b235a92aafadc73aafc2ef6",
-      "sha256": "80e02d99773413d1ce6710b8a470c144b0ce04d06b235a92aafadc73aafc2ef6",
-      "bytes": 7899,
+      "source_sha256": "36d399ad251b452ebfc474e218af43c36a84fc1fb612029a1fdd141d66adadfa",
+      "sha256": "36d399ad251b452ebfc474e218af43c36a84fc1fb612029a1fdd141d66adadfa",
+      "bytes": 8573,
       "transformations": [],
       "module": "agent-sessions"
     },
@@ -4827,12 +4837,22 @@
       "bytes": 1455
     },
     {
+      "source": "skills/agent-sessions-codex/references/running-and-checking.md",
+      "path": "payload/skills/agent-sessions-codex/references/running-and-checking.md",
+      "source_ref": "user-supplied-claude-skill",
+      "source_sha256": "1cc652c4d206bb3cf9f7b7aa717800df6db2f506643117adaa0e863b9731dd22",
+      "sha256": "1cc652c4d206bb3cf9f7b7aa717800df6db2f506643117adaa0e863b9731dd22",
+      "bytes": 4411,
+      "transformations": [],
+      "module": "agent-sessions-codex"
+    },
+    {
       "source": "skills/agent-sessions-codex/references/brief-writing.md",
       "path": "payload/skills/agent-sessions-codex/references/brief-writing.md",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "9eb80a2086e5dd2b73b806c38672c580837d3aaec932cd49b62d4b6714fccd07",
-      "sha256": "9eb80a2086e5dd2b73b806c38672c580837d3aaec932cd49b62d4b6714fccd07",
-      "bytes": 11711,
+      "source_sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
+      "sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
+      "bytes": 12086,
       "transformations": [],
       "module": "agent-sessions-codex"
     },
@@ -4850,9 +4870,9 @@
       "source": "skills/agent-sessions-codex/SKILL.md",
       "path": "payload/skills/agent-sessions-codex/SKILL.md",
       "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "fd49074a9900dedc067e777437db52f06d928fea1662eaca22c23a3d7c09f3df",
-      "sha256": "89176d625e6dfe56346d10f948240d500930e51996d249d079204dbe5e0eb807",
-      "bytes": 8036,
+      "source_sha256": "8b84c2d7311c8fc2fa20190c01f0d630016f9bfa7502b2fd9c1184e25ea6cde2",
+      "sha256": "8b44a740fb8ebe620a39aa4ed7840c3910046b06335da6f0b62732df1f974277",
+      "bytes": 9056,
       "transformations": [
         {
           "kind": "portable-hook-reference",
