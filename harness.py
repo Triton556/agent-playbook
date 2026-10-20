@@ -87,7 +87,7 @@ def catalog(m):
     # Local workflow creators actually depend on the native structure creator, disclosed separately.
     return c
 def selection(args,m,c):
-    profiles={'full':set(c),'engineering':{x for x in c if x.startswith('dev-')}|{'ui-design','ui-review','agent-sessions','agent-sessions-codex','creative-direction','ui-reference','agent-instructions'},'visual':{'creative-direction','ui-design','ui-review','visual-scenes','voxel-models'},'voxel':{'creative-direction','voxel-models'},'memory':{x for x in c if x.startswith('kb-')},'instructions':{'agent-sessions','agent-sessions-codex','agent-instructions'}}
+    profiles={'full':set(c),'engineering':{x for x in c if x.startswith('dev-')}|{'ui-design','ui-review','agent-sessions','agent-sessions-codex','creative-direction','ui-reference','agent-instructions','jam-board'},'jam-board':{'jam-board','dev-flow','dev-plan','agent-sessions','agent-sessions-codex'},'visual':{'creative-direction','ui-design','ui-review','visual-scenes','voxel-models'},'voxel':{'creative-direction','voxel-models'},'memory':{x for x in c if x.startswith('kb-')},'instructions':{'agent-sessions','agent-sessions-codex','agent-instructions'}}
     chosen=set()
     if args.profile:chosen|=profiles[args.profile]
     for v in args.skills or []:
@@ -176,11 +176,14 @@ def validate_legacy_upgrade(args,target,root,old,policy):
     if old.get('schema_version')!=1 or old.get('client')!=args.client:raise HarnessError('Invalid legacy installation receipt')
     snapshot=old.get('policy_snapshot')
     if not isinstance(snapshot,dict) or read_json(safe(root,'harness-policy.json'))!=snapshot:raise HarnessError('Legacy deployment policy differs from its trusted snapshot; preserve files for inspection')
-    normalize=lambda names:sorted({SKILL_ALIASES.get(x,x) for x in names if x not in REMOVED_SKILLS})
-    if normalize(old['installed_skills'])!=policy['installed_skills'] or normalize(old['requested_skills'])!=policy['requested_skills'] or old.get('workflow_activated')!=policy['full_workflow']:
+    # 1.3 adds one module to complete-workflow installations. Keep all other
+    # selection/binding/ownership checks; a partial installation cannot expand.
+    complete=bool(old.get('workflow_activated') and policy['full_workflow'])
+    normalize=lambda names,add_board=False:sorted({SKILL_ALIASES.get(x,x) for x in names if x not in REMOVED_SKILLS}|({'jam-board'} if add_board else set()))
+    if normalize(old['installed_skills'],complete)!=policy['installed_skills'] or normalize(old['requested_skills'],complete and args.profile=='full')!=policy['requested_skills'] or old.get('workflow_activated')!=policy['full_workflow']:
         raise HarnessError('Legacy installation has another selection; repeat its original profile/skills and workflow options for migration')
     previous=dict(snapshot)
-    previous.update(source_version=policy['source_version'],requested_skills=normalize(snapshot['requested_skills']),installed_skills=normalize(snapshot['installed_skills']))
+    previous.update(source_version=policy['source_version'],requested_skills=normalize(snapshot['requested_skills'],complete and args.profile=='full'),installed_skills=normalize(snapshot['installed_skills'],complete))
     previous['bindings']={k:v for k,v in snapshot['bindings'].items() if not k.startswith('LAB_')}
     previous.setdefault('project_doc_max_bytes_declared',32768)
     if previous!=policy:raise HarnessError('Legacy installation has different bindings or policy; repeat its original installation options for migration')
@@ -368,7 +371,7 @@ def main(argv=None):
     for command in ['plan','install','verify','doctor','remove','init-memory']:
         p=sub.add_parser(command);p.add_argument('--target',required=True);p.add_argument('--client',choices=CLIENT_ROOT,default='codex')
         if command in ['plan','install']:
-            p.add_argument('--profile',choices=['full','engineering','visual','voxel','memory','instructions']);p.add_argument('--skills',action='append');p.add_argument('--workflow',action='store_true');p.add_argument('--memory-root');p.add_argument('--reviewer-consent',choices=['ask','one-per-round'],default='ask');p.add_argument('--consent-source')
+            p.add_argument('--profile',choices=['full','engineering','visual','voxel','memory','instructions','jam-board']);p.add_argument('--skills',action='append');p.add_argument('--workflow',action='store_true');p.add_argument('--memory-root');p.add_argument('--reviewer-consent',choices=['ask','one-per-round'],default='ask');p.add_argument('--consent-source')
             p.add_argument('--project-doc-max-bytes',type=int,default=32768,help='Declared Codex project instruction budget; does not change client config. Match actual session settings.')
             for name in ['evidence-root','memory-repo','cloud-memory-root','curation-schedule']:p.add_argument('--'+name)
         if command in ['plan','install','remove']:p.add_argument('--dry-run',action='store_true')

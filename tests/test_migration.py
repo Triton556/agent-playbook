@@ -71,16 +71,16 @@ class PublicNames(unittest.TestCase):
     def test_catalog_inventory_frontmatter_and_profile_membership(self):
         m=json.loads((ROOT/'manifest.json').read_text(encoding='utf8'))
         self.assertEqual(m['name'],'agent-playbook');self.assertTrue(m['version'].startswith('1.'))
-        self.assertEqual(len(m['files']),302)
+        self.assertEqual(len(m['files']),307)
         self.assertEqual({f['path'] for f in m['files']},{p.relative_to(ROOT).as_posix() for p in (ROOT/'payload').rglob('*') if p.is_file()})
         skills={s['name'] for s in call('catalog')['skills']}
-        self.assertEqual(skills,set(RENAMES.values())|{'agent-sessions','creative-direction','kb-find','kb-save','kb-curate','kb-status','kb-sync'})
+        self.assertEqual(skills,set(RENAMES.values())|{'jam-board','agent-sessions','creative-direction','kb-find','kb-save','kb-curate','kb-status','kb-sync'})
         for name in skills:
             self.assertIn('\nname: '+name+'\n',(ROOT/'payload/skills'/name/'SKILL.md').read_text(encoding='utf8'))
         with target_directory() as td:
             plan=call('plan','--target',td,'--profile','engineering')
-            self.assertEqual(set(plan['requested_skills']),{'dev-flow','dev-plan','dev-implement','dev-debug','dev-verify','dev-domain-model','ui-design','ui-review','agent-sessions','agent-sessions-codex','creative-direction','ui-reference','agent-instructions'})
-            self.assertEqual(len(plan['installed_skills']),17)
+            self.assertEqual(set(plan['requested_skills']),{'dev-flow','dev-plan','dev-implement','dev-debug','dev-verify','dev-domain-model','ui-design','ui-review','agent-sessions','agent-sessions-codex','creative-direction','ui-reference','agent-instructions','jam-board'})
+            self.assertEqual(len(plan['installed_skills']),18)
             self.assertNotIn('stress-test',plan['installed_skills'])
             plan=call('plan','--target',td,'--profile','instructions')
             self.assertEqual(set(plan['requested_skills']),{'agent-sessions','agent-sessions-codex','agent-instructions'})
@@ -136,7 +136,7 @@ class LegacyMigration(unittest.TestCase):
                 self.assertEqual(snapshot(p),before)
                 result=call('install','--client',client,'--target',p,'--profile','full')
                 self.assertEqual(result['migration_from'],'0.5.0')
-                self.assertEqual(len(result['installed_skills']),24)
+                self.assertEqual(len(result['installed_skills']),25)
                 receipt=json.loads((p/folder/'harness-install.json').read_text(encoding='utf8'))
                 self.assertEqual(receipt['version'],json.loads((ROOT/'manifest.json').read_text(encoding='utf8'))['version'])
                 current={row['relative'] for row in receipt['files']}
@@ -203,6 +203,29 @@ if __name__=='__main__':unittest.main()
 
 class PatchUpgrade(unittest.TestCase):
     """A trusted 1.0.0 installation updates in place to the current release."""
+    def test_actual_120_selected_workflow_upgrade_keeps_original_request(self):
+        # --workflow also installs the full catalog, but requested_skills remains
+        # the explicitly selected skill, rather than the full-profile selection.
+        with target_directory() as release_dir,target_directory() as td:
+            release=Path(release_dir);p=Path(td)
+            with tarfile.open(fileobj=io.BytesIO(release_archive('9db2db7'))) as bundle:
+                bundle.extractall(release,filter='data')
+            self.assertEqual(json.loads((release/'manifest.json').read_text(encoding='utf8'))['version'],'1.2.0')
+            options=['--client','codex','--target',str(p),'--skills','dev-domain-model','--workflow']
+            result=subprocess.run([sys.executable,'-B','-X','utf8',str(release/'harness.py'),'install',*options],cwd=release,capture_output=True)
+            self.assertEqual(result.returncode,0,result.stderr.decode('utf8'))
+            identity=hashlib.sha256((str(p.resolve())+'\ncodex').encode('utf8')).hexdigest()+'.json'
+            trust=ROOT/'.harness-state/receipts'/identity
+            trust.parent.mkdir(parents=True,exist_ok=True)
+            shutil.copyfile(release/'.harness-state/receipts'/identity,trust)
+            self.addCleanup(lambda:trust.unlink(missing_ok=True))
+            upgraded=call('install',*options)
+            self.assertEqual(upgraded['migration_from'],'1.2.0')
+            receipt=json.loads((p/'.agents/harness-install.json').read_text(encoding='utf8'))
+            self.assertEqual(receipt['requested_skills'],['dev-domain-model'])
+            self.assertIn('jam-board',upgraded['installed_skills'])
+            self.assertEqual(call('verify','--client','codex','--target',p)['status'],'pass')
+
     def test_actual_100_full_upgrade_codex(self):
         with target_directory() as release_dir,target_directory() as td:
             release=Path(release_dir);p=Path(td)

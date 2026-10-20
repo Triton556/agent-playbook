@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "name": "agent-playbook",
-  "version": "1.2.0",
-  "exported_at": "2026-10-19T05:31:00.511394+00:00",
+  "version": "1.3.0",
+  "exported_at": "2026-10-20T05:18:58.919572+00:00",
   "baseline": "Version 0.5.0 workflow retained with the approved public package/skill names; compatibility creator and personal lab module removed; receipt-based 0.x migration",
   "instruction_policy": "Full maintained agent instructions in English; Russian communication and knowledge content by default; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
   "files": [
@@ -4899,6 +4899,56 @@
         }
       ],
       "module": "agent-sessions-codex"
+    },
+    {
+      "source": "skills/jam-board/references/brain-loop.md",
+      "path": "payload/skills/jam-board/references/brain-loop.md",
+      "source_ref": "repository-authored-jam-board-skill",
+      "source_sha256": "ea23ea2312439443d1ce13ed5e45d90d95e65f5c6fa48a33bffab40bc746dac4",
+      "sha256": "ea23ea2312439443d1ce13ed5e45d90d95e65f5c6fa48a33bffab40bc746dac4",
+      "bytes": 28089,
+      "transformations": [],
+      "module": "jam-board"
+    },
+    {
+      "source": "skills/jam-board/references/connect.md",
+      "path": "payload/skills/jam-board/references/connect.md",
+      "source_ref": "repository-authored-jam-board-skill",
+      "source_sha256": "964496690cd5274c9245a431d1f6e6376de02047b164bbacd6bd3aea3f1e3762",
+      "sha256": "964496690cd5274c9245a431d1f6e6376de02047b164bbacd6bd3aea3f1e3762",
+      "bytes": 3493,
+      "transformations": [],
+      "module": "jam-board"
+    },
+    {
+      "source": "skills/jam-board/references/field-guide.md",
+      "path": "payload/skills/jam-board/references/field-guide.md",
+      "source_ref": "repository-authored-jam-board-skill",
+      "source_sha256": "d19b0c5812824f7ba15456327553ea483e849dac369eaca4794b154cbf2eee32",
+      "sha256": "d19b0c5812824f7ba15456327553ea483e849dac369eaca4794b154cbf2eee32",
+      "bytes": 12864,
+      "transformations": [],
+      "module": "jam-board"
+    },
+    {
+      "source": "skills/jam-board/references/worker-loop.md",
+      "path": "payload/skills/jam-board/references/worker-loop.md",
+      "source_ref": "repository-authored-jam-board-skill",
+      "source_sha256": "a23152b67b8feb15d7e3df67c0bdef006e2b0e168959d8ff12d84403005a2f91",
+      "sha256": "a23152b67b8feb15d7e3df67c0bdef006e2b0e168959d8ff12d84403005a2f91",
+      "bytes": 4949,
+      "transformations": [],
+      "module": "jam-board"
+    },
+    {
+      "source": "skills/jam-board/SKILL.md",
+      "path": "payload/skills/jam-board/SKILL.md",
+      "source_ref": "repository-authored-jam-board-skill",
+      "source_sha256": "c6521ddf515386042d32aa7f3016c3688d2604c65a2635de55ba3783dba35037",
+      "sha256": "c6521ddf515386042d32aa7f3016c3688d2604c65a2635de55ba3783dba35037",
+      "bytes": 10230,
+      "transformations": [],
+      "module": "jam-board"
     }
   ],
   "excluded": [

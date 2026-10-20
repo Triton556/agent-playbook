@@ -59,7 +59,7 @@ class InstallBehavior(unittest.TestCase):
             with self.subTest(client=client),target_directory() as td:
                 p=Path(td);result=call('install','--skills','dev-domain-model','--workflow','--client',client,'--target',p)
                 self.assertTrue(result['workflow_activated']);self.assertTrue((p/entry).is_file())
-                self.assertEqual(len(result['installed_skills']),24)
+                self.assertEqual(len(result['installed_skills']),25)
                 self.assertIn('creative-direction',result['installed_skills'])
                 self.assertIn('agent-sessions-codex',result['installed_skills'])
                 self.assertIn('agent-sessions',result['installed_skills'])
