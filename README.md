@@ -1,6 +1,6 @@
 # Agent Playbook
 
-An installable, modular workflow for coding agents, creative direction, human-centered UI review, visual experiments, voxel creation and durable knowledge. Version 1.0.0 includes 24 custom skills with the public dev-, ui- and agent- names, including orchestration through agent-sessions and agent-sessions-codex. Current configured instructions, references, datasets and helpers, including intent and preservation checks before building, are retained.
+An installable, modular workflow for coding agents, creative direction, human-centered UI review, visual experiments, voxel creation and durable knowledge. Version 1.3.0 includes 25 custom skills with the public dev-, ui- and agent- names, including orchestration through agent-sessions and agent-sessions-codex. Current configured instructions, references, datasets and helpers, including intent and preservation checks before building, are retained.
 
 **[Русское описание](README.ru.md) · [Agent installation guide](INSTALL_FOR_AGENTS.md) · [Workflow guide](docs/WORKFLOW_GUIDE.md) · [Integrations and startup limits](docs/INTEGRATIONS.md) · [Compatibility](docs/COMPATIBILITY.md) · [Fidelity contract](docs/FIDELITY.md) · [Licenses](THIRD_PARTY_NOTICES.md)**
 
@@ -37,24 +37,42 @@ python harness.py install --client codex --target ../my-project --skills dev-dom
 # Voxel pipeline and its dependency closure.
 python harness.py install --client deepseek --target ../voxel-project --profile voxel
 
-# Whole workflow: expands the selection to all 24 modules.
+# Whole workflow: expands the selection to all 25 modules.
 python harness.py install --client claude --target ../visual-project --profile visual --workflow
 ```
 
 | Profile | Entry points |
 |---|---|
-| `full` | All 24 custom skills and the complete workflow bootstrap |
+| `full` | All 25 custom skills and the complete workflow bootstrap |
+| `jam-board` | Jam Board planning, worker briefs, reports and review with the linked playbook procedures |
 | `engineering` | Creative direction, planning, implementation, debugging, testing, UI, Codex session orchestration and supporting methods |
 | `visual` | Creative direction, UI design/review, interactive experiments and voxel craft |
 | `voxel` | Creative direction, voxel construction and linked methods/checks |
 | `memory` | Find, save, status, sync and curation with the existing memory runtime |
 | `instructions` | Agent-document editing, worker-session orchestration and references to the shared workflow-pilot procedure |
 
-Dependencies can include several siblings. The plan shows requested and actually installed skills before writing. `--workflow` installs all 24 modules because the complete startup rules can route to any of them. Selecting a single skill without this flag does not activate the whole workflow. Bodies and resources are retained; references are loaded only when their original triggers apply.
+Dependencies can include several siblings. The plan shows requested and actually installed skills before writing. `--workflow` installs all 25 modules because the complete startup rules can route to any of them. Selecting a single skill without this flag does not activate the whole workflow. Bodies and resources are retained; references are loaded only when their original triggers apply.
 
 `agent-sessions-codex` lets Claude, another Codex or any agent with the required local tools write a brief, start or continue a Codex thread visible in the Codex app, and check the result. It is selected by `full`, `engineering` and `instructions`, or separately with `--skills agent-sessions-codex`, including `--client claude`. The orchestrator proposes each session with its access mode and starts it only after the user agrees. Sessions require Node.js and an available Codex CLI using the user's own settings/history. See [session integration](docs/INTEGRATIONS.md#agent-sessions-codex-for-orchestrators).
 
 `agent-sessions` generalizes this to any worker client through adapters with one [contract](payload/skills/agent-sessions/references/contract.md). It ships a live-checked `codex` adapter, an unverified `claude-code` adapter, and a guide for writing an adapter for another client such as OpenCode or a DeepSeek harness. Each adapter states what its access modes actually enforce and refuses a mode it cannot provide. It is selected by `engineering`, `instructions` and `full`, or with `--skills agent-sessions`.
+
+## Jam Board
+
+[Jam Board](https://github.com/Triton556/jam-board) is a local desktop task board. This repository is the source of truth for its skill: the brain interviews and plans Epic → Story → Task, workers claim Ready work and submit evidence, and a human or a different appointed brain reviews it.
+
+| Skill | Use |
+|---|---|
+| [`jam-board`](payload/skills/jam-board/SKILL.md) | Run the playbook through the connected Jam Board MCP server, from planning to acceptance |
+
+```bash
+python harness.py plan --client codex --target ../my-project --profile jam-board
+python harness.py install --client codex --target ../my-project --profile jam-board
+python harness.py verify --client codex --target ../my-project
+python harness.py doctor --client codex --target ../my-project
+```
+
+The profile requests `jam-board`, `dev-flow`, `dev-plan`, `agent-sessions` and `agent-sessions-codex`; linked dependencies are also retained. `full` and `engineering` include the skill. Selecting `--skills jam-board` also installs its dependency closure. MCP connection is separate: see [connection examples](payload/skills/jam-board/references/connect.md). Installation does not connect a server or authorize launching sessions. The user chooses worker models and approves any separate sessions.
 
 ## How the workflow works
 
