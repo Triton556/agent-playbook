@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.0
+
+- Restore the selected adapter-session route, saved task choices and worker audience after context recovery. Add a read-only host-preview diagnostic with explicit limits; a supplied preview does not certify the active desktop session.
+- Add optional checked `--assignment` and `--resume-run` support to the Codex/Claude adapters and legacy Codex foreground driver. New detached runs retain launch settings and assignment snapshots; recovery continues the original thread with separate reports and logs.
+- Refuse explicit recovery output/log paths that alias the previous status, report or event log, including normalized paths and existing file aliases, before starting a backend. Preserve the previous run evidence.
+- Fix the quoted-brief preservation check for Windows CRLF without changing the forwarded source text or product labels. Existing approval, access, installation and publication boundaries remain in effect.
+- Behavioral pilots observed correct continuation preparation in both versions and automatic context restoration in the new version. Successful model-driven crash recovery and a general reliability improvement remain unverified; see [validation](docs/VALIDATION.md#version-160-release-verification).
+
 ## 1.5.1
 
 - Clarified English for every agent-to-agent channel by intended recipient, including final handoffs; initial briefs assign audience and deliverable languages, retained on continuation. Direct user conversation and knowledge-base prose keep Russian defaults and explicit user exceptions; exact source/product text is preserved.

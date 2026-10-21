@@ -129,5 +129,4 @@ For recovery, revert only the implementation's changed files and use existing ve
 - Brief checks: explicit metadata validation and inherited snapshots; full-prose semantic review stays with the orchestrator.
 - Deterministic regression coverage: `tests/test_orchestration.py` records protocol requests, pre-spawn refusals and recovery/output preservation. Existing transport and installer suites remain the regression baseline.
 - Packaging/version/provenance: updated for 1.6.0. Executed results are in [validation](VALIDATION.md).
-- Not executed: new paid model pilot, fresh desktop session acceptance or changes to the owner's installed/global configuration. These are distinct follow-up acceptance/deployment steps under their actual authorization.
-
+- Release follow-up: bounded model pilots and their environment limitations are summarized in [validation](VALIDATION.md#version-160-release-verification). Fresh desktop adoption and changes to the owner's installed/global configuration remain separate authorized deployment steps.

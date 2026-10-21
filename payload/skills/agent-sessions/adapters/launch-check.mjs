@@ -20,6 +20,18 @@ function readJSON(file) {
     throw new Error('Cannot read launch metadata JSON (regular file, at most 64 KiB)');
   }
 }
+function canonical(file) {
+  const resolved = path.resolve(file);
+  const actual = fs.existsSync(resolved) ? fs.realpathSync(resolved) :
+    path.join(canonical(path.dirname(resolved)), path.basename(resolved));
+  return process.platform === 'win32' ? actual.toLowerCase() : actual;
+}
+function sameFile(left, right) {
+  if (canonical(left) === canonical(right)) return true;
+  if (!fs.existsSync(left) || !fs.existsSync(right)) return false;
+  const a = fs.statSync(left, { bigint: true }), b = fs.statSync(right, { bigint: true });
+  return a.ino !== 0n && a.dev === b.dev && a.ino === b.ino;
+}
 function assignment(value) {
   const keys = ['recipient', 'communication_language', 'deliverables', 'memory_writer', 'scope', 'owner_override'];
   const language = v => typeof v === 'string' && /^[a-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$/.test(v);
@@ -55,6 +67,12 @@ export function recoverRun(args, agent) {
   if (args.thread && args.thread !== status.threadId) throw new Error('--thread conflicts with --resume-run');
   if (args.cwd && fs.realpathSync(args.cwd) !== fs.realpathSync(status.launch.settings.cwd)) {
     throw new Error('--cwd conflicts with the original worker folder');
+  }
+  const originals = [args['resume-run'], status.out, status.log].filter(file => typeof file === 'string' && file);
+  for (const key of ['out', 'log']) {
+    if (args[key] && originals.some(file => sameFile(args[key], file))) {
+      throw new Error('Recovery output/log must not replace artifacts of the previous run; choose new paths');
+    }
   }
   args.thread = status.threadId;
   for (const key of ['cwd', 'model', 'effort', 'sandbox']) {

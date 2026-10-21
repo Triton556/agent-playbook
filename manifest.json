@@ -5717,9 +5717,14 @@
       "path": "payload/skills/agent-sessions/adapters/launch-check.mjs",
       "source_ref": "repository-authored-orchestration-reliability",
       "source_sha256": "2bd9adf17c81241e6973746dbc4246aa730fe3a1facca2c1929085e04f5abe22",
-      "sha256": "2bd9adf17c81241e6973746dbc4246aa730fe3a1facca2c1929085e04f5abe22",
-      "bytes": 6838,
-      "transformations": [],
+      "sha256": "80067d2c52cc02e9ffb396d80faedd86a67a3214aa5ec28dbb80be3ce9d56850",
+      "bytes": 7782,
+      "transformations": [
+        {
+          "kind": "recovery-artifact-preservation-1.6.0",
+          "detail": "Reject explicit recovery output/log aliases of the previous status, report or event log before backend/supervisor startup, preserving the original helper provenance."
+        }
+      ],
       "module": "agent-sessions"
     }
   ],

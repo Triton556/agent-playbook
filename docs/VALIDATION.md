@@ -1,6 +1,6 @@
 # Validation record
 
-Current 1.4.0 results, the baseline and per-finding disposition are in [the release report](RELEASE_1.4.0.md). Entries below retain their original release scope.
+Current release verification is recorded under [1.6.0 release verification](#version-160-release-verification). Earlier entries retain their original scope; the 1.4.0 baseline and per-finding disposition remain in [its release report](RELEASE_1.4.0.md).
 
 Build: 15 October 2026, Windows. The levels below describe executed checks, not a guarantee of future model quality. Python standard-library installer/helpers and Node22.13.0 were used.
 
@@ -162,3 +162,15 @@ The nine focused orchestration checks also passed separately. They exercise firs
 The real Codex CLI 0.160.1 rendered a default prompt preview and one with the per-command `agents.enabled=false` override. The new diagnostic reported conflict for the recognized active native mode and compatible for the marker-free preview, both explicitly limited to supplied-preview scope with the active session unverified. No model call occurred. Raw previews were kept outside repositories and removed after inspection; no transcripts, prompts or private deployment paths are published.
 
 The client-native skill validator could not run because PyYAML is missing in the selected interpreter; no dependency was installed. Repository catalog/frontmatter, link, mirror and installation checks ran. A new live model pilot, active desktop-session acceptance, Claude live-task acceptance and Windows/Linux live host checks were not performed. These limits remain separate from file integrity, deterministic tests and owner acceptance. No additional workers, independent reviewer, deployment or merge was launched.
+
+## Version 1.6.0 release verification
+
+On 22 October 2026 (Asia/Vladivostok), release preparation corrected two independently reproduced review findings: the Windows quoted-brief assertion compared LF with CRLF, and explicit recovery output/log arguments could overwrite old run artifacts. The shared launch guard now rejects aliases of the previous status, report or event log before a backend starts. Focused coverage includes both adapters, the legacy driver, cross-field collisions, normalized paths, available hard links and successful explicit new output paths.
+
+The package was also examined through bounded `gpt-6.1-sol` behavioral pilots. In the initial continuation scenario, both versions correctly selected the existing fixture worker and preserved settings/assignment in two attempts each. The final responses were disrupted by a test-host memory configuration error; the bounded checkpoint connection was subsequently repaired and verified without model calls.
+
+One further fresh recovery attempt per version used a real local fixture process crash after partial progress. Both agents inspected the terminal run and prepared the original thread/settings with separate output paths. The new version used `--resume-run` to restore frozen settings and assignment automatically; the old version reconstructed explicit arguments. Both preserved all previous evidence and completed their memory checkpoints. However, the Windows workspace sandbox refused the adapters' child-process launch, so neither recovery worker connected. End-to-end model-driven crash recovery, live Claude operation, active desktop host readiness and a general reliability improvement are not established. No further model calls are part of release preparation.
+
+Raw pilot prompts, transcripts, local paths and private execution material remain excluded from the public repository. Only this scoped outcome summary is published.
+
+Local release checks used Windows, Python 3.14 and Node.js. `check-package` passed for 314 payload files. All 11 focused orchestration tests passed, including a process that exits 17 after reporting partial progress and a subsequent same-thread recovery preserving settings, assignment and every old artifact while producing a separate successful report. The artifact-collision case covers both adapters and the legacy driver. The changed documentation's local file links and whitespace checks passed. Full Windows/Linux validation is enforced by the repository's GitHub Actions workflow before release publication; those results remain separately observable in GitHub.

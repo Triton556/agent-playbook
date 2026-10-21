@@ -41,7 +41,7 @@ class Orchestration(unittest.TestCase):
             {'type': 'message', 'role': role, 'content': [{'type': 'input_text', 'text': text}]},
         ])
 
-    def stub(self, folder):
+    def stub(self, folder, fail_first=False):
         script = folder / 'codex-stub.cjs'
         script.write_text('''
 const fs=require('fs'),readline=require('readline');
@@ -53,13 +53,19 @@ readline.createInterface({input:process.stdin}).on('line',line=>{
  const result=m.method==='thread/start'?{thread:{id:'original-thread'}}:
    m.method==='turn/start'?{turn:{id:'turn'}}:{};
  console.log(JSON.stringify({id:m.id,result}));
+ if(m.method==='turn/start'&&process.env.FAIL_FIRST_TURN==='1'&&!fs.existsSync(process.env.RPC_LOG+'.crashed')){
+   fs.writeFileSync(process.env.RPC_LOG+'.crashed','partial progress');
+   console.log(JSON.stringify({method:'item/completed',params:{item:{type:'agentMessage',phase:'final_answer',text:'PARTIAL'}}}));
+   setTimeout(()=>process.exit(17),20);return;
+ }
  if(m.method==='turn/start')setTimeout(()=>{
    console.log(JSON.stringify({method:'item/completed',params:{item:{type:'agentMessage',phase:'final_answer',text:'DONE'}}}));
    console.log(JSON.stringify({method:'turn/completed',params:{turn:{id:'turn',status:'completed'}}}));
  },20);
 });
 ''', encoding='utf8')
-        return {**os.environ, 'CODEX_BIN': str(script), 'RPC_LOG': str(folder / 'rpc.jsonl')}
+        return {**os.environ, 'CODEX_BIN': str(script), 'RPC_LOG': str(folder / 'rpc.jsonl'),
+                'FAIL_FIRST_TURN': '1' if fail_first else '0'}
 
     def rpc(self, folder):
         return [json.loads(line) for line in (folder / 'rpc.jsonl').read_text().splitlines()]
@@ -187,7 +193,52 @@ readline.createInterface({input:process.stdin}).on('line',line=>{
             self.run_node(ADAPTERS / 'codex.mjs', '--cwd', folder, '--assignment', assignment,
                           input=prompt, env=env)
             turn = next(m for m in self.rpc(folder) if m.get('method') == 'turn/start')
-            self.assertTrue(turn['params']['input'][0]['text'].endswith(prompt))
+            forwarded = turn['params']['input'][0]['text'].replace('\r\n', '\n')
+            self.assertTrue(forwarded.endswith(prompt))
+
+    def test_resume_run_rejects_previous_artifact_paths_before_spawn(self):
+        with target_directory() as td:
+            folder = Path(td)
+            env = self.stub(folder)
+            old_out, old_log = folder / 'first.out.md', folder / 'first.events.jsonl'
+            old_out.write_text('FIRST_REPORT', encoding='utf8')
+            old_log.write_text('FIRST_EVENTS\n', encoding='utf8')
+            status_file = folder / 'existing.json'
+            status = {'agent': 'codex', 'runId': 'existing', 'threadId': 'original-thread',
+                      'status': 'failed', 'out': str(old_out), 'log': str(old_log),
+                      'launch': {'settings': {'cwd': str(folder), 'model': 'chosen-model',
+                                              'effort': 'low', 'sandbox': 'read-only'}}}
+            alias_dir = folder / 'aliases'
+            alias_dir.mkdir()
+            aliases = [old_out, old_log, status_file, alias_dir / '..' / old_out.name]
+            hard_link = folder / 'report-alias.md'
+            try:
+                os.link(old_out, hard_link)
+                aliases.append(hard_link)
+            except OSError:
+                pass  # Hard links are unavailable on some test filesystems.
+            for script, agent in [(ADAPTERS / 'codex.mjs', 'codex'),
+                                  (ADAPTERS / 'claude-code.mjs', 'claude-code'), (LEGACY, 'codex')]:
+                status['agent'] = agent
+                self.write_json(status_file, status)
+                originals = {file: file.read_bytes() for file in [old_out, old_log, status_file]}
+                for flag in ['--out', '--log']:
+                    for alias in aliases:
+                        with self.subTest(adapter=script.name, flag=flag, alias=alias.name):
+                            result = self.run_node(script, '--resume-run', status_file,
+                                                   flag, alias, input='Correction', env=env, code=4)
+                            self.assertIn('previous run', result.stderr)
+                            self.assertFalse((folder / 'rpc.jsonl').exists())
+                            for file, content in originals.items():
+                                self.assertEqual(file.read_bytes(), content)
+            status['agent'] = 'codex'
+            self.write_json(status_file, status)
+            self.run_node(ADAPTERS / 'codex.mjs', '--resume-run', status_file,
+                          '--out', folder / 'next.out.md', '--log', folder / 'next.events.jsonl',
+                          input='Correction', env=env)
+            self.assertEqual((folder / 'next.out.md').read_text(), 'DONE')
+            self.assertEqual(old_out.read_text(), 'FIRST_REPORT')
+            self.assertEqual(old_log.read_text(), 'FIRST_EVENTS\n')
 
     def test_resume_run_uses_frozen_assignment_without_replacing_outputs(self):
         with target_directory() as td:
@@ -219,6 +270,43 @@ readline.createInterface({input:process.stdin}).on('line',line=>{
             self.assertEqual(resume['params']['model'], 'chosen-model')
             turn = [m for m in rpc if m.get('method') == 'turn/start'][-1]
             self.assertIn('Communication language: en', turn['params']['input'][0]['text'])
+
+    def test_process_crash_recovery_preserves_partial_report_and_thread(self):
+        with target_directory() as td:
+            folder = Path(td)
+            worker = folder / 'worker'
+            worker.mkdir()
+            env = self.stub(folder, fail_first=True)
+            runs = folder / 'runs'
+            first = json.loads(self.run_node(ADAPTERS / 'codex.mjs', '--cwd', worker,
+                                             '--model', 'chosen-model', '--effort', 'low',
+                                             '--sandbox', 'workspace-write', '--assignment', self.assignment(folder),
+                                             '--detach', '--run-dir', runs, input='First task', env=env).stdout)
+            self.run_node(ADAPTERS / 'wait.mjs', '--runs', first['runId'], '--run-dir', runs, '--timeout', '5')
+            status_file = Path(first['statusFile'])
+            original = status_file.read_bytes()
+            old = json.loads(original)
+            self.assertEqual(old['status'], 'failed')
+            self.assertEqual(Path(old['out']).read_text(), 'PARTIAL')
+            old_log = Path(old['log']).read_bytes()
+            resumed = json.loads(self.run_node(ADAPTERS / 'codex.mjs', '--resume-run', status_file,
+                                               '--detach', '--run-dir', runs, input='Continue after crash', env=env).stdout)
+            self.run_node(ADAPTERS / 'wait.mjs', '--runs', resumed['runId'], '--run-dir', runs, '--timeout', '5')
+            new = json.loads(Path(resumed['statusFile']).read_text())
+            self.assertEqual(new['status'], 'completed')
+            self.assertEqual(new['threadId'], old['threadId'])
+            self.assertEqual(new['launch']['settings'], old['launch']['settings'])
+            self.assertEqual(new['launch']['assignment'], old['launch']['assignment'])
+            self.assertEqual(new['launch']['continued_from'], old['runId'])
+            self.assertEqual(status_file.read_bytes(), original)
+            self.assertEqual(Path(old['out']).read_text(), 'PARTIAL')
+            self.assertEqual(Path(old['log']).read_bytes(), old_log)
+            self.assertNotEqual(new['out'], old['out'])
+            self.assertNotEqual(new['log'], old['log'])
+            self.assertEqual(Path(new['out']).read_text(), 'DONE')
+            rpc = self.rpc(folder)
+            self.assertEqual(len([m for m in rpc if m.get('method') == 'thread/start']), 1)
+            self.assertEqual(len([m for m in rpc if m.get('method') == 'thread/resume']), 1)
 
     def test_running_wrong_worker_and_legacy_status_cannot_start_a_new_thread(self):
         with target_directory() as td:
