@@ -327,10 +327,27 @@ def verify(args):
             _,b=strip_block(p.read_bytes().decode('utf8'))
             if b is None or sha(b.encode('utf8'))!=receipt['managed_block_sha256']:fail.append('managed-instructions-block')
     return {'status':'pass' if not fail else 'fail','checked_files':len(receipt['files']),'failures':fail,'limits':'Integrity only; this does not prove human perception, runtime capabilities or model parity.'}
+def host_diagnostics(args,root):
+    """Observe supplied host evidence only; never launch Codex or modify its config."""
+    unavailable={'capability':'adapter-session-host','status':'unverified','active_session':'unverified','reason':'diagnostic-unavailable'}
+    node=shutil.which('node')
+    if not node:return {**unavailable,'reason':'node-unavailable'}
+    helper=root/'skills/agent-sessions/adapters/host-readiness.mjs'
+    command=[node,str(helper),'--client',args.host_client or {'codex':'codex','claude':'claude-code'}.get(args.client,'generic')]
+    if args.host_version:command+=['--version',args.host_version]
+    if args.host_prompt_input:command+=['--prompt-input',args.host_prompt_input]
+    try:
+        result=subprocess.run(command,capture_output=True,text=True,encoding='utf8',timeout=5)
+        report=json.loads(result.stdout) if result.returncode==0 else None
+        if isinstance(report,dict) and report.get('status') in {'compatible','conflict','unverified'}:return report
+    except (OSError,ValueError,subprocess.TimeoutExpired):pass
+    return unavailable
+
 def doctor(args):
     v=verify(args);target,root,r=installed(args);policy=read_json(root/'harness-policy.json')
     checks=[{'capability':'integrity','status':v['status']},{'capability':'python','status':'pass','version':sys.version.split()[0]},{'capability':'node','status':'pass' if shutil.which('node') else 'missing'}, {'capability':'file-reading-and-shell','status':'unverified','check':'Agent must read installed instructions and execute a permitted helper.'},{'capability':'fresh-independent-reviewer','status':'unverified','consent':policy['reviewer_consent'],'check':'Verify actual fresh context support and owner authorization; installation files do not grant it.'}]
     selected=set(r['installed_skills'])
+    if selected&{'agent-sessions','agent-sessions-codex','you-are-brain'}:checks.append(host_diagnostics(args,root))
     if args.client=='codex':checks.append({'capability':'startup-instructions','client_load':'unverified',**instruction_diagnostics(target,declared_budget=policy.get('project_doc_max_bytes_declared',32768))})
     if selected&{'ui-design','ui-review','visual-scenes','voxel-models'}:
         checks.append({'capability':'actual-image-and-browser-inspection','status':'unverified','check':'Inspect the actual output and interaction in the client, not just a file list.'})
@@ -390,6 +407,10 @@ def main(argv=None):
             p.add_argument('--project-doc-max-bytes',type=int,default=32768,help='Declared Codex project instruction budget; does not change client config. Match actual session settings.')
             for name in ['evidence-root','memory-repo','cloud-memory-root','curation-schedule']:p.add_argument('--'+name)
         if command in ['plan','install','remove']:p.add_argument('--dry-run',action='store_true')
+        if command=='doctor':
+            p.add_argument('--host-client',choices=['codex','claude-code','generic'],help='Leading host, not the worker backend; no client is launched')
+            p.add_argument('--host-version',help='Version associated with the supplied private prompt preview')
+            p.add_argument('--host-prompt-input',help='Existing private Codex debug prompt-input JSON; read-only, never printed')
     args=ap.parse_args(argv)
     try:
         if args.command=='catalog':

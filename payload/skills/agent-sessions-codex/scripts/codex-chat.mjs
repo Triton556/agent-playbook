@@ -20,6 +20,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import readline from 'node:readline';
+import { recoverRun, prepareLaunch } from '../../agent-sessions/adapters/launch-check.mjs';
 
 const FLAGS = new Set(['proxy']);
 const args = {};
@@ -54,12 +55,22 @@ function findCodex() {
   throw new Error('Codex CLI not found. Set CODEX_BIN to the codex executable.');
 }
 
+let recovered;
+try { recovered = recoverRun(args, 'codex'); }
+catch (error) { console.error(`[driver] ${error.message}`); process.exit(4); }
 const cwd = path.resolve(args.cwd || process.cwd());
-const prompt = args.prompt ? fs.readFileSync(args.prompt, 'utf8') : fs.readFileSync(0, 'utf8');
-if (!prompt.trim()) throw new Error('Empty prompt');
+const rawPrompt = args.prompt ? fs.readFileSync(args.prompt, 'utf8') : fs.readFileSync(0, 'utf8');
+if (!rawPrompt.trim()) throw new Error('Empty prompt');
 if (!fs.existsSync(cwd)) throw new Error(`cwd does not exist: ${cwd}`);
+let checked;
+try { checked = prepareLaunch(args, rawPrompt, recovered); }
+catch (error) { console.error(`[driver] ${error.message}`); process.exit(4); }
+const prompt = checked.prompt;
 
-const child = spawn(findCodex(), args.proxy ? ['app-server', 'proxy'] : ['app-server'], { stdio: ['pipe', 'pipe', 'pipe'] });
+const bin = findCodex();
+const cli = args.proxy ? ['app-server', 'proxy'] : ['app-server'];
+const child = spawn(/\.[cm]?js$/i.test(bin) ? process.execPath : bin,
+  /\.[cm]?js$/i.test(bin) ? [bin, ...cli] : cli, { stdio: ['pipe', 'pipe', 'pipe'] });
 child.stderr.on('data', chunk => { if (args.verbose) process.stderr.write(chunk); });
 const log = args.log ? fs.createWriteStream(args.log, { flags: 'a' }) : null;
 const pending = new Map();

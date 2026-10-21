@@ -9,7 +9,7 @@ This is the current agent's route, not a list of mandatory skills. AGENTS and th
 5. **Verify the result.** Use the [acceptance program](../skills/dev-flow/references/task-brief-and-acceptance.md#7-execution-verification-and-completion) and the [human-perspective protocol]({{HARNESS_ROOT}}/skills/dev-flow/references/human-perspective-review.md) for direct inspection, observation order and claim grades. Selected review: see [independent-review]({{HARNESS_ROOT}}/workflow/independent-review.md).
 6. **Repair and finish.** Confirm the cause, fix it within scope, repeat the original failing case and affected regression. A round needs a new signal, confirmed defect or testable hypothesis; the same inspection does not create new evidence. After another miss of the same error class, change the source or observation method rather than adding similar frames or generic passes. History and current evidence: see quality-ledger, Schema version 1. Deliver results with checks and limitations; save useful new lessons through kb-save.
 
-Before planning or launching delegated work in separate sessions, open [agent-sessions](../skills/agent-sessions/SKILL.md).
+Before deciding how to delegate any work, open [agent-sessions](../skills/agent-sessions/SKILL.md). Recovery restores its selected route and [existing session state](../skills/agent-sessions/references/running-and-checking.md#before-starting) before selecting a launch tool.
 
 | Deliverable | Primary entry |
 | --- | --- |

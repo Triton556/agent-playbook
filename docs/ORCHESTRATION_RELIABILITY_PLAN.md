@@ -1,6 +1,6 @@
 # Adapter-session orchestration reliability plan
 
-Status: proposed; documentation-only. This PR records the fix plan, not an implemented fix.
+Status: implementation added in this PR. The original plan below is retained as the acceptance basis; live model behavior and active desktop adoption remain unverified.
 Baseline: Agent Playbook 1.5.1, commit `4f283da3b076c31a23a49c7231b853c26d27ef21`.
 Audit date: 2026-10-21.
 
@@ -122,7 +122,12 @@ The implementation is ready only when:
 
 For recovery, revert only the implementation's changed files and use existing verified installation receipts. Any optional client configuration change has its own recorded prior value and owner-approved rollback; never restore an entire global configuration over unrelated edits. Preserve existing worker threads, local profiles and user data.
 
-## Validation of this plan-only PR
+## Implementation status
 
-Check the new document's local links, whitespace and public-content scope, and run package integrity against the unchanged payload. The plan does not alter skills, helpers, the manifest, installed files or client configuration. Implementation tests and the behavioral pilot above remain planned.
+- Host diagnostic: `host-readiness.mjs`, linked from `harness.py doctor`; read-only supplied-preview evidence with explicit scope/version limits.
+- Route/recovery: bootstrap and existing policy owners updated; bundled adapters and the legacy driver accept checked assignments and terminal-run recovery.
+- Brief checks: explicit metadata validation and inherited snapshots; full-prose semantic review stays with the orchestrator.
+- Deterministic regression coverage: `tests/test_orchestration.py` records protocol requests, pre-spawn refusals and recovery/output preservation. Existing transport and installer suites remain the regression baseline.
+- Packaging/version/provenance: updated for 1.6.0. Executed results are in [validation](VALIDATION.md).
+- Not executed: new paid model pilot, fresh desktop session acceptance or changes to the owner's installed/global configuration. These are distinct follow-up acceptance/deployment steps under their actual authorization.
 

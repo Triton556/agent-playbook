@@ -9,7 +9,7 @@ You are the orchestrator: you understand what the user wants, hand pieces of wor
 
 ## Fixed rules
 
-- **Separate sessions, never built-in subagents.** Delegated work always goes to a separate session started through an adapter. Do not use your client's built-in subagent tools for it (`spawn_agent` or multi-agent tools in Codex, `Task` or `Agent` in Claude Code, and similar): the user cannot see those, cannot step into them or continue them, and the work has no thread of its own.
+- **Separate sessions, never built-in subagents.** In this selected route, delegated work goes to a separate session started through an adapter. Do not substitute your client's built-in subagent tools (`spawn_agent` or multi-agent tools in Codex, `Task` or `Agent` in Claude Code, and similar). Native subagents may be visible in current clients; visibility alone does not provide the selected adapter lifecycle. A skill cannot disable native tools or override higher-priority client instructions: use [host readiness](references/contract.md#host-readiness) before claiming compatibility. A current explicit user choice of another mechanism is a different route; report it as such within actual permissions.
 - Worker-channel language: see [brief-writing, Language](references/brief-writing.md#language); output defaults: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 - **The user chooses the model.** The user names it directly, or once through a brain profile (the `you-are-brain` skill: Rules, Auto or Ask mode). Without either, never pick a worker's model yourself: ask, listing the options the adapter supports. A standing choice ("use X for everything") holds until the user changes it. Rules mode uses the chosen routing table, Auto delegates model selection, and Ask leaves selection to the user at step 5; an unmatched Rules entry needs an explicit fallback or a question.
 - Effort and access: see step 3; launch: see step 5.
@@ -30,6 +30,7 @@ Decide what you do yourself and what goes to sessions. Delegate only when it pay
 
 - Scheduling, isolation and continuation: see [running-and-checking, Before starting and Checking a finished session](references/running-and-checking.md#before-starting).
 - Choose the worker client: run `node adapters/<agent>.mjs --describe`. It reports where the user can watch the session, whether it can be continued, its effort levels, what each access mode actually enforces, and whether the adapter was checked live (`verified`). Do not promise more than it describes.
+- Establish the leading host's readiness under [the contract](references/contract.md#host-readiness), separately from the worker backend. A confirmed conflict blocks this delegation route, not independent authorized work. Missing evidence stays unverified; `verified: true` is historical adapter evidence, not certification of the current host. A client configuration change needs the owner's actual authorization and a fresh host check; installation never implies it.
 
 Available adapters: `codex` (OpenAI Codex, sessions visible in the Codex app; checked live) and `claude-code` (Claude Code headless sessions; **not checked live**). Before relying on `claude-code`, tell the user it is unverified and, with their agreement, run the checks from [writing an adapter](references/writing-an-adapter.md) on a tiny task. For another client, write an adapter first.
 
@@ -63,7 +64,7 @@ Recommend access per session; the user selects it at step 5. Mode meanings, defa
 
 ### 4. Write the briefs
 
-Follow [writing the brief](references/brief-writing.md). Write every brief before step 5. Storage: see Worker artifacts above.
+Follow [writing the brief](references/brief-writing.md). Write every brief before step 5. For bundled adapters, prepare the checked [launch assignment](references/contract.md#checked-brief-assignment); it is retained for short corrections without repeating the whole brief. Older commands remain supported but do not claim these additional checks. Storage: see Worker artifacts above.
 
 ### 5. Get approval with a summary
 

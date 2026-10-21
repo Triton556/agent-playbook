@@ -4,6 +4,8 @@ Launch gate: see [agent-sessions, step 5](../../agent-sessions/SKILL.md#5-get-ap
 
 ## Before starting
 
+For a new task, record the selected route (`adapter-sessions`), leading host/readiness evidence and current owner choices in the existing task basis. Before any continuation or context recovery, read that basis and the session table below, check pending runs with `wait --status`, and inspect completed results before deciding whether another turn is needed. Restore the worker thread, approved settings and original audience/deliverable assignment; do not rerun setup, infer consent or create a replacement worker merely because context was compacted. Host evidence from an old run does not certify a new leading session.
+
 1. **One place per writer.** Assign one task per session. Each session that changes files gets its own folder or git worktree. Two sessions never share files. Read-only sessions may share a folder.
 2. **A known starting point.** Make sure each working folder has a clean state you can compare against: `git status` is clean, or you note the current commit. Without it you cannot tell later what the session changed.
 3. **Artifact storage.** See [agent-sessions, Worker artifacts](../../agent-sessions/SKILL.md#worker-artifacts). Store logs alongside that authorized local execution material.
@@ -16,6 +18,8 @@ Launch gate: see [agent-sessions, step 5](../../agent-sessions/SKILL.md#5-get-ap
    ```
 
    Stages, in order: `waiting for #N` (depends on another session), `running`, `checking` (you are verifying the result), `fix requested` (a follow-up turn is running), `accepted`, `failed` (cannot continue; say why). For foreground runs, threadId comes from the final JSON line. For detached runs, record runId and statusFile immediately, then threadId from the status file or wait result once known; threadId continues the session, while runId identifies just this turn.
+
+   Link the private assignment beside the brief. Bundled detached runs snapshot it and the launch settings in the existing run metadata. After checking a terminal result, `--resume-run <statusFile>` supplies that same thread and saved settings/assignment for an explicitly requested correction, with new output/log files. It refuses running runs, another worker, a missing thread or old records without launch metadata; those older records need explicit `--thread` and reviewed settings. See [the recovery contract](contract.md#recover-a-run). Independent reviewers retain their separate continuation rules.
 
 The log owns execution metadata only; requirements/acceptance follow [task-state, Long-task state and completeness](../../dev-flow/references/task-state.md). When Jam Board owns task state, keep session metadata in its labeled operational notes and link task IDs; board task status/verdict stays authoritative. Else keep the log in the existing plan. Do not copy requirements or acceptance into it.
 

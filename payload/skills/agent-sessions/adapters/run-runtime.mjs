@@ -45,7 +45,7 @@ export function recordThread(threadId) {
   const status = readStatus(file);
   if (!terminal(status.status)) atomicJSON(file, { ...status, threadId });
 }
-export async function detach(agent, args, prompt, adapterURL) {
+export async function detach(agent, args, prompt, adapterURL, launch = null) {
   const cwd = path.resolve(args.cwd || process.cwd());
   const dir = runDirectory(args, cwd);
   fs.mkdirSync(dir, { recursive: true });
@@ -58,8 +58,12 @@ export async function detach(agent, args, prompt, adapterURL) {
     log: path.resolve(args.log || path.join(dir, `${runId}.events.jsonl`)) };
   delete options.detach;
   delete options['run-dir'];
+  if (launch?.assignment) {
+    options.assignment = path.join(dir, `${runId}.assignment.json`);
+    atomicJSON(options.assignment, launch.assignment);
+  }
   fs.writeFileSync(promptFile, prompt, { mode: 0o600 });
-  atomicJSON(configFile, { agent, runId, statusFile, options, adapter: fileURLToPath(adapterURL) });
+  atomicJSON(configFile, { agent, runId, statusFile, options, launch, adapter: fileURLToPath(adapterURL) });
   const stderr = fs.openSync(path.join(dir, `${runId}.stderr.log`), 'a', 0o600);
   let child;
   try {
@@ -95,10 +99,10 @@ export function alive(pid) {
 }
 
 async function supervise(configFile) {
-  const { agent, runId, statusFile, options, adapter } = readStatus(configFile);
+  const { agent, runId, statusFile, options, launch, adapter } = readStatus(configFile);
   atomicJSON(statusFile, { runId, agent, pid: process.pid, threadId: options.thread || null,
     status: 'running', exitCode: null, out: options.out, log: options.log,
-    startedAt: new Date().toISOString(), endedAt: null });
+    startedAt: new Date().toISOString(), endedAt: null, ...(launch ? { launch } : {}) });
   process.send?.({ ready: true });
   const argv = Object.entries(options).flatMap(([key, value]) => value === true ? [`--${key}`] : [`--${key}`, String(value)]);
   const child = spawn(process.execPath, [adapter, ...argv], {

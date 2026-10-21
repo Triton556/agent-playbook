@@ -18,6 +18,7 @@ import os from 'node:os';
 import path from 'node:path';
 import readline from 'node:readline';
 import { detach, recordThread, runDirectory } from './run-runtime.mjs';
+import { recoverRun, prepareLaunch } from './launch-check.mjs';
 
 const FLAGS = new Set(['describe', 'detach']);
 const args = {};
@@ -40,6 +41,8 @@ const DESCRIPTION = {
   verified: false,
   visible_in: 'Claude Code session history for --cwd: `claude --resume` in a terminal opened in that folder lists it by name. Not guaranteed to appear in the desktop app.',
   resume: true,
+  launch_checks: ['assignment', 'resume-run', 'host-prompt-input'],
+  current_host_readiness: 'unverified',
   access_modes: {
     'read-only': 'permission mode "plan": reads and searches files, makes no edits and runs no changing commands',
     'workspace-write': 'permission mode "acceptEdits": file edits inside --cwd are accepted; shell commands run only if the user\'s Claude Code settings already allow them, everything else is denied. Not an OS sandbox.',
@@ -52,6 +55,9 @@ if (args.describe) {
   console.log(JSON.stringify(DESCRIPTION, null, 2));
   process.exit(0);
 }
+let recovered;
+try { recovered = recoverRun(args, 'claude-code'); }
+catch (error) { console.error(`[driver] ${error.message}`); process.exit(4); }
 const sandbox = args.sandbox || 'workspace-write';
 if (!MODES[sandbox]) {
   process.stderr.write(`[driver] unsupported access mode: ${sandbox}\n`);
@@ -87,16 +93,20 @@ if (!fs.existsSync(cwd)) {
   process.stderr.write(`[driver] cwd does not exist: ${cwd}\n`);
   process.exit(4);
 }
-const prompt = args.prompt ? fs.readFileSync(args.prompt, 'utf8') : fs.readFileSync(0, 'utf8');
-if (!prompt.trim()) {
+const rawPrompt = args.prompt ? fs.readFileSync(args.prompt, 'utf8') : fs.readFileSync(0, 'utf8');
+if (!rawPrompt.trim()) {
   process.stderr.write('[driver] empty prompt\n');
   process.exit(4);
 }
+let checked;
+try { checked = prepareLaunch(args, rawPrompt, recovered); }
+catch (error) { console.error(`[driver] ${error.message}`); process.exit(4); }
+const prompt = checked.prompt;
 if (args.detach) {
   // Reject a metadata directory inside the worker before creating anything.
   try { runDirectory(args, cwd); }
   catch (error) { console.error(`[driver] ${error.message}`); process.exit(4); }
-  try { await detach('claude-code', args, prompt, import.meta.url); process.exit(0); }
+  try { await detach('claude-code', args, rawPrompt, import.meta.url, checked.launch); process.exit(0); }
   catch (error) { console.error(`[driver] ${error.message}`); process.exit(3); }
 }
 const bin = findClaude();

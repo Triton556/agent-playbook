@@ -71,7 +71,7 @@ class PublicNames(unittest.TestCase):
     def test_catalog_inventory_frontmatter_and_profile_membership(self):
         m=json.loads((ROOT/'manifest.json').read_text(encoding='utf8'))
         self.assertEqual(m['name'],'agent-playbook');self.assertTrue(m['version'].startswith('1.'))
-        self.assertEqual(len(m['files']),312)
+        self.assertEqual(len(m['files']),314)  # 1.6 adds the two shared orchestration helpers.
         self.assertEqual({f['path'] for f in m['files']},{p.relative_to(ROOT).as_posix() for p in (ROOT/'payload').rglob('*') if p.is_file()})
         skills={s['name'] for s in call('catalog')['skills']}
         self.assertEqual(skills,set(RENAMES.values())|{'you-are-brain','jam-board','agent-sessions','creative-direction','kb-find','kb-save','kb-curate','kb-status','kb-sync'})

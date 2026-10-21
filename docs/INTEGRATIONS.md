@@ -49,6 +49,32 @@ Launch: see [agent-sessions, step 5](../payload/skills/agent-sessions/SKILL.md#5
 
 For runtime acceptance, obtain authorization for a small real task, confirm the named thread is visible in the app, then continue the same thread and inspect its actual result. Exercise memory only against the user's authorized setup if selected. Release 0.4.0 packaging checks do not launch sessions or independently reproduce the source owner's reported live trials.
 
+## Codex adapter host readiness
+
+The leading host selects delegation tools; a separate worker backend does not change that host's instructions or native tools. Check this separately from adapter `--describe`: its historical `verified` field is not current-host certification. Execution policy and diagnostic/assignment formats have one owner in [the adapter contract](../payload/skills/agent-sessions/references/contract.md#host-readiness).
+
+For Codex CLI 0.160.1, [official subagent settings](https://learn.chatgpt.com/docs/agent-configuration/subagents) support:
+
+```toml
+[agents]
+enabled = false
+```
+
+Only after the owner selects this client change, merge the setting in the appropriate configuration scope while preserving existing providers, credentials, permissions and all unrelated values. Record the prior value for a scoped rollback. The installer and diagnostic never edit global client configuration. Start a fresh leading session and check its effective mode; disabling native agents only in a worker cannot resolve a conflict in the leader. Existing sessions may retain earlier instructions.
+
+If supported, inspect a private CLI preview without a model call:
+
+```text
+codex --version
+codex debug prompt-input > <private scratch>/host-preview.json
+node <installed-root>/skills/agent-sessions/adapters/host-readiness.mjs --client codex --version 0.160.1 --prompt-input <private scratch>/host-preview.json
+python harness.py doctor --client codex --target <project> --host-client codex --host-version 0.160.1 --host-prompt-input <private scratch>/host-preview.json
+```
+
+Use the actual associated version, not the example by default. Unsupported client/version/shape stays unverified; a known conflict refuses checked adapter launches before a worker starts. CLI-preview compatibility is limited to the supplied snapshot and known markers. The active desktop session and model's eventual tool choices remain unverified. Inspect those in the actual leading session before claiming readiness. Keep raw previews private and outside repositories; the diagnostic emits only enumerated findings and a digest. It does not read session transcripts, start clients or call models/network services.
+
+For bundled adapters, pass the private checked assignment under [the contract](../payload/skills/agent-sessions/references/contract.md#checked-brief-assignment). After inspecting a terminal result, [run recovery](../payload/skills/agent-sessions/references/contract.md#recover-a-run) preserves the thread and saved assignment/settings; it does not automatically retry or grant access. Old foreground commands remain compatible without claiming these optional checks.
+
 ## Limited memory MCP
 
 Initialize the authorized vault with init-memory. Configure fixed HARNESS_KB_ROOT and discover the writer’s capture/checkpoint schemas through tools/list. Capture/identity/receipt handling: see [kb-save, Knowledge capture](../payload/skills/kb-save/SKILL.md#knowledge-capture).

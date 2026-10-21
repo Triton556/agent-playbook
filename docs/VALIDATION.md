@@ -149,3 +149,16 @@ Private raw review/test artifacts contain local paths and stay local. This recor
 - Private remote sync, scheduler/cloud curator activation or provisioned lab access.
 
 Repository CI runs hashes and the author suite on Windows/Ubuntu. Its actual run status is the GitHub Actions result, separate from this local record. Follow INTEGRATIONS.md for destination acceptance; missing layers remain missing.
+
+
+## Version 1.6.0 adapter-session reliability
+
+On 21 October 2026 (Asia/Vladivostok), the author checked the implementation with Python 3.12.10 and Node.js 23.11.0. The unchanged baseline ran 60 tests successfully with two existing Jam Board skips. The final `python -B -X utf8 -m unittest discover -s tests -v` ran 69 tests in 387.424 seconds: 67 passed, 2 skipped, no failures. The skips remain the unavailable app-checkout comparison and pending board wait contract; they are not new orchestration regressions. The package inventory assertion now accounts for the two added helpers while retaining exact manifest/filesystem equality.
+
+The nine focused orchestration checks also passed separately. They exercise first launch and same-thread continuation through an app-server stub, explicit settings, inherited frozen assignments and new output paths, pre-spawn refusal of invalid metadata/host conflicts/running or mismatched runs, private-error handling, owner language exceptions and quoted/nested code examples. Existing foreground/detached, approval-refusal, wait/status/cancel and actual historical-release migration checks remain active. Stubs establish protocol behavior, not a model's tool-selection behavior.
+
+`check-package` passed for 314 payload files. A separate clean full installation into a canonical temporary directory verified 315 installed files; installed Codex adapter and legacy-driver assignment guards both returned exit 4 before an unavailable backend could start. Existing CRLF owner instructions were preserved through installation and removal. No actual global installation or client configuration changed. The changed Markdown files' 186 local links/anchors resolve; staged whitespace and bounded changed-content privacy checks passed. Shared brief guides remain byte-identical, and export hashes/bytes are current.
+
+The real Codex CLI 0.160.1 rendered a default prompt preview and one with the per-command `agents.enabled=false` override. The new diagnostic reported conflict for the recognized active native mode and compatible for the marker-free preview, both explicitly limited to supplied-preview scope with the active session unverified. No model call occurred. Raw previews were kept outside repositories and removed after inspection; no transcripts, prompts or private deployment paths are published.
+
+The client-native skill validator could not run because PyYAML is missing in the selected interpreter; no dependency was installed. Repository catalog/frontmatter, link, mirror and installation checks ran. A new live model pilot, active desktop-session acceptance, Claude live-task acceptance and Windows/Linux live host checks were not performed. These limits remain separate from file integrity, deterministic tests and owner acceptance. No additional workers, independent reviewer, deployment or merge was launched.

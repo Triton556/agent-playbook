@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "name": "agent-playbook",
-  "version": "1.5.1",
-  "exported_at": "2026-10-20T14:58:22.468268+00:00",
+  "version": "1.6.0",
+  "exported_at": "2026-10-21T11:51:38.673399+00:00",
   "baseline": "Version 0.5.0 workflow retained with the approved public package/skill names; compatibility creator and personal lab module removed; receipt-based 0.x migration",
   "instruction_policy": "Maintained agent instructions and agent-to-agent communication in English; direct user communication and knowledge-base prose in Russian by default, subject to explicit user language instructions; exact quotations, identifiers and required product text preserved; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
   "files": [
@@ -71,11 +71,15 @@
         {
           "kind": "instruction-language-audience-1.5.1",
           "detail": "Approved recipient-specific English for all agent-to-agent channels, explicit initial brief audience/deliverable languages retained on continuation, and direct-user/knowledge-base Russian defaults with explicit user exceptions and original quotations/product text preserved. Preserve the existing language owner, exact brief mirror and running compatibility pointer; no runtime or authorization changes."
+        },
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
         }
       ],
       "module": "workflow",
-      "sha256": "93f04bdf7505305874f6c57d55b3c5447468456e4186544b11609f95e6fc4ea1",
-      "bytes": 5399
+      "sha256": "b42db48d55fa32df099e784ad91df5229557cc55453d432152ae0835794f7cff",
+      "bytes": 5623
     },
     {
       "source": "workflow/agent-worklog.mjs",
@@ -226,19 +230,23 @@
           "binding": "{{HARNESS_ROOT}}",
           "count": 5,
           "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        },
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
         }
       ],
       "module": "workflow",
-      "sha256": "c8ef38f8b8c80a9a9e85da04e06d92b60198d7e765d5794dd7b2b656f3074b16",
-      "bytes": 5140
+      "sha256": "7206731f33d32b38005ad7db4d80d3f370bdbf6b4d63fb9fbbf897a816dfc16f",
+      "bytes": 5291
     },
     {
       "source": "skills/agent-sessions/references/running-and-checking.md",
       "path": "payload/skills/agent-sessions/references/running-and-checking.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "0b3b333f2c2e9dc5079a64d3015298361baa03deeaa91341145956932a08e7e2",
-      "sha256": "e831d968cf54b2c3bb0a35958f481c5b827176e369b6713daded40bf822709d5",
-      "bytes": 10701,
+      "sha256": "7e449add53ad77def511d9e7cac211bfacd27c05864ad92e70af6ce7d066bdf1",
+      "bytes": 11934,
       "transformations": [
         {
           "kind": "instruction-ownership-1.4.0",
@@ -257,6 +265,10 @@
         {
           "kind": "instruction-language-audience-1.5.1",
           "detail": "Approved recipient-specific English for all agent-to-agent channels, explicit initial brief audience/deliverable languages retained on continuation, and direct-user/knowledge-base Russian defaults with explicit user exceptions and original quotations/product text preserved. Preserve the existing language owner, exact brief mirror and running compatibility pointer; no runtime or authorization changes."
+        },
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
         }
       ],
       "module": "agent-sessions"
@@ -266,8 +278,8 @@
       "path": "payload/skills/agent-sessions/references/brief-writing.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
-      "sha256": "a1151066f40633995908674f064cca730ddaa4f6266c71435004807320eb0265",
-      "bytes": 13727,
+      "sha256": "4ff7bec90344658ce556d5661ec557afc445cbb315b31206b31970cb6873728c",
+      "bytes": 15530,
       "transformations": [
         {
           "kind": "instruction-ownership-1.4.0",
@@ -282,6 +294,10 @@
         {
           "kind": "instruction-language-audience-1.5.1",
           "detail": "Approved recipient-specific English for all agent-to-agent channels, explicit initial brief audience/deliverable languages retained on continuation, and direct-user/knowledge-base Russian defaults with explicit user exceptions and original quotations/product text preserved. Preserve the existing language owner, exact brief mirror and running compatibility pointer; no runtime or authorization changes."
+        },
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
         }
       ],
       "module": "agent-sessions"
@@ -312,8 +328,8 @@
       "path": "payload/skills/agent-sessions/SKILL.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "81fc95ee7017edd4127cab5c0148adfd5cec3bae288b7c450014faa87686c52b",
-      "sha256": "403e9a84d31a7036f0504169ad81c6fc3bc4da95d34dbd10c21a1d0f35dd0ef8",
-      "bytes": 8642,
+      "sha256": "0a096cc1fa34a4747c36fdce99dc711bab2f12d4eb06b76771ad9b9ca94684d4",
+      "bytes": 9693,
       "transformations": [
         {
           "kind": "instruction-ownership-1.4.0",
@@ -328,6 +344,10 @@
         {
           "kind": "detach-wait-v2",
           "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
+        },
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
         }
       ],
       "module": "agent-sessions"
@@ -337,8 +357,8 @@
       "path": "payload/skills/agent-sessions/references/contract.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "b8352459ce2e100f2225bd140f8bffc69b5d236befd7e94ea6dbe7d4983afbbb",
-      "sha256": "87f5e906a7c0295881fcf8167988574d0ab134a5bc5ca4e816e094ccd869eaf9",
-      "bytes": 8906,
+      "sha256": "77f946c051f0d46b382083da4b35958d0431e3c2771f05bcf65b498394001104",
+      "bytes": 15289,
       "transformations": [
         {
           "kind": "instruction-ownership-1.4.0",
@@ -347,6 +367,10 @@
         {
           "kind": "detach-wait-v2",
           "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
+        },
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
         }
       ],
       "module": "agent-sessions"
@@ -375,12 +399,16 @@
       "path": "payload/skills/agent-sessions/adapters/codex.mjs",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "7eea40ea4361d65cdb25c1a571fe8172f0e389907ccab4232c1f5535807bed12",
-      "sha256": "752efb6b51ee721c1849a06e982196a28e298648bcb250a96e3c4c1fa8fd5d8d",
-      "bytes": 9454,
+      "sha256": "7d3957ed26de3e07a1624d361daf3d528134d9934d93fb6896292ac64eef2b09",
+      "bytes": 9976,
       "transformations": [
         {
           "kind": "detach-wait-v2",
           "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
+        },
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
         }
       ],
       "module": "agent-sessions"
@@ -390,12 +418,16 @@
       "path": "payload/skills/agent-sessions/adapters/claude-code.mjs",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "cf5f26df59d414370a8964f707f547a9e51e9441c0fe841c268d5d07f56febff",
-      "sha256": "a8446fe57aa81bb88ddb8a878fca1ae41182d3522224a13db632cb30423a7459",
-      "bytes": 7974,
+      "sha256": "5050659f776c4f7143c81c753210298dc53ef1e193d12134e6296d5e2860d293",
+      "bytes": 8502,
       "transformations": [
         {
           "kind": "detach-wait-v2",
           "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
+        },
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
         }
       ],
       "module": "agent-sessions"
@@ -5376,8 +5408,8 @@
       "path": "payload/skills/agent-sessions-codex/references/brief-writing.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
-      "sha256": "a1151066f40633995908674f064cca730ddaa4f6266c71435004807320eb0265",
-      "bytes": 13727,
+      "sha256": "4ff7bec90344658ce556d5661ec557afc445cbb315b31206b31970cb6873728c",
+      "bytes": 15530,
       "transformations": [
         {
           "kind": "instruction-ownership-1.4.0",
@@ -5392,6 +5424,10 @@
         {
           "kind": "instruction-language-audience-1.5.1",
           "detail": "Approved recipient-specific English for all agent-to-agent channels, explicit initial brief audience/deliverable languages retained on continuation, and direct-user/knowledge-base Russian defaults with explicit user exceptions and original quotations/product text preserved. Preserve the existing language owner, exact brief mirror and running compatibility pointer; no runtime or authorization changes."
+        },
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
         }
       ],
       "module": "agent-sessions-codex"
@@ -5422,8 +5458,8 @@
       "path": "payload/skills/agent-sessions-codex/SKILL.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "150f5b74c2ceed277495f310b7c7ae0006d6d0087a146b8a0ceb7e494b909516",
-      "sha256": "4dded3ad94e7b2efffb9b5129ead6598be851316a9c5c2f7a12938c9c1abac8f",
-      "bytes": 4976,
+      "sha256": "42a02ae4f37257168b2bcb29aad3d3cf1a12ccdf24cce3c81d22e9ebdcf6895b",
+      "bytes": 5663,
       "transformations": [
         {
           "kind": "portable-hook-reference",
@@ -5446,6 +5482,10 @@
         {
           "kind": "detach-wait-v2",
           "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
+        },
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
         }
       ],
       "module": "agent-sessions-codex"
@@ -5455,8 +5495,8 @@
       "path": "payload/skills/agent-sessions-codex/scripts/codex-chat.mjs",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "f0b2404162eace0303c080d3248b0b0723cd42d4b3d1d598111f02fec3494e84",
-      "sha256": "a127307c49ba64c751de6f8670725fa732b383fca2f8e85efca39b02e89ae95c",
-      "bytes": 7742,
+      "sha256": "44f450cc8dcee3b53509cb4680fbc878a5578c08e6417e16f2dec3cb42b680b0",
+      "bytes": 8288,
       "transformations": [
         {
           "kind": "public-skill-naming",
@@ -5465,6 +5505,10 @@
         {
           "kind": "detach-wait-v2",
           "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
+        },
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
         }
       ],
       "module": "agent-sessions-codex"
@@ -5582,12 +5626,16 @@
         {
           "kind": "detach-wait-v2",
           "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
+        },
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
         }
       ],
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "788081ddcec7b259100017286daf90d3db0f2e6ef372110ba59d3f630af3f64f",
-      "sha256": "c062ef1162e1374345797a6307367c1452c842262725f8a75f9d68ccf6dd1508",
-      "bytes": 3329
+      "sha256": "30255569cb13251a44f0f5cfbb91f8ca730213716b96df8be5e829e5a88d34f2",
+      "bytes": 3773
     },
     {
       "source": "skills/you-are-brain/references/brain-profile.md",
@@ -5597,12 +5645,16 @@
         {
           "kind": "instruction-ownership-1.4.0",
           "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
+        },
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
         }
       ],
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "c00e4a2bb08fe13a71fcb1c566652b01379161425eae1685e5b4eb6984fa7bfa",
-      "sha256": "d2b80d34693bf2418b4f26b44f002bb8de8399276ad15f0b07fdb74b0ac97c3f",
-      "bytes": 2875
+      "sha256": "4640a4c5032cdf504fc532ac21b55d5a169e781f3ac6476675d8898626f99831",
+      "bytes": 3280
     },
     {
       "source": "skills/you-are-brain/references/setup-interview.md",
@@ -5630,9 +5682,14 @@
       "path": "payload/skills/agent-sessions/adapters/run-runtime.mjs",
       "source_ref": "repository-authored-detach-wait",
       "source_sha256": "68bed04ab57806fd4580e2d2116c7d44f48aefbba325f116f5537dd82b1bed08",
-      "sha256": "68bed04ab57806fd4580e2d2116c7d44f48aefbba325f116f5537dd82b1bed08",
-      "bytes": 6276,
-      "transformations": [],
+      "sha256": "6db7b3e17c0662c686a9dea84192c1564664604ce09f790a41e5203a399d2407",
+      "bytes": 6494,
+      "transformations": [
+        {
+          "kind": "orchestration-reliability-1.6.0",
+          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
+        }
+      ],
       "module": "agent-sessions"
     },
     {
@@ -5642,6 +5699,26 @@
       "source_sha256": "6a359ae1a08b4f72a2c190ebe293341504306348778ce8c226c32b74442ee38a",
       "sha256": "6a359ae1a08b4f72a2c190ebe293341504306348778ce8c226c32b74442ee38a",
       "bytes": 3605,
+      "transformations": [],
+      "module": "agent-sessions"
+    },
+    {
+      "source": "skills/agent-sessions/adapters/host-readiness.mjs",
+      "path": "payload/skills/agent-sessions/adapters/host-readiness.mjs",
+      "source_ref": "repository-authored-orchestration-reliability",
+      "source_sha256": "c4ac049dd4cf786048582a5928b6d05b92f973f155e278b799226454930b3266",
+      "sha256": "c4ac049dd4cf786048582a5928b6d05b92f973f155e278b799226454930b3266",
+      "bytes": 3612,
+      "transformations": [],
+      "module": "agent-sessions"
+    },
+    {
+      "source": "skills/agent-sessions/adapters/launch-check.mjs",
+      "path": "payload/skills/agent-sessions/adapters/launch-check.mjs",
+      "source_ref": "repository-authored-orchestration-reliability",
+      "source_sha256": "2bd9adf17c81241e6973746dbc4246aa730fe3a1facca2c1929085e04f5abe22",
+      "sha256": "2bd9adf17c81241e6973746dbc4246aa730fe3a1facca2c1929085e04f5abe22",
+      "bytes": 6838,
       "transformations": [],
       "module": "agent-sessions"
     }

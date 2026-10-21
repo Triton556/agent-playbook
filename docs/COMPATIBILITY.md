@@ -46,3 +46,8 @@ Same model/effort, context, available tools, permissions, task inputs/references
 Codex startup byte budgets, overriding instruction files, shell/interpreter conversion and actual tool/hook registration are covered in [Integrations](INTEGRATIONS.md). All four layouts are installer-tested; only Codex CLI catalog discovery is presently executed. No live Claude/DeepSeek/generic model equivalence is claimed.
 
 Native skill-creator, template-creator and skill-installer are external client capabilities, not bundled modules. Verify availability before selecting one; an unavailable native creator is not an installed success. The bundled writing guidance and shared pilot do not emulate a provider-native packaging or template API.
+
+
+## Adapter-session host diagnostics
+
+The bundled read-only host diagnostic and optional assignment/run-recovery checks are described in [the adapter contract](../payload/skills/agent-sessions/references/contract.md#host-readiness). A supplied Codex CLI 0.160.1 preview can establish a known marker conflict or limited preview compatibility; the active desktop host and actual model behavior remain unverified. Other versions/hosts are unverified rather than silently treated as equivalent. Existing commands and contract-v2 result shapes remain supported. Configuration changes, live tasks and independent reviewers still require their actual authorization.
