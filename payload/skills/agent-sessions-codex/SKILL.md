@@ -13,6 +13,8 @@ For detached runs use `../agent-sessions/adapters/codex.mjs` and its shared `ada
 
 Follow [agent-sessions](../agent-sessions/SKILL.md): Fixed rules for execution and model selection, Worker artifacts for storage/publication, steps 1–2 for requirements/splitting, step 4 for briefs and step 5 for launch approval. Worker language: see [brief-writing, Language](references/brief-writing.md#language); defaults: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
+Check the leading host under [host readiness](../agent-sessions/references/contract.md#host-readiness) before delegation; a separate Codex backend does not change the leading host's native orchestration mode. The legacy driver supports the same optional assignment/host-evidence checks and terminal-run recovery as the adapters, preserving its original foreground result shape.
+
 ### 3. Choose effort and access
 
 Effort selection and changes: see [agent-sessions, step 3](../agent-sessions/SKILL.md#3-choose-effort-and-access). Driver aliases are minimal, low, medium, high, xhigh, ultra; ultra is the generic maximum.
@@ -26,10 +28,12 @@ Follow [running and checking sessions](../agent-sessions/references/running-and-
 ```bash
 node <skill-dir>/scripts/codex-chat.mjs --cwd <work folder> --name "<session name from the table>" \
   --prompt <brief file> --sandbox <mode> --model <user's choice> --effort <your choice> \
+  --assignment <private assignment.json> \
   --out <final.md> --log <events.jsonl>
 ```
 
 - Continue a thread with `--thread <threadId>` from the JSON line printed last by the previous run, and a short follow-up brief. Pass `--sandbox`, `--model` and `--effort` again: they are not remembered between runs.
+- Restore the selected route/session table first. For checked detached metadata, [recover a run](../agent-sessions/references/contract.md#recover-a-run) after observing its terminal result; this is an explicit next turn, not an automatic retry or permission grant.
 - Native unattended prompts and asynchronous board questions: see [running-and-checking, Questions and blocked workers](../agent-sessions/references/running-and-checking.md#questions-and-blocked-workers).
 - Exit code 0 means the turn completed. The last stdout line is `{threadId, turnId, status, out}`.
 

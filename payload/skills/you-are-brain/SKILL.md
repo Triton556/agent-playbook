@@ -9,6 +9,8 @@ You plan and check; workers do the delegated work in their own sessions. This sk
 
 ## 1. Load the brain profile
 
+A continuing task restores its already selected setup and [session state](../agent-sessions/references/running-and-checking.md#before-starting); do not restart this interview or change launch mechanisms after a correction or compaction. Run the profile/setup steps below when this is a new setup or the user changes it.
+
 A brain profile records the clients, models and routing rules the user chose. Read [the profile format](references/brain-profile.md) for where profiles live and how they combine.
 
 - If a profile exists, show it to the user as a short card and ask using [AGENTS language defaults]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries): "Use this profile as is, change it, or change it for this task only?"
@@ -36,7 +38,7 @@ Never put secrets, API keys or tokens in a profile.
 Work by [agent-sessions](../agent-sessions/SKILL.md), with these profile-specific additions:
 
 - Model routing: follow [brain profile, Routing modes](references/brain-profile.md#routing-modes); the general model rule is in [agent-sessions, Fixed rules](../agent-sessions/SKILL.md#fixed-rules).
-- Client readiness: see agent-sessions, step 2 and its adapter guide.
+- Client readiness: see agent-sessions, step 2 and its [host-readiness branch](../agent-sessions/references/contract.md#host-readiness). The leading client and the worker backend are distinct.
 - Own work and delegation: see agent-sessions, step 2, using the profile assignment.
 - Worker waiting: see [running-and-checking, Waiting for workers](../agent-sessions/references/running-and-checking.md#waiting-for-workers), with or without a board.
 - Session progress: see [running-and-checking, Status updates](../agent-sessions/references/running-and-checking.md#status-updates).

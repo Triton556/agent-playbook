@@ -15,7 +15,7 @@
 
 ## Agents and selected acceptance
 
-- Before planning or launching delegated work in separate sessions, open [agent-sessions]({{HARNESS_ROOT}}/skills/agent-sessions/SKILL.md).
+- Before deciding how to delegate any work, open [agent-sessions]({{HARNESS_ROOT}}/skills/agent-sessions/SKILL.md), including its execution mechanism and host-readiness branch. On continuation or context recovery, restore the selected route and existing worker/run identities before another launch; do not infer a new mechanism from the tools currently available.
 - Participation and review selection: see [task-brief-and-acceptance, 5. Two decisions about how to work]({{HARNESS_ROOT}}/skills/dev-flow/references/task-brief-and-acceptance.md#5-two-decisions-about-how-to-work).
 
 ## Routing and memory

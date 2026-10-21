@@ -109,3 +109,14 @@ Executed 1.4.0 checks and limits are recorded in [the release report](RELEASE_1.
 ## Version 1.5.1 recipient and communication language
 
 The approved language clarification defines English agent-to-agent communication by recipient across commentary, progress, questions, final responses and reports. Briefs carry an explicit audience and deliverable-language assignment. Direct user communication and knowledge-base prose retain their Russian defaults and explicit user exceptions; exact quotations, identifiers and required product text retain their languages. Policy ownership and required brief-writing mirrors are preserved. Export hashes, byte counts and instruction transformations record the changed prose. No adapter transport, access, launch-consent or acceptance rule changes. Static consistency and package checks do not establish live model compliance; source-owner global deployment requires separate authorization.
+
+
+## Version 1.6.0 adapter-session reliability
+
+This owner-authorized implementation strengthens the existing route rather than replacing it. Bootstrap opens the execution owner before selecting a delegation tool; brain setup and the session log retain current task choices on recovery. The mirrored brief guides include recipient/language/memory assignments in initial examples and semantic review of the whole brief. Native visibility claims are qualified without relaxing the selected adapter route.
+
+Two dependency-free shared helpers inspect supplied private host previews and check explicit launch assignments/recovery. The bundled Codex/Claude adapters and legacy Codex foreground driver opt into them through additive arguments. Checked conflicts refuse before backend/supervisor launch. New detached status records retain settings, assignment snapshots and bounded host evidence; recovery creates a new turn/output on the same thread, never a new registry. Existing command/result shapes, sandbox/approval handling, wait/cancel behavior and actual-authorization boundaries remain intact.
+
+The diagnostic does not spawn clients or change configuration. Marker-free preview compatibility is limited to Codex CLI 0.160.1 and never certifies an active desktop session. A deterministic check cannot interpret arbitrary prose or prove model compliance. Payload hashes/bytes and explicit transformations record the revisions; upstream provenance/licenses remain. Installation and behavioral evidence are reported separately in [validation](VALIDATION.md).
+
+The release additionally rejects explicit recovery output/log paths that identify the previous status, report or event log. Canonical path and existing-file identity checks cover aliases before any backend or detached supervisor starts. This corrects the artifact-preservation contract; it does not broaden access or change the saved assignment. The original helper source hash remains recorded alongside the release transformation.

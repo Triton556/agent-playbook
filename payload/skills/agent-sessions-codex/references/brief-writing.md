@@ -11,6 +11,12 @@ The brief is the worker's whole view of the task. The worker does not see your c
 - Preserve exact source quotations, identifiers, paths, commands and required product text in their original language. Mark quotations as quotations. Write interface text, documents and other user-facing deliverables in the language specified for that output; their language does not change the surrounding message or report to the orchestrator.
 - Direct conversation with the user and knowledge-base prose follow [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries), including the user's explicit language exceptions. A report to another agent is agent-to-agent communication.
 
+## Checked launch review
+
+Prepare the private [checked assignment](../../agent-sessions/references/contract.md#checked-brief-assignment) alongside the initial brief and pass it with `--assignment` for bundled adapters. It makes recipient, communication/deliverable languages, scope and memory-writer assignment explicit. It is not a permission grant or a prose-language detector.
+
+Before launch, read the entire brief, including Result/Return, against that assignment. Remove contradictory report-language instructions; a correct audience heading does not neutralize a later conflicting sentence. Keep exact quotations and deliverable-language requirements. A genuine current-owner exception is recorded with `owner_override`; do not invent one to bypass a failed check. For short corrections, inherit the frozen assignment through [run recovery](../../agent-sessions/references/contract.md#recover-a-run) or pass the reviewed assignment with the existing thread ID. Do not regenerate the initial brief or reset the setup.
+
 ## Form
 
 - Headings and numbered lists, not paragraphs. One fact or requirement per item; a paragraph longer than three lines should become a list.
@@ -28,6 +34,9 @@ Independent reviewer briefs: [independent-review, Preparation](../../../workflow
 # Task: <one line: what should exist or change>
 
 ## Audience and language
+Recipient: orchestrator
+Communication language: en
+Memory writer: orchestrator
 - You are a delegated worker addressing the agent orchestrator. Use English for commentary, progress updates, questions, the final response and the written report, even when the user can view the session.
 - User-facing deliverables: <name each deliverable and its required language, or "none">. Preserve exact quotations, identifiers and required product text.
 
@@ -94,6 +103,12 @@ Effort `medium`, access `workspace-write`.
 ```markdown
 # Task: Rename three modules to the approved names
 
+## Audience and language
+Recipient: orchestrator
+Communication language: en
+Memory writer: orchestrator
+- User-facing deliverables: none. Keep all surrounding progress, questions, final responses and reports in English.
+
 ## Goal
 The user approved clearer module names. Apply them everywhere without changing behaviour.
 
@@ -137,6 +152,12 @@ Effort `high`, access `workspace-write`.
 
 ```markdown
 # Task: Add CSV export of the filtered expenses to the dashboard
+
+## Audience and language
+Recipient: orchestrator
+Communication language: en
+Memory writer: orchestrator
+- User-facing deliverables: Russian UI and CSV; English code/comments. Keep all surrounding progress, questions, final responses and reports in English.
 
 ## Goal
 The user wants to download the expenses currently shown on the dashboard and analyse them
@@ -191,6 +212,12 @@ Effort `high`, access `read-only`.
 
 ```markdown
 # Task: Review the payment retry logic for double charges
+
+## Audience and language
+Recipient: orchestrator
+Communication language: en
+Memory writer: orchestrator
+- User-facing deliverables: none. Keep all surrounding progress, questions, final responses and reports in English.
 
 ## Goal
 The user saw two charges for one order last week and wants to know whether the retry code

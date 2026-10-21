@@ -30,3 +30,6 @@ The rows below name policy locations, not additional procedures. The two shared 
 | Decision consent | [payload/skills/dev-flow/references/task-brief-and-acceptance.md#3-ask-only-what-changes-the-work](../payload/skills/dev-flow/references/task-brief-and-acceptance.md#3-ask-only-what-changes-the-work) | `silence is not an answer` |
 
 Brain setup adds configuration only: [you-are-brain](../payload/skills/you-are-brain/SKILL.md) defers policy to agent-sessions.
+
+
+Host diagnostic and checked assignment/recovery option semantics live in [the adapter contract](../payload/skills/agent-sessions/references/contract.md#host-readiness). Source integration setup links to that owner. Task recovery uses the existing session log; private assignment snapshots live in its existing run metadata, not a second registry. Bootstrap opens the execution owner before choosing a delegation mechanism, including after context recovery.

@@ -20,6 +20,7 @@ import os from 'node:os';
 import path from 'node:path';
 import readline from 'node:readline';
 import { detach, recordThread, runDirectory } from './run-runtime.mjs';
+import { recoverRun, prepareLaunch } from './launch-check.mjs';
 
 const FLAGS = new Set(['proxy', 'describe', 'detach']);
 const args = {};
@@ -61,6 +62,8 @@ const DESCRIPTION = {
   verified: true,
   visible_in: 'Codex app: the thread list, under the given name; the user can open the thread and write in it',
   resume: true,
+  launch_checks: ['assignment', 'resume-run', 'host-prompt-input'],
+  current_host_readiness: 'unverified',
   access_modes: {
     'read-only': 'Codex sandbox: reads files, writes nothing, runs only read-only commands',
     'workspace-write': 'Codex sandbox: writes only inside --cwd; on Windows it cannot write inside .git',
@@ -73,6 +76,9 @@ if (args.describe) {
   console.log(JSON.stringify(DESCRIPTION, null, 2));
   process.exit(0);
 }
+let recovered;
+try { recovered = recoverRun(args, 'codex'); }
+catch (error) { console.error(`[driver] ${error.message}`); process.exit(4); }
 const sandbox = args.sandbox || 'workspace-write';
 if (!DESCRIPTION.access_modes[sandbox]) {
   process.stderr.write(`[driver] unsupported access mode: ${sandbox}
@@ -81,15 +87,19 @@ if (!DESCRIPTION.access_modes[sandbox]) {
 }
 
 const cwd = path.resolve(args.cwd || process.cwd());
-const prompt = args.prompt ? fs.readFileSync(args.prompt, 'utf8') : fs.readFileSync(0, 'utf8');
-if (!prompt.trim()) throw new Error('Empty prompt');
+const rawPrompt = args.prompt ? fs.readFileSync(args.prompt, 'utf8') : fs.readFileSync(0, 'utf8');
+if (!rawPrompt.trim()) throw new Error('Empty prompt');
 if (!fs.existsSync(cwd)) throw new Error(`cwd does not exist: ${cwd}`);
+let checked;
+try { checked = prepareLaunch(args, rawPrompt, recovered); }
+catch (error) { console.error(`[driver] ${error.message}`); process.exit(4); }
+const prompt = checked.prompt;
 
 if (args.detach) {
   // Reject a metadata directory inside the worker before creating anything.
   try { runDirectory(args, cwd); }
   catch (error) { console.error(`[driver] ${error.message}`); process.exit(4); }
-  try { await detach('codex', args, prompt, import.meta.url); process.exit(0); }
+  try { await detach('codex', args, rawPrompt, import.meta.url, checked.launch); process.exit(0); }
   catch (error) { console.error(`[driver] ${error.message}`); process.exit(3); }
 }
 // Explicit JS CLI paths also allow protocol fixtures without a real Codex process.

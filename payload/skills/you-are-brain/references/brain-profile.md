@@ -2,6 +2,8 @@
 
 A brain profile is a short Markdown file with the user's choices: which clients and models exist, how tasks are routed, and what the brain does itself.
 
+A profile is not the execution log. Keep the current task's selected adapter route, host-readiness evidence, run/thread IDs and assignment references in its existing task basis/session log, including task-only choices. Restore that state on continuation; absence of a permanent profile does not cancel a task's explicit choices. Profile files never grant permissions or establish current host readiness.
+
 ## Where profiles live
 
 - **Global:** `~/.agent-playbook/brain-profile.md`, for all projects on this machine.

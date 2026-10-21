@@ -1,6 +1,6 @@
 # Agent Playbook
 
-An installable, modular workflow for coding agents, creative direction, human-centered UI review, visual experiments, voxel creation and durable knowledge. Version 1.4.0 includes 26 custom skills with the public dev-, ui- and agent- names, including orchestration through agent-sessions and agent-sessions-codex. Current configured instructions, references, datasets and helpers, including intent and preservation checks before building, are retained.
+An installable, modular workflow for coding agents, creative direction, human-centered UI review, visual experiments, voxel creation and durable knowledge. Version 1.6.0 includes 26 custom skills with the public dev-, ui- and agent- names, including orchestration through agent-sessions and agent-sessions-codex. Current configured instructions, references, datasets and helpers, including intent and preservation checks before building, are retained.
 
 **[Русское описание](README.ru.md) · [Agent installation guide](INSTALL_FOR_AGENTS.md) · [Workflow guide](docs/WORKFLOW_GUIDE.md) · [Integrations and startup limits](docs/INTEGRATIONS.md) · [Compatibility](docs/COMPATIBILITY.md) · [Fidelity contract](docs/FIDELITY.md) · [Licenses](THIRD_PARTY_NOTICES.md)**
 
@@ -58,6 +58,8 @@ Codex client prerequisites/driver: see [session integration](docs/INTEGRATIONS.m
 `agent-sessions` generalizes this to any worker client through adapters with one [contract](payload/skills/agent-sessions/references/contract.md). It ships a live-checked `codex` adapter, an unverified `claude-code` adapter, and a guide for writing an adapter for another client such as OpenCode or a DeepSeek harness. Each adapter states what its access modes actually enforce and refuses a mode it cannot provide. It is selected by `engineering`, `instructions` and `full`, or with `--skills agent-sessions`.
 
 `you-are-brain` sets up a private brain profile, then follows [agent-sessions](payload/skills/agent-sessions/SKILL.md). Included wherever that skill is selected by a profile: full, engineering, instructions and jam-board.
+
+Version 1.6.0 adds read-only [host readiness](docs/INTEGRATIONS.md#codex-adapter-host-readiness), optional checked brief assignments and terminal-run recovery. These preserve existing foreground/detached commands and do not edit global client configuration or establish model compliance.
 
 ## Jam Board
 
