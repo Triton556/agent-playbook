@@ -120,6 +120,69 @@ class InstructionOwnership(unittest.TestCase):
                     with self.subTest(source=str(path.relative_to(ROOT)), link=raw):
                         self.assertIn(fragment, heading_ids(destination))
 
+    def test_recipient_language_channels_and_continuation(self):
+        base = (ROOT / 'payload/AGENTS.md').read_text(encoding='utf8')
+        owner = (ROOT / 'payload/skills/agent-sessions/references/brief-writing.md').read_text(encoding='utf8')
+        language = owner.split('## Language\n', 1)[1].split('## Form\n', 1)[0]
+        for channel in ['briefs and follow-ups', 'commentary', 'progress updates', 'questions', 'final responses', 'written reports']:
+            self.assertIn(channel, language)
+        self.assertIn('intended recipient, not by who can view the session', language)
+        self.assertIn('recipient is the orchestrator unless the current user instruction explicitly addresses a particular output directly to the user', language)
+        self.assertIn('On continuation, retain that assignment unless the current user instruction changes it', language)
+        template = owner.split('## Template\n', 1)[1].split('```markdown\n', 1)[1].split('\n```', 1)[0]
+        self.assertLess(template.index('## Audience and language'), template.index('## Goal'))
+        self.assertIn('delegated worker addressing the agent orchestrator', template)
+        self.assertIn('the final response and the written report', template)
+        self.assertIn('name each deliverable and its required language', template)
+        # Even a handoff consisting only of a report link remains a final response
+        # to the orchestrator; a separate report's language cannot exempt it.
+        self.assertIn('final responses', language)
+        self.assertIn('does not change the surrounding message or report to the orchestrator', language)
+        self.assertIn('Communicate directly with the user in Russian and write knowledge-base content in Russian', base)
+        self.assertIn('unless the user explicitly requests another language for a particular output', base)
+        self.assertIn('/skills/agent-sessions/references/brief-writing.md#language', base)
+        self.assertIn('Preserve exact source quotations, identifiers, paths, commands and required product text in their original language', language)
+        self.assertIn('Mark quotations as quotations', language)
+        # Exact quoted Russian UI text remains valid inside English instructions.
+        self.assertIn('The button label is the user\'s wording: «Скачать CSV».', owner)
+        self.assertIn('For this fictional brief the user explicitly requested Russian interface text and English code/comments.', owner)
+        self.assertIn('Write interface text, documents and other user-facing deliverables in the language specified for that output', language)
+        self.assertNotRegex(language.lower(), r'(ban|forbid|reject).*cyrillic|automatic.*(translat|detect)')
+
+    def test_language_owner_installed_for_orchestration_selections(self):
+        # Exercise actual selection/rendering, both clients, full and standalone.
+        for client, native in [('codex', '.agents'), ('claude', '.claude')]:
+            for selection in [('profile', 'full'), ('skills', 'agent-sessions'), ('skills', 'agent-sessions-codex'), ('skills', 'you-are-brain')]:
+                with self.subTest(client=client, selection=selection), target_directory() as folder:
+                    target = Path(folder)
+                    entry = target / ('AGENTS.md' if client == 'codex' else 'CLAUDE.md')
+                    before = b'# User instructions\r\nKeep this content.\r\n'
+                    entry.write_bytes(before)
+                    neighbor = target / 'user-owned.txt'
+                    neighbor.write_bytes(b'Unrelated user file\r\n')
+                    args = ['--client', client, '--target', target, '--'+selection[0], selection[1]]
+                    planned = call('plan', *args)
+                    result = call('install', *args)
+                    self.assertEqual(planned['installed_skills'], result['installed_skills'])
+                    self.assertEqual(len(result['installed_skills']), 26 if selection[0] == 'profile' else 21)
+                    installed = target / native
+                    base = (installed / 'BASE-RULES.md').read_text(encoding='utf8')
+                    owner = installed / 'skills/agent-sessions/references/brief-writing.md'
+                    self.assertIn(owner.as_posix()+'#language', base)
+                    self.assertIn('## Audience and language', owner.read_text(encoding='utf8'))
+                    self.assertEqual(owner.read_bytes(), (installed / 'skills/agent-sessions-codex/references/brief-writing.md').read_bytes())
+                    for path in [installed / 'BASE-RULES.md', owner, installed / 'skills/agent-sessions/references/running-and-checking.md', installed / 'skills/agent-sessions-codex/references/running-and-checking.md']:
+                        for destination, fragment, raw in markdown_destinations(path):
+                            self.assertTrue(destination.exists(), (path, raw))
+                            if fragment and destination.suffix == '.md':
+                                self.assertIn(fragment, heading_ids(destination))
+                    self.assertEqual(call('verify', '--client', client, '--target', target)['status'], 'pass')
+                    doctor = call('doctor', '--client', client, '--target', target)
+                    self.assertEqual(doctor['instruction_integrity'], 'pass')
+                    self.assertEqual(doctor['status'], 'integrity-verified-runtime-unverified')
+                    self.assertTrue(entry.read_bytes().startswith(before))
+                    self.assertEqual(neighbor.read_bytes(), b'Unrelated user file\r\n')
+
 
 if __name__ == '__main__':
     unittest.main()

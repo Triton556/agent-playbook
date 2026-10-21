@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "name": "agent-playbook",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "exported_at": "2026-10-20T14:58:22.468268+00:00",
   "baseline": "Version 0.5.0 workflow retained with the approved public package/skill names; compatibility creator and personal lab module removed; receipt-based 0.x migration",
-  "instruction_policy": "Full maintained agent instructions in English; Russian communication and knowledge content by default; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
+  "instruction_policy": "Maintained agent instructions and agent-to-agent communication in English; direct user communication and knowledge-base prose in Russian by default, subject to explicit user language instructions; exact quotations, identifiers and required product text preserved; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
   "files": [
     {
       "source": "AGENTS.md",
@@ -67,11 +67,15 @@
           "binding": "{{HARNESS_ROOT}}",
           "count": 8,
           "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        },
+        {
+          "kind": "instruction-language-audience-1.5.1",
+          "detail": "Approved recipient-specific English for all agent-to-agent channels, explicit initial brief audience/deliverable languages retained on continuation, and direct-user/knowledge-base Russian defaults with explicit user exceptions and original quotations/product text preserved. Preserve the existing language owner, exact brief mirror and running compatibility pointer; no runtime or authorization changes."
         }
       ],
       "module": "workflow",
-      "sha256": "fa40de6b53893244d986aa4ca40f037cc193e6dc28ffc2407a91c7a3fcc96513",
-      "bytes": 5240
+      "sha256": "93f04bdf7505305874f6c57d55b3c5447468456e4186544b11609f95e6fc4ea1",
+      "bytes": 5399
     },
     {
       "source": "workflow/agent-worklog.mjs",
@@ -233,8 +237,8 @@
       "path": "payload/skills/agent-sessions/references/running-and-checking.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "0b3b333f2c2e9dc5079a64d3015298361baa03deeaa91341145956932a08e7e2",
-      "sha256": "ebc017e66f1ba5edcf97b1cbea769ce68bd7abcd9dc160f296154150fcb2627e",
-      "bytes": 10434,
+      "sha256": "e831d968cf54b2c3bb0a35958f481c5b827176e369b6713daded40bf822709d5",
+      "bytes": 10701,
       "transformations": [
         {
           "kind": "instruction-ownership-1.4.0",
@@ -249,6 +253,10 @@
         {
           "kind": "detach-wait-v2",
           "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
+        },
+        {
+          "kind": "instruction-language-audience-1.5.1",
+          "detail": "Approved recipient-specific English for all agent-to-agent channels, explicit initial brief audience/deliverable languages retained on continuation, and direct-user/knowledge-base Russian defaults with explicit user exceptions and original quotations/product text preserved. Preserve the existing language owner, exact brief mirror and running compatibility pointer; no runtime or authorization changes."
         }
       ],
       "module": "agent-sessions"
@@ -258,8 +266,8 @@
       "path": "payload/skills/agent-sessions/references/brief-writing.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
-      "sha256": "15b31a86c4d3e206ed8d92ba6d990f9a4754144ee4000607861478b898f9f304",
-      "bytes": 12353,
+      "sha256": "a1151066f40633995908674f064cca730ddaa4f6266c71435004807320eb0265",
+      "bytes": 13727,
       "transformations": [
         {
           "kind": "instruction-ownership-1.4.0",
@@ -270,6 +278,10 @@
           "binding": "{{HARNESS_ROOT}}",
           "count": 1,
           "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        },
+        {
+          "kind": "instruction-language-audience-1.5.1",
+          "detail": "Approved recipient-specific English for all agent-to-agent channels, explicit initial brief audience/deliverable languages retained on continuation, and direct-user/knowledge-base Russian defaults with explicit user exceptions and original quotations/product text preserved. Preserve the existing language owner, exact brief mirror and running compatibility pointer; no runtime or authorization changes."
         }
       ],
       "module": "agent-sessions"
@@ -5364,8 +5376,8 @@
       "path": "payload/skills/agent-sessions-codex/references/brief-writing.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
-      "sha256": "15b31a86c4d3e206ed8d92ba6d990f9a4754144ee4000607861478b898f9f304",
-      "bytes": 12353,
+      "sha256": "a1151066f40633995908674f064cca730ddaa4f6266c71435004807320eb0265",
+      "bytes": 13727,
       "transformations": [
         {
           "kind": "instruction-ownership-1.4.0",
@@ -5376,6 +5388,10 @@
           "binding": "{{HARNESS_ROOT}}",
           "count": 1,
           "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
+        },
+        {
+          "kind": "instruction-language-audience-1.5.1",
+          "detail": "Approved recipient-specific English for all agent-to-agent channels, explicit initial brief audience/deliverable languages retained on continuation, and direct-user/knowledge-base Russian defaults with explicit user exceptions and original quotations/product text preserved. Preserve the existing language owner, exact brief mirror and running compatibility pointer; no runtime or authorization changes."
         }
       ],
       "module": "agent-sessions-codex"

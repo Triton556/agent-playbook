@@ -37,7 +37,7 @@ Client evidence: the Codex adapter waits for the turn before its foreground comm
 
 ## Status updates
 
-Keep the user informed of work, stage and worker. Language: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
+When addressing the user as orchestrator, keep the user informed of work, stage and worker. Language: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries). Worker-to-orchestrator updates follow [brief-writing, Language](brief-writing.md#language).
 
 - **When:** after you start sessions; when a session finishes; when you accept a result or request a fix; when something blocks; whenever the user asks; and in your final message of every turn while any session of the task is not yet accepted. Do not send updates when nothing changed.
 - **Format:** one line on the whole task, then the session log without the threadId, runId, statusFile and brief columns (include IDs and resume commands when handing off unfinished runs):
@@ -80,7 +80,7 @@ Native unattended approval/question prompts follow [adapter contract, Unattended
 
 ## Reporting
 
-After all sessions are accepted, or when you need the user's decision, report per session using AGENTS language defaults:
+After all sessions are accepted, or when you need the user's decision, report directly to the user per session using AGENTS language defaults. Worker-to-orchestrator reports and final responses follow [brief-writing, Language](brief-writing.md#language).
 
 - what it did;
 - what you verified and how (which commands you ran, what you opened);

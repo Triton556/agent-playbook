@@ -8,7 +8,7 @@ Voxel design: see [voxel preflight](../payload/skills/voxel-models/references/de
 
 ## Ownership map
 
-The rows below name policy locations, not additional procedures. The three shared orchestration references are intentional byte-identical mirrors; their agent-sessions path is the logical owner.
+The rows below name policy locations, not additional procedures. The two shared orchestration references, requirements-interview.md and brief-writing.md, are intentional byte-identical mirrors; their agent-sessions paths are the logical owners. The Codex running-and-checking.md path is a compatibility pointer to its owner.
 
 | Topic | Owning file and section | Characteristic phrase |
 | --- | --- | --- |
@@ -16,7 +16,7 @@ The rows below name policy locations, not additional procedures. The three share
 | Effort selection and changes | [payload/skills/agent-sessions/SKILL.md#3-choose-effort-and-access](../payload/skills/agent-sessions/SKILL.md#3-choose-effort-and-access) | `mechanical work across many files against a clear spec` |
 | Session execution mechanism | [payload/skills/agent-sessions/SKILL.md#fixed-rules](../payload/skills/agent-sessions/SKILL.md#fixed-rules) | `Separate sessions, never built-in subagents.` |
 | Worker-channel language | [payload/skills/agent-sessions/references/brief-writing.md#language](../payload/skills/agent-sessions/references/brief-writing.md#language) | `Write the brief in English` |
-| Default output language | [payload/AGENTS.md#goal-communication-and-boundaries](../payload/AGENTS.md#goal-communication-and-boundaries) | `Communicate with the user in Russian` |
+| Default output language | [payload/AGENTS.md#goal-communication-and-boundaries](../payload/AGENTS.md#goal-communication-and-boundaries) | `Communicate directly with the user in Russian` |
 | Launch approval | [payload/skills/agent-sessions/SKILL.md#5-get-approval-with-a-summary](../payload/skills/agent-sessions/SKILL.md#5-get-approval-with-a-summary) | `This is the only session-launch approval gate` |
 | Git action authorization | [payload/AGENTS.md#goal-communication-and-boundaries](../payload/AGENTS.md#goal-communication-and-boundaries) | `Commit, push and publication require` |
 | Worker artifact publication | [payload/skills/agent-sessions/SKILL.md#worker-artifacts](../payload/skills/agent-sessions/SKILL.md#worker-artifacts) | `Briefs and worker reports are never committed or published` |

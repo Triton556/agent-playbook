@@ -5,8 +5,11 @@ The brief is the worker's whole view of the task. The worker does not see your c
 ## Language
 
 - Write the brief in English, whatever language the user speaks.
-- Quote the user verbatim, in their language, where exact wording matters: interface text, messages, names. Mark quotes as quotes.
-- The worker's report to you is in English. Say in the brief which language user-facing output uses (interface text, documents, messages); defaults come from [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
+- Use English for all agent-to-agent communication: briefs and follow-ups, commentary, progress updates, questions, final responses and written reports. Choose the language by the intended recipient, not by who can view the session.
+- In a delegated worker session, the recipient is the orchestrator unless the current user instruction explicitly addresses a particular output directly to the user. A session visible to the user does not make a worker-to-orchestrator message user-facing.
+- Include an explicit Audience and language block in every initial brief. State the recipient and the language of each user-facing deliverable. On continuation, retain that assignment unless the current user instruction changes it; restate any change explicitly.
+- Preserve exact source quotations, identifiers, paths, commands and required product text in their original language. Mark quotations as quotations. Write interface text, documents and other user-facing deliverables in the language specified for that output; their language does not change the surrounding message or report to the orchestrator.
+- Direct conversation with the user and knowledge-base prose follow [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries), including the user's explicit language exceptions. A report to another agent is agent-to-agent communication.
 
 ## Form
 
@@ -23,6 +26,10 @@ Independent reviewer briefs: [independent-review, Preparation](../../../workflow
 
 ```markdown
 # Task: <one line: what should exist or change>
+
+## Audience and language
+- You are a delegated worker addressing the agent orchestrator. Use English for commentary, progress updates, questions, the final response and the written report, even when the user can view the session.
+- User-facing deliverables: <name each deliverable and its required language, or "none">. Preserve exact quotations, identifiers and required product text.
 
 ## Goal
 What the result is for and who uses it. Quote the user where wording matters.

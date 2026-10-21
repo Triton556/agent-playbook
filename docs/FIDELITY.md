@@ -105,3 +105,7 @@ The owner authorized a consistency pass over all 61 audit findings. Policy bodie
 The supplied you-are-brain skill adds three files; both session skills start from the supplied current sources. Manifest source hashes identify those inputs and export hashes bind the resulting 310 payload files. The public Codex hooks line and runtime client identity are retained as recorded transformations. The only selection change adds the new skill to profiles containing agent-sessions; existing reference closure retains linked policy owners. Helper claim text points to its policy owners without changing validation logic.
 
 Executed 1.4.0 checks and limits are recorded in [the release report](RELEASE_1.4.0.md).
+
+## Version 1.5.1 recipient and communication language
+
+The approved language clarification defines English agent-to-agent communication by recipient across commentary, progress, questions, final responses and reports. Briefs carry an explicit audience and deliverable-language assignment. Direct user communication and knowledge-base prose retain their Russian defaults and explicit user exceptions; exact quotations, identifiers and required product text retain their languages. Policy ownership and required brief-writing mirrors are preserved. Export hashes, byte counts and instruction transformations record the changed prose. No adapter transport, access, launch-consent or acceptance rule changes. Static consistency and package checks do not establish live model compliance; source-owner global deployment requires separate authorization.

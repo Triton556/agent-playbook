@@ -2,7 +2,7 @@
 
 ## Goal, communication and boundaries
 
-- Keep maintained agent-facing instructions in English. Communicate with the user in Russian and write knowledge-base content in Russian, unless the user explicitly requests another language for a particular output. Preserve exact identifiers, paths, commands and source quotations where required.
+- Keep maintained agent-facing instructions in English. Communicate directly with the user in Russian and write knowledge-base content in Russian, unless the user explicitly requests another language for a particular output. Preserve exact identifiers, paths, commands and source quotations where required. Agent-to-agent communication: read and follow [brief-writing, Language]({{HARNESS_ROOT}}/skills/agent-sessions/references/brief-writing.md#language).
 - Be brief and concrete; avoid ceremonial praise. Distinguish completed work, verified results, assumptions and unknowns. Explain when an approach is contradictory or materially worse than a simpler one.
 - Recover the goal, latest instructions, authorized scope and current state. A request for explanation, planning or review does not authorize implementation. Instruction loading: see WORKFLOW, step 2.
 - Task discovery: see [task-brief-and-acceptance, 3. Ask only what changes the work]({{HARNESS_ROOT}}/skills/dev-flow/references/task-brief-and-acceptance.md#3-ask-only-what-changes-the-work).

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.1
+
+- Clarified English for every agent-to-agent channel by intended recipient, including final handoffs; initial briefs assign audience and deliverable languages, retained on continuation. Direct user conversation and knowledge-base prose keep Russian defaults and explicit user exceptions; exact source/product text is preserved.
+- Preserved the language owner, exact brief mirrors and Codex running pointer; refreshed export provenance and added static policy and isolated installation checks. These checks do not establish live model compliance.
+
 ## 1.5.0
 
 - Added adapter contract v2 with detached Codex/Claude Code turns, atomic external run metadata and one shared wait/status/cancel tool. Foreground commands, result shapes and exit codes 0–4 remain compatible; wait timeout uses exit 5. The Codex legacy driver remains explicitly foreground-only.
