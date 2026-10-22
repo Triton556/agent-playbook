@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.0 — Core workflow cleanup
+
+- Retain 20 custom/core entrypoints; remove six imported skills, bundled vendor procedures and Impeccable runtime.
+- Replace prose-inferred dependency closure with explicit required dependencies; optional routes do not install or load every linked skill.
+- Remove mandatory external interviews/reviewers; clarify intent, proportionate testing, evidence reuse, concise reporting and conditional memory.
+- Preserve brain/session/Jam/knowledge recovery, permission boundaries and functional/visual checks.
+- Safe receipt-checked migration preserves edited, unowned and unrelated files; see [migration/inventory](docs/CORE_CLEANUP_2.0.md).
+- Refresh Jam connection examples/project pinning and 45-tool fixture against cf2e8fd; configurable read-only external contract checks.
+- Static sizes are not tokens or model-quality evidence; no paid model benchmark.
+
 ## 1.6.0
 
 - Restore the selected adapter-session route, saved task choices and worker audience after context recovery. Add a read-only host-preview diagnostic with explicit limits; a supplied preview does not certify the active desktop session.

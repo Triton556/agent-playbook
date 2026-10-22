@@ -1,6 +1,6 @@
 ---
 name: agent-instructions
-description: Edit AGENTS.md, CLAUDE.md, workflow guides and other agent-facing documents for clear responsibilities and concise instructions. Creating or updating a Codex skill uses the built-in skill-creator; consult this writing guidance only for a specific editorial need.
+description: Edit agent-facing rules and workflow documents. Use for a requested instruction change; skill creation uses the built-in skill-creator.
 ---
 
 # Writing instructions for agents

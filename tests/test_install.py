@@ -9,7 +9,7 @@ def payload_bytes(relative,target,client='codex'):
     # expected body after that documented substitution, without a summary.
     native={'codex':'.agents','claude':'.claude','deepseek':'.dsh','generic':'.agent-harness'}[client]
     return (ROOT/relative).read_bytes().replace(
-        b'{{HARNESS_ROOT}}',(Path(target).resolve()/native).as_posix().encode('utf8'))
+        b'{{HARNESS_ROOT}}',(Path(target).resolve()/native).as_posix().encode('utf8')).replace(b'{{MEMORY_ROOT}}',(Path(target).resolve()/'.harness-memory').as_posix().encode('utf8'))
 @contextmanager
 def target_directory():
     # Use ordinary inherited workspace permissions for synthetic test artifacts.
@@ -42,9 +42,9 @@ class InstallBehavior(unittest.TestCase):
             self.assertEqual((p/'AGENTS.md').read_bytes(),old+b'\nNew user rule.\r\n')
     def test_existing_identical_skill_is_not_deleted(self):
         with target_directory() as td:
-            p=Path(td);dest=p/'.agents/skills/dev-domain-model/SKILL.md';dest.parent.mkdir(parents=True)
-            data=payload_bytes('payload/skills/dev-domain-model/SKILL.md',p);dest.write_bytes(data)
-            call('install','--skills','dev-domain-model','--target',p)
+            p=Path(td);dest=p/'.agents/skills/kb-find/SKILL.md';dest.parent.mkdir(parents=True)
+            data=payload_bytes('payload/skills/kb-find/SKILL.md',p);dest.write_bytes(data)
+            call('install','--skills','kb-find','--target',p)
             call('remove','--target',p)
             self.assertEqual(dest.read_bytes(),data)
     def test_conflict_is_detected_before_other_writes(self):
@@ -56,27 +56,27 @@ class InstallBehavior(unittest.TestCase):
             self.assertEqual(dest.read_text(),'My different skill')
     def test_changed_owned_file_blocks_remove_and_is_retained(self):
         with target_directory() as td:
-            p=Path(td);call('install','--skills','dev-domain-model','--target',p)
-            changed=p/'.agents/skills/dev-domain-model/SKILL.md';changed.write_text('My edit')
+            p=Path(td);call('install','--skills','kb-find','--target',p)
+            changed=p/'.agents/skills/kb-find/SKILL.md';changed.write_text('My edit')
             self.assertEqual(call('verify','--target',p,ok=1)['status'],'fail')
             call('remove','--target',p,ok=2);self.assertEqual(changed.read_text(),'My edit')
     def test_native_layouts_have_same_complete_skill_body(self):
         for client,folder,entry in [('codex','.agents','AGENTS.md'),('claude','.claude','CLAUDE.md'),('deepseek','.dsh','AGENTS.md'),('generic','.agent-harness','AGENTS.md')]:
             with self.subTest(client=client),target_directory() as td:
-                p=Path(td);result=call('install','--skills','dev-domain-model','--workflow','--client',client,'--target',p)
+                p=Path(td);result=call('install','--skills','kb-find','--workflow','--client',client,'--target',p)
                 self.assertTrue(result['workflow_activated']);self.assertTrue((p/entry).is_file())
-                self.assertEqual(len(result['installed_skills']),26)
+                self.assertEqual(len(result['installed_skills']),20)
                 self.assertIn('creative-direction',result['installed_skills'])
                 self.assertIn('agent-sessions-codex',result['installed_skills'])
                 self.assertIn('agent-sessions',result['installed_skills'])
                 for relative in ['SKILL.md','scripts/codex-chat.mjs']:
                     self.assertEqual(payload_bytes('payload/skills/agent-sessions-codex/'+relative,p,client),(p/folder/'skills/agent-sessions-codex'/relative).read_bytes())
-                self.assertEqual(payload_bytes('payload/skills/dev-domain-model/SKILL.md',p,client),(p/folder/'skills/dev-domain-model/SKILL.md').read_bytes())
+                self.assertEqual(payload_bytes('payload/skills/kb-find/SKILL.md',p,client),(p/folder/'skills/kb-find/SKILL.md').read_bytes())
                 self.assertFalse((p/folder/'AGENTS.md').exists())
                 self.assertEqual(call('verify','--client',client,'--target',p)['status'],'pass')
     def test_reviewer_consent_cannot_be_asserted_without_source(self):
         with target_directory() as td:
-            call('install','--skills','dev-domain-model','--reviewer-consent','one-per-round','--target',td,ok=2)
+            call('install','--skills','kb-find','--reviewer-consent','one-per-round','--target',td,ok=2)
             self.assertEqual(list(Path(td).iterdir()),[])
     def test_creative_direction_profiles_and_complete_resources(self):
         with target_directory() as td:
@@ -156,16 +156,16 @@ class InstallBehavior(unittest.TestCase):
     def test_plan_creates_nothing_and_doctor_does_not_claim_quality(self):
         with target_directory() as td:
             call('plan','--profile','full','--target',td);self.assertEqual(list(Path(td).iterdir()),[])
-            call('install','--skills','dev-domain-model','--target',td)
+            call('install','--skills','kb-find','--target',td)
             self.assertEqual(call('doctor','--target',td)['quality_parity'],'not-established')
     def test_unmanaged_neighbor_is_preserved(self):
         with target_directory() as td:
             p=Path(td);neighbor=p/'my-work.txt';neighbor.write_bytes(b'unmanaged')
-            call('install','--skills','dev-domain-model','--target',p);call('remove','--target',p)
+            call('install','--skills','kb-find','--target',p);call('remove','--target',p)
             self.assertEqual(neighbor.read_bytes(),b'unmanaged')
     def test_forged_receipt_cannot_delete_a_neighbor(self):
         with target_directory() as td:
-            p=Path(td);call('install','--skills','dev-domain-model','--target',p)
+            p=Path(td);call('install','--skills','kb-find','--target',p)
             neighbor=p/'my-work.txt';neighbor.write_bytes(b'unmanaged')
             receipt=p/'.agents/harness-install.json';r=json.loads(receipt.read_text())
             r['files'].append({'relative':'my-work.txt','sha256':hashlib.sha256(b'unmanaged').hexdigest(),'source':'generated-policy','owned':True})
@@ -173,7 +173,7 @@ class InstallBehavior(unittest.TestCase):
             self.assertEqual(neighbor.read_bytes(),b'unmanaged')
     def test_forged_canonical_entry_cannot_delete_unselected_skill(self):
         with target_directory() as td:
-            p=Path(td);call('install','--skills','dev-domain-model','--target',p)
+            p=Path(td);call('install','--skills','kb-find','--target',p)
             neighbor=p/'.agents/skills/agent-handoff/SKILL.md';neighbor.parent.mkdir(parents=True);neighbor.write_bytes(b'My own handoff')
             receipt=p/'.agents/harness-install.json';r=json.loads(receipt.read_text())
             r['files'].append({'relative':'.agents/skills/agent-handoff/SKILL.md','sha256':hashlib.sha256(neighbor.read_bytes()).hexdigest(),'source':'payload/skills/agent-handoff/SKILL.md','owned':True})
@@ -181,17 +181,17 @@ class InstallBehavior(unittest.TestCase):
             self.assertEqual(neighbor.read_bytes(),b'My own handoff')
     def test_forged_hash_cannot_reclassify_edited_file_as_owned_payload(self):
         with target_directory() as td:
-            p=Path(td);call('install','--skills','dev-domain-model','--target',p)
-            edited=p/'.agents/skills/dev-domain-model/SKILL.md';edited.write_bytes(b'My edit')
+            p=Path(td);call('install','--skills','kb-find','--target',p)
+            edited=p/'.agents/skills/kb-find/SKILL.md';edited.write_bytes(b'My edit')
             receipt=p/'.agents/harness-install.json';r=json.loads(receipt.read_text())
             for f in r['files']:
-                if f['relative']=='.agents/skills/dev-domain-model/SKILL.md':f['sha256']=hashlib.sha256(edited.read_bytes()).hexdigest()
+                if f['relative']=='.agents/skills/kb-find/SKILL.md':f['sha256']=hashlib.sha256(edited.read_bytes()).hexdigest()
             receipt.write_text(json.dumps(r));call('remove','--target',p,ok=2)
             self.assertEqual(edited.read_bytes(),b'My edit')
     def test_named_dependency_and_skills_only_permission_guard(self):
         with target_directory() as td:
             p=Path(td);r=call('install','--skills','dev-flow','--target',p)
-            self.assertIn('dev-plan',r['installed_skills']);self.assertFalse(r['workflow_activated'])
+            self.assertEqual(r['installed_skills'],['dev-flow']);self.assertFalse(r['workflow_activated'])
             text=(p/'AGENTS.md').read_text(encoding='utf8')
             self.assertIn("owner's actual authorization",text)
             self.assertNotIn('# Общие правила работы',text)
@@ -207,27 +207,26 @@ class InstallBehavior(unittest.TestCase):
     def test_codex_override_is_preserved_and_installation_refused(self):
         with target_directory() as td:
             p=Path(td);(p/'AGENTS.override.md').write_bytes(b'My override')
-            call('install','--skills','dev-domain-model','--target',p,ok=2)
+            call('install','--skills','kb-find','--target',p,ok=2)
             self.assertEqual((p/'AGENTS.override.md').read_bytes(),b'My override');self.assertFalse((p/'.agents').exists())
-    def test_upstream_dataset_and_font_attribution_match_source_hashes(self):
+    def test_removed_external_bundles_are_not_distributed(self):
         m=json.loads((ROOT/'manifest.json').read_text())
-        rows=[f for f in m['files'] if '/data/' in f['path'] or 'google-font-licenses.json' in f['path']]
-        self.assertGreater(len(rows),10)
-        for f in rows:
-            self.assertEqual(f['sha256'],f['source_sha256'],f['path'])
-        fonts=(ROOT/'payload/skills/ui-reference/data/google-fonts.csv').read_text(encoding='utf8')
-        self.assertIn('Anya Danilova',fonts);self.assertNotIn('пользовательova',fonts)
+        self.assertEqual(m['runtime_assets'],[])
+        self.assertFalse(any('/vendor/' in f['path'] for f in m['files']))
+        self.assertFalse((ROOT/'payload/skills/ui-reference').exists())
+        # Retained adaptations still carry their licenses, not copied detector binaries.
+        self.assertTrue((ROOT/'payload/skills/dev-verify/licenses/mattpocock--skills-LICENSE').is_file())
     def test_receipt_cannot_hide_a_missing_entrypoint(self):
         with target_directory() as td:
-            p=Path(td);call('install','--skills','dev-domain-model','--target',p)
-            skill=p/'.agents/skills/dev-domain-model/SKILL.md';skill.unlink()
+            p=Path(td);call('install','--skills','kb-find','--target',p)
+            skill=p/'.agents/skills/kb-find/SKILL.md';skill.unlink()
             receipt=p/'.agents/harness-install.json';r=json.loads(receipt.read_text())
-            r['files']=[f for f in r['files'] if f['relative']!='.agents/skills/dev-domain-model/SKILL.md'];receipt.write_text(json.dumps(r))
+            r['files']=[f for f in r['files'] if f['relative']!='.agents/skills/kb-find/SKILL.md'];receipt.write_text(json.dumps(r))
             call('verify','--target',p,ok=2);call('remove','--target',p,ok=2)
             self.assertTrue((p/'.agents/BASE-RULES.md').is_file())
     def test_edited_policy_and_rehashed_receipt_are_preserved(self):
         with target_directory() as td:
-            p=Path(td);call('install','--skills','dev-domain-model','--target',p)
+            p=Path(td);call('install','--skills','kb-find','--target',p)
             policy=p/'.agents/harness-policy.json';v=json.loads(policy.read_text());v['user_notes']='My actual edit';policy.write_text(json.dumps(v))
             edited=policy.read_bytes();receipt=p/'.agents/harness-install.json';r=json.loads(receipt.read_text())
             for f in r['files']:
@@ -236,15 +235,15 @@ class InstallBehavior(unittest.TestCase):
             self.assertEqual(policy.read_bytes(),edited)
     def test_mutually_consistent_destination_forgery_is_not_trusted(self):
         with target_directory() as td:
-            p=Path(td);dest=p/'.agents/skills/dev-domain-model/SKILL.md';dest.parent.mkdir(parents=True)
-            before=payload_bytes('payload/skills/dev-domain-model/SKILL.md',p);dest.write_bytes(before)
-            call('install','--skills','dev-domain-model','--target',p)
+            p=Path(td);dest=p/'.agents/skills/kb-find/SKILL.md';dest.parent.mkdir(parents=True)
+            before=payload_bytes('payload/skills/kb-find/SKILL.md',p);dest.write_bytes(before)
+            call('install','--skills','kb-find','--target',p)
             receipt=p/'.agents/harness-install.json';r=json.loads(receipt.read_text())
             policy=p/'.agents/harness-policy.json';v=json.loads(policy.read_text());v['user_notes']='My actual added note'
             raw=(json.dumps(v,ensure_ascii=False,indent=2)+'\n').encode('utf8');policy.write_bytes(raw);r['policy_snapshot']=v
             for f in r['files']:
                 if f['source']=='generated-policy':f['sha256']=hashlib.sha256(raw).hexdigest()
-                if f['relative']=='.agents/skills/dev-domain-model/SKILL.md':f['owned']=True
+                if f['relative']=='.agents/skills/kb-find/SKILL.md':f['owned']=True
             receipt.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
             call('verify','--target',p,ok=2);call('remove','--target',p,ok=2)
             self.assertEqual(dest.read_bytes(),before);self.assertEqual(policy.read_bytes(),raw)

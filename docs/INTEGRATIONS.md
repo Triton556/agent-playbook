@@ -30,8 +30,6 @@ The original method references include Windows PowerShell examples. Adapt only s
 
 `agent-worklog.mjs` invokes the same sibling `quality_ledger.py`. Set `HARNESS_PYTHON` to the actual executable if `python` on PATH is missing/different. Set this in the process environment, including any quality-hook process. Node and Python spawning must be permitted by the client's sandbox. A denied spawn remains an unavailable check; do not replace it with an unconditional success.
 
-The preserved Impeccable context wrapper is PowerShell. A destination's signing/execution policy can reject it. Do not disable that protection to claim compatibility: follow the skill's existing unavailable-wrapper branch, read actual project context directly, and record the wrapper as unavailable. The verified standalone engine can supply permitted mechanical analysis; its upstream orchestration messages are source material and do not grant extra agents/access.
-
 ## agent-sessions-codex for orchestrators
 
 `agent-sessions-codex` equips the host agent (Claude, another Codex or another client) to write a brief, start or continue work in Codex, and check the actual result. It is selected by `full`, `engineering` and `instructions`, or separately:
@@ -108,11 +106,9 @@ Claude hooks use .claude/settings.json or .claude/settings.local.json under [Cla
 
 No hook registers during ordinary file installation. This keeps access changes reviewable. Full operational readiness requires the selected integrations to be authorized and tested.
 
-## UI detector and other services
+## UI and artifact capabilities
 
-Acquire the pinned Impeccable engine from the exact official URL in `manifest.json`, verify its SHA256, and place it at the declared path. The Windows wrapper and original launcher are retained; set its skill/runtime location for the installed target. Version0.1.14 and its SHA are mandatory for the measured reproduction. Other platforms need their verified official engine equivalent. Browser/image inspection remains a separate requirement even with a working detector.
-
-Use native image generation, rendered document/PDF/slide/spreadsheet tools and a genuine fresh-context review provider when a selected route requires them. The package does not copy provider internals, accounts or tool permissions. For a six-view concept an authorized native code representation is allowed when the original pipeline permits it; an uninspected placeholder is not an equivalent accepted concept.
+Version 2.0 ships no external detector/runtime. Use available actual browser/native rendering and format tools for the affected scenario. Missing rendering remains unverified; do not replace it with a successful source hash. Separate reviewers remain optional and task-authorized.
 
 ## Knowledge maintenance
 

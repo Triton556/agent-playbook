@@ -1,3 +1,5 @@
+> **Version 2.0:** [core inventory, changed behavior and safe upgrade](docs/CORE_CLEANUP_2.0.md). Older external bundles and detectors described in historical release material are no longer shipped.
+
 # Installation procedure for an agent
 
 Read this document before changing the destination. The user chooses what to install and authorizes access, costs and integrations. The installer writes to the explicit project target, its private receipt store in this checkout, and, when separately requested, the explicit knowledge vault. It does not change the source author's configuration.
@@ -25,9 +27,9 @@ python harness.py catalog
 python harness.py plan --client codex --target /path/to/project --profile full
 ```
 
-Available clients: `codex`, `claude`, `deepseek`, `generic`. Profiles: `full`, `engineering`, `visual`, `voxel`, `memory`, `instructions`. `--skills name1,name2` selects named skills; dependency closure includes every linked sibling. References and helper files stay complete.
+Available clients: `codex`, `claude`, `deepseek`, `generic`. Profiles: `full`, `engineering`, `visual`, `voxel`, `memory`, `instructions`. `--skills name1,name2` selects named skills; dependency closure includes only explicit required modules. References and helper files stay complete.
 
-`full` activates the complete workflow. `--workflow` also expands the selection to all 26 modules: the global rules route to all of them, so partial activation would leave broken routes. Skills-only installation preserves individual entry points without claiming all global behavior is active.
+`full` activates the complete workflow. `--workflow` also expands the selection to all 20 modules: the global rules route to all of them, so partial activation would leave broken routes. Skills-only installation preserves individual entry points without claiming all global behavior is active.
 
 `agent-sessions-codex` is selected by `full`, `engineering` and `instructions`, or explicitly with `--skills agent-sessions-codex`, for any client including Claude. Read its [integration requirements](docs/INTEGRATIONS.md#agent-sessions-codex-for-orchestrators) before an authorized session launch; installation alone does not start Codex or configure it.
 
@@ -86,9 +88,9 @@ The limited writer lives at `<native-root>/workflow/kb-writer.mjs`. Configure `H
 
 Memory transport: see [kb-sync, Knowledge transport](payload/skills/kb-sync/SKILL.md#knowledge-transport). Semantic curation: see [kb-curate, Knowledge curation](payload/skills/kb-curate/SKILL.md#knowledge-curation).
 
-### UI detector
+### UI checks
 
-The configured engine is Impeccable0.1.14, Windows x64. Its official URL and expected SHA are in `manifest.json`. The original launcher is retained. On an authorized installation, obtain that exact engine into the declared asset path and verify SHA before use. Other platforms require a separately verified official equivalent. Missing automatic analysis stays missing; actual browser inspection is still required by the existing workflow.
+Use actual rendered interaction checks from ui-design/ui-review. No bundled external detector or binary is required.
 
 ### Native/client capabilities
 

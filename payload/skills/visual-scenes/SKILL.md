@@ -1,6 +1,6 @@
 ---
 name: visual-scenes
-description: Build or refine interactive visual explanations, spatial data stories, procedural scenes, and material or light experiments with coherent models and readable graphics. Use for a visual mechanism the user can explore, including Sael-inspired craft; ordinary product screens keep their existing UI workflow.
+description: Build and inspect a requested visual scene, animation or interactive visual artifact. Skip ordinary app layout and voxel-specific work.
 ---
 
 # Visual experiment craft

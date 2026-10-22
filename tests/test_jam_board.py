@@ -1,5 +1,6 @@
 """Jam Board discovery, MCP vocabulary, links and an isolated real install."""
 import json
+import os
 from pathlib import Path
 import re
 import tempfile
@@ -8,7 +9,7 @@ import unittest
 from test_install import ROOT, call, target_directory
 
 SKILL = ROOT / 'payload/skills/jam-board'
-APP_DOC = Path('C:/Users/Danil/Documents/ChatGPT/experments/jam-board-20261019/docs/mcp.md')
+APP_DOC = Path(os.environ.get('JAM_BOARD_DOC_PATH', str(ROOT.parent / 'jam-board/docs/mcp.md')))
 FIXTURE = ROOT / 'tests/fixtures/jam-board-tools.txt'
 
 
@@ -83,7 +84,7 @@ class JamBoardSkill(unittest.TestCase):
         # Prefer the current authoritative app contract when available; otherwise
         # use the generated portable fixture. Exercise both sources where possible.
         tools = parse_tools(APP_DOC.read_text(encoding='utf8')) if APP_DOC.is_file() else fixture_tools()
-        self.assertEqual(len(fixture_tools()), 39)
+        self.assertEqual(len(fixture_tools()), 44)
         self.assertEqual(tools - {'wait_for_changes'}, fixture_tools() - {'wait_for_changes'})
         # Its presence is checked separately; an older checkout can still verify
         # the existing vocabulary while the new contract comparison is skipped.
@@ -135,6 +136,7 @@ class JamBoardSkill(unittest.TestCase):
     def test_connection_examples_are_verbatim_from_app(self):
         source = APP_DOC.read_text(encoding='utf8')
         expected = source[source.index('### Codex: stdio'):source.index('## Transports and authentication')]
+        expected = expected.replace('(agent-playbook-compatibility.md)', '(https://github.com/Triton556/jam-board/blob/cf2e8fd03d5753a9ea316c9408e6da9f74f0cbc7/docs/agent-playbook-compatibility.md)')
         self.assertIn(expected, (SKILL / 'references/connect.md').read_text(encoding='utf8'))
 
     def test_codex_jam_board_profile_plan_install_verify_doctor(self):

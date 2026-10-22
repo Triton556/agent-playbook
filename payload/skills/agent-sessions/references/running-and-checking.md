@@ -44,7 +44,7 @@ Client evidence: the Codex adapter waits for the turn before its foreground comm
 When addressing the user as orchestrator, keep the user informed of work, stage and worker. Language: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries). Worker-to-orchestrator updates follow [brief-writing, Language](brief-writing.md#language).
 
 - **When:** after you start sessions; when a session finishes; when you accept a result or request a fix; when something blocks; whenever the user asks; and in your final message of every turn while any session of the task is not yet accepted. Do not send updates when nothing changed.
-- **Format:** one line on the whole task, then the session log without the threadId, runId, statusFile and brief columns (include IDs and resume commands when handing off unfinished runs):
+- **Format:** give the changed result, worker/stage and next action briefly. Use the compact session table when several workers or dependencies would otherwise be unclear, or when requested; do not repeat an unchanged table. Include IDs and resume commands when handing off unfinished runs. Example:
 
   ```
   Task: <name> - 1 of 3 accepted, 1 running, 1 waiting.
@@ -56,7 +56,7 @@ When addressing the user as orchestrator, keep the user informed of work, stage 
   | 3 | Docs | codex, sol, medium | waiting for #2 | - | starts after #2 is accepted |
   ```
 
-- Add one line for anything the user must do or decide, and say plainly if nothing is needed from them.
+- Add a line when the user must act or decide; omit boilerplate when no action is needed.
 - Keep the stage names from the session log so the same word always means the same thing.
 
 ## Checking a finished session
@@ -65,12 +65,12 @@ The final message is the worker's claim. Check it against the files before you a
 
 1. **Read the report.** Write down what the worker says it did, which checks it ran and what it says it did not verify. If the final message is about something else (a hook or memory error), read the event log for the real report.
 2. **See what actually changed.** `git status` and `git diff --stat` in the working folder, against the starting point. Then read the diff of the files that matter. Look for changes nobody asked for.
-3. **Rerun the checks.** Run the tests, builds and commands from the brief's acceptance yourself, at least the cheap ones. A test the worker reports as passed but that fails for you is a failure.
+3. **Validate check evidence.** Confirm required checks refer to the actual revision and conditions. Rerun when evidence is missing, inconsistent, stale, a check was explicitly assigned to you, or risk requires independent execution. Reuse sufficient evidence rather than repeating every cheap command. A reported pass that fails for you is a failure.
 4. **Go through the requirements.** For each numbered requirement in the brief, name the evidence: a file and line, a test, a command output. A requirement without evidence is not done.
 5. **Check the boundaries.** Check actual changes against AGENTS authorization and the brief’s allowed files/actions; check old names/leftovers when required. Worker artifacts follow agent-sessions, Worker artifacts.
-6. **Try the behaviour, not only the tests.** Run the real scenario the user cares about, including an edge case: install and then upgrade, open the screen, feed an empty or very large input, run from a fresh clone. Tests passing while the real scenario fails is common. Typical findings of this step: files left behind after a migration, logic that works for only one version, a pipeline that fails in a clean environment.
+6. **Check the user-facing behavior.** Ensure evidence covers the affected real scenario and risk-relevant failure/recovery cases. Inspect it yourself when required by your assignment or when worker evidence cannot establish the property. Install/upgrade, extreme input and fresh-clone rehearsals apply only when the changed behavior or project requirements warrant them; a passing unit test alone does not establish an end-to-end result.
 7. **Decide.**
-   - **Accepted:** every requirement has evidence and nothing is outside the boundaries.
+   - **Accepted:** every material requirement has sufficient current evidence and nothing is outside the boundaries. Finish without broader or repeated checks unless a new change, failure or named unresolved risk warrants them.
    - **Fix requested:** something specific is wrong or missing. Continue the same session with a short follow-up brief (see [writing the brief](brief-writing.md)): what is wrong, what to do, how it will be checked. Choose continuation effort under [agent-sessions, step 3](../../agent-sessions/SKILL.md#3-choose-effort-and-access); preserve other approved settings.
    - **Redo:** the result is wrong at its core. Continue the same normal worker with a corrected brief; effort changes follow agent-sessions, step 3.
    - Fix it yourself only when it is small and continuing the session is not worth it. Say that you did.
@@ -84,11 +84,11 @@ Native unattended approval/question prompts follow [adapter contract, Unattended
 
 ## Reporting
 
-After all sessions are accepted, or when you need the user's decision, report directly to the user per session using AGENTS language defaults. Worker-to-orchestrator reports and final responses follow [brief-writing, Language](brief-writing.md#language).
+After all sessions are accepted, or when you need the user's decision, report the outcome and material differences between sessions using AGENTS language defaults; keep full operational details in the existing log rather than repeating them. Worker-to-orchestrator reports and final responses follow [brief-writing, Language](brief-writing.md#language).
 
 - what it did;
 - what you verified and how (which commands you ran, what you opened);
 - what remains unverified and why;
-- what the user needs to decide next: commit, push, publish, a choice between variants.
+- any genuinely pending decision, such as publication not yet authorized or a material choice between variants. Do not ask again for an action already authorized within its conditions.
 
 Git authorization: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries); worker artifacts: see agent-sessions, Worker artifacts.

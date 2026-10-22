@@ -1,6 +1,6 @@
 ---
 name: you-are-brain
-description: Set yourself up as the "brain" that plans work and hands it to worker sessions in other agent clients (Codex, Claude Code, z.ai GLM, a DeepSeek harness or any client with an adapter). Use when the user says "you are the brain", "be the orchestrator", "hand tasks to agents" or asks to run work through several models or clients. It asks which clients and models are available and how to route tasks between them, saves that as a brain profile, and then works by the agent-sessions skill.
+description: Set up or restore the brain/orchestrator role when the user selects it. Reuse its saved client/model profile and delegate through agent-sessions.
 ---
 
 # You are the brain
@@ -13,7 +13,7 @@ A continuing task restores its already selected setup and [session state](../age
 
 A brain profile records the clients, models and routing rules the user chose. Read [the profile format](references/brain-profile.md) for where profiles live and how they combine.
 
-- If a profile exists, show it to the user as a short card and ask using [AGENTS language defaults]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries): "Use this profile as is, change it, or change it for this task only?"
+- If an applicable profile exists, reuse it and mention the selected route briefly. Ask only when it conflicts with the current request, lacks a required choice or the user asks to change it. A profile does not replace the session-launch approval required by agent-sessions.
 - If none exists, go to step 2.
 
 ## 2. Set up
@@ -46,4 +46,4 @@ Work by [agent-sessions](../agent-sessions/SKILL.md), with these profile-specifi
 
 ## When the user changes the setup later
 
-If the user says "from now on, give X to Y" or "this time use Z", ask once whether it applies to all future sessions or only to the current task, then update the profile or keep it in the conversation accordingly.
+If the user says "from now on, give X to Y", update the authorized profile; "this time use Z" applies only to the current task. Ask about persistence only when their intended scope is unclear. Preserve other settings and the applicable launch approval.

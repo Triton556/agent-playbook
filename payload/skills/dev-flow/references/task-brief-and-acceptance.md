@@ -10,13 +10,13 @@ Start from what already exists: the request in the user's words, their latest co
 
 ## 2. Understand the intent
 
-Before choosing an approach, fill in this intent card in the plan. Keep it short; an unknown field is an open question, not a guess.
+For a substantial or ambiguous task, record the relevant parts of this intent card in the existing plan. Reuse known answers. Mark material unknowns; use stated reversible assumptions for nonblocking details. A clear small edit needs only its outcome, boundaries and check.
 
 - **Outcome.** What the user wants to have, do or feel when this is done, in the user's words. Why, and for whom.
 - **Whose material is the basis.** When the user supplies their own draft, text, order, design or world, that material is the basis. Keep its structure, order, voice and content. Your changes are proposals: list them separately, each with its reason, and let the user choose. Do not silently reorder, shorten, merge or replace the user's material.
 - **What already works.** For a revision of accepted work, list what made it accepted. Include the personal and playful parts, not only the technical ones: lore, references to the user's life, easter eggs, in-jokes, recognizable places, living motion, the overall mood. Ground each item in the user's words or in your own inspection of the accepted version. Every item becomes a preservation criterion.
 - **Scale of change.** Match the size of the change to the request. "Improve" or "rework" does not mean "rebuild from scratch". Propose a larger restructuring with its reasons before doing it.
-- **How it could fail.** Name the three most likely reasons the user would reject the result, judged by what the user values rather than by what is easy to measure. Each one becomes a distinguishing check.
+- **How it could fail.** Name plausible material reasons the user could reject the result, judged by what they value. Add a distinguishing check for each; there is no required count.
 - **Open decisions.** Choices that would change the product, the experience, the style or the scope.
 
 Example: The user asks to rework an accepted world map into voxels. "Keep the atmosphere" is too vague to protect anything. Useful entries are: "people, animals and water move; each land has a clear meaning; the lore section and the easter egg stay discoverable; new assets fit the theme of their land." Likely rejection: "the world looks dead, cluttered and meaningless, even though the assets look better."
@@ -25,18 +25,18 @@ Example: The user shares a raw essay draft and asks what could be made from it. 
 
 ## 3. Ask only what changes the work
 
-Before asking, check: which next step or which part of the result changes depending on the answer? If none, decide yourself and state the assumption.
+Before asking, identify the blocked decision and why a reversible assumption is insufficient. Otherwise proceed with a stated assumption.
 
-Initiate questions yourself when an unknown choice materially changes the goal, experience, style or scope. Applicable themes: audience and goal; scenarios and content; actions, errors and recovery; style and examples; device, scale and constraints; what to preserve and when the result is sufficient. Make taste concrete through examples and observable features.
+Ask when an unresolved choice changes scope, correctness, permissions or an expensive direction. For reversible implementation and presentation details within the agreed direction, use project conventions or state an assumption and proceed. Applicable themes: audience and goal; scenarios and content; actions, errors and recovery; style and examples; device, scale and constraints; what to preserve and when the result is sufficient. Make taste concrete through examples and observable features.
 
-Run short rounds of related questions; answers determine the next round. There is no fixed number of questions. After each round, save the material answers, decisions and open issues. A critical question waits for an answer or for an explicit delegation of the choice; silence is not an answer. A recommendation becomes a decision only after explicit acceptance (“as recommended” counts). Ask an unanswered question again briefly; never record non-objection as acceptance. Continue independent work meanwhile. If the user limits the interview, record the permitted assumptions.
+Group blocking questions in a short round; ask a later round only if an answer reveals a new material dependency. After each round, save the material answers, decisions and open issues. A critical question waits for an answer or for an explicit delegation of the choice; silence is not an answer. A recommendation becomes a decision only after explicit acceptance (“as recommended” counts). Keep an unanswered blocking question pending; repeat it only when a changed dependency or the user’s request makes a reminder useful. Never record non-objection as acceptance. Continue independent work meanwhile. If the user limits the interview, record the permitted assumptions.
 
 ### How to run the rounds
 
 1. **Restate first.** In one or two sentences say what you understood: what should exist or change, and for whom. If the user corrects you, restate again before asking anything else.
 2. **Collect facts yourself.** Read files, code, earlier decisions and the conversation. Never ask the user what you can look up: the framework in use, where a file is, the current behaviour.
-3. **List the open decisions.** Check these points and write down each one that is still open and would change the work: goal and audience; what "done" looks like to the user (a screen, a passing check, a file, a number); scope and what must not be touched; existing material and earlier decisions to build on; constraints (stack, platform, design system, performance, deadlines, budget); irreversible actions (deleting, publishing, pushing, sending, spending, migrating data); priorities when quality, speed and scope conflict.
-4. **Order them as a tree.** Some decisions depend on others: the file format matters only once you know there is an export at all. A round contains every open decision that can be answered now, that is, every one that does not wait for another open answer. Dependent questions go to a later round.
+3. **List the open decisions.** Record only blocking unknowns from: goal and audience; what "done" looks like to the user (a screen, a passing check, a file, a number); scope and what must not be touched; existing material and earlier decisions to build on; constraints (stack, platform, design system, performance, deadlines, budget); irreversible actions (deleting, publishing, pushing, sending, spending, migrating data); priorities when quality, speed and scope conflict.
+4. **Order them as a tree.** Some decisions depend on others: the file format matters only once you know there is an export at all. A round contains the blocking decisions needed for the next expensive step and independent of other open answers. Dependent questions go to a later round.
 5. **Ask the round** in this format, in the user's language:
 
    ```
@@ -47,27 +47,10 @@ Run short rounds of related questions; answers determine the next round. There i
    ➡️ Recommended: <your answer>
    ```
 
-   Keep a round readable: if more than about five questions are open at once, ask the ones that change the work most and move the rest to the next round. That limits the size of a round, not the number of rounds.
-6. **Update and repeat.** Record the answers; settled decisions unblock the ones that waited for them. Ask the next round. Stop when no open decision would change the work, then play back (section 4).
+   Keep a round readable: if more than about five questions are open at once, ask the ones that change the work most and move the rest to the next round. Do not add rounds for reversible details that can use stated defaults.
+6. **Update and repeat.** Record the answers; settled decisions unblock the ones that waited for them. Ask again only for a newly exposed blocking choice. Stop when the next scoped step can proceed safely with known decisions or stated reversible defaults, then play back (section 4).
 
-Example. Request: "Add an export button to the expenses dashboard." Restate: "You want to download the expenses shown on the dashboard and work with them in a spreadsheet. Right?" Facts collected without asking: the dashboard is React, the table is built from `src/data/expenses.ts`, filters live in `src/components/Filters.tsx`.
-
-Round 1:
-
-```
-**Q1 - What to export:** only the rows that match the current filters, or all expenses?
-➡️ Recommended: the filtered rows, since that is what you see when you press the button.
-
-**Q2 - Format:** CSV or an Excel file?
-➡️ Recommended: CSV; it opens in Excel and Google Sheets and needs no new library.
-```
-
-The user answers "as recommended". A decision that waited for Q2 opens. Round 2:
-
-```
-**Q3 - Excel in Russian:** should the file open correctly in Russian Excel by double click (`;` separators, decimal commas)?
-➡️ Recommended: yes, format for Russian Excel.
-```
+Example: for an export button, inspect the current filters and project format first. Ask about filtered versus all rows only if the task or existing behavior does not settle it. Reuse the project's CSV/Excel convention; do not create another interview round for a reversible formatting choice. If a compatibility requirement changes the implementation, clarify that requirement before dependent work.
 
 ## 4. Play back before expensive work
 
@@ -79,10 +62,10 @@ This lets the user correct a wrong interpretation while it is cheap. It is a che
 
 ## 5. Two decisions about how to work
 
-In the closing part of the initial interview, select separately:
+For a substantial new task, recover these choices from the current request/profile first; ask only for missing choices that affect the proposed work. Keep them separate:
 
 1. **The user's participation:** each meaningful iteration / first coherent sketch to correct direction, then autonomous refinement / fully autonomous. At a human checkpoint, show the version, what to assess and its limitations; dependent expensive work waits for the answer. Make minor technical fixes within a stage yourself. A material change of accepted direction requires alignment.
-2. **Separate reviewer:** none / one final pass / agreed stages. Explain the benefit and additional cost; record the user’s explicit choice, scope, stages and round limit. Autonomy does not select a reviewer. Launch approval: see [agent-sessions, step 5](../../agent-sessions/SKILL.md#5-get-approval-with-a-summary); rounds and independence: see [independent-review, After the report](../../../workflow/independent-review.md#after-the-report).
+2. **Separate reviewer:** default to author self-checks unless separate review is requested or a concrete risk warrants proposing it. Before a separate reviewer runs, explain its benefit and cost; obtain and record the user’s explicit choice, scope, stages and round limit. Autonomy does not select a reviewer. Launch approval: see [agent-sessions, step 5](../../agent-sessions/SKILL.md#5-get-approval-with-a-summary); rounds and independence: see [independent-review, After the report](../../../workflow/independent-review.md#after-the-report).
 
 On continuation, reuse the saved choice. Recommend self-checks for ordinary text and discussion; for engineering, name the concrete risk that a second view would address. Author technical and substantive checks apply in every mode.
 

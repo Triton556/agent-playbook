@@ -1,6 +1,6 @@
 ---
 name: dev-flow
-description: Route and carry an end-to-end software task through the relevant planning, implementation, debugging, testing, and UI stages. Use for multi-stage development or requests to finish a product or feature. A narrow planning, bug, test, or design task can use its specialist skill directly. Excludes general research, creative writing, and household advice.
+description: Coordinate multi-stage software work from the relevant stage to verified delivery. Narrow planning, bug, test or UI tasks can use the specialist directly.
 ---
 
 # Select an engineering stage

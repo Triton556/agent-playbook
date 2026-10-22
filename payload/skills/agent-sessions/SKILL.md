@@ -1,6 +1,6 @@
 ---
 name: agent-sessions
-description: Orchestrate worker sessions in other agent clients (Codex, Claude Code, or any client with an adapter) - find out the requirements, split the work, write the briefs, get the user's approval of the whole plan, start or continue the sessions, and check the results. Use when the user asks to hand work to another agent or session, or when part of the current work would clearly gain from a separate session (independent parallel pieces, long work, an independent review); then propose it and wait for the user's yes. Also use when the user asks to add support for a new worker client. Do not use for small work you can do yourself.
+description: Launch, resume or coordinate authorized worker sessions across clients. Use for selected delegation or adding a client adapter; not routine solo work.
 ---
 
 # Agent sessions

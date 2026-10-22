@@ -15,15 +15,15 @@
 
 ## Agents and selected acceptance
 
-- Before deciding how to delegate any work, open [agent-sessions]({{HARNESS_ROOT}}/skills/agent-sessions/SKILL.md), including its execution mechanism and host-readiness branch. On continuation or context recovery, restore the selected route and existing worker/run identities before another launch; do not infer a new mechanism from the tools currently available.
+- When delegation is selected or a concrete independent work item would benefit from it, open [agent-sessions]({{HARNESS_ROOT}}/skills/agent-sessions/SKILL.md), including its execution mechanism and host-readiness branch. On continuation or context recovery, restore the selected route and existing worker/run identities before another launch; do not infer a new mechanism from the tools currently available.
 - Participation and review selection: see [task-brief-and-acceptance, 5. Two decisions about how to work]({{HARNESS_ROOT}}/skills/dev-flow/references/task-brief-and-acceptance.md#5-two-decisions-about-how-to-work).
 
 ## Routing and memory
 
-- Select skills by the goal and nearest deliverable. Route AGENTS/CLAUDE/workflow prose to agent-instructions, skill creation/update to the available built-in skill-creator, reusable artifact templates to template-creator, and ready-made installation to skill-installer. Placement: see agent-instructions, Pointers and authority. Workflow comparisons: see [workflow-pilot]({{HARNESS_ROOT}}/skills/dev-flow/references/workflow-pilot.md). Use stress-test-with-docs and agent-handoff only when explicitly selected; stress-test for a requested challenge; dev-domain-model for terminology or a meaningful ADR.
-- For a new multi-stage task, substantial artifact, revision of accepted work, work on the user’s material, recurring defect or recovery, use [WORKFLOW]({{HARNESS_ROOT}}/workflow/WORKFLOW.md). A clear small edit starts at the affected stage.
+- Select skills by the goal and nearest deliverable. Route AGENTS/CLAUDE/workflow prose to agent-instructions, skill creation/update to the available built-in skill-creator, reusable artifact templates to template-creator, and ready-made installation to skill-installer. Placement: see agent-instructions, Pointers and authority. Workflow comparisons: see [workflow-pilot]({{HARNESS_ROOT}}/skills/dev-flow/references/workflow-pilot.md). Handle requested challenges, handoffs, terminology and ADRs as scoped tasks using existing project formats; they require no extra skill.
+- For a multi-stage task, substantial artifact or revision, recurring defect, or recovery of such work, use [WORKFLOW]({{HARNESS_ROOT}}/workflow/WORKFLOW.md). A clear small edit starts at the affected stage.
 - Knowledge base: `{{MEMORY_ROOT}}`. Use `kb-find` for personal/project context: the short index, relevant topic and fresh INBOX corrections. An old receipt does not establish this computer's current state. Do not reopen a decision without cause.
-- Before finishing, use knowledge persistence: see [kb-save, Knowledge capture]({{HARNESS_ROOT}}/skills/kb-save/SKILL.md#knowledge-capture).
+- When an authorized knowledge integration is active and the task adds a reusable fact, decision or lesson, use knowledge persistence. Do not open the capture workflow for an answer with no new knowledge or duplicate a checkpoint already supplied by a hook. Required integration checkpoints still apply: see [kb-save, Knowledge capture]({{HARNESS_ROOT}}/skills/kb-save/SKILL.md#knowledge-capture).
 - Memory synchronization: see [kb-sync, Knowledge transport]({{HARNESS_ROOT}}/skills/kb-sync/SKILL.md#knowledge-transport). Semantic curation: see [kb-curate, Knowledge curation]({{HARNESS_ROOT}}/skills/kb-curate/SKILL.md#knowledge-curation).
 
 ## Domain boundaries
@@ -32,4 +32,4 @@
 - For security/reverse work, start with the shared frame, project memory and verified tools. Active checks stay in the owner's lab, a fork/testnet or an explicitly authorized environment; distinguish a hypothesis from reproduction. Mentioning a tool does not establish MCP installation. Radio and third-party systems have narrower boundaries.
 - Lab access requires a separately authorized provider, verified target identity and current session ownership. This public package supplies no personal VM controller; a new session needs its own start authorization.
 
-Before delivery, silently check the goal/permissions, current context and applicable domain checks, result/limitations and memory persistence. This check does not require repeating an already sufficient verification.
+Before delivery, check the requested result, permissions, applicable checks and remaining limitations. Reuse sufficient evidence; persistence applies only under the condition above. If a skill would block authorized work or add an approval step, identify its exact instruction and distinguish a requirement from your interpretation. User instructions take precedence over skill guidance, within system rules and actual permissions.

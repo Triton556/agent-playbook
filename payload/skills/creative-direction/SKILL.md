@@ -1,6 +1,6 @@
 ---
 name: creative-direction
-description: Find and choose a creative direction before building. Use when the task asks to come up with, propose or pick an idea, concept or direction - a new interface or a redesign direction, a game idea or mechanic, a video, essay or content concept, angle or structure, a motion, visual or 3D concept - or when the user shares things they like and asks what could be made from them. Skip for small refinements and when an accepted direction or creative brief already exists.
+description: Propose and select a creative concept for a game, interface, content, motion or 3D work. Skip small refinements and already accepted directions.
 ---
 
 # Creative direction

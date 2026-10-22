@@ -1,4 +1,9 @@
-# Generated from Jam Board docs/mcp.md, Tool contract (39 tools), 2026-10-21.
+# Generated from Jam Board cf2e8fd docs/mcp.md, 44 tools, 2026-10-22.
+get_session_context
+get_execution
+list_execution
+request_execution
+list_execution_requests
 get_project
 get_board
 list_epics
@@ -31,10 +36,10 @@ list_questions
 withdraw_question
 set_status
 list_changes_since
+wait_for_changes
 add_reference
 list_references
 link_reference
 update_reference
 list_members
 list_assets
-wait_for_changes

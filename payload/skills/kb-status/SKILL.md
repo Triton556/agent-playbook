@@ -1,6 +1,6 @@
 ---
 name: kb-status
-description: Check knowledge persistence, pending turns, Git synchronization and the latest maintenance of the user's personal knowledge base.
+description: Check knowledge persistence, pending records, synchronization and maintenance status when requested or required by active maintenance.
 ---
 
 Run `node SYSTEM/scripts/kb.mjs status` in the verified vault directory. On PC this is `{{MEMORY_ROOT}}`; in Cloud determine the actual path. The command updates STATUS.md in the current copy.

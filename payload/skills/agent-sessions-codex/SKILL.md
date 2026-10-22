@@ -1,6 +1,6 @@
 ---
 name: agent-sessions-codex
-description: Run work in OpenAI Codex sessions that the user can watch in the Codex app, acting as the orchestrator that finds out the requirements, splits the work, writes the briefs, gets the user's approval of the whole plan, starts or continues the sessions, and checks the results. Use when the user asks to give a task to Codex, run something "in Codex" or continue a Codex chat, and when part of the current work would clearly gain from a separate Codex session (independent parallel pieces, long work, an independent review); then propose it and wait for the user's yes. Do not use for small work you can do yourself.
+description: Launch or resume authorized Codex worker sessions. Use for a selected Codex route or a request to continue a Codex chat; not routine solo work.
 ---
 
 # Codex sessions

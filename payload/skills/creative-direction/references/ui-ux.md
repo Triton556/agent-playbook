@@ -21,7 +21,7 @@ Three directions that share the same flow and differ only in layout or style are
 
 ## References
 
-Use real products for the same task (competitors, platform patterns, well-known apps) and the project's own screens. ui-reference can supply patterns for a specific question. Show screenshots or links of 4–6 examples and record what the user likes or rejects in each.
+Use real products for the same task (competitors, platform patterns, well-known apps) and the project's own screens. Use targeted primary sources for an unresolved UX question. Show only enough relevant examples to distinguish the open choices; reuse an accepted direction.
 
 ## Sketch
 

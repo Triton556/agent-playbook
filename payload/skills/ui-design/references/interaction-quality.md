@@ -12,16 +12,16 @@ For a material action, record in the existing plan: **action → user expectatio
 | Actual zero | Data encoding: see [data-spatial-metaphors, Live, snapshot, approximate, absent](../../visual-scenes/references/data-spatial-metaphors.md#live-snapshot-approximate-absent). |
 | No measurement / unknown | See data-spatial-metaphors, Live, snapshot, approximate, absent |
 | No matches | Applied conditions and a way to relax/remove filters are visible |
-| Error / stale result | See causal-state-interaction, One model, several views; recovery follows ui-reference rule IDs error-recovery and state-preservation |
-| Success | See ui-reference, Quick Reference, press-feedback |
+| Error / stale result | See causal-state-interaction, One model, several views; recovery follows [accessible interaction checks](accessibility.md) rule IDs error-recovery and state-preservation |
+| Success | See [accessible interaction checks](accessibility.md), press-feedback |
 
 Align units, denominators and rounding; an identifier needs no denominator, a proportion does. Result propagation: see [causal-state-interaction, One model, several views](../../visual-scenes/references/causal-state-interaction.md#one-model-several-views). Persisted settings have a clear scope and reset path.
 
 ## Input and errors
 
-- Labels and icon semantics: see [ui-reference, Quick Reference](../../ui-reference/references/quick-reference.md#quick-reference), input-labels, required-indicators and icon-context. Remove unjustified fields while preserving sufficient data; task context determines field count and wizard steps.
-- Input retention: see ui-reference, state-preservation. In addition to that rule, validation respects input completeness: tabbing untouched fields should not create a queue of errors; password assistance while typing may help.
-- Error presentation: see ui-reference, error-placement, error-recovery, error-summary and focus-management. Normalize formatting only while preserving meaning; server contracts remain mandatory.
+- Labels and icon semantics: see [accessible interaction checks](accessibility.md), input-labels, required-indicators and icon-context. Remove unjustified fields while preserving sufficient data; task context determines field count and wizard steps.
+- Input retention: see [accessible interaction checks](accessibility.md), state-preservation. In addition to that rule, validation respects input completeness: tabbing untouched fields should not create a queue of errors; password assistance while typing may help.
+- Error presentation: see [accessible interaction checks](accessibility.md), error-placement, error-recovery, error-summary and focus-management. Normalize formatting only while preserving meaning; server contracts remain mandatory.
 - Clearing data, canceling, resetting filters and restoring a default view are different operations. Loss cost determines undo/confirmation; do not require confirmation for every harmless action.
 
 ## Tables, filters and dense desktop UI
@@ -36,11 +36,11 @@ Align units, denominators and rounding; an identifier needs no denominator, a pr
 
 Length/position support precise comparison; choose charts by question. Color can encode another quantity, but values/labels/another channel also convey the content. An exploratory dashboard is valid when overview, comparison and detail have clear transitions.
 
-Response matches the operation. 0.1/1/10 seconds are heuristics, not one SLA for every action. When percentage is unknown, show stages/measured volume or an indeterminate indicator. Skeletons match future structure; they are not mandatory after a universal threshold. In addition to ui-reference, Quick Reference, press-feedback: expose supported continuation/cancellation and ground any displayed deadline. Optimistic changes suit only controlled reversibility/errors. Sound/micro-motion should be restrained and disableable; reduced motion: see ui-reference, reduced-motion.
+Response matches the operation. 0.1/1/10 seconds are heuristics, not one SLA for every action. When percentage is unknown, show stages/measured volume or an indeterminate indicator. Skeletons match future structure; they are not mandatory after a universal threshold. In addition to [accessible interaction checks](accessibility.md), press-feedback: expose supported continuation/cancellation and ground any displayed deadline. Optimistic changes suit only controlled reversibility/errors. Sound/micro-motion should be restrained and disableable; reduced motion: see [accessible interaction checks](accessibility.md), reduced-motion.
 
 ## How to verify
 
-Perform the main scenario and risk-relevant failure/recovery at the target window. Shared keyboard/focus/input rules: see ui-reference, Quick Reference. Async revision checks: see causal-state-interaction, One model, several views. A still image does not measure latency or establish user emotion.
+Perform the main scenario and risk-relevant failure/recovery at the target window. Shared keyboard/focus/input rules: see [accessible interaction checks](accessibility.md). Async revision checks: see causal-state-interaction, One model, several views. A still image does not measure latency or establish user emotion.
 
 Acceptance and evidence grades: see task brief and acceptance, section 7, and human-perspective-review, Readiness and transfer.
 

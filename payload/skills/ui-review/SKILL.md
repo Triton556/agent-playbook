@@ -1,6 +1,6 @@
 ---
 name: ui-review
-description: Inspect and improve an existing rendered interface with Impeccable guidance and tools. Use after UI implementation, or for visual critique, polish, responsive checks, accessibility, interaction states, and UI readiness. Assess the changed surface at relevant viewports; initial design choices belong to ui-design.
+description: Assess an existing rendered UI for readability, interaction states, accessibility and project style. Use real scenarios; do not replace inspection with source checks.
 ---
 
 # Review a working interface
@@ -13,4 +13,4 @@ For behavior use the applicable [interaction-quality](../ui-design/references/in
 
 Review scope: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries). Repairs: see WORKFLOW, step 6. New visual language: see ui-design; unexplained functional cause: see dev-debug.
 
-Impeccable is a specialist reference/detector, not a second mandatory audit. Scripts contains the local context wrapper without upstream interviews or subagents. Actual inspection outranks an abstract count; evaluate stylistic warnings against the brand. Sources: [sources.json](sources.json), [binary.json](binary.json), [LICENSE](licenses/pbakaus--impeccable-LICENSE).
+Inspect the real rendering and affected interactions. Automated checks are supporting evidence, not substitutes for the user scenario. Self-review does not launch reviewers; use a separate reviewer only when explicitly selected.

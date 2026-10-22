@@ -28,7 +28,7 @@ For a new landing page or research dashboard, apply [accepted UI lessons](accept
 
 Identify a verification point as **screen/route + state + data + window size**. Keep a compact transition map/table in the existing plan: where the user came from, what they did, what changed, how to return and what remained. Cover the main uninterrupted path and risk-relevant failure/return. Add loading, empty, error, success, focus and other states according to the actual scenario.
 
-Related states share components and semantic roles. Input/filter retention: see ui-reference, state-preservation; coupled results: see causal-state-interaction, One model, several views. Scope supported devices, themes and states explicitly in the brief. For each supported size define wrapping/collapse/availability. Representative combinations and risky boundaries suffice; exhaustive combinations require corresponding risk. A desktop scenario does not automatically get a mobile version.
+Related states share components and semantic roles. Input/filter retention: preserve valid input and selected filters across retries; coupled results: see causal-state-interaction, One model, several views. Scope supported devices, themes and states explicitly in the brief. For each supported size define wrapping/collapse/availability. Representative combinations and risky boundaries suffice; exhaustive combinations require corresponding risk. A desktop scenario does not automatically get a mobile version.
 
 **Done:** the map supports a path from entry to result/recovery; important states/sizes remain in verification and data/behavior contradictions are resolved.
 

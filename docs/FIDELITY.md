@@ -1,3 +1,7 @@
+# Current scope: version 2.0 core cleanup
+
+The owner explicitly approved semantic simplification and removal of external skill bundles. [Core cleanup](CORE_CLEANUP_2.0.md) supersedes earlier preservation promises for the named retired components. Retained code/resources and licenses remain intact unless a declared change says otherwise. Historical sections below describe older releases, not the current inventory.
+
 # Fidelity and non-degradation contract
 
 This export preserves the active configured workflow, not retired experiments or another owner's private environment.

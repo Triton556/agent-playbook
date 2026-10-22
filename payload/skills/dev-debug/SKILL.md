@@ -1,11 +1,11 @@
 ---
 name: dev-debug
-description: Diagnose and fix observed software failures, regressions, crashes, build errors, flaky tests, or performance symptoms. Use when behavior is wrong or a check fails and the cause needs evidence. A request for new behavior starts with implementation; aesthetic redesign starts with ui-design.
+description: Diagnose an observed failure, regression, crash, flaky test or performance symptom. Use evidence to find the cause; not feature planning.
 ---
 
 # Diagnose and fix bugs
 
-Start with the exact symptom: expected and actual behavior, inputs, environment, version and available output. For a nontrivial or recurring failure, read [diagnosing-bugs](vendor/matt-pocock/diagnosing-bugs/INSTRUCTIONS.md); local rules replace its mandatory external interviews and agent procedures.
+Start with the exact symptom: expected and actual behavior, inputs, environment, version and available output. For a recurring failure, test a specific causal hypothesis rather than rerunning generic checks.
 
 1. Obtain a reproducible signal: test, HTTP request, CLI fixture, browser scenario or measurement. Preserve the original result, removing secrets. Minimize the example when that accelerates diagnosis. For flaky/performance bugs, record conditions, frequency and baseline measurement.
 2. Rank hypotheses using the evidence. Find and test an observation that distinguishes likely causes. Change one material variable per iteration. The symptom and risk determine the investigation's scale.

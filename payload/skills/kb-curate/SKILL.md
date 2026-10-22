@@ -1,6 +1,6 @@
 ---
 name: kb-curate
-description: Curate new INBOX records in the user's personal knowledge base and update topic notes and the index under the current workflow. Intended for the designated curator's daily maintenance.
+description: Curate new knowledge INBOX records into sourced topics and an index during authorized maintenance; preserve original records.
 ---
 
 ## Knowledge curation

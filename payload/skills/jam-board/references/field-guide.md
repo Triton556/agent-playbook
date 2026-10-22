@@ -1,6 +1,6 @@
 # Board field guide
 
-Use this while writing the board, together with [brief-writing](../../agent-sessions/references/brief-writing.md#a-weak-brief-and-a-strong-one) and the [intent/acceptance procedure](../../dev-flow/references/task-brief-and-acceptance.md). The guide maps fields; it does not replace either procedure. Examples below use a fictional title/menu feature. Worker-channel language: see [brief-writing, Language](../../agent-sessions/references/brief-writing.md#language). Output defaults: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
+Use this while writing the board, together with [brief-writing](../../agent-sessions/references/brief-writing.md#form) and the [intent/acceptance procedure](../../dev-flow/references/task-brief-and-acceptance.md). The guide maps fields; it does not replace either procedure. Examples below use a fictional title/menu feature. Worker-channel language: see [brief-writing, Language](../../agent-sessions/references/brief-writing.md#language). Output defaults: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
 ## Epic
 

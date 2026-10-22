@@ -1,6 +1,6 @@
 ---
 name: voxel-models
-description: Create, inspect and procedurally generate voxel art models as editable grids and palette-preserving meshes. Use for voxel assets, modular kits, voxel creatures and voxel dioramas; ordinary low-poly modeling and general UI design use their own workflows.
+description: Create or refine requested voxel models and their presentation, with actual render checks. Ordinary UI and non-voxel scenes use their own skills.
 ---
 
 # Voxel model craft

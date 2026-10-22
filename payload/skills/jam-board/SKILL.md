@@ -1,6 +1,6 @@
 ---
 name: jam-board
-description: Plan and run project work through Jam Board when the user mentions Jam Board, a jam-board MCP server is connected, or the user asks to work "on the board" / «на доске». Do not use board operations without a connected server; guide connection using references/connect.md from the app's docs/mcp.md. Unrelated task boards use their own workflow.
+description: Plan or execute work explicitly assigned to Jam Board or selected by the user. A connected MCP alone is not a trigger; operations require a working connection.
 ---
 
 # Jam Board
