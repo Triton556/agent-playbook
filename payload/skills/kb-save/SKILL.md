@@ -1,6 +1,6 @@
 ---
 name: kb-save
-description: Save new useful knowledge from the user's current conversation to the file-based INBOX with its source, evidence and status.
+description: Capture a new reusable fact, decision or lesson with source/status when authorized knowledge persistence is active; skip duplicates and empty checkpoints.
 ---
 
 ## Knowledge capture
@@ -9,7 +9,7 @@ PC vault: `{{MEMORY_ROOT}}`. In Cloud, use the verified copy of the designated c
 
 Read SYSTEM/workflows/capture.md only on first use or when the procedure changes. Save short records yourself; a substantial summary may use one memory agent only with the current installation owner's consent under AGENTS.md. The same workflow defines handoff and verification; delegation is optional. Prepare concise JSON of new knowledge using its schema. On PC, prefer available and authorized `harness_kb_writer` tools: `kb_capture({payload})` or `kb_checkpoint({session_id,turn_id})`. Persistent tool access requires the current owner's actual approval. If absent from this chat's tool catalog, use the existing CLI through stdin: `node SYSTEM/scripts/kb.mjs capture` from the vault, respecting current filesystem permissions. In PowerShell, use an object → ConvertTo-Json → stdin; never interpolate user text into shell code. From another directory, use the script's absolute path.
 
-Use real hook-provided identifiers; give a new stage a new batch_key and reuse the previous key for a retry. If the user prohibits saving content or there is no new knowledge, checkpoint without saving content. Confirm persistence using a successful receipt and an existing file. Transport: see [kb-sync, Knowledge transport](../kb-sync/SKILL.md#knowledge-transport). Curation: see [kb-curate, Knowledge curation](../kb-curate/SKILL.md#knowledge-curation). Language defaults: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
+Use real hook-provided identifiers; give a new stage a new batch_key and reuse the previous key for a retry. If the user prohibits saving content or there is no new knowledge, checkpoint without saving content only when the active integration requires a turn mark. Without an authorized configured vault, do not create one for an ordinary task; report missing persistence only when saving was requested. Confirm persistence using a successful receipt and an existing file. Transport: see [kb-sync, Knowledge transport](../kb-sync/SKILL.md#knowledge-transport). Curation: see [kb-curate, Knowledge curation](../kb-curate/SKILL.md#knowledge-curation). Language defaults: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
 ## Delegated work
 

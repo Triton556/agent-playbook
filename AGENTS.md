@@ -1,8 +1,8 @@
 # Repository maintenance
 
-This repository packages an intact configured workflow. Read INSTALL_FOR_AGENTS.md before installing it. Read docs/FIDELITY.md before changing instructions or packaging.
+This repository maintains the owner-approved core workflow. Read INSTALL_FOR_AGENTS.md before installing it. Read docs/FIDELITY.md before changing instructions or packaging.
 
-- Preserve full payload bodies, conditional references, helpers, datasets, source metadata and component licenses. Do not shorten a pipeline or change its acceptance criteria while fixing packaging.
+- Preserve the approved core behavior, source metadata and applicable licenses. Version 2.0 intentionally removes external methods and simplifies policy under docs/CORE_CLEANUP_2.0.md; do not treat that authorization as permission to alter unrelated project criteria.
 - Keep environment bindings and runtime relocations explicit in manifest.json. A file/hash pass is not model-quality evidence.
 - Do not import private notes, credentials, remote settings, real VM identities or another owner's standing grants.
 - Run actual installer/helper checks in an isolated project. Keep user files and different existing instructions intact. No global client config or permission editing is implied by installation.

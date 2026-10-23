@@ -47,7 +47,11 @@ def heading_ids(path):
 class InstructionOwnership(unittest.TestCase):
     def test_each_map_rule_has_one_policy_owner(self):
         rules = owned_rules()
-        self.assertEqual(len(rules), 16, 'Every ownership-map rule needs a sentinel')
+        self.assertEqual({row[0] for row in rules}, {
+            'Worker-channel language', 'Git action authorization',
+            'Capture identity and persistence', 'Worker memory assignment',
+            'Memory transport', 'Semantic curation', 'Decision consent',
+        }, 'Every retained shared policy needs its declared owner')
         self.assertEqual(len({row[0] for row in rules}), len(rules))
         instructions = {
             p.relative_to(ROOT).as_posix(): p.read_text(encoding='utf8')
@@ -82,7 +86,9 @@ class InstructionOwnership(unittest.TestCase):
                 args = ['--client', client, '--target', target, '--skills', 'you-are-brain']
                 plan = call('plan', *args)
                 self.assertEqual(plan['requested_skills'], ['you-are-brain'])
-                self.assertIn('agent-sessions', plan['installed_skills'])
+                self.assertEqual(set(plan['installed_skills']), {
+                    'you-are-brain',
+                })
                 result = call('install', *args)
                 self.assertEqual(result['installed_skills'], plan['installed_skills'])
                 self.assertFalse(result['workflow_activated'])
@@ -97,9 +103,18 @@ class InstructionOwnership(unittest.TestCase):
                 # inlined at project root. Source-relative AGENTS links fail here.
                 for path in (target / native / 'skills').rglob('*.md'):
                     for destination, fragment, raw in markdown_destinations(path):
-                        self.assertTrue(destination.exists(), (path, raw))
-                text = (target / native / 'skills/you-are-brain/SKILL.md').read_text(encoding='utf8')
-                self.assertIn((target / native / 'BASE-RULES.md').as_posix(), text)
+                        # References are navigation, not installation dependencies.
+                        # Every source link must exist, but an unselected skill
+                        # does not get installed merely because it is mentioned.
+                        if not destination.exists():
+                            relative = destination.relative_to(target / native)
+                            self.assertTrue((ROOT / 'payload' / relative).exists(), (path, raw))
+                            self.assertEqual(relative.parts[0], 'skills')
+                            self.assertNotIn(relative.parts[1], plan['installed_skills'])
+                base_rules = target / native / 'BASE-RULES.md'
+                self.assertTrue(base_rules.is_file())
+                self.assertIn(base_rules.as_posix(), entry.read_text(encoding='utf8'))
+                self.assertEqual(payload_bytes('payload/AGENTS.md', target, client), base_rules.read_bytes())
 
     def test_every_relative_payload_markdown_destination_exists(self):
         checked = 0
@@ -108,7 +123,7 @@ class InstructionOwnership(unittest.TestCase):
                 with self.subTest(source=str(path.relative_to(ROOT)), link=raw):
                     self.assertTrue(destination.exists(), str(destination))
                 checked += 1
-        self.assertGreater(checked, 330)
+        self.assertGreater(checked, 0, 'The link check must inspect the active payload')
 
     def test_owned_instruction_fragments_resolve(self):
         # Third-party reference bodies remain intact; validate active local anchors.
@@ -139,13 +154,13 @@ class InstructionOwnership(unittest.TestCase):
         self.assertIn('final responses', language)
         self.assertIn('does not change the surrounding message or report to the orchestrator', language)
         self.assertIn('Communicate directly with the user in Russian and write knowledge-base content in Russian', base)
-        self.assertIn('unless the user explicitly requests another language for a particular output', base)
-        self.assertIn('/skills/agent-sessions/references/brief-writing.md#language', base)
+        self.assertIn('unless the user requests another language', base)
+        self.assertNotIn('brief-writing.md', base)  # BASE has no indirect language-policy expansion.
         self.assertIn('Preserve exact source quotations, identifiers, paths, commands and required product text in their original language', language)
         self.assertIn('Mark quotations as quotations', language)
-        # Exact quoted Russian UI text remains valid inside English instructions.
-        self.assertIn('The button label is the user\'s wording: «Скачать CSV».', owner)
-        self.assertIn('For this fictional brief the user explicitly requested Russian interface text and English code/comments.', owner)
+        # Preservation and deliverable language are policy, not a dependency
+        # on a particular fictional example remaining in the guide.
+        self.assertIn('Preserve exact quotations, identifiers and required product text', template)
         self.assertIn('Write interface text, documents and other user-facing deliverables in the language specified for that output', language)
         self.assertNotRegex(language.lower(), r'(ban|forbid|reject).*cyrillic|automatic.*(translat|detect)')
 
@@ -164,18 +179,30 @@ class InstructionOwnership(unittest.TestCase):
                     planned = call('plan', *args)
                     result = call('install', *args)
                     self.assertEqual(planned['installed_skills'], result['installed_skills'])
-                    self.assertEqual(len(result['installed_skills']), 26 if selection[0] == 'profile' else 21)
+                    if selection[0] == 'profile':
+                        self.assertEqual(len(result['installed_skills']), 13)
+                    else:
+                        expected = {'you-are-brain'}
+                        self.assertEqual(set(result['installed_skills']), expected)
                     installed = target / native
                     base = (installed / 'BASE-RULES.md').read_text(encoding='utf8')
                     owner = installed / 'skills/agent-sessions/references/brief-writing.md'
-                    self.assertIn(owner.as_posix()+'#language', base)
+                    self.assertNotIn(owner.as_posix()+'#language', base)
                     self.assertIn('## Audience and language', owner.read_text(encoding='utf8'))
                     self.assertEqual(owner.read_bytes(), (installed / 'skills/agent-sessions-codex/references/brief-writing.md').read_bytes())
                     for path in [installed / 'BASE-RULES.md', owner, installed / 'skills/agent-sessions/references/running-and-checking.md', installed / 'skills/agent-sessions-codex/references/running-and-checking.md']:
                         for destination, fragment, raw in markdown_destinations(path):
-                            self.assertTrue(destination.exists(), (path, raw))
-                            if fragment and destination.suffix == '.md':
-                                self.assertIn(fragment, heading_ids(destination))
+                            if destination.exists():
+                                if fragment and destination.suffix == '.md':
+                                    self.assertIn(fragment, heading_ids(destination))
+                            else:
+                                relative = destination.relative_to(installed)
+                                source = ROOT / 'payload' / relative
+                                self.assertTrue(source.exists(), (path, raw))
+                                self.assertEqual(relative.parts[0], 'skills')
+                                self.assertNotIn(relative.parts[1], result['installed_skills'])
+                                if fragment and source.suffix == '.md':
+                                    self.assertIn(fragment, heading_ids(source))
                     self.assertEqual(call('verify', '--client', client, '--target', target)['status'], 'pass')
                     doctor = call('doctor', '--client', client, '--target', target)
                     self.assertEqual(doctor['instruction_integrity'], 'pass')

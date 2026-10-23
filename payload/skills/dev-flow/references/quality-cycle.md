@@ -18,6 +18,6 @@ Use [quality-ledger](quality-ledger.md) when series/dependency evidence benefits
 
 ## Repair and transfer
 
-Repairs follow WORKFLOW, step 6. Add checks of the affected member, relevant family extremes and protected examples. Invalidation: see quality-ledger, Schema version 1.
+Repairs follow WORKFLOW, Check, repair and finish. Add checks of the affected member, relevant family extremes and protected examples. Invalidation: see quality-ledger, Schema version 1.
 
 Reusable lessons keep trigger, observation, mechanism/hypothesis, check, scope/exceptions and example links. General task rules stay in WORKFLOW, subject-specific rules in the profile, and project values in the project. This adapter adds no new interview, reviewer or model experiment.

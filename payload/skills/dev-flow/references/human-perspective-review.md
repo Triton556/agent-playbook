@@ -2,12 +2,12 @@
 
 ## Quick start: look at it as the user will
 
-Do this before reporting any result a person will see, read or use. It takes minutes and catches what technical checks miss.
+For a changed user-facing artifact, inspect the affected interaction or reading path at its intended size. A small edit needs only the affected property and relevant states. Use the full sequence for a new surface, material redesign or failed criterion; ordinary conversation needs no inspection ritual.
 
 1. **Open it the way the user will.** The user's device and window size, normal speed, real content. For motion, watch it move; for text, read it from the top.
-2. **First impression.** In the first 10–20 seconds, before reading your own notes, write down what you recognize, what feels alive or dead, what is confusing and what works.
+2. **First impression.** Before consulting your defect notes, note any material confusion or mismatch with the intended action, meaning or style. No timed pass or finding quota is required.
 3. **Side by side.** Compare with the accepted version, the user's own material or the reference in the same view. Check every item on the intent card's "what already works" list: is it still there and still discoverable?
-4. **The user's three likely objections.** Take the rejection reasons from the intent card and check each one directly. Add any new one your first impression revealed.
+4. **Likely rejection reasons.** Take the rejection reasons from the intent card and check each one directly. Add any new one your first impression revealed.
 5. **Report honestly.** Separate what you saw yourself, what tests confirmed and what only the user can judge. A count of passed checks is not a quality claim.
 
 The rest of this document is the detailed method behind these steps.
@@ -27,7 +27,7 @@ From the request, accepted decisions and examples, establish the viewer/user, go
 | Clarity | The object, conclusion or action reads correctly at the target presentation without the author's explanation |
 | Use | Function, controls, result and recovery work; for a static file, its actual purpose/export |
 
-Give a reason for an inapplicable criterion. Detail, decoration and realism are separate decisions, not universal quality improvements.
+Record an inapplicable criterion only when it was required by the brief or its omission would otherwise be misleading. Detail, decoration and realism are separate decisions, not universal quality improvements.
 
 ## Subject-specific acceptance basis
 
@@ -62,7 +62,7 @@ Check preservation across a coherent segment of experience: a clear interface tr
 5. **Assessment against intent.** Prioritize harm to the goal, function, recognition and style under the user's conditions. Silhouette → recognition → relationships → color → details is a useful object heuristic, not a law for every modality. Deliberate asymmetry/emptiness/simplification is allowed. There is no defect quota; preserving a successful result is a valid outcome.
 6. **Repair and regression.** Transition: see [WORKFLOW, Work route](../../../workflow/WORKFLOW.md#work-route). Recheck affected character, preserved qualities, actions, relationships and protected examples in their new integration.
 
-A check must distinguish subject-specific errors. Absence of intersections in a moving part does not prove correct membership; compare action boundaries with the source. In UI check retained elements/data; in text check surviving meaning/conditions. If the method cannot distinguish a property, record the gap and use the selected human checkpoint. Actual feedback corrects current status without rewriting the earlier report. Further rounds: see WORKFLOW, step 6.
+A check must distinguish subject-specific errors. Absence of intersections in a moving part does not prove correct membership; compare action boundaries with the source. In UI check retained elements/data; in text check surviving meaning/conditions. If the method cannot distinguish a property, record the gap and use the selected human checkpoint. Actual feedback corrects current status without rewriting the earlier report. Further rounds: see WORKFLOW, Check, repair and finish.
 
 Group repetitions into a class with affected instances and a representative check. A shared cause stays hypothetical until confirmed; many small repetitions are not automatically a critical defect.
 
@@ -91,6 +91,6 @@ Justify no findings through coverage of critical features/states. Evidence versi
 
 Record technical pass, agent inspection and human assessment separately. Test/source counts and file presence describe scope; a quality conclusion needs evidence of the named property. Human acceptance comes only from an actual response; it is not a mandatory new approval for every ordinary step. An unavailable modality stays unverified; a material semantic failure stays unready. For a ledger, use existing kind/criterion/evidence fields; no new universal format is required.
 
-A lesson contains a trigger, confirmed observation, cause status, repair/preservation result, scope, exception and example/counterexample. Save an observation even if its cause is unknown; a technical rule needs a confirmed mechanism. Keep the active lesson selection focused and do not delete lessons; read every lesson that matches the current deliverable. This document owns the general method; specialist branches own subject rules.
+A lesson contains a trigger, confirmed observation, cause status, repair/preservation result, scope, exception and example/counterexample. Save an observation even if its cause is unknown; a technical rule needs a confirmed mechanism. Keep the active lesson selection focused; open a lesson only for a current decision, criterion or recurring error. Preserve stored lessons without loading every lesson about the same deliverable. This document owns the general method; specialist branches own subject rules.
 
 Grounds: workflow-review-20261013 and workflow-human-review-20261013 documents in {{EVIDENCE_ROOT}}; Gen2.1 comparisons. Author self-descriptions and predicted reactions are not independent research. Test transfer through [workflow-pilot](workflow-pilot.md).

@@ -1,6 +1,6 @@
 ---
 name: kb-sync
-description: Synchronize a file copy of the user's personal knowledge base with its verified private GitHub repository on request or during the designated curator's daily maintenance.
+description: Synchronize authorized knowledge files with their verified private GitHub repository on request or scheduled maintenance.
 ---
 
 ## Knowledge transport

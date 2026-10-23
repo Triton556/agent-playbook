@@ -23,7 +23,7 @@ Claim grades and unavailable modalities: see [human-perspective-review, Readines
 | Inspect image/model/document | Actual image or rendered artifact inspection | Visual acceptance remains unverified |
 | Inspect UI/animation | Browser/computer interaction and actual temporal observation | Static/source checks do not satisfy behavior or motion |
 | Generate an AI bitmap concept | Authorized image generation tool when that method is chosen | Use another permitted design representation where the original branch allows it; otherwise report missing modality |
-| Independent review | Session provider under agent-sessions; context under independent-review | See human-perspective-review, Readiness and transfer |
+| Independent review | Selected worker provider under you-are-brain; context under independent-review | See human-perspective-review, Readiness and transfer |
 | Knowledge persistence | Own authorized vault or limited MCP writer | No fictitious saved receipt |
 | Private sync/cloud curation | Verified private remote, authorized transport and scheduler if requested | Keep local data; exchange/schedule remains unconfigured/unverified |
 | External laboratory integration | A separately supplied, authorized provider | Personal VM control is excluded from the public package |
@@ -31,11 +31,11 @@ Claim grades and unavailable modalities: see [human-perspective-review, Readines
 
 The package does not redistribute proprietary native plugins or credentials. Native `skill-creator`, document/image tooling and client computer-use interfaces are provider dependencies. The common route preserves their role rather than assuming they are universally installed.
 
-`agent-sessions-codex` installs into the selected host's native skill root, including `.claude/skills/agent-sessions-codex` for Claude and `.agents/skills/agent-sessions-codex` for Codex. Its execution backend is the separate local Codex CLI. Any other host must actually discover the skill and supply the required tools; see [session integration](INTEGRATIONS.md#agent-sessions-codex-for-orchestrators).
+`you-are-brain` installs as the selected host's orchestration skill, including `.claude/skills/you-are-brain` for Claude and `.agents/skills/you-are-brain` for Codex. Retained technical files under `skills/agent-sessions-codex` have no separate SKILL.md. The selected Codex route uses the separate local Codex CLI; another host must discover you-are-brain and supply the required tools; see [session integration](INTEGRATIONS.md#you-are-brain-codex-route).
 
 ## Fresh reviewer adapters
 
-Reviewer execution: see [agent-sessions, Fixed rules](../payload/skills/agent-sessions/SKILL.md#fixed-rules); scope, staging and rounds: see [independent-review](../payload/workflow/independent-review.md). Selection: see task brief and acceptance, section 5.
+Reviewer execution: see [session guide, Fixed rules](../payload/skills/agent-sessions/references/session-guide.md#fixed-rules); scope, staging and rounds: see [independent-review](../payload/workflow/independent-review.md). Selection: see task brief and acceptance, section 5.
 
 ## Context parity
 
@@ -51,3 +51,9 @@ Native skill-creator, template-creator and skill-installer are external client c
 ## Adapter-session host diagnostics
 
 The bundled read-only host diagnostic and optional assignment/run-recovery checks are described in [the adapter contract](../payload/skills/agent-sessions/references/contract.md#host-readiness). A supplied Codex CLI 0.160.1 preview can establish a known marker conflict or limited preview compatibility; the active desktop host and actual model behavior remain unverified. Other versions/hosts are unverified rather than silently treated as equivalent. Existing commands and contract-v2 result shapes remain supported. Configuration changes, live tasks and independent reviewers still require their actual authorization.
+
+## Jam Board separation in 2.1
+
+Jam Board owns its standalone project-local skill and MCP integration. Install that skill from the Jam Board application for the selected project/client; this playbook no longer ships it or adds brain/planning dependencies for it. Old `--profile jam-board` and `--skills jam-board` requests stop with this explanation instead of installing another profile.
+
+During an upgrade of an existing playbook installation, unchanged receipt-owned Jam files are removed; modified managed files stop the upgrade before writes, and unowned files are preserved. Keep both versions and reconcile the reported files explicitly before retrying. Independently installed/global copies are not silently removed.

@@ -1,47 +1,18 @@
-# Impeccable: inspection and refinement
+# Inspection and refinement
 
-Use after UI implementation/change and for requested visual review. Deliver findings for review-only; repair them yourself for authorized refinement. Checks are scoped to the affected surface and user criteria. The complete upstream toolkit remains in [vendor/impeccable](../vendor/impeccable/INSTRUCTIONS.md), including detector and specialist references; this adaptation owns orchestration.
-
-## Tools and context
-
-For context, use the local wrapper that returns only project facts:
-
-```powershell
-& '{{HARNESS_ROOT}}/skills/ui-review/scripts/impeccable-context.ps1' -TargetPath '<source-file-or-route>'
-```
-
-When toolkit project facts are needed, run once per surface/session from the project root; do not recollect sufficient context already available. The wrapper excludes upstream mandatory interview/subagent directives; local rules apply. Do not call raw `context` for workflow instructions. If unavailable, read existing project documents/components and continue through an available browser; report unperformed automated analysis. Creating a missing PRODUCT.md or introducing DESIGN.md is not a prerequisite. Existing project conventions outrank toolkit formats.
-
-Load Impeccable references selectively:
-
-| Observable need | Reference in vendor/impeccable/reference/ |
-| --- | --- |
-| General aesthetic critique, hierarchy, coherence | [local critique](critique-adapted.md), craft-floor.md |
-| Final polish of an agreed design | polish.md |
-| Errors, forms, long text, i18n, edge cases | harden.md, clarify.md |
-| Responsive / accessibility / technical audit | adapt.md, audit.md; native variant for native UI |
-| Typography / spacing / motion / speed | typeset.md / layout.md / animate.md / optimize.md |
-| Complex creation/redesign of a visual world | new-work.md; local rules replace interview/delegation procedures |
-
-Upstream references include extra roles, questions and hooks. They do not expand the task: work as the current single agent, reuse accepted decisions and introduce no repeat interview or automatic hooks. One-agent self-checking is not independent review.
+This is the actual-render/action procedure selected by [ui-design](../../ui-design/SKILL.md) after implementation or for an audit of an existing UI. Use the current accepted behavior and changed flow; do not launch a separate reviewer.
 
 ## Render and behavior verification
 
-Inspection method: see [human-perspective-review, Inspection sequence](../../dev-flow/references/human-perspective-review.md#inspection-sequence). [interaction-quality](../../ui-design/references/interaction-quality.md) supplies contextual actions/states.
+1. Open the real application route with the scenario's data and target window/zoom. Check that assets/fonts have loaded and record blocking console/network errors. A source file or screenshot of an older revision does not establish the current result.
+2. Perform the human steps in order. Open affected menus, dialogs, popovers and expanded sections. At each reached state, record the expected result and actual observation. Check return/close paths and preservation of the user's unfinished input, filters or selection against the accepted behavior.
+3. Inspect the reached surface at its working size: readable text, understandable labels, visible action, hierarchy, spacing, overflow and clipping. Use a crop/region when a full-page thumbnail cannot resolve a detail. Exercise keyboard/focus where that interaction changed; an image cannot prove focus behavior.
+4. For a pending operation, observe visible loading feedback and the resulting success/error. For changed validation/recovery, execute the invalid/failed path and retry. Empty/no-results states are different from loading or missing data. Use controlled fixtures or a supported failure path; label states that could not be produced.
+5. If a design basis exists, compare the same route/state/data/window with it. Record whether a mismatch is an implementation defect, an agreed adaptation or a problem with the basis itself. A faithful copy of an unreadable mockup still fails readability.
+6. Fix observed defects within the task scope and rerun their steps plus dependent transitions. Do not replace an unperformed action with a passing build or a source assertion. Repeat the whole flow after a shared state/navigation change that can affect its later steps.
 
-1. Launch the app normally and open the actual changed route. Account for console/network errors and asset/font loading. Wait for stable screenshot state; entrance animation must not hide content. Prefer an available browser/CUA; use Playwright when available and appropriate. Follow the chosen tool's rules.
-2. Capture and actually inspect the changed surface at brief-defined sizes, including the user's actual window area when known. Check desktop and mobile when both supported modes are in scope; begin with desktop for a desktop dashboard and affected states for a narrow fix. Do not judge details from a reduced full-page thumbnail: use crops/regions. For spatial objects, choose the functional face and necessary independent views; the same angle before/after is not two directions. Bind inspected images to the actual revision, camera/scale and marked states.
-3. Basis comparison: see [design-preflight, 4. Compare the working UI with the basis](../../ui-design/references/design-preflight.md#4-compare-the-working-ui-with-the-basis). In the same actual-render pass perform the uninterrupted scenario, transitions, forms and failure/recovery. Check applicable ui-reference rule IDs plus overflow, hierarchy, spacing and fit.
-   If important human illustrations appear, actually inspect faces, poses and contacts at presentation size; enlarge suspicious areas too. Compare visible eye count/placement and facial features with viewpoint and accepted stylization: profile, closed eyes and intentional simplification are valid; unintended “cyclops” recognition requires a fix or new visual decision. After repair, recheck the entire section at working size. File format or automated pass does not replace this inspection.
-4. When a detector can resolve a specific technical/stylistic question, run it on the affected source or URL; it is not a mandatory second audit of every substantial web edit. Check argument format with `detect --help`:
-
-```powershell
-& '{{HARNESS_ROOT}}/skills/ui-review/vendor/impeccable/scripts/impeccable.cmd' detect '<target>' --json
-```
-
-The detector is supporting evidence, not the brand's judge. Distinguish a mechanical defect, stylistic recommendation and deliberate project decision. Do not replace mandated Inter, palette, logo or content to reach a zero count. Skip the HTML/CSS detector for native UI with an explanation; use a simulator/emulator or available native render.
-5. List material defects as one coherent batch. Repair/recheck transition: see [WORKFLOW, Work route](../../../workflow/WORKFLOW.md#work-route). Use the agreed inspection budget and report any remaining blocker.
+Use an available browser/CUA or an appropriate browser test tool under its actual permissions. Automated checks support the recorded observations; do not infer emotion, readability or success of unexecuted steps from them. Important illustration faces/poses/contacts must be inspected at their displayed size when those illustrations changed; record the observed defect rather than adding a universal illustration checklist to unrelated screens.
 
 ## Readiness
 
-User criteria are met, the main scenario checked, material discovered defects fixed, screenshots inspected and applicable checks passed after the latest changes. Without rendering, label the result “implemented, visually unverified,” not production-ready. Do not require extra rounds for taste alternatives after completed acceptance.
+Report the flow and its step results: PASS, FAIL or NOT_RUN, with concrete observations and the checked revision/window. UI acceptance requires the requested path and changed states to be observed, readable and free of discovered material defects. If rendering or interaction was unavailable, say “implemented, UI flow unverified” and name the missing step. Do not claim human acceptance from your own inspection.

@@ -1,5 +1,33 @@
 # Changelog
 
+## 2.1.0 — Explicit routes and user-flow acceptance
+
+- Move Jam Board skill ownership/delivery to its application; core catalog has 13 entries. Explicit old Jam selections explain the replacement, and migration preserves modified/unowned files.
+
+- Reduce BASE to four owner-selected rules; preserve actual host permissions independently. Shorten the deployment header without mandatory policy-file reading.
+- Keep brain orchestration generic: tasks, plans, workers, questions and acceptance; remove board-specific vocabulary and retain no private finance/lab policy in installable instructions.
+- Unify orchestration under you-are-brain while keeping executable adapters; retire dev-flow, visual-scenes and duplicate session/UI catalog entries.
+- Keep clear event/action/output paths for WORKFLOW and instruction editing. UI acceptance follows actual user steps, hidden states, readability and recovery.
+- Preserve mandatory voxel passport and six views; remove asset-license prompt procedures from that route, retaining package notices and credits.
+- Add explicit reference-only support modules and receipt-safe migration checks. See [scope and migration](docs/EXPLICIT_ROUTES_2.1.md).
+
+## 2.0.1 — Optional creative exploration
+
+- Remove mandatory idea/direction/reference counts and the prescribed reference-reaction/sketch-per-direction sequence. A clear accepted idea can proceed directly to execution.
+- Keep alternatives, examples, a reference supplied by the user, and sketches as optional aids for an unresolved creative choice; align content, UI and visual references.
+- Preserve other workflow, permissions, ownership and domain acceptance policies. No new mandatory reviewer or model experiment.
+- Refresh only the four changed payload records; installation checks do not establish model quality or token savings.
+
+## 2.0.0 — Core workflow cleanup
+
+- Retain 20 custom/core entrypoints; remove six imported skills, bundled vendor procedures and Impeccable runtime.
+- Replace prose-inferred dependency closure with explicit required dependencies; optional routes do not install or load every linked skill.
+- Remove mandatory external interviews/reviewers; clarify intent, proportionate testing, evidence reuse, concise reporting and conditional memory.
+- Preserve brain/session/Jam/knowledge recovery, permission boundaries and functional/visual checks.
+- Safe receipt-checked migration preserves edited, unowned and unrelated files; see [migration/inventory](docs/CORE_CLEANUP_2.0.md).
+- Refresh Jam connection examples/project pinning and 45-tool fixture against cf2e8fd; configurable read-only external contract checks.
+- Static sizes are not tokens or model-quality evidence; no paid model benchmark.
+
 ## 1.6.0
 
 - Restore the selected adapter-session route, saved task choices and worker audience after context recovery. Add a read-only host-preview diagnostic with explicit limits; a supplied preview does not certify the active desktop session.

@@ -2,7 +2,7 @@
 
 For a new asset, changed silhouette/action, new family, or integration that changes the design/scale contract, complete this stage before detailed voxel construction. Start from an object-and-kit passport, make consistent 2D design views, inspect them, repair discrepancies, then build voxels. Later voxel renders remain required. Unchanged export/reproduction of an accepted model may reuse its inspected design; do not rerun a design exercise merely to copy files.
 
-For a procedural family/batch, preflight representative parameter extremes and record the accepted range and invariants. Variants inside that checked design range can reuse the family plan while retaining their later voxel checks; a new action, identity, world requirement or out-of-range shape triggers a new design iteration. Do not require a fresh paid image call for every unchanged seed/export.
+For a procedural family/batch, preflight representative parameter extremes and record the accepted range and invariants. Variants inside that checked design range can reuse the family plan while retaining their later voxel checks; a new action, identity, world requirement or out-of-range shape triggers a new design iteration. Do not require a fresh image call for every unchanged seed/export.
 
 ## 1. Build the object-and-kit passport
 
@@ -10,7 +10,7 @@ Use the user's brief, relevant KB decisions, inspected references and accepted l
 
 Record objective, intended stylization and rejected tendencies, functional front, action/pose, materials/palette roles, world width/depth/height, origin/ground, native master voxel pitch, target camera/display and intended use. For an existing set, load its current kit specification and accepted style/scale exemplars. Record final integration pitch separately from the detailed master: independent masters can be finer; resampling later must recheck eyes, contacts and clearances. Do not stretch an asset merely to match equal-height thumbnails.
 
-Critical form, mechanics and kit uncertainties: see [reference-grounding, Observable triggers](../../dev-flow/references/reference-grounding.md#observable-triggers).
+Critical form, mechanics and kit uncertainties: see [reference-grounding, Observable triggers](reference-grounding.md#observable-triggers).
 
 **Done:** critical features have a basis and observable check; dimensions/style/pose/context are explicit; existing-kit constraints are loaded or the work is explicitly standalone. Missing important constraints remain unknown, not guessed facts.
 
@@ -39,7 +39,7 @@ Inspect the actual sheet and relevant closeups at intended review size. Write se
 | Readability | Identify the object/action and key feature in the intended view without relying on the title; zoom when the overview cannot decide |
 | Usability | Confirm the intended use and, for a viewer, the inspection scenario and legible controls. State the relevant static use when the artifact has no UI |
 
-Repairs follow WORKFLOW, step 6. In addition, a view/pose/dimension/style change updates other affected design views under [design-passport, Review schema1](design-passport.md#review-schema1). Record current observations before advancing. Participation: see task brief and acceptance, section 5; this stage adds no approval gate.
+Repairs follow WORKFLOW, Check, repair and finish. In addition, a view/pose/dimension/style change updates other affected design views under [design-passport, Review schema1](design-passport.md#review-schema1). Record current observations before advancing. Participation: see task brief and acceptance, section 5; this stage adds no approval gate.
 
 ## 4. Bind readiness, then voxelize
 
@@ -53,7 +53,7 @@ Exit0 means the declared geometric/kit constraints and all required current desi
 
 Voxel construction uses the accepted passport revision, landmarks, palette roles, native pitch and planned sockets. Preserve the accepted 2D design. Render the resulting voxels in matching views and compare their silhouette/scale/features against the design, then run the existing technical/semantic/style/context/readability/use checks. A passing concept does not automatically approve its 3D implementation. Record justified design changes as a new revision and recheck the affected plan.
 
-Grounding: see [reference-grounding, Observable triggers](../../dev-flow/references/reference-grounding.md#observable-triggers). Perception: see [human-perspective-review, Inspection sequence](../../dev-flow/references/human-perspective-review.md#inspection-sequence). This branch owns six-view representation and kit constraints; participation follows task brief and acceptance, section 5.
+Grounding: see [reference-grounding, Observable triggers](reference-grounding.md#observable-triggers). Perception: see [human-perspective-review, Inspection sequence](../../dev-flow/references/human-perspective-review.md#inspection-sequence). This branch owns six-view representation and kit constraints; participation follows task brief and acceptance, section 5.
 
 ## Material contour and mixed-grid scope
 

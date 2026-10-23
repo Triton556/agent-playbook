@@ -35,7 +35,7 @@ Bundled adapters also advertise `launch_checks: ["assignment", "resume-run", "ho
 
 ## Host readiness
 
-The leading client chooses the launch tool; the worker backend cannot reconfigure it. A skill cannot remove native tools or override higher-priority client instructions. Check the leading host separately before claiming the adapter route is ready. Confirmed competing orchestration is a conflict: do not substitute built-in subagents or silently claim compliance. Continue independent authorized work and explain the required integration change. Missing evidence is unverified, not conflict or success.
+The leading client chooses the launch tool; the worker backend cannot reconfigure it. A skill cannot remove native tools or override higher-priority client instructions. Check the leading host separately before claiming the adapter route is ready. If the host prevents the selected adapter operation, report that concrete conflict; native tools being present alone is not a conflict. Do not silently substitute a different route or claim the failed route ran. Continue independent authorized work and resolve a route change through the current task choices. Missing evidence is unverified, not conflict or success.
 
 `node adapters/host-readiness.mjs --client codex --version <host version> --prompt-input <private preview.json>` reads an existing Codex `debug prompt-input` JSON array, without launching any process, model or network request. It emits only status (`compatible`, `conflict`, `unverified`), reason, version and an evidence hash; it never prints the prompt. Input is bounded to 2 MiB. A recognized active proactive-native mode in system/developer messages establishes a preview conflict; quoted user/brief text does not. Merely available native tools or an unrecognized mode stays unverified, not a confirmed conflict. A valid marker-free preview is classified compatible only for tested CLI 0.160.1; unsupported shapes/versions/clients remain unverified. Every report has `scope: supplied-prompt-preview` and `active_session: unverified`: a snapshot cannot certify the current desktop context or model behavior.
 
@@ -59,7 +59,7 @@ Without `--assignment`, older commands pass their prompt unchanged and make no b
 
 ## Access modes
 
-The modes are read-only for investigation, workspace-write (default) for the working folder, and danger-full-access for unrestricted execution. Describe actual enforcement per client: an OS sandbox, permission mode or tool list are different guarantees. Refuse unsupported enforcement or a missing working folder with exit 4 before starting, instead of silently changing modes or folders. Session access selection belongs to [agent-sessions, step 3](../SKILL.md#3-choose-effort-and-access).
+The modes are read-only for investigation, workspace-write (default) for the working folder, and danger-full-access for unrestricted execution. Describe actual enforcement per client: an OS sandbox, permission mode or tool list are different guarantees. Refuse unsupported enforcement or a missing working folder with exit 4 before starting, instead of silently changing modes or folders. Session access selection belongs to [agent-sessions, step 3](session-guide.md#3-choose-effort-and-access).
 
 ## Run
 
@@ -75,7 +75,7 @@ node adapters/<agent>.mjs --cwd <dir> --prompt <brief file> [--name <title>] [--
 | `--name` | Display name for a new session. Ignored when continuing. |
 | `--thread` | Continue this session with the brief as the next turn. Without it a new session starts. |
 | `--sandbox` | `read-only`, `workspace-write` (default) or `danger-full-access`. Pass the mode on every turn, including continuations. |
-| `--model`, `--effort` | API-optional only. Orchestration must select and pass both under [agent-sessions, Fixed rules and step 3](../SKILL.md#3-choose-effort-and-access); use client aliases from describe. |
+| `--model`, `--effort` | API-optional only. Orchestration must select and pass both under [agent-sessions, Fixed rules and step 3](session-guide.md#3-choose-effort-and-access); use client aliases from describe. |
 | `--out` | Write the worker's final answer here. Without it the answer goes to stderr. |
 | `--log` | Append the client's raw event stream here, for debugging and checking. |
 | `--assignment` | Optional checked private audience/language/scope metadata; see Checked brief assignment. |
@@ -154,4 +154,4 @@ Access refusal: see Access modes above.
 
 ## Unattended runs
 
-Adapters run without a person at the worker. Approval requests and questions from the worker are declined, never auto-approved. Authorized asynchronous board questions and blocked-return behavior: see [running-and-checking, Questions and blocked workers](running-and-checking.md#questions-and-blocked-workers).
+Adapters run without a person at the worker. Approval requests and questions from the worker are declined, never auto-approved. Worker questions and blocked-return behavior: see [running-and-checking, Questions and blocked workers](running-and-checking.md#questions-and-blocked-workers).

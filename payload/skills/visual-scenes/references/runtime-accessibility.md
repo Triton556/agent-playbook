@@ -20,12 +20,12 @@ Labels and overlays have a joint budget. Give measurements and interaction targe
 
 ## Input and accessibility
 
-Shared controls: see [ui-reference, Quick Reference](../../ui-reference/references/quick-reference.md#quick-reference), input-labels, keyboard-nav, focus-states and icon-context. In addition to those rules, custom sliders expose units and min/max/current values with arrows and Home/End under the [WAI slider pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider/); a role alone does not implement behavior.
+Shared controls: see [accessible interaction checks](../../ui-design/references/accessibility.md), input-labels, keyboard-nav, focus-states and icon-context. In addition to those rules, custom sliders expose units and min/max/current values with arrows and Home/End under the [WAI slider pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider/); a role alone does not implement behavior.
 
-In addition to ui-reference, keyboard-nav and dragging-alternative, canvas picking needs a semantic control path for important objects, stable names/descriptions, visible selection and discoverable instructions.
+In addition to [accessible interaction checks](../../ui-design/references/accessibility.md), keyboard-nav and dragging-alternative, canvas picking needs a semantic control path for important objects, stable names/descriptions, visible selection and discoverable instructions.
 
-Reduced motion/rotation: see ui-reference, reduced-motion and auto-rotation-controls. In addition, start with a stable readable state and make scene pause stop all intended animation sources; cuts/manual playback preserve the scientific/data consequence. Announce committed summaries rather than every frame.
+Reduced motion/rotation: see [accessible interaction checks](../../ui-design/references/accessibility.md), reduced-motion and auto-rotation-controls. In addition, start with a stable readable state and make scene pause stop all intended animation sources; cuts/manual playback preserve the scientific/data consequence. Announce committed summaries rather than every frame.
 
-Contrast and redundant channels: see ui-reference, color-not-only, color-contrast and contrast-data. In addition, inspect thin colored rays at actual resolution and use real assistive technology when required by acceptance.
+Contrast and redundant channels: see [accessible interaction checks](../../ui-design/references/accessibility.md), color-not-only, color-contrast and contrast-data. In addition, inspect thin colored rays at actual resolution and use real assistive technology when required by acceptance.
 
 Official implementation references: [Three.js color management](https://threejs.org/manual/pages/color-management.html), [Three.js responsive design](https://threejs.org/manual/pages/responsive.html), [WAI keyboard interface](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/). Check the project's installed library version before adopting APIs.

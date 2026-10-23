@@ -1,49 +1,29 @@
 ---
 name: you-are-brain
-description: Set yourself up as the "brain" that plans work and hands it to worker sessions in other agent clients (Codex, Claude Code, z.ai GLM, a DeepSeek harness or any client with an adapter). Use when the user says "you are the brain", "be the orchestrator", "hand tasks to agents" or asks to run work through several models or clients. It asks which clients and models are available and how to route tasks between them, saves that as a brain profile, and then works by the agent-sessions skill.
+description: Coordinate a user-selected task or project through worker agents. Restore the saved route and assignments; set up a profile only when choices are missing or changed.
 ---
 
 # You are the brain
 
-You plan and check; workers do the delegated work in their own sessions. This skill only sets you up: which clients and models you can use, and which tasks go where. Everything else (requirements, splitting, effort, briefs, approval, running, checking) is defined once in [agent-sessions](../agent-sessions/SKILL.md). Follow it exactly; this skill does not replace any of its rules.
+Own the task breakdown, worker briefs, integration and acceptance. Use the user's current scope and saved choices; a profile or a skill does not grant tool access. Native agents and external CLI adapters are different execution routes, not interchangeable names.
 
-## 1. Load the brain profile
+## Event routes
 
-A continuing task restores its already selected setup and [session state](../agent-sessions/references/running-and-checking.md#before-starting); do not restart this interview or change launch mechanisms after a correction or compaction. Run the profile/setup steps below when this is a new setup or the user changes it.
+| Event | Action | Observable output / next step |
+| --- | --- | --- |
+| Continuing a task or recovering context | Read its existing task record: route, model choices, worker IDs, pending questions and last results. Inspect each pending worker with that route's status tool. | Continue the same worker or consume its completed result; no setup interview and no replacement worker solely because context was compacted. |
+| First task with an applicable saved profile | Read [brain profile](references/brain-profile.md); apply current task overrides. | Selected route, routing mode and brain/worker responsibilities are recorded in the task. Resolve only a missing choice that blocks the next launch. |
+| First setup, or the user changes client/model/route | Use [setup questions](references/setup-interview.md) for the specific missing choices. | A task-only configuration, or a profile saved in the scope the user selected. |
+| User authorizes work on a task or project | Identify deliverables, dependencies and checks. Do tightly coupled work yourself; assign independent deliverables to workers under the authorized route and model choices. | Briefs and a worker/status table in the existing task record. Covered worker launches do not require a new approval ceremony. |
+| Preparing the first worker brief or changing its scope/audience | Read [brief writing](../agent-sessions/references/brief-writing.md). Assign concrete output, permitted files/actions, acceptance scenario and report recipient. | A brief the worker can execute without the original conversation; external adapters also receive the checked assignment. |
+| Launching a native worker | Use the host's available native launch tool and supported settings. Record the returned ID and the actual model/settings it exposes. | A native worker ID; continue/status/wait through the same host tools. Do not load external-adapter commands for this route. |
+| Launching or resuming an external CLI worker | Read [session guide](../agent-sessions/references/session-guide.md), then the named client's command reference. | Actual run/thread ID and settings, or a reported startup blocker; a requested launch is not a running worker. |
+| Worker reports completion | Inspect the delivered changes and reported observations against its acceptance scenario. For UI, use [ui-design](../ui-design/SKILL.md) to check the user steps and hidden states. | Accept/integrate, or return the specific failed step and expected result to the same worker. A test count or exit code alone is not acceptance. |
+| Requested action exceeds assigned scope, model routing, access or cost authorization | State the concrete new choice and ask before that action; continue independent covered work. | User decision recorded without expanding permissions from a profile or worker report. |
+| Agreed outputs and their checks are complete | Report the result, executed checks, remaining limitations and unresolved questions. | Finished task; additional work requires a new change, failed scenario or named unresolved criterion. |
 
-A brain profile records the clients, models and routing rules the user chose. Read [the profile format](references/brain-profile.md) for where profiles live and how they combine.
+## Model routing and recovery
 
-- If a profile exists, show it to the user as a short card and ask using [AGENTS language defaults]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries): "Use this profile as is, change it, or change it for this task only?"
-- If none exists, go to step 2.
+Rules uses the saved table and its explicit fallback; Auto delegates selection within the allowed clients/models; Ask waits for the user's selection. If a Rules table has no match or fallback, ask rather than invent one. Preserve the selected mechanism across continuation; changing native ↔ adapter route is a concrete setup change, not an automatic recovery action.
 
-## 2. Set up
-
-Run the [setup interview](references/setup-interview.md) in rounds, as described there:
-
-1. Which clients and models are available.
-2. How tasks are routed: Auto, Rules or Ask each time.
-3. If Rules: the routing table by task type.
-4. What you, the brain, do yourself.
-5. Whether these choices apply to all future sessions or only to the current task.
-
-## 3. Save
-
-- **All future sessions:** write the profile file (global, or the project override if the user chose this project only). Show the user the saved card.
-- **Only the current task:** keep the choices in this conversation and do not write a file.
-
-Never put secrets, API keys or tokens in a profile.
-
-## 4. Work
-
-Work by [agent-sessions](../agent-sessions/SKILL.md), with these profile-specific additions:
-
-- Model routing: follow [brain profile, Routing modes](references/brain-profile.md#routing-modes); the general model rule is in [agent-sessions, Fixed rules](../agent-sessions/SKILL.md#fixed-rules).
-- Client readiness: see agent-sessions, step 2 and its [host-readiness branch](../agent-sessions/references/contract.md#host-readiness). The leading client and the worker backend are distinct.
-- Own work and delegation: see agent-sessions, step 2, using the profile assignment.
-- Worker waiting: see [running-and-checking, Waiting for workers](../agent-sessions/references/running-and-checking.md#waiting-for-workers), with or without a board.
-- Session progress: see [running-and-checking, Status updates](../agent-sessions/references/running-and-checking.md#status-updates).
-- **Skills.** Load the playbook skills that fit your own steps, for example `ui-review` when you check an interface yourself. In a brief, name a skill for the worker only if that skill is installed in the worker's client.
-
-## When the user changes the setup later
-
-If the user says "from now on, give X to Y" or "this time use Z", ask once whether it applies to all future sessions or only to the current task, then update the profile or keep it in the conversation accordingly.
+Load a reference for the event named in the table, not merely because another file links to it. Keep run records and reports in the existing local task record; report actual progress when a worker starts, blocks or returns. A separate independent reviewer remains a separately selected role, not an automatic extra worker.

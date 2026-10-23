@@ -16,4 +16,4 @@ Waterfall: terrain and upper source channel come first. Track source → lip →
 
 Compare opposing palette and neutral-material views, top silhouette and useful sections. Occupancy reflection and column-fill can expose regularity or thin shells but cannot rank beauty. A thin surface voxelization is not evidence of a solid load-bearing rock.
 
-Source anchors: [Kytric terrain](https://kytric.itch.io/voxel-path-and-terrain), [padadu nature](https://padadu.itch.io/voxel-pack-02-nature), [MountainLabs trees](https://mountainlabz.itch.io/voxel-tree-pack). MountainLabs uses custom permissive terms, not an asserted CC0 label. No licensed native waterfall was found in this bounded study; the water procedure is an original inference from terrain structure and the reproduced Gen1 contact defect.
+Source anchors: [Kytric terrain](https://kytric.itch.io/voxel-path-and-terrain), [padadu nature](https://padadu.itch.io/voxel-pack-02-nature), [MountainLabs trees](https://mountainlabz.itch.io/voxel-tree-pack). No native waterfall was inspected in this bounded study; the water procedure is an original inference from terrain structure and the reproduced Gen1 contact defect.

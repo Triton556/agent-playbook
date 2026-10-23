@@ -1,6 +1,6 @@
 ---
 name: voxel-models
-description: Create, inspect and procedurally generate voxel art models as editable grids and palette-preserving meshes. Use for voxel assets, modular kits, voxel creatures and voxel dioramas; ordinary low-poly modeling and general UI design use their own workflows.
+description: Create or refine requested voxel models and their presentation, with actual render checks. Ordinary UI and non-voxel scenes use their own skills.
 ---
 
 # Voxel model craft
@@ -54,6 +54,5 @@ For repeated defects or a multi-model batch, use the quality adapter above. Evid
 
 Choose a helper by the actual operation: [files and meshes](references/files-meshes.md) for VOX inspection/mesh export; [quality adapter](references/quality-cycle.md) for Gen2.1 repairs; [Gen2](references/gen2.md) or [probe library](references/probe-library.md) only when adapting those examples. Scripts export geometry/metadata, not visual approval. Recipes are original starting points, not a universal generator or the default quality target. Preserve format, palette, origin and mesh invariants while adapting a recipe.
 
-Reuse rights: see [reference-grounding, How to investigate](../dev-flow/references/reference-grounding.md#how-to-investigate). In addition to that rule, unknown, paid or NoAI-marked source assets remain view-only in this study and are not bundled; original geometry from general form principles needs no imported asset.
 
 Perception method: see [human-perspective-review, Inspection sequence](../dev-flow/references/human-perspective-review.md#inspection-sequence). Preflight/reuse: see [design-preflight, Orthographic design before voxel construction](references/design-preflight.md#orthographic-design-before-voxel-construction). Batch completeness: see [task-state](../dev-flow/references/task-state.md).

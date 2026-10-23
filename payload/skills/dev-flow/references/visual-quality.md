@@ -1,3 +1,3 @@
 # Moved
 
-Current instructions: [open](../../ui-review/SKILL.md).
+Current instructions: [open](../../ui-design/SKILL.md).

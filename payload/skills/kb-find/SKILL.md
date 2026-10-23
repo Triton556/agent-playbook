@@ -1,6 +1,6 @@
 ---
 name: kb-find
-description: Find personal information, decisions, tasks and project state in the user's shared knowledge base by selectively loading relevant notes.
+description: Retrieve personal/project facts, decisions and current state selectively from the authorized knowledge base.
 ---
 
 PC vault: `{{MEMORY_ROOT}}`. In Cloud, locate the actually verified repository copy described in README.

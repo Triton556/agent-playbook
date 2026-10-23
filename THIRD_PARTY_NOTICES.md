@@ -1,3 +1,5 @@
+> Version 2.0 removes bundled upstream skill/vendor trees and external detector/data tools. The inventory below records historical provenance; retain the per-skill licenses/source records still shipped for adapted prose. Removed component paths describe Git history, not the current payload.
+
 # Third-party sources and license notices
 
 Preserve each component's actual license. A public page, free price or installed file does not by itself grant redistribution rights. This package contains independently authored methods/helpers and licensed instruction/data dependencies, not downloaded model/media assets from the referenced studies.

@@ -1,33 +1,31 @@
 # Work route
 
-This is the current agent's route, not a list of mandatory skills. AGENTS and the user's latest instructions determine permissions. A clear local task starts at its affected stage.
+Use this table to choose the next action, not to run every row. Continue from the current task state. A route selects instruction text; it does not launch another agent.
 
-1. **Recover the task and its intent.** Use [task brief and acceptance]({{HARNESS_ROOT}}/skills/dev-flow/references/task-brief-and-acceptance.md), sections 1–6.
-2. **Choose one primary stage.** Open its skill, then follow the references it names for this kind of deliverable until you reach the specific criteria, accepted lessons and examples; read them before planning. A task with several deliverables (for example, an analysis presented as a dashboard) opens the skill for each. A guide already read in this context need not be reread unless it changed. On transition/recovery, read the current basis and task state, then only changed or lost instructions that are needed.
-3. **Resolve risk before an expensive step.** Research triggers: see [reference-grounding, Observable triggers]({{HARNESS_ROOT}}/skills/dev-flow/references/reference-grounding.md#observable-triggers). For an expensive new direction, check the smallest coherent representation that distinguishes the disputed property. Creative divergence: see creative-direction; selected human checkpoints: see task brief and acceptance, section 5.
-4. **Produce a useful result.** Complete the agreed scope in finished pieces. Task records: see [task-state, Long-task state and completeness](../skills/dev-flow/references/task-state.md#long-task-state-and-completeness).
-5. **Verify the result.** Use the [acceptance program](../skills/dev-flow/references/task-brief-and-acceptance.md#7-execution-verification-and-completion) and the [human-perspective protocol]({{HARNESS_ROOT}}/skills/dev-flow/references/human-perspective-review.md) for direct inspection, observation order and claim grades. Selected review: see [independent-review]({{HARNESS_ROOT}}/workflow/independent-review.md).
-6. **Repair and finish.** Confirm the cause, fix it within scope, repeat the original failing case and affected regression. A round needs a new signal, confirmed defect or testable hypothesis; the same inspection does not create new evidence. After another miss of the same error class, change the source or observation method rather than adding similar frames or generic passes. History and current evidence: see quality-ledger, Schema version 1. Deliver results with checks and limitations; save useful new lessons through kb-save.
+| Observed event | Action | Observable output / next step |
+| --- | --- | --- |
+| The requested outcome or a consequential choice is unresolved | Read [task brief, questions](../skills/dev-flow/references/task-brief-and-acceptance.md#3-ask-only-what-changes-the-work); ask about that choice, retaining known answers | A resolved choice or a named blocked decision; continue independent work |
+| A plan or architecture decision is requested | Use [dev-plan](../skills/dev-plan/SKILL.md) | Requirements mapped to changes and checks; implementation only when requested |
+| A UI action, label, layout or state changes | Use [ui-design](../skills/ui-design/SKILL.md) | Human steps and expected observations; then actual render/action results |
+| A non-UI feature has an agreed contract | Use [implementation](../skills/dev-plan/references/implementation.md) | A working scenario across its required layers; verify the contract |
+| An observed result differs from its expected result | Use [dev-debug](../skills/dev-debug/SKILL.md) with the symptom and output | Reproduced cause, repair and the original failing case rerun |
+| Changed code needs technical verification, or code review is requested | Use [dev-verify](../skills/dev-verify/SKILL.md) | Contract-based results/findings; UI acceptance still requires the human path |
+| The user selects the brain role or delegates a task or project | Use [you-are-brain](../skills/you-are-brain/SKILL.md) | Restore or establish the selected worker route and task scope |
+| A voxel asset is created or its silhouette/action/kit integration changes | Use [voxel-models](../skills/voxel-models/SKILL.md) | Passport and six coherent design views before detailed voxels; then inspect the actual model |
+| The user requests creative directions, or an open concept requires their choice | Use [creative-direction](../skills/creative-direction/SKILL.md) | A direction grounded in the user's intent; no idea/reference quota |
+| An instruction or its routing changes | Use [agent-instructions](../skills/agent-instructions/SKILL.md) | One updated owner and consistent callers |
+| A requested fact conflicts with sources, a required property lacks evidence, or the same defect recurs | Read [reference-grounding](../skills/dev-flow/references/reference-grounding.md#observable-triggers) for that property | Evidence, a distinguishing experiment or an explicitly unresolved assumption |
+| A workflow comparison is explicitly requested | Read [workflow-pilot](../skills/dev-flow/references/workflow-pilot.md) | Comparable cases and stated measurement limits; no automatic model benchmark |
+| The user asks for an ordinary explanation or practical answer | Answer directly; verify factual claims against their source | The requested answer, not a software-project ritual |
 
-Before deciding how to delegate any work, open [agent-sessions](../skills/agent-sessions/SKILL.md). Recovery restores its selected route and [existing session state](../skills/agent-sessions/references/running-and-checking.md#before-starting) before selecting a launch tool.
+## Context loading and recovery
 
-| Deliverable | Primary entry |
-| --- | --- |
-| End-to-end development | [dev-flow stage table](../skills/dev-flow/SKILL.md#select-an-engineering-stage) |
-| Interface | creative-direction when a new surface or redesign direction is open; ui-design before a new decision; ui-review for actual inspection. One scenario, one system; targeted UX/taste sources |
-| Voxels | voxel-models: scale, parts, sources, sufficient preflight, current model and required views |
-| Interactive visualization / world / motion | creative-direction when the concept is open; visual-scenes; UI and voxel skills only for those parts of the result |
-| Game design | creative-direction for the concept, moment of play and slice scope; engineering skills only once a build starts |
-| Content (video, essay, channel) | creative-direction for angles, openings and structure; preservation: see task brief and acceptance, section 2 |
-| Text / research | Task/audience → evidence and uncertainty → substantive self-check. Engineering state schemas and visual tests apply only when that artifact is actually produced |
-| File / cloud document | One skill for the target format/editor and its actual export/render checks. The word “presentation” does not turn a web page into a PPTX |
-| Everyday answer | Direct practical result and necessary verification, without a project process |
-| Security / lab | Project frame and relevant specialist skill; AGENTS boundaries remain in force |
+Open the row's owner and a reference only when its named question, operation or failure is present. Once the next action and its expected observation are defined, perform it instead of following every link. Reuse a document already read in the current context; reread it after a file change, or after recovery if the relevant decision/state is missing. Restore the current result, unresolved choices and running worker identities before continuing; a correction is not a new setup interview.
 
-Before planning a dashboard/report structure, read the research-dashboard sections of [accepted UI lessons]({{HARNESS_ROOT}}/skills/ui-design/references/accepted-ui-lessons.md). Before a new dashboard or substantial UI redesign, use targeted ui-reference search and relevant real examples. Connect selected techniques to the user’s question/action in one design system. Device/theme/state scope: see UI design preflight, section 2; synchronized data: see causal-state-interaction, One model, several views.
+## Check, repair and finish
 
-Procedure placement: see [agent-instructions, Pointers and authority](../skills/agent-instructions/SKILL.md#pointers-and-authority).
+Choose expected observations from the user's requested behavior, an existing contract or a verified example, not by translating the current implementation into assertions. For UI, follow the steps and inspect the reached states. For non-UI code, use project-required commands and tests at the changed public boundary.
 
-For a series or recurring semantic defect, [quality-cycle](../skills/dev-flow/references/quality-cycle.md) adds series-specific checks. Workflow experiments: see [workflow-pilot](../skills/dev-flow/references/workflow-pilot.md).
+When a check fails, preserve its symptom/output, establish the cause, repair it and rerun that case plus the dependent contract checks. Broaden a check only for a new change, an observed failure or a named unresolved risk. After required checks pass and discovered material defects are resolved, deliver the result and remaining limitations; a repeated identical inspection is not new evidence.
 
-Evidence reuse: see task brief and acceptance, section 7. Shared procedure locations: see [agent-instructions, Pointers and authority](../skills/agent-instructions/SKILL.md#pointers-and-authority).
+For a series with a shared repeated defect, [quality-cycle](../skills/dev-flow/references/quality-cycle.md) describes family-level correction. Record long-task state in the existing plan; [task-state](../skills/dev-flow/references/task-state.md) supplies a schema only when a machine-readable state record is being used. These references do not create new reviewer sessions or user approvals.

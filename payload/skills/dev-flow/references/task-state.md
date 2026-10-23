@@ -2,7 +2,7 @@
 
 Use the existing project plan. When a verifiable graph/output series is needed, use local `.workflow/task-<id>.json` through `{{HARNESS_ROOT}}/workflow/agent-worklog.mjs`. A short task needs no separate file. The tool reads stdin JSON, operates in the current project, launches no models/network and expands no access. For a linked ledger, it calls only the fixed supported validator without a shell.
 
-Record the brief path/version under existing decisions/next fields, without a new schema field. When used, machine state owns progress/relationships, the plan owns requirements, and an optional ledger owns detailed evidence. Use paths/IDs and necessary hashes rather than copied values. Session execution metadata: see [running-and-checking, Before starting](../../agent-sessions/references/running-and-checking.md#before-starting). Loading/recovery: see WORKFLOW, step 2.
+Record the brief path/version under existing decisions/next fields, without a new schema field. When used, machine state owns progress/relationships, the plan owns requirements, and an optional ledger owns detailed evidence. Use paths/IDs and necessary hashes rather than copied values. Session execution metadata: see [running-and-checking, Before starting](../../agent-sessions/references/running-and-checking.md#before-starting). Loading/recovery: see WORKFLOW, Context loading and recovery.
 
 ## Compatible short format v1
 
@@ -40,7 +40,7 @@ Pass JSON through stdin to the existing Node from the project root:
 
 Snapshot returns SHA256. Inspect returns output/stage freshness, reasons for incompleteness and runnable next steps. Partial, missing, stale, failed and blocked results are distinct. Ready/complete and task-done for v2 are rejected when incomplete/stale. The tool checks records/files, not whether an inspection really happened.
 
-Stage handoff: artifact/revision, evidence, status, open issues and next step. Repair/recheck: see WORKFLOW, step 6; authorization and user stop: see AGENTS, Goal, communication and boundaries. The graph controls local transitions; it is not a background model executor.
+Stage handoff: artifact/revision, evidence, status, open issues and next step. Repair/recheck: see WORKFLOW, Check, repair and finish; authorization and user stop: see AGENTS, Goal, communication and boundaries. The graph controls local transitions; it is not a background model executor.
 
 ## Events and metrics
 

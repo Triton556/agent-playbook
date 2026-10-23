@@ -16,7 +16,7 @@ Describe each direction by its key frame or key moment and by how the next momen
 
 ## Sketch
 
-Make a style frame or a short animatic per direction: a few frames with timing notes, or a still with the intended motion described. For 3D, a rough blockout from the target view. Watch motion at normal speed before choosing.
+When a sketch helps resolve an open visual choice, a style frame or a short animatic can show it: a few frames with timing notes, or a still with the intended motion described. For 3D, a rough blockout from the target view. Assess any motion sketch at normal speed.
 
 ## Hand-over
 

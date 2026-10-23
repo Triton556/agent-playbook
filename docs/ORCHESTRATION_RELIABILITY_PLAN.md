@@ -35,7 +35,7 @@ This plan does not authorize installation, global configuration edits, new worke
 
 ### 1. Establish host readiness before adapter delegation
 
-Update [Codex integration guidance](INTEGRATIONS.md#agent-sessions-codex-for-orchestrators) and [compatibility claims](COMPATIBILITY.md). Add a bounded, read-only diagnostic through the existing `harness.py doctor` path or a linked helper.
+Update [Codex integration guidance](INTEGRATIONS.md#you-are-brain-codex-route) and [compatibility claims](COMPATIBILITY.md). Add a bounded, read-only diagnostic through the existing `harness.py doctor` path or a linked helper.
 
 - Distinguish the leading host from the worker backend. Disabling built-in agents only inside a newly started worker does not fix a leading host that still chooses `spawn_agent`.
 - Check observable host version, selected mode and available configuration evidence. Use local prompt rendering only when supported; inspect the minimum needed signals and keep raw context private.
