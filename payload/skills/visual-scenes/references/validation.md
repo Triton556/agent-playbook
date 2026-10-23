@@ -10,7 +10,7 @@ Evaluate in three separate columns:
 | --- | --- | --- |
 | Correct dependency, numerical invariant, consistent views, valid transitions | Readable subject, consequence, hierarchy, material, labels, controls | Response latency, full-frame cost, load/failure behavior |
 
-Claim scope: see [human-perspective-review, Readiness and transfer](../../dev-flow/references/human-perspective-review.md#readiness-and-transfer). Retain a change when observed benefits outweigh regressions for the task; further iteration follows WORKFLOW, step 6.
+Claim scope: see [human-perspective-review, Readiness and transfer](../../dev-flow/references/human-perspective-review.md#readiness-and-transfer). Retain a change when observed benefits outweigh regressions for the task; further iteration follows WORKFLOW, Check, repair and finish.
 
 ## Proportional checks
 

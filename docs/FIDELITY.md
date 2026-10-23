@@ -1,3 +1,7 @@
+# Current scope: version 2.1 explicit routes
+
+The owner authorized the changes in [2.1 scope](EXPLICIT_ROUTES_2.1.md). This section supersedes historical instruction-retention claims for the explicitly retired entrypoints and BASE. Executable adapters, package licenses, voxel passport/six-view behavior and memory integrity are retained. Jam Board integration moves to its own application; unchanged receipt-owned old copies can migrate out, edited or unowned copies are preserved.
+
 # Current scope: version 2.0 core cleanup
 
 The owner explicitly approved semantic simplification and removal of external skill bundles. [Core cleanup](CORE_CLEANUP_2.0.md) supersedes earlier preservation promises for the named retired components. Retained code/resources and licenses remain intact unless a declared change says otherwise. Historical sections below describe older releases, not the current inventory.
@@ -124,3 +128,7 @@ Two dependency-free shared helpers inspect supplied private host previews and ch
 The diagnostic does not spawn clients or change configuration. Marker-free preview compatibility is limited to Codex CLI 0.160.1 and never certifies an active desktop session. A deterministic check cannot interpret arbitrary prose or prove model compliance. Payload hashes/bytes and explicit transformations record the revisions; upstream provenance/licenses remain. Installation and behavioral evidence are reported separately in [validation](VALIDATION.md).
 
 The release additionally rejects explicit recovery output/log paths that identify the previous status, report or event log. Canonical path and existing-file identity checks cover aliases before any backend or detached supervisor starts. This corrects the artifact-preservation contract; it does not broaden access or change the saved assignment. The original helper source hash remains recorded alongside the release transformation.
+
+## Version 2.0.1 optional creative exploration
+
+The owner approved removing mandatory idea, direction and reference quotas without replacing them with a new universal ritual. Four creative-direction files now make alternatives, reference requests and sketches optional aids for unresolved choices. Existing accepted direction, scope, preservation and domain acceptance policies remain. Source provenance is retained; changed export hashes and transformations are recorded in the manifest. Model behavior and token savings require separate evidence.

@@ -47,7 +47,11 @@ def heading_ids(path):
 class InstructionOwnership(unittest.TestCase):
     def test_each_map_rule_has_one_policy_owner(self):
         rules = owned_rules()
-        self.assertEqual(len(rules), 16, 'Every ownership-map rule needs a sentinel')
+        self.assertEqual({row[0] for row in rules}, {
+            'Worker-channel language', 'Git action authorization',
+            'Capture identity and persistence', 'Worker memory assignment',
+            'Memory transport', 'Semantic curation', 'Decision consent',
+        }, 'Every retained shared policy needs its declared owner')
         self.assertEqual(len({row[0] for row in rules}), len(rules))
         instructions = {
             p.relative_to(ROOT).as_posix(): p.read_text(encoding='utf8')
@@ -83,7 +87,7 @@ class InstructionOwnership(unittest.TestCase):
                 plan = call('plan', *args)
                 self.assertEqual(plan['requested_skills'], ['you-are-brain'])
                 self.assertEqual(set(plan['installed_skills']), {
-                    'you-are-brain', 'agent-sessions', 'agent-sessions-codex', 'dev-flow',
+                    'you-are-brain',
                 })
                 result = call('install', *args)
                 self.assertEqual(result['installed_skills'], plan['installed_skills'])
@@ -150,8 +154,8 @@ class InstructionOwnership(unittest.TestCase):
         self.assertIn('final responses', language)
         self.assertIn('does not change the surrounding message or report to the orchestrator', language)
         self.assertIn('Communicate directly with the user in Russian and write knowledge-base content in Russian', base)
-        self.assertIn('unless the user explicitly requests another language for a particular output', base)
-        self.assertIn('/skills/agent-sessions/references/brief-writing.md#language', base)
+        self.assertIn('unless the user requests another language', base)
+        self.assertNotIn('brief-writing.md', base)  # BASE has no indirect language-policy expansion.
         self.assertIn('Preserve exact source quotations, identifiers, paths, commands and required product text in their original language', language)
         self.assertIn('Mark quotations as quotations', language)
         # Preservation and deliverable language are policy, not a dependency
@@ -176,16 +180,14 @@ class InstructionOwnership(unittest.TestCase):
                     result = call('install', *args)
                     self.assertEqual(planned['installed_skills'], result['installed_skills'])
                     if selection[0] == 'profile':
-                        self.assertEqual(len(result['installed_skills']), 20)
+                        self.assertEqual(len(result['installed_skills']), 13)
                     else:
-                        expected = {'agent-sessions', 'agent-sessions-codex', 'dev-flow'}
-                        if selection[1] == 'you-are-brain':
-                            expected.add('you-are-brain')
+                        expected = {'you-are-brain'}
                         self.assertEqual(set(result['installed_skills']), expected)
                     installed = target / native
                     base = (installed / 'BASE-RULES.md').read_text(encoding='utf8')
                     owner = installed / 'skills/agent-sessions/references/brief-writing.md'
-                    self.assertIn(owner.as_posix()+'#language', base)
+                    self.assertNotIn(owner.as_posix()+'#language', base)
                     self.assertIn('## Audience and language', owner.read_text(encoding='utf8'))
                     self.assertEqual(owner.read_bytes(), (installed / 'skills/agent-sessions-codex/references/brief-writing.md').read_bytes())
                     for path in [installed / 'BASE-RULES.md', owner, installed / 'skills/agent-sessions/references/running-and-checking.md', installed / 'skills/agent-sessions-codex/references/running-and-checking.md']:

@@ -13,6 +13,6 @@ Produce an executable plan scaled to the task. [Task brief and acceptance](../de
 
 For substantial UX decisions, use [ui-design](../ui-design/SKILL.md) in design mode. Name domain terms and record architectural decisions only when needed for the deliverable; reuse an existing glossary or ADR format.
 
-Connect each requirement with its implementation location and verification. A clear task with a ready plan does not get another planning cycle. Deliverable scope: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries). For authorized implementation, continue to [dev-implement](../dev-implement/SKILL.md). [WORKFLOW](../../workflow/WORKFLOW.md) owns shared transitions and completion.
+Connect each requirement with its implementation location and verification. A clear task with a ready plan does not get another planning cycle. Deliverable scope: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries). For authorized implementation, continue to [dev-implement](references/implementation.md). [WORKFLOW](../../workflow/WORKFLOW.md) owns shared transitions and completion.
 
 Sources: [sources.json](sources.json), [LICENSE](licenses/mattpocock--skills-LICENSE).

@@ -65,11 +65,11 @@ class InstallBehavior(unittest.TestCase):
             with self.subTest(client=client),target_directory() as td:
                 p=Path(td);result=call('install','--skills','kb-find','--workflow','--client',client,'--target',p)
                 self.assertTrue(result['workflow_activated']);self.assertTrue((p/entry).is_file())
-                self.assertEqual(len(result['installed_skills']),20)
+                self.assertEqual(len(result['installed_skills']),13)
                 self.assertIn('creative-direction',result['installed_skills'])
-                self.assertIn('agent-sessions-codex',result['installed_skills'])
-                self.assertIn('agent-sessions',result['installed_skills'])
-                for relative in ['SKILL.md','scripts/codex-chat.mjs']:
+                self.assertIn('you-are-brain',result['installed_skills'])
+                self.assertIn('you-are-brain',result['installed_skills'])
+                for relative in ['references/codex-driver.md','scripts/codex-chat.mjs']:
                     self.assertEqual(payload_bytes('payload/skills/agent-sessions-codex/'+relative,p,client),(p/folder/'skills/agent-sessions-codex'/relative).read_bytes())
                 self.assertEqual(payload_bytes('payload/skills/kb-find/SKILL.md',p,client),(p/folder/'skills/kb-find/SKILL.md').read_bytes())
                 self.assertFalse((p/folder/'AGENTS.md').exists())
@@ -96,16 +96,16 @@ class InstallBehavior(unittest.TestCase):
                 with self.subTest(profile=profile):
                     planned=call('plan','--profile',profile,'--target',td)
                     expected=profile in ['full','engineering','instructions']
-                    self.assertEqual('agent-sessions-codex' in planned['requested_skills'],expected)
-                    if expected:self.assertIn('agent-sessions-codex',planned['installed_skills'])
+                    self.assertEqual('you-are-brain' in planned['requested_skills'],expected)
+                    if expected:self.assertIn('you-are-brain',planned['installed_skills'])
             self.assertEqual(list(Path(td).iterdir()),[])
         for client,folder in [('codex','.agents'),('claude','.claude')]:
             with self.subTest(client=client),target_directory() as td:
                 result=call('install','--skills','agent-sessions-codex','--client',client,'--target',td)
                 self.assertEqual(result['installed_skills'],call('plan','--skills','agent-sessions-codex','--client',client,'--target',td)['installed_skills'])
-                self.assertIn('agent-sessions',result['installed_skills'])
+                self.assertIn('you-are-brain',result['installed_skills'])
                 self.assertFalse(result['workflow_activated'])
-                for relative in ['SKILL.md','scripts/codex-chat.mjs']:
+                for relative in ['references/codex-driver.md','scripts/codex-chat.mjs']:
                     self.assertEqual(payload_bytes('payload/skills/agent-sessions-codex/'+relative,td,client),(Path(td)/folder/'skills/agent-sessions-codex'/relative).read_bytes())
                 self.assertEqual(call('verify','--client',client,'--target',td)['status'],'pass')
     def test_agent_sessions_profiles_install_and_adapters(self):
@@ -113,14 +113,14 @@ class InstallBehavior(unittest.TestCase):
             for profile in ['full','engineering','instructions','visual','voxel','memory']:
                 with self.subTest(profile=profile):
                     planned=call('plan','--profile',profile,'--target',td)
-                    self.assertEqual('agent-sessions' in planned['requested_skills'],profile in ['full','engineering','instructions'])
+                    self.assertEqual('you-are-brain' in planned['requested_skills'],profile in ['full','engineering','instructions'])
                     if profile in ['full','engineering','instructions']:self.assertIn('you-are-brain',planned['requested_skills'])
-        files=['SKILL.md','references/contract.md','references/writing-an-adapter.md','adapters/codex.mjs','adapters/claude-code.mjs']
+        files=['references/session-guide.md','references/contract.md','references/writing-an-adapter.md','adapters/codex.mjs','adapters/claude-code.mjs']
         for client,folder in [('codex','.agents'),('claude','.claude')]:
             with self.subTest(client=client),target_directory() as td:
                 result=call('install','--skills','agent-sessions','--client',client,'--target',td)
                 self.assertEqual(result['installed_skills'],call('plan','--skills','agent-sessions','--client',client,'--target',td)['installed_skills'])
-                self.assertIn('agent-sessions',result['installed_skills'])
+                self.assertIn('you-are-brain',result['installed_skills'])
                 for relative in files:
                     self.assertEqual(payload_bytes('payload/skills/agent-sessions/'+relative,td,client),(Path(td)/folder/'skills/agent-sessions'/relative).read_bytes())
                 self.assertEqual(call('verify','--client',client,'--target',td)['status'],'pass')
@@ -144,10 +144,10 @@ class InstallBehavior(unittest.TestCase):
                 b=(ROOT/'payload/skills/agent-sessions-codex/references'/name).read_bytes()
                 self.assertEqual(a,b)
         self.assertIn(b'Write the brief in English',(ROOT/'payload/skills/agent-sessions/references/brief-writing.md').read_bytes())
-        for skill in ['agent-sessions','agent-sessions-codex']:
-            text=(ROOT/'payload/skills'/skill/'SKILL.md').read_text(encoding='utf8')
-            for phrase in ['references/running-and-checking.md','references/brief-writing.md']:
-                self.assertIn(phrase,text,skill)
+        text=(ROOT/'payload/skills/you-are-brain/SKILL.md').read_text(encoding='utf8')
+        self.assertIn('session-guide.md', text)
+        self.assertTrue((ROOT/'payload/skills/agent-sessions/references/session-guide.md').is_file())
+        self.assertTrue((ROOT/'payload/skills/agent-sessions-codex/references/codex-driver.md').is_file())
     def test_agent_sessions_codex_driver_syntax(self):
         node=shutil.which('node')
         if not node:self.skipTest('Node is required to check the Codex sessions driver')
@@ -190,8 +190,8 @@ class InstallBehavior(unittest.TestCase):
             self.assertEqual(edited.read_bytes(),b'My edit')
     def test_named_dependency_and_skills_only_permission_guard(self):
         with target_directory() as td:
-            p=Path(td);r=call('install','--skills','dev-flow','--target',p)
-            self.assertEqual(r['installed_skills'],['dev-flow']);self.assertFalse(r['workflow_activated'])
+            p=Path(td);r=call('install','--skills','dev-plan','--target',p)
+            self.assertEqual(r['installed_skills'],['dev-plan']);self.assertFalse(r['workflow_activated'])
             text=(p/'AGENTS.md').read_text(encoding='utf8')
             self.assertIn("owner's actual authorization",text)
             self.assertNotIn('# Общие правила работы',text)

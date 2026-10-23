@@ -1,68 +1,54 @@
 # UI design basis: scenario, style and related states
 
-For a new flow, substantial redesign or screen series, verify the design basis before full implementation. The transfer from voxel work is a brief, consistent representations, intent verification and comparison with the result. UI representations are linked by actions, data and window adaptation; the scenario determines their number.
-
-Use existing project design documents and mockup links. Record relationships: see [task-state, Long-task state and completeness](../../dev-flow/references/task-state.md#long-task-state-and-completeness). A separate JSON schema, Figma or image generation is not mandatory. For a small edit record its property/states/check; use the reuse conditions in task brief and acceptance, section 7. A new flow, action meaning, visual system or unverified size needs a targeted addition.
+Open for a new flow, changed action meaning or screen reorganization. Map the human steps before implementing that change. A bounded label/spacing fix keeps the accepted flow and checks its affected reached state. Use the existing task/plan and project components; this reference does not require a separate document, schema, Figma file or image-generation call.
 
 ## 1. Record the scenario brief
 
-When material requirements are ambiguous, initiate the [themed interview and saved brief/acceptance](../../dev-flow/references/task-brief-and-acceptance.md) before dependent design decisions. The scenario brief refines the same basis; reuse known answers and save new ones. Mockup verification adds properties to check later in the working UI.
+Record the entry route/data, the person's goal, actions, expected result, target window/input method and project components/tokens. Preserve the user's named qualities and existing behavior outside the change.
 
-From the brief, current product, relevant decisions and inspected examples, record:
+If two interpretations change what the person can do or what result they receive, ask about that choice; reuse the [saved brief](../../dev-flow/references/task-brief-and-acceptance.md) rather than running another interview. If the question concerns a new creative direction, use creative-direction only for that open choice. If it concerns a factual contradiction, inspect the sources for that property using [reference-grounding](../../dev-flow/references/reference-grounding.md#observable-triggers).
 
-| Part | Sufficient record |
-| --- | --- |
-| Goal and scenario | Who/why the screen serves; entry/initial data → main action → visible result and completion. [interaction-quality](interaction-quality.md) refines material transitions, failure and recovery |
-| Conditions | Route/product location, target device and input; known working window area in CSS px, scale/zoom when relevant. Needed extra sizes and why; explicitly label unknowns |
-| Visual system | Existing component/token references, text/color roles, density and composition principle. Preserve one system; describe a new direction with observable features |
-| Grounds and preservation | Inspected references/accepted screens and transferable qualities; important decisions, reasons and sources. Identify actions, data and character that must survive |
-| Verification and version | Success criteria, required representations and verification method; basis version and artifact links. Distinguish author choice, agent verification and the user's actual acceptance |
-
-A reference grounds a particular technique; it does not replace the product scenario wholesale. Resolve a critical unknown through [reference-grounding](../../dev-flow/references/reference-grounding.md); only dependent work waits. Reuse known conditions without another interview.
-
-For a new landing page or research dashboard, apply [accepted UI lessons](accepted-ui-lessons.md): substantive continuation after the first screen, imagery/color roles and the sequence of data explanation. Adapt them to the goal and accepted project style.
-
-**Done:** goal, action, style, preservation and test conditions are defined; critical assumptions are visible and have a verification method.
+**Output:** a named route, user goal, expected completion, window and accepted design basis; unanswered choices are identified, not silently guessed.
 
 ## 2. Link screens, states and sizes
 
-Identify a verification point as **screen/route + state + data + window size**. Keep a compact transition map/table in the existing plan: where the user came from, what they did, what changed, how to return and what remained. Cover the main uninterrupted path and risk-relevant failure/return. Add loading, empty, error, success, focus and other states according to the actual scenario.
+Write **human step → action → reached surface/state → expected observation → return/recovery**. A verification point includes route, state, data and window/zoom.
 
-Related states share components and semantic roles. Input/filter retention: preserve valid input and selected filters across retries; coupled results: see causal-state-interaction, One model, several views. Scope supported devices, themes and states explicitly in the brief. For each supported size define wrapping/collapse/availability. Representative combinations and risky boundaries suffice; exhaustive combinations require corresponding risk. A desktop scenario does not automatically get a mobile version.
+| Actual change | Include in the map |
+| --- | --- |
+| New or changed async action | Pending feedback, committed result, supported failure and retry; prevent unintended duplicate work |
+| Input or validation | Normal input, invalid input, correction and preservation of valid data |
+| Dialog, menu, drawer or popover | Trigger, opened surface, readable content, focus, close/back and retained parent context |
+| Filter/search | Matching data, no matches, clearing conditions and retained selection/filter behavior |
+| Layout or responsive boundary | The supported window and the boundary where wrapping/collapse changes; no unrequested mobile redesign |
+| Shared data shown in multiple places | Same current result/state across the affected views; older async results cannot overwrite a newer result |
 
-**Done:** the map supports a path from entry to result/recovery; important states/sizes remain in verification and data/behavior contradictions are resolved.
+These are branches of the changed scenario, not a mandatory cross-product of every state/device/theme. Use real long labels and data that can expose overflow. Include the main uninterrupted path from entry to completion.
+
+**Output:** a traceable path to the result and the changed failure/return paths, including hidden surfaces that must actually be opened later.
 
 ## 3. Verify the mockup or prototype before full implementation
 
-Choose the cheapest medium that can test the disputed property: sketch/wireframe for structure, styled key screen for style/hierarchy, linked or working prototype for transitions. A bounded code prototype is allowed. A rough wireframe does not verify typography; a static image does not verify working interaction. For a new visual direction, add a sufficient styled fragment; for an accepted system, use its actual components/examples.
+Use a representation only when it can resolve an open design choice: wireframe for information order, styled region for typography/hierarchy, interactive prototype for navigation or transition behavior. An accepted flow and existing components do not require a new mockup before a bounded change.
 
-Verify the styled fragment with representative content: actual label lengths, units/dates, required chart geometry and important illustration at target size. Replacing these with neutral placeholders leaves their readability/recognition unverified.
+Check the disputed property at the target window with actual label lengths/content. Record the observed choice and carry it into the existing basis. A wireframe does not verify typography; a still does not verify interaction. A design-only request ends here, with working behavior explicitly unverified.
 
-Observation order: see [human-perspective-review, Inspection sequence](../../dev-flow/references/human-perspective-review.md#inspection-sequence). Then assess the basis:
-
-| Criterion | Observable evidence |
-| --- | --- |
-| Scenario and function | Main action is discoverable; promise and result agree; failure/return can be explained through linked states |
-| Consistency | Data, components and states describe one scenario; transitions do not lose important context without cause |
-| Style and context | Accepted features, content and density suit the product and target window; reference techniques help the task |
-| Clarity and accessibility | Hierarchy/labels explain the action without author commentary; material keyboard/focus and responsive decisions are planned |
-
-Repairs follow WORKFLOW, step 6. In addition, a shared design decision updates related states/sizes. Record current basis version and inspected representations; participation: see task brief and acceptance, section 5.
-
-**Advance to full implementation:** critical mockup contradictions are resolved, the main path and needed edge cases are considered, and the design basis is saved. List properties verifiable only in working UI for later checks. A design-only request ends here; do not claim readiness of a working interface.
+**Output:** the open design choice is resolved, or its remaining uncertainty and dependent implementation step are stated. No fixed number of sketches or references is required.
 
 ## 4. Compare the working UI with the basis
 
-Pass the brief/plan, accepted mockup version, state map and preserved decisions to [ui-review](../../ui-review/SKILL.md). Compare the actual render with the basis at comparable points: identical route, state, data and size/zoom. Check hierarchy, components/tokens, density, content and main-action accessibility; assess responsive changes under the accepted adaptation rule. Automated overlays/diffs can help, but pixel equality is not a universal criterion.
+Continue in [ui-design](../SKILL.md) using the [actual-render/action procedure](../../ui-review/references/visual-quality.md#render-and-behavior-verification). Open the same route/state/data/window and execute the mapped actions; inspect all affected hidden surfaces at their reached states.
 
-Record **original design quality**, **implementation fidelity to the basis** and **actual scenario behavior** separately. Faithfully copying a poor mockup does not make UI ready. Reuse: see [task-brief-and-acceptance, 7. Execution, verification and completion](../../dev-flow/references/task-brief-and-acceptance.md#7-execution-verification-and-completion). [visual-quality](../../ui-review/references/visual-quality.md) owns the actual render/action sequence.
+Record separately:
 
-Classify discrepancies as transfer defects, justified adaptations or basis problems. Basis decisions update the existing plan. Evidence versions: see [quality-ledger, Schema version 1](../../dev-flow/references/quality-ledger.md#schema-version-1). Repairs: see [WORKFLOW, Work route](../../../workflow/WORKFLOW.md#work-route). Series: see quality-cycle.
+- Whether the result preserves the accepted design decisions.
+- Whether the actual steps produce their promised outcomes and retain/recover user work.
+- Whether content and controls are readable, understandable and reachable at the intended size.
 
-When auditing existing UI without a mockup, compare current requirements, components and source screens; explicitly note the missing verified design basis. A retrospective description does not prove pre-implementation preflight. Verify current UI while leaving comparison with an absent mockup unverified.
+A faithful copy of a poor mockup can still fail the user's task. Classify a mismatch as an implementation defect, an agreed adaptation or a basis problem. When no mockup exists, compare against current requirements/components; do not invent a retrospective preflight claim.
 
-**Done:** discrepancies are explained/fixed and current scenario/preservation checks are complete. Assessment grades: see [human-perspective-review, Readiness and transfer](../../dev-flow/references/human-perspective-review.md#readiness-and-transfer).
+**Output:** actual per-step observations, corrected defects and explicit NOT_RUN/unverified steps. After a repair, repeat the failed step and dependent transitions; a shared navigation/state change calls for the connected path to be rerun. The [work route](../../../workflow/WORKFLOW.md#check-repair-and-finish) defines when to stop.
 
 ## Proportional application example
 
-For a desktop table: search for a record → open its card → return with filters and selected row preserved. Basis: current design system; representations: search results, no matches/reset, card/return and applicable error. A mockup checks hierarchy/placement in the working window; a bounded prototype checks transitions. Verify working UI with actual actions on the same data/sizes. A single button-spacing fix uses the accepted basis and affected button states.
+For a desktop table: search → open a record card → edit or cancel → return with the promised filters/selection retained. Open the card and its options, rather than inferring their spacing from the table. Exercise no matches/reset if filtering changed; exercise pending/error/retry if saving changed. A button-spacing fix checks that button in its reached states without redesigning the whole flow.

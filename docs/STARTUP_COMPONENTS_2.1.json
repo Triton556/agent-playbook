@@ -1,0 +1,21 @@
+{
+  "example_installed_root": "/example/project/.agents",
+  "base_source_utf8_bytes": 431,
+  "old_deployment_header_utf8_bytes": 539,
+  "new_deployment_header_utf8_bytes": 298,
+  "markers_utf8_bytes": 60,
+  "separator_utf8_bytes": 1,
+  "full_managed_block_utf8_bytes": 790,
+  "skills_only_managed_block_utf8_bytes": 510,
+  "not_included": [
+    "client/system instructions",
+    "global/project text outside managed block",
+    "skill metadata catalog",
+    "selected skill bodies"
+  ],
+  "not_measured": [
+    "runtime tokens",
+    "billing",
+    "live model compliance"
+  ]
+}

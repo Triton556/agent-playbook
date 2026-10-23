@@ -19,10 +19,10 @@ RENAMES={
     'product-testing':'dev-verify',
     'domain-modeling':'dev-domain-model',
     'product-ui-design':'ui-design',
-    'product-ui-review':'ui-review',
+    'product-ui-review':'ui-design',
     'ui-ux-pro-max':'ui-reference',
     'design-taste-frontend-v1':'ui-taste-reference',
-    'codex-sessions':'agent-sessions-codex',
+    'codex-sessions':'you-are-brain',
     'handoff':'agent-handoff',
     'writing-for-agents':'agent-instructions',
     'grilling':'stress-test',
@@ -30,7 +30,7 @@ RENAMES={
     'visual-experiment-craft':'visual-scenes',
     'voxel-model-craft':'voxel-models',
 }
-RETIRED={'ui-reference','ui-taste-reference','stress-test','stress-test-with-docs','dev-domain-model','agent-handoff'}
+RETIRED={'ui-reference','ui-taste-reference','stress-test','stress-test-with-docs','dev-domain-model','agent-handoff','dev-flow','visual-scenes','dev-implement'}
 REMOVED={'anthropic-workflow-creator','lab-vm-control'}|RETIRED
 
 
@@ -76,17 +76,17 @@ class PublicNames(unittest.TestCase):
         self.assertFalse(any('/vendor/' in f['path'] for f in m['files']))
         self.assertEqual({f['path'] for f in m['files']},{p.relative_to(ROOT).as_posix() for p in (ROOT/'payload').rglob('*') if p.is_file()})
         skills={s['name'] for s in call('catalog')['skills']}
-        self.assertEqual(skills,(set(RENAMES.values())-RETIRED)|{'you-are-brain','jam-board','agent-sessions','creative-direction','kb-find','kb-save','kb-curate','kb-status','kb-sync'})
+        self.assertEqual(skills,(set(RENAMES.values())-RETIRED)|{'you-are-brain','creative-direction','kb-find','kb-save','kb-curate','kb-status','kb-sync'})
         for name in skills:
             self.assertIn('\nname: '+name+'\n',(ROOT/'payload/skills'/name/'SKILL.md').read_text(encoding='utf8'))
         with target_directory() as td:
             plan=call('plan','--target',td,'--profile','engineering')
-            self.assertEqual(set(plan['requested_skills']),{'dev-flow','dev-plan','dev-implement','dev-debug','dev-verify','ui-design','ui-review','agent-sessions','agent-sessions-codex','you-are-brain','creative-direction','agent-instructions','jam-board'})
-            self.assertEqual(len(plan['installed_skills']),13)
+            self.assertEqual(set(plan['requested_skills']),{'dev-plan','dev-debug','dev-verify','ui-design','you-are-brain','creative-direction','agent-instructions'})
+            self.assertEqual(len(plan['installed_skills']),7)
             self.assertNotIn('stress-test',plan['installed_skills'])
             plan=call('plan','--target',td,'--profile','instructions')
-            self.assertEqual(set(plan['requested_skills']),{'agent-sessions','agent-sessions-codex','you-are-brain','agent-instructions'})
-            self.assertEqual(len(plan['installed_skills']),5)
+            self.assertEqual(set(plan['requested_skills']),{'you-are-brain','agent-instructions'})
+            self.assertEqual(len(plan['installed_skills']),2)
 
 
 class LegacyMigration(unittest.TestCase):
@@ -138,7 +138,7 @@ class LegacyMigration(unittest.TestCase):
                 self.assertEqual(snapshot(p),before)
                 result=call('install','--client',client,'--target',p,'--profile','full')
                 self.assertEqual(result['migration_from'],'0.5.0')
-                self.assertEqual(len(result['installed_skills']),20)
+                self.assertEqual(len(result['installed_skills']),13)
                 receipt=json.loads((p/folder/'harness-install.json').read_text(encoding='utf8'))
                 self.assertEqual(receipt['version'],json.loads((ROOT/'manifest.json').read_text(encoding='utf8'))['version'])
                 current={row['relative'] for row in receipt['files']}
@@ -160,14 +160,13 @@ class LegacyMigration(unittest.TestCase):
                 self.assertEqual(neighbor.read_bytes(),b'private user file')
 
     def test_actual_050_selected_skill_upgrade_using_old_alias(self):
-        for old,new in [('agent-sessions','agent-sessions')]:
+        for old,new in [('agent-sessions','you-are-brain')]:
             with self.subTest(skill=old),target_directory() as td:
                 p=Path(td);self.legacy_install(p,skills=old)
                 result=call('install','--target',p,'--skills',old)
                 self.assertEqual(result['installed_skills'],
                                  call('plan','--target',p,'--skills',new)['installed_skills'])
                 self.assertIn(new,result['installed_skills'])
-                if new=='agent-sessions':self.assertNotIn('you-are-brain',result['installed_skills'])
                 if old!=new:self.assertFalse((p/'.agents/skills'/old/'SKILL.md').exists())
                 self.assertTrue((p/'.agents/skills'/new/'SKILL.md').is_file())
                 self.assertEqual(call('verify','--target',p)['status'],'pass')
@@ -228,7 +227,7 @@ class PatchUpgrade(unittest.TestCase):
                 shutil.copyfile(release/'.harness-state/receipts'/identity, trust)
                 self.addCleanup(lambda p=trust: p.unlink(missing_ok=True))
                 planned = call('plan', *options)
-                self.assertIn('agent-sessions', planned['installed_skills'])
+                self.assertIn('you-are-brain', planned['installed_skills'])
                 upgraded = call('install', *options)
                 self.assertEqual(upgraded['migration_from'], '1.3.0')
                 self.assertEqual(upgraded['installed_skills'], planned['installed_skills'])
@@ -259,7 +258,8 @@ class PatchUpgrade(unittest.TestCase):
             self.assertEqual(upgraded['migration_from'],'1.2.0')
             receipt=json.loads((p/'.agents/harness-install.json').read_text(encoding='utf8'))
             self.assertEqual(receipt['requested_skills'],['kb-find'])
-            self.assertIn('jam-board',upgraded['installed_skills'])
+            self.assertNotIn('jam-board',upgraded['installed_skills'])
+            self.assertFalse((p/'.agents/skills/jam-board').exists())
             self.assertEqual(call('verify','--client','codex','--target',p)['status'],'pass')
 
     def test_actual_100_full_upgrade_codex(self):

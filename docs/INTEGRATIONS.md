@@ -30,20 +30,20 @@ The original method references include Windows PowerShell examples. Adapt only s
 
 `agent-worklog.mjs` invokes the same sibling `quality_ledger.py`. Set `HARNESS_PYTHON` to the actual executable if `python` on PATH is missing/different. Set this in the process environment, including any quality-hook process. Node and Python spawning must be permitted by the client's sandbox. A denied spawn remains an unavailable check; do not replace it with an unconditional success.
 
-## agent-sessions-codex for orchestrators
+## you-are-brain Codex route
 
-`agent-sessions-codex` equips the host agent (Claude, another Codex or another client) to write a brief, start or continue work in Codex, and check the actual result. It is selected by `full`, `engineering` and `instructions`, or separately:
+`you-are-brain` is the discoverable orchestration entry for the host agent (Claude, another Codex or another client). Its selected Codex route uses the retained adapter/driver files to start or continue a worker and check the result. The entry is selected by `full`, `engineering` and `instructions`, or separately:
 
 ```bash
-python harness.py install --client claude --target /path/to/project --skills agent-sessions-codex
+python harness.py install --client claude --target /path/to/project --skills you-are-brain
 python harness.py verify --client claude --target /path/to/project
 ```
 
-Use `--client codex` for a Codex host. Read the installed `skills/agent-sessions-codex/SKILL.md` before launching. The host needs permitted shell/file access, Node.js 22+ and a configured Codex CLI with the user's account/settings. The driver finds `codex` on PATH or in supported desktop locations; `CODEX_BIN` can name the actual executable. No Codex binary, account, authentication or host configuration is installed by the harness.
+Use `--client codex` for a Codex host. Read the installed `skills/you-are-brain/SKILL.md`; when the Codex adapter route is selected, read `skills/agent-sessions-codex/references/codex-driver.md`. The legacy technical folder is not a separate skill. The host needs permitted shell/file access, Node.js 22+ and a configured Codex CLI with the user's account/settings. The driver finds `codex` on PATH or in supported desktop locations; `CODEX_BIN` can name the actual executable. No Codex binary, account, authentication or host configuration is installed by the harness.
 
-Codex runtime/home/settings/history/hooks and continuation: see [agent-sessions-codex, Codex sessions and step 6](../payload/skills/agent-sessions-codex/SKILL.md#codex-sessions).
+Codex runtime/home/settings/history/hooks and continuation: see [Codex driver, session execution](../payload/skills/agent-sessions-codex/references/codex-driver.md#6-run-and-check).
 
-Launch: see [agent-sessions, step 5](../payload/skills/agent-sessions/SKILL.md#5-get-approval-with-a-summary). Access semantics: see [adapter contract, Access modes](../payload/skills/agent-sessions/references/contract.md#access-modes). Runtime limitations: see agent-sessions-codex, Known limits. Checking: see running-and-checking, Checking a finished session.
+Launch: see [session guide, authorized scope](../payload/skills/agent-sessions/references/session-guide.md#5-check-the-authorized-scope-and-launch). Access semantics: see [adapter contract, Access modes](../payload/skills/agent-sessions/references/contract.md#access-modes). Runtime limitations: see [Codex driver, Known limits](../payload/skills/agent-sessions-codex/references/codex-driver.md#known-limits). Checking: see [running-and-checking, Checking a finished session](../payload/skills/agent-sessions/references/running-and-checking.md#checking-a-finished-session).
 
 For runtime acceptance, obtain authorization for a small real task, confirm the named thread is visible in the app, then continue the same thread and inspect its actual result. Exercise memory only against the user's authorized setup if selected. Release 0.4.0 packaging checks do not launch sessions or independently reproduce the source owner's reported live trials.
 
@@ -142,7 +142,7 @@ Record independently: installed selection/closure; package and installed hashes;
 
 ## Agent sessions for any worker
 
-Shared orchestration policy: see [agent-sessions](../payload/skills/agent-sessions/SKILL.md), Fixed rules, Worker artifacts and steps 3–5. Worker language: see [brief-writing, Language](../payload/skills/agent-sessions/references/brief-writing.md#language). Session checking/status/reporting: see [running-and-checking](../payload/skills/agent-sessions/references/running-and-checking.md).
+Shared orchestration policy: see [agent-sessions](../payload/skills/agent-sessions/references/session-guide.md), Fixed rules, Worker artifacts and steps 3–5. Worker language: see [brief-writing, Language](../payload/skills/agent-sessions/references/brief-writing.md#language). Session checking/status/reporting: see [running-and-checking](../payload/skills/agent-sessions/references/running-and-checking.md).
 
 Adapters use [contract, Run](../payload/skills/agent-sessions/references/contract.md#run) for options/result/exit codes. Client-specific setup facts follow below; access semantics: see contract, Access modes.
 
@@ -150,3 +150,9 @@ Adapters use [contract, Run](../payload/skills/agent-sessions/references/contrac
 - `claude-code`: headless `claude -p` with permission modes (`plan`, `acceptEdits`, `bypassPermissions`) rather than an OS sandbox. Unverified. It needs a Claude Code CLI logged in on its own; the CLI bundled with the desktop app reports "Not logged in" when started separately.
 
 For another client use [writing-an-adapter](../payload/skills/agent-sessions/references/writing-an-adapter.md). Launch authorization: see agent-sessions, step 5.
+
+## Jam Board separation in 2.1
+
+Jam Board owns its standalone project-local skill and MCP integration. Install that skill from the Jam Board application for the selected project/client; this playbook no longer ships it or adds brain/planning dependencies for it. Old `--profile jam-board` and `--skills jam-board` requests stop with this explanation instead of installing another profile.
+
+During an upgrade of an existing playbook installation, unchanged receipt-owned Jam files are removed; modified managed files stop the upgrade before writes, and unowned files are preserved. Keep both versions and reconcile the reported files explicitly before retrying. Independently installed/global copies are not silently removed.

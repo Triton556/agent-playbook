@@ -1,3 +1,3 @@
 # Moved
 
-Current instructions: [open](../SKILL.md).
+Current instructions: [open](../../../workflow/WORKFLOW.md).

@@ -17,15 +17,15 @@ In product work the design system, brand, components and regulations are fixed. 
 - **Interaction model:** forms vs direct manipulation vs choosing from smart defaults vs conversational.
 - **Error and edge handling:** prevent, recover, or explain - designed into the direction, not added later.
 
-Three directions that share the same flow and differ only in layout or style are one direction.
+Directions that share the same flow and differ only in layout or style are variations of one direction.
 
 ## References
 
-Use real products for the same task (competitors, platform patterns, well-known apps) and the project's own screens. Use targeted primary sources for an unresolved UX question. Show only enough relevant examples to distinguish the open choices; reuse an accepted direction.
+Relevant products or the project's own screens can help clarify an open choice. Use targeted primary sources for an unresolved UX question. Show only enough relevant examples to distinguish the open choices; reuse an accepted direction.
 
 ## Sketch
 
-Draw each direction as low-fidelity frames of the main scenario using the existing design system components: the key screens in order, with real content lengths and the main states (empty, loading, error, success). Compare directions on the same scenario and the same window size.
+When a sketch helps resolve an open choice, show the main scenario using the existing design system components: the key screens in order, with real content lengths and the main states (empty, loading, error, success). If comparing sketches, use the same scenario and window size.
 
 ## Hand-over
 

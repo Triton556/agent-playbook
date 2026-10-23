@@ -13,13 +13,13 @@ Merged distinct URL/Sketchfab UID entries: **489**. Packs count once; no adverti
 | free3d | 107 | [Catalog](https://free3d.com/ru/premium-3d-models/voxel) |
 | open3dmodel | 27 | [Catalog](https://open3dmodel.com/ru/3d-models/voxel) |
 
-Evidence depths: preview-observed: 417; file-inspected: 15; multiview-observed: 10; page-reviewed: 47. Preview observation means a rendered image/contact sheet was actually viewed; it does not establish hidden sides, native VOX structure, exact resolution or rig behavior. Page review adds metadata; multiple cameras and file inspection are recorded separately. Public Sketchfab API pagination supplied additional public metadata and preview URLs; these were not counted until the images were viewed. Search metadata license labels do not establish the absence of a NoAI notice.
+Evidence depths: preview-observed: 417; file-inspected: 15; multiview-observed: 10; page-reviewed: 47. Preview observation means a rendered image/contact sheet was actually viewed; it does not establish hidden sides, native VOX structure, exact resolution or rig behavior. Page review adds metadata; multiple cameras and file inspection are recorded separately. Public Sketchfab API pagination supplied additional public metadata and preview URLs; these were not counted until the images were viewed.
 
 ## Native file branch
 
 25 small public attachments, 11,277,913 bytes. **81 VOX grid files:69 MagicaVoxel and12 legacy dense Slab6**. All parsed; all81 rendered in two opposing views and observed in paired diagnostic sheets. **96 OBJ files** parsed/measured without errors. A format variant or model within a pack is a separate file evidence unit, not another catalog entry.
 
-Grid diagnostics use opaque palette colors and unit faces. Source PBR, transparency, scene transforms and animation were not reconstructed. Original author credits/licenses are preserved in the research receipts; none of the downloaded model/media files is bundled in this skill.
+Grid diagnostics use opaque palette colors and unit faces. Source PBR, transparency, scene transforms and animation were not reconstructed. Original author credits are preserved in the research receipts; none of the downloaded model/media files is bundled in this skill.
 
 ## Original probes and checks
 

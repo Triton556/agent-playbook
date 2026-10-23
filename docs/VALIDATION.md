@@ -1,6 +1,6 @@
 # Validation record
 
-Current release verification is recorded under [1.6.0 release verification](#version-160-release-verification). Earlier entries retain their original scope; the 1.4.0 baseline and per-finding disposition remain in [its release report](RELEASE_1.4.0.md).
+Current release verification is recorded under [2.1.0 release verification](#version-210-release-verification). Earlier entries retain their original scope; the 1.4.0 baseline and per-finding disposition remain in [its release report](RELEASE_1.4.0.md).
 
 Build: 15 October 2026, Windows. The levels below describe executed checks, not a guarantee of future model quality. Python standard-library installer/helpers and Node22.13.0 were used.
 
@@ -174,3 +174,70 @@ One further fresh recovery attempt per version used a real local fixture process
 Raw pilot prompts, transcripts, local paths and private execution material remain excluded from the public repository. Only this scoped outcome summary is published.
 
 Local release checks used Windows, Python 3.14 and Node.js. `check-package` passed for 314 payload files. All 11 focused orchestration tests passed, including a process that exits 17 after reporting partial progress and a subsequent same-thread recovery preserving settings, assignment and every old artifact while producing a separate successful report. The artifact-collision case covers both adapters and the legacy driver. The changed documentation's local file links and whitespace checks passed. Full Windows/Linux validation is enforced by the repository's GitHub Actions workflow before release publication; those results remain separately observable in GitHub.
+
+## Version 2.0.1 release verification
+
+Checked 2026-10-23 on Linux, Python 3.12.14 and Node.js 24.19.0, in a separate clone at baseline `60317a3b83ef5bd9ef620a899bf95a099f7c926f`. Only four creative-direction payload files change: idea/direction/reference quotas and the prescribed reference-reaction/sketch-per-direction sequence become optional aids for unresolved choices. Other policy files and all source-provenance hashes remain unchanged. The four payload bodies total 10410 -> 9997 UTF-8 bytes; this is not a token or quality measurement.
+
+Executed checks:
+
+- `python harness.py check-package`: pass, 148 payload files.
+- `python -B -m unittest discover -s tests -p 'test_install.py'`: 25 tests passed in 6.960s.
+- `python -B -m unittest discover -s tests -p 'test_instruction_ownership.py'`: 7 tests passed in 3.790s; active relative files and heading links resolve.
+- New `test_creative_upgrade.py`: 2 tests passed in 0.726s. Real baseline 2.0.0 installations upgrade to current payload for both Codex and Claude while preserving user instructions and unrelated files. A user-edited creative reference refuses upgrade before any target writes.
+- `python -B -m unittest discover -s tests`: 77 tests run in 60.879s, 75 passed and 2 skipped. The skips concern external Jam Board app source comparison and `wait_for_changes` documentation, because no app checkout is present at the configured external path; they do not validate that external app contract. A verbose Jam-only rerun confirmed those skip reasons.
+- `git diff --check`: pass. Changed manifest entries are exactly the four approved creative files; source hashes, inventory and module dependencies are preserved. Searches found no retained old creative quota or incoming link to the renamed headings.
+
+Tests used isolated synthetic projects and fake client backends; no global installation, live model session, paid benchmark or permission change was performed. These checks establish package/installer behavior and textual consistency, not model compliance, creativity, runtime token savings or human acceptance. Publication is outside this validation result.
+
+## Version 2.1.0 release verification
+
+Checked 2026-10-23 on Linux, Python3.12.14 and Node24.19.0. Separate local branch `rumi/explicit-core-2.1`, based on `60317a3b83ef5bd9ef620a899bf95a099f7c926f` plus the previously checked creative2.0.1 change. The2.0.1 results above do not establish this revision's behavior.
+
+### Executed cases
+
+- `python harness.py check-package`: PASS,14 catalog entries and147 payload files. BASE is431 UTF-8 bytes versus6073 raw source bytes at the baseline; whole-session tokens/billing are not measured.
+- `python -B -m unittest discover -s tests -v`:91 tests in69.782s,89 passed and2 skipped. Skips are external Jam Board app source/`wait_for_changes` documentation comparisons because its checkout is absent at the configured path.
+- Real2.0.0→2.1.0 full installs for Codex and Claude preserve user instructions and unrelated files, retire installer-owned obsolete entrypoints, retain the adapters and pass installed verification. Selected session/review aliases migrate to the unified entries. Every one of six user-edited retired entrypoints refuses upgrade before any target write. A preexisting unowned retired skill survives upgrade and removal; the installer does not delete independent user installations.
+- Standalone brain installs one catalog entry and its real drivers, not a UI skill dependency. Adapter `--describe` is executed without a model call. Existing fake-backend tests exercise initial worker creation, continuation on the same thread with explicit settings, detached waiting, cancellation, frozen assignments and crash recovery preserving prior evidence. These do not prove native UI visibility or live model setup behavior.
+- Actual voxel preflight helper accepts a synthetic six-view passport/review fixture and rejects five-view, missing-passport and stale-review cases. The fixture tests schema/readiness mechanics, not recognizability, inspected pixels or human approval. Passport and six-view preflight remain mandatory in instructions.
+- Static route checks establish explicit new-setup versus continuation branches and the UI step→state→expected→actual→PASS/FAIL/NOT_RUN record, including inline card, hidden dialog, refresh and recovery. No actual application modal flow or live model compliance was exercised in this instruction-package change.
+- Active Markdown links/anchors and declared policy owners pass. All executable adapters and the legacy Codex driver are byte-identical to60317a3. Existing source-provenance hashes, license files and notices are preserved. No voxel instruction prose retains license/paid-asset/NoAI/terms checks.
+- `git -c core.whitespace=cr-at-eol diff --check`: PASS; existing payload CRLF is preserved where present. Package metadata records changed bytes, not a visual-quality verdict.
+
+### Failures repaired during preparation
+
+The first support-module installation check exposed that verification did not include the newly explicit reference-only files. Installation and verification now share the same `selected_modules` selection. A first full-suite run also exposed a test-fixture setup mistake: the old unowned skill needed the old installer's path substitutions before comparison. That fixture was corrected without weakening the preservation expectation; its targeted rerun and the complete final suite passed.
+
+No global installation, live/paid model test, automatic reviewer, access escalation, push, tag or hosted release is part of this validation. Human usability, live brain compliance and actual app integration remain unverified. Publication requires its separate authorized action and read-back.
+
+### 2.1 installation-documentation follow-up
+
+On2026-10-23, current installation/integration/compatibility guidance was corrected to name the unified you-are-brain entry and its actual Codex driver reference, and the unified ui-design inspection route. The retired Codex entry path and stale driver heading were replaced; technical driver folders remain unchanged. A new `test_install_documentation.py` checks all local links/anchors in these three documents and performs real isolated Codex/Claude installations using the documented selection, confirming the unified SKILL and delivered driver reference. Both tests passed in0.290s; check-package and whitespace check also passed. The complete91-test result above precedes these documentation-only changes; no new full-suite or live model result is claimed. Jam Board packaging and runtime behavior were not changed.
+
+
+### 2.1 universal-brain and startup follow-up
+
+On2026-10-23 the brain entry, profile/setup, session support and WORKFLOW were generalized to task/plan/worker/question/acceptance language. No epic/story/board/card/Jam vocabulary remains in that route. The separate jam-board skill and its package selection were not changed by this correction. A scan of all installable Markdown finds no financial/private lab-access instructions; generic quality-ledger mechanisms and source-demo names are not private-domain policy. Executable adapters, their real sandbox parameters, legacy driver and LICENSE files remain unchanged.
+
+The deployment header no longer requires `Read policy` or reopens a workflow. It identifies setup/receipt and preserves actual-authorization boundaries. At the explicit example root `/example/project/.agents`, the header is539→298 UTF-8 bytes; BASE431+header298+markers60+separator1 gives a790-byte full managed block. Skills-only managed block is510bytes. These exclude client/system instructions, other global/project content, skill metadata and selected bodies; no token or billing claim is made. Exact components are in STARTUP_COMPONENTS_2.1.json.
+
+Executed after this correction: universal-brain4 tests (0.173s), installer25 (6.651s), structure migration/route14 (4.690s), ownership/links7 (3.618s), installation documentation2 (0.328s):52 passed. This includes actual isolated standalone brain installation without a Jam directory, retained driver delivery, receipt verification and migration preservation. Text scans and route checks are not live-model compliance. check-package passed147payload files; whitespace checks passed with preserved CRLF handling. The earlier full91-test run remains historical to the earlier2.1 draft, not a newly repeated full suite.
+
+## 2.1 Jam Board ownership separation — final core package
+
+On 2026-10-23, Jam Board was removed from the entire installable playbook payload, catalog, dependency map and all active profiles. Its standalone skill is maintained with the application. The current package has 13 catalog entries and 142 payload files. Earlier 14/147 counts and Jam contract skips above describe earlier intermediate packages, not this one.
+
+`python -B -m unittest discover -s tests -v` completed 97 tests in 65.898 seconds: 97 passed, none skipped. After that test set started, one additional focused engineering-profile upgrade test was added and passed for both Codex and Claude (1.046 seconds); no product code changed between those runs. Do not combine this into a claimed single 98-test suite run.
+
+Observed behavior: clean full, engineering and brain-only installs deliver no Jam files; brain alone does not install dev-plan. Old explicit Jam profile/skill requests return an application-installation explanation and do not write files. Upgrading 2.0 full installations removes unchanged receipt-owned Jam files while preserving neighboring user notes and existing project instructions. Editing either the old Jam SKILL or its brain-loop reference stops the upgrade before any writes. Preexisting unowned Jam entries survive both upgrade and later playbook removal. The focused engineering-profile test verifies normalization to seven requested skills, no Jam, retained executable driver and successful installed verification in both clients.
+
+Package validation and whitespace checks pass. Executable adapters and the legacy driver remain byte-identical to 60317a3. App-owned installation/runtime behavior, live model compliance and rendered UI quality are outside these core installer tests. The application has its own checks; its removed old contract tests and fixture were transferred to that work rather than counted as core skips. No publication, global installation or model call was performed.
+
+### Final publication candidate check
+
+After publication was authorized, the final current test set (including the engineering-upgrade case) was run together: 98 tests passed in 66.168 seconds, no skips or failures. `check-package` passed for 142 payload files. This supersedes the intermediate 97-plus-focused execution count for this candidate, without changing the claim boundaries above.
+
+### One-time release automation
+
+The owner authorized main/tag/release 2.1.0. `release-2.1.yml` publishes only that version after successful push-triggered Validate package on main in Triton556/agent-playbook. It checks current main identity, manifest version, immutable tag identity and existing stable release state; it does not check out or execute repository code. Only its publishing job receives ephemeral contents:write, with no repository permission/default changes. It is not a promise of automatic future-version releases. A fake-API test exercised ten cases: new release, matching existing release, conflicting tag, stale main, failed/non-push/foreign validation, existing draft release, wrong version and API403. All passed; this local simulation is not evidence of an actual published release.

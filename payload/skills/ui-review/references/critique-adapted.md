@@ -1,10 +1,5 @@
 # Interface critique within agreed scope
 
-Use to assess hierarchy, clarity and coherence of an already built screen. Consider the current brief, accepted reference and actual window width. The current agent performs the check; current permissions govern delegation/interviews.
+For a requested critique, use the [ui-design](../../ui-design/SKILL.md) scenario record and [actual-render procedure](visual-quality.md). Open the changed route and its affected hidden surfaces; a visual opinion based only on source is unverified.
 
-1. Name the screen's main question, primary action and visible consequence. Check whether they are understandable in the first screen.
-2. Inspect the render and perform the action; assess readability and visual relationships. Missing-data encoding: see [data-spatial-metaphors, Live, snapshot, approximate, absent](../../visual-scenes/references/data-spatial-metaphors.md#live-snapshot-approximate-absent). Accessibility: see [interaction checks](../../ui-design/references/accessibility.md).
-3. Observation and interpretation: see [human-perspective-review, Inspection sequence](../../dev-flow/references/human-perspective-review.md#inspection-sequence). Record location and impact; repairs follow WORKFLOW, step 6.
-4. Report checks, fixes and gaps under human-perspective-review, Readiness and transfer.
-
-For ambiguous presentation, extract structure, density and interaction principle from a suitable reference, then connect them to the user's current question. Copying appearance does not prove suitability.
+For each finding report the user's step, reached state, observed readability/interaction defect, consequence and proposed correction. Separate observed problems from alternative taste suggestions. Fix only within the authorized task, then repeat the affected steps. This reference adds no extra reviewer, scoring quota or inspection round.

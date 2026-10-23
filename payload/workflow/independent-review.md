@@ -15,7 +15,7 @@ Information staging supplements the [human-perspective inspection sequence](../s
 
 ## Independent pass
 
-Launch the approved fresh reviewer through [agent-sessions, Fixed rules and step 5](../skills/agent-sessions/SKILL.md#fixed-rules); this file owns review scope and context. Give it a new session without the author's history; the reviewer returns a report and launches no nested reviewers.
+Launch the approved fresh reviewer through [agent-sessions, Fixed rules and step 5](../skills/agent-sessions/references/session-guide.md#fixed-rules); this file owns review scope and context. Give it a new session without the author's history; the reviewer returns a report and launches no nested reviewers.
 
 Use [human-perspective-review, Inspection sequence and Readiness and transfer](../skills/dev-flow/references/human-perspective-review.md#inspection-sequence) for observation, interpretation, modality and evidence grades. Targeted extra checks are allowed; a rerun of the author's entire suite is not required.
 
@@ -23,5 +23,5 @@ Report what works, material findings with version/conditions/evidence, covered c
 
 ## After the report
 
-The author confirms findings against the task and evidence. Repairs: see [WORKFLOW, step 6](WORKFLOW.md#work-route).
-An independent reviewer is not continued as a normal worker session. Another round uses another fresh reviewer only within an explicitly agreed next round (the transition follows WORKFLOW, step 6); exceeding the selected scope, stages or round limit requires consent. Session execution and launch approval stay with agent-sessions, step 5.
+The author confirms findings against the task and evidence. Repairs: see [WORKFLOW, Check, repair and finish](WORKFLOW.md#work-route).
+An independent reviewer is not continued as a normal worker session. Another round uses another fresh reviewer only within an explicitly agreed next round (the transition follows WORKFLOW, Check, repair and finish); exceeding the selected scope, stages or round limit requires consent. Session execution and launch approval stay with agent-sessions, step 5.

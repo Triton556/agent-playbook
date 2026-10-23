@@ -17,7 +17,7 @@ Scale quantities: see [resolution-lod, Keep four quantities separate](resolution
 
 Use `scripts/semantic_contract.py` for declared ray visibility, allowed contacts, forbidden overlap, clearance, material depth and substrate coverage. A missing mask returns unknown. These static checks do not judge recognition, biological correctness, pose naturalness or beauty. Pair them with inspected current images and revision-aware evidence; use the general ledger when machine validation is needed.
 
-Pilot evidence: human Gen2 feedback; saved GLM audit reconciled against actual grids; independent bad/good fixtures; four-view and head/hand inspection. The [official Toyota NNP10 archive](https://www.toyota-global.com/company/history_of_toyota/75years/vehicle_lineage/car/id60012578/) and its front/side photograph supply compact-van proportions; other world sizes are authored stylized targets. Existing source provenance/license boundaries remain in [Evidence](evidence.md).
+Pilot evidence: human Gen2 feedback; saved GLM audit reconciled against actual grids; independent bad/good fixtures; four-view and head/hand inspection. The [official Toyota NNP10 archive](https://www.toyota-global.com/company/history_of_toyota/75years/vehicle_lineage/car/id60012578/) and its front/side photograph supply compact-van proportions; other world sizes are authored stylized targets. Source observations and their limits remain in [Evidence](evidence.md).
 
 Observation and cause hygiene: see [human-perspective-review, Inspection sequence](../../dev-flow/references/human-perspective-review.md#inspection-sequence). Voxel-specific view/eye/grip/contact/palette checks remain here.
 

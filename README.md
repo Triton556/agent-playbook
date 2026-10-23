@@ -1,8 +1,8 @@
-# Agent Playbook 2.0
+# Agent Playbook 2.1
 
-A project-local core workflow for brain/worker sessions, Jam Board, development, UI, creative direction, visual/voxel work and knowledge. The client provides models and tools; this package does not launch paid models, change global permissions or register hooks on installation.
+A project-local core workflow for brain/worker sessions, development, UI, creative direction, visual/voxel work and knowledge. The client provides models and tools; this package does not launch paid models, change global permissions or register hooks on installation.
 
-**[Русский](README.ru.md) · [Install](INSTALL_FOR_AGENTS.md) · [2.0 inventory and migration](docs/CORE_CLEANUP_2.0.md) · [Integration](docs/INTEGRATIONS.md) · [Licenses](THIRD_PARTY_NOTICES.md)**
+**[Русский](README.ru.md) · [Install](INSTALL_FOR_AGENTS.md) · [2.1 routes and migration](docs/EXPLICIT_ROUTES_2.1.md) · [Integration](docs/INTEGRATIONS.md) · [Licenses](THIRD_PARTY_NOTICES.md)**
 
 ## Install deliberately
 
@@ -16,21 +16,20 @@ python harness.py verify --client codex --target ../my-project
 python harness.py doctor --client codex --target ../my-project
 ```
 
-Clients: codex, claude, deepseek, generic. Profiles: full, engineering, jam-board, visual, voxel, memory, instructions. `full` or `--workflow` explicitly installs all 20 core skills and the full startup rules. Other profiles/`--skills` select entrypoints plus **explicit required dependencies**, not every skill mentioned in prose.
+Clients: codex, claude, deepseek, generic. Profiles: full, engineering, visual, voxel, memory, instructions. `full` or `--workflow` explicitly installs all 13 core skills and the full startup rules. Other profiles/`--skills` select entrypoints plus **explicit required dependencies**, not every skill mentioned in prose.
 
 ```bash
 python harness.py plan --client codex --target ../my-project --skills you-are-brain
 python harness.py plan --client codex --target ../my-project --skills dev-debug
 ```
 
-The brain selection installs four skills; debugging installs two. Optional routes are used only if relevant and available. A file on disk is not a full body loaded at startup; skills metadata and client limits are separate.
+The brain selection installs one catalog entry plus its technical support files; debugging installs one entry plus shared references. Optional routes are used only if relevant and available. A file on disk is not a full body loaded at startup; skills metadata and client limits are separate.
 
 ## What remains
 
-- Brain profile and resumable worker sessions: `you-are-brain`, `agent-sessions`, `agent-sessions-codex`.
-- Jam Board planning, claims, reports and selected acceptance: `jam-board`.
-- Development stages: `dev-flow`, `dev-plan`, `dev-implement`, `dev-debug`, `dev-verify`.
-- Interface and creative work: `ui-design`, `ui-review`, `creative-direction`, `visual-scenes`, `voxel-models`.
+- Brain profile and resumable worker sessions: `you-are-brain`; existing adapter/driver files are technical support, not separate catalog entries.
+- Development stages: `dev-plan`, `dev-debug`, `dev-verify`; implementation is a shared planning reference.
+- Interface and creative work: `ui-design`, `creative-direction`, `voxel-models`; subject visual references are not another skill.
 - Knowledge: `kb-find`, `kb-save`, `kb-status`, `kb-sync`, `kb-curate`.
 - Instruction editing: `agent-instructions`.
 
@@ -54,3 +53,11 @@ python -B -m unittest discover -s tests -v
 ```
 
 The suite exercises installation, migration, ownership protection, session helpers and explicit dependency selection. Integrity/behavioral helper tests do not establish model-quality improvement. No model benchmark or token savings is claimed from static byte counts. [Changelog](CHANGELOG.md).
+
+## Jam Board separation in 2.1
+
+Jam Board owns its standalone project-local skill and MCP integration. Install that skill from the Jam Board application for the selected project/client; this playbook no longer ships it or adds brain/planning dependencies for it. Old `--profile jam-board` and `--skills jam-board` requests stop with this explanation instead of installing another profile.
+
+During an upgrade of an existing playbook installation, unchanged receipt-owned Jam files are removed; modified managed files stop the upgrade before writes, and unowned files are preserved. Keep both versions and reconcile the reported files explicitly before retrying. Independently installed/global copies are not silently removed.
+
+Clean replacement of an existing installation: [agent procedure](docs/CLEAN_INSTALL_FOR_AGENTS.md). Preserve original receipts, user edits and knowledge data.

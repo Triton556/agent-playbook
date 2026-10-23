@@ -7,10 +7,9 @@ from test_migration import snapshot,release_archive
 class CoreSelection(unittest.TestCase):
     def test_selected_routes_do_not_expand_optional_links(self):
         expected={
-            'dev-debug':{'dev-debug','dev-flow'},
-            'dev-flow':{'dev-flow'},
-            'you-are-brain':{'you-are-brain','agent-sessions','agent-sessions-codex','dev-flow'},
-            'jam-board':{'jam-board','agent-sessions','agent-sessions-codex','dev-plan','dev-flow'},
+            'dev-debug':{'dev-debug'},
+            'dev-plan':{'dev-plan'},
+            'you-are-brain':{'you-are-brain'},
         }
         for skill,names in expected.items():
             with self.subTest(skill=skill),target_directory() as td:
@@ -51,7 +50,7 @@ class CoreUpgrade(unittest.TestCase):
             self.old_install(target)
             result=call('install','--profile','full','--target',target)
             self.assertEqual(result['migration_from'],'1.6.0')
-            self.assertEqual(len(result['installed_skills']),20)
+            self.assertEqual(len(result['installed_skills']),13)
             self.assertFalse((target/'.agents/skills/ui-reference/SKILL.md').exists())
             self.assertFalse((target/'.agents/skills/dev-verify/vendor').exists())
             self.assertEqual(neighbor.read_text(),'Private instructions');self.assertTrue(unowned.exists())

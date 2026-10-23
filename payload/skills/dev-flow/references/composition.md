@@ -1,6 +1,6 @@
 # Core workflow composition
 
-The local dev stages own planning, implementation, debugging and verification. UI design/review, creative direction, visual scenes and voxels add domain criteria only when relevant. Brain/session adapters, Jam Board and knowledge procedures remain separate capabilities.
+The local dev stages own planning, implementation, debugging and verification. UI design/review, creative direction, visual scenes and voxels add domain criteria only when relevant. Worker adapters and knowledge procedures remain separate capabilities.
 
 Version 2.0 removes bundled external skill procedures and detector runtimes. Retained adapted prose keeps its source metadata/licenses; these historical sources are attribution, not extra executable stages. No vendor interview, reviewer, hook or tool installation is required.
 

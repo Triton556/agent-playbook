@@ -19,10 +19,13 @@ SKILL_ALIASES={
     'product-testing':'dev-verify',
     'domain-modeling':'dev-domain-model',
     'product-ui-design':'ui-design',
-    'product-ui-review':'ui-review',
+    'product-ui-review':'ui-design',
+    'ui-review':'ui-design',
+    'agent-sessions':'you-are-brain',
+    'agent-sessions-codex':'you-are-brain',
     'ui-ux-pro-max':'ui-reference',
     'design-taste-frontend-v1':'ui-taste-reference',
-    'codex-sessions':'agent-sessions-codex',
+    'codex-sessions':'you-are-brain',
     'handoff':'agent-handoff',
     'writing-for-agents':'agent-instructions',
     'grilling':'stress-test',
@@ -31,6 +34,10 @@ SKILL_ALIASES={
     'voxel-model-craft':'voxel-models',
 }
 REMOVED_SKILLS={
+    'jam-board':'Moved out of Agent Playbook in 2.1. Install the standalone skill from the Jam Board application for the chosen project; it does not require the full playbook or you-are-brain.',
+    'dev-implement':'Merged in 2.1 into the implementation reference used by planning/workflow; not a standalone skill.',
+    'dev-flow':'Removed in 2.1: choose the skill for the requested deliverable; shared references remain available.',
+    'visual-scenes':'Removed as a separate skill in 2.1; subject references are optional resources, not a replacement skill.',
     'ui-reference':'Removed in 2.0 core cleanup; keep an existing independent installation or use the core task workflow.',
     'ui-taste-reference':'Removed in 2.0 core cleanup; keep an existing independent installation or use the core task workflow.',
     'stress-test':'Removed in 2.0 core cleanup; keep an existing independent installation or use the core task workflow.',
@@ -85,10 +92,17 @@ def catalog(m):
         if not isinstance(dependencies,list) or any(x not in c for x in dependencies):
             raise HarnessError('Unknown required dependency: '+name)
         c[name]['dependencies']=set(dependencies)
+    support=m.get('support_modules',{})
+    if set(support)-set(c):raise HarnessError('Support-module owner is not an installed skill')
+    modules={f['module'] for f in m['files']}
+    for name,items in support.items():
+        if not isinstance(items,list) or any(x not in modules or x in c for x in items):
+            raise HarnessError('Invalid reference-only support module: '+name)
     return c
 def selection(args,m,c):
-    profiles={'full':set(c),'engineering':{x for x in c if x.startswith('dev-')}|{'ui-design','ui-review','agent-sessions','agent-sessions-codex','you-are-brain','creative-direction','agent-instructions','jam-board'},'jam-board':{'jam-board','dev-flow','dev-plan','agent-sessions','agent-sessions-codex','you-are-brain'},'visual':{'creative-direction','ui-design','ui-review','visual-scenes','voxel-models'},'voxel':{'creative-direction','voxel-models'},'memory':{x for x in c if x.startswith('kb-')},'instructions':{'agent-sessions','agent-sessions-codex','you-are-brain','agent-instructions'}}
+    profiles={'full':set(c),'engineering':{x for x in c if x.startswith('dev-')}|{'ui-design','you-are-brain','creative-direction','agent-instructions'},'visual':{'creative-direction','ui-design','voxel-models'},'voxel':{'creative-direction','voxel-models'},'memory':{x for x in c if x.startswith('kb-')},'instructions':{'you-are-brain','agent-instructions'}}
     chosen=set()
+    if args.profile=='jam-board':raise HarnessError('Removed profile: jam-board. '+REMOVED_SKILLS['jam-board'])
     if args.profile:chosen|=profiles[args.profile]
     for v in args.skills or []:
         for name in filter(None,(x.strip() for x in v.split(','))):
@@ -149,19 +163,26 @@ def instruction_diagnostics(target,prospective=None,declared_budget=32768):
     size=sum(x['bytes'] for x in files)
     return {'status':'fail' if override.is_file() or size>declared_budget else 'project-files-within-declared-budget','project_bytes':size,'declared_budget':declared_budget,'override_shadows_installation':override.is_file(),'files':files,'limits':'Declared limit only. Effective client settings, global instructions, fallback files and future nested overrides require actual session verification.'}
 def instructions_block(version,root,values,full):
-    header=f"\nInstalled Agent Playbook {version}. Read policy `{root.as_posix()}/harness-policy.json` first. Historical permissions in installed skills apply only when backed by this installation owner's actual authorization; policy files do not grant tool access. Native capabilities must be checked before use. Skill links are optional routes, not installation or reading requirements: use only the installed catalog and task-relevant sections. Language defaults: see `{root.as_posix()}/BASE-RULES.md`, Goal, communication and boundaries.\n\n"
+    header=f"\nInstalled Agent Playbook {version}. Deployment record: `{root.as_posix()}/harness-policy.json`; it records setup, not new permissions. Use the owner's actual authorization. Skill links are optional routes, not reading requirements. Language defaults: `{root.as_posix()}/BASE-RULES.md`.\n\n"
     if full:
         body=render((REPO/'payload/AGENTS.md').read_bytes(),values,'BASE-RULES.md').decode('utf-8-sig')
         return BEGIN+header+body+'\n'+END
     return BEGIN+header+'Selected skills only; the complete global workflow is not activated. Read the applicable installed skill and its references when the task calls for it.\n'+END
+def selected_modules(m,chosen):
+    modules=set(chosen)|{'workflow'}
+    for name in chosen:modules.update(m.get('support_modules',{}).get(name,[]))
+    if any(x.startswith('kb-') for x in chosen):modules.add('memory-runtime')
+    return modules
+
 def plan(args):
     m=manifest();c=catalog(m);requested,chosen=selection(args,m,c)
     target=linksafe(Path(args.target).absolute());root=safe(target,CLIENT_ROOT[args.client])
     values=settings(args,root,target);entries=[]
+    modules=selected_modules(m,chosen)
     for f in m['files']:
         rel=f['path'].removeprefix('payload/')
         if rel=='AGENTS.md':rel='BASE-RULES.md'
-        selected=(f['module'] in chosen or f['module']=='workflow' or (f['module']=='memory-runtime' and any(x.startswith('kb-') for x in chosen)))
+        selected=f['module'] in modules
         if not selected:continue
         data=render((REPO/f['path']).read_bytes(),values,rel)
         entries.append({'relative':CLIENT_ROOT[args.client]+'/'+rel,'sha256':sha(data),'data':data,'source':f['path']})
@@ -185,10 +206,8 @@ def validate_legacy_upgrade(args,target,root,old,policy):
     normalize=lambda names:sorted({SKILL_ALIASES.get(x,x) for x in names if SKILL_ALIASES.get(x,x) not in REMOVED_SKILLS})
     requested=set(catalog(manifest())) if args.profile=='full' or (not args.profile and not args.skills) else set(normalize(old['requested_skills']))
     additions=set()
-    if args.profile in {'full','engineering','instructions','jam-board'}:
+    if args.profile in {'full','engineering','instructions'}:
         additions.add('you-are-brain')
-    if args.profile in {'full','engineering'}:
-        additions.add('jam-board')
     requested|=additions
     if sorted(requested)!=policy['requested_skills'] or old.get('workflow_activated')!=policy['full_workflow']:
         raise HarnessError('Legacy installation has another selection; repeat its original profile/skills and workflow options for migration')
@@ -288,7 +307,8 @@ def installed(args):
     policy=read_json(root/'harness-policy.json')
     if receipt.get('policy_snapshot')!=policy:raise HarnessError('Deployment policy differs from original receipt snapshot; preserve files for inspection')
     expected_policy_bytes=(json.dumps(receipt['policy_snapshot'],ensure_ascii=False,indent=2)+'\n').encode('utf8')
-    expected_sources={f['path'] for f in m['files'] if f['module'] in set(policy.get('installed_skills',[])) or f['module']=='workflow' or (f['module']=='memory-runtime' and any(x.startswith('kb-') for x in policy.get('installed_skills',[])))}|{'generated-policy'}
+    modules=selected_modules(m,set(policy.get('installed_skills',[])))
+    expected_sources={f['path'] for f in m['files'] if f['module'] in modules}|{'generated-policy'}
     if len(receipt.get('files',[]))!=len(expected_sources) or {f.get('source') for f in receipt.get('files',[])}!=expected_sources:raise HarnessError('Installation receipt omits or adds expected files')
     if policy.get('installed_skills')!=receipt.get('installed_skills') or policy.get('client')!=args.client:raise HarnessError('Receipt/policy selection mismatch')
     chosen=set(policy['installed_skills'])
@@ -305,7 +325,7 @@ def installed(args):
         if source=='generated-policy':relative=CLIENT_ROOT[args.client]+'/harness-policy.json'
         elif source in sources:
             f=sources[source]
-            allowed=f['module'] in chosen or f['module']=='workflow' or (f['module']=='memory-runtime' and any(x.startswith('kb-') for x in chosen))
+            allowed=f['module'] in modules
             if not allowed:raise HarnessError('Receipt includes an unselected module')
             rel=source.removeprefix('payload/')
             if rel=='AGENTS.md':rel='BASE-RULES.md'

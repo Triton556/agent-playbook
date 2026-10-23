@@ -16,7 +16,7 @@ Write each direction as its opening: the first 15–30 seconds or first paragrap
 
 ## References
 
-Find a few real pieces in the same format and audience (videos, essays, channels). Ask what the user likes in each: pacing, honesty, editing, thumbnails, titles. For channel or series decisions, connect the direction to the audience the user wants and to what the user can sustain.
+A real piece in the same format and audience (video, essay, channel), including one the user supplies, can help clarify an open question about pacing, voice, editing, thumbnails or titles. Use references when helpful, not as a required collection or interview. For channel or series decisions, connect the direction to the audience the user wants and to what the user can sustain.
 
 ## Hand-over
 
