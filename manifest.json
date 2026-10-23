@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "name": "agent-playbook",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "exported_at": "2026-10-23T04:12:37+00:00",
   "baseline": "Owner-authorized core simplification from 1.6.0; external skill bundles removed; explicit installation dependencies, optional routing, proportional checks.",
   "instruction_policy": "Maintained agent instructions and agent-to-agent communication in English; direct user communication and knowledge-base prose in Russian by default, subject to explicit user language instructions; exact quotations, identifiers and required product text preserved; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",

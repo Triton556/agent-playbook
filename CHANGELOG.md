@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1] - 2026-10-23
+
+- Add explicit `--scope user` installation for Codex and Claude: shared user skills and native user instruction files, without copying the playbook into projects.
+- Preserve project-scoped behavior and existing user instructions, knowledge data and unmanaged skills. Verification/removal require the recorded scope.
+- Add disposable-home functional checks for install, idempotence, removal, override/conflict preservation and project isolation.
+- Simplify clean-install guidance; published 2.1.0 remains unchanged.
+
 ## 2.1.0 — Explicit routes and user-flow acceptance
 
 - Move Jam Board skill ownership/delivery to its application; core catalog has 13 entries. Explicit old Jam selections explain the replacement, and migration preserves modified/unowned files.

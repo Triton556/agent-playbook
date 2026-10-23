@@ -24,7 +24,7 @@ Manifest `skill_dependencies` lists actual catalog dependencies. `support_module
 
 The existing receipt-checked upgrade detects modified or missing old files before target writes. Removed managed SKILL.md files can be removed only after the old trusted receipt and current bytes match. User-modified retired entries cause refusal; user-owned neighboring files remain. Existing agent-sessions / agent-sessions-codex selection aliases map to you-are-brain, and ui-review maps to ui-design. dev-flow, dev-implement, visual-scenes and jam-board requests return an explicit retirement explanation rather than silently installing a new synonym.
 
-No installation changes global client config, launches paid models, grants extra access or proves the current app's capabilities. Native versus external workers are actual available routes selected for the task; worker answers do not imply an automatic wakeup mechanism.
+User scope installs user-level instructions and skills; it does not change credentials or client permissions, launch paid models, grant extra access or prove the current app's capabilities. Native versus external workers are actual available routes selected for the task; worker answers do not imply an automatic wakeup mechanism.
 
 ## Universal orchestration correction
 

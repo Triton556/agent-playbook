@@ -1,12 +1,12 @@
 # Clean installation for an agent
 
-Use this procedure when the owner asks to replace their previous instruction/skill setup with a clean Agent Playbook installation. It is not a reset of the agent client, computer, project or knowledge base. The procedure is project-scoped; the installer does not offer a global-install mode.
+Use this procedure when the owner asks to replace their previous instruction/skill setup with a clean Agent Playbook installation. It is not a reset of the agent client, computer, project or knowledge base. Choose user scope for one global installation, or project scope for a deliberately isolated installation. Do not install both by default.
 
 ## Outcome and scope
 
 Establish the actual client, selected project directory, requested release/commit, existing knowledge-vault location, and the owner's keep/remove choices. Reuse answers already supplied. Ask only when a target, file ownership or consequential access choice is genuinely unresolved; continue independent work while that decision is pending.
 
-A full 2.1.0 installation has 13 discoverable entries:
+A full 2.1.x installation has 13 discoverable entries:
 
 - `agent-instructions`
 - `creative-direction`
@@ -71,7 +71,7 @@ A receipt-checked upgrade is also supported. Use the original checkout/private r
 
 ## 3. Pin and inspect the new package
 
-Use the requested published release/tag and verify the immutable commit it resolves to. For version 2.1.0, check `v2.1.0` and `manifest.json`; record the actual commit. Do not silently substitute the current branch head or an older `main`. Preserve unsaved work in any existing checkout; use a separate clean checkout when appropriate. Keep the new checkout and its future private receipts available for removal/upgrade.
+Use the requested published release/tag and verify the immutable commit it resolves to. Use the requested release; a normal installation does not require a separate manual commit audit. Do not silently substitute an unpublished development branch. Preserve unsaved work in any existing checkout; use a separate clean checkout when appropriate. Keep the new checkout and its future private receipts available for removal/upgrade.
 
 Read [INSTALL_FOR_AGENTS.md](../INSTALL_FOR_AGENTS.md), the selected bindings in [INTEGRATIONS.md](INTEGRATIONS.md), and applicable repository instructions. Follow relevant references, not every linked skill body.
 
@@ -88,7 +88,16 @@ Run from the pinned checkout:
 
 ## 4. Plan and install into the explicit target
 
-Choose the actual project, not the user's home or knowledge vault merely to simulate global installation. For a full installation with an existing vault:
+For one user-wide installation, supported for Codex and Claude, use the user home as the explicit target and `--scope user` on plan/install/verify/doctor/remove. Codex skills go into `~/.agents/skills`, instructions into `~/.codex/AGENTS.md`; Claude uses `~/.claude/skills` and `~/.claude/CLAUDE.md`. Existing unrelated instruction text is retained. No project gets a copied installation. A non-default CODEX_HOME is reported rather than silently written to the wrong location.
+
+```sh
+<PYTHON> harness.py plan --client codex --scope user --target <HOME> --profile full --memory-root <VAULT>
+<PYTHON> harness.py install --client codex --scope user --target <HOME> --profile full --memory-root <VAULT>
+<PYTHON> harness.py verify --client codex --scope user --target <HOME>
+<PYTHON> harness.py doctor --client codex --scope user --target <HOME>
+```
+
+For a deliberately project-local installation, omit `--scope user` and use the actual project:
 
 ```sh
 <PYTHON> harness.py plan --client <CLIENT> --target <PROJECT> --profile full --memory-root <VAULT>
@@ -101,7 +110,7 @@ Supported clients are `codex`, `claude`, `deepseek` and `generic`; discovery/int
 
 Use the same verified bindings for `plan` and `install`. Supported optional bindings include `--memory-repo`, `--cloud-memory-root`, `--evidence-root` and `--curation-schedule`. Supply them only from the destination's verified configuration and authorization. A path or schedule string does not create a connection, scheduler or permission. Do not substitute the source author's environment.
 
-Read the plan before writes. Resolve collisions without deleting user content to satisfy the installer. The full profile includes the four-rule BASE and the selected core; it does not install third-party UI bundles or a board integration. The installer changes neither global client configuration nor credentials, hooks or schedulers.
+Read the plan before writes. Resolve collisions without deleting user content to satisfy the installer. The full profile includes the four-rule BASE and the selected core; it does not install third-party UI bundles or a board integration. User scope adds its managed block to the native user instruction file; it does not change credentials, hooks, MCP configuration or schedulers.
 
 An overriding instruction file or actual startup-budget problem needs a scoped resolution. Do not increase a limit and claim that it removed stale instructions. The installer budget option is a declaration; the effective client setting is separate.
 

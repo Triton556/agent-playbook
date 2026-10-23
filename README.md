@@ -1,3 +1,5 @@
+> 2.1.1: explicit user-wide installation with `--scope user --target <HOME>` (Codex/Claude). [Clean installation](docs/CLEAN_INSTALL_FOR_AGENTS.md).
+
 # Agent Playbook 2.1
 
 A project-local core workflow for brain/worker sessions, development, UI, creative direction, visual/voxel work and knowledge. The client provides models and tools; this package does not launch paid models, change global permissions or register hooks on installation.
@@ -37,7 +39,7 @@ Version 2.0 removes six imported skills, bundled vendor workflows and the extern
 
 ## Safety and upgrade
 
-Retain the original checkout's private `.harness-state/receipts/`. Inspect upgrade `plan` with the same target/client/profile/bindings. Only unchanged owned obsolete files can be removed. Edited, unowned and unrelated files are preserved; conflicts stop before writes. No global Mac/PC settings are changed. Retired explicit skill names fail clearly rather than silently choosing another workflow.
+Retain the original checkout's private `.harness-state/receipts/`. Inspect upgrade `plan` with the same target/client/profile/bindings. Only unchanged owned obsolete files can be removed. Edited, unowned and unrelated files are preserved; conflicts stop before writes. User scope changes only its native user instruction block and skills; other client settings remain unchanged. Retired explicit skill names fail clearly rather than silently choosing another workflow.
 
 ```bash
 python harness.py remove --client codex --target ../my-project --dry-run

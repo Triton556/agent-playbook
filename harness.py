@@ -174,6 +174,25 @@ def selected_modules(m,chosen):
     if any(x.startswith('kb-') for x in chosen):modules.add('memory-runtime')
     return modules
 
+def instruction_entry(args):
+    scope=getattr(args,'scope','project')
+    if scope=='user':
+        if args.client not in {'codex','claude'}:raise HarnessError('User scope currently supports Codex and Claude only')
+        if args.client=='codex':
+            override=os.environ.get('CODEX_HOME')
+            expected=Path(args.target).absolute()/'.codex'
+            if override and Path(override).expanduser().absolute()!=expected:
+                raise HarnessError('Custom CODEX_HOME differs from the selected user home; preserve it and resolve the installation location explicitly')
+            return '.codex/AGENTS.md'
+        return '.claude/CLAUDE.md'
+    return 'CLAUDE.md' if args.client=='claude' else 'AGENTS.md'
+def startup_diagnostics(args,target,prospective=None,declared_budget=32768):
+    if getattr(args,'scope','project')=='project':return instruction_diagnostics(target,prospective,declared_budget)
+    entry=safe(target,instruction_entry(args));override=entry.with_name('AGENTS.override.md')
+    candidate=override if override.is_file() else entry
+    size=len(prospective.encode('utf8')) if prospective is not None and not override.is_file() else (candidate.stat().st_size if candidate.is_file() else 0)
+    return {'status':'fail' if override.is_file() or size>declared_budget else 'user-files-within-declared-budget','user_bytes':size,'project_bytes':size,'declared_budget':declared_budget,'override_shadows_installation':override.is_file(),'files':[{'path':str(candidate),'bytes':size}],'limits':'User instruction files only. Active client discovery and each project override must be verified in a fresh session.'}
+
 def plan(args):
     m=manifest();c=catalog(m);requested,chosen=selection(args,m,c)
     target=linksafe(Path(args.target).absolute());root=safe(target,CLIENT_ROOT[args.client])
@@ -187,12 +206,12 @@ def plan(args):
         data=render((REPO/f['path']).read_bytes(),values,rel)
         entries.append({'relative':CLIENT_ROOT[args.client]+'/'+rel,'sha256':sha(data),'data':data,'source':f['path']})
     activate=args.workflow or args.profile=='full'
-    policy={'reviewer_consent':args.reviewer_consent,'consent_source':args.consent_source or None,'requires_actual_user_authorization':True,'capability_declarations':{},'source_version':m['version'],'scope':'project','client':args.client,'full_workflow':activate,'bindings':values,'requested_skills':sorted(requested),'installed_skills':sorted(chosen)}
+    policy={'reviewer_consent':args.reviewer_consent,'consent_source':args.consent_source or None,'requires_actual_user_authorization':True,'capability_declarations':{},'source_version':m['version'],'scope':getattr(args,'scope','project'),'client':args.client,'full_workflow':activate,'bindings':values,'requested_skills':sorted(requested),'installed_skills':sorted(chosen)}
     if policy['reviewer_consent']=='one-per-round' and not args.consent_source:raise HarnessError('Standing reviewer consent needs --consent-source pointing to actual human authorization')
     policy['project_doc_max_bytes_declared']=args.project_doc_max_bytes
     policy_bytes=(json.dumps(policy,ensure_ascii=False,indent=2)+'\n').encode('utf8')
     entries.append({'relative':CLIENT_ROOT[args.client]+'/harness-policy.json','sha256':sha(policy_bytes),'data':policy_bytes,'source':'generated-policy'})
-    instruction_file='CLAUDE.md' if args.client=='claude' else 'AGENTS.md'
+    instruction_file=instruction_entry(args)
     block=instructions_block(m['version'],root,values,activate)
     return m,target,root,entries,block,instruction_file,policy
 def validate_legacy_upgrade(args,target,root,old,policy):
@@ -224,7 +243,7 @@ def validate_legacy_upgrade(args,target,root,old,policy):
     previous['bindings']={k:v for k,v in snapshot['bindings'].items() if not k.startswith('LAB_')}
     previous.setdefault('project_doc_max_bytes_declared',32768)
     if previous!=policy:raise HarnessError('Legacy installation has different bindings or policy; repeat its original installation options for migration')
-    expected_entry='CLAUDE.md' if args.client=='claude' else 'AGENTS.md'
+    expected_entry=instruction_entry(args)
     if old.get('instruction_file')!=expected_entry:raise HarnessError('Invalid legacy instruction path')
     seen=set()
     for row in old['files']:
@@ -264,7 +283,7 @@ def install(args):
     base,existing=strip_block(original)
     if args.client=='codex':
         prospective=original.replace(existing,block,1) if existing else original+block
-        diagnostic=instruction_diagnostics(target,prospective,args.project_doc_max_bytes)
+        diagnostic=startup_diagnostics(args,target,prospective,args.project_doc_max_bytes)
         if diagnostic['override_shadows_installation']:raise HarnessError('AGENTS.override.md shadows the startup block; preserve it and resolve the instruction-source choice before installation')
         if diagnostic['status']=='fail':raise HarnessError('Project startup instructions exceed declared Codex byte budget ('+str(diagnostic['project_bytes'])+' > '+str(args.project_doc_max_bytes)+'). Use an explicit larger --project-doc-max-bytes and matching session launch configuration; instructions were not shortened or written.')
     if upgrading:
@@ -305,6 +324,7 @@ def installed(args):
     # A receipt is project data, not authority to delete neighboring files.
     m=manifest(); sources={f['path']:f for f in m['files']};c=catalog(m)
     policy=read_json(root/'harness-policy.json')
+    if policy.get('scope','project')!=getattr(args,'scope','project'):raise HarnessError('Installation scope differs; use its recorded --scope')
     if receipt.get('policy_snapshot')!=policy:raise HarnessError('Deployment policy differs from original receipt snapshot; preserve files for inspection')
     expected_policy_bytes=(json.dumps(receipt['policy_snapshot'],ensure_ascii=False,indent=2)+'\n').encode('utf8')
     modules=selected_modules(m,set(policy.get('installed_skills',[])))
@@ -317,7 +337,7 @@ def installed(args):
     if receipt.get('workflow_activated')!=policy.get('full_workflow'):raise HarnessError('Receipt/policy activation mismatch')
     expected_block=instructions_block(m['version'],root,policy['bindings'],policy['full_workflow'])
     if receipt.get('managed_block_sha256')!=sha(expected_block.encode('utf8')):raise HarnessError('Receipt instruction hash does not match packaged instructions')
-    expected_entry='CLAUDE.md' if args.client=='claude' else 'AGENTS.md'
+    expected_entry=instruction_entry(args)
     if receipt.get('instruction_file') not in [None,expected_entry]:raise HarnessError('Invalid instruction path in receipt')
     seen=set()
     for row in receipt.get('files',[]):
@@ -371,7 +391,7 @@ def doctor(args):
     checks=[{'capability':'integrity','status':v['status']},{'capability':'python','status':'pass','version':sys.version.split()[0]},{'capability':'node','status':'pass' if shutil.which('node') else 'missing'}, {'capability':'file-reading-and-shell','status':'unverified','check':'Agent must read installed instructions and execute a permitted helper.'}]
     selected=set(r['installed_skills'])
     if selected&{'agent-sessions','agent-sessions-codex','you-are-brain'}:checks.append(host_diagnostics(args,root))
-    if args.client=='codex':checks.append({'capability':'startup-instructions','client_load':'unverified',**instruction_diagnostics(target,declared_budget=policy.get('project_doc_max_bytes_declared',32768))})
+    if args.client=='codex':checks.append({'capability':'startup-instructions','client_load':'unverified',**startup_diagnostics(args,target,declared_budget=policy.get('project_doc_max_bytes_declared',32768))})
     if selected&{'ui-design','ui-review','visual-scenes','voxel-models'}:
         checks.append({'capability':'actual-image-and-browser-inspection','status':'unverified','check':'Inspect the actual output and interaction in the client, not just a file list.'})
     if any(x.startswith('kb-') for x in selected):
@@ -421,7 +441,7 @@ def main(argv=None):
     ap=argparse.ArgumentParser(description=__doc__);sub=ap.add_subparsers(dest='command',required=True)
     sub.add_parser('catalog');sub.add_parser('check-package')
     for command in ['plan','install','verify','doctor','remove','init-memory']:
-        p=sub.add_parser(command);p.add_argument('--target',required=True);p.add_argument('--client',choices=CLIENT_ROOT,default='codex')
+        p=sub.add_parser(command);p.add_argument('--target',required=True,help='Project directory, or user home for --scope user');p.add_argument('--scope',choices=['project','user'],default='project');p.add_argument('--client',choices=CLIENT_ROOT,default='codex')
         if command in ['plan','install']:
             p.add_argument('--profile',choices=['full','engineering','visual','voxel','memory','instructions','jam-board']);p.add_argument('--skills',action='append');p.add_argument('--workflow',action='store_true');p.add_argument('--memory-root');p.add_argument('--reviewer-consent',choices=['ask','one-per-round'],default='ask');p.add_argument('--consent-source')
             p.add_argument('--project-doc-max-bytes',type=int,default=32768,help='Declared Codex project instruction budget; does not change client config. Match actual session settings.')
