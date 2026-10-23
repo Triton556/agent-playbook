@@ -241,3 +241,11 @@ After publication was authorized, the final current test set (including the engi
 ### One-time release automation
 
 The owner authorized main/tag/release 2.1.0. `release-2.1.yml` publishes only that version after successful push-triggered Validate package on main in Triton556/agent-playbook. It checks current main identity, manifest version, immutable tag identity and existing stable release state; it does not check out or execute repository code. Only its publishing job receives ephemeral contents:write, with no repository permission/default changes. It is not a promise of automatic future-version releases. A fake-API test exercised ten cases: new release, matching existing release, conflicting tag, stale main, failed/non-push/foreign validation, existing draft release, wrong version and API403. All passed; this local simulation is not evidence of an actual published release.
+
+## Version 2.1.1 user-scope verification
+
+Disposable home directories exercise Codex and Claude native user paths, unchanged
+working-project instructions and design-system neighbors, no-write plan, repeat
+installation, safe removal, edited managed-block refusal, wrong-scope refusal,
+user override protection and a non-default CODEX_HOME conflict. No real user home
+was modified. This is filesystem behavior, not a live model discovery test.

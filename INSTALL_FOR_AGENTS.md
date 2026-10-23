@@ -1,8 +1,10 @@
+> **User-wide installation (2.1.1):** use `--scope user --target <HOME>` for Codex or Claude on plan/install/verify/doctor/remove. Skills and the four-rule managed block are installed in native user paths, not in the working project. See [clean installation](docs/CLEAN_INSTALL_FOR_AGENTS.md#4-plan-and-install-into-the-explicit-target).
+
 > **Version 2.1:** [explicit routes, reference modules and safe upgrade](docs/EXPLICIT_ROUTES_2.1.md). Older external bundles and detectors described in historical release material are no longer shipped.
 
 # Installation procedure for an agent
 
-Read this document before changing the destination. The user chooses what to install and authorizes access, costs and integrations. The installer writes to the explicit project target, its private receipt store in this checkout, and, when separately requested, the explicit knowledge vault. It does not change the source author's configuration.
+Read this document before changing the destination. The user chooses what to install and authorizes access, costs and integrations. The installer writes to the explicit project or user-home target, its private receipt store in this checkout, and, when separately requested, the explicit knowledge vault. It does not change the source author's configuration.
 
 ## 1. Establish the requested installation
 
@@ -57,7 +59,7 @@ python harness.py verify --client codex --target /path/to/project
 python harness.py doctor --client codex --target /path/to/project
 ```
 
-The full base instructions are inserted verbatim after environment binding into a managed startup block. Existing project text remains. BASE-RULES.md stores the same complete base without introducing a second automatically loaded nested AGENTS.md. No global client config, permission setting, API key, hook or scheduler is registered.
+The full base instructions are inserted verbatim after environment binding into a managed startup block. Existing project text remains. BASE-RULES.md stores the same complete base without introducing a second automatically loaded nested AGENTS.md. User scope installs native user instructions and skills. No permission setting, API key, hook or scheduler is registered.
 
 Repeat installation with the same options is idempotent. Changing selection or bindings is a distinct installation decision: retain the old state, inspect removal and reinstall safely or choose a new target. Edits to owned files are preserved and cause verification/removal to stop.
 
@@ -127,7 +129,7 @@ Language policy: see [AGENTS, Goal, communication and boundaries](payload/AGENTS
 
 Update this same checkout and keep its gitignored `.harness-state/receipts/` private store. Repeat the original `plan` and `install` commands with the same target, client, profile/skills, workflow flag and retained deployment bindings, then run `verify`. Omit retired lab flags; their old values are ignored during migration. `plan` reports `migration_from` and `obsolete_owned_files` without writing. Original skill names in `--skills` are aliases that warn on stderr; the plan and installed catalog use the new names. See the complete [rename table](CHANGELOG.md#100). Removed modules return an explicit error when requested directly.
 
-The installer checks the destination receipt against its original private record, validates every old file and the managed startup block, replaces unchanged owned files, and removes only obsolete owned files. Renamed skills appear at their new paths; removed modules are retired. User neighbors, preexisting identical files and text outside the managed block remain intact, including BOM/CRLF. Edited or missing old files, a changed block, different options, missing private records or new-path conflicts stop the upgrade before writes. Resolve the reported conflict without deleting user content, then retry. A separate checkout needs an authorized transfer of the original private record; a destination receipt alone is insufficient. Empty old directories may remain. Back up the project and private receipts before upgrading; retain the 0.x checkout for recovery. No global client settings are changed.
+The installer checks the destination receipt against its original private record, validates every old file and the managed startup block, replaces unchanged owned files, and removes only obsolete owned files. Renamed skills appear at their new paths; removed modules are retired. User neighbors, preexisting identical files and text outside the managed block remain intact, including BOM/CRLF. Edited or missing old files, a changed block, different options, missing private records or new-path conflicts stop the upgrade before writes. Resolve the reported conflict without deleting user content, then retry. A separate checkout needs an authorized transfer of the original private record; a destination receipt alone is insufficient. Empty old directories may remain. Back up the project and private receipts before upgrading; retain the 0.x checkout for recovery. User scope changes its native user instructions and skills; credentials and other settings remain unchanged.
 
 ## Jam Board separation in 2.1
 

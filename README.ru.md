@@ -1,3 +1,5 @@
+> 2.1.1: explicit user-wide installation with `--scope user --target <HOME>` (Codex/Claude). [Clean installation](docs/CLEAN_INSTALL_FOR_AGENTS.md).
+
 # Agent Playbook 2.1
 
 Костяк пользовательских навыков: мозг и рабочие сессии, разработка, UI, творческие/визуальные/воксельные задачи и база знаний. 13 входов: мозг и UI объединены, dev-flow и visual-scenes больше не отдельные навыки. Модели и инструменты предоставляет клиент, установщик не запускает платные сессии и не меняет глобальные настройки.

@@ -29,7 +29,7 @@ for(const scenario of ['absent','equal','conflict','stale','failure','nonsuccess
  }}};
  let error=null;try{await new (Object.getPrototypeOf(async()=>{}).constructor)('github','context','core',source)(github,{repo:{owner:'Triton556',repo:'agent-playbook'},payload:{workflow_run:run}},{info:()=>{}});}catch(e){error=e.message;}
  if(scenario==='absent'){if(error||calls.length!==2)throw new Error(scenario+JSON.stringify({error,calls}));}
- else if(scenario==='equal'){if(error||calls.length)throw new Error(scenario);}
+ else if(['equal','version'].includes(scenario)){if(error||calls.length)throw new Error(scenario);}
  else if(!error||calls.length)throw new Error(scenario+JSON.stringify({error,calls}));
 }
 console.log('10 fake-API scenarios passed');
