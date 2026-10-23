@@ -14,6 +14,6 @@ Start with the exact symptom: expected and actual behavior, inputs, environment,
 
 When dynamic reproduction is unavailable, perform useful static analysis and label hypotheses and unperformed checks. Request only the minimum missing signal/access; continue independent parts.
 
-Deliver an evidenced cause and verification or a precise blocker with eliminated hypotheses. Action scope: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries). Check visual changes through [ui-review](../ui-design/SKILL.md).
+Deliver an evidenced cause and verification or a precise blocker with eliminated hypotheses. Action scope: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
 
 Source revision and license: [sources.json](sources.json), [LICENSE](licenses/mattpocock--skills-LICENSE).

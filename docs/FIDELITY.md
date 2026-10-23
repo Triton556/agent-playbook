@@ -1,3 +1,7 @@
+# Current scope: version 2.2 portable KB and design removal
+
+The owner explicitly removed ui-design, ui-review support and creative-direction. These methods are not moved into another skill. KB procedures and schema/layout live in the installed skills; vault-local workflow files are compatibility pointers. Existing vault data/configuration is not overwritten. Prior sections below are historical except for retained code, provenance and data-integrity obligations. See CLEANUP_2.2.md.
+
 # Current scope: version 2.1 explicit routes
 
 The owner authorized the changes in [2.1 scope](EXPLICIT_ROUTES_2.1.md). This section supersedes historical instruction-retention claims for the explicitly retired entrypoints and BASE. Executable adapters, package licenses, voxel passport/six-view behavior and memory integrity are retained. Jam Board integration moves to its own application; unchanged receipt-owned old copies can migrate out, edited or unowned copies are preserved.

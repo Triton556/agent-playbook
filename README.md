@@ -1,14 +1,14 @@
-> 2.1.1: explicit user-wide installation with `--scope user --target <HOME>` (Codex/Claude). [Clean installation](docs/CLEAN_INSTALL_FOR_AGENTS.md).
+> 2.2.0: explicit user-wide installation with `--scope user --target <HOME>` (Codex/Claude). [Clean installation](docs/CLEAN_INSTALL_FOR_AGENTS.md).
 
-# Agent Playbook 2.1
+# Agent Playbook 2.2
 
-A project-local core workflow for brain/worker sessions, development, UI, creative direction, visual/voxel work and knowledge. The client provides models and tools; this package does not launch paid models, change global permissions or register hooks on installation.
+A portable core workflow for brain/worker sessions, development, voxel work and knowledge. No UI-design or creative-direction skill. The client provides models and tools; this package does not launch paid models, change global permissions or register hooks on installation.
 
 **[Русский](README.ru.md) · [Install](INSTALL_FOR_AGENTS.md) · [2.1 routes and migration](docs/EXPLICIT_ROUTES_2.1.md) · [Integration](docs/INTEGRATIONS.md) · [Licenses](THIRD_PARTY_NOTICES.md)**
 
 ## Install deliberately
 
-Python 3.12+ for installation; Node.js 22+ for the selected helpers. Inspect the plan first. Use an explicit project, not a global home.
+Python 3.12+ for installation; Node.js 22+ for the selected helpers. Inspect the plan first. Choose an explicit user home with --scope user, or an isolated project with --scope project.
 
 ```bash
 python harness.py catalog
@@ -18,7 +18,7 @@ python harness.py verify --client codex --target ../my-project
 python harness.py doctor --client codex --target ../my-project
 ```
 
-Clients: codex, claude, deepseek, generic. Profiles: full, engineering, visual, voxel, memory, instructions. `full` or `--workflow` explicitly installs all 13 core skills and the full startup rules. Other profiles/`--skills` select entrypoints plus **explicit required dependencies**, not every skill mentioned in prose.
+Clients: codex, claude, deepseek, generic. Profiles: full, engineering, visual, voxel, memory, instructions. `full` or `--workflow` explicitly installs all 11 core skills and the full startup rules. Other profiles/`--skills` select entrypoints plus **explicit required dependencies**, not every skill mentioned in prose.
 
 ```bash
 python harness.py plan --client codex --target ../my-project --skills you-are-brain
@@ -31,7 +31,7 @@ The brain selection installs one catalog entry plus its technical support files;
 
 - Brain profile and resumable worker sessions: `you-are-brain`; existing adapter/driver files are technical support, not separate catalog entries.
 - Development stages: `dev-plan`, `dev-debug`, `dev-verify`; implementation is a shared planning reference.
-- Interface and creative work: `ui-design`, `creative-direction`, `voxel-models`; subject visual references are not another skill.
+- Voxel assets: `voxel-models`. UI design and creative-direction procedures are not included.
 - Knowledge: `kb-find`, `kb-save`, `kb-status`, `kb-sync`, `kb-curate`.
 - Instruction editing: `agent-instructions`.
 
@@ -63,3 +63,6 @@ Jam Board owns its standalone project-local skill and MCP integration. Install t
 During an upgrade of an existing playbook installation, unchanged receipt-owned Jam files are removed; modified managed files stop the upgrade before writes, and unowned files are preserved. Keep both versions and reconcile the reported files explicitly before retrying. Independently installed/global copies are not silently removed.
 
 Clean replacement of an existing installation: [agent procedure](docs/CLEAN_INSTALL_FOR_AGENTS.md). Preserve original receipts, user edits and knowledge data.
+
+
+KB procedures and the portable folder/index/leaf layout are supplied under the installed kb-* skills and kb-common references. An existing vault keeps its data and settings; updating the playbook does not overwrite its SYSTEM directory. New vault workflow files are compatibility pointers, not a second procedural authority.

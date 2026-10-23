@@ -1,6 +1,6 @@
 # Validation record
 
-Current release verification is recorded under [2.1.0 release verification](#version-210-release-verification). Earlier entries retain their original scope; the 1.4.0 baseline and per-finding disposition remain in [its release report](RELEASE_1.4.0.md).
+Current 2.2 verification is recorded in [the release report](RELEASE_2.2.0.md). Earlier entries retain their original scope; the 1.4.0 baseline and per-finding disposition remain in [its release report](RELEASE_1.4.0.md).
 
 Build: 15 October 2026, Windows. The levels below describe executed checks, not a guarantee of future model quality. Python standard-library installer/helpers and Node22.13.0 were used.
 

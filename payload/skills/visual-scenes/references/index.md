@@ -13,4 +13,4 @@ These files are reference resources, not a skill or a workflow. Open a named top
 | Frame performance or accessible controls | [Runtime](runtime-accessibility.md) |
 | Current visual evidence | [Validation](validation.md) |
 
-No topic above is a required startup read. Ordinary UI work enters ui-design; voxel work enters voxel-models.
+No topic above is a required startup read. Voxel work enters voxel-models.

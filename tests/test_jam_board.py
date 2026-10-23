@@ -17,7 +17,7 @@ BASELINE = '60317a3b83ef5bd9ef620a899bf95a099f7c926f'
 class JamSeparation(unittest.TestCase):
     def test_core_catalog_manifest_and_dependencies_do_not_ship_jam(self):
         catalog = call('catalog')['skills']
-        self.assertEqual(len(catalog), 13)
+        self.assertEqual(len(catalog), 11)
         self.assertNotIn('jam-board', {skill['name'] for skill in catalog})
         manifest = json.loads((ROOT/'manifest.json').read_text())
         self.assertFalse((ROOT/'payload/skills/jam-board').exists())
@@ -109,8 +109,8 @@ class JamSeparationMigration(unittest.TestCase):
                 self.assertEqual(receipt['requested_skills'], planned['requested_skills'])
                 self.assertEqual(upgraded['installed_skills'], planned['installed_skills'])
                 self.assertEqual(set(receipt['requested_skills']), {
-                    'dev-plan', 'dev-debug', 'dev-verify', 'ui-design',
-                    'you-are-brain', 'creative-direction', 'agent-instructions',
+                    'dev-plan', 'dev-debug', 'dev-verify',
+                    'you-are-brain', 'agent-instructions',
                 })
                 self.assertFalse((target/native/'skills/jam-board').exists())
                 self.assertTrue((target/native/'skills/agent-sessions/adapters/codex.mjs').is_file())

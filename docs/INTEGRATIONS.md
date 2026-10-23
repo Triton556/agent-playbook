@@ -75,7 +75,7 @@ For bundled adapters, pass the private checked assignment under [the contract](.
 
 ## Limited memory MCP
 
-Initialize the authorized vault with init-memory. Configure fixed HARNESS_KB_ROOT and discover the writer’s capture/checkpoint schemas through tools/list. Capture/identity/receipt handling: see [kb-save, Knowledge capture](../payload/skills/kb-save/SKILL.md#knowledge-capture).
+Initialize the authorized vault with init-memory. Configure fixed HARNESS_KB_ROOT and discover the writer’s capture/checkpoint schemas through tools/list. Capture/identity/receipt handling: see [kb-save, Knowledge capture](../payload/skills/kb-save/SKILL.md#save-knowledge).
 
 Codex config example, **merge only after actual owner approval** in the appropriate local/project config; do not replace existing config:
 

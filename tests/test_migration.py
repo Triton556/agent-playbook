@@ -30,7 +30,7 @@ RENAMES={
     'visual-experiment-craft':'visual-scenes',
     'voxel-model-craft':'voxel-models',
 }
-RETIRED={'ui-reference','ui-taste-reference','stress-test','stress-test-with-docs','dev-domain-model','agent-handoff','dev-flow','visual-scenes','dev-implement'}
+RETIRED={'ui-design','creative-direction','ui-reference','ui-taste-reference','stress-test','stress-test-with-docs','dev-domain-model','agent-handoff','dev-flow','visual-scenes','dev-implement'}
 REMOVED={'anthropic-workflow-creator','lab-vm-control'}|RETIRED
 
 
@@ -76,13 +76,13 @@ class PublicNames(unittest.TestCase):
         self.assertFalse(any('/vendor/' in f['path'] for f in m['files']))
         self.assertEqual({f['path'] for f in m['files']},{p.relative_to(ROOT).as_posix() for p in (ROOT/'payload').rglob('*') if p.is_file()})
         skills={s['name'] for s in call('catalog')['skills']}
-        self.assertEqual(skills,(set(RENAMES.values())-RETIRED)|{'you-are-brain','creative-direction','kb-find','kb-save','kb-curate','kb-status','kb-sync'})
+        self.assertEqual(skills,(set(RENAMES.values())-RETIRED)|{'you-are-brain','kb-find','kb-save','kb-curate','kb-status','kb-sync'})
         for name in skills:
             self.assertIn('\nname: '+name+'\n',(ROOT/'payload/skills'/name/'SKILL.md').read_text(encoding='utf8'))
         with target_directory() as td:
             plan=call('plan','--target',td,'--profile','engineering')
-            self.assertEqual(set(plan['requested_skills']),{'dev-plan','dev-debug','dev-verify','ui-design','you-are-brain','creative-direction','agent-instructions'})
-            self.assertEqual(len(plan['installed_skills']),7)
+            self.assertEqual(set(plan['requested_skills']),{'dev-plan','dev-debug','dev-verify','you-are-brain','agent-instructions'})
+            self.assertEqual(len(plan['installed_skills']),5)
             self.assertNotIn('stress-test',plan['installed_skills'])
             plan=call('plan','--target',td,'--profile','instructions')
             self.assertEqual(set(plan['requested_skills']),{'you-are-brain','agent-instructions'})
@@ -138,7 +138,7 @@ class LegacyMigration(unittest.TestCase):
                 self.assertEqual(snapshot(p),before)
                 result=call('install','--client',client,'--target',p,'--profile','full')
                 self.assertEqual(result['migration_from'],'0.5.0')
-                self.assertEqual(len(result['installed_skills']),13)
+                self.assertEqual(len(result['installed_skills']),11)
                 receipt=json.loads((p/folder/'harness-install.json').read_text(encoding='utf8'))
                 self.assertEqual(receipt['version'],json.loads((ROOT/'manifest.json').read_text(encoding='utf8'))['version'])
                 current={row['relative'] for row in receipt['files']}

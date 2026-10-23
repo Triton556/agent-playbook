@@ -34,6 +34,8 @@ SKILL_ALIASES={
     'voxel-model-craft':'voxel-models',
 }
 REMOVED_SKILLS={
+    'ui-design':'Removed in 2.2 by the owner; no replacement design skill is installed.',
+    'creative-direction':'Removed in 2.2 by the owner; no replacement creative procedure is installed.',
     'jam-board':'Moved out of Agent Playbook in 2.1. Install the standalone skill from the Jam Board application for the chosen project; it does not require the full playbook or you-are-brain.',
     'dev-implement':'Merged in 2.1 into the implementation reference used by planning/workflow; not a standalone skill.',
     'dev-flow':'Removed in 2.1: choose the skill for the requested deliverable; shared references remain available.',
@@ -100,7 +102,7 @@ def catalog(m):
             raise HarnessError('Invalid reference-only support module: '+name)
     return c
 def selection(args,m,c):
-    profiles={'full':set(c),'engineering':{x for x in c if x.startswith('dev-')}|{'ui-design','you-are-brain','creative-direction','agent-instructions'},'visual':{'creative-direction','ui-design','voxel-models'},'voxel':{'creative-direction','voxel-models'},'memory':{x for x in c if x.startswith('kb-')},'instructions':{'you-are-brain','agent-instructions'}}
+    profiles={'full':set(c),'engineering':{x for x in c if x.startswith('dev-')}|{'you-are-brain','agent-instructions'},'visual':{'voxel-models'},'voxel':{'voxel-models'},'memory':{x for x in c if x.startswith('kb-')},'instructions':{'you-are-brain','agent-instructions'}}
     chosen=set()
     if args.profile=='jam-board':raise HarnessError('Removed profile: jam-board. '+REMOVED_SKILLS['jam-board'])
     if args.profile:chosen|=profiles[args.profile]
@@ -392,7 +394,7 @@ def doctor(args):
     selected=set(r['installed_skills'])
     if selected&{'agent-sessions','agent-sessions-codex','you-are-brain'}:checks.append(host_diagnostics(args,root))
     if args.client=='codex':checks.append({'capability':'startup-instructions','client_load':'unverified',**startup_diagnostics(args,target,declared_budget=policy.get('project_doc_max_bytes_declared',32768))})
-    if selected&{'ui-design','ui-review','visual-scenes','voxel-models'}:
+    if selected&{'voxel-models'}:
         checks.append({'capability':'actual-image-and-browser-inspection','status':'unverified','check':'Inspect the actual output and interaction in the client, not just a file list.'})
     if any(x.startswith('kb-') for x in selected):
         vault=Path(policy['bindings']['MEMORY_ROOT']);checks.append({'capability':'authorized-knowledge-vault','status':'configured' if (vault/'SYSTEM/connection.json').is_file() else 'missing','check':'Initialize an empty personal vault or configure your existing authorized one; do not copy another owner data.'})

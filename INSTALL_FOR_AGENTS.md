@@ -1,3 +1,5 @@
+> **Version 2.2:** [design removal and portable KB instructions](docs/CLEANUP_2.2.md). The installed KB skills own the general procedure and vault layout.
+
 > **User-wide installation (2.1.1):** use `--scope user --target <HOME>` for Codex or Claude on plan/install/verify/doctor/remove. Skills and the four-rule managed block are installed in native user paths, not in the working project. See [clean installation](docs/CLEAN_INSTALL_FOR_AGENTS.md#4-plan-and-install-into-the-explicit-target).
 
 > **Version 2.1:** [explicit routes, reference modules and safe upgrade](docs/EXPLICIT_ROUTES_2.1.md). Older external bundles and detectors described in historical release material are no longer shipped.
@@ -31,7 +33,7 @@ python harness.py plan --client codex --target /path/to/project --profile full
 
 Available clients: `codex`, `claude`, `deepseek`, `generic`. Profiles: `full`, `engineering`, `visual`, `voxel`, `memory`, `instructions`. `--skills name1,name2` selects named skills; dependency closure includes only explicit required modules. References and helper files stay complete.
 
-`full` activates the complete workflow. `--workflow` also expands the selection to all 13 entrypoints. The four-rule BASE does not automatically route through every skill. Skills-only installation preserves individual entry points without claiming all global behavior is active.
+`full` activates the complete workflow. `--workflow` also expands the selection to all 11 entrypoints. The four-rule BASE does not automatically route through every skill. Skills-only installation preserves individual entry points without claiming all global behavior is active.
 
 `you-are-brain` is selected by `full`, `engineering` and `instructions`, or explicitly with `--skills you-are-brain`, for any client including Claude; its technical support includes the unchanged Codex drivers. Read its [integration requirements](docs/INTEGRATIONS.md#you-are-brain-codex-route) before an authorized session launch; installation alone does not start Codex or configure it.
 
@@ -84,15 +86,15 @@ node /authorized/private/vault/SYSTEM/scripts/kb.mjs status
 node /authorized/private/vault/SYSTEM/scripts/kb.mjs search "specific project" --limit 8
 ```
 
-Capture/checkpoint procedure: see [kb-save, Knowledge capture](payload/skills/kb-save/SKILL.md#knowledge-capture).
+Capture/checkpoint procedure: see [kb-save, Knowledge capture](payload/skills/kb-save/SKILL.md#save-knowledge).
 
 The limited writer lives at `<native-root>/workflow/kb-writer.mjs`. Configure `HARNESS_KB_ROOT` as the authorized fixed vault for that process. It exposes only capture/checkpoint; it does not grant shell, arbitrary paths, deletion or sync. Registering its persistent access in a client requires the owner's actual approval. Use the client's official MCP instructions; no config is silently edited by this installer.
 
-Memory transport: see [kb-sync, Knowledge transport](payload/skills/kb-sync/SKILL.md#knowledge-transport). Semantic curation: see [kb-curate, Knowledge curation](payload/skills/kb-curate/SKILL.md#knowledge-curation).
+Memory transport: see [kb-sync, Knowledge transport](payload/skills/kb-sync/SKILL.md#knowledge-transport). Semantic curation: see [kb-curate, Knowledge curation](payload/skills/kb-curate/SKILL.md#curate-knowledge).
 
 ### UI checks
 
-Use the unified `ui-design` entry for actual rendered interaction and user-flow checks. No bundled external detector or binary is required.
+No UI design or creative-direction skill is installed. In dev-verify, inspect the changed user scenario and readability without a separate design procedure.
 
 ### Native/client capabilities
 
@@ -138,3 +140,6 @@ Jam Board owns its standalone project-local skill and MCP integration. Install t
 During an upgrade of an existing playbook installation, unchanged receipt-owned Jam files are removed; modified managed files stop the upgrade before writes, and unowned files are preserved. Keep both versions and reconcile the reported files explicitly before retrying. Independently installed/global copies are not silently removed.
 
 Clean replacement of an existing installation: [agent procedure](docs/CLEAN_INSTALL_FOR_AGENTS.md). Preserve original receipts, user edits and knowledge data.
+
+
+KB procedures and the portable folder/index/leaf layout are supplied under the installed kb-* skills and kb-common references. An existing vault keeps its data and settings; updating the playbook does not overwrite its SYSTEM directory. New vault workflow files are compatibility pointers, not a second procedural authority.

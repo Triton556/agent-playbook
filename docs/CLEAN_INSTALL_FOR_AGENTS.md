@@ -6,14 +6,12 @@ Use this procedure when the owner asks to replace their previous instruction/ski
 
 Establish the actual client, selected project directory, requested release/commit, existing knowledge-vault location, and the owner's keep/remove choices. Reuse answers already supplied. Ask only when a target, file ownership or consequential access choice is genuinely unresolved; continue independent work while that decision is pending.
 
-A full 2.1.x installation has 13 discoverable entries:
+A full 2.2.x installation has 11 discoverable entries:
 
 - `agent-instructions`
-- `creative-direction`
 - `dev-debug`
 - `dev-plan`
 - `dev-verify`
-- `ui-design`
 - `voxel-models`
 - `you-are-brain`
 - `kb-find`
@@ -145,7 +143,7 @@ Check these observable results:
 
 - The requested core entrypoints resolve to the intended installation.
 - Old global/project duplicate `SKILL.md` entries are not active.
-- Built-in client skills are identified separately, not removed to force a count of 13.
+- Built-in client skills are identified separately, not removed to force a count of 11.
 - Retained project-specific skills and their referenced resources still resolve.
 - The universal brain has no required board/story/epic procedure.
 - Jam is absent from the core installation.
@@ -154,7 +152,7 @@ Check these observable results:
 - Knowledge retrieval uses the correct vault and source.
 - Preserved project content, credentials and independent integrations remain intact.
 
-Check a small routing matrix without starting development or worker sessions solely for setup: UI work → `ui-design`, a reproducible failure → `dev-debug`, orchestration → `you-are-brain`, knowledge lookup → `kb-find`, ordinary explanation → direct answer. Separate inspecting descriptions from observing an actual model choice. No paid A/B benchmark is implied.
+Check a small routing matrix without starting development or worker sessions solely for setup: a reproducible failure → `dev-debug`, orchestration → `you-are-brain`, knowledge lookup → `kb-find`, ordinary explanation → direct answer. Separate inspecting descriptions from observing an actual model choice. No paid A/B benchmark is implied.
 
 If the task includes an actual interface change, acceptance must reproduce the human action and inspect its resulting state/readability; a passing package hash is not a UI test. For installation-only work, do not invent an unrelated implementation task to manufacture a pass.
 
@@ -173,3 +171,6 @@ Report:
 Measure startup layers separately where observable: BASE, managed header/block, project/user instructions and skill metadata. Bytes or tokenizer estimates are not billed-token measurements or proof of faster/better model behavior. Keep raw private prompt previews out of repositories and reports.
 
 Clean installation is complete only for the inspected scopes. Do not claim all projects or machines were cleaned after changing one target.
+
+
+KB procedures and the portable folder/index/leaf layout are supplied under the installed kb-* skills and kb-common references. An existing vault keeps its data and settings; updating the playbook does not overwrite its SYSTEM directory. New vault workflow files are compatibility pointers, not a second procedural authority.

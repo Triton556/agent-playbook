@@ -1,8 +1,10 @@
 ---
 name: kb-status
-description: Check knowledge persistence, pending records, synchronization and maintenance status when requested or required by active maintenance.
+description: Report capture, queue and delivery status of the configured knowledge base.
 ---
 
-Run `node SYSTEM/scripts/kb.mjs status` in the verified vault directory. On PC this is `{{MEMORY_ROOT}}`; in Cloud determine the actual path. The command updates STATUS.md in the current copy.
+# Knowledge status
 
-Report the last capture, successful sync, INBOX count, pending_turns, unpushed commits and error. Delivery status: see [kb-sync, Knowledge transport](../kb-sync/SKILL.md#knowledge-transport). Semantic status: see [kb-curate, Knowledge curation](../kb-curate/SKILL.md#knowledge-curation). Without fetch, Git behind reflects only the last known server state. Your own copy's status cannot establish the offline PC's queue or the designated curator's schedule: check those with a separately available tool. Language defaults: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
+In the verified vault ({{MEMORY_ROOT}} on this installation), run `node SYSTEM/scripts/kb.mjs status`; it refreshes local STATUS.md. Report last capture, INBOX count, pending turns, known unpushed changes and errors.
+
+Distinguish local capture, Git/API delivery and synchronization to another device. Git behind is only as fresh as its last fetch. In a cloud snapshot use the actual API receipt for delivery, not Git status. Report unknown remote/device state as unknown. A status request does not start sync, curation or a schedule.

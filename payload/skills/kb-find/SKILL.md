@@ -1,12 +1,14 @@
 ---
 name: kb-find
-description: Retrieve personal/project facts, decisions and current state selectively from the authorized knowledge base.
+description: Find facts, decisions or current project state in the configured knowledge base.
 ---
 
-PC vault: `{{MEMORY_ROOT}}`. In Cloud, locate the actually verified repository copy described in README.
+# Find knowledge
 
-Read the short INDEX.md. If it has no exact pointer, run `node SYSTEM/scripts/kb-search.mjs "search terms" --mode current --limit 8` from the vault. Load only relevant files. For current-state questions, also check new INBOX records that have not yet been curated. Search Russian notes using appropriate Russian terms using [AGENTS language defaults]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
+Vault: {{MEMORY_ROOT}}; use the verified cloud copy when working in Cloud. For a new installation or an unfamiliar vault, read [layout](../kb-common/references/layout.md).
 
-Distinguish HYPOTHESES and `unconfirmed` status from facts. Check the date, source and current status of a decision or task. Show conflicting versions with their evidence. Say when current data is missing; an absent record does not prove an event did not occur.
+1. Open INDEX.md, then the matching section/project index and the leaf answering the question. If no pointer matches, run `node SYSTEM/scripts/kb-search.mjs "terms" --mode current --limit 8` from the vault.
+2. For current state, check matching uncurated INBOX records as well: compare event dates, cancellations and sources. Open cited originals to resolve missing evidence or conflicts.
+3. Use `--mode history` only for a historical question. Report facts, hypotheses and unknowns separately; an absent record is not proof that an event did not happen.
 
-Use `--mode history` for history and canceled decisions. Relevant INBOX entries appear separately: check date and source before answering about current state. The old `kb.mjs search` remains a fallback.
+Return the answer and relevant source paths. Retrieval does not trigger saving, sync or curation.

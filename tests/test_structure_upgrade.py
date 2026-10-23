@@ -51,7 +51,7 @@ class StructureUpgrade(unittest.TestCase):
                 note.write_bytes(b'Private note retained')
                 result = call('install', '--client', client, '--target', target, '--profile', 'full')
                 self.assertEqual(result['migration_from'], '2.0.0')
-                self.assertEqual(len(result['installed_skills']), 13)
+                self.assertEqual(len(result['installed_skills']), 11)
                 self.assertTrue(RETIRED.isdisjoint(result['installed_skills']))
                 for name in RETIRED:
                     self.assertFalse((target/native/'skills'/name/'SKILL.md').exists(), name)
@@ -85,16 +85,13 @@ class StructureUpgrade(unittest.TestCase):
             call('remove', '--target', target)
             self.assertEqual(unowned.read_bytes(), original)
 
-    def test_old_ui_review_selection_migrates_to_unified_ui(self):
+    def test_old_ui_review_selection_is_retired(self):
         with target_directory() as folder:
             target = Path(folder)
             self.old_install(target, 'codex', ['--skills', 'ui-review'])
-            result = call('install', '--target', target, '--skills', 'ui-review')
-            self.assertEqual(result['installed_skills'], ['ui-design'])
-            self.assertFalse((target/'.agents/skills/ui-review/SKILL.md').exists())
-            self.assertTrue((target/'.agents/skills/ui-design/SKILL.md').is_file())
-            self.assertTrue((target/'.agents/skills/ui-review/references/visual-quality.md').is_file())
-            self.assertEqual(call('verify', '--target', target)['status'], 'pass')
+            before=snapshot(target)
+            call('install', '--target', target, '--skills', 'ui-review',ok=2)
+            self.assertEqual(snapshot(target),before)
 
     def test_changed_retired_entrypoint_blocks_upgrade_without_any_writes(self):
         for name in RETIRED:
@@ -118,13 +115,13 @@ class StructureUpgrade(unittest.TestCase):
                 self.assertTrue((target/'.agents/skills/agent-sessions/adapters/codex.mjs').is_file())
                 self.assertEqual(call('verify', '--target', target)['status'], 'pass')
 
-    def test_ui_has_review_references_but_no_retired_catalog_entries(self):
+    def test_verification_does_not_install_a_design_bundle(self):
         with target_directory() as folder:
             target = Path(folder)
-            result = call('install', '--target', target, '--skills', 'ui-design')
-            self.assertEqual(result['installed_skills'], ['ui-design'])
-            self.assertEqual({p.parent.name for p in (target/'.agents/skills').glob('*/SKILL.md')}, {'ui-design'})
-            self.assertTrue((target/'.agents/skills/ui-review/references/visual-quality.md').is_file())
+            result = call('install', '--target', target, '--skills', 'dev-verify')
+            self.assertEqual(result['installed_skills'], ['dev-verify'])
+            for name in ['ui-design','ui-review','creative-direction']:
+                self.assertFalse((target/'.agents/skills'/name).exists())
             self.assertEqual(call('verify', '--target', target)['status'], 'pass')
 
     def test_retired_switches_refuse_without_replacement_or_writes(self):
@@ -153,6 +150,8 @@ class StructureUpgrade(unittest.TestCase):
         self.assertTrue(notices)
         for old in notices:
             current = ROOT/old.relative_to(self.legacy)
+            if not current.exists() and old.parent.name=="licenses":
+                current=ROOT/"docs/retired-attribution"/old.parent.parent.name/old.name
             self.assertTrue(current.is_file(), str(current))
             self.assertEqual(current.read_bytes(), old.read_bytes(), str(current))
         entry = (ROOT/'payload/skills/voxel-models/SKILL.md').read_text().lower()
@@ -258,17 +257,14 @@ class InstructionRouteContracts(unittest.TestCase):
         self.assertIn('Do not load external-adapter commands', routes['Launching a native worker'])
         self.assertIn('reported startup blocker', routes['Launching or resuming an external CLI worker'])
 
-    def test_ui_acceptance_contract_records_actions_reached_states_and_actual_observations(self):
-        text = (ROOT/'payload/skills/ui-design/SKILL.md').read_text()
-        self.assertIn('step → action → reached surface/state → expected result → actual observation', text)
-        self.assertIn('PASS / FAIL / NOT_RUN', text)
-        example = text.split('## Example: card editing and refresh', 1)[1]
-        for promised_case in ['without an unexpected creation modal', 'without a title',
-                              'related dialog', 'focus/close/back', 'pending feedback',
-                              'supported failure', 'recovery retains']:
-            self.assertIn(promised_case, example)
-        self.assertIn('not a requirement that every product', example)
-        self.assertIn('cannot substitute for this flow and readability inspection', text)
+    def test_verification_keeps_only_direct_user_scenario_check(self):
+        text = (ROOT/'payload/skills/dev-verify/SKILL.md').read_text()
+        self.assertIn('Execute the changed user scenario',text)
+        self.assertIn('open affected dialogs/menus',text)
+        self.assertIn('visible result and readability',text)
+        for removed in ['ui-design','creative-direction']:
+            self.assertNotIn(removed,text)
+            self.assertFalse((ROOT/'payload/skills'/removed/'SKILL.md').exists())
 
 
 if __name__ == '__main__':

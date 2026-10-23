@@ -50,7 +50,7 @@ class CoreUpgrade(unittest.TestCase):
             self.old_install(target)
             result=call('install','--profile','full','--target',target)
             self.assertEqual(result['migration_from'],'1.6.0')
-            self.assertEqual(len(result['installed_skills']),13)
+            self.assertEqual(len(result['installed_skills']),11)
             self.assertFalse((target/'.agents/skills/ui-reference/SKILL.md').exists())
             self.assertFalse((target/'.agents/skills/dev-verify/vendor').exists())
             self.assertEqual(neighbor.read_text(),'Private instructions');self.assertTrue(unowned.exists())

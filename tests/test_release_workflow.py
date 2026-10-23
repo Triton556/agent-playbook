@@ -6,7 +6,11 @@ from test_install import ROOT
 
 class ReleaseWorkflow(unittest.TestCase):
     def test_fixed_release_gate_and_safe_idempotence(self):
-        text=(ROOT/'.github/workflows/release-2.1.yml').read_text()
+        for version in ['2.1.0','2.2.0']:
+            with self.subTest(version=version):self.check_version(version)
+
+    def check_version(self,version):
+        text=(ROOT/('.github/workflows/release-'+version.rsplit('.',1)[0]+'.yml')).read_text()
         script='\n'.join(line[12:] for line in text.split('          script: |\n',1)[1].splitlines())
         runner=r'''
 const source=JSON.parse(process.argv[1]);
@@ -23,7 +27,7 @@ for(const scenario of ['absent','equal','conflict','stale','failure','nonsuccess
   if(p.ref==='heads/main')return {data:{object:{sha:scenario==='stale'?'b'.repeat(40):sha}}};
   if(['equal','conflict','draft'].includes(scenario))return {data:{object:{type:'commit',sha:scenario==='conflict'?'b'.repeat(40):sha}}};
   return missing();},createRef:async p=>{calls.push(['tag',p]);}},repos:{
-  getContent:async()=>({data:{content:Buffer.from(JSON.stringify({version:scenario==='version'?'2.2.0':'2.1.0'})).toString('base64')}}),
+  getContent:async()=>({data:{content:Buffer.from(JSON.stringify({version:scenario==='version'?'999.0.0':'2.1.0'})).toString('base64')}}),
   getReleaseByTag:async()=>['equal','draft'].includes(scenario)?{data:{tag_name:'v2.1.0',draft:scenario==='draft',prerelease:false,html_url:'url'}}:missing(),
   createRelease:async p=>{calls.push(['release',p]);}
  }}};
@@ -35,6 +39,7 @@ for(const scenario of ['absent','equal','conflict','stale','failure','nonsuccess
 console.log('10 fake-API scenarios passed');
 })().catch(e=>{console.error(e);process.exit(1)});
 '''
+        runner=runner.replace('2.1.0',version)
         result=subprocess.run(['node','-e',runner,json.dumps(script)],capture_output=True,text=True)
         self.assertEqual(result.returncode,0,result.stdout+result.stderr)
         self.assertIn('permissions: {}',text)

@@ -27,7 +27,7 @@ class CreativeUpgrade(unittest.TestCase):
 
     def install_old(self, target, client):
         subprocess.run([sys.executable, str(self.legacy/'harness.py'), 'install',
-                        '--skills', 'creative-direction', '--client', client,
+                        '--profile', 'full', '--client', client,
                         '--target', str(target)], cwd=self.legacy,
                        capture_output=True, check=True)
         # Transfer the legitimate private receipt between these test checkouts.
@@ -48,13 +48,11 @@ class CreativeUpgrade(unittest.TestCase):
                 neighbor = target/'user-owned.txt'
                 neighbor.write_bytes(b'Keep this work')
                 self.install_old(target, client)
-                result = call('install', '--skills', 'creative-direction',
+                result = call('install', '--profile', 'full',
                               '--client', client, '--target', target)
                 self.assertEqual(result['migration_from'], '2.0.0')
-                for name in ['SKILL.md', 'references/content.md', 'references/ui-ux.md',
-                             'references/visual.md', 'references/gamedev.md']:
-                    self.assertEqual((target/native/'skills/creative-direction'/name).read_bytes(),
-                                     (ROOT/'payload/skills/creative-direction'/name).read_bytes())
+                self.assertFalse((target/native/'skills/creative-direction/SKILL.md').exists())
+                self.assertNotIn('creative-direction',result['installed_skills'])
                 self.assertTrue((target/entry).read_bytes().startswith(original))
                 self.assertEqual(neighbor.read_bytes(), b'Keep this work')
                 self.assertEqual(call('verify', '--client', client, '--target', target)['status'], 'pass')
@@ -66,7 +64,7 @@ class CreativeUpgrade(unittest.TestCase):
             edited = target/'.agents/skills/creative-direction/references/content.md'
             edited.write_text('User-owned creative guidance')
             before = snapshot(target)
-            call('install', '--skills', 'creative-direction', '--target', target, ok=2)
+            call('install', '--profile', 'full', '--target', target, ok=2)
             self.assertEqual(snapshot(target), before)
 
 

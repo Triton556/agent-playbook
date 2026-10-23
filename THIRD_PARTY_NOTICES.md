@@ -1,3 +1,5 @@
+> Version 2.2 removes the remaining UI instruction bundles. Their unchanged attribution files are retained under docs/retired-attribution, outside installed skills. Historical locations below refer to prior releases.
+
 > Version 2.0 removes bundled upstream skill/vendor trees and external detector/data tools. The inventory below records historical provenance; retain the per-skill licenses/source records still shipped for adapted prose. Removed component paths describe Git history, not the current payload.
 
 # Third-party sources and license notices

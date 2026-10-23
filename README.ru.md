@@ -1,8 +1,8 @@
-> 2.1.1: explicit user-wide installation with `--scope user --target <HOME>` (Codex/Claude). [Clean installation](docs/CLEAN_INSTALL_FOR_AGENTS.md).
+> 2.2.0: explicit user-wide installation with `--scope user --target <HOME>` (Codex/Claude). [Clean installation](docs/CLEAN_INSTALL_FOR_AGENTS.md).
 
-# Agent Playbook 2.1
+# Agent Playbook 2.2
 
-Костяк пользовательских навыков: мозг и рабочие сессии, разработка, UI, творческие/визуальные/воксельные задачи и база знаний. 13 входов: мозг и UI объединены, dev-flow и visual-scenes больше не отдельные навыки. Модели и инструменты предоставляет клиент, установщик не запускает платные сессии и не меняет глобальные настройки.
+Костяк пользовательских навыков: мозг и рабочие сессии, разработка, воксельные задачи и база знаний. 11 входов: мозг объединён; UI и creative-direction удалены, dev-flow и visual-scenes больше не отдельные навыки. Модели и инструменты предоставляет клиент, установщик не запускает платные сессии и не меняет глобальные настройки.
 
 [Установка](INSTALL_FOR_AGENTS.md) · [Явные маршруты и безопасная миграция2.1](docs/EXPLICIT_ROUTES_2.1.md) · [Изменения](CHANGELOG.md) · [English](README.md)
 
@@ -12,7 +12,7 @@ python harness.py install --client codex --target ../my-project --skills you-are
 python harness.py verify --client codex --target ../my-project
 ```
 
-Мозг и отладка имеют по одному каталожному входу; технические файлы и справочники устанавливаются отдельно от каталога. Ссылки на другие этапы больше не заставляют установщик тянуть21 навык. `full` / `--workflow` явно выбирают все 13. Файлы на диске, metadata в каталоге и реально прочитанные телá навыков — разные величины.
+Мозг и отладка имеют по одному каталожному входу; технические файлы и справочники устанавливаются отдельно от каталога. Ссылки на другие этапы больше не заставляют установщик тянуть21 навык. `full` / `--workflow` явно выбирают все 11. Файлы на диске, metadata в каталоге и реально прочитанные телá навыков — разные величины.
 
 Сохранены брифы/отчёты, восстановление сессий, выбранные модели/effort/access, работа с доской, точность базы знаний и проверки реальных сценариев. Нет обязательного внешнего интервьюера/проверщика. Проверки соразмерны риску; успешные проверки не повторяются без новой причины. [Официальная основа OpenAI и наши решения](docs/CORE_CLEANUP_2.0.md).
 
@@ -27,3 +27,6 @@ python harness.py verify --client codex --target ../my-project
 При обновлении удаляются только неизменённые Jam-файлы, владение которыми подтверждено receipt. Изменённый managed-файл останавливает обновление до записи; чужие файлы сохраняются. Сохраните обе версии и явно согласуйте конфликт перед повтором. Глобальные и независимые установки автоматически не удаляются.
 
 Clean replacement of an existing installation: [agent procedure](docs/CLEAN_INSTALL_FOR_AGENTS.md). Preserve original receipts, user edits and knowledge data.
+
+
+KB procedures and the portable folder/index/leaf layout are supplied under the installed kb-* skills and kb-common references. An existing vault keeps its data and settings; updating the playbook does not overwrite its SYSTEM directory. New vault workflow files are compatibility pointers, not a second procedural authority.

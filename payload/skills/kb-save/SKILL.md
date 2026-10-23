@@ -1,22 +1,14 @@
 ---
 name: kb-save
-description: Capture a new reusable fact, decision or lesson with source/status when authorized knowledge persistence is active; skip duplicates and empty checkpoints.
+description: Save new reusable knowledge to the configured vault INBOX; skip duplicates and empty notes.
 ---
 
-## Knowledge capture
+# Save knowledge
 
-PC vault: `{{MEMORY_ROOT}}`. In Cloud, use the verified copy of the designated curator's repository.
+Vault: {{MEMORY_ROOT}}; in Cloud use its verified file copy. The portable [capture contract](../kb-common/references/capture.md) defines the JSON schema, identity and exact commands. Read it for capture, not other KB operations. For a new/unfamiliar vault, read [layout](../kb-common/references/layout.md).
 
-Read SYSTEM/workflows/capture.md only on first use or when the procedure changes. Save short records yourself; a substantial summary may use one memory agent only with the current installation owner's consent under AGENTS.md. The same workflow defines handoff and verification; delegation is optional. Prepare concise JSON of new knowledge using its schema. On PC, prefer available and authorized `harness_kb_writer` tools: `kb_capture({payload})` or `kb_checkpoint({session_id,turn_id})`. Persistent tool access requires the current owner's actual approval. If absent from this chat's tool catalog, use the existing CLI through stdin: `node SYSTEM/scripts/kb.mjs capture` from the vault, respecting current filesystem permissions. In PowerShell, use an object → ConvertTo-Json → stdin; never interpolate user text into shell code. From another directory, use the script's absolute path.
+Extract new facts, decisions with reasons, tasks or sourced findings. Keep evidence and status; save hypotheses as unconfirmed. Use one writer for a knowledge set. Capture directly unless the user explicitly assigns a helper.
 
-Use real hook-provided identifiers; give a new stage a new batch_key and reuse the previous key for a retry. If the user prohibits saving content or there is no new knowledge, checkpoint without saving content only when the active integration requires a turn mark. Without an authorized configured vault, do not create one for an ordinary task; report missing persistence only when saving was requested. Confirm persistence using a successful receipt and an existing file. Transport: see [kb-sync, Knowledge transport](../kb-sync/SKILL.md#knowledge-transport). Curation: see [kb-curate, Knowledge curation](../kb-curate/SKILL.md#knowledge-curation). Language defaults: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries).
+Use available authorized `harness_kb_writer.kb_capture`, otherwise pass JSON through stdin to `node SYSTEM/scripts/kb.mjs capture` in the vault. In PowerShell use an object converted to JSON, not user text interpolated into shell code. Preserve source/batch identity on retry and check an existing record first.
 
-## Delegated work
-
-Assign one writer per knowledge set: normally the orchestrator captures and workers only checkpoint when their own hooks require a turn mark. State a different assignment explicitly when needed.
-
-For an authorized memory helper:
-- Give only relevant facts, decisions, evidence and limits, with the original source.kind, session_id, turn_id and batch_key; never substitute the helper chat identity. Prefer a concise task without full history.
-- The assigned helper captures with final:false and returns command output, ID and an existing path. Its own required turn mark is a checkpoint without duplicate facts.
-- The orchestrator verifies receipt and file existence, then checkpoints the original turn if no further knowledge remains. New knowledge uses a separate batch_key. After failure, check for an existing record before retrying the same identity.
-- Consent, access and saving prohibitions follow AGENTS; transport follows kb-sync, Knowledge transport.
+Success is a returned ID and an existing file. It is local persistence, not proof of GitHub delivery. Checkpoint without content only if configured hooks require a turn mark. Saving does not launch curation or synchronization; these follow the user's separate request or configured schedule.

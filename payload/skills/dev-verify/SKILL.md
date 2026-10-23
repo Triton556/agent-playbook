@@ -1,6 +1,6 @@
 ---
 name: dev-verify
-description: Verify changed software contracts or review code. UI acceptance uses ui-design user steps and actual rendered observations, not test counts.
+description: Verify changed software contracts or review code.
 ---
 
 # Testing and code review
@@ -9,7 +9,7 @@ description: Verify changed software contracts or review code. UI acceptance use
 
 | Changed surface or observed issue | Check | Evidence to report |
 | --- | --- | --- |
-| A person-facing action, screen or state changed | Follow [ui-design](../ui-design/SKILL.md) through the real steps, opened surfaces and relevant recovery states | Expected and actual observations per step; readability and unperformed steps |
+| A person-facing action, screen or state changed | Execute the changed user scenario, open affected dialogs/menus, and inspect the visible result and readability | Expected and actual observations per step; readability and unperformed steps |
 | A public API/data operation changed | Exercise that boundary against expected results from its agreed contract or a verified independent example | Input, expected result, actual result and failure handling |
 | A reproduced bug was repaired | Repeat the original failing case; add a regression test when it can distinguish that bug from correct behavior | The original symptom no longer occurs; dependent contract checks remain correct |
 | Project configuration requires build/type/lint/test commands | Run the applicable commands for this change | Actual command outcomes; these do not establish UI acceptance |

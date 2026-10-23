@@ -65,8 +65,8 @@ class InstallBehavior(unittest.TestCase):
             with self.subTest(client=client),target_directory() as td:
                 p=Path(td);result=call('install','--skills','kb-find','--workflow','--client',client,'--target',p)
                 self.assertTrue(result['workflow_activated']);self.assertTrue((p/entry).is_file())
-                self.assertEqual(len(result['installed_skills']),13)
-                self.assertIn('creative-direction',result['installed_skills'])
+                self.assertEqual(len(result['installed_skills']),11)
+                self.assertNotIn('creative-direction',result['installed_skills'])
                 self.assertIn('you-are-brain',result['installed_skills'])
                 self.assertIn('you-are-brain',result['installed_skills'])
                 for relative in ['references/codex-driver.md','scripts/codex-chat.mjs']:
@@ -78,18 +78,14 @@ class InstallBehavior(unittest.TestCase):
         with target_directory() as td:
             call('install','--skills','kb-find','--reviewer-consent','one-per-round','--target',td,ok=2)
             self.assertEqual(list(Path(td).iterdir()),[])
-    def test_creative_direction_profiles_and_complete_resources(self):
+    def test_removed_design_skills_are_not_in_profiles(self):
         with target_directory() as td:
             for profile in ['full','engineering','visual','voxel']:
-                with self.subTest(profile=profile):
-                    planned=call('plan','--profile',profile,'--target',td)
-                    self.assertIn('creative-direction',planned['requested_skills'])
-            call('install','--skills','creative-direction','--target',td)
-            skill=Path(td)/'.agents/skills/creative-direction'
-            self.assertTrue((skill/'SKILL.md').is_file())
-            for name in ['content','gamedev','ui-ux','visual']:
-                self.assertEqual((skill/f'references/{name}.md').read_bytes(),(ROOT/f'payload/skills/creative-direction/references/{name}.md').read_bytes())
-            self.assertEqual(call('verify','--target',td)['status'],'pass')
+                planned=call('plan','--profile',profile,'--target',td)
+                self.assertTrue({'ui-design','creative-direction'}.isdisjoint(planned['requested_skills']))
+            for name in ['ui-design','ui-review','product-ui-design','creative-direction']:
+                call('install','--skills',name,'--target',td,ok=2)
+            self.assertEqual(list(Path(td).iterdir()),[])
     def test_agent_sessions_codex_profiles_and_standalone_client_installs(self):
         with target_directory() as td:
             for profile in ['full','engineering','instructions','visual','voxel','memory']:

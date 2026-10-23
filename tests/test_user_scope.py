@@ -12,7 +12,7 @@ class UserScope(unittest.TestCase):
     args=['--client',client,'--target',home,'--scope','user'];vault=home/'knowledge';vault.mkdir();(vault/'INDEX.md').write_text('Keep me')
     self.assertEqual(call('plan',*args,'--profile','full','--memory-root',vault)['writes'],0)
     self.assertFalse((home/sub/'skills').exists())
-    got=call('install',*args,'--profile','full','--memory-root',vault);self.assertEqual(len(got['installed_skills']),13)
+    got=call('install',*args,'--profile','full','--memory-root',vault);self.assertEqual(len(got['installed_skills']),11)
     self.assertIn('My existing preference',ip.read_text());self.assertIn('agent-playbook:begin',ip.read_text());self.assertFalse((home/'AGENTS.md').exists());self.assertFalse((project/'.agents').exists())
     self.assertEqual((project/'AGENTS.md').read_text(),'Design system only\n');self.assertEqual(call('verify',*args)['status'],'pass')
     neighbor=home/sub/'skills/design-system';neighbor.mkdir();(neighbor/'SKILL.md').write_text('Keep DS')

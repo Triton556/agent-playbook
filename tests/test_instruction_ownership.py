@@ -180,7 +180,7 @@ class InstructionOwnership(unittest.TestCase):
                     result = call('install', *args)
                     self.assertEqual(planned['installed_skills'], result['installed_skills'])
                     if selection[0] == 'profile':
-                        self.assertEqual(len(result['installed_skills']), 13)
+                        self.assertEqual(len(result['installed_skills']), 11)
                     else:
                         expected = {'you-are-brain'}
                         self.assertEqual(set(result['installed_skills']), expected)

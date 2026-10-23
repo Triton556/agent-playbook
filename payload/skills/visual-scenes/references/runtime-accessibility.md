@@ -12,20 +12,18 @@ Separate model-dirty and view-dirty work. Recompute a model only on relevant inp
 
 ## Responsive composition
 
-Target device/theme scope: see [design-preflight, 2. Link screens, states and sizes](../../ui-design/references/design-preflight.md#2-link-screens-states-and-sizes).
-
 Measure the free drawing rectangle after controls and safe areas. Fit essential geometry to it, then inspect. Move secondary details into a disclosure or stack them below the scene. A smaller screen often needs a different camera or layout, not a scaled desktop HUD. Verify short viewports as well as narrow ones.
 
 Labels and overlays have a joint budget. Give measurements and interaction targets priority over promotions or ambient annotations. Avoid fixed bottom panels covering sliders or legal/source information. Preserve page zoom and native vertical scrolling unless a gesture is deliberately scoped to the scene.
 
 ## Input and accessibility
 
-Shared controls: see [accessible interaction checks](../../ui-design/references/accessibility.md), input-labels, keyboard-nav, focus-states and icon-context. In addition to those rules, custom sliders expose units and min/max/current values with arrows and Home/End under the [WAI slider pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider/); a role alone does not implement behavior.
+Custom sliders expose units and min/max/current values with arrows and Home/End under the [WAI slider pattern](https://www.w3.org/WAI/ARIA/apg/patterns/slider/); a role alone does not implement behavior.
 
-In addition to [accessible interaction checks](../../ui-design/references/accessibility.md), keyboard-nav and dragging-alternative, canvas picking needs a semantic control path for important objects, stable names/descriptions, visible selection and discoverable instructions.
+Canvas picking needs a semantic control path for important objects, stable names/descriptions, visible selection and discoverable instructions.
 
-Reduced motion/rotation: see [accessible interaction checks](../../ui-design/references/accessibility.md), reduced-motion and auto-rotation-controls. In addition, start with a stable readable state and make scene pause stop all intended animation sources; cuts/manual playback preserve the scientific/data consequence. Announce committed summaries rather than every frame.
+Start with a stable readable state and make scene pause stop all intended animation sources; cuts/manual playback preserve the scientific/data consequence. Announce committed summaries rather than every frame.
 
-Contrast and redundant channels: see [accessible interaction checks](../../ui-design/references/accessibility.md), color-not-only, color-contrast and contrast-data. In addition, inspect thin colored rays at actual resolution and use real assistive technology when required by acceptance.
+Inspect thin colored rays at actual resolution and use real assistive technology when required by acceptance.
 
 Official implementation references: [Three.js color management](https://threejs.org/manual/pages/color-management.html), [Three.js responsive design](https://threejs.org/manual/pages/responsive.html), [WAI keyboard interface](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/). Check the project's installed library version before adopting APIs.

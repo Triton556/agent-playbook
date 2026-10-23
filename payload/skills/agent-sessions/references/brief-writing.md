@@ -93,7 +93,7 @@ Use only sections needed to communicate the task, boundaries and acceptance. Kee
 - **Boundaries that cannot be misread.** State material restrictions and already authorized actions the task needs; do not invent an approval checklist for ordinary steps. Resolve ambiguous permissions for: image generation, network access, package installs, browser, running servers, deleting files. Avoid umbrella words such as "local only" or "no external services": a worker may read them as forbidding a tool the task needs, or as allowing one it must not use.
 - **One task per brief.** Independent pieces go to separate sessions.
 - **Nothing private that is not needed.** No secrets, tokens, personal data or unrelated history. Tell the worker never to print keys it uses.
-- **Memory.** Retain the launch contract’s writer assignment; perform capture only when an authorized integration is active and there is new reusable knowledge. Required integration checkpoints still apply. See [kb-save, Delegated work](../../kb-save/SKILL.md#delegated-work).
+- **Memory.** Retain the launch contract’s writer assignment; perform capture only when an authorized integration is active and there is new reusable knowledge. Required integration checkpoints still apply. See [capture writer assignment](../../kb-common/references/capture.md#delegated-memory-capture).
 - **Run settings are not in the brief.** Model, effort and access mode are passed to the adapter.
 
 ## Continuing a session

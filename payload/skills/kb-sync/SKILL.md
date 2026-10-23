@@ -1,14 +1,13 @@
 ---
 name: kb-sync
-description: Synchronize authorized knowledge files with their verified private GitHub repository on request or scheduled maintenance.
+description: Synchronize the configured knowledge base when requested or through its authorized schedule.
 ---
 
-## Knowledge transport
+# Knowledge transport
 
-Use the verified vault directory. On PC: `{{MEMORY_ROOT}}`; Cloud has a separate path and authorization. SYSTEM/connection.json must contain the URL, main branch and date of actual privacy verification. Before first execution in a new environment, inspect the script and remote owner. Synchronization, cloud exchange and schedules require the current owner’s authorization and actual service/schedule verification; do not rely on another installation’s receipts.
+Verify the configured vault and repository owner/private visibility. Preserve unsent files before fetching. Connection settings belong to SYSTEM/connection.json, not the skill. For a new/unfamiliar installation, use [layout](../kb-common/references/layout.md).
 
-On PC or in a verified Git clone of the main copy, run `node SYSTEM/scripts/kb.mjs sync`. In the designated curator's cloud file copy without `.git`, read SYSTEM/workflows/cloud-connector.md and exchange through the authorized GitHub connector/API; do not run Git-sync there or treat its STATUS.md as evidence of API exchange.
+- Git clone: inspect the supplied sync helper on first use, then run `node SYSTEM/scripts/kb.mjs sync` in the vault. It commits, fetches, merges and pushes; report the actual result.
+- Cloud file snapshot without .git: follow [API exchange](../kb-common/references/cloud-exchange.md). Do not run Git sync or call a local STATUS.md an API receipt.
 
-Git-sync saves local changes, fetches remote, merges independent records and pushes without force. Semantic curation: see [kb-curate, Knowledge curation](../kb-curate/SKILL.md#knowledge-curation).
-
-On failure, data and local commits remain for the next run. Do not bypass a conflict with reset, force push, stash or deletion of local files. Report the error and inspect STATUS.md. The script tries to push at most twice; endless retries are unnecessary.
+If the remote changed or a write outcome is uncertain, reread before retrying. Preserve both versions of conflicts and the local queue; no force/reset or deleting unsent data to make sync pass. Success requires the remote commit/content. It does not prove delivery to an offline device. Synchronization moves data, not semantic curation.

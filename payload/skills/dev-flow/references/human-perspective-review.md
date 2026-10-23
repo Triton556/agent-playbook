@@ -76,7 +76,7 @@ One short observation suffices for a small edit. Connected human-readable feedba
 
 | Result | Actual verification |
 | --- | --- |
-| UI | Main action → visible accessible response → confirmed result → recovery; required context is preserved and related states agree. Use [UI interaction quality](../../ui-design/references/interaction-quality.md) for the applicable branch |
+| UI | Main action → visible accessible response → confirmed result → recovery; required context is preserved and related states agree. |
 | 3D / voxel | Distinguishable views and characteristic contours/material regions; action membership/boundaries, support/contact, scale and target distance; geometric diagnosis uses separate data |
 | Animation | Normal speed, intention/weight/rhythm, transitions and problematic frames; a still frame does not verify movement |
 | Chart / dashboard | Data, units, scales and denominators; shared result handling: see causal-state-interaction, One model, several views; encoding: see data-spatial-metaphors, Live, snapshot, approximate, absent |

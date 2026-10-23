@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.2.0] - 2026-10-23
+
+- Remove ui-design, creative-direction and UI-review support from all profiles and active routes; 11 discoverable skills remain. Do not replace these with a hidden design method.
+- Keep direct changed-user-scenario/readability verification in dev-verify; retain voxel passport/six views and existing session adapters.
+- Supply self-contained KB operations and portable layout/capture/API references with every selected KB skill; new vault manuals point to installed instructions. Existing vault data/settings remain untouched.
+- Define sourced-leaf curation and 20/40 KB splitting triggers; remove mandatory whole-vault search benchmarks from ordinary curation.
+- Verify clean installation, full 2.1.1 user-scope migration, edited-file preservation and a fresh-vault capture/archive/retrieval scenario. See [scope and upgrade](docs/CLEANUP_2.2.md).
+
 ## [2.1.1] - 2026-10-23
 
 - Add explicit `--scope user` installation for Codex and Claude: shared user skills and native user instruction files, without copying the playbook into projects.
