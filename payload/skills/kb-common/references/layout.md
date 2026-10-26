@@ -10,6 +10,15 @@ Use the configured vault path; moving computers changes bindings, not knowledge.
 
 Read route: INDEX → section/project index → relevant leaf → cited original if evidence is needed. Search first when the index has no exact pointer. Current state can be newer in INBOX; compare dates. Historical pages are reached for a particular date/question, not preloaded.
 
-A leaf answers one coherent question. At 20,000 UTF-8 bytes or four independent subtopics review its boundary; above 40,000 bytes split it. Keep the old path as an index, preserve dated history and repair affected links/anchors. Target leaves 3–12 KB and indexes below 4 KB, without artificial padding. Raw sources/history are not cut to meet current-leaf budgets.
+## Page size triggers
+
+Apply to changed active topics and navigation parents, using UTF-8 bytes:
+
+- At 20,000 bytes or four independently useful subtopics, review the page boundary.
+- Above 40,000 bytes, split the active page; raw originals and preserved history are exempt.
+- Leaves answer one coherent question, normally in 3–12 KB; do not pad or fragment short explanations.
+- Indexes normally stay below 4 KB; do not create needless levels or duplicate current detail.
+
+The kb-curate skill owns section creation, splitting, history preservation and link repair.
 
 On another computer configure MEMORY_ROOT and the existing private repository, then verify actual read/capture behavior. Preserve existing files on conflicts. A cloud snapshot is not a Git clone. A local write, GitHub publication and delivery to another computer are different outcomes.

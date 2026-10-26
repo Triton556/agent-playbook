@@ -6,11 +6,12 @@ from test_install import ROOT
 
 class ReleaseWorkflow(unittest.TestCase):
     def test_fixed_release_gate_and_safe_idempotence(self):
-        for version in ['2.1.0','2.2.0']:
+        for version in ['2.1.0','2.2.0','2.2.1']:
             with self.subTest(version=version):self.check_version(version)
 
     def check_version(self,version):
-        text=(ROOT/('.github/workflows/release-'+version.rsplit('.',1)[0]+'.yml')).read_text()
+        suffix = version if version == '2.2.1' else version.rsplit('.',1)[0]
+        text=(ROOT/('.github/workflows/release-'+suffix+'.yml')).read_text()
         script='\n'.join(line[12:] for line in text.split('          script: |\n',1)[1].splitlines())
         runner=r'''
 const source=JSON.parse(process.argv[1]);

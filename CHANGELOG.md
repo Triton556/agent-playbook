@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.2.1] - 2026-10-26
+
+- Clarify kb-curate: read INDEX before routing, extract source items with evidence/status, update existing sections, create distinct leaves and nearest-parent routes, and preserve partially processed originals.
+- Keep page-size thresholds in kb-common/layout only; the curation skill owns semantic splitting and route verification. No new skill, automatic full-vault read or runtime behavior change.
+
 ## [2.2.0] - 2026-10-23
 
 - Remove ui-design, creative-direction and UI-review support from all profiles and active routes; 11 discoverable skills remain. Do not replace these with a hidden design method.

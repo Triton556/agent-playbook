@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "name": "agent-playbook",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "exported_at": "2026-10-23T07:55:44.494883+00:00",
   "baseline": "Owner-approved 2.2 removal of UI/creative procedures and portable KB instruction ownership; adapters, data integrity and voxel passport retained.",
   "instruction_policy": "Maintained agent instructions and agent-to-agent communication in English; direct user communication and knowledge-base prose in Russian by default, subject to explicit user language instructions; exact quotations, identifiers and required product text preserved; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
@@ -1663,8 +1663,8 @@
       "source": "skills/kb-curate/SKILL.md",
       "path": "payload/skills/kb-curate/SKILL.md",
       "source_sha256": "f60afc672f331f8dd70c6da8d410d94d185271ce119ceae0563bca7f09794aa2",
-      "sha256": "49c2fb90ffbf32f1e4bea62752ea12ae2f2abb9ed44aa52d43ccc8a00cb00287",
-      "bytes": 2916,
+      "sha256": "ac1ebad2b430cdb9eaa5f5c8694ca278dbc2d02d30ff7966e5821a10e74dfd44",
+      "bytes": 3862,
       "transformations": [
         {
           "kind": "owner-label",
@@ -1697,6 +1697,10 @@
         {
           "kind": "owner-approved-ui-kb-cleanup-2.2",
           "detail": "Remove design/creative routing; package standalone portable KB procedures."
+        },
+        {
+          "kind": "kb-curation-routing-clarification",
+          "detail": "Explicit index-first semantic curation and section/leaf decisions; layout exclusively owns size thresholds. Preserve source provenance and runtime behavior."
         }
       ],
       "module": "kb-curate"
@@ -3024,9 +3028,14 @@
       "source": "owner-approved-portable-kb",
       "path": "payload/skills/kb-common/references/layout.md",
       "module": "kb-reference",
-      "sha256": "6aad97a33cc2f33349f1220ef0165271b99e4781107c9c22d32e4eb840ffdb96",
-      "bytes": 2203,
-      "transformations": []
+      "sha256": "6cfdf12a8b34644242a86e84f3e42313137f5aab1f8d758c5327d37be76407f1",
+      "bytes": 2404,
+      "transformations": [
+        {
+          "kind": "kb-curation-routing-clarification",
+          "detail": "Explicit index-first semantic curation and section/leaf decisions; layout exclusively owns size thresholds. Preserve source provenance and runtime behavior."
+        }
+      ]
     },
     {
       "source": "owner-approved-portable-kb",

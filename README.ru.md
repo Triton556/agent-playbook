@@ -1,3 +1,5 @@
+> 2.2.1: concise index-first KB curation, section/leaf routing and single-owner size thresholds.
+
 > 2.2.0: explicit user-wide installation with `--scope user --target <HOME>` (Codex/Claude). [Clean installation](docs/CLEAN_INSTALL_FOR_AGENTS.md).
 
 # Agent Playbook 2.2

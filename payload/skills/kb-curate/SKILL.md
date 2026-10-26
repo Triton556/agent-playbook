@@ -5,14 +5,24 @@ description: Organize new INBOX knowledge or explicitly requested topic restruct
 
 # Curate knowledge
 
-The user-appointed agent performs the curation. Vault: {{MEMORY_ROOT}}, or the verified cloud copy. The portable [layout](../kb-common/references/layout.md) defines folders, indexes and leaf sizes; read it for first use or structural changes. Local repository instructions define its ownership, access and additional project conventions, not a replacement for this procedure.
+The user-appointed agent curates {{MEMORY_ROOT}} or its verified cloud copy. Vault instructions define ownership, access and project conventions. [Layout](../kb-common/references/layout.md) owns folder roles and size thresholds; read it for an unfamiliar vault or structural changes.
 
-1. Pin the current repository revision; inspect local unsent files. Select the new INBOX batch and compare IDs/fingerprints with INBOX, ARCHIVE and open PRs. An explicit restructure can select existing topics instead. Leave later arrivals outside the batch.
-2. For each material item, update the appropriate current leaf: decision/fact, reason, date, status and source link. Preserve conflicting evidence; mark superseded decisions. Put unsupported interpretations in HYPOTHESES, not facts. Read the related leaf and source, not the whole vault.
-3. Check changed active pages: review at 20,000 UTF-8 bytes or four independently useful subtopics; split above 40,000 bytes. Keep the old page path as a short index, create named leaves for coherent questions, and separate dated history. Leaves normally 3–12 KB; no padding or splitting an indivisible source. Indexes normally below 4 KB.
-4. Check the changed route from INDEX through its parent to each leaf and original. Retain source IDs and meaningful qualifications, repair affected links/anchors, and answer the actual recovery question from the result. Existing coverage/navigation helpers support this check; they do not prove semantic completeness. No mandatory whole-vault benchmark for an ordinary batch.
-5. Move each processed original INBOX → ARCHIVE without changing ID, fingerprint or bytes. This is preservation at a new path, not destruction. Retain prior topic text as dated history when restructuring; do not label old status current.
-6. Publish only within the user's repository/branch permission. In a Git clone use its configured transport; in a cloud snapshot use [API exchange](../kb-common/references/cloud-exchange.md). Commit related topic/index/archive changes together against the current head; reread/reconcile concurrent changes without force.
-7. Read back the commit and changed content; check original bytes/blob equality. Report the substantive result and unresolved items. Record processed IDs/commit locally. Separate successful curation from delivery to other computers.
+1. Read the vault's AGENTS.md and INDEX.md first. Inspect unsent local files before replacing anything. Pin the repository revision and select its INBOX batch or explicitly requested topics. Compare IDs/fingerprints with INBOX, ARCHIVE and open PRs; skip duplicates but preserve conflicting content. Leave later arrivals for the next batch.
 
-For changes to the retrieval algorithm itself, use a fixed relevant set of recovery questions before/after. For normal curation, verify the changed knowledge, not an unrelated test quota. Keep project-specific projections and schedules in that project's setup; do not activate them merely by installing this skill.
+2. Group by subject. Follow INDEX → section/project index → relevant leaf and read before editing. If no route fits, search the subject and aliases before creating a page. Read selected originals fully; open other cited originals to resolve missing evidence or conflicts, not the whole vault.
+
+3. Extract material decisions, facts/results, open questions/actions, ideas and reusable findings/preferences. Preserve rationale, constraints, event dates, status and source IDs/links. Distinguish plans, reported results and verified results. Compare dates and evidence; mark superseded decisions and retain attributed conflicts. Unsupported interpretations belong in HYPOTHESES, not facts.
+
+4. Route by the question each item answers:
+   - Existing section: update its sourced point, preserving unrelated text and manual edits.
+   - Missing aspect of the same question: add a named subsection.
+   - Separate question: create a descriptive leaf under the nearest suitable index after checking for an equivalent.
+   Add a distinctly scoped section only if no existing section covers the topic; a singleton can be a leaf linked from root INDEX. Create an intermediate index only when distinct leaves need grouping. Keep each explanation in one owning leaf; link elsewhere. Give new leaves parent links and descriptive routes from their nearest index. Update root INDEX only when its immediate routes change.
+
+5. Check changed active pages and navigation parents against layout's thresholds. At review, split or record why the question remains indivisible. When splitting, preserve prior text as dated history and keep the old path as a short index linking to history and named current leaves. Repair incoming file/heading links and configured navigation/coverage targets. Keep indivisible originals intact; summarize them in sourced leaves.
+
+6. Check every material source item against the result: meaning and qualifications must be retained, or omission justified. Follow changed routes from INDEX to the answering section and original; check current versus historical answers, links/anchors and page sizes. Helpers do not prove semantic completeness. Archive only fully processed originals, preserving IDs, fingerprints and bytes. Keep partially processed originals in INBOX and record remaining items. Update topic citations for moved paths, never original bytes.
+
+7. Publish only within the user's repository/branch permission, using the clone's transport or [API exchange](../kb-common/references/cloud-exchange.md). Commit related changes together against current head; reconcile concurrent changes without force. Read back the commit/content and verify original bytes/blob equality. Record processed IDs/commit locally. Report substantive changes, unresolved items and actual checks; distinguish curation from delivery to other computers.
+
+Retrieval-algorithm changes require fixed relevant recovery questions before/after; ordinary curation needs no whole-vault benchmark. Project projections/schedules remain in project setup and are not activated by installation.
