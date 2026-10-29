@@ -29,7 +29,7 @@ async function main() {
       method,
       redirect: 'error',
       signal: AbortSignal.timeout(25000),
-      headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${fields.password}`, 'X-GitHub-Api-Version': '2026-03-10', 'User-Agent': 'пользователь-personal-knowledge-setup', ...(body ? { 'Content-Type': 'application/json' } : {}) },
+      headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${fields.password}`, 'X-GitHub-Api-Version': '2026-03-10', 'User-Agent': 'Danil-personal-knowledge-setup', ...(body ? { 'Content-Type': 'application/json' } : {}) },
       ...(body ? { body: JSON.stringify(body) } : {})
     });
     if (response.status === 404 && method === 'GET') return null;
@@ -42,7 +42,7 @@ async function main() {
   let repository = await request(endpoint);
   let created = false;
   if (!repository) {
-    repository = await request('/user/repos', 'POST', { name: repoName, private: true, auto_init: false, description: 'Private Markdown knowledge base for coding agents', has_wiki: false, has_projects: false });
+    repository = await request('/user/repos', 'POST', { name: repoName, private: true, auto_init: false, description: 'Personal Markdown knowledge base for Codex and Rumi', has_wiki: false, has_projects: false });
     created = true;
   }
   const connectionPath = path.join(DEFAULT_ROOT, 'SYSTEM/connection.json');

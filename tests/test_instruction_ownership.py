@@ -6,21 +6,6 @@ import unittest
 
 from test_install import ROOT, call, target_directory, payload_bytes
 
-MIRRORS = {
-    'payload/skills/agent-sessions-codex/references/' + name:
-    'payload/skills/agent-sessions/references/' + name
-    for name in ('requirements-interview.md', 'brief-writing.md')
-}
-
-
-def owned_rules():
-    document = (ROOT / 'docs/INSTRUCTION_MAINTENANCE.md').read_text(encoding='utf8')
-    return re.findall(
-        r'^\| ([^|]+?) \| \[(payload/[^#]+)#([^\]]+)\]\([^)]*\) \| '+chr(96)+r'([^'+chr(96)+r']+)'+chr(96)+r' \|$',
-        document, re.M,
-    )
-
-
 def markdown_destinations(path):
     text = path.read_text(encoding='utf8')
     # Include images and example links; example project paths use literal code.
@@ -45,37 +30,6 @@ def heading_ids(path):
 
 
 class InstructionOwnership(unittest.TestCase):
-    def test_each_map_rule_has_one_policy_owner(self):
-        rules = owned_rules()
-        self.assertEqual({row[0] for row in rules}, {
-            'Worker-channel language', 'Git action authorization',
-            'Capture identity and persistence', 'Worker memory assignment',
-            'Memory transport', 'Semantic curation', 'Decision consent',
-        }, 'Every retained shared policy needs its declared owner')
-        self.assertEqual(len({row[0] for row in rules}), len(rules))
-        instructions = {
-            p.relative_to(ROOT).as_posix(): p.read_text(encoding='utf8')
-            for p in (ROOT / 'payload').rglob('*.md')
-            if not {'vendor', 'data', 'licenses'} & set(p.parts)
-            and p.relative_to(ROOT).as_posix() not in MIRRORS
-        }
-        for topic, owner, section, phrase in rules:
-            with self.subTest(topic=topic):
-                self.assertIn(section, heading_ids(ROOT / owner))
-                found = {path: text.count(phrase) for path, text in instructions.items() if phrase in text}
-                self.assertEqual(found, {owner: 1})
-
-    def test_shared_references_and_running_owner_pointer(self):
-        for mirror, owner in MIRRORS.items():
-            with self.subTest(reference=owner):
-                self.assertEqual((ROOT / mirror).read_bytes(), (ROOT / owner).read_bytes())
-        pointer = (ROOT / 'payload/skills/agent-sessions-codex/references/running-and-checking.md').read_text(encoding='utf8')
-        self.assertIn('../../agent-sessions/references/running-and-checking.md', pointer)
-        self.assertNotIn('## Waiting for workers', pointer)
-        running = (ROOT / 'payload/skills/agent-sessions/references/running-and-checking.md').read_text(encoding='utf8')
-        self.assertIn('## Status updates', running)
-        self.assertIn('## Questions and blocked workers', running)
-
     def test_you_are_brain_standalone_install_both_clients(self):
         for client, native in [('codex', '.agents'), ('claude', '.claude')]:
             with self.subTest(client=client), target_directory() as folder:
@@ -99,26 +53,18 @@ class InstructionOwnership(unittest.TestCase):
                     )
                 self.assertTrue(entry.read_bytes().startswith(before))
                 self.assertEqual(call('verify', '--client', client, '--target', target)['status'], 'pass')
-                # AGENTS.md is installed as BASE-RULES.md, and its body is also
-                # inlined at project root. Source-relative AGENTS links fail here.
                 for path in (target / native / 'skills').rglob('*.md'):
                     for destination, fragment, raw in markdown_destinations(path):
-                        # References are navigation, not installation dependencies.
-                        # Every source link must exist, but an unselected skill
-                        # does not get installed merely because it is mentioned.
-                        if not destination.exists():
-                            relative = destination.relative_to(target / native)
-                            self.assertTrue((ROOT / 'payload' / relative).exists(), (path, raw))
-                            self.assertEqual(relative.parts[0], 'skills')
-                            self.assertNotIn(relative.parts[1], plan['installed_skills'])
-                base_rules = target / native / 'BASE-RULES.md'
-                self.assertTrue(base_rules.is_file())
-                self.assertIn(base_rules.as_posix(), entry.read_text(encoding='utf8'))
-                self.assertEqual(payload_bytes('payload/AGENTS.md', target, client), base_rules.read_bytes())
+                        self.assertTrue(destination.exists(), (path, raw))
+                self.assertFalse((target / native / 'BASE-RULES.md').exists())
+                self.assertIn("# The user's working rules", entry.read_text(encoding='utf8'))
 
     def test_every_relative_payload_markdown_destination_exists(self):
         checked = 0
         for path in (ROOT / 'payload').rglob('*.md'):
+            # Memory runtime documents are copied from the live vault and link to vault-only files.
+            if 'memory' in path.relative_to(ROOT / 'payload').parts[:2]:
+                continue
             for destination, fragment, raw in markdown_destinations(path):
                 with self.subTest(source=str(path.relative_to(ROOT)), link=raw):
                     self.assertTrue(destination.exists(), str(destination))
@@ -167,7 +113,7 @@ class InstructionOwnership(unittest.TestCase):
     def test_language_owner_installed_for_orchestration_selections(self):
         # Exercise actual selection/rendering, both clients, full and standalone.
         for client, native in [('codex', '.agents'), ('claude', '.claude')]:
-            for selection in [('profile', 'full'), ('skills', 'agent-sessions'), ('skills', 'agent-sessions-codex'), ('skills', 'you-are-brain')]:
+            for selection in [('profile', 'full'), ('skills', 'agent-sessions'), ('skills', 'you-are-brain')]:
                 with self.subTest(client=client, selection=selection), target_directory() as folder:
                     target = Path(folder)
                     entry = target / ('AGENTS.md' if client == 'codex' else 'CLAUDE.md')
@@ -180,17 +126,17 @@ class InstructionOwnership(unittest.TestCase):
                     result = call('install', *args)
                     self.assertEqual(planned['installed_skills'], result['installed_skills'])
                     if selection[0] == 'profile':
-                        self.assertEqual(len(result['installed_skills']), 11)
+                        self.assertEqual(len(result['installed_skills']), 7)
                     else:
                         expected = {'you-are-brain'}
                         self.assertEqual(set(result['installed_skills']), expected)
                     installed = target / native
-                    base = (installed / 'BASE-RULES.md').read_text(encoding='utf8')
+                    base = entry.read_text(encoding='utf8')
                     owner = installed / 'skills/agent-sessions/references/brief-writing.md'
                     self.assertNotIn(owner.as_posix()+'#language', base)
                     self.assertIn('## Audience and language', owner.read_text(encoding='utf8'))
-                    self.assertEqual(owner.read_bytes(), (installed / 'skills/agent-sessions-codex/references/brief-writing.md').read_bytes())
-                    for path in [installed / 'BASE-RULES.md', owner, installed / 'skills/agent-sessions/references/running-and-checking.md', installed / 'skills/agent-sessions-codex/references/running-and-checking.md']:
+                    self.assertFalse((installed / 'BASE-RULES.md').exists())
+                    for path in [owner, installed / 'skills/agent-sessions/references/running-and-checking.md', installed / 'skills/agent-sessions/references/session-guide.md']:
                         for destination, fragment, raw in markdown_destinations(path):
                             if destination.exists():
                                 if fragment and destination.suffix == '.md':

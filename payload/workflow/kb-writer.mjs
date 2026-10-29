@@ -1,7 +1,8 @@
-import {capture,checkpoint} from '../runtime/memory/SYSTEM/scripts/kb.mjs';import path from 'node:path';import {fileURLToPath} from 'node:url';
-const VAULT=process.env.HARNESS_KB_ROOT;if(!VAULT)throw new Error('Set HARNESS_KB_ROOT to the authorized fixed vault before starting this writer');
+import path from 'node:path';import {fileURLToPath,pathToFileURL} from 'node:url';
+// The vault owns its kb.mjs; the writer always uses that copy, so a reinstall needs no patching.
+const VAULT=process.env.HARNESS_KB_ROOT;
 const obj=(properties,required=Object.keys(properties))=>({type:'object',properties,required,additionalProperties:false});
-const str={type:'string',minLength:1,maxLength:12000},short=maxLength=>({...str,maxLength}),identity={...short(256),pattern:'^[a-zA-Z0-9:._-]+$'},source=obj({kind:{enum:['codex','curator','cloud','manual']},session_id:identity,turn_id:identity,label:short(256)},['kind','session_id','turn_id']);
+const str={type:'string',minLength:1,maxLength:12000},short=maxLength=>({...str,maxLength}),identity={...short(256),pattern:'^[a-zA-Z0-9:._-]+$'},source=obj({kind:identity,session_id:identity,turn_id:identity,label:short(256)},['kind','session_id','turn_id']);
 const item=obj({type:{enum:['fact','preference','decision','task','project-update','idea','research','hypothesis']},text:str,evidence:short(2000),status:short(64),topics:{type:'array',maxItems:10,items:short(100)},links:{type:'array',items:{...short(2000),pattern:'^https?://',description:'Web source URLs only. Put local file paths in text or evidence.'}}},['type','text','evidence']);
 const payload=obj({schema_version:{const:1},title:short(160),source,batch_key:short(128),final:{type:'boolean'},items:{type:'array',minItems:1,maxItems:40,items:item}},['schema_version','title','source','items']);
 const tools=[{name:'kb_capture',description:'Save structured non-secret knowledge in the fixed authorized INBOX. Uses original session/turn IDs and idempotent batch identity. No arbitrary path, shell, deletion, sync or publication.',inputSchema:obj({payload}),annotations:{readOnlyHint:false,destructiveHint:false,idempotentHint:true,openWorldHint:false}},{name:'kb_checkpoint',description:'Mark a turn in the fixed authorized vault when there is no new memory. Does not edit knowledge notes or arbitrary files.',inputSchema:obj({session_id:identity,turn_id:identity}),annotations:{readOnlyHint:false,destructiveHint:false,idempotentHint:true,openWorldHint:false}}];
@@ -26,6 +27,8 @@ export function makeHandler(adapter){
  };
 }
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
+ if(!VAULT)throw new Error('Set HARNESS_KB_ROOT to the authorized fixed vault before starting this writer');
+ const {capture,checkpoint}=await import(pathToFileURL(path.join(VAULT,'SYSTEM/scripts/kb.mjs')).href);
  const handle=makeHandler({capture:p=>capture(VAULT,p),checkpoint:p=>checkpoint(VAULT,p)});let buffer='',discard=false;process.stdin.setEncoding('utf8');
  function processLine(line){if(!line.trim())return;let r;try{r=handle(JSON.parse(line))}catch{r={jsonrpc:'2.0',id:null,error:{code:-32700,message:'Invalid JSON'}}}if(r)process.stdout.write(JSON.stringify(r)+'\n')}
  for await(const chunk of process.stdin){for(const piece of chunk.toString('utf8').split(/(?<=\n)/)){if(discard){if(piece.endsWith('\n'))discard=false;continue}buffer+=piece;if(buffer.length>1024*1024){buffer='';discard=!piece.endsWith('\n');process.stdout.write(JSON.stringify({jsonrpc:'2.0',id:null,error:{code:-32600,message:'Input exceeds limit'}})+'\n');continue}if(piece.endsWith('\n')){processLine(buffer);buffer=''}}}if(buffer&&!discard)processLine(buffer);

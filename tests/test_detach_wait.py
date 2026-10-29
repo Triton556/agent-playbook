@@ -172,7 +172,7 @@ readline.createInterface({input:process.stdin}).on('line', line => {
             cwd = folder / 'worker'
             cwd.mkdir()
             env = self.stub_codex(folder)
-            for name in ('codex', 'claude-code'):
+            for name in ('codex',):
                 description = self.command(ADAPTERS / f'{name}.mjs', '--describe')
                 self.assertEqual(description['contract'], 2)
                 self.assertTrue(description['detach'])

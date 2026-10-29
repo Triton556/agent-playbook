@@ -20,7 +20,7 @@ Produce front, back, left, right, top and bottom from the **same object, pose an
 
 Views can be original vector sketches, generated concept imagery or projections of a lightweight analytic/block layout. A block layout is a design aid, before detailed occupied voxel geometry. Use imagegen for AI bitmap concepts when appropriate. A request for six image panels does not itself guarantee consistent geometry; inspect and reconcile the outputs. Do not use six recoloured copies of one angle. Deliberate symmetry is declared, not used to skip an uninspected side.
 
-For image generation, provide the same passport/exemplars in every revision: one identity/pose, orthographic views, component counts/positions and selected style. Inspect whether returned views satisfy them. Failed sheet history: see [quality-ledger, Schema version 1](../../dev-flow/references/quality-ledger.md#schema-version-1).
+For image generation, provide the same passport/exemplars in every revision: one identity/pose, orthographic views, component counts/positions and selected style. Inspect whether returned views satisfy them.
 
 Multi-view consistency is a technical concern in [MVDream](https://arxiv.org/abs/2308.16512); that research is supporting context, not a statement that our ordinary image tool implements its method. Even consistent silhouettes do not uniquely determine hidden volume or prove valid 3D topology.
 
@@ -39,7 +39,7 @@ Inspect the actual sheet and relevant closeups at intended review size. Write se
 | Readability | Identify the object/action and key feature in the intended view without relying on the title; zoom when the overview cannot decide |
 | Usability | Confirm the intended use and, for a viewer, the inspection scenario and legible controls. State the relevant static use when the artifact has no UI |
 
-Repairs follow WORKFLOW, Check, repair and finish. In addition, a view/pose/dimension/style change updates other affected design views under [design-passport, Review schema1](design-passport.md#review-schema1). Record current observations before advancing. Participation: see task brief and acceptance, section 5; this stage adds no approval gate.
+A view/pose/dimension/style change updates other affected design views under [design-passport, Review schema1](design-passport.md#review-schema1). Record current observations before advancing. Participation: see task brief and acceptance, section 5; this stage adds no approval gate.
 
 ## 4. Bind readiness, then voxelize
 
@@ -53,7 +53,7 @@ Exit0 means the declared geometric/kit constraints and all required current desi
 
 Voxel construction uses the accepted passport revision, landmarks, palette roles, native pitch and planned sockets. Preserve the accepted 2D design. Render the resulting voxels in matching views and compare their silhouette/scale/features against the design, then run the existing technical/semantic/style/context/readability/use checks. A passing concept does not automatically approve its 3D implementation. Record justified design changes as a new revision and recheck the affected plan.
 
-Grounding: see [reference-grounding, Observable triggers](reference-grounding.md#observable-triggers). Perception: see [human-perspective-review, Inspection sequence](../../dev-flow/references/human-perspective-review.md#inspection-sequence). This branch owns six-view representation and kit constraints; participation follows task brief and acceptance, section 5.
+Grounding: see [reference-grounding, Observable triggers](reference-grounding.md#observable-triggers). This branch owns six-view representation and kit constraints.
 
 ## Material contour and mixed-grid scope
 

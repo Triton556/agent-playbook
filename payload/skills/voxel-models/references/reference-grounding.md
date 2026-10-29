@@ -33,6 +33,5 @@ Keep a short record in the existing plan:
 - Porte: side/front view and body/wheel ratios; palette alone does not resolve proportions. Imaginary transport may have authorized original proportions.
 - Dashboard: an example of selecting a scenario and seeing its result, including an awkward case. A palette does not establish usability; a static report need not have a switch.
 - Water: source, shore, movement and object placement. Vegetation depends on climate/design intent, not automatically on every body of water.
-- Audit diagnosis: Observation versus cause: see [human-perspective-review, Inspection sequence](../../dev-flow/references/human-perspective-review.md#inspection-sequence).
 
 Method sources and historical audits: {{EVIDENCE_ROOT}}/workflow-review-20261013/pipeline-review.md, sections 3–4; use kb-find for current decisions. Do not load the entire analysis for routine use of this reference.

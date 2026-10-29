@@ -24,9 +24,9 @@ Connectivity expectations: see [built-form, Function, cavities and localized wea
 
 ## Actual verification and limits
 
-The research builder generated forty unique hashes, five per category; checked determinism, bounds and cell roundtrip; inspected eight category sheets with two opposing views. Exports use the checked opaque palette mesher. External editor import, UV/texturing, rigging, collisions and LOD transitions were not validated. Performance claims: see [runtime-accessibility, Budget the complete result](../../visual-scenes/references/runtime-accessibility.md#budget-the-complete-result).
+The research builder generated forty unique hashes, five per category; checked determinism, bounds and cell roundtrip; inspected eight category sheets with two opposing views. Exports use the checked opaque palette mesher. External editor import, UV/texturing, rigging, collisions and LOD transitions were not validated.
 
-Game articulation: see [objects, People and creatures](objects.md#people-and-creatures). Physical scale: see [resolution-lod, Keep four quantities separate](resolution-lod.md#keep-four-quantities-separate). Author collision proxies as required. Target runtime evidence: see [runtime-accessibility, Budget the complete result](../../visual-scenes/references/runtime-accessibility.md#budget-the-complete-result).
+Game articulation: see [objects, People and creatures](objects.md#people-and-creatures). Physical scale: see [resolution-lod, Keep four quantities separate](resolution-lod.md#keep-four-quantities-separate). Author collision proxies as required.
 
 
 Gen1 passed file checks but received later feedback about anatomy, overly regular forms and unsupported water. For new work needing those improvements, use [Gen2](gen2.md) and the relevant anatomy/organic/built method. Keeping these examples supports honest version comparison, not a claim that Gen1 is the current quality target.

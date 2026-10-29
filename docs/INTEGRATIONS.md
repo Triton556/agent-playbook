@@ -1,158 +1,39 @@
-# Activate equivalent tools without inheriting access
+# Integrations
 
-File installation is the first layer. The original setup also has native tools, a limited knowledge writer, lifecycle hooks and scheduled maintenance. These must be configured and exercised in the destination. Missing enforcement is not full integration parity.
+File installation is the first layer. The knowledge writer, hooks and the Codex worker route must be configured and exercised in the destination with the owner's approval; the installer never edits client configuration.
+
+| Client | Skills folder | Startup instructions |
+|---|---|---|
+| Codex | `.agents/skills/<name>/SKILL.md` | AGENTS.md managed block |
+| Claude Code | `.claude/skills/<name>/SKILL.md` | CLAUDE.md managed block |
+| DeepSeek Harness | `.dsh/skills/<name>/SKILL.md` | AGENTS.md managed block |
+| Generic | `.agent-harness/skills/<name>/SKILL.md` | AGENTS.md; needs its own discovery adapter |
 
 ## Codex startup budget and discovery
 
-The installer checks the visible project instruction chain against a declared byte budget, defaults to 32768, and refuses a target AGENTS.override.md which would shadow the installed block. It never shortens the original body to make it fit. Codex's actual instruction discovery, override precedence and default limit are documented in [AGENTS.md guidance](https://learn.chatgpt.com/docs/agent-configuration/agents-md).
+The installer checks the visible project instruction chain against a declared byte budget (default 32768) and refuses a target AGENTS.override.md that would shadow the installed block. If existing instructions make the block too large, pass `--project-doc-max-bytes 65536` to plan/install and start Codex with `-c project_doc_max_bytes=65536`; the installer option is a declaration, not a config change. Start a new session and check that the catalog lists the selected skills and the full startup block is loaded.
 
-If an existing project's instructions make the complete block too large:
+## you-are-brain: Codex workers from another host
 
-```bash
-python harness.py plan --client codex --target /path/to/project --profile full --project-doc-max-bytes 65536
-python harness.py install --client codex --target /path/to/project --profile full --project-doc-max-bytes 65536
-codex --cd /path/to/project -c project_doc_max_bytes=65536
-```
+`you-are-brain` lets a host agent (Claude Code, GLM or another client) start, continue and check Codex worker sessions. Codex itself uses its native agents. The route runs `skills/agent-sessions/adapters/codex.mjs`, which starts `codex app-server` on the user's own Codex home, so the threads appear in the Codex app. The host needs shell access, Node.js 22+ and a configured Codex CLI; `CODEX_BIN` can name the executable. Procedure: [session guide](../payload/skills/agent-sessions/references/session-guide.md); options, results and exit codes: [adapter contract](../payload/skills/agent-sessions/references/contract.md#run); access modes: [contract, Access modes](../payload/skills/agent-sessions/references/contract.md#access-modes); host readiness diagnostics: [contract, Host readiness](../payload/skills/agent-sessions/references/contract.md#host-readiness).
 
-The installer option is a declaration, not a config change. The Codex launch override affects this invocation. Inspect actual global instructions, fallback names, repository ancestry and nested overrides too; a later working-directory change can select different instructions. In the desktop app use its supported configuration mechanism with the owner's agreement and confirm the effective value. No copied trust hash or imagined session configuration counts as proof.
+For acceptance, run a small authorized task, confirm the named thread is visible in the app, then continue the same thread and inspect its result.
 
-Start a new session. Verify the catalog resolves the selected names to this project's native folders and that the full startup body, including its ending, is actually loaded. The tested Codex CLI0.160.0 catalog call is `skills/list` with the project `cwds` and `forceReload:true`; it requires no model-generation request. Catalog discovery is separate from startup/body interpretation and a live task result.
+## Limited knowledge writer (MCP)
 
-## Interpreter and shell
-
-The original method references include Windows PowerShell examples. Adapt only shell quoting/invocation, preserving helper, arguments, input schema and criteria:
-
-| Shell | Execute the actual Python interpreter |
-|---|---|
-| PowerShell | `& '/absolute/python.exe' '/absolute/script.py' ...` |
-| bash/zsh | `'/absolute/python' '/absolute/script.py' ...` |
-| Windows cmd | `"C:\absolute\python.exe" "C:\absolute\script.py" ...` |
-
-`agent-worklog.mjs` invokes the same sibling `quality_ledger.py`. Set `HARNESS_PYTHON` to the actual executable if `python` on PATH is missing/different. Set this in the process environment, including any quality-hook process. Node and Python spawning must be permitted by the client's sandbox. A denied spawn remains an unavailable check; do not replace it with an unconditional success.
-
-## you-are-brain Codex route
-
-`you-are-brain` is the discoverable orchestration entry for the host agent (Claude, another Codex or another client). Its selected Codex route uses the retained adapter/driver files to start or continue a worker and check the result. The entry is selected by `full`, `engineering` and `instructions`, or separately:
-
-```bash
-python harness.py install --client claude --target /path/to/project --skills you-are-brain
-python harness.py verify --client claude --target /path/to/project
-```
-
-Use `--client codex` for a Codex host. Read the installed `skills/you-are-brain/SKILL.md`; when the Codex adapter route is selected, read `skills/agent-sessions-codex/references/codex-driver.md`. The legacy technical folder is not a separate skill. The host needs permitted shell/file access, Node.js 22+ and a configured Codex CLI with the user's account/settings. The driver finds `codex` on PATH or in supported desktop locations; `CODEX_BIN` can name the actual executable. No Codex binary, account, authentication or host configuration is installed by the harness.
-
-Codex runtime/home/settings/history/hooks and continuation: see [Codex driver, session execution](../payload/skills/agent-sessions-codex/references/codex-driver.md#6-run-and-check).
-
-Launch: see [session guide, authorized scope](../payload/skills/agent-sessions/references/session-guide.md#5-check-the-authorized-scope-and-launch). Access semantics: see [adapter contract, Access modes](../payload/skills/agent-sessions/references/contract.md#access-modes). Runtime limitations: see [Codex driver, Known limits](../payload/skills/agent-sessions-codex/references/codex-driver.md#known-limits). Checking: see [running-and-checking, Checking a finished session](../payload/skills/agent-sessions/references/running-and-checking.md#checking-a-finished-session).
-
-For runtime acceptance, obtain authorization for a small real task, confirm the named thread is visible in the app, then continue the same thread and inspect its actual result. Exercise memory only against the user's authorized setup if selected. Release 0.4.0 packaging checks do not launch sessions or independently reproduce the source owner's reported live trials.
-
-## Codex adapter host readiness
-
-The leading host selects delegation tools; a separate worker backend does not change that host's instructions or native tools. Check this separately from adapter `--describe`: its historical `verified` field is not current-host certification. Execution policy and diagnostic/assignment formats have one owner in [the adapter contract](../payload/skills/agent-sessions/references/contract.md#host-readiness).
-
-For Codex CLI 0.160.1, [official subagent settings](https://learn.chatgpt.com/docs/agent-configuration/subagents) support:
-
-```toml
-[agents]
-enabled = false
-```
-
-Only after the owner selects this client change, merge the setting in the appropriate configuration scope while preserving existing providers, credentials, permissions and all unrelated values. Record the prior value for a scoped rollback. The installer and diagnostic never edit global client configuration. Start a fresh leading session and check its effective mode; disabling native agents only in a worker cannot resolve a conflict in the leader. Existing sessions may retain earlier instructions.
-
-If supported, inspect a private CLI preview without a model call:
-
-```text
-codex --version
-codex debug prompt-input > <private scratch>/host-preview.json
-node <installed-root>/skills/agent-sessions/adapters/host-readiness.mjs --client codex --version 0.160.1 --prompt-input <private scratch>/host-preview.json
-python harness.py doctor --client codex --target <project> --host-client codex --host-version 0.160.1 --host-prompt-input <private scratch>/host-preview.json
-```
-
-Use the actual associated version, not the example by default. Unsupported client/version/shape stays unverified; a known conflict refuses checked adapter launches before a worker starts. CLI-preview compatibility is limited to the supplied snapshot and known markers. The active desktop session and model's eventual tool choices remain unverified. Inspect those in the actual leading session before claiming readiness. Keep raw previews private and outside repositories; the diagnostic emits only enumerated findings and a digest. It does not read session transcripts, start clients or call models/network services.
-
-For bundled adapters, pass the private checked assignment under [the contract](../payload/skills/agent-sessions/references/contract.md#checked-brief-assignment). After inspecting a terminal result, [run recovery](../payload/skills/agent-sessions/references/contract.md#recover-a-run) preserves the thread and saved assignment/settings; it does not automatically retry or grant access. Old foreground commands remain compatible without claiming these optional checks.
-
-## Limited memory MCP
-
-Initialize the authorized vault with init-memory. Configure fixed HARNESS_KB_ROOT and discover the writer’s capture/checkpoint schemas through tools/list. Capture/identity/receipt handling: see [kb-save, Knowledge capture](../payload/skills/kb-save/SKILL.md#save-knowledge).
-
-Codex config example, **merge only after actual owner approval** in the appropriate local/project config; do not replace existing config:
-
-```toml
-[mcp_servers.harness_kb_writer]
-command = "/absolute/node"
-args = ["/project/.agents/workflow/kb-writer.mjs"]
-env = { HARNESS_KB_ROOT = "/authorized/private/vault" }
-```
-
-For another client configure its stdio MCP transport with the same command/fixed environment; actual host approval is required. Agent capture procedure: see kb-save, Knowledge capture. Integration acceptance uses synthetic records to exercise initialize/list, capture, repeat, conflicting identity, checkpoint and unknown fields.
-
-The portable guides use the server alias `harness_kb_writer`; the server reports `harness-kb-writer`. If choosing another alias, explicitly map the two discovered tool names for the agent. Version 0.3.0 uses the generic `source.kind=curator` for curator captures in both CLI and MCP; configure new producers accordingly. Existing saved records are not rewritten.
+`workflow/kb-writer.mjs` is a stdio MCP server with only `kb_capture` and `kb_checkpoint`. It requires `HARNESS_KB_ROOT` and loads `SYSTEM/scripts/kb.mjs` from that vault, so it always uses the vault's own runtime. The installation renders `runtime/integrations/codex-kb-writer.template.toml` with the real node, writer and vault paths; merge it into the Codex `config.toml` only with the owner's approval, preserving the rest of the file. Accepted `source.kind` values come from the vault's `kb.mjs`. Capture procedure: [kb-save](../payload/skills/kb-save/SKILL.md).
 
 ## Lifecycle hooks
 
-The installed `runtime/integrations/codex-hooks.template.json` retains the actual three configured operations and their original limits/timeouts:
+`runtime/integrations/codex-hooks.template.json` registers the vault's `kb.mjs hook` on UserPromptSubmit (records the turn and gives the save/checkpoint instruction) and Stop (checks the completion mark, one continuation at most). Merge it into `.codex/hooks.json` with the owner's consent, preserving existing hooks; never copy another installation's trusted hashes. Claude Code uses `node <vault>/SYSTEM/scripts/kb-claude.mjs hook` in `.claude/settings.json`.
 
-| Event | Operation | Expected behavior |
-|---|---|---|
-| UserPromptSubmit | Knowledge runtime `hook` | Record this turn and provide the short save/checkpoint instruction |
-| Stop | Knowledge runtime `hook` | Check a real completion mark; one continuation if missing, no endless loop |
-| Stop | `workflow/quality-stop.mjs` | Diagnose stale/incomplete declared work; bounded nonblocking message |
-
-Review the rendered commands, vault/root/interpreter paths, event schemas and duplicate existing hooks. With owner consent, merge the template's hooks into the appropriate project `.codex/hooks.json` (preserve existing content). Native Codex must review/trust the exact current definitions. **Never copy another installation's `hooks.state` or trusted hashes.** Multiple hook sources are additive; inspect for duplicate registration. These rules come from [Codex Hooks](https://learn.chatgpt.com/docs/hooks).
-
-Claude hooks use .claude/settings.json or .claude/settings.local.json under [Claude hooks](https://code.claude.com/docs/en/hooks). Map native fields and test real events; DeepSeek/generic support is not certified. Identity/persistence: see kb-save, Knowledge capture.
-
-No hook registers during ordinary file installation. This keeps access changes reviewable. Full operational readiness requires the selected integrations to be authorized and tested.
-
-## UI and artifact capabilities
-
-Version 2.0 ships no external detector/runtime. Use available actual browser/native rendering and format tools for the affected scenario. Missing rendering remains unverified; do not replace it with a successful source hash. Separate reviewers remain optional and task-authorized.
-
-## Knowledge maintenance
-
-Memory service/schedule authorization and verification: see [kb-sync, Knowledge transport](../payload/skills/kb-sync/SKILL.md#knowledge-transport). Configure the deployment’s own timezone and scheduler; the daily INBOX filename convention retains Asia/Vladivostok and does not prove a scheduler exists.
-
-Personal VM control is excluded from this public package. No source owner's VM, remote memory repository, credentials or scheduler grant is transferred.
-
-## Retrieval and structural memory audits (0.2.0)
-
-After explicit memory initialization, read-only search is available as:
+## Knowledge helpers
 
 ```bash
-node /authorized/private/vault/SYSTEM/scripts/kb-search.mjs "specific project" --mode current --limit 8
-node /authorized/private/vault/SYSTEM/scripts/kb-search.mjs "past decision" --mode history --limit 8
+node <vault>/SYSTEM/scripts/kb.mjs status
+node <vault>/SYSTEM/scripts/kb-search.mjs "specific project" --mode current --limit 8
+node <vault>/SYSTEM/scripts/kb-coverage.mjs <vault>
+node <vault>/SYSTEM/scripts/kb-navigation.mjs <vault>
 ```
 
-Before audits, create deployment-owned SYSTEM/coverage/coverage.json and SYSTEM/navigation/parents.json using synthetic SYSTEM/examples as schemas. Prepare twelve fixed retrieval cases under SYSTEM/workflows/retrieval-quality.md. Source-owner registries/questions are excluded; semantic handling: see kb-curate, Knowledge curation.
-
-Before curation/navigation audits, create your own SYSTEM/coverage/coverage.json and SYSTEM/navigation/parents.json. SYSTEM/examples contains synthetic schema templates; replace example sources/paths with real authorized records and topology. Define twelve fixed retrieval cases with expected topic/source, answer and caveat before the pilot in SYSTEM/workflows/retrieval-quality.md. The source owner's actual registries, questions and private notes are not distributed.
-
-```bash
-node /authorized/private/vault/SYSTEM/scripts/kb-coverage.mjs /authorized/private/vault
-node /authorized/private/vault/SYSTEM/scripts/kb-navigation.mjs /authorized/private/vault
-```
-
-Receipt claim grades: see [human-perspective-review, Readiness and transfer](../payload/skills/dev-flow/references/human-perspective-review.md#readiness-and-transfer). Record selected layers: composition, actual startup/catalog, helper scenarios, writer receipts/lifecycle, viewer capabilities and selected runtime scenario; link each observation to the relevant procedure.
-
-## Destination acceptance receipt
-
-Record independently: installed selection/closure; package and installed hashes; startup body/end and effective budget; actual catalog; interpreter/helper scenarios; MCP real receipts; real lifecycle events/trust; viewer/image/format capabilities; fresh-review capability/consent only when selected; a representative authorized task and the actual observations, identifying self-review separately. Mark missing/unverified layers explicitly. The final owner verdict is its own evidence.
-
-## Agent sessions for any worker
-
-Shared orchestration policy: see [agent-sessions](../payload/skills/agent-sessions/references/session-guide.md), Fixed rules, Worker artifacts and steps 3–5. Worker language: see [brief-writing, Language](../payload/skills/agent-sessions/references/brief-writing.md#language). Session checking/status/reporting: see [running-and-checking](../payload/skills/agent-sessions/references/running-and-checking.md).
-
-Adapters use [contract, Run](../payload/skills/agent-sessions/references/contract.md#run) for options/result/exit codes. Client-specific setup facts follow below; access semantics: see contract, Access modes.
-
-- `codex`: Codex app-server, threads visible in the Codex app. Live-checked: new thread, continue, `read-only` refused a write, `workspace-write` refused a write outside the folder.
-- `claude-code`: headless `claude -p` with permission modes (`plan`, `acceptEdits`, `bypassPermissions`) rather than an OS sandbox. Unverified. It needs a Claude Code CLI logged in on its own; the CLI bundled with the desktop app reports "Not logged in" when started separately.
-
-For another client use [writing-an-adapter](../payload/skills/agent-sessions/references/writing-an-adapter.md). Launch authorization: see agent-sessions, step 5.
-
-## Jam Board separation in 2.1
-
-Jam Board owns its standalone project-local skill and MCP integration. Install that skill from the Jam Board application for the selected project/client; this playbook no longer ships it or adds brain/planning dependencies for it. Old `--profile jam-board` and `--skills jam-board` requests stop with this explanation instead of installing another profile.
-
-During an upgrade of an existing playbook installation, unchanged receipt-owned Jam files are removed; modified managed files stop the upgrade before writes, and unowned files are preserved. Keep both versions and reconcile the reported files explicitly before retrying. Independently installed/global copies are not silently removed.
+Coverage and navigation audits need the vault's own SYSTEM/coverage and SYSTEM/navigation registries; SYSTEM/examples contains schema templates only. Sync and schedules: [kb-sync](../payload/skills/kb-sync/SKILL.md).

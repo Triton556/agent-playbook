@@ -28,7 +28,7 @@ Contract version **2** adds optional detached execution and shared waiting. All 
 
 - `detach: true` advertises support for the detached lifecycle below; v1 adapters without it remain foreground-only.
 - `access_modes` lists only the modes the adapter supports. Each value says in plain words what the client enforces: an OS sandbox, a permission mode, a tool list. An adapter must not claim a protection that the client does not provide.
-- `verified` is true only when the live checks from [writing an adapter](writing-an-adapter.md) passed. An unverified adapter may work, but the orchestrator must say so in its plan.
+- `verified` is true only when the adapter author's live checks passed (describe, new session, continue, access refusal). An unverified adapter may work, but the orchestrator must say so in its plan.
 - `visible_in` says where the user can watch and step into the session, or `null` if they cannot.
 
 Bundled adapters also advertise `launch_checks: ["assignment", "resume-run", "host-prompt-input"]` and `current_host_readiness: "unverified"`. These optional additions preserve contract-v2 result/exit shapes. Historical `verified` never certifies the leading host or a new model run.

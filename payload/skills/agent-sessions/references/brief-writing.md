@@ -9,7 +9,7 @@ The brief is the worker's whole view of the task. The worker does not see your c
 - In a delegated worker session, the recipient is the orchestrator unless the current user instruction explicitly addresses a particular output directly to the user. A session visible to the user does not make a worker-to-orchestrator message user-facing.
 - Include an explicit Audience and language block in every initial brief. State the recipient and the language of each user-facing deliverable. On continuation, retain that assignment unless the current user instruction changes it; restate any change explicitly.
 - Preserve exact source quotations, identifiers, paths, commands and required product text in their original language. Mark quotations as quotations. Write interface text, documents and other user-facing deliverables in the language specified for that output; their language does not change the surrounding message or report to the orchestrator.
-- Direct conversation with the user and knowledge-base prose follow [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries), including the user's explicit language exceptions. A report to another agent is agent-to-agent communication.
+- Direct conversation with the user and knowledge-base prose follow the user's language rules from the installed global instructions, including the user's explicit language exceptions. A report to another agent is agent-to-agent communication.
 
 ## Checked launch review
 
@@ -26,7 +26,6 @@ Before launch, read the entire brief, including Result/Return, against that assi
 
 Detail goes into what must be true and how it will be checked. It does not go into step-by-step instructions for writing the code: the worker has its own workflow, and prescribing every step lowers the quality. Name a specific approach only when the user decided it, or when the project already has a pattern the change must follow.
 
-Independent reviewer briefs: [independent-review, Preparation](../../../workflow/independent-review.md#preparation) owns information staging and overrides the generic cause/baseline fields below.
 
 ## Template
 
@@ -93,7 +92,7 @@ Use only sections needed to communicate the task, boundaries and acceptance. Kee
 - **Boundaries that cannot be misread.** State material restrictions and already authorized actions the task needs; do not invent an approval checklist for ordinary steps. Resolve ambiguous permissions for: image generation, network access, package installs, browser, running servers, deleting files. Avoid umbrella words such as "local only" or "no external services": a worker may read them as forbidding a tool the task needs, or as allowing one it must not use.
 - **One task per brief.** Independent pieces go to separate sessions.
 - **Nothing private that is not needed.** No secrets, tokens, personal data or unrelated history. Tell the worker never to print keys it uses.
-- **Memory.** Retain the launch contract’s writer assignment; perform capture only when an authorized integration is active and there is new reusable knowledge. Required integration checkpoints still apply. See [capture writer assignment](../../kb-common/references/capture.md#delegated-memory-capture).
+- **Memory.** Retain the launch contract’s writer assignment; perform capture only when an authorized integration is active and there is new reusable knowledge. Required integration checkpoints still apply. A delegated writer keeps the original source identity and batch key, returns the receipt and saved path, and the orchestrator verifies the saved file before reporting persistence.
 - **Run settings are not in the brief.** Model, effort and access mode are passed to the adapter.
 
 ## Continuing a session

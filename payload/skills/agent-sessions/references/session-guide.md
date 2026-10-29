@@ -26,7 +26,7 @@ For the selected adapter, run `node <agent-sessions>/adapters/<name>.mjs --descr
 
 Select model and effort deliberately for every turn; adapter API defaults do not make this decision. Effort precedence:
 1. The user's explicit request for a level always wins.
-2. After failure, raise one supported level only when task difficulty caused the failure. If the brief caused it, repair the brief and keep the effort. Reviewer rounds remain governed by independent-review.
+2. After failure, raise one supported level only when task difficulty caused the failure. If the brief caused it, repair the brief and keep the effort.
 3. Otherwise use the lowest fitting level in this table and the maximum restriction below.
 
 | Level | Use for | Examples |
@@ -48,7 +48,7 @@ Otherwise mechanical work, documentation edits, running tests and small reviews 
 
 Effort names differ between clients; use the levels from the adapter's description.
 
-Use the task/profile access selection; ask when the next launch requires an uncovered access mode. Mode meanings, default and refusal: see [adapter contract, Access modes](contract.md#access-modes). Codex mapping: see [Codex driver, step 3](../../agent-sessions-codex/references/codex-driver.md#3-choose-effort-and-access).
+Use the task/profile access selection; ask when the next launch requires an uncovered access mode. Mode meanings, default and refusal: see [adapter contract, Access modes](contract.md#access-modes). Codex maps the modes to its OS sandbox; workspace-write is bounded by the working folder and on Windows also blocks writes inside .git.
 
 ### 4. Write the briefs
 
@@ -62,7 +62,7 @@ Ask before an uncovered provider/model selection, access/cost expansion, new sco
 
 ### 6. Run and check
 
-Use [running-and-checking](running-and-checking.md) for launch/status/wait/report events. Run command and output semantics: [contract](contract.md#run). Codex foreground versus detached commands: [Codex driver](../../agent-sessions-codex/references/codex-driver.md#6-run-and-check). After worker completion, inspect the delivered output against the task's user steps/contract; process exit alone does not accept it.
+Use [running-and-checking](running-and-checking.md) for launch/status/wait/report events. Run command and output semantics: [contract](contract.md#run). Codex runs through `<agent-sessions>/adapters/codex.mjs`: it starts `codex app-server` on the user's own Codex home, so the thread appears in the Codex app under its name. Do not use `codex exec` (hidden threads), a temporary `CODEX_HOME` or `--ignore-user-config` unless the user asked for an isolated experiment. Pass model, effort and access again on every continuation. After worker completion, inspect the delivered output against the task's user steps/contract; process exit alone does not accept it.
 
 ### 7. Report to the user
 
@@ -70,4 +70,11 @@ Report material state changes: launched, blocked, returned, accepted or returned
 
 ## Known limits
 
-An adapter startup denial does not authorize a workaround. Report the exact failed operation and continue independent covered work. Model availability, login and actual access must be checked on the selected client. [Codex driver](../../agent-sessions-codex/references/codex-driver.md#known-limits) contains its client-specific constraints; Claude Code requires its own working CLI login.
+An adapter startup denial does not authorize a workaround. Report the exact failed operation and continue independent covered work. Model availability, login and actual access must be checked on the selected client.
+
+Codex-specific limits:
+- Started from inside a Codex sandbox, `codex app-server` fails with `spawn EPERM` (exit code 3) and no thread is created. Tell the user and ask for approval or another access mode; do not work around it.
+- The sandbox may block launching a browser; inspect visual results yourself or ask the user to look.
+- The user's Codex hooks, including memory hooks, run in these sessions too. If the final message is about a hook error instead of the task, read the result from the output files and the event log.
+- `--proxy` works only with a running `codex app-server daemon`; the default mode does not need it.
+- If the CLI is not found, set `CODEX_BIN` to the codex executable.

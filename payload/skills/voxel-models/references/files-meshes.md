@@ -16,6 +16,6 @@ Cull faces between occupied cells. Merge adjacent coplanar faces only when direc
 
 The original helper verifies exact surface/color coverage, non-overlap and winding on a cuboid, a mixed-color cavity and eight specimens. It writes flat OBJ faces with MTL colors and transforms z-up cells into `(x,z,-y)` for y-up output. This is a coordinate convention, not external-editor acceptance. Native VOX remains the editable source; the mesh is derived.
 
-Moving parts: see [objects, People and creatures](objects.md#people-and-creatures). Runtime measurement: see [runtime-accessibility, Budget the complete result](../../visual-scenes/references/runtime-accessibility.md#budget-the-complete-result). Compare mesher counts only under matching representation and material/light constraints.
+Moving parts: see [objects, People and creatures](objects.md#people-and-creatures). Compare mesher counts only under matching representation and material/light constraints.
 
 Algorithm reference: [Mikola Lysenko's original meshing article](https://0fps.net/2012/06/30/meshing-in-a-minecraft-game/). The helper is independently written for this study and handles opaque palette data; it is not a copied asset exporter.

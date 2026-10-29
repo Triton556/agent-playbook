@@ -26,7 +26,6 @@ Build a recognizable original object on an intentional cell grid. Study referenc
 | Inspect/export VOX, mesh it or diagnose a format mismatch | [Files and meshes](references/files-meshes.md) |
 | Study coverage, sources and limits of the recipes | [Evidence](references/evidence.md) |
 
-Loading and recovery: see [WORKFLOW, Work route](../../workflow/WORKFLOW.md#work-route).
 
 ## From brief to a model
 
@@ -46,13 +45,13 @@ Review body support, useful cavities, branch attachment and flow paths as semant
 
 For procedural work, represent primary dimensions, modules, palette roles and bounded variation explicitly. Use seeds, semantic constraints and meaningful parameter ranges. Verify changes in the relevant view and structural invariants; changing a seed must not merely scatter disconnected cells.
 
-Deliver requested files and a concise provenance/validation note. Validate bounds, palette and roundtrips; inspect silhouette/contact/occlusion in rendered views. Result grades: see [human-perspective-review, Readiness and transfer](../dev-flow/references/human-perspective-review.md#readiness-and-transfer). Performance evidence: see [runtime-accessibility, Budget the complete result](../visual-scenes/references/runtime-accessibility.md#budget-the-complete-result).
+Deliver requested files and a concise provenance/validation note. Validate bounds, palette and roundtrips; inspect silhouette/contact/occlusion in rendered views.
 
-For repeated defects or a multi-model batch, use the quality adapter above. Evidence revisions: see [quality-ledger, Schema version 1](../dev-flow/references/quality-ledger.md#schema-version-1). Semantic contact/visibility requires declared part masks; quality claims: see human-perspective-review, Readiness and transfer.
+For repeated defects or a multi-model batch, use the quality adapter above. Semantic contact/visibility requires declared part masks.
 
 ## Helpers on demand
 
 Choose a helper by the actual operation: [files and meshes](references/files-meshes.md) for VOX inspection/mesh export; [quality adapter](references/quality-cycle.md) for Gen2.1 repairs; [Gen2](references/gen2.md) or [probe library](references/probe-library.md) only when adapting those examples. Scripts export geometry/metadata, not visual approval. Recipes are original starting points, not a universal generator or the default quality target. Preserve format, palette, origin and mesh invariants while adapting a recipe.
 
 
-Perception method: see [human-perspective-review, Inspection sequence](../dev-flow/references/human-perspective-review.md#inspection-sequence). Preflight/reuse: see [design-preflight, Orthographic design before voxel construction](references/design-preflight.md#orthographic-design-before-voxel-construction). Batch completeness: see [task-state](../dev-flow/references/task-state.md).
+Preflight/reuse: see [design-preflight, Orthographic design before voxel construction](references/design-preflight.md#orthographic-design-before-voxel-construction).

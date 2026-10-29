@@ -37,9 +37,13 @@ REMOVED_SKILLS={
     'ui-design':'Removed in 2.2 by the owner; no replacement design skill is installed.',
     'creative-direction':'Removed in 2.2 by the owner; no replacement creative procedure is installed.',
     'jam-board':'Moved out of Agent Playbook in 2.1. Install the standalone skill from the Jam Board application for the chosen project; it does not require the full playbook or you-are-brain.',
-    'dev-implement':'Merged in 2.1 into the implementation reference used by planning/workflow; not a standalone skill.',
-    'dev-flow':'Removed in 2.1: choose the skill for the requested deliverable; shared references remain available.',
-    'visual-scenes':'Removed as a separate skill in 2.1; subject references are optional resources, not a replacement skill.',
+    'dev-plan':'Removed in 3.0 by the owner; plan with the native client planning mode.',
+    'dev-debug':'Removed in 3.0 by the owner; no replacement skill is installed.',
+    'dev-verify':'Removed in 3.0 by the owner; verification honesty lives in the global working rules.',
+    'agent-instructions':'Removed in 3.0 by the owner; use the native client skill-creator.',
+    'dev-implement':'Removed in 3.0 together with dev-plan.',
+    'dev-flow':'Removed in 3.0 with its references.',
+    'visual-scenes':'Removed in 3.0 with its references.',
     'ui-reference':'Removed in 2.0 core cleanup; keep an existing independent installation or use the core task workflow.',
     'ui-taste-reference':'Removed in 2.0 core cleanup; keep an existing independent installation or use the core task workflow.',
     'stress-test':'Removed in 2.0 core cleanup; keep an existing independent installation or use the core task workflow.',
@@ -47,7 +51,7 @@ REMOVED_SKILLS={
     'dev-domain-model':'Removed in 2.0 core cleanup; keep an existing independent installation or use the core task workflow.',
     'agent-handoff':'Removed in 2.0 core cleanup; keep an existing independent installation or use the core task workflow.',
 
-    'anthropic-workflow-creator':'Compatibility stub removed; use the client native skill-creator or the dev-flow workflow-pilot reference.',
+    'anthropic-workflow-creator':'Compatibility stub removed; use the client native skill-creator.',
     'lab-vm-control':'Personal VM control is excluded from the public package; use your own separately authorized lab integration.',
 }
 class HarnessError(Exception):pass
@@ -102,9 +106,10 @@ def catalog(m):
             raise HarnessError('Invalid reference-only support module: '+name)
     return c
 def selection(args,m,c):
-    profiles={'full':set(c),'engineering':{x for x in c if x.startswith('dev-')}|{'you-are-brain','agent-instructions'},'visual':{'voxel-models'},'voxel':{'voxel-models'},'memory':{x for x in c if x.startswith('kb-')},'instructions':{'you-are-brain','agent-instructions'}}
+    profiles={'full':set(c),'brain':{'you-are-brain'},'voxel':{'voxel-models'},'memory':{x for x in c if x.startswith('kb-')}}
     chosen=set()
     if args.profile=='jam-board':raise HarnessError('Removed profile: jam-board. '+REMOVED_SKILLS['jam-board'])
+    if args.profile in ['engineering','visual','instructions']:raise HarnessError('Removed profile in 3.0: '+args.profile+'. Use full, brain, voxel or memory.')
     if args.profile:chosen|=profiles[args.profile]
     for v in args.skills or []:
         for name in filter(None,(x.strip() for x in v.split(','))):
@@ -165,11 +170,11 @@ def instruction_diagnostics(target,prospective=None,declared_budget=32768):
     size=sum(x['bytes'] for x in files)
     return {'status':'fail' if override.is_file() or size>declared_budget else 'project-files-within-declared-budget','project_bytes':size,'declared_budget':declared_budget,'override_shadows_installation':override.is_file(),'files':files,'limits':'Declared limit only. Effective client settings, global instructions, fallback files and future nested overrides require actual session verification.'}
 def instructions_block(version,root,values,full):
-    header=f"\nInstalled Agent Playbook {version}. Deployment record: `{root.as_posix()}/harness-policy.json`; it records setup, not new permissions. Use the owner's actual authorization. Skill links are optional routes, not reading requirements. Language defaults: `{root.as_posix()}/BASE-RULES.md`.\n\n"
-    if full:
-        body=render((REPO/'payload/AGENTS.md').read_bytes(),values,'BASE-RULES.md').decode('utf-8-sig')
-        return BEGIN+header+body+'\n'+END
-    return BEGIN+header+'Selected skills only; the complete global workflow is not activated. Read the applicable installed skill and its references when the task calls for it.\n'+END
+    header=f"\nInstalled Agent Playbook {version}. Deployment record: `{root.as_posix()}/harness-policy.json`; it records setup, not new permissions. Use the owner's actual authorization. Skill links are optional routes, not reading requirements.\n\n"
+    # The working rules are short and carry the language policy, so every selection gets them.
+    if not full:header+='Selected skills only; read the applicable installed skill when the task calls for it.\n\n'
+    body=render((REPO/'payload/AGENTS.md').read_bytes(),values,'AGENTS.md').decode('utf-8-sig')
+    return BEGIN+header+body+'\n'+END
 def selected_modules(m,chosen):
     modules=set(chosen)|{'workflow'}
     for name in chosen:modules.update(m.get('support_modules',{}).get(name,[]))
@@ -202,7 +207,6 @@ def plan(args):
     modules=selected_modules(m,chosen)
     for f in m['files']:
         rel=f['path'].removeprefix('payload/')
-        if rel=='AGENTS.md':rel='BASE-RULES.md'
         selected=f['module'] in modules
         if not selected:continue
         data=render((REPO/f['path']).read_bytes(),values,rel)
@@ -350,7 +354,6 @@ def installed(args):
             allowed=f['module'] in modules
             if not allowed:raise HarnessError('Receipt includes an unselected module')
             rel=source.removeprefix('payload/')
-            if rel=='AGENTS.md':rel='BASE-RULES.md'
             relative=CLIENT_ROOT[args.client]+'/'+rel
         else:raise HarnessError('Unknown source in installation receipt')
         if row.get('relative')!=relative or relative in seen:raise HarnessError('Invalid file path in installation receipt')
@@ -445,7 +448,7 @@ def main(argv=None):
     for command in ['plan','install','verify','doctor','remove','init-memory']:
         p=sub.add_parser(command);p.add_argument('--target',required=True,help='Project directory, or user home for --scope user');p.add_argument('--scope',choices=['project','user'],default='project');p.add_argument('--client',choices=CLIENT_ROOT,default='codex')
         if command in ['plan','install']:
-            p.add_argument('--profile',choices=['full','engineering','visual','voxel','memory','instructions','jam-board']);p.add_argument('--skills',action='append');p.add_argument('--workflow',action='store_true');p.add_argument('--memory-root');p.add_argument('--reviewer-consent',choices=['ask','one-per-round'],default='ask');p.add_argument('--consent-source')
+            p.add_argument('--profile',choices=['full','brain','voxel','memory','engineering','visual','instructions','jam-board']);p.add_argument('--skills',action='append');p.add_argument('--workflow',action='store_true');p.add_argument('--memory-root');p.add_argument('--reviewer-consent',choices=['ask','one-per-round'],default='ask');p.add_argument('--consent-source')
             p.add_argument('--project-doc-max-bytes',type=int,default=32768,help='Declared Codex project instruction budget; does not change client config. Match actual session settings.')
             for name in ['evidence-root','memory-repo','cloud-memory-root','curation-schedule']:p.add_argument('--'+name)
         if command in ['plan','install','remove']:p.add_argument('--dry-run',action='store_true')

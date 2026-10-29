@@ -1,6 +1,6 @@
 # Running and checking sessions
 
-External adapter launch scope: see [agent-sessions, step 5](../../agent-sessions/references/session-guide.md#5-check-the-authorized-scope-and-launch). Generic command: see [adapter contract, Run](../../agent-sessions/references/contract.md#run); the Codex-specific driver command is in [agent-sessions-codex, step 6](../../agent-sessions-codex/references/codex-driver.md#6-run-and-check).
+External adapter launch scope: see [agent-sessions, step 5](../../agent-sessions/references/session-guide.md#5-check-the-authorized-scope-and-launch). Generic command: see [adapter contract, Run](../../agent-sessions/references/contract.md#run).
 
 ## Before starting
 
@@ -21,7 +21,7 @@ For a new task, record the selected route (`adapter-sessions`), leading host/rea
 
    Link the private assignment beside the brief. Bundled detached runs snapshot it and the launch settings in the existing run metadata. After checking a terminal result, `--resume-run <statusFile>` supplies that same thread and saved settings/assignment for an explicitly requested correction, with new output/log files. It refuses running runs, another worker, a missing thread or old records without launch metadata; those older records need explicit `--thread` and reviewed settings. See [the recovery contract](contract.md#recover-a-run). Independent reviewers retain their separate continuation rules.
 
-The log owns execution metadata only; requirements/acceptance follow [task-state, Long-task state and completeness](../../dev-flow/references/task-state.md). Keep the log in the existing plan and link it to the task. Do not copy requirements or acceptance into it.
+The log owns execution metadata only; requirements and acceptance stay in the task record. Keep the log in the existing plan and link it to the task. Do not copy requirements or acceptance into it.
 
 ## Starting
 
@@ -41,7 +41,7 @@ Client evidence: the Codex adapter waits for the turn before its foreground comm
 
 ## Status updates
 
-When addressing the user as orchestrator, keep the user informed of work, stage and worker. Language: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries). Worker-to-orchestrator updates follow [brief-writing, Language](brief-writing.md#language).
+When addressing the user as orchestrator, keep the user informed of work, stage and worker. Use the user's language from the global instructions. Worker-to-orchestrator updates follow [brief-writing, Language](brief-writing.md#language).
 
 - **When:** after you start sessions; when a session finishes; when you accept a result or request a fix; when something blocks; whenever the user asks; and in your final message of every turn while any session of the task is not yet accepted. Do not send updates when nothing changed.
 - **Format:** give the changed result, worker/stage and next action briefly. Use the compact session table when several workers or dependencies would otherwise be unclear, or when requested; do not repeat an unchanged table. Include IDs and resume commands when handing off unfinished runs. Example:
@@ -76,7 +76,6 @@ The final message is the worker's claim. Check it against the files before you a
    - Fix it yourself only when it is small and continuing the session is not worth it. Say that you did.
 8. **Update the log** with the verdict and what you verified.
 
-Independent reviewer continuation and replacement: see [independent-review, After the report](../../../workflow/independent-review.md#after-the-report).
 
 ## Questions and blocked workers
 
@@ -91,4 +90,4 @@ After all sessions are accepted, or when you need the user's decision, report th
 - what remains unverified and why;
 - any genuinely pending decision, such as publication not yet authorized or a material choice between variants. Do not ask again for an action already authorized within its conditions.
 
-Git authorization: see [AGENTS, Goal, communication and boundaries]({{HARNESS_ROOT}}/BASE-RULES.md#goal-communication-and-boundaries); worker artifacts: see agent-sessions, Worker artifacts.
+Commit and push only when the user asked for them in the current task; worker artifacts: see agent-sessions, Worker artifacts.

@@ -4,5 +4,3 @@
 # Original payload hashes include original line endings.
 payload/** -text
 
-# Retired attribution keeps exact original bytes on every OS.
-docs/retired-attribution/** -text

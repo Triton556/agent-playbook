@@ -1,34 +1,21 @@
-> 2.2.1: concise index-first KB curation, section/leaf routing and single-owner size thresholds.
+# Agent Playbook 3.0
 
-> 2.2.0: explicit user-wide installation with `--scope user --target <HOME>` (Codex/Claude). [Clean installation](docs/CLEAN_INSTALL_FOR_AGENTS.md).
+Небольшой личный набор навыков агента: мозг, который запускает рабочие сессии Codex, воксельные модели и база знаний. Модели и инструменты даёт клиент; установщик не запускает модели, не меняет глобальные разрешения и не регистрирует хуки.
 
-# Agent Playbook 2.2
+[Установка](INSTALL_FOR_AGENTS.md) · [Интеграции](docs/INTEGRATIONS.md) · [Изменения](CHANGELOG.md) · [English](README.md)
 
-Костяк пользовательских навыков: мозг и рабочие сессии, разработка, воксельные задачи и база знаний. 11 входов: мозг объединён; UI и creative-direction удалены, dev-flow и visual-scenes больше не отдельные навыки. Модели и инструменты предоставляет клиент, установщик не запускает платные сессии и не меняет глобальные настройки.
+## Навыки
 
-[Установка](INSTALL_FOR_AGENTS.md) · [Явные маршруты и безопасная миграция2.1](docs/EXPLICIT_ROUTES_2.1.md) · [Изменения](CHANGELOG.md) · [English](README.md)
+- `you-are-brain` — разбиение задачи, брифы воркерам и сессии Codex через `agent-sessions/adapters/codex.mjs`.
+- `voxel-models` — воксельные модели с предварительным дизайном, рецептами и инструментами для VOX и мешей.
+- `kb-find`, `kb-save`, `kb-status`, `kb-sync`, `kb-curate` — база знаний; каждый навык — один самодостаточный `SKILL.md`.
+
+## Установка
 
 ```bash
-python harness.py plan --client codex --target ../my-project --skills you-are-brain
-python harness.py install --client codex --target ../my-project --skills you-are-brain
-python harness.py verify --client codex --target ../my-project
+python harness.py plan --client codex --scope user --target <HOME> --profile full
+python harness.py install --client codex --scope user --target <HOME> --profile full --memory-root <база>
+python harness.py verify --client codex --scope user --target <HOME>
 ```
 
-Мозг и отладка имеют по одному каталожному входу; технические файлы и справочники устанавливаются отдельно от каталога. Ссылки на другие этапы больше не заставляют установщик тянуть21 навык. `full` / `--workflow` явно выбирают все 11. Файлы на диске, metadata в каталоге и реально прочитанные телá навыков — разные величины.
-
-Сохранены брифы/отчёты, восстановление сессий, выбранные модели/effort/access, работа с доской, точность базы знаний и проверки реальных сценариев. Нет обязательного внешнего интервьюера/проверщика. Проверки соразмерны риску; успешные проверки не повторяются без новой причины. [Официальная основа OpenAI и наши решения](docs/CORE_CLEANUP_2.0.md).
-
-При обновлении нужен исходный доверенный receipt-store `.harness-state/receipts/`. Удаляются только устаревшие неизменённые файлы, принадлежащие этой установке. Пользовательские правки, чужие навыки и база не стираются; конфликт останавливает обновление до записи. Рабочий Mac и глобальные установки сами не меняются.
-
-Тесты проверяют реальную установку/обновление/удаление и поведение helpers. Размер текста не равен токенам или доказанной экономии модели.
-
-## Отдельный навык Jam Board
-
-Навык доски и его MCP-интеграция поставляются самим приложением Jam Board для выбранного проекта и клиента. Они не входят в playbook и не требуют полного плейбука, мозга или планировщика. Старые `--profile jam-board` / `--skills jam-board` возвращают объяснение, а не устанавливают другой набор.
-
-При обновлении удаляются только неизменённые Jam-файлы, владение которыми подтверждено receipt. Изменённый managed-файл останавливает обновление до записи; чужие файлы сохраняются. Сохраните обе версии и явно согласуйте конфликт перед повтором. Глобальные и независимые установки автоматически не удаляются.
-
-Clean replacement of an existing installation: [agent procedure](docs/CLEAN_INSTALL_FOR_AGENTS.md). Preserve original receipts, user edits and knowledge data.
-
-
-KB procedures and the portable folder/index/leaf layout are supplied under the installed kb-* skills and kb-common references. An existing vault keeps its data and settings; updating the playbook does not overwrite its SYSTEM directory. New vault workflow files are compatibility pointers, not a second procedural authority.
+Профили: `full`, `brain`, `voxel`, `memory`. Удаление стирает только неизменённые файлы этой установки; сначала смотрите `remove --dry-run`.

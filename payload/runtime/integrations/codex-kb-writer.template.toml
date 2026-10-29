@@ -1,0 +1,15 @@
+# Add to the Codex config.toml to give Codex the limited knowledge-base writer.
+[mcp_servers.danil_kb_writer]
+command = "{{NODE}}"
+args = ["{{HARNESS_ROOT}}/workflow/kb-writer.mjs"]
+env = { HARNESS_KB_ROOT = "{{MEMORY_ROOT}}" }
+startup_timeout_sec = 10.0
+tool_timeout_sec = 10.0
+default_tools_approval_mode = "prompt"
+enabled_tools = ["kb_capture", "kb_checkpoint"]
+
+[mcp_servers.danil_kb_writer.tools.kb_capture]
+approval_mode = "approve"
+
+[mcp_servers.danil_kb_writer.tools.kb_checkpoint]
+approval_mode = "approve"

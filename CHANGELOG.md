@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.0.0] - 2026-10-30
+
+- Personal-use cleanup: remove all license copies, upstream `sources.json`, `docs/retired-attribution` and THIRD_PARTY_NOTICES.
+- Remove skills dev-plan, dev-debug, dev-verify and agent-instructions, plus dev-flow, dev-implement, visual-scenes, WORKFLOW.md, independent-review.md and the quality-stop/worklog hook. Seven skills remain: you-are-brain, voxel-models and five kb-* skills. Profiles: full, brain, voxel, memory.
+- Knowledge skills are self-contained `SKILL.md` files; kb-common is removed. Memory runtime scripts and workflows are copied from the live vault, including kb-claude.mjs and kb-topic-size.mjs.
+- kb-writer loads `kb.mjs` from `HARNESS_KB_ROOT` instead of a bundled copy, so a reinstall needs no patching; a rendered Codex MCP template ships next to the hooks template.
+- you-are-brain keeps only the Codex adapter route for other hosts (the claude-code adapter, the legacy codex-chat driver and the duplicated agent-sessions-codex references are removed); Codex-specific limits moved into the session guide.
+- The working rules live only in the managed AGENTS.md/CLAUDE.md block, now for every selection; BASE-RULES.md is no longer installed. Two verification rules joined them.
+- Tests for historical migrations (0.5–2.2) are removed; a clean reinstall is the supported path.
+
 ## [2.2.1] - 2026-10-26
 
 - Clarify kb-curate: read INDEX before routing, extract source items with evidence/status, update existing sections, create distinct leaves and nearest-parent routes, and preserve partially processed originals.

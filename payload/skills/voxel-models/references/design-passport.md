@@ -21,7 +21,7 @@ Use PNG/JPEG views at least480px on each axis. For a concept sheet, export each 
 - `reviewer:{kind:"agent"|"human",name}`, `observed_at` with timezone, `inspected:true`.
 - `gates:{coherence,style,context,function,readability,usability}`. Each contains `verdict:"pass"|"fail"|"pending"`, and `observation` describing actual inspected evidence. A noninteractive object uses its intended static use for usability; do not claim a UI interaction that was not performed.
 
-In addition to [quality-ledger, Schema version 1](../../dev-flow/references/quality-ledger.md#schema-version-1), this schema’s digest covers passport bytes, images, local bases, kit and comparison. Any changed input invalidates its review. The reviewer identity and inspection are attestations, not authenticated facts. User acceptance is separate; an agent's design review does not invent user approval. A project ledger may additionally bind this design report as its preconstruction criterion and require actual later voxel-to-design visual evidence.
+This schema’s digest covers passport bytes, images, local bases, kit and comparison. Any changed input invalidates its review. The reviewer identity and inspection are attestations, not authenticated facts. User acceptance is separate; an agent's design review does not invent user approval. A project ledger may additionally bind this design report as its preconstruction criterion and require actual later voxel-to-design visual evidence.
 
 ## Scope of schema1
 

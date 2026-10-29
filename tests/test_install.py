@@ -65,90 +65,59 @@ class InstallBehavior(unittest.TestCase):
             with self.subTest(client=client),target_directory() as td:
                 p=Path(td);result=call('install','--skills','kb-find','--workflow','--client',client,'--target',p)
                 self.assertTrue(result['workflow_activated']);self.assertTrue((p/entry).is_file())
-                self.assertEqual(len(result['installed_skills']),11)
-                self.assertNotIn('creative-direction',result['installed_skills'])
+                self.assertEqual(len(result['installed_skills']),7)
                 self.assertIn('you-are-brain',result['installed_skills'])
-                self.assertIn('you-are-brain',result['installed_skills'])
-                for relative in ['references/codex-driver.md','scripts/codex-chat.mjs']:
-                    self.assertEqual(payload_bytes('payload/skills/agent-sessions-codex/'+relative,p,client),(p/folder/'skills/agent-sessions-codex'/relative).read_bytes())
+                for relative in ['references/session-guide.md','adapters/codex.mjs']:
+                    self.assertEqual(payload_bytes('payload/skills/agent-sessions/'+relative,p,client),(p/folder/'skills/agent-sessions'/relative).read_bytes())
                 self.assertEqual(payload_bytes('payload/skills/kb-find/SKILL.md',p,client),(p/folder/'skills/kb-find/SKILL.md').read_bytes())
-                self.assertFalse((p/folder/'AGENTS.md').exists())
+                self.assertFalse((p/folder/'AGENTS.md').exists());self.assertFalse((p/folder/'BASE-RULES.md').exists())
+                self.assertIn("# The user's working rules",(p/entry).read_text(encoding='utf8'))
                 self.assertEqual(call('verify','--client',client,'--target',p)['status'],'pass')
     def test_reviewer_consent_cannot_be_asserted_without_source(self):
         with target_directory() as td:
             call('install','--skills','kb-find','--reviewer-consent','one-per-round','--target',td,ok=2)
             self.assertEqual(list(Path(td).iterdir()),[])
-    def test_removed_design_skills_are_not_in_profiles(self):
+    def test_removed_skills_are_refused_without_writes(self):
         with target_directory() as td:
-            for profile in ['full','engineering','visual','voxel']:
-                planned=call('plan','--profile',profile,'--target',td)
-                self.assertTrue({'ui-design','creative-direction'}.isdisjoint(planned['requested_skills']))
-            for name in ['ui-design','ui-review','product-ui-design','creative-direction']:
+            for name in ['ui-design','creative-direction','dev-plan','dev-debug','dev-verify','agent-instructions','dev-flow','visual-scenes']:
                 call('install','--skills',name,'--target',td,ok=2)
+            for profile in ['engineering','visual','instructions']:
+                call('plan','--profile',profile,'--target',td,ok=2)
             self.assertEqual(list(Path(td).iterdir()),[])
-    def test_agent_sessions_codex_profiles_and_standalone_client_installs(self):
+    def test_profiles_and_brain_adapters(self):
         with target_directory() as td:
-            for profile in ['full','engineering','instructions','visual','voxel','memory']:
+            for profile,skills in [('full',7),('brain',1),('voxel',1),('memory',5)]:
                 with self.subTest(profile=profile):
                     planned=call('plan','--profile',profile,'--target',td)
-                    expected=profile in ['full','engineering','instructions']
-                    self.assertEqual('you-are-brain' in planned['requested_skills'],expected)
-                    if expected:self.assertIn('you-are-brain',planned['installed_skills'])
+                    self.assertEqual(len(planned['requested_skills']),skills)
+                    self.assertEqual('you-are-brain' in planned['requested_skills'],profile in ['full','brain'])
             self.assertEqual(list(Path(td).iterdir()),[])
+        files=['references/session-guide.md','references/contract.md','references/brief-writing.md','adapters/codex.mjs','adapters/wait.mjs']
         for client,folder in [('codex','.agents'),('claude','.claude')]:
             with self.subTest(client=client),target_directory() as td:
+                # Old orchestration names stay accepted as aliases of you-are-brain.
                 result=call('install','--skills','agent-sessions-codex','--client',client,'--target',td)
-                self.assertEqual(result['installed_skills'],call('plan','--skills','agent-sessions-codex','--client',client,'--target',td)['installed_skills'])
-                self.assertIn('you-are-brain',result['installed_skills'])
-                self.assertFalse(result['workflow_activated'])
-                for relative in ['references/codex-driver.md','scripts/codex-chat.mjs']:
-                    self.assertEqual(payload_bytes('payload/skills/agent-sessions-codex/'+relative,td,client),(Path(td)/folder/'skills/agent-sessions-codex'/relative).read_bytes())
-                self.assertEqual(call('verify','--client',client,'--target',td)['status'],'pass')
-    def test_agent_sessions_profiles_install_and_adapters(self):
-        with target_directory() as td:
-            for profile in ['full','engineering','instructions','visual','voxel','memory']:
-                with self.subTest(profile=profile):
-                    planned=call('plan','--profile',profile,'--target',td)
-                    self.assertEqual('you-are-brain' in planned['requested_skills'],profile in ['full','engineering','instructions'])
-                    if profile in ['full','engineering','instructions']:self.assertIn('you-are-brain',planned['requested_skills'])
-        files=['references/session-guide.md','references/contract.md','references/writing-an-adapter.md','adapters/codex.mjs','adapters/claude-code.mjs']
-        for client,folder in [('codex','.agents'),('claude','.claude')]:
-            with self.subTest(client=client),target_directory() as td:
-                result=call('install','--skills','agent-sessions','--client',client,'--target',td)
-                self.assertEqual(result['installed_skills'],call('plan','--skills','agent-sessions','--client',client,'--target',td)['installed_skills'])
-                self.assertIn('you-are-brain',result['installed_skills'])
+                self.assertEqual(result['installed_skills'],['you-are-brain']);self.assertFalse(result['workflow_activated'])
                 for relative in files:
                     self.assertEqual(payload_bytes('payload/skills/agent-sessions/'+relative,td,client),(Path(td)/folder/'skills/agent-sessions'/relative).read_bytes())
+                self.assertFalse((Path(td)/folder/'skills/agent-sessions/adapters/claude-code.mjs').exists())
                 self.assertEqual(call('verify','--client',client,'--target',td)['status'],'pass')
         node=shutil.which('node')
-        if not node:self.skipTest('Node is required to check the agent-sessions adapters')
-        for adapter,verified in [('codex',True),('claude-code',False)]:
-            with self.subTest(adapter=adapter):
-                script=str(ROOT/f'payload/skills/agent-sessions/adapters/{adapter}.mjs')
-                described=subprocess.run([node,script,'--describe'],capture_output=True,cwd=ROOT)
-                self.assertEqual(described.returncode,0,described.stderr.decode('utf8',errors='replace'))
-                info=json.loads(described.stdout)
-                self.assertEqual((info['agent'],info['contract'],info['verified']),(adapter,2,verified))
-                self.assertEqual(set(info['access_modes']),{'read-only','workspace-write','danger-full-access'})
-                refused=subprocess.run([node,script,'--sandbox','unknown-mode','--cwd',str(ROOT)],capture_output=True,cwd=ROOT,input=b'')
-                self.assertEqual(refused.returncode,4)
-    def test_orchestration_references_are_shared(self):
-        # Interview and brief references stay mirrored; running policy has one owner.
-        for name in ['requirements-interview.md','brief-writing.md']:
-            with self.subTest(reference=name):
-                a=(ROOT/'payload/skills/agent-sessions/references'/name).read_bytes()
-                b=(ROOT/'payload/skills/agent-sessions-codex/references'/name).read_bytes()
-                self.assertEqual(a,b)
+        if not node:self.skipTest('Node is required to check the Codex adapter')
+        script=str(ROOT/'payload/skills/agent-sessions/adapters/codex.mjs')
+        described=subprocess.run([node,script,'--describe'],capture_output=True,cwd=ROOT)
+        self.assertEqual(described.returncode,0,described.stderr.decode('utf8',errors='replace'))
+        info=json.loads(described.stdout)
+        self.assertEqual((info['agent'],info['contract'],info['verified']),('codex',2,True))
+        self.assertEqual(set(info['access_modes']),{'read-only','workspace-write','danger-full-access'})
+        refused=subprocess.run([node,script,'--sandbox','unknown-mode','--cwd',str(ROOT)],capture_output=True,cwd=ROOT,input=b'')
+        self.assertEqual(refused.returncode,4)
+    def test_brain_references_stay_inside_the_package(self):
         self.assertIn(b'Write the brief in English',(ROOT/'payload/skills/agent-sessions/references/brief-writing.md').read_bytes())
         text=(ROOT/'payload/skills/you-are-brain/SKILL.md').read_text(encoding='utf8')
         self.assertIn('session-guide.md', text)
-        self.assertTrue((ROOT/'payload/skills/agent-sessions/references/session-guide.md').is_file())
-        self.assertTrue((ROOT/'payload/skills/agent-sessions-codex/references/codex-driver.md').is_file())
-    def test_agent_sessions_codex_driver_syntax(self):
-        node=shutil.which('node')
-        if not node:self.skipTest('Node is required to check the Codex sessions driver')
-        result=subprocess.run([node,'--check',str(ROOT/'payload/skills/agent-sessions-codex/scripts/codex-chat.mjs')],capture_output=True,cwd=ROOT)
-        self.assertEqual(result.returncode,0,result.stderr.decode('utf8',errors='replace'))
+        guide=(ROOT/'payload/skills/agent-sessions/references/session-guide.md').read_text(encoding='utf8')
+        self.assertIn('adapters/codex.mjs',guide);self.assertIn('codex exec',guide);self.assertIn('spawn EPERM',guide)
     def test_plan_creates_nothing_and_doctor_does_not_claim_quality(self):
         with target_directory() as td:
             call('plan','--profile','full','--target',td);self.assertEqual(list(Path(td).iterdir()),[])
@@ -186,8 +155,8 @@ class InstallBehavior(unittest.TestCase):
             self.assertEqual(edited.read_bytes(),b'My edit')
     def test_named_dependency_and_skills_only_permission_guard(self):
         with target_directory() as td:
-            p=Path(td);r=call('install','--skills','dev-plan','--target',p)
-            self.assertEqual(r['installed_skills'],['dev-plan']);self.assertFalse(r['workflow_activated'])
+            p=Path(td);r=call('install','--skills','voxel-models','--target',p)
+            self.assertEqual(r['installed_skills'],['voxel-models']);self.assertFalse(r['workflow_activated'])
             text=(p/'AGENTS.md').read_text(encoding='utf8')
             self.assertIn("owner's actual authorization",text)
             self.assertNotIn('# Общие правила работы',text)
@@ -209,9 +178,9 @@ class InstallBehavior(unittest.TestCase):
         m=json.loads((ROOT/'manifest.json').read_text())
         self.assertEqual(m['runtime_assets'],[])
         self.assertFalse(any('/vendor/' in f['path'] for f in m['files']))
-        self.assertFalse((ROOT/'payload/skills/ui-reference').exists())
-        # Retained adaptations still carry their licenses, not copied detector binaries.
-        self.assertTrue((ROOT/'payload/skills/dev-verify/licenses/mattpocock--skills-LICENSE').is_file())
+        # 3.0 ships no license copies or upstream source records inside skills.
+        self.assertFalse(any('/licenses/' in f['path'] or f['path'].endswith(('/sources.json','/LICENSE')) for f in m['files']))
+        self.assertFalse(list((ROOT/'payload').rglob('licenses')));self.assertFalse((ROOT/'docs/retired-attribution').exists())
     def test_receipt_cannot_hide_a_missing_entrypoint(self):
         with target_directory() as td:
             p=Path(td);call('install','--skills','kb-find','--target',p)
@@ -219,7 +188,7 @@ class InstallBehavior(unittest.TestCase):
             receipt=p/'.agents/harness-install.json';r=json.loads(receipt.read_text())
             r['files']=[f for f in r['files'] if f['relative']!='.agents/skills/kb-find/SKILL.md'];receipt.write_text(json.dumps(r))
             call('verify','--target',p,ok=2);call('remove','--target',p,ok=2)
-            self.assertTrue((p/'.agents/BASE-RULES.md').is_file())
+            self.assertTrue((p/'.agents/skills/kb-find').is_dir())
     def test_edited_policy_and_rehashed_receipt_are_preserved(self):
         with target_directory() as td:
             p=Path(td);call('install','--skills','kb-find','--target',p)
@@ -257,14 +226,14 @@ class InstallBehavior(unittest.TestCase):
             self.assertFalse(first['duplicate']);self.assertTrue(again['duplicate']);self.assertTrue((vault/first['path']).is_file())
             env=os.environ.copy();env['HARNESS_KB_ROOT']=str(vault)
             def request(i,name,args):return {'jsonrpc':'2.0','id':i,'method':'tools/call','params':{'name':name,'arguments':args}}
-            curator={**payload,'source':{**payload['source'],'kind':'curator'},'batch_key':'mcp'}
+            curator={**payload,'source':{**payload['source'],'kind':'rumi'},'batch_key':'mcp'}
             messages=[{'jsonrpc':'2.0','id':1,'method':'tools/list'},request(2,'kb_checkpoint',{'session_id':'fixture-session','turn_id':'empty'}),request(3,'kb_capture',{'payload':curator}),request(4,'kb_capture',{'payload':payload,'path':'../forbidden'}),request(5,'sync',{})]
             out=execute(p/'.agents/workflow/kb-writer.mjs',data=''.join(json.dumps(x)+'\n' for x in messages),env=env);rows=[json.loads(x) for x in out.splitlines()]
             self.assertEqual({x['name'] for x in rows[0]['result']['tools']},{'kb_capture','kb_checkpoint'})
             self.assertFalse(rows[1]['result']['isError']);self.assertFalse(rows[2]['result']['isError']);self.assertTrue(rows[3]['result']['isError']);self.assertIn('error',rows[4])
             saved=json.loads(rows[2]['result']['content'][0]['text'])
             self.assertTrue((vault/saved['path']).is_file())
-            self.assertIn('curator',(vault/saved['path']).read_text(encoding='utf8'))
+            self.assertIn('rumi',(vault/saved['path']).read_text(encoding='utf8'))
     def test_memory_initialization_is_explicit_idempotent_and_preserves_data(self):
         with target_directory() as td:
             p=Path(td);vault=p/'private-vault';call('install','--profile','memory','--target',p,'--memory-root',vault)

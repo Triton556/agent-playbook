@@ -8,8 +8,8 @@ import { spawnSync } from 'node:child_process';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const folder = path.join(root, '.kb/scheduler');
 const runtime = path.join(folder, 'runtime');
-const taskName = 'Harness-Knowledge-Sync';
-const description = 'Private knowledge vault: hourly Git sync without AI; local reviewed runtime.';
+const taskName = 'Danil-Knowledge-Sync';
+const description = 'Danil personal-knowledge: hourly Git sync without AI; local reviewed runtime.';
 const psQuote = value => "'" + value.replaceAll("'", "''") + "'";
 const psExe = path.join(process.env.SystemRoot || 'C:/Windows', 'System32/WindowsPowerShell/v1.0/powershell.exe');
 function powershell(script) {

@@ -2,7 +2,8 @@
 // Structural coverage only: item semantics are explicit reviewed statements.
 import fs from 'node:fs';import path from 'node:path';import {fileURLToPath} from 'node:url';
 export function auditCoverage(root){
-  const manifest=JSON.parse(fs.readFileSync(path.join(root,'SYSTEM/coverage/coverage.json'),'utf8'));
+  const coverageDir=path.join(root,'SYSTEM/coverage');
+  const manifest={entries:fs.readdirSync(coverageDir).filter(name=>name.endsWith('.json')).sort().flatMap(name=>JSON.parse(fs.readFileSync(path.join(coverageDir,name),'utf8')).entries||[])};
   const visited=new Set(),queue=['INDEX.md'];
   while(queue.length){const p=queue.shift();if(visited.has(p))continue;visited.add(p);const f=path.join(root,p);if(!fs.existsSync(f)||!p.endsWith('.md'))continue;const body=fs.readFileSync(f,'utf8').replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n/,'');for(const m of body.matchAll(/\]\(([^)\n]+)\)/g)){let link=m[1].replace(/^<|>$/g,'').split('#')[0];if(!link||/^[a-z][a-z0-9+.-]*:/i.test(link))continue;try{link=decodeURIComponent(link);}catch{continue;}const target=path.posix.normalize(path.posix.join(path.posix.dirname(p),link));if(!target.startsWith('../')&&target.endsWith('.md')&&!visited.has(target))queue.push(target);}}
   const findings=[];let items=0;

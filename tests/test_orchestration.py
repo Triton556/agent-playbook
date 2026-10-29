@@ -11,7 +11,6 @@ from test_install import ROOT, call, target_directory
 
 NODE = shutil.which('node')
 ADAPTERS = ROOT / 'payload/skills/agent-sessions/adapters'
-LEGACY = ROOT / 'payload/skills/agent-sessions-codex/scripts/codex-chat.mjs'
 
 
 @unittest.skipUnless(NODE, 'Node required for orchestration checks')
@@ -140,7 +139,7 @@ readline.createInterface({input:process.stdin}).on('line',line=>{
             folder = Path(td)
             env = self.stub(folder)
             assignment = self.assignment(folder, communication_language='ru')
-            for script in [ADAPTERS / 'codex.mjs', ADAPTERS / 'claude-code.mjs', LEGACY]:
+            for script in [ADAPTERS / 'codex.mjs']:
                 result = self.run_node(script, '--cwd', folder, '--assignment', assignment, input='Work', env=env, code=4)
                 self.assertIn('owner_override', result.stderr)
                 self.assertFalse((folder / 'rpc.jsonl').exists())
@@ -161,9 +160,9 @@ readline.createInterface({input:process.stdin}).on('line',line=>{
             env = self.stub(folder)
             assignment = self.assignment(folder, recipient='user', communication_language='ru',
                                          owner_override='Current user explicitly requests a Russian response')
-            result = json.loads(self.run_node(LEGACY, '--cwd', folder, '--assignment', assignment,
+            result = json.loads(self.run_node(ADAPTERS / 'codex.mjs', '--cwd', folder, '--assignment', assignment,
                                              input='Required label: «Скачать».', env=env).stdout)
-            self.assertEqual(result, {'threadId': 'original-thread', 'turnId': 'turn', 'status': 'completed', 'out': None})
+            self.assertEqual((result['threadId'], result['status']), ('original-thread', 'completed'))
             turn = next(m for m in self.rpc(folder) if m.get('method') == 'turn/start')
             self.assertIn('Recipient: user', turn['params']['input'][0]['text'])
             self.assertIn('Communication language: ru', turn['params']['input'][0]['text'])
@@ -217,8 +216,7 @@ readline.createInterface({input:process.stdin}).on('line',line=>{
                 aliases.append(hard_link)
             except OSError:
                 pass  # Hard links are unavailable on some test filesystems.
-            for script, agent in [(ADAPTERS / 'codex.mjs', 'codex'),
-                                  (ADAPTERS / 'claude-code.mjs', 'claude-code'), (LEGACY, 'codex')]:
+            for script, agent in [(ADAPTERS / 'codex.mjs', 'codex')]:
                 status['agent'] = agent
                 self.write_json(status_file, status)
                 originals = {file: file.read_bytes() for file in [old_out, old_log, status_file]}

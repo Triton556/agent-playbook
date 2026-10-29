@@ -1,100 +1,17 @@
 {
   "schema_version": 1,
   "name": "agent-playbook",
-  "version": "2.2.1",
+  "version": "3.0.0",
   "exported_at": "2026-10-23T07:55:44.494883+00:00",
-  "baseline": "Owner-approved 2.2 removal of UI/creative procedures and portable KB instruction ownership; adapters, data integrity and voxel passport retained.",
+  "baseline": "Owner-approved 3.0 cleanup for personal use: removed licenses/source records, dev-* skills, agent-instructions, dev-flow, visual-scenes and shared workflow documents; knowledge-base skills are self-contained; memory runtime matches the live vault.",
   "instruction_policy": "Maintained agent instructions and agent-to-agent communication in English; direct user communication and knowledge-base prose in Russian by default, subject to explicit user language instructions; exact quotations, identifiers and required product text preserved; explicit environment/owner bindings and privacy-safe provenance; portable integration names with preserved operational safeguards",
   "files": [
-    {
-      "source": "AGENTS.md",
-      "path": "payload/AGENTS.md",
-      "source_ref": "creative",
-      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
-      "source_sha256": "ab5b2c8246dbe963993858291ba02be351ea4ca3f5ad423a0570f84e612482e3",
-      "transformations": [
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 4
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{MEMORY_ROOT}}",
-          "count": 1
-        },
-        {
-          "kind": "owner-label",
-          "label": "the user's",
-          "count": 6
-        },
-        {
-          "kind": "owner-label",
-          "label": "the user",
-          "count": 1
-        },
-        {
-          "kind": "owner-label",
-          "label": "the designated curator",
-          "count": 1
-        },
-        {
-          "kind": "owner-neutral-grammar",
-          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
-        },
-        {
-          "kind": "portable-owner-policy",
-          "detail": "Remove personal model/project restrictions and dated grants; require current-owner consent for memory delegation and separately authorized synchronization; generalize tool-discovery wording."
-        },
-        {
-          "kind": "owner-neutral-grammar",
-          "detail": "Capitalize generic owner labels at sentence/list starts."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "public-module-exclusion",
-          "detail": "Remove compatibility creator routing and personal VM controller; keep general authorization boundaries."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 8,
-          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
-        },
-        {
-          "kind": "instruction-language-audience-1.5.1",
-          "detail": "Approved recipient-specific English for all agent-to-agent channels, explicit initial brief audience/deliverable languages retained on continuation, and direct-user/knowledge-base Russian defaults with explicit user exceptions and original quotations/product text preserved. Preserve the existing language owner, exact brief mirror and running compatibility pointer; no runtime or authorization changes."
-        },
-        {
-          "kind": "orchestration-reliability-1.6.0",
-          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
-        },
-        {
-          "kind": "owner-authorized-core-cleanup-2.0.0",
-          "detail": "Remove external mandatory procedures; preserve custom workflow, permissions and relevant behavioral criteria."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "workflow",
-      "sha256": "7554e83631eb83a544d514e3bfbedd484b6fde896a2c643ca6a75d8b707ec7d7",
-      "bytes": 431
-    },
     {
       "source": "hooks.json",
       "path": "payload/runtime/integrations/codex-hooks.template.json",
       "source_sha256": "6545533a7cae3787e13274d4b325d4becbdd048598c65dc6f8cf7eeb6ae7712e",
-      "sha256": "2b00850d40a3a0e1d378e1fb0514ed7013615fc3da649261dde4cd8fa4e111fb",
-      "bytes": 1361,
+      "sha256": "6e00bc72399e827947933ece1cb79ec488f489b7c1d9684a4d47deb3066a678f",
+      "bytes": 977,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -178,8 +95,8 @@
       "source": "runtime/memory/SYSTEM/scripts/github-connect.mjs",
       "path": "payload/runtime/memory/SYSTEM/scripts/github-connect.mjs",
       "source_sha256": "ab3a04f179e7c6a7f543cf832afff1ebe9b81694ac4bb56076ccf1b2ca7e36e0",
-      "sha256": "003ef8d06e73382894ecc5f321bbd733ba54b6ac00a178957a605f215cb774ca",
-      "bytes": 5110,
+      "sha256": "ab3a04f179e7c6a7f543cf832afff1ebe9b81694ac4bb56076ccf1b2ca7e36e0",
+      "bytes": 5093,
       "transformations": [
         {
           "kind": "owner-label",
@@ -197,8 +114,8 @@
       "source": "runtime/memory/SYSTEM/scripts/install-scheduled-sync.mjs",
       "path": "payload/runtime/memory/SYSTEM/scripts/install-scheduled-sync.mjs",
       "source_sha256": "0d77b168f2423d65851f0654656be2170537e5ba2f0e11e3fea3cff0aa5756dc",
-      "sha256": "b270a53cb263f325e1671e51239c141478703d199c2b58d84e0cd6e20c7a4990",
-      "bytes": 6278,
+      "sha256": "0d77b168f2423d65851f0654656be2170537e5ba2f0e11e3fea3cff0aa5756dc",
+      "bytes": 6277,
       "transformations": [
         {
           "kind": "owner-label",
@@ -216,8 +133,8 @@
       "source": "runtime/memory/SYSTEM/scripts/kb-coverage.mjs",
       "path": "payload/runtime/memory/SYSTEM/scripts/kb-coverage.mjs",
       "source_sha256": "61bd706ead7acafc6b17dc31939d2c15814f1cc68dd16f9d0bd99f24637d3496",
-      "sha256": "c8e94f07a3d6b8efaa39a34252f48dfb836d9d9f76fd8b69ca727ba1cd6f243b",
-      "bytes": 2554,
+      "sha256": "2f87554c570ea185e9939d0361dda8c7feb089e2c228e22f9743403603451352",
+      "bytes": 2698,
       "transformations": [
         {
           "kind": "registry-path-binding",
@@ -262,8 +179,8 @@
       "source": "runtime/memory/SYSTEM/scripts/kb.mjs",
       "path": "payload/runtime/memory/SYSTEM/scripts/kb.mjs",
       "source_sha256": "bdd7a38e4b1822d0177df9df30a0cb581430cc9c7d15b71c3796d8a982dcaa6b",
-      "sha256": "3707258c25b0b6ed4680af4ec41381f24d0a16ae993db457a92b8bedca2b178e",
-      "bytes": 27797,
+      "sha256": "64947d5e4d3fb8125646bf532eaa03fc81f83f6bd1ad945f75377dae381b48a1",
+      "bytes": 28311,
       "transformations": [
         {
           "kind": "owner-label",
@@ -307,8 +224,8 @@
       "source": "runtime/memory/SYSTEM/workflows/capture.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/capture.md",
       "source_sha256": "5acc61634a95c11e7b372160993244d3530442fd0050f2152bc3d1dcebf48e9a",
-      "sha256": "2d8cfcc81a2737a77d735385a089388c12e761425f3d7ffd6b2a401b554edab0",
-      "bytes": 220,
+      "sha256": "5acc61634a95c11e7b372160993244d3530442fd0050f2152bc3d1dcebf48e9a",
+      "bytes": 5984,
       "transformations": [
         {
           "kind": "owner-label",
@@ -354,8 +271,8 @@
       "source": "runtime/memory/SYSTEM/workflows/cloud-connector.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/cloud-connector.md",
       "source_sha256": "7140adeacb37666654528dff5d1a7321c3cc2d91f00163525470f60c998dbe96",
-      "sha256": "caf5a9b143a5b65fb626e83888a251b0ccf8211cb3b8e1ad781b7b0e7b46d3e0",
-      "bytes": 227,
+      "sha256": "7140adeacb37666654528dff5d1a7321c3cc2d91f00163525470f60c998dbe96",
+      "bytes": 3211,
       "transformations": [
         {
           "kind": "memory-target-binding",
@@ -398,8 +315,8 @@
       "source": "runtime/memory/SYSTEM/workflows/curate.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/curate.md",
       "source_sha256": "a8c48dbe23220e3e4a796dba80e905071fd8cf55ba9ca38c9293153d0e01a5f6",
-      "sha256": "bb52de9041da2bde0eaba1a9a703e28c6acafc92ea94828e5c65aa59b69babcb",
-      "bytes": 207,
+      "sha256": "4ce0b35ed1b3b789da8f89b4b722a446f0c7c21f3dd42c9d67811fe072ef8ecc",
+      "bytes": 3632,
       "transformations": [
         {
           "kind": "owner-label",
@@ -444,8 +361,8 @@
       "source": "runtime/memory/SYSTEM/workflows/retrieval-quality.md",
       "path": "payload/runtime/memory/SYSTEM/workflows/retrieval-quality.md",
       "source_sha256": "71f3bc44e31fe0cba5406572a0c33dda7d2921b3e2a90fd0062de196166e62b6",
-      "sha256": "bb52de9041da2bde0eaba1a9a703e28c6acafc92ea94828e5c65aa59b69babcb",
-      "bytes": 207,
+      "sha256": "7173bbf4d74cf9626420bf6b3328e52676d30b258b83b9d38bf6bd6fb1183bfa",
+      "bytes": 3099,
       "transformations": [
         {
           "kind": "owner-label",
@@ -466,122 +383,6 @@
         }
       ],
       "module": "memory-runtime"
-    },
-    {
-      "source": "skills/agent-instructions/LICENSE",
-      "path": "payload/skills/agent-instructions/LICENSE",
-      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "bytes": 1068,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        }
-      ],
-      "module": "agent-instructions"
-    },
-    {
-      "source": "skills/agent-instructions/SKILL-MECHANICS.md",
-      "path": "payload/skills/agent-instructions/SKILL-MECHANICS.md",
-      "source_sha256": "2824e77dec7bde62e562af41f090f13074925c392ae0495e5876a8eb0906a484",
-      "sha256": "598ba0a877a857620d6a9cbfe5deaab605a34d7dca257f6a19a610c0b3c8f89c",
-      "bytes": 493,
-      "transformations": [
-        {
-          "kind": "owner-label",
-          "label": "пользователь",
-          "count": 1
-        },
-        {
-          "kind": "external-native-capability",
-          "detail": "Native skill-creator is not bundled; preserve the role without an invalid packaged file link.",
-          "count": 1
-        },
-        {
-          "kind": "owner-label-language",
-          "detail": "English prose label for the existing generic owner substitution."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        }
-      ],
-      "module": "agent-instructions"
-    },
-    {
-      "source": "skills/agent-instructions/SKILL.md",
-      "path": "payload/skills/agent-instructions/SKILL.md",
-      "source_sha256": "4a1ba6ee7711cad9a659d30301762c6d12041bb7cd8bd5f4c280c2311af043fa",
-      "sha256": "d4caaa4ba852ea56d44ab07f09c398360cdb1a13ff255de06fc1af095d907362",
-      "bytes": 2766,
-      "transformations": [
-        {
-          "kind": "external-native-capability",
-          "detail": "Native skill-creator is not bundled; preserve the role without an invalid packaged file link.",
-          "count": 1
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 1,
-          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "agent-instructions"
-    },
-    {
-      "source": "skills/agent-instructions/agents/openai.yaml",
-      "path": "payload/skills/agent-instructions/agents/openai.yaml",
-      "source_sha256": "3c66f44286d099c22615ab27e901d553bd274432b3f4326d9d9c111ffa99426e",
-      "sha256": "484fbe3b47f9cb34e7c581124f2dff4fd385a5622db5f453da09fd19663f9bab",
-      "bytes": 121,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "public-name-cleanup",
-          "detail": "Public display names and owner-neutral curator status text; runtime behavior and schemas preserved."
-        }
-      ],
-      "module": "agent-instructions"
-    },
-    {
-      "source": "skills/agent-sessions/adapters/claude-code.mjs",
-      "path": "payload/skills/agent-sessions/adapters/claude-code.mjs",
-      "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "cf5f26df59d414370a8964f707f547a9e51e9441c0fe841c268d5d07f56febff",
-      "sha256": "5050659f776c4f7143c81c753210298dc53ef1e193d12134e6296d5e2860d293",
-      "bytes": 8502,
-      "transformations": [
-        {
-          "kind": "detach-wait-v2",
-          "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
-        },
-        {
-          "kind": "orchestration-reliability-1.6.0",
-          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "you-are-brain"
     },
     {
       "source": "skills/agent-sessions/adapters/codex.mjs",
@@ -679,8 +480,8 @@
       "path": "payload/skills/agent-sessions/references/brief-writing.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
-      "sha256": "0122c893c7d7182d56d78348c664f7d374618e96e798d4578c603e78adb58704",
-      "bytes": 8787,
+      "sha256": "1f4f83051f51481f78bc9fd162bc607ce1c72fcc882dc81912a876ff32594849",
+      "bytes": 8628,
       "transformations": [
         {
           "kind": "instruction-ownership-1.4.0",
@@ -720,8 +521,8 @@
       "path": "payload/skills/agent-sessions/references/contract.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "b8352459ce2e100f2225bd140f8bffc69b5d236befd7e94ea6dbe7d4983afbbb",
-      "sha256": "9cdd4844723fef76140b0ac31bfc9e0028cbb67623b658cb936819e1335f0ef0",
-      "bytes": 15388,
+      "sha256": "bf411ba86333326984231095b62693b40af6b6569b64565861f2fea70287bb47",
+      "bytes": 15406,
       "transformations": [
         {
           "kind": "instruction-ownership-1.4.0",
@@ -780,8 +581,8 @@
       "path": "payload/skills/agent-sessions/references/running-and-checking.md",
       "source_ref": "user-supplied-claude-skill",
       "source_sha256": "0b3b333f2c2e9dc5079a64d3015298361baa03deeaa91341145956932a08e7e2",
-      "sha256": "340407ddd9edf6592785ce53505e6d33c95d0f4f91272da9681f63566108a4a7",
-      "bytes": 12541,
+      "sha256": "be6b6bde6fafa3ea60e604b568822bfcd93e00ac70355a9a13a30f3d0d9fabc7",
+      "bytes": 12042,
       "transformations": [
         {
           "kind": "instruction-ownership-1.4.0",
@@ -836,835 +637,15 @@
         }
       ],
       "module": "you-are-brain",
-      "sha256": "46d6d3d6d1cf4c2683c4204e725ce0fcf12dfa7ea5de7ce862ac03c30c7101eb",
-      "bytes": 6131
-    },
-    {
-      "source": "skills/agent-sessions/references/writing-an-adapter.md",
-      "path": "payload/skills/agent-sessions/references/writing-an-adapter.md",
-      "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "fa8ca6cc422ac1c34e7c587979663cc8391ca758ad8590149df2d45673da7899",
-      "sha256": "5fef0557c759300e4fba768f3a2772e2c7ea076e156fe245c5765954262db5b1",
-      "bytes": 3756,
-      "transformations": [
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "detach-wait-v2",
-          "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        },
-        {
-          "kind": "universal-brain-2.1.0",
-          "detail": "Use generic task, plan, worker, question and acceptance vocabulary; remove board-specific concepts from the orchestration route. Board integration remains separate and is not a brain dependency."
-        }
-      ],
-      "module": "you-are-brain"
-    },
-    {
-      "source": "skills/agent-sessions-codex/references/brief-writing.md",
-      "path": "payload/skills/agent-sessions-codex/references/brief-writing.md",
-      "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "b1e4ea03c104fe2cfe0b4ca1fc0f7b31168934bbf190d77fbb78b6dc6b2d356c",
-      "sha256": "0122c893c7d7182d56d78348c664f7d374618e96e798d4578c603e78adb58704",
-      "bytes": 8787,
-      "transformations": [
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 1,
-          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
-        },
-        {
-          "kind": "instruction-language-audience-1.5.1",
-          "detail": "Approved recipient-specific English for all agent-to-agent channels, explicit initial brief audience/deliverable languages retained on continuation, and direct-user/knowledge-base Russian defaults with explicit user exceptions and original quotations/product text preserved. Preserve the existing language owner, exact brief mirror and running compatibility pointer; no runtime or authorization changes."
-        },
-        {
-          "kind": "orchestration-reliability-1.6.0",
-          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
-        },
-        {
-          "kind": "owner-authorized-core-cleanup-2.0.0",
-          "detail": "Remove external mandatory procedures; preserve custom workflow, permissions and relevant behavioral criteria."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        },
-        {
-          "kind": "universal-brain-2.1.0",
-          "detail": "Use generic task, plan, worker, question and acceptance vocabulary; remove board-specific concepts from the orchestration route. Board integration remains separate and is not a brain dependency."
-        }
-      ],
-      "module": "you-are-brain"
-    },
-    {
-      "source": "owner-authorized-2.1-local-instruction",
-      "path": "payload/skills/agent-sessions-codex/references/codex-driver.md",
-      "source_ref": "60317a3",
-      "source_commit": "60317a3b83ef5bd9ef620a899bf95a099f7c926f",
-      "transformations": [
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        },
-        {
-          "kind": "universal-brain-2.1.0",
-          "detail": "Use generic task, plan, worker, question and acceptance vocabulary; remove board-specific concepts from the orchestration route. Board integration remains separate and is not a brain dependency."
-        }
-      ],
-      "module": "you-are-brain",
-      "sha256": "71c525e1854db62ea6d98020ad9d3c6705b61e2248e8fe1fa5e14415b555f0de",
-      "bytes": 5256
-    },
-    {
-      "source": "skills/agent-sessions-codex/references/requirements-interview.md",
-      "path": "payload/skills/agent-sessions-codex/references/requirements-interview.md",
-      "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "dddb4b40b43076e1bc52581cbd9577a20b6613a07288112a3fb7972b16372102",
-      "sha256": "8d59634325c3b0a4196979bb6695e7499e865e575bfc07f8b34fc3c1bd13c2a1",
-      "bytes": 1193,
-      "transformations": [
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 1,
-          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        },
-        {
-          "kind": "universal-brain-2.1.0",
-          "detail": "Use generic task, plan, worker, question and acceptance vocabulary; remove board-specific concepts from the orchestration route. Board integration remains separate and is not a brain dependency."
-        }
-      ],
-      "module": "you-are-brain"
-    },
-    {
-      "source": "skills/agent-sessions-codex/references/running-and-checking.md",
-      "path": "payload/skills/agent-sessions-codex/references/running-and-checking.md",
-      "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "0b3b333f2c2e9dc5079a64d3015298361baa03deeaa91341145956932a08e7e2",
-      "sha256": "e13a46dff692bf73639519016d35951129cca34c09b8ddbbaf43d5172ba40a64",
-      "bytes": 361,
-      "transformations": [
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 2,
-          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
-        },
-        {
-          "kind": "detach-wait-v2",
-          "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        },
-        {
-          "kind": "universal-brain-2.1.0",
-          "detail": "Use generic task, plan, worker, question and acceptance vocabulary; remove board-specific concepts from the orchestration route. Board integration remains separate and is not a brain dependency."
-        }
-      ],
-      "module": "you-are-brain"
-    },
-    {
-      "source": "skills/agent-sessions-codex/scripts/codex-chat.mjs",
-      "path": "payload/skills/agent-sessions-codex/scripts/codex-chat.mjs",
-      "source_ref": "user-supplied-claude-skill",
-      "source_sha256": "f0b2404162eace0303c080d3248b0b0723cd42d4b3d1d598111f02fec3494e84",
-      "sha256": "44f450cc8dcee3b53509cb4680fbc878a5578c08e6417e16f2dec3cb42b680b0",
-      "bytes": 8288,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "detach-wait-v2",
-          "detail": "Approved 1.5.0 detached lifecycle, orchestrator-specific waiting or shared-owner/board-contract update; original source provenance retained."
-        },
-        {
-          "kind": "orchestration-reliability-1.6.0",
-          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "you-are-brain"
-    },
-    {
-      "source": "skills/dev-debug/SKILL.md",
-      "path": "payload/skills/dev-debug/SKILL.md",
-      "source_sha256": "2891a30d393d6ed60088ba120e669f2b2c81850c9242f7db1c27784066d62ee3",
-      "sha256": "2de0ad2691b03b3bbddf7e14238d9ff6c000c2b5ff6318a5e4e186491bf53c2b",
-      "bytes": 1731,
-      "transformations": [
-        {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 1,
-          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
-        },
-        {
-          "kind": "owner-authorized-core-cleanup-2.0.0",
-          "detail": "Remove external mandatory procedures; preserve custom workflow, permissions and relevant behavioral criteria."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        },
-        {
-          "kind": "owner-approved-ui-kb-cleanup-2.2",
-          "detail": "Remove design/creative routing; package standalone portable KB procedures."
-        }
-      ],
-      "module": "dev-debug"
-    },
-    {
-      "source": "skills/dev-debug/licenses/mattpocock--skills-LICENSE",
-      "path": "payload/skills/dev-debug/licenses/mattpocock--skills-LICENSE",
-      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "bytes": 1068,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        }
-      ],
-      "module": "dev-debug"
-    },
-    {
-      "source": "skills/dev-debug/sources.json",
-      "path": "payload/skills/dev-debug/sources.json",
-      "source_sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
-      "sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
-      "bytes": 224,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        }
-      ],
-      "module": "dev-debug"
-    },
-    {
-      "source": "skills/dev-flow/references/composition.md",
-      "path": "payload/skills/dev-flow/references/composition.md",
-      "source_sha256": "5aa88aac4af161f67f33bec94a493224dd0c7e40674271bebe94c8b1e19d68e5",
-      "sha256": "955384838e9723ab4bef354dcf7798cac316148bc851920515bfb48193cb770a",
-      "bytes": 847,
-      "transformations": [
-        {
-          "kind": "owner-label",
-          "label": "the user's",
-          "count": 1
-        },
-        {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
-        },
-        {
-          "kind": "owner-neutral-grammar",
-          "detail": "Capitalize generic owner labels at sentence/list starts."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "owner-authorized-core-cleanup-2.0.0",
-          "detail": "Remove external mandatory procedures; preserve custom workflow, permissions and relevant behavioral criteria."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "engineering-reference"
-    },
-    {
-      "source": "skills/dev-flow/references/engineering.md",
-      "path": "payload/skills/dev-flow/references/engineering.md",
-      "source_sha256": "bc214447319282ac558ed0b98b880da1830fe10d5af40ec6b32d1e8c09dd3636",
-      "sha256": "e180c3be57b46dc60f6c999dd0c5aba61447222d46cd34a885f2cb7b7f5e6b9e",
-      "bytes": 70,
-      "transformations": [
-        {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "engineering-reference"
-    },
-    {
-      "source": "skills/dev-flow/references/human-perspective-review.md",
-      "path": "payload/skills/dev-flow/references/human-perspective-review.md",
-      "source_ref": "creative",
-      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
-      "source_sha256": "e2758da84624cb0cdddec7b9d3ed6454681421be96932729cb31abfbb4ae223d",
-      "transformations": [
-        {
-          "kind": "environment-binding",
-          "binding": "{{EVIDENCE_ROOT}}",
-          "count": 1
-        },
-        {
-          "kind": "owner-label",
-          "label": "the user's",
-          "count": 2
-        },
-        {
-          "kind": "owner-label",
-          "label": "the user",
-          "count": 3
-        },
-        {
-          "kind": "owner-neutral-grammar",
-          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "owner-authorized-core-cleanup-2.0.0",
-          "detail": "Remove external mandatory procedures; preserve custom workflow, permissions and relevant behavioral criteria."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        },
-        {
-          "kind": "owner-approved-ui-kb-cleanup-2.2",
-          "detail": "Remove design/creative routing; package standalone portable KB procedures."
-        }
-      ],
-      "module": "engineering-reference",
-      "sha256": "699c0e3b763a7d9d25eab2df5c6dcc7614250169f4c0938a3e5abb3980a6981d",
-      "bytes": 12046
-    },
-    {
-      "source": "skills/dev-flow/references/local-adaptation.md",
-      "path": "payload/skills/dev-flow/references/local-adaptation.md",
-      "source_sha256": "5786d22d04f6c51cf5fb6a79e2ea3a74a9c1c3a3af9678db0aed64f0d139500a",
-      "sha256": "5786d22d04f6c51cf5fb6a79e2ea3a74a9c1c3a3af9678db0aed64f0d139500a",
-      "bytes": 55,
-      "transformations": [
-        {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "engineering-reference"
-    },
-    {
-      "source": "skills/dev-flow/references/quality-cycle.md",
-      "path": "payload/skills/dev-flow/references/quality-cycle.md",
-      "source_sha256": "69290ba3fa2eeb36a9d90d3a54c42680e3c07bc998e3df264962dba1b8d2ecc7",
-      "sha256": "d5542e3f549afa472d5f361b0dfd16cf69449edbf78d2a498f29a790881b3450",
-      "bytes": 2566,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "engineering-reference"
-    },
-    {
-      "source": "skills/dev-flow/references/quality-ledger.md",
-      "path": "payload/skills/dev-flow/references/quality-ledger.md",
-      "source_sha256": "8bcc11b7e6f34abd2554c725fd7b4905034b293883e23614d8ef3c189662696d",
-      "sha256": "3fa0db5cda388a5deb406d5e6f2f8ed119720c619725f079307622eb86aaad50",
-      "bytes": 4635,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "engineering-reference"
-    },
-    {
-      "source": "skills/dev-flow/references/reference-grounding.md",
-      "path": "payload/skills/dev-flow/references/reference-grounding.md",
-      "source_sha256": "17a674fd4bff90ef9fce12a525ef969b61bac4108dcf31507b4593611b8bdea8",
-      "sha256": "e41c098141d39a1d28857d948d508de44f9796be264140eaf34db3776ca4b6d1",
-      "bytes": 3285,
-      "transformations": [
-        {
-          "kind": "environment-binding",
-          "binding": "{{EVIDENCE_ROOT}}",
-          "count": 1
-        },
-        {
-          "kind": "owner-label",
-          "label": "the user",
-          "count": 1
-        },
-        {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "engineering-reference"
-    },
-    {
-      "source": "skills/dev-flow/references/reverse-engineering.md",
-      "path": "payload/skills/dev-flow/references/reverse-engineering.md",
-      "source_sha256": "484e18e9288b9c2f3f92c64ca4f2518c93c760f644e386f47c883a5c414675a5",
-      "sha256": "1bccd535d42298a8d5202a47fd4eeb7e2a15316a3508d4b5e01e30a44485cd61",
-      "bytes": 1753,
-      "transformations": [
-        {
-          "kind": "environment-binding",
-          "binding": "{{MEMORY_ROOT}}",
-          "count": 1
-        },
-        {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "engineering-reference"
-    },
-    {
-      "source": "skills/dev-flow/references/task-brief-and-acceptance.md",
-      "path": "payload/skills/dev-flow/references/task-brief-and-acceptance.md",
-      "source_ref": "creative",
-      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
-      "source_sha256": "21ee8785045167cb7f05c47177afaac567188ea75a78a9f76e7e381db92fd555",
-      "transformations": [
-        {
-          "kind": "owner-label",
-          "label": "the user's",
-          "count": 4
-        },
-        {
-          "kind": "owner-label",
-          "label": "the user",
-          "count": 9
-        },
-        {
-          "kind": "owner-neutral-grammar",
-          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
-        },
-        {
-          "kind": "portable-owner-policy",
-          "detail": "Remove the source owner grant-revocation history; retain actual task-level reviewer consent and all acceptance criteria."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 1,
-          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
-        },
-        {
-          "kind": "owner-authorized-core-cleanup-2.0.0",
-          "detail": "Remove external mandatory procedures; preserve custom workflow, permissions and relevant behavioral criteria."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "engineering-reference",
-      "sha256": "f6637766ad99522867f5df7a27f32b6d77816686459ec8dd8e5a3454e7007fc0",
-      "bytes": 12124
-    },
-    {
-      "source": "skills/dev-flow/references/task-state.md",
-      "path": "payload/skills/dev-flow/references/task-state.md",
-      "source_sha256": "5e80e2b1ff38a5919bdcdc6b00c81f7ebbb48b177b48d4ce60bb792a35598f1a",
-      "sha256": "2abfea5d69721eb8b752b4126e42aee83f7b27e2545764caa9fa982ccb7cf809",
-      "bytes": 6769,
-      "transformations": [
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 1
-        },
-        {
-          "kind": "owner-label",
-          "label": "the user's",
-          "count": 1
-        },
-        {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 3,
-          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "engineering-reference"
-    },
-    {
-      "source": "skills/dev-flow/references/workflow-pilot.md",
-      "path": "payload/skills/dev-flow/references/workflow-pilot.md",
-      "source_sha256": "f351c89fc250acc6cadc7848d50c42471b244fb36fc3de9332150aab999be7a5",
-      "sha256": "fb453fb91b2e8baf38dbb2c8d9683a8c8f50f93b6416dc50f76dae4bf2b2ef60",
-      "bytes": 4171,
-      "transformations": [
-        {
-          "kind": "owner-label",
-          "label": "the user's",
-          "count": 1
-        },
-        {
-          "kind": "owner-label",
-          "label": "the user",
-          "count": 1
-        },
-        {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
-        },
-        {
-          "kind": "owner-neutral-grammar",
-          "detail": "Capitalize generic owner labels at sentence/list starts."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "engineering-reference"
-    },
-    {
-      "source": "skills/dev-flow/scripts/quality_ledger.py",
-      "path": "payload/skills/dev-flow/scripts/quality_ledger.py",
-      "source_sha256": "7d96b4527653d57817f839eff011c582221e51ecfeabc9df0d99121a28f13377",
-      "sha256": "7d96b4527653d57817f839eff011c582221e51ecfeabc9df0d99121a28f13377",
-      "bytes": 18230,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "engineering-reference"
-    },
-    {
-      "source": "skills/dev-implement/licenses/mattpocock--skills-LICENSE",
-      "path": "payload/skills/dev-implement/licenses/mattpocock--skills-LICENSE",
-      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "bytes": 1068,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "dev-plan"
-    },
-    {
-      "source": "skills/dev-implement/sources.json",
-      "path": "payload/skills/dev-implement/sources.json",
-      "source_sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
-      "sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
-      "bytes": 224,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "dev-plan"
-    },
-    {
-      "source": "skills/dev-plan/SKILL.md",
-      "path": "payload/skills/dev-plan/SKILL.md",
-      "source_sha256": "39f5225266a79d53a775ec9ea2d1843bef9bf8a8917bd0e82c75feeb3c5dddb3",
-      "sha256": "2373905c989534c2ca91d31b70691a11a10c212d64d9fc7e528bb56e425c68f0",
-      "bytes": 1635,
-      "transformations": [
-        {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 1,
-          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
-        },
-        {
-          "kind": "owner-authorized-core-cleanup-2.0.0",
-          "detail": "Remove external mandatory procedures; preserve custom workflow, permissions and relevant behavioral criteria."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        },
-        {
-          "kind": "owner-approved-ui-kb-cleanup-2.2",
-          "detail": "Remove design/creative routing; package standalone portable KB procedures."
-        }
-      ],
-      "module": "dev-plan"
-    },
-    {
-      "source": "skills/dev-plan/licenses/mattpocock--skills-LICENSE",
-      "path": "payload/skills/dev-plan/licenses/mattpocock--skills-LICENSE",
-      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "bytes": 1068,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        }
-      ],
-      "module": "dev-plan"
-    },
-    {
-      "source": "owner-authorized-2.1-local-instruction",
-      "path": "payload/skills/dev-plan/references/implementation.md",
-      "source_ref": "60317a3",
-      "source_commit": "60317a3b83ef5bd9ef620a899bf95a099f7c926f",
-      "transformations": [
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        },
-        {
-          "kind": "owner-approved-ui-kb-cleanup-2.2",
-          "detail": "Remove design/creative routing; package standalone portable KB procedures."
-        }
-      ],
-      "module": "dev-plan",
-      "sha256": "7326df42da69309ca32a40b97c4b958949ca17955a71fedb18d7a6ae2d764066",
-      "bytes": 1246
-    },
-    {
-      "source": "skills/dev-plan/sources.json",
-      "path": "payload/skills/dev-plan/sources.json",
-      "source_sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
-      "sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
-      "bytes": 224,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        }
-      ],
-      "module": "dev-plan"
-    },
-    {
-      "source": "skills/dev-verify/SKILL.md",
-      "path": "payload/skills/dev-verify/SKILL.md",
-      "source_sha256": "85f99f813ff7d05059ccd8c8ee30ea2e660dd2d2e5e62b0446b573a1d17c1198",
-      "sha256": "cd5798db383a110975959a56ca32eb1cb3aecd90ddef4fd1467b2d089eac906c",
-      "bytes": 2597,
-      "transformations": [
-        {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 1,
-          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
-        },
-        {
-          "kind": "owner-authorized-core-cleanup-2.0.0",
-          "detail": "Remove external mandatory procedures; preserve custom workflow, permissions and relevant behavioral criteria."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        },
-        {
-          "kind": "owner-approved-ui-kb-cleanup-2.2",
-          "detail": "Remove design/creative routing; package standalone portable KB procedures."
-        }
-      ],
-      "module": "dev-verify"
-    },
-    {
-      "source": "skills/dev-verify/licenses/mattpocock--skills-LICENSE",
-      "path": "payload/skills/dev-verify/licenses/mattpocock--skills-LICENSE",
-      "source_sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5",
-      "bytes": 1068,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        }
-      ],
-      "module": "dev-verify"
-    },
-    {
-      "source": "skills/dev-verify/sources.json",
-      "path": "payload/skills/dev-verify/sources.json",
-      "source_sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
-      "sha256": "390e322491abf387472ff8488aa355ca23c21a7492b6f368b7299caa63396ff0",
-      "bytes": 224,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        }
-      ],
-      "module": "dev-verify"
+      "sha256": "c04f7cb36f1b08a34984b4d29f1bc18aa5fd4bfa4c338f9688a34efea016a42d",
+      "bytes": 6855
     },
     {
       "source": "skills/kb-curate/SKILL.md",
       "path": "payload/skills/kb-curate/SKILL.md",
       "source_sha256": "f60afc672f331f8dd70c6da8d410d94d185271ce119ceae0563bca7f09794aa2",
-      "sha256": "ac1ebad2b430cdb9eaa5f5c8694ca278dbc2d02d30ff7966e5821a10e74dfd44",
-      "bytes": 3862,
+      "sha256": "c5d6943bc0789b94850116c4f769c01c5287ec3f3679a0082dd45cb9c7d6c967",
+      "bytes": 4530,
       "transformations": [
         {
           "kind": "owner-label",
@@ -1709,8 +690,8 @@
       "source": "skills/kb-find/SKILL.md",
       "path": "payload/skills/kb-find/SKILL.md",
       "source_sha256": "6a63012cbd1839350f60ef8cc57fb62407459b3bd4e6493e80f4d045d21a5f96",
-      "sha256": "3b0dc9f2c717a1408e3d58babdf82d1b1f9ff5cffb00f18f80c25640302a420b",
-      "bytes": 961,
+      "sha256": "361ce4ed61ca2a3162f0294588c46dcd39a7866c5e54183117a5d788ee06b3c8",
+      "bytes": 1156,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -1752,8 +733,8 @@
       "source": "skills/kb-save/SKILL.md",
       "path": "payload/skills/kb-save/SKILL.md",
       "source_sha256": "4bc27ffa37f7e6a5fb0d9d8a89093ce72f29a534a281576ac6dfcd47272a318b",
-      "sha256": "5a21fc0d75037de00b002833c2df47ceba826a0e3e5a3d7dc6c3a1f1175443da",
-      "bytes": 1286,
+      "sha256": "1c603244f3c514256fd7330e3a0baba9dafab43643ab7628729a5803439e535c",
+      "bytes": 3610,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -1856,8 +837,8 @@
       "source": "skills/kb-sync/SKILL.md",
       "path": "payload/skills/kb-sync/SKILL.md",
       "source_sha256": "bd9e1c489434ad1470e3c22b3fc583c3601bd43754a50ab27fb505a6c20304d5",
-      "sha256": "cfe9eb5f2a53ef9007e82b7393fb2434ad32f0f186d81e3b9dad91470f8e2ac2",
-      "bytes": 1100,
+      "sha256": "479ff2e63619891ab361aea2196b1263a9fb86175305e20e2d4a35ea3778ed23",
+      "bytes": 2946,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -1890,260 +871,11 @@
       "module": "kb-sync"
     },
     {
-      "source": "skills/visual-scenes/agents/openai.yaml",
-      "path": "payload/skills/visual-scenes/agents/openai.yaml",
-      "source_sha256": "e0034367a84199ccc28f0e4d59b28b0a711fd1c249efe1da124bbbca45928b18",
-      "sha256": "e0034367a84199ccc28f0e4d59b28b0a711fd1c249efe1da124bbbca45928b18",
-      "bytes": 312,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "visual-reference"
-    },
-    {
-      "source": "skills/visual-scenes/references/causal-state-interaction.md",
-      "path": "payload/skills/visual-scenes/references/causal-state-interaction.md",
-      "source_sha256": "deaf9d3fe44266227b742596cd317a6436444b4399090c7d0e3cfa9cc9cdc010",
-      "sha256": "b1c375c366abc02f705a9a4b68730cd07f386528aa2fdba9b263031ccc7abc7e",
-      "bytes": 4126,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "visual-reference"
-    },
-    {
-      "source": "skills/visual-scenes/references/composition-materials.md",
-      "path": "payload/skills/visual-scenes/references/composition-materials.md",
-      "source_sha256": "d3fda3f69d4d535216ded80928a5331e50cb98345d07931e97ed32f4c8a42b6a",
-      "sha256": "ebb2b8c556d35dc11fca97ce3427338193bf9d00164e3830d666260a3a308f50",
-      "bytes": 4993,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "visual-reference"
-    },
-    {
-      "source": "skills/visual-scenes/references/data-spatial-metaphors.md",
-      "path": "payload/skills/visual-scenes/references/data-spatial-metaphors.md",
-      "source_sha256": "d0a57861eac2cf7539c3cbdfc36765cd79b431fa90bcb83a763b992fb3076477",
-      "sha256": "d96c5c7a060e7cbc71929edef26536c38b77911255cd4f8bbc1ca915d72d5236",
-      "bytes": 3475,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "visual-reference"
-    },
-    {
-      "source": "skills/visual-scenes/references/evidence.md",
-      "path": "payload/skills/visual-scenes/references/evidence.md",
-      "source_sha256": "c00ba8bbec35aabd4ea683ec854a3917e5489438dbda17d79b3d4e44ae6ca802",
-      "sha256": "b6fff308147ac13b28b5ca143675f67578cd0dfc48fd1d8e29418007063af1df",
-      "bytes": 5369,
-      "transformations": [
-        {
-          "kind": "owner-label",
-          "label": "пользователь",
-          "count": 1
-        },
-        {
-          "kind": "owner-label-language",
-          "detail": "English prose label for the existing generic owner substitution."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "visual-reference"
-    },
-    {
-      "source": "owner-authorized-2.1-local-instruction",
-      "path": "payload/skills/visual-scenes/references/index.md",
-      "source_ref": "60317a3",
-      "source_commit": "60317a3b83ef5bd9ef620a899bf95a099f7c926f",
-      "transformations": [
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        },
-        {
-          "kind": "owner-approved-ui-kb-cleanup-2.2",
-          "detail": "Remove design/creative routing; package standalone portable KB procedures."
-        }
-      ],
-      "module": "visual-reference",
-      "sha256": "464756e1160df7d4b5da5ac3e6bbba6fbff4008db8aa2a6bef59d4038ca2a4d6",
-      "bytes": 882
-    },
-    {
-      "source": "skills/visual-scenes/references/optics-spectral.md",
-      "path": "payload/skills/visual-scenes/references/optics-spectral.md",
-      "source_sha256": "150da50c0a470955f2515e9eb7db6f3f3c8f06ac18cc4dc41486d67556c3d15d",
-      "sha256": "150da50c0a470955f2515e9eb7db6f3f3c8f06ac18cc4dc41486d67556c3d15d",
-      "bytes": 3209,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "visual-reference"
-    },
-    {
-      "source": "skills/visual-scenes/references/procedural-graphics.md",
-      "path": "payload/skills/visual-scenes/references/procedural-graphics.md",
-      "source_sha256": "e26653cfdc06f9b9ae776558049e7393fd44ff0bbb5e48e49ff35ecdfa34ec3c",
-      "sha256": "e75677aecc877b90a8e7cd1aef9f9f9a1f8dc54b6f0673e0c6cea4a262667715",
-      "bytes": 3481,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "visual-reference"
-    },
-    {
-      "source": "skills/visual-scenes/references/runtime-accessibility.md",
-      "path": "payload/skills/visual-scenes/references/runtime-accessibility.md",
-      "source_sha256": "524484afe4cb88b3d90710a5d8e77d3b7982a6b83aad691d2ad434c65726cbff",
-      "sha256": "2b271f00cd244b93ceccbf5a10a389aff52f57bf47b600e2839fe5149c577816",
-      "bytes": 3221,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "owner-authorized-core-cleanup-2.0.0",
-          "detail": "Remove external mandatory procedures; preserve custom workflow, permissions and relevant behavioral criteria."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        },
-        {
-          "kind": "owner-approved-ui-kb-cleanup-2.2",
-          "detail": "Remove design/creative routing; package standalone portable KB procedures."
-        }
-      ],
-      "module": "visual-reference"
-    },
-    {
-      "source": "skills/visual-scenes/references/validation.md",
-      "path": "payload/skills/visual-scenes/references/validation.md",
-      "source_sha256": "d348276c827110032085c7d8b50366b3908d44611740166f909a12c00fa10e3b",
-      "sha256": "493002d8b48105b7ff255121ace7315789cc642c4f58f0e4fd2b1bcef638bbb6",
-      "bytes": 3270,
-      "transformations": [
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "visual-reference"
-    },
-    {
-      "source": "skills/visual-scenes/references/world-scenes.md",
-      "path": "payload/skills/visual-scenes/references/world-scenes.md",
-      "source_sha256": "eb4e7625e1648295f0902ce0a9832bdfc96d2bdf634379ab8783ded2b802f07b",
-      "sha256": "ccfd3eedbb1e2160d25648a316614769fda94f191c8683f126940274bc33ce44",
-      "bytes": 8403,
-      "transformations": [
-        {
-          "kind": "environment-binding",
-          "binding": "{{EVIDENCE_ROOT}}",
-          "count": 1
-        },
-        {
-          "kind": "portable-owner-policy",
-          "detail": "Point to the authorized evidence audit directory without a personal model label in its private filename; retain the comparison-audit trigger and regression lesson."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "visual-reference"
-    },
-    {
       "source": "skills/voxel-models/SKILL.md",
       "path": "payload/skills/voxel-models/SKILL.md",
       "source_sha256": "eec0be0c3e2818c2e98ec7f15b1e44b3efcd67146097b46b72bf50d8b570d6aa",
-      "sha256": "d66472445c73cb6271cda1f6a207bbb8f421cb3e9958be4ab85248453a1e9e29",
-      "bytes": 6528,
+      "sha256": "3a5c866a45c7079ef52b2a97588e1879988effab999b15c9336e6a9698507d0c",
+      "bytes": 5724,
       "transformations": [
         {
           "kind": "owner-label",
@@ -2205,8 +937,8 @@
       "source": "skills/voxel-models/references/design-passport.md",
       "path": "payload/skills/voxel-models/references/design-passport.md",
       "source_sha256": "dbc0ef8a5c4c14fb360c53d552e8338a5f142aaed9683d196e2a573f7146fffe",
-      "sha256": "f03c956ec1295fbe8437883d4519f999cfa94a5ca6fc4ef9a8ddcb7a3e5e962d",
-      "bytes": 4467,
+      "sha256": "ba14f61538ce290c6995be88d2571262488477a19fe36751ff0cbf017b80a04c",
+      "bytes": 4354,
       "transformations": [
         {
           "kind": "public-skill-naming",
@@ -2223,8 +955,8 @@
       "source": "skills/voxel-models/references/design-preflight.md",
       "path": "payload/skills/voxel-models/references/design-preflight.md",
       "source_sha256": "289079d7ddbebb1b3da973d6db7935122d7f03295ddb988a65112f75cb8f1be9",
-      "sha256": "ae56a50079661c4cedf45dcfd3d329919693a470ba16b89c975c9286d2705ffd",
-      "bytes": 7782,
+      "sha256": "a7ffe259b47dfa7e55069aea73be3549bd1b9ed662b802ff90fb038b89663067",
+      "bytes": 7394,
       "transformations": [
         {
           "kind": "owner-label",
@@ -2295,8 +1027,8 @@
       "source": "skills/voxel-models/references/files-meshes.md",
       "path": "payload/skills/voxel-models/references/files-meshes.md",
       "source_sha256": "5fefbc4753e9b4e0eaf47b6b5a7345970d6a771b0ddac67278beeebaf4b9989e",
-      "sha256": "e5f797be576d33e7c2fd11b766554f5e22d69a43717099de9b8e96fb3e1980a7",
-      "bytes": 2950,
+      "sha256": "ae2d06024ae5664224c02a4cb718a535bf6c7344dd0292ef53876bb09c058c6d",
+      "bytes": 2788,
       "transformations": [
         {
           "kind": "public-skill-naming",
@@ -2313,8 +1045,8 @@
       "source": "skills/voxel-models/references/gen2.md",
       "path": "payload/skills/voxel-models/references/gen2.md",
       "source_sha256": "833d23ee6aaad6decd13ee4e5c7c84ac80b04eaed938b94eac2365606bf0865d",
-      "sha256": "10bf586a57e67d1e7552d93be2cd69e15766b040193f51e0c46305a1a51cc9d2",
-      "bytes": 2924,
+      "sha256": "fa3cde59fa2cb9a8f8157751155c1e301310215f440630b8811d799c7ad6d66f",
+      "bytes": 2570,
       "transformations": [
         {
           "kind": "public-skill-naming",
@@ -2421,8 +1153,8 @@
       "source": "skills/voxel-models/references/probe-library.md",
       "path": "payload/skills/voxel-models/references/probe-library.md",
       "source_sha256": "d2c8dd4e6b76d53d2e6578676725d3a3cedc461c731decd4380147a651a29134",
-      "sha256": "3f55d7b4dab49ce02c8c77ebb258d29454e26266408ce75cabe368159e00bc69",
-      "bytes": 4975,
+      "sha256": "d2aec986a8052ae171b65f5b319443b7dcc1cf6965cd77b33ddc1777738276fc",
+      "bytes": 4616,
       "transformations": [
         {
           "kind": "owner-label",
@@ -2462,8 +1194,8 @@
       "source": "skills/voxel-models/references/quality-cycle.md",
       "path": "payload/skills/voxel-models/references/quality-cycle.md",
       "source_sha256": "815f544ddd757160d71e6885872a74e90db0e34a60b18f56de7de893dd13266e",
-      "sha256": "caa920e62c4eef523c79f96961a9750b29aa53db831a136e6fb10b2298846cff",
-      "bytes": 4824,
+      "sha256": "182066696f99c62aa2653244a908a4ca40f42e922fe10458b452116312211f30",
+      "bytes": 4416,
       "transformations": [
         {
           "kind": "public-skill-naming",
@@ -2492,15 +1224,15 @@
         }
       ],
       "module": "voxel-models",
-      "sha256": "8e91edcd7b91828e99b2ae553d9622fa76e7a685d7c5bf1793382d0d4e95810e",
-      "bytes": 3140
+      "sha256": "c4b85ec6d7b17487fc31853a4ec508e196a505155a72a366be7b52f976ea504f",
+      "bytes": 2967
     },
     {
       "source": "skills/voxel-models/references/resolution-lod.md",
       "path": "payload/skills/voxel-models/references/resolution-lod.md",
       "source_sha256": "bb2c2a17c24b99cc7eb5d3ab416c8981af2ff8e4235543092ebe50080322fbdb",
-      "sha256": "70540cf6b1f8cb3337d389d1d26a3d9dce78b87820c65462e408f2ae2c320091",
-      "bytes": 3375,
+      "sha256": "ee07d3f9b186b554a55bff6d796406a7e24ad752d6db3259569a0a3a9299f035",
+      "bytes": 3213,
       "transformations": [
         {
           "kind": "owner-label",
@@ -2838,149 +1570,11 @@
       "bytes": 2232
     },
     {
-      "source": "workflow/WORKFLOW.md",
-      "path": "payload/workflow/WORKFLOW.md",
-      "source_ref": "creative",
-      "source_commit": "679362d2fb0d1662527d767c6297d1cbc1cb17ca",
-      "source_sha256": "92bce91d2c631b6b3c106e1ede3e9e031fcd2afb4dd9cb88628e3319557b5d7b",
-      "transformations": [
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 6
-        },
-        {
-          "kind": "owner-label",
-          "label": "the user's",
-          "count": 6
-        },
-        {
-          "kind": "owner-label",
-          "label": "the user",
-          "count": 1
-        },
-        {
-          "kind": "owner-neutral-grammar",
-          "detail": "Use generic user labels, neutral pronouns and grammatical sentence/heading capitalization."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 5,
-          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
-        },
-        {
-          "kind": "orchestration-reliability-1.6.0",
-          "detail": "Owner-authorized adapter-session reliability: restore selected route and execution context, check explicit recipient assignments and host evidence, preserve existing transport/authorization and independent-review boundaries. See docs/ORCHESTRATION_RELIABILITY_PLAN.md and docs/FIDELITY.md."
-        },
-        {
-          "kind": "owner-authorized-core-cleanup-2.0.0",
-          "detail": "Remove external mandatory procedures; preserve custom workflow, permissions and relevant behavioral criteria."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        },
-        {
-          "kind": "universal-brain-2.1.0",
-          "detail": "Use generic task, plan, worker, question and acceptance vocabulary; remove board-specific concepts from the orchestration route. Board integration remains separate and is not a brain dependency."
-        },
-        {
-          "kind": "owner-approved-ui-kb-cleanup-2.2",
-          "detail": "Remove design/creative routing; package standalone portable KB procedures."
-        }
-      ],
-      "module": "workflow",
-      "sha256": "954d1c7a857849403050a5fb0580158e81ba5db116cb2a3343e221b8cf3dc335",
-      "bytes": 4257
-    },
-    {
-      "source": "workflow/agent-worklog.mjs",
-      "path": "payload/workflow/agent-worklog.mjs",
-      "source_sha256": "41083e807c7db2657aff0bad06fa8164ee393f0934f5c16c068fb0c10893309a",
-      "sha256": "c38d333c3be292eb9b7d6cdc35d68262746f7a5649dc1b0fb6b963a8d1eaeabf",
-      "bytes": 18210,
-      "transformations": [
-        {
-          "kind": "environment-binding",
-          "binding": "{{PYTHON}}",
-          "count": 1
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 1
-        },
-        {
-          "kind": "runtime-binding",
-          "detail": "Same Python validator/arguments; resolve installed sibling and interpreter environment instead of source-PC paths."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply audit owners and exact section pointers; retain runtime/domain contracts and original source metadata."
-        }
-      ],
-      "module": "workflow"
-    },
-    {
-      "source": "workflow/independent-review.md",
-      "path": "payload/workflow/independent-review.md",
-      "source_sha256": "8e55f5cf7e5d3881a3160d387556a028107324fb5b9698097e0a444d93068816",
-      "sha256": "248ffb17997250dabfb217de5ed87a58e373591f36e53c7595092c840eab5ffc",
-      "bytes": 2585,
-      "transformations": [
-        {
-          "kind": "owner-label",
-          "label": "the user's",
-          "count": 2
-        },
-        {
-          "kind": "instruction-language",
-          "detail": "Maintained agent-facing prose is English; communication and knowledge content default to Russian, subject to the actual user request. Machine identifiers and data retain their languages."
-        },
-        {
-          "kind": "owner-neutral-grammar",
-          "detail": "Capitalize generic owner labels at sentence/list starts."
-        },
-        {
-          "kind": "public-skill-naming",
-          "detail": "Approved 1.0.0 package skill IDs, paths and references; upstream attribution and original source hashes retained."
-        },
-        {
-          "kind": "instruction-ownership-1.4.0",
-          "detail": "Apply the supplied audit owner decisions; replace duplicate policy bodies with owner/section pointers while preserving domain criteria. Brain setup defers to session policy; exact shared references are mirrored."
-        },
-        {
-          "kind": "environment-binding",
-          "binding": "{{HARNESS_ROOT}}",
-          "count": 1,
-          "detail": "1.4.0 policy links use the deployed native root; source AGENTS is installed as BASE-RULES and also inlined at project root."
-        },
-        {
-          "kind": "explicit-user-routes-2.1.0",
-          "detail": "Owner-approved four-rule BASE, unified brain/UI routes, reference-only retired entrypoints and explicit event/action/output paths; preserve executable drivers and voxel passport/six-view requirement."
-        }
-      ],
-      "module": "workflow"
-    },
-    {
       "source": "workflow/kb-writer.mjs",
       "path": "payload/workflow/kb-writer.mjs",
       "source_sha256": "35a019d1562626d481dbf31f3f91a48a5f03c803478ba7b8af597fea5bf72641",
-      "sha256": "072ac30ff51a595d49dbdc66ec932bdafe6ea0700aa9af24fe0b9f458b48a99a",
-      "bytes": 6296,
+      "sha256": "7bf1b6644849aabf7c97a22080e3eae48473510e4622a4e6e3ea16d618431ba3",
+      "bytes": 6404,
       "transformations": [
         {
           "kind": "environment-binding",
@@ -3008,42 +1602,56 @@
       "module": "workflow"
     },
     {
-      "source": "workflow/quality-stop.mjs",
-      "path": "payload/workflow/quality-stop.mjs",
-      "source_sha256": "8ca7fb3392a88ceb9e9aed50fc2a83a2fd9c057ae76058635f0a99cce73cc487",
-      "sha256": "8ca7fb3392a88ceb9e9aed50fc2a83a2fd9c057ae76058635f0a99cce73cc487",
-      "bytes": 2445,
-      "transformations": [],
+      "source": "runtime/integrations/codex-kb-writer.template.toml",
+      "path": "payload/runtime/integrations/codex-kb-writer.template.toml",
+      "sha256": "af3bb90f0e3e371b50e3bebf435e708a3cc18351dc1b49e426cdef8e0acbbe3c",
+      "bytes": 517,
+      "transformations": [
+        {
+          "kind": "owner-approved-cleanup-3.0",
+          "detail": "Copied from the owner's live knowledge vault or added in the 3.0 cleanup."
+        }
+      ],
       "module": "workflow"
     },
     {
-      "source": "owner-approved-portable-kb",
-      "path": "payload/skills/kb-common/references/cloud-exchange.md",
-      "module": "kb-reference",
-      "sha256": "b5bc4797401971b98a5046a08a431167c8f145d289f1c04ce5a61e4600351a35",
-      "bytes": 3279,
-      "transformations": []
-    },
-    {
-      "source": "owner-approved-portable-kb",
-      "path": "payload/skills/kb-common/references/layout.md",
-      "module": "kb-reference",
-      "sha256": "6cfdf12a8b34644242a86e84f3e42313137f5aab1f8d758c5327d37be76407f1",
-      "bytes": 2404,
+      "source": "runtime/memory/SYSTEM/scripts/kb-claude.mjs",
+      "path": "payload/runtime/memory/SYSTEM/scripts/kb-claude.mjs",
+      "sha256": "a16bc10c76d72dafcd6ab31efcf9438b8fe7eb8144a2ebedd0c53a1bf1751a6e",
+      "bytes": 5167,
       "transformations": [
         {
-          "kind": "kb-curation-routing-clarification",
-          "detail": "Explicit index-first semantic curation and section/leaf decisions; layout exclusively owns size thresholds. Preserve source provenance and runtime behavior."
+          "kind": "owner-approved-cleanup-3.0",
+          "detail": "Copied from the owner's live knowledge vault or added in the 3.0 cleanup."
         }
-      ]
+      ],
+      "module": "memory-runtime"
     },
     {
-      "source": "owner-approved-portable-kb",
-      "path": "payload/skills/kb-common/references/capture.md",
-      "module": "kb-reference",
-      "sha256": "6b4be4a1c21e2d3fda26f7f9bd5dda41a24465e8b1e58d24c08932279f7c48c6",
-      "bytes": 5239,
-      "transformations": []
+      "source": "runtime/memory/SYSTEM/scripts/kb-topic-size.mjs",
+      "path": "payload/runtime/memory/SYSTEM/scripts/kb-topic-size.mjs",
+      "sha256": "285ad4790462e4909bd3f08cca6c2a266d9cd320618b1722ba69c0ef56315ee4",
+      "bytes": 1486,
+      "transformations": [
+        {
+          "kind": "owner-approved-cleanup-3.0",
+          "detail": "Copied from the owner's live knowledge vault or added in the 3.0 cleanup."
+        }
+      ],
+      "module": "memory-runtime"
+    },
+    {
+      "source": "runtime/memory/SYSTEM/workflows/topic-sizing.md",
+      "path": "payload/runtime/memory/SYSTEM/workflows/topic-sizing.md",
+      "sha256": "16af0460a761e00621e6fff2429341471092fc7e748a1bbaaaa0d50c99cb8057",
+      "bytes": 2956,
+      "transformations": [
+        {
+          "kind": "owner-approved-cleanup-3.0",
+          "detail": "Copied from the owner's live knowledge vault or added in the 3.0 cleanup."
+        }
+      ],
+      "module": "memory-runtime"
     }
   ],
   "excluded": [
@@ -3102,10 +1710,6 @@
   ],
   "runtime_assets": [],
   "skill_dependencies": {
-    "agent-instructions": [],
-    "dev-debug": [],
-    "dev-plan": [],
-    "dev-verify": [],
     "kb-curate": [],
     "kb-find": [],
     "kb-save": [],
@@ -3115,40 +1719,5 @@
     "you-are-brain": []
   },
   "dependency_policy": "Required skill dependencies and reference-only support modules are explicit. Installing support files does not activate a skill or require reading them.",
-  "support_modules": {
-    "agent-instructions": [
-      "engineering-reference"
-    ],
-    "dev-debug": [
-      "engineering-reference"
-    ],
-    "dev-plan": [
-      "engineering-reference"
-    ],
-    "dev-verify": [
-      "engineering-reference"
-    ],
-    "voxel-models": [
-      "engineering-reference",
-      "visual-reference"
-    ],
-    "you-are-brain": [
-      "engineering-reference"
-    ],
-    "kb-find": [
-      "kb-reference"
-    ],
-    "kb-save": [
-      "kb-reference"
-    ],
-    "kb-curate": [
-      "kb-reference"
-    ],
-    "kb-sync": [
-      "kb-reference"
-    ],
-    "kb-status": [
-      "kb-reference"
-    ]
-  }
+  "support_modules": {}
 }

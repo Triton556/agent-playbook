@@ -21,7 +21,7 @@ Block aggregation is only a baseline. “Any occupied child” expands contours 
 
 For perspective projection, a small feature's pixel extent is approximately `worldExtent × viewportHeight / (2 × distance × tan(verticalFov/2))`; for orthographic projection it is `worldExtent × viewportHeight / visibleWorldHeight`. Use stated camera units and the model's projected error, not an unexplained distance constant. Select a coarser level only when its error is acceptable for the required view. Use hysteresis if runtime switching would otherwise flicker.
 
-Runtime measurement: see [runtime-accessibility, Budget the complete result](../../visual-scenes/references/runtime-accessibility.md#budget-the-complete-result). This research did not implement or benchmark runtime LOD switching.
+This research did not implement or benchmark runtime LOD switching.
 
 ## Mixed local grids
 

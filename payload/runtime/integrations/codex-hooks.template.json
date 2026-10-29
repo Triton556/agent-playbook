@@ -26,17 +26,6 @@
             "statusMessage": "Checking local memory persistence"
           }
         ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"{{NODE}}\" \"{{HARNESS_ROOT}}/workflow/quality-stop.mjs\"",
-            "commandWindows": "\"{{NODE}}\" \"{{HARNESS_ROOT}}/workflow/quality-stop.mjs\"",
-            "timeout": 6,
-            "statusMessage": "Diagnosing workflow freshness and completeness"
-          }
-        ]
       }
     ]
   }

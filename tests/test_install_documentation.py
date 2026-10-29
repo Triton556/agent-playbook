@@ -7,7 +7,7 @@ from test_instruction_ownership import markdown_destinations, heading_ids
 
 class InstallDocumentation(unittest.TestCase):
     def test_current_installation_links_and_entry_names(self):
-        for name in ('INSTALL_FOR_AGENTS.md', 'docs/INTEGRATIONS.md', 'docs/COMPATIBILITY.md'):
+        for name in ('INSTALL_FOR_AGENTS.md', 'docs/INTEGRATIONS.md', 'README.md', 'README.ru.md'):
             document = ROOT/name
             for target, fragment, raw in markdown_destinations(document):
                 with self.subTest(document=name, link=raw):
@@ -18,8 +18,8 @@ class InstallDocumentation(unittest.TestCase):
             self.assertNotIn('skills/agent-sessions-codex/SKILL.md', text)
             self.assertNotIn('ui-design/ui-review', text)
         integration = (ROOT/'docs/INTEGRATIONS.md').read_text()
-        self.assertIn('--skills you-are-brain', integration)
-        self.assertNotIn('--skills agent-sessions-codex', integration)
+        self.assertIn('adapters/codex.mjs', integration)
+        self.assertIn('codex-kb-writer.template.toml', integration)
 
     def test_documented_brain_route_delivers_actual_entry_and_driver_reference(self):
         for client, native in [('codex', '.agents'), ('claude', '.claude')]:
@@ -29,8 +29,9 @@ class InstallDocumentation(unittest.TestCase):
                                  '--skills', 'you-are-brain')
                 self.assertEqual(installed['installed_skills'], ['you-are-brain'])
                 self.assertTrue((target/native/'skills/you-are-brain/SKILL.md').is_file())
-                self.assertTrue((target/native/'skills/agent-sessions-codex/references/codex-driver.md').is_file())
-                self.assertFalse((target/native/'skills/agent-sessions-codex/SKILL.md').exists())
+                self.assertTrue((target/native/'skills/agent-sessions/references/session-guide.md').is_file())
+                self.assertTrue((target/native/'skills/agent-sessions/adapters/codex.mjs').is_file())
+                self.assertFalse((target/native/'skills/agent-sessions-codex').exists())
                 self.assertEqual(call('verify', '--client', client, '--target', target)['status'], 'pass')
 
 
